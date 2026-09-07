@@ -3,15 +3,12 @@
 **From Kinetic Closure to the Limits of Thermal Depth Profiling**
 
 > **Status — work in progress.** Research internship, September 2026 to January 2027, CRTEn.
-> Nothing here is peer reviewed. Results, figures and claims may change without notice.
+
 
 ---
 
 ## Scope
 
-This repository accompanies a study of a single question: **when can thermal transport
-parameters actually be recovered from a surface measurement on a thin film, and when can
-they not?**
 
 The physical setting is aluminium nitride thin films, where the phonon mean free path and
 the phonon relaxation time are not negligible compared with the film thickness and the
