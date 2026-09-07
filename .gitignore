@@ -1,0 +1,56 @@
+# ============================================================
+# Laboratory data — never committed, under any circumstances
+# ============================================================
+data/
+*.csv
+*.tdms
+*.lvm
+*.mat
+!data/README.md
+
+# ============================================================
+# Papers and copyrighted material — kept in Zotero, not here
+# ============================================================
+*.pdf
+!paper/*.pdf
+!figures/*.pdf
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# ============================================================
+# LaTeX build artefacts
+# ============================================================
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+
+# ============================================================
+# Operating system and editors
+# ============================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
