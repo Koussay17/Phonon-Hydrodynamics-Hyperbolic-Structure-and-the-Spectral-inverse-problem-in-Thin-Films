@@ -1,7 +1,8 @@
 # ============================================================
 # Laboratory data — never committed, under any circumstances
 # ============================================================
-data/
+data/*
+!data/README.md
 *.csv
 *.tdms
 *.lvm
