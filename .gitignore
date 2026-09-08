@@ -12,7 +12,7 @@ data/*
 # ============================================================
 # Papers and copyrighted material — kept in Zotero, not here
 # ============================================================
-*.pdf
+!notes/*.pdf
 !paper/*.pdf
 !figures/*.pdf
 
