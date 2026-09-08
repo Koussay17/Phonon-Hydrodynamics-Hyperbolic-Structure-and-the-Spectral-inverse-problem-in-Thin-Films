@@ -1,0 +1,662 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Corrections, démonstrations et rappels de mécanique quantique}\\[4pt]
+{\normalsize Document d'accompagnement des notes 01 à 04 sur Krapez (2018)}\\[2pt]
+{\small 8 septembre 2026}
+\end{center}
+
+\vspace{6pt}
+
+Ce document comporte quatre parties. La première recense les erreurs relevées dans les fichiers 01 à 04
+et donne pour chacune la vérification qui tranche. La deuxième contient les onze démonstrations écrites
+en entier, sans étape sautée. La troisième expose ce qu'est réellement l'équation de Schrödinger, afin
+que l'analogie puisse être décrite sans erreur. La quatrième liste les formulations à ne pas employer.
+
+\section{Errata}
+
+\subsection{Signe du potentiel : inversé dans deux fichiers sur trois}
+
+Le fichier 01 (§1.5) et le fichier 02 (C25) affirment que le potentiel négatif donne les solutions
+hyperboliques et le potentiel positif les solutions trigonométriques. Le fichier 03 affirme le
+contraire. Les trois documents ne peuvent pas avoir raison ensemble.
+
+\textbf{Le fichier 03 a raison.} Krapez le fixe sans ambiguïté à son équation (32) : cosinus et sinus
+hyperboliques si $\beta > 0$, cosinus et sinus circulaires si $\beta < 0$.
+
+\textbf{La vérification.} Le potentiel est défini par $V = s''/s$. Imposer $V = \beta$ revient donc à
+résoudre
+\[ s'' = \beta\, s . \]
+
+Si $\beta > 0$, la dérivée seconde a le \emph{même} signe que la fonction : la courbure éloigne la
+courbe de l'axe et la solution s'emballe. Ce sont les exponentielles, donc $\cosh$ et $\sinh$.
+
+Si $\beta < 0$, la dérivée seconde a le signe \emph{opposé} : la courbure ramène toujours la courbe
+vers l'axe. C'est un ressort, donc une oscillation, donc $\cos$ et $\sin$.
+
+Moyen mnémotechnique : $\beta$ négatif $=$ rappel $=$ ressort $=$ oscillation ; $\beta$ positif $=$
+répulsion $=$ divergence exponentielle.
+
+\subsection{Relations inverses entre propriétés : racines manquantes}
+
+Le fichier 03 (§2.1 et §3.2) écrit $\lambda = a\,b$ et $\rho c = b/a$. Les deux sont faux : il manque
+les racines carrées. Les relations correctes sont
+\[ \lambda = b\sqrt{a}
+\qquad\text{et}\qquad
+\rho c = \frac{b}{\sqrt{a}} . \]
+
+La démonstration est en §2.1 ci-dessous. C'est l'erreur la plus grave du lot : ces deux identités sont
+exactement ce qui fait se simplifier les racines à la première étape de Liouville. Avec la version
+fausse, toute la transformation s'écroule.
+
+\subsection{Référence bibliographique non remplie}
+
+Le fichier 01 contient encore un espace réservé : « [Référence complète conservée selon le document
+source] ». Sur une fiche dont la raison d'être est la vérification des références, c'est le champ à ne
+pas laisser vide. Le titre exact est : \emph{Linear, trigonometric and hyperbolic profiles of thermal
+effusivity in the Liouville space and related quadrupoles: Simple analytical tools for modeling graded
+layers and multilayers.}
+
+\subsection{Famille à exposant libre : formule inexacte}
+
+Le fichier 02 (C22) écrit une relation de la forme $z_q = \int (A\,a^q)\,d\xi$. Ce n'est pas la
+relation de l'article. La bonne est
+\[ z(\xi) \;=\; \int_0^{\xi} \lambda^{q}\, c^{\,q-1}\, b^{\,1-2q} \, du , \]
+valable pour \emph{toute} valeur de $q$. La démonstration §2.8 le vérifie. Le tableau des trois valeurs
+particulières, lui, est correct dans le fichier.
+
+\subsection{Signe du flux dans le vecteur d'état}
+
+Le fichier 02 (C17) écrit le couple transformé $(T,\; b\,T_\xi)$. Le flux vaut $-\,b\,\theta'$, avec un
+signe moins. Le couple correct est $(\theta,\; -b\,\theta')$. Sans ce signe, les entrées du quadripôle
+changent de signe et le test de la couche homogène échoue.
+
+\subsection{Le potentiel n'a cette forme que dans un des deux cas}
+
+Le fichier 02 (C12) et le fichier 03 (§3.5) donnent
+\[ V(\xi) = \frac{1}{\sqrt{b}}\,\frac{d^{2}\sqrt{b}}{d\xi^{2}} . \]
+C'est juste, mais seulement pour la formulation en température. La forme générale est $V = s''/s$ avec
+$s = b^{\pm 1/2}$, l'exposant positif pour la température et le négatif pour le flux. Comme les
+fichiers insistent ailleurs sur la dualité des deux formulations, il faut être cohérent ici aussi.
+
+\newpage
+\section{Les onze démonstrations}
+
+Chacune est courte et aucune étape n'est sautée. Il faut les refaire au stylo : c'est la seule façon
+de pouvoir les défendre au tableau.
+
+\subsection{Les deux identités du changement de coordonnée}
+
+\textbf{À démontrer :} $\lambda = b\sqrt{a}$ et $\rho c = b/\sqrt{a}$, à partir des seules définitions
+$a = \lambda/\rho c$ et $b = \sqrt{\lambda \rho c}$.
+
+\textbf{Démonstration.}
+\[ b\cdot\sqrt{a} \;=\; \sqrt{\lambda\rho c}\cdot\sqrt{\frac{\lambda}{\rho c}}
+\;=\; \sqrt{\lambda\rho c \cdot \frac{\lambda}{\rho c}} \;=\; \sqrt{\lambda^{2}} \;=\; \lambda \]
+\[ \frac{b}{\sqrt{a}} \;=\; \frac{\sqrt{\lambda\rho c}}{\sqrt{\lambda/\rho c}}
+\;=\; \sqrt{\lambda\rho c \cdot \frac{\rho c}{\lambda}} \;=\; \sqrt{(\rho c)^{2}} \;=\; \rho c \]
+
+\textbf{Corollaires utilisés partout dans l'article :}
+\[ \frac{\lambda}{\sqrt{a}} = b
+\qquad\text{et}\qquad
+\frac{1}{\rho c\,\sqrt{a}} = \frac{1}{b} . \]
+Ce sont ces deux simplifications qui font disparaître la diffusivité à l'étape 1.
+
+\subsection{Analyse dimensionnelle complète}
+
+\textbf{Diffusivité.}
+$[a] = \dfrac{\mathrm{W\,m^{-1}K^{-1}}}{\mathrm{J\,m^{-3}K^{-1}}} = \mathrm{m^{2}\,s^{-1}}$,
+puisqu'un watt est un joule par seconde.
+
+\textbf{Effusivité.}
+$[b] = \sqrt{\mathrm{W\,m^{-1}K^{-1}} \cdot \mathrm{J\,m^{-3}K^{-1}}}
+= \mathrm{W\,s^{1/2}\,m^{-2}\,K^{-1}}$.
+
+\textbf{Coordonnée transformée.}
+$[\xi] = \dfrac{\mathrm{m}}{\mathrm{m\,s^{-1/2}}} = \mathrm{s^{1/2}}$.
+Son carré est donc un temps : le temps de diffusion.
+
+\textbf{Potentiel.} $V = s''/s$. Deux dérivations par rapport à $\xi$ divisent par
+$(\mathrm{s^{1/2}})^{2} = \mathrm{s}$, et le rapport à $s$ élimine les unités de $s$. Donc
+$[V] = \mathrm{s^{-1}}$.
+
+\textbf{Paramètre spectral.} $p = i\omega$ est en $\mathrm{rad\,s^{-1}}$, donc en $\mathrm{s^{-1}}$.
+
+\textbf{Vérification de cohérence.} $V$ et $p$ ont la même dimension, ce qui est indispensable
+puisqu'ils s'additionnent dans l'équation. Si l'on trouve autre chose, une étape est fausse.
+
+\subsection{Le changement de coordonnée, en entier}
+
+\textbf{Point de départ} --- l'équation transformée en temps, à propriétés variables :
+\[ p\,\rho c(z)\,\theta \;=\; \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] . \]
+
+\textbf{Définition de la nouvelle coordonnée :}
+\[ \xi(z) \;=\; \int_{0}^{z} \frac{du}{\sqrt{a(u)}} . \]
+
+\textbf{Règle de la chaîne.} Dériver la définition donne $d\xi/dz = 1/\sqrt{a}$, donc
+\[ \frac{d}{dz} \;=\; \frac{d\xi}{dz}\,\frac{d}{d\xi} \;=\; \frac{1}{\sqrt{a}}\,\frac{d}{d\xi} . \]
+
+\textbf{Membre de gauche.} On applique la règle deux fois. À l'intérieur d'abord :
+\[ \lambda\,\frac{d\theta}{dz}
+\;=\; \lambda\cdot\frac{1}{\sqrt{a}}\cdot\frac{d\theta}{d\xi}
+\;=\; \frac{\lambda}{\sqrt{a}}\,\theta' \;=\; b\,\theta' , \]
+en utilisant le corollaire de §2.1. Puis à l'extérieur :
+\[ \frac{d}{dz}\bigl[\,b\,\theta'\,\bigr]
+\;=\; \frac{1}{\sqrt{a}}\,\frac{d}{d\xi}\bigl[\,b\,\theta'\,\bigr]
+\;=\; \frac{1}{\sqrt{a}}\,\bigl(b\,\theta'\bigr)' . \]
+
+\textbf{Membre de droite.} Avec $\rho c = b/\sqrt{a}$, également de §2.1 :
+\[ p\,\rho c\,\theta \;=\; p\,\frac{b}{\sqrt{a}}\,\theta . \]
+
+\textbf{Assemblage.} Les deux membres portent le même facteur $1/\sqrt{a}$ : on multiplie tout par
+$\sqrt{a}$ et il reste
+\[ \boxed{\; p\,b(\xi)\,\theta \;=\; \bigl(b(\xi)\,\theta'\bigr)' \;} \]
+
+\textbf{Ce qu'il faut voir.} La diffusivité n'apparaît plus. Deux fonctions matériau inconnues sont
+devenues une seule, l'effusivité. Le même calcul sur la formulation en flux donne l'équation duale,
+avec $b$ remplacée par $1/b$.
+
+\newpage
+\subsection{Pourquoi la racine de l'effusivité est le seul facteur possible}
+
+\textbf{Point de départ.} On développe le résultat précédent, $b\,\theta'' + b'\,\theta' = p\,b\,\theta$,
+puis on divise par $b$ :
+\[ \theta'' + \frac{b'}{b}\,\theta' \;=\; p\,\theta . \]
+Le terme du milieu, en dérivée première, est celui qu'on veut supprimer.
+
+\textbf{La méthode.} On ne suppose pas la réponse. On pose $\theta = \psi\,u$ avec $u$ \emph{inconnue},
+on développe, et on impose que le coefficient de $\psi'$ s'annule. Cela déterminera $u$.
+\[ \theta' = \psi'u + \psi u'
+\qquad
+\theta'' = \psi''u + 2\psi'u' + \psi u'' \]
+
+En reportant :
+\[ \psi''u + 2\psi'u' + \psi u'' + \frac{b'}{b}\bigl(\psi'u + \psi u'\bigr) \;=\; p\,\psi\,u . \]
+
+\textbf{On isole le coefficient de $\psi'$ et on l'annule :}
+\[ 2u' + \frac{b'}{b}\,u \;=\; 0 . \]
+
+\textbf{On résout cette équation en $u$}, qui est à variables séparables :
+\[ 2\,\frac{u'}{u} = -\frac{b'}{b}
+\qquad\Longrightarrow\qquad
+2\ln|u| = -\ln|b| + \text{const}
+\qquad\Longrightarrow\qquad
+u = C\,b^{-1/2} . \]
+
+La constante $C$ ne change rien à l'équation finale ; on la prend égale à 1. Donc $u = 1/\sqrt{b}$,
+c'est-à-dire
+\[ \boxed{\; \psi = \sqrt{b}\;\theta \;} \]
+
+\textbf{Conclusion.} Le facteur n'a pas été choisi, il a été \emph{calculé}. Aucune autre fonction
+n'annule ce terme, puisque l'équation en $u$ est du premier ordre et n'a qu'une famille de solutions.
+
+\subsection{La forme du potentiel}
+
+On reprend le calcul précédent avec $u = b^{-1/2}$. Le terme en $\psi'$ ayant disparu, il reste
+\[ \psi''u + \psi\left[\,u'' + \frac{b'}{b}\,u'\,\right] \;=\; p\,\psi\,u , \]
+puis, en divisant par $u$,
+\[ \psi'' + \psi\left[\,\frac{u''}{u} + \frac{b'}{b}\cdot\frac{u'}{u}\,\right] \;=\; p\,\psi . \]
+
+\textbf{Calcul des deux rapports.} Avec $u = b^{-1/2}$ :
+\[ u' = -\tfrac{1}{2}\,b^{-3/2}b'
+\qquad\Longrightarrow\qquad
+\frac{u'}{u} = -\frac{1}{2}\,\frac{b'}{b} \]
+\[ u'' = -\tfrac{1}{2}\,b^{-3/2}b'' + \tfrac{3}{4}\,b^{-5/2}(b')^{2}
+\qquad\Longrightarrow\qquad
+\frac{u''}{u} = -\frac{1}{2}\,\frac{b''}{b} + \frac{3}{4}\left(\frac{b'}{b}\right)^{2} \]
+
+\textbf{Somme des deux termes entre crochets :}
+\[ -\frac{1}{2}\frac{b''}{b} + \frac{3}{4}\left(\frac{b'}{b}\right)^{2}
+- \frac{1}{2}\left(\frac{b'}{b}\right)^{2}
+= -\frac{1}{2}\frac{b''}{b} + \frac{1}{4}\left(\frac{b'}{b}\right)^{2} . \]
+
+\textbf{Reconnaissance.} Posons $s = \sqrt{b}$ et calculons $s''/s$ :
+\[ s' = \tfrac{1}{2}\,b^{-1/2}b'
+\qquad
+s'' = \tfrac{1}{2}\,b^{-1/2}b'' - \tfrac{1}{4}\,b^{-3/2}(b')^{2} \]
+\[ \frac{s''}{s} = \frac{1}{2}\frac{b''}{b} - \frac{1}{4}\left(\frac{b'}{b}\right)^{2} \]
+
+C'est l'opposé exact du crochet. L'équation devient donc
+\[ \boxed{\;\frac{d^{2}\psi}{d\xi^{2}} - \bigl(V(\xi) + p\bigr)\psi = 0
+\qquad\text{avec}\qquad
+V(\xi) = \frac{s''(\xi)}{s(\xi)},\quad s = b^{\pm 1/2} \;} \]
+
+\textbf{Lecture physique du potentiel.} C'est la courbure relative de la métapropriété. Là où
+l'effusivité varie de sorte que sa racine est linéaire en $\xi$, la courbure est nulle et le potentiel
+s'annule.
+
+\newpage
+\subsection{La loi de Fourier dans l'espace transformé}
+
+\textbf{Point de départ :} la loi de Fourier ordinaire, $\phi = -\lambda\, d\theta/dz$.
+
+\textbf{On applique la règle de la chaîne de §2.3 :}
+\[ \phi \;=\; -\lambda\cdot\frac{1}{\sqrt{a}}\cdot\frac{d\theta}{d\xi}
+\;=\; -\frac{\lambda}{\sqrt{a}}\,\theta'
+\;=\; \boxed{\;-\,b(\xi)\,\theta'\;} \]
+
+\textbf{Conséquence.} La conductivité a été remplacée par l'effusivité. Toute condition aux limites
+portant sur un flux --- un laser qui chauffe, une face adiabatique --- s'écrira donc dans l'espace
+$\xi$ avec $b$ seule.
+
+C'est cette propriété qui referme la démonstration de la prééminence : l'équation ne contient que $b$,
+les conditions aux limites ne contiennent que $b$, donc la solution ne dépend que de $b$. Et comme la
+surface correspond à $\xi = 0$ pour tout matériau, deux milieux de même $b(\xi)$ donnent une réponse de
+surface identique à toute fréquence.
+
+\subsection{Le flux en fonction du wronskien}
+
+\textbf{À démontrer :} $\phi = -W(s,\psi)$, avec $W(f,g) = f g' - f' g$, dans la formulation en
+température.
+
+\textbf{Démonstration.} On part de $\theta = \psi/s$ et on dérive :
+\[ \theta' = \frac{\psi' s - \psi s'}{s^{2}} = \frac{W(s,\psi)}{s^{2}} . \]
+On applique §2.6, $\phi = -b\,\theta'$, en se rappelant que dans le cas température $b = s^{2}$ :
+\[ \phi = -s^{2}\cdot\frac{W(s,\psi)}{s^{2}} = -W(s,\psi) . \]
+
+\textbf{Rappel sur le wronskien.} Il mesure l'indépendance de deux fonctions : nul, elles sont
+proportionnelles. Pour une équation en forme normale --- sans terme de dérivée première, ce qui est
+précisément notre cas après §2.4 --- le théorème d'Abel garantit que le wronskien de deux solutions est
+\emph{constant}. C'est de là que vient le déterminant unité du quadripôle.
+
+\subsection{L'identité à exposant libre}
+
+\textbf{À démontrer :} $\lambda^{q}\,c^{\,q-1}\,b^{\,1-2q} = \sqrt{a}$, pour toute valeur de $q$.
+
+\textbf{Démonstration.} On remplace $b$ par $(\lambda c)^{1/2}$ et on regroupe les exposants :
+\[ \lambda^{q}\,c^{\,q-1}\,(\lambda c)^{(1-2q)/2}
+\;=\; \lambda^{\,q + \frac{1-2q}{2}}\; c^{\,q-1+\frac{1-2q}{2}} . \]
+
+L'exposant de $\lambda$ vaut $q + \tfrac{1}{2} - q = \tfrac{1}{2}$ ; celui de $c$ vaut
+$q - 1 + \tfrac{1}{2} - q = -\tfrac{1}{2}$. Donc
+\[ = \lambda^{1/2}\,c^{-1/2} = \sqrt{\frac{\lambda}{c}} = \sqrt{a} . \]
+
+\textbf{Ce que cela signifie.} Le paramètre $q$ est libre : il ne change rien à la valeur de
+l'intégrale, seulement à son écriture. Son intérêt est que si le préfacteur $\lambda^{q}c^{\,q-1}$ se
+trouve constant pour une valeur de $q$, il sort de l'intégrale et il ne reste qu'une puissance de $b$
+à intégrer.
+
+\medskip
+\begin{center}
+\begin{tabular}{@{}cl@{}}
+\toprule
+$q$ & Propriété supposée constante \\
+\midrule
+$0$ & capacité thermique volumique \\
+$1/2$ & diffusivité \\
+$1$ & conductivité \\
+\bottomrule
+\end{tabular}
+\end{center}
+\medskip
+
+\textbf{La conséquence, et c'est le cœur du sujet.} Chaque valeur de $q$ correspond à une hypothèse
+différente sur le matériau, et produit un profil $b(z)$ différent --- à partir du même $b(\xi)$, donc
+à partir de la même mesure.
+
+\newpage
+\subsection{Le quadripôle homogène, le test unitaire}
+
+\textbf{Situation.} Couche homogène : $b$ constante, donc $s$ constante, donc $s'' = 0$, donc $V = 0$.
+L'équation devient
+\[ \frac{d^{2}\psi}{d\xi^{2}} = p\,\psi , \]
+dont les solutions indépendantes sont $\cosh(\sqrt{p}\,\xi)$ et $\sinh(\sqrt{p}\,\xi)$.
+
+\textbf{Retour aux grandeurs physiques.} $b$ étant constante, $\theta = \psi/\sqrt{b}$ n'est qu'un
+changement d'échelle, et $\phi = -b\,\theta'$. En imposant l'état à la face d'entrée et en propageant
+jusqu'à $\xi_{1}$, on obtient
+\[ A = D = \cosh\bigl(\sqrt{p}\,\xi_{1}\bigr),
+\qquad
+B = \frac{\sinh\bigl(\sqrt{p}\,\xi_{1}\bigr)}{b\sqrt{p}},
+\qquad
+C = b\sqrt{p}\,\sinh\bigl(\sqrt{p}\,\xi_{1}\bigr) . \]
+
+\textbf{Vérification obligatoire :}
+\[ AD - BC = \cosh^{2} - \sinh^{2} = 1 . \]
+
+\textbf{Lien avec la profondeur physique.} Pour une couche homogène d'épaisseur $D_{\text{ép}}$, on a
+$\xi_{1} = D_{\text{ép}}/\sqrt{a}$, donc $\sqrt{p}\,\xi_{1} = D_{\text{ép}}\sqrt{p/a}$. On retrouve
+exactement le quadripôle classique du livre de Maillet.
+
+C'est le premier test à écrire dans \texttt{tests/}, avant toute autre ligne de code. Un quadripôle
+gradué qui ne redonne pas cette expression quand on égalise les effusivités aux deux faces est faux.
+
+\subsection{Cattaneo : le décalage spectral et la rotation de l'énergie}
+
+\textbf{Loi de Cattaneo.} Le flux ne répond plus instantanément au gradient, il met un temps $\tau$ :
+\[ \tau\,\frac{\partial\varphi}{\partial t} + \varphi = -\lambda\,\frac{\partial T}{\partial z} . \]
+
+\textbf{Passage au domaine spectral.} La dérivée temporelle devient une multiplication par $p$ :
+\[ \phi\,(1 + \tau p) = -\lambda\,\frac{d\theta}{dz}
+\qquad\Longrightarrow\qquad
+\phi = -\frac{\lambda}{1+\tau p}\,\frac{d\theta}{dz} . \]
+
+\textbf{Combinaison avec le bilan d'énergie} $p\,\rho c\,\theta = -\,d\phi/dz$ :
+\[ \frac{d}{dz}\!\left[\lambda\,\frac{d\theta}{dz}\right] = p\,(1+\tau p)\,\rho c\,\theta . \]
+
+\textbf{Résultat.} Toute la structure de l'équation est inchangée ; seul le paramètre spectral a été
+remplacé :
+\[ p \;\longrightarrow\; p_{\text{eff}} = p + \tau p^{2} . \]
+
+\textbf{En régime modulé,} $p = i\omega$, donc $p^{2} = -\omega^{2}$ et
+\[ p_{\text{eff}} = i\omega - \tau\omega^{2} . \]
+
+\textbf{L'énergie de l'analogie} vaut $E = -p_{\text{eff}}$ :
+\[ \boxed{\; E = \tau\omega^{2} - i\,\omega = \omega\,(x - i)
+\qquad\text{avec}\qquad x = \omega\tau \;} \]
+
+\textbf{Son argument.} La partie réelle vaut $\tau\omega^{2}$, la partie imaginaire $-\omega$, donc
+\[ \arg(E) = \arctan\!\left(\frac{-\omega}{\tau\omega^{2}}\right)
+= -\arctan\!\left(\frac{1}{\omega\tau}\right) . \]
+
+\textbf{Les trois limites.} Quand $\omega\tau \to 0$, l'arc tangente de l'infini vaut $90^{\circ}$,
+donc $\arg(E) \to -90^{\circ}$ : l'énergie est sur l'axe imaginaire, c'est exactement le cas de Krapez.
+À $\omega\tau = 1$, $\arctan(1) = 45^{\circ}$, donc $\arg(E) = -45^{\circ}$ exactement. Quand
+$\omega\tau \to \infty$, $\arg(E) \to 0^{\circ}$ : l'énergie approche l'axe réel positif, celui des
+états de diffusion.
+
+\textbf{Le point qui compte.} L'angle ne dépend que du produit $\omega\tau$. Ni du matériau, ni de
+l'épaisseur, ni de la géométrie.
+
+\newpage
+\subsection{Le demi-cercle de Cole-Cole}
+
+\textbf{Contexte.} Le module de $E$ croît sans borne, ce qui rend le tracé illisible. On trace donc un
+multiple réel positif de $E$, qui a le même argument. Le choix $E^{*} = x/(x+i)$ donne une courbe
+remarquable.
+
+\textbf{Première étape --- vérifier que l'argument est le même.} On multiplie par le conjugué :
+\[ E^{*} = \frac{x}{x+i} = \frac{x(x-i)}{(x+i)(x-i)} = \frac{x^{2}-ix}{x^{2}+1}
+= \frac{x}{x^{2}+1}\,(x-i) . \]
+Or $E = \omega\,(x-i)$ d'après §2.10. Le rapport entre les deux vaut donc
+\[ \frac{E^{*}}{E} = \frac{x}{\omega\,(x^{2}+1)} = \frac{\tau}{1+\omega^{2}\tau^{2}} \;>\; 0 . \]
+Un réel strictement positif ne change pas l'argument. Les deux quantités ont donc rigoureusement le
+même argument, ce que le calcul numérique confirme à $10^{-14}$ degré près.
+
+\textbf{Deuxième étape --- montrer que c'est un demi-cercle exact.} On calcule la distance de $E^{*}$
+au point $1/2$ :
+\[ E^{*} - \frac{1}{2}
+= \frac{2x^{2} - 2ix - x^{2} - 1}{2\,(x^{2}+1)}
+= \frac{x^{2} - 1 - 2ix}{2\,(x^{2}+1)} . \]
+
+Module du numérateur :
+\[ \bigl|\,x^{2}-1-2ix\,\bigr|^{2} = (x^{2}-1)^{2} + 4x^{2}
+= x^{4} - 2x^{2} + 1 + 4x^{2} = x^{4} + 2x^{2} + 1 = (x^{2}+1)^{2} . \]
+
+Donc
+\[ \boxed{\; \left|\,E^{*} - \tfrac{1}{2}\,\right| = \frac{x^{2}+1}{2\,(x^{2}+1)} = \frac{1}{2} \;} \]
+
+\textbf{Conclusion.} Quelle que soit la valeur de $\omega\tau$, le point est à distance exactement
+$1/2$ du point $1/2$. C'est un demi-cercle de rayon $1/2$ centré sur $1/2$.
+
+\textbf{Pourquoi cela compte.} Ce demi-cercle porte un nom : c'est le \emph{diagramme de Cole-Cole},
+signature d'un processus à temps de relaxation unique. Il est utilisé depuis les années 1940 en
+spectroscopie diélectrique et en spectroscopie d'impédance. La communauté qui l'emploie sait aussi lire
+les écarts : un arc aplati, plus bas qu'un demi-cercle, signale une \emph{distribution} de temps de
+relaxation plutôt qu'un seul. C'est un diagnostic directement transposable à des données d'AlN, et une
+piste bibliographique à vérifier.
+
+\newpage
+\section{Ce qu'est réellement l'équation de Schrödinger}
+
+Cette partie existe pour une raison précise : pouvoir parler de l'analogie sans dire de bêtises. Elle
+décrit la vraie mécanique quantique, puis établit point par point ce que l'analogie autorise.
+
+\subsection{D'où vient l'équation}
+
+En 1924, Louis de Broglie propose que la matière possède un caractère ondulatoire : à une particule de
+quantité de mouvement $p$ est associée une longueur d'onde $\lambda = h/p$, où $h$ est la constante de
+Planck. L'idée est vérifiée expérimentalement dès 1927 par la diffraction d'électrons sur un cristal.
+
+En 1926, Erwin Schrödinger écrit l'équation d'évolution de cette onde. Elle joue en mécanique quantique
+le rôle que la seconde loi de Newton joue en mécanique classique :
+\[ i\hbar\,\frac{\partial\Psi}{\partial t} = \hat{H}\,\Psi , \]
+où $\Psi$ est la \emph{fonction d'onde}, $\hbar$ la constante de Planck réduite (environ
+$1{,}05\times10^{-34}$ J\,s) et $\hat{H}$ l'\emph{opérateur hamiltonien}, qui représente l'énergie
+totale.
+
+\subsection{Ce que représente la fonction d'onde}
+
+C'est le point le plus contre-intuitif, et celui qu'il faut avoir compris avant de parler d'analogie.
+
+$\Psi$ n'est \emph{pas} la position de la particule, ni sa trajectoire, ni une densité de matière.
+C'est une \emph{amplitude de probabilité}, à valeurs complexes. Son interprétation, due à Max Born la
+même année, est que le module au carré donne la densité de probabilité de présence :
+\[ |\Psi(x)|^{2}\,dx = \text{probabilité de trouver la particule entre } x \text{ et } x+dx . \]
+
+Conséquence immédiate : la somme des probabilités sur tout l'espace doit valoir 1,
+\[ \int_{-\infty}^{+\infty} |\Psi(x)|^{2}\,dx = 1 . \]
+
+On dit que $\Psi$ doit être \emph{de carré intégrable}. C'est cette contrainte qui produit toute la
+quantification, et c'est précisément elle qui \textbf{n'existe pas} chez Krapez.
+
+\subsection{La version stationnaire, et un parallèle familier}
+
+Si le potentiel ne dépend pas du temps, on cherche des solutions de la forme
+\[ \Psi(x,t) = \psi(x)\,e^{-iEt/\hbar} . \]
+
+\textbf{C'est exactement le geste employé pour l'équation de la chaleur} : séparer une partie spatiale
+et une exponentielle temporelle, pour que la dérivée en temps devienne une multiplication. Là-bas la
+dérivée donnait un facteur $p$ ; ici elle donne un facteur $-iE/\hbar$.
+
+En reportant et en simplifiant l'exponentielle, il reste l'équation de Schrödinger stationnaire :
+\[ \hat{H}\psi = E\psi
+\qquad\text{soit}\qquad
+-\frac{\hbar^{2}}{2m}\,\frac{d^{2}\psi}{dx^{2}} + V(x)\,\psi = E\,\psi . \]
+
+$E$ est l'énergie de la particule, un nombre réel. $V(x)$ est l'énergie potentielle : le paysage de
+collines et de vallées dans lequel la particule évolue.
+
+\subsection{D'où sort le terme en $\hbar^{2}/2m$}
+
+Ce n'est pas un coefficient décoratif : c'est l'\emph{énergie cinétique}.
+
+En mécanique classique, l'énergie cinétique vaut $p^{2}/2m$. En mécanique quantique, les grandeurs
+physiques deviennent des opérateurs, et la quantité de mouvement devient
+\[ \hat{p} = -i\hbar\,\frac{d}{dx} . \]
+En élevant au carré et en divisant par $2m$ :
+\[ \frac{\hat{p}^{2}}{2m} = -\frac{\hbar^{2}}{2m}\,\frac{d^{2}}{dx^{2}} . \]
+
+\textbf{Mise à l'échelle.} En divisant toute l'équation par $\hbar^{2}/2m$ et en renommant le potentiel
+et l'énergie, on obtient la forme compacte utilisée pour la comparaison :
+\[ \frac{d^{2}\psi}{dx^{2}} = \bigl(\tilde{V}(x) - \tilde{E}\bigr)\,\psi . \]
+Rien n'a été négligé : les constantes ont été absorbées dans les définitions. C'est un changement
+d'unités, comme travailler en kilomètres plutôt qu'en mètres.
+
+\newpage
+\subsection{Valeurs propres : pourquoi l'énergie est quantifiée}
+
+Voici le résultat le plus important de toute la mécanique quantique, et il découle de la contrainte
+d'intégrabilité.
+
+Pour une valeur de $E$ choisie au hasard, l'équation stationnaire admet toujours des solutions
+mathématiques. Mais presque toutes \emph{divergent} à l'infini : leur intégrale de $|\psi|^{2}$ est
+infinie, elles ne représentent donc aucune probabilité et sont physiquement inacceptables.
+
+Seules certaines valeurs particulières de $E$ donnent une solution qui reste finie et intégrable. Ces
+valeurs s'appellent les \emph{valeurs propres} de l'opérateur, et les solutions correspondantes ses
+\emph{fonctions propres}.
+
+C'est l'origine physique de la quantification. Un atome n'a pas un continuum d'énergies possibles mais
+des niveaux discrets, et c'est pour cette seule raison : les autres énergies ne produisent pas de
+solution acceptable. Les raies spectrales observées sont les différences entre ces niveaux.
+
+\subsection{États liés et états de diffusion}
+
+La distinction se fait sur la position de $E$ par rapport au potentiel à l'infini. Prenons la
+convention usuelle $V \to 0$ loin de la particule.
+
+\textbf{États liés, $E < 0$.} La particule est piégée dans une vallée du potentiel. La fonction d'onde
+décroît exponentiellement de part et d'autre : la particule ne peut pas s'échapper. Le spectre est
+\emph{discret}. Exemple : l'électron dans un atome.
+
+\textbf{États de diffusion, $E > 0$.} La particule vient de l'infini, rencontre le potentiel, et
+repart. Elle n'est pas piégée. La fonction d'onde oscille à l'infini au lieu de décroître, et n'est pas
+de carré intégrable au sens strict. Le spectre est \emph{continu} : toutes les énergies positives sont
+permises.
+
+Pour ces états on ne parle plus de niveaux mais de coefficients de réflexion et de transmission :
+quelle proportion de l'onde rebondit sur l'obstacle, quelle proportion le traverse. C'est la
+\emph{théorie de la diffusion}.
+
+\textbf{Résonances.} À certaines énergies, la transmission passe brusquement par un maximum : l'onde
+reste temporairement piégée avant de repartir. Mathématiquement, ces résonances sont des pôles situés
+dans le plan complexe des énergies, légèrement en dessous de l'axe réel.
+
+\subsection{Le problème inverse de la diffusion}
+
+Voilà le point qui concerne directement le sujet, et le seul emprunt réellement légitime.
+
+La question directe est : connaissant le potentiel $V(x)$, que valent les coefficients de réflexion et
+de transmission ? La question inverse est : connaissant ce qui ressort, peut-on reconstruire le
+potentiel, de façon unique, et avec quelle stabilité ?
+
+C'est exactement la structure du problème posé ici. Et elle est étudiée depuis les années 1950 sous le
+nom de \emph{théorie de la diffusion inverse}, avec les travaux de Gelfand, Levitan et Marchenko. Ils
+établissent sous quelles conditions la reconstruction est unique, et par quel algorithme la mener.
+
+C'est ce corpus qui peut être importé : pas l'interprétation quantique, mais l'appareil mathématique de
+reconstruction et de conditionnement.
+
+\newpage
+\subsection{Correspondance terme à terme avec Krapez}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+\textbf{Objet} & \textbf{En mécanique quantique} & \textbf{Chez Krapez} \\
+\midrule
+$\psi$ & Amplitude de probabilité ; son module au carré est une densité de probabilité de présence
+       & Intermédiaire de calcul construit à partir de la température ; aucune interprétation physique \\
+\addlinespace
+$V$ & Énergie potentielle, en joules ; le paysage dans lequel la particule évolue
+    & Courbure relative de la racine de l'effusivité, en $\mathrm{s^{-1}}$ ; une propriété du matériau \\
+\addlinespace
+$E$ & Énergie de la particule ; un réel, positif ou négatif
+    & $-p$, donc $-i\omega$ en régime modulé ; un complexe, sur l'axe imaginaire \\
+\addlinespace
+$x$ & Position dans l'espace, en mètres
+    & $\xi$, profondeur comptée en racine de temps de diffusion \\
+\addlinespace
+Contrainte & Carré intégrable ; la probabilité totale vaut 1 & Aucune \\
+\addlinespace
+Question posée & Pour quelles valeurs de $E$ existe-t-il une solution acceptable ?
+               & Quelle est la solution, pour $p$ complexe quelconque imposé ? \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\medskip
+Ce tableau dit que les deux équations ont la même forme et rien d'autre. C'est ce que Krapez appelle
+une similarité formelle, et c'est pourquoi il écarte explicitement toute recherche de valeurs propres
+ou d'états liés.
+
+\subsection{Ce que l'analogie autorise, et ce qu'elle interdit}
+
+\textbf{Ce qu'elle autorise.} Importer les méthodes de construction de solutions développées pour
+l'équation de Schrödinger : potentiels solvables, transformations de Darboux, supersymétrie. C'est ce
+que fait Krapez, et c'est parfaitement légitime, parce que ces méthodes ne dépendent que de la
+\emph{forme} de l'équation.
+
+Importer, sous condition, l'appareil de la théorie de la diffusion inverse pour parler d'unicité et de
+conditionnement. Sous condition, parce qu'il faudra vérifier que les hypothèses de
+Gelfand--Levitan--Marchenko s'appliquent quand $E$ n'est pas sur l'axe réel.
+
+\textbf{Ce qu'elle interdit.} Toute affirmation portant sur la \emph{signification physique} des
+objets. $\psi$ n'est pas une fonction d'onde de phonon. Il n'y a pas de niveaux d'énergie dans le
+matériau. Aucune particule n'est décrite par cette équation. Le matériau ne devient pas quantique parce
+que son équation ressemble à celle de Schrödinger.
+
+\subsection{Où la vraie physique quantique intervient}
+
+Il faut être précis, car c'est là que le sujet touche réellement au quantique, mais par un autre chemin
+que l'analogie.
+
+\textbf{Les phonons sont de vrais objets quantiques.} Ce sont les quanta de vibration du réseau
+cristallin, des bosons obéissant à la statistique de Bose--Einstein, décrits par une relation de
+dispersion et par l'équation de transport de Boltzmann.
+
+\textbf{Et c'est de là que vient $\tau$.} Le temps de relaxation est un temps de collision entre
+phonons ; sa valeur se calcule dans le cadre de Boltzmann, avec la séparation de Callaway entre
+processus normaux et umklapp. C'est le sujet de la partie I.
+
+\textbf{Les deux chemins ne se croisent pas.} Les phonons justifient l'existence de $\tau$ dans la loi
+constitutive. L'analogie de Schrödinger fournit des outils pour analyser l'équation qui en résulte. Le
+premier est de la physique, le second de la méthode. Les confondre est la faute qui coulerait
+l'article.
+
+\newpage
+\section{Formulations à ne pas employer}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+\toprule
+\textbf{À éviter} & \textbf{À dire} \\
+\midrule
+« L'équation de la chaleur est une équation de Schrödinger »
+& « Après transformation de Liouville, l'équation prend la forme d'une équation de Schrödinger
+stationnaire » \\
+\addlinespace
+« $\psi$ décrit les phonons », « $\psi$ est la fonction d'onde du système »
+& « $\psi$ est une fonction auxiliaire construite à partir de la température, sans interprétation
+physique directe » \\
+\addlinespace
+« Les niveaux d'énergie du matériau »
+& Il n'y en a pas : aucune quantification n'apparaît, faute de condition d'intégrabilité \\
+\addlinespace
+« Krapez n'a pas pensé à ajouter un temps de relaxation »
+& « Le cadre de Krapez ne pose pas cette question ; nous en posons une autre » \\
+\addlinespace
+« Le temps de relaxation rend l'énergie réelle »
+& « L'énergie acquiert une partie réelle et tourne vers l'axe réel ; son argument vaut $-45^{\circ}$ à
+$\omega\tau = 1$ » \\
+\addlinespace
+« J'applique la mécanique quantique aux phonons »
+& « J'importe des outils de théorie spectrale et de diffusion inverse pour analyser une équation de
+même forme » \\
+\addlinespace
+« Les phonons et les quarks sont tous deux quantiques, donc les mêmes méthodes s'appliquent »
+& Une analogie exige une identité de forme d'équation, vérifiable sur le papier ; une parenté de
+vocabulaire n'en est pas une \\
+\addlinespace
+« La transformation de Liouville que je propose »
+& « La transformation de Liouville, établie pour l'équation de la chaleur par Krapez (2018) » \\
+\addlinespace
+« La diffusivité disparaît »
+& « La diffusivité est absorbée dans la coordonnée : elle sort de l'équation mais reste dans la
+définition de l'axe » \\
+\addlinespace
+« Le problème inverse est mal posé »
+& Préciser lequel des deux : l'unicité peut être acquise et le conditionnement mauvais ; ce sont deux
+énoncés différents \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\medskip
+La dernière ligne mérite qu'on s'y arrête. Elle a été écrite dans le fichier 04 : un problème peut être
+théoriquement injectif tout en étant pratiquement indistinguable, sous bruit et sur une bande de mesure
+finie. Cette distinction doit rester nette dans tout ce qui sera rédigé --- c'est elle qui permet de
+citer Krapez sans le contredire, et d'ajouter quelque chose par-dessus.
+
+\end{document}

@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Rappels mathématiques et physiques}\\[4pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Version corrigée --- 8 septembre 2026}
+\end{center}
+
+space{4pt}
+
+
+\section{Grandeurs thermiques}
+
+\subsection{Définitions}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
+\toprule
+\textbf{Grandeur} & \textbf{Unité} & \textbf{Signification} \\
+\midrule
+Conductivité $\lambda$ & $\mathrm{W\,m^{-1}K^{-1}}$ & Flux transmis pour un gradient donné en régime
+permanent \\
+\addlinespace
+Capacité volumique $\rho c$ & $\mathrm{J\,m^{-3}K^{-1}}$ & Énergie requise pour élever d'un kelvin
+l'unité de volume \\
+\addlinespace
+Diffusivité $a = \lambda/\rho c$ & $\mathrm{m^{2}s^{-1}}$ & Vitesse de propagation d'une perturbation
+thermique \\
+\addlinespace
+Effusivité $b = \sqrt{\lambda\rho c}$ & $\mathrm{W\,s^{1/2}m^{-2}K^{-1}}$ & Aptitude de la surface à
+échanger de la chaleur ; gouverne l'élévation de température sous flux imposé \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Relations inverses}
+
+\[ \lambda = b\sqrt{a} , \qquad \rho c = \frac{b}{\sqrt{a}} . \]
+
+Ces relations se vérifient directement :
+\[ b\sqrt{a} = \sqrt{\lambda\rho c}\cdot\sqrt{\lambda/\rho c} = \sqrt{\lambda^{2}} = \lambda ,
+\qquad
+\frac{b}{\sqrt{a}} = \sqrt{\lambda\rho c \cdot \frac{\rho c}{\lambda}} = \rho c . \]
+
+Il en découle les deux corollaires employés dans la transformation de Liouville :
+\[ \frac{\lambda}{\sqrt{a}} = b , \qquad \frac{1}{\rho c\,\sqrt{a}} = \frac{1}{b} . \]
+
+Deux propriétés parmi les quatre suffisent à décrire complètement le milieu ; les deux autres s'en
+déduisent.
+
+\subsection{Ordres de grandeur}
+
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Matériau} & $a\ (\mathrm{m^{2}s^{-1}})$ & $b\ (\mathrm{W\,s^{1/2}m^{-2}K^{-1}})$ \\
+\midrule
+Cuivre & $1{,}1\times10^{-4}$ & $\sim 3{,}7\times10^{4}$ \\
+Acier & $1{,}2\times10^{-5}$ & $\sim 1{,}4\times10^{4}$ \\
+Alumine dense & $\sim 1\times10^{-5}$ & $\sim 8\times10^{3}$ \\
+Zircone dense & $\sim 7\times10^{-7}$ & $\sim 3\times10^{3}$ \\
+Verre & $3{,}4\times10^{-7}$ & $\sim 1{,}4\times10^{3}$ \\
+Bois & $1{,}5\times10^{-7}$ & $\sim 4\times10^{2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Les diffusivités s'étalent sur près de trois décades entre métaux et isolants. Les valeurs numériques
+précises doivent être associées aux données expérimentales de l'étude considérée.
+
+\section{Onde thermique}
+
+\subsection{Longueur de diffusion}
+
+En régime périodique dans un milieu semi-infini homogène, l'amplitude décroît exponentiellement avec la
+profondeur et la phase varie linéairement. La profondeur caractéristique est
+\[ \mu = \sqrt{\frac{2a}{\omega}} . \]
+
+La fréquence de modulation constitue ainsi un paramètre direct de sélection de la profondeur sondée :
+les hautes fréquences ne sondent que la subsurface, les basses fréquences atteignent les couches
+profondes.
+
+\subsection{Réponse de référence}
+
+Pour un milieu semi-infini homogène soumis à un flux modulé d'amplitude $P$,
+\[ |\theta_{0}| = \frac{P}{b\sqrt{2\pi f}} , \qquad \arg(\theta_{0}) = -45^{\circ} . \]
+
+Cette phase constante de $-45^{\circ}$ constitue la référence de la métrologie photothermique :
+l'ensemble de l'analyse repose sur la mesure des écarts à cette valeur.
+
+\subsection{Effusivité apparente}
+
+Le contraste inverse d'amplitude par rapport à ce milieu de référence définit une effusivité apparente
+dépendant de la fréquence. Elle tend vers l'effusivité de surface aux hautes fréquences et vers celle
+du substrat aux basses fréquences. Elle constitue une lecture directe, mais approximative, des
+variations d'effusivité en profondeur.
+
+\section{Équations essentielles}
+
+\subsection{Conduction unidimensionnelle}
+
+\[ \varphi = -\lambda\,\frac{\partial T}{\partial z} ,
+\qquad
+\rho c\,\frac{\partial T}{\partial t} = -\frac{\partial\varphi}{\partial z} , \]
+d'où, pour un milieu homogène,
+\[ \frac{\partial T}{\partial t} = a\,\frac{\partial^{2}T}{\partial z^{2}} , \]
+et, pour un milieu à propriétés variables après transformation temporelle,
+\[ p\,\rho c(z)\,\theta = \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] . \]
+
+\subsection{Coordonnée et forme normale}
+
+\[ \xi(z) = \int_{0}^{z}\frac{du}{\sqrt{a(u)}} ,
+\qquad
+\phi = -\,b(\xi)\,\theta' ,
+\qquad
+\frac{d^{2}\psi}{d\xi^{2}} - \bigl(V(\xi)+p\bigr)\psi = 0 , \]
+avec $\psi = s\,\theta$, $s = b^{\pm 1/2}$ et $V = s''/s$.
+
+\subsection{Quadripôle}
+
+\[ \begin{pmatrix}\theta_{0}\\ \phi_{0}\end{pmatrix}
+= \mathbf{M}\begin{pmatrix}\theta_{1}\\ \phi_{1}\end{pmatrix} ,
+\qquad
+\mathbf{M} = \begin{pmatrix} A & B \\ C & D \end{pmatrix} ,
+\qquad
+AD - BC = 1 . \]
+
+Pour un empilement, $\mathbf{M}_{\text{total}}$ est le produit ordonné des matrices individuelles. La
+réponse de surface d'un système revêtement-substrat s'écrit
+\[ \theta_{0} = \wp\,\frac{AZ + B}{CZ + D + h\,(AZ+B)} ,
+\qquad Z = \frac{1}{b_{1}\sqrt{p}} , \]
+où $Z$ désigne l'impédance thermique du substrat semi-infini, $\wp$ la densité de puissance de la
+source et $h$ le coefficient d'échange en face avant.
+
+\section{Outils mathématiques}
+
+\subsection{Équations différentielles du second ordre}
+
+Une équation linéaire du second ordre admet exactement deux solutions indépendantes ; toute solution en
+est une combinaison linéaire. Deux conditions aux limites fixent les deux constantes.
+
+\subsection{Wronskien et théorème d'Abel}
+
+\[ W(f,g) = f g' - f' g . \]
+
+Le wronskien mesure l'indépendance de deux fonctions : il s'annule si et seulement si elles sont
+proportionnelles. Pour une équation en forme normale, dépourvue de terme en dérivée première, le
+théorème d'Abel établit que le wronskien de deux solutions est constant. Cette propriété est à
+l'origine du déterminant unité de la matrice quadripolaire.
+
+\subsection{Forme normale de Liouville}
+
+Toute équation du type $y'' + P(x)y' + Q(x)y = 0$ se ramène à la forme $u'' + I(x)u = 0$ par la
+substitution $y = u\exp\bigl(-\tfrac{1}{2}\!\int P\bigr)$. Le facteur exponentiel est déterminé par la
+condition d'annulation du terme en dérivée première ; il n'est pas choisi.
+
+Appliquée au cas thermique où $P = b'/b$, cette substitution donne $y = u\,b^{-1/2}$, c'est-à-dire
+$\psi = \sqrt{b}\,\theta$.
+
+\subsection{Transformées intégrales}
+
+La transformée de Laplace ou de Fourier remplace la dérivation temporelle par une multiplication par
+$p$, en vertu de la proportionnalité entre l'exponentielle et sa dérivée. Elle réduit ainsi l'ordre du
+problème d'une variable. La condition initiale nulle est requise pour que le terme de bord de la
+transformée de Laplace s'annule.
+
+L'inversion analytique n'étant généralement pas accessible en régime transitoire, elle s'effectue
+numériquement, par exemple par la méthode de De Hoog.
+
+\section{Éléments de mécanique quantique}
+
+\subsection{Équation de Schrödinger stationnaire}
+
+\[ -\frac{\hbar^{2}}{2m}\,\frac{d^{2}\psi}{dx^{2}} + V(x)\,\psi = E\,\psi , \]
+où $\hbar$ est la constante de Planck réduite, $V$ l'énergie potentielle et $E$ l'énergie de la
+particule. Le terme en $\hbar^{2}/2m$ est l'opérateur d'énergie cinétique, obtenu en substituant
+$\hat p = -i\hbar\,d/dx$ dans l'expression classique $p^{2}/2m$.
+
+\subsection{Interprétation de la fonction d'onde}
+
+Le module au carré de $\psi$ est une densité de probabilité de présence, d'où la condition de
+normalisation $\int|\psi|^{2}dx = 1$. Cette condition d'intégrabilité de carré est à l'origine de la
+quantification : seules certaines valeurs de $E$ admettent une solution acceptable, appelées valeurs
+propres.
+
+\subsection{États liés et états de diffusion}
+
+Pour $E$ inférieure au potentiel à l'infini, la particule est confinée, la fonction d'onde décroît
+exponentiellement et le spectre est discret. Pour $E$ supérieure, la fonction d'onde oscille à
+l'infini, le spectre est continu et l'analyse porte sur les coefficients de réflexion et de
+transmission. Le problème inverse associé, consistant à reconstruire le potentiel à partir des données
+de diffusion, relève de la théorie de Gelfand, Levitan et Marchenko.
+
+\subsection{Statut de l'analogie}
+
+La correspondance avec la forme normale de Liouville est formelle. Dans le cas thermique, $\psi$ n'est
+pas une amplitude de probabilité, aucune condition de normalisation ne s'applique, le potentiel a la
+dimension d'un inverse de temps et le paramètre $E = -p$ est complexe. Les méthodes de construction de
+solutions restent transposables ; les interprétations physiques ne le sont pas.
+\end{document}

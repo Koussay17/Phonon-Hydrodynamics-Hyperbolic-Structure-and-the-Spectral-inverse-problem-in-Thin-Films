@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Fiche de lecture --- Krapez (2018)}\\[4pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Version corrigée --- 8 septembre 2026}
+\end{center}
+
+space{4pt}
+
+
+\section{Identification}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Auteur & Jean-Claude Krapez, ONERA, département DOTA, Salon-de-Provence \\
+Titre & \emph{Linear, trigonometric and hyperbolic profiles of thermal effusivity in the Liouville
+space and related quadrupoles: Simple analytical tools for modeling graded layers and multilayers} \\
+Revue & International Journal of Thermal Sciences, volume 136, pages 182--199, 2018 \\
+DOI & 10.1016/j.ijthermalsci.2018.10.018 \\
+Accès & Postprint en libre accès, dépôt HAL, identifiant hal-01974990 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Nature et objectif}
+
+Article théorique et méthodologique, destiné à la communauté de la métrologie thermique et de la
+modélisation des matériaux à gradient de propriétés. Il ne comporte aucune donnée expérimentale.
+
+L'objectif annoncé est la construction de nouvelles familles de profils de propriétés pour lesquels
+l'équation de la chaleur unidimensionnelle admet une solution analytique exacte, exprimée uniquement
+au moyen de fonctions élémentaires. Les solutions antérieures pour milieux gradués font intervenir des
+fonctions spéciales --- Bessel modifiées, Airy, Kelvin --- coûteuses à évaluer et peu maniables.
+
+\section{Résultat principal}
+
+Après transformation de Liouville, l'équation de la chaleur en milieu à gradient prend la forme normale
+\[ \frac{d^{2}\psi}{d\xi^{2}} - \bigl(V(\xi) + p\bigr)\psi = 0 ,
+\qquad V(\xi) = \frac{s''(\xi)}{s(\xi)} , \qquad s = b^{\pm 1/2} , \]
+où $\xi$ désigne la racine du temps de diffusion intégré, $b$ l'effusivité thermique et $s$ la
+métapropriété. L'imposition d'un potentiel constant, $V = \beta$, engendre exactement trois familles de
+profils solvables, auxquelles sont associées des matrices quadripolaires ne faisant intervenir que des
+fonctions hyperboliques et rationnelles.
+
+\section{Structure de l'article}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Section 1 & Introduction et état de l'art des profils solvables antérieurs \\
+Section 2 & Résolution dans l'espace de Liouville : les deux équations duales, la transformation, la
+prééminence de l'effusivité, la méthode des quadripôles, l'indétermination de la transformation
+inverse \\
+Section 3 & Les trois familles issues d'un potentiel constant : profils, retour à l'espace physique,
+quadripôles, réponses photothermiques calculées \\
+Section 4 & Discussion, hiérarchie des modèles multicouches, transpositions à d'autres domaines \\
+Appendice & Construction de la matrice quadripolaire à partir des solutions indépendantes \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Hypothèses de l'article}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+\textbf{Élément} & \textbf{Hypothèse} & \textbf{Portée} \\
+\midrule
+Géométrie & Transfert unidimensionnel & Restriction explicitement soulignée par l'auteur \\
+\addlinespace
+Conduction & Loi de Fourier & Le cadre non-Fourier n'est pas abordé \\
+\addlinespace
+Propriétés & Gradient continu ; les couches homogènes en sont un cas particulier &
+Applicable aux profils gradués comme aux empilements \\
+\addlinespace
+Régime & Harmonique et transitoire & Les deux formulations sont établies \\
+\addlinespace
+Source & Flux surfacique uniforme & Les sources volumiques ne sont pas traitées \\
+\addlinespace
+Face arrière & Substrat semi-infini dans la configuration de référence & Toute autre condition
+requiert une modification de l'impédance de fermeture \\
+\addlinespace
+Interfaces & Contact thermique parfait & Une résistance de contact nécessite un quadripôle
+supplémentaire \\
+\addlinespace
+Condition initiale & Nulle dans la formulation transitoire & Requise par la transformée employée \\
+\addlinespace
+Température & Propriétés indépendantes de $T$ & Les fortes non-linéarités et les changements de phase
+sortent du cadre \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Compatibilité avec le présent travail}
+
+Les hypothèses de géométrie unidimensionnelle, de contact parfait et de propriétés indépendantes de la
+température sont communes aux deux cadres. La divergence porte sur la loi de conduction : l'article se
+place sous la loi de Fourier, tandis que le présent travail examine le cas d'une loi à temps de
+relaxation fini.
+
+Cette divergence est structurante. Sous la loi de Fourier, le paramètre spectral vaut $p = i\omega$ et
+l'énergie associée à la forme de Schrödinger demeure sur l'axe imaginaire. Sous une loi de type
+Cattaneo, ce paramètre devient $p + \tau p^{2}$ et l'énergie acquiert une partie réelle.
+
+\section{Suite de lecture}
+
+La lecture en seconde passe porte sur les sections 2.2 à 2.5, qui contiennent la totalité de la
+machinerie théorique. Les sections 3 et 4 déroulent l'application de cette machinerie aux trois
+familles de profils et n'introduisent aucun élément conceptuel nouveau.
+
+La référence [58] de l'article --- Krapez, \emph{International Journal of Heat and Mass Transfer}
+\textbf{99} (2016) 485--503 --- constitue le travail fondateur dont le présent article est la suite.
+Elle expose la méthode PROFIDT et les transformations de Darboux appliquées conjointement au profil et
+au champ.
+\end{document}

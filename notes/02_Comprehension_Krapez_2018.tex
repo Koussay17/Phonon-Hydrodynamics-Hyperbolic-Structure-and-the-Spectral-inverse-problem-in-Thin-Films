@@ -1,0 +1,309 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Compréhension de l'article --- Krapez (2018)}\\[4pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Version corrigée --- 8 septembre 2026}
+\end{center}
+
+space{4pt}
+
+
+\section{Les deux équations de départ}
+
+\subsection{Formulation duale}
+
+L'article traite simultanément deux équations. La première porte sur la température transformée,
+la seconde sur la densité de flux transformée :
+\[ p\,\rho c(z)\,\theta = \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] ,
+\qquad
+p\,\frac{1}{\lambda(z)}\,\phi = \frac{d}{dz}\!\left[\frac{1}{\rho c(z)}\,\frac{d\phi}{dz}\right] . \]
+
+Dans la première, la conductivité figure sous l'opérateur de dérivation et la capacité volumique
+intervient algébriquement. Dans la seconde, les rôles sont permutés et les propriétés apparaissent
+sous forme inverse.
+
+Cette dualité n'introduit aucune physique nouvelle. Sa conséquence est que toute construction menée sur
+l'une des deux formulations produit simultanément un second profil de matériau, distinct du premier.
+Le catalogue de profils solvables est ainsi doublé sans travail supplémentaire.
+
+\subsection{Origine de la formulation en flux}
+
+La formulation en flux s'obtient en éliminant la température au lieu du flux. Les deux relations de
+départ sont la loi de Fourier et le bilan d'énergie :
+\[ \varphi = -\lambda(z)\,\frac{\partial T}{\partial z} ,
+\qquad
+\rho c(z)\,\frac{\partial T}{\partial t} = -\frac{\partial\varphi}{\partial z} . \]
+
+En isolant les deux dérivées de $T$ et en utilisant l'égalité des dérivées croisées,
+$\partial_t(\partial_z T) = \partial_z(\partial_t T)$, la température disparaît et il reste
+\[ \frac{1}{\lambda(z)}\,\frac{\partial\varphi}{\partial t}
+= \frac{\partial}{\partial z}\!\left[\frac{1}{\rho c(z)}\,\frac{\partial\varphi}{\partial z}\right] . \]
+
+L'inversion algébrique du bilan qui rend cette élimination possible est propre à la géométrie
+unidimensionnelle. En dimension supérieure, l'opération met en jeu l'inversion d'une divergence.
+
+\subsection{Passage au domaine spectral}
+
+La séparation $T(z,t) = \theta(z)\,e^{pt}$ transforme la dérivée temporelle en une multiplication par
+$p$, puisque l'exponentielle est proportionnelle à sa propre dérivée. L'exponentielle se simplifie des
+deux membres et l'équation aux dérivées partielles devient une équation différentielle ordinaire en
+$z$, paramétrée par $p$.
+
+En régime harmonique, $p = i\omega$ et $\theta$ est l'amplitude complexe de la température : son module
+donne l'amplitude d'oscillation, son argument le déphasage. En régime transitoire, $p$ est la variable
+de Laplace et $\theta$ est une transformée intégrale, sans interprétation ponctuelle équivalente.
+
+\section{Changement de profondeur}
+
+\subsection{Définition de la coordonnée transformée}
+
+\[ \xi(z) = \int_{0}^{z} \frac{du}{\sqrt{a(u)}} , \qquad [\xi] = \mathrm{s^{1/2}} . \]
+
+L'analyse dimensionnelle donne $[a] = \mathrm{m^{2}s^{-1}}$, donc $[a^{-1/2}] = \mathrm{s^{1/2}m^{-1}}$
+et $[\xi] = \mathrm{s^{1/2}}$. Le carré de $\xi$ possède ainsi la dimension d'un temps : le temps de
+diffusion cumulé le long du trajet. Pour un milieu homogène, $\xi = z/\sqrt{a}$ et $\xi^{2} = z^{2}/a$.
+
+\subsection{Justification de l'exposant}
+
+L'équation de la chaleur est du second ordre en espace et du premier ordre en temps ; le groupement
+caractéristique est donc $z^{2}/a$. L'exposant $-1/2$ est le seul qui absorbe entièrement la
+diffusivité dans la graduation de l'axe spatial.
+
+Un exposant $-1$ conduirait à la résistance thermique intégrée, qui définit une autre coordonnée et une
+autre structure de solutions, associée aux fonctions de Bessel.
+
+\subsection{Équations transformées}
+
+En appliquant $d/dz = a^{-1/2}\,d/d\xi$ et les identités $\lambda/\sqrt{a} = b$ et
+$\rho c = b/\sqrt{a}$, les deux équations deviennent
+\[ p\,b\,\theta = \bigl(b\,\theta'\bigr)' , \qquad p\,b^{-1}\phi = \bigl(b^{-1}\phi'\bigr)' , \]
+où l'accent désigne désormais la dérivation par rapport à $\xi$.
+
+La diffusivité n'apparaît plus dans ces équations. Elle n'a pas disparu de la physique : elle a été
+transférée dans la définition de la coordonnée. Le nombre de fonctions matériau inconnues passe ainsi
+de deux à une, l'effusivité. Cette réduction constitue le pivot de la méthode : elle rend possible la
+démarche inverse consistant à choisir une forme résoluble et à remonter au profil correspondant.
+
+\section{Changement d'inconnue}
+
+\subsection{Transformation de Liouville}
+
+Le développement de l'équation transformée fait apparaître un terme en dérivée première,
+\[ \theta'' + \frac{b'}{b}\,\theta' = p\,\theta . \]
+
+La substitution $\theta = \psi\,u$ suivie de l'annulation du coefficient de $\psi'$ conduit à
+l'équation $2u' + (b'/b)u = 0$, dont la solution est $u = b^{-1/2}$ à une constante près. Le facteur
+n'est donc pas postulé mais déterminé : aucune autre fonction n'annule ce terme.
+
+\subsection{Forme normale}
+
+\[ \frac{d^{2}\psi}{d\xi^{2}} - \bigl(V(\xi) + p\bigr)\psi = 0 ,
+\qquad V(\xi) = \frac{s''(\xi)}{s(\xi)} , \qquad s(\xi) = b^{\pm 1/2}(\xi) . \]
+
+L'exposant positif correspond à la formulation en température, l'exposant négatif à la formulation en
+flux. Cette convention de double signe est employée dans l'ensemble de l'article.
+
+La dimension de $V$ est celle de l'inverse d'un temps, ce qu'impose son addition à $p$ dans l'équation.
+
+\subsection{Statut de la fonction auxiliaire}
+
+La fonction $\psi$ n'est pas une grandeur physique mesurée. Elle constitue un intermédiaire de calcul
+dont l'intérêt est de placer l'équation sous forme normale, ce qui donne accès aux méthodes de
+construction de potentiels solvables, notamment les transformations de Darboux.
+
+\section{Prééminence de l'effusivité}
+
+\subsection{Loi de Fourier transformée}
+
+\[ \phi = -\lambda\,\frac{d\theta}{dz}
+= -\frac{\lambda}{\sqrt{a}}\,\frac{d\theta}{d\xi}
+= -\,b(\xi)\,\theta' . \]
+
+Dans l'espace transformé, la conductivité est remplacée par l'effusivité. Toute condition aux limites
+faisant intervenir un flux conductif ne dépend donc que de $b$.
+
+\subsection{Identité des réponses de surface}
+
+L'équation ne contient que $b(\xi)$ ; les conditions aux limites ne contiennent que $b(\xi)$ ; la
+solution $\theta(\xi)$ ne dépend donc que de $b(\xi)$.
+
+La surface correspond à $\xi = 0$ pour tout matériau. Deux milieux différents dans l'espace physique
+mais partageant le même profil transformé produisent par conséquent une réponse de surface identique :
+même amplitude, même phase, même contraste, même effusivité apparente, à toute fréquence et à tout
+instant.
+
+La différence entre ces deux milieux correspond à un étirement local différent de l'axe des
+profondeurs, sans manifestation observable depuis la surface.
+
+\subsection{Portée du résultat}
+
+Ce résultat de non-unicité concerne le transfert unidimensionnel. En dimension supérieure, la
+conduction latérale réintroduit séparément certaines propriétés et la réduction à la seule effusivité
+cesse d'être valable.
+
+\section{Méthode des quadripôles}
+
+\subsection{Vecteur d'état}
+
+Le couple retenu est constitué des deux grandeurs continues à une interface parfaite :
+\[ \bigl(\theta,\; \phi\bigr) , \qquad \phi = -\,b\,\theta' . \]
+
+La continuité de la température résulte du contact parfait, celle du flux de la conservation de
+l'énergie. Le gradient thermique, lui, n'est pas continu lorsque la conductivité présente un saut ; le
+couple $(\theta, d\theta/dz)$ ne conviendrait donc pas à l'enchaînement matriciel.
+
+\subsection{Construction de la matrice}
+
+La solution générale de la forme normale s'écrit comme combinaison de deux solutions indépendantes,
+$\psi = c_{1}K + c_{2}P$. Le retour aux grandeurs physiques s'effectue par
+\[ \theta = \frac{\psi}{s} , \qquad \phi = -\,W(s,\psi) ,
+\qquad W(f,g) = f g' - f' g . \]
+
+Le vecteur d'état dépend linéairement des deux constantes, $\mathbf{v} = \mathbf{A}(\xi)\,\mathbf{c}$.
+En écrivant cette relation aux deux bords et en éliminant les constantes,
+\[ \mathbf{M} = \mathbf{A}(\xi_{0})\,\mathbf{A}(\xi_{1})^{-1} . \]
+
+\subsection{Composition et déterminant}
+
+La relation de transfert étant linéaire et le vecteur de sortie d'une couche étant le vecteur d'entrée
+de la suivante, la composition d'un empilement correspond au produit ordonné des matrices,
+\[ \mathbf{M}_{\text{total}} = \mathbf{M}_{1}\mathbf{M}_{2}\cdots\mathbf{M}_{N} , \]
+l'ordre suivant le parcours de la face avant vers la face arrière.
+
+Pour une équation en forme normale, le théorème d'Abel garantit que le wronskien de deux solutions est
+constant. Il en résulte $\det\mathbf{M} = 1$.
+
+\subsection{Limite homogène}
+
+Lorsque l'effusivité devient constante, $V = 0$ et l'équation se réduit à $\psi'' = p\psi$. Les entrées
+du quadripôle prennent alors la forme classique
+\[ A = D = \cosh\bigl(\sqrt{p}\,\xi_{1}\bigr) ,
+\qquad
+B = \frac{\sinh\bigl(\sqrt{p}\,\xi_{1}\bigr)}{b\sqrt{p}} ,
+\qquad
+C = b\sqrt{p}\,\sinh\bigl(\sqrt{p}\,\xi_{1}\bigr) , \]
+avec $AD - BC = \cosh^{2} - \sinh^{2} = 1$. Pour une couche d'épaisseur $D_{\text{ép}}$,
+$\xi_{1} = D_{\text{ép}}/\sqrt{a}$ et l'on retrouve l'expression classique du quadripôle homogène.
+
+Cette limite constitue le critère de validation de toute expression quadripolaire de couche graduée.
+
+\section{Indétermination du retour à la profondeur physique}
+
+\subsection{Nature de l'indétermination}
+
+La reconstruction d'un profil dans l'axe physique exige la relation entre $z$ et $\xi$. Or cette
+relation dépend de la diffusivité, qui figure parmi les grandeurs recherchées. Toute tentative
+d'inversion directe conduit à une définition récursive.
+
+\subsection{Famille paramétrée}
+
+\[ z(\xi) = \int_{0}^{\xi} \lambda^{q}\, c^{\,q-1}\, b^{\,1-2q}\, du , \]
+identité valable pour toute valeur de $q$, l'exposant de $\lambda$ se réduisant à $1/2$ et celui de $c$
+à $-1/2$ après regroupement.
+
+\begin{center}
+\begin{tabular}{@{}cl@{}}
+\toprule
+$q$ & Propriété supposée constante \\
+\midrule
+$0$ & capacité thermique volumique \\
+$1/2$ & diffusivité \\
+$1$ & conductivité \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Lorsque le préfacteur $\lambda^{q}c^{\,q-1}$ est constant, il sort de l'intégrale et la quadrature se
+réduit à la primitive d'une puissance de $b$. En dehors de ces trois valeurs, $q$ joue le rôle d'une
+hypothèse de fermeture intermédiaire sans correspondre à une propriété matérielle particulière.
+
+\subsection{Information supplémentaire requise}
+
+Deux fonctions indépendantes sont nécessaires à la définition complète d'un milieu thermique. La mesure
+unidimensionnelle en fournit au plus une, l'effusivité transformée. Une information indépendante est
+donc requise : mesure directe d'une propriété, mesure indépendante de l'épaisseur, ou hypothèse de
+fermeture explicite.
+
+Les distributions de propriétés compatibles avec un même signal peuvent s'étendre sur plusieurs ordres
+de grandeur. L'article rapporte des variations de conductivité couvrant deux décades entre les valeurs
+extrêmes de $q$, pour un champ mesuré identique.
+
+\section{Potentiel constant et trichotomie}
+
+\subsection{Les trois régimes}
+
+L'imposition $V = \beta$ ramène la forme normale à une équation à coefficients constants,
+$s'' = \beta s$, dont le signe de $\beta$ détermine la nature des solutions.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Signe & Solutions pour $s(\xi)$ & Famille \\
+\midrule
+$\beta > 0$ & $\cosh(\xi/\xi_{c})$, $\sinh(\xi/\xi_{c})$ & hyperbolique \\
+$\beta = 0$ & fonctions affines de $\xi$ & linéaire \\
+$\beta < 0$ & $\cos(\xi/\xi_{c})$, $\sin(\xi/\xi_{c})$ & trigonométrique \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Pour $\beta$ positif, la dérivée seconde est de même signe que la fonction et la solution diverge
+exponentiellement. Pour $\beta$ négatif, elle est de signe opposé et produit une oscillation. La
+famille affine constitue la limite dégénérée entre les deux et non une quatrième famille indépendante.
+
+Le profil d'effusivité s'en déduit par $b = s^{\pm 2}$, et la longueur caractéristique vaut
+$\xi_{c} = |\beta|^{-1/2}$, dont le carré est un temps de diffusion propre au profil.
+
+\subsection{Décalage spectral}
+
+Un potentiel constant équivaut à un décalage du paramètre spectral,
+\[ p \longrightarrow p + \beta , \]
+les solutions du champ devenant $\cosh\bigl(\sqrt{p+\beta}\,\xi\bigr)$ et
+$\sinh\bigl(\sqrt{p+\beta}\,\xi\bigr)$. La structure mathématique demeure celle du cas homogène.
+
+\subsection{Paramètre de courbure}
+
+Le rapport entre le temps caractéristique du profil, $\xi_{c}^{2}$, et le temps de diffusion à travers
+la couche contrôle le degré de courbure du profil. Un rapport élevé correspond à un comportement proche
+de l'uniformité ; un rapport faible correspond à une courbure prononcée.
+
+\section{Points critiques relevés}
+
+\subsection{Statut de l'analogie spectrale}
+
+L'auteur précise que la dénomination de Schrödinger ne repose que sur une similarité de forme. Aucune
+condition d'intégrabilité de carré ne s'applique à $\psi$, les solutions sont recherchées pour des
+valeurs complexes arbitraires de $p$, et aucune recherche de valeurs propres ni d'états liés n'est
+menée.
+
+\subsection{Restitution des variations profondes}
+
+L'article établit par ailleurs que l'effusivité apparente ne rejoint la valeur du substrat que pour des
+fréquences normalisées inférieures à $10^{-2}$, voire $10^{-3}$. Les dépassements présentés par
+certains profils n'apparaissent pas dans les courbes correspondantes. L'auteur relie explicitement
+cette restitution imparfaite à la difficulté d'obtenir une inversion thermique précise en profondeur,
+sans en fournir l'explication structurelle.
+
+\subsection{Contraste entre diffusion et propagation}
+
+En section 4, l'auteur rapporte que les profils duaux appliqués au problème électromagnétique
+produisent des spectres de réflectance identiques, alors qu'en diffusion thermique deux profils duaux
+distincts ne peuvent jamais donner la même réponse à toute fréquence. Le passage de l'équation de
+diffusion à l'équation d'onde s'accompagne donc, sur cet axe, d'une perte d'unicité.
+\end{document}
