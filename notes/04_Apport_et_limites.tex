@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Apport et limites --- positionnement}\\[4pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Version corrigée --- 8 septembre 2026}
+\end{center}
+
+space{4pt}
+
+
+\section{Ce que l'article établit}
+
+\subsection{Résultats acquis}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Transformation de Liouville & Établie pour l'équation de la chaleur en milieu à gradient, sous les deux
+formulations duales \\
+\addlinespace
+Identification du potentiel & $V = s''/s$, courbure relative de la métapropriété, elle-même racine de
+l'effusivité ou son inverse \\
+\addlinespace
+Réduction du nombre d'inconnues & De deux fonctions matériau à une seule, l'effusivité exprimée en
+fonction de la coordonnée transformée \\
+\addlinespace
+Trois familles solvables & Issues d'un potentiel constant, avec solutions en fonctions élémentaires
+exclusivement \\
+\addlinespace
+Formulations quadripolaires & Établies pour les trois familles, sous les deux formes duales \\
+\addlinespace
+Indétermination du retour & Un profil transformé correspond à une infinité de profils dans l'espace
+physique \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Portée méthodologique}
+
+La disponibilité de quadripôles gradués en fonctions élémentaires permet de représenter un profil réel
+avec un nombre de couches inférieur à celui qu'exige le modèle classique par morceaux constants. Le
+gain porte sur le coût de calcul et sur le nombre de paramètres d'ajustement.
+
+Le paramètre $\xi_{c}$ des familles hyperbolique et trigonométrique est non linéaire, ce qui impose un
+solveur non linéaire lors de l'ajustement. Les paramètres de la famille linéaire, eux, interviennent
+linéairement.
+
+\section{Ce que l'article n'aborde pas}
+
+\subsection{Cadre constitutif}
+
+L'article se place intégralement sous la loi de Fourier. Le cas d'une loi à temps de relaxation fini
+n'est pas examiné, et le paramètre spectral y demeure purement imaginaire en régime harmonique.
+
+\subsection{Lecture spectrale}
+
+L'auteur écarte explicitement l'interprétation spectrale de l'opérateur obtenu. La forme de Schrödinger
+est employée comme instrument de construction de solutions exactes, non comme objet d'analyse. Aucune
+recherche de valeurs propres, d'états liés ou d'états de diffusion n'est entreprise, et la position du
+paramètre $E = -p$ dans le plan complexe n'est pas discutée.
+
+\subsection{Conditionnement}
+
+L'article constate la restitution imparfaite des variations profondes d'effusivité et la relie à la
+difficulté de l'inversion thermique en profondeur. Ce constat demeure phénoménologique : il n'est
+rattaché ni à la structure de l'opérateur, ni à un critère quantitatif portant sur la bande de mesure.
+
+\section{Injectivité et conditionnement}
+
+\subsection{Deux énoncés distincts}
+
+L'article contient deux résultats qui peuvent paraître contradictoires. D'une part, deux profils duaux
+distincts ne peuvent jamais produire la même réponse thermique à toute fréquence : l'application
+directe est injective. D'autre part, des différences importantes dans les propriétés profondes
+demeurent pratiquement invisibles dans le signal de surface.
+
+La contradiction n'est qu'apparente. L'injectivité est une propriété de l'application mathématique
+considérée sur l'ensemble du domaine fréquentiel et en l'absence de bruit. Le conditionnement mesure la
+sensibilité de la réponse aux variations du profil, sur une bande de mesure finie et à niveau de bruit
+donné.
+
+\subsection{Formulation}
+
+Un problème inverse peut être injectif tout en étant pratiquement indéterminé. L'unicité garantit qu'il
+existe au plus une solution ; elle ne garantit ni sa stabilité, ni la possibilité de l'atteindre à
+partir de données bruitées sur une bande finie.
+
+Cette distinction sépare deux énoncés fréquemment confondus dans la littérature de métrologie
+thermique, où l'expression « problème mal posé » recouvre indifféremment la non-unicité et le mauvais
+conditionnement.
+
+\subsection{Deux sources distinctes de non-détermination}
+
+La non-unicité structurelle établie à la section 2.4 de l'article, associée à l'indétermination de la
+transformation inverse, est indépendante du bruit et de la bande de mesure. Elle subsiste avec des
+données parfaites.
+
+Le mauvais conditionnement, lui, dépend de la bande de fréquences accessible et du niveau de bruit. Il
+s'ajoute à la première sans s'y réduire.
+
+\section{Points ouverts}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+\textbf{Question} & \textbf{État dans l'article} & \textbf{Reste à établir} \\
+\midrule
+Position du paramètre spectral & Sur l'axe imaginaire, non discutée &
+Comportement sous une loi constitutive à temps de relaxation fini \\
+\addlinespace
+Origine du mauvais conditionnement & Constatée, non expliquée &
+Rattachement à la structure spectrale de l'opérateur \\
+\addlinespace
+Critère quantitatif d'identifiabilité & Absent &
+Condition portant sur la bande de mesure et le niveau de bruit \\
+\addlinespace
+Transposition à l'inversion & Annoncée comme travaux en cours (2018) &
+Vérification des publications ultérieures de l'auteur \\
+\addlinespace
+Perte d'unicité en régime ondulatoire & Rapportée pour le cas électromagnétique &
+Portée pour un régime intermédiaire entre diffusion et propagation \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Antériorités à considérer}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Krapez (2016) & \emph{Int. J. Heat Mass Transf.} \textbf{99}, 485--503. Méthode PROFIDT et
+transformations de Darboux conjointes ; travail fondateur du présent article \\
+\addlinespace
+Krapez, postérieur à 2018 & À rechercher : l'auteur annonce en conclusion la mise en {\oe}uvre de ces
+outils pour les problèmes d'inversion \\
+\addlinespace
+Chen, Gamba, Li \& Wang (2025) & arXiv:2502.19533, accepté au \emph{SIAM J. Appl. Math.}
+Reconstruction numérique du temps de relaxation par optimisation sous contrainte \\
+\addlinespace
+Camacho de la Rosa \emph{et al.} (2025) & \emph{J. Appl. Phys.} \textbf{137}, 155103. Caractérisation
+des temps de relaxation par thermoréflectance en domaine fréquentiel \\
+\addlinespace
+Hoque \emph{et al.} (2024) & \emph{Appl. Phys. Lett.} \textbf{125}, 262201. Transition balistique vers
+diffusif mesurée sur films d'AlN de 1,6 à 2440 nm \\
+\addlinespace
+Maillet \emph{et al.} (2000) & \emph{Thermal Quadrupoles}, Wiley. Ouvrage de référence du formalisme
+matriciel employé \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Positionnement du présent travail}
+
+Le cadre de l'article est celui de la loi de Fourier, sous lequel le paramètre spectral s'écrit
+$p = i\omega$ et l'énergie associée à la forme de Schrödinger reste sur l'axe imaginaire. Dans ce
+régime, la structure spectrale --- états liés, seuils, résonances --- est sans objet, ce qui justifie
+que l'auteur écarte cette lecture.
+
+Sous une loi constitutive à temps de relaxation fini, le paramètre devient $p + \tau p^{2}$, soit
+$i\omega - \tau\omega^{2}$ en régime harmonique. L'énergie
+\[ E = \tau\omega^{2} - i\omega \]
+acquiert une partie réelle, et son argument
+\[ \arg(E) = -\arctan\!\left(\frac{1}{\omega\tau}\right) \]
+ne dépend que du produit $\omega\tau$. Il vaut $-90^{\circ}$ dans la limite diffusive, $-45^{\circ}$
+exactement pour $\omega\tau = 1$, et tend vers $0^{\circ}$ dans la limite opposée, où l'énergie approche
+l'axe réel positif.
+
+Le prolongement envisagé porte donc sur la conséquence de ce déplacement pour le conditionnement du
+problème inverse. Il s'appuie sur la transformation établie par Krapez, qu'il ne reproduit pas, et se
+distingue des travaux de Chen \emph{et al.}, qui traitent la reconstruction numérique du temps de
+relaxation sans analyse de la sensibilité en fonction de la bande de mesure.
+
+Le résultat rapporté par l'auteur en section 4, selon lequel le passage à l'équation d'onde
+s'accompagne d'une perte d'unicité dans le cas électromagnétique, constitue l'objection principale à
+cette orientation et devra être traité explicitement.
+\end{document}
