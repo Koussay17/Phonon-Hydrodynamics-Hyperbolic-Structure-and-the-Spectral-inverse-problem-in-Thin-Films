@@ -119,3 +119,70 @@ def test_overflow_guard_triggers():
 def test_scalar_input_returns_2x2():
     m = q.homogeneous_wall(1j * 100.0, LAM, RHO_C, E)
     assert m.shape == (2, 2)
+
+
+# ==========================================================================
+# Graded layer with a linear metaproperty profile
+# ==========================================================================
+
+B0 = q.effusivity(LAM, RHO_C)
+B1 = 3.0 * B0                      # effusivity triples across the layer
+XI1 = q.xi_from_thickness(E, q.diffusivity(LAM, RHO_C))
+
+
+def test_graded_reduces_to_homogeneous():
+    """With equal effusivities on both faces, equation (27) must give back the
+    homogeneous wall exactly. This is the unit test of reference."""
+    m_graded = q.graded_linear_layer(P, B0, B0, XI1, form="T")
+    m_wall = q.homogeneous_wall(P, LAM, RHO_C, E)
+    assert np.allclose(m_graded, m_wall, rtol=1e-10, atol=1e-14)
+
+
+def test_graded_determinant_is_one():
+    for form in ("T", "phi"):
+        m = q.graded_linear_layer(P, B0, B1, XI1, form=form)
+        det = m[..., 0, 0] * m[..., 1, 1] - m[..., 0, 1] * m[..., 1, 0]
+        assert np.allclose(det, 1.0, rtol=1e-9, atol=1e-11), form
+
+
+def test_graded_layer_splits_consistently():
+    """A linear profile split in two remains linear on each half, so the
+    product of the two sub-layers must equal the whole layer.
+
+    This validates the matrix and the composition rule together.
+    """
+    s0, s1 = np.sqrt(B0), np.sqrt(B1)
+    b_mid = ((s0 + s1) / 2.0) ** 2
+
+    left = q.graded_linear_layer(P, B0, b_mid, XI1 / 2.0, form="T")
+    right = q.graded_linear_layer(P, b_mid, B1, XI1 / 2.0, form="T")
+    whole = q.graded_linear_layer(P, B0, B1, XI1, form="T")
+
+    assert np.allclose(left @ right, whole, rtol=1e-9, atol=1e-11)
+
+
+def test_two_forms_are_distinct():
+    """Krapez section 4: two distinct dual profiles can never give the same
+    thermal response. The matrices must therefore differ."""
+    m_t = q.graded_linear_layer(P, B0, B1, XI1, form="T")
+    m_phi = q.graded_linear_layer(P, B0, B1, XI1, form="phi")
+    assert not np.allclose(m_t, m_phi, rtol=1e-6)
+
+
+def test_profile_endpoints():
+    """The profile must reach the prescribed effusivities at both faces."""
+    for form in ("T", "phi"):
+        assert q.linear_effusivity_profile(0.0, B0, B1, XI1, form) == pytest.approx(B0)
+        assert q.linear_effusivity_profile(XI1, B0, B1, XI1, form) == pytest.approx(B1)
+
+
+def test_profile_is_monotonic():
+    xi = np.linspace(0.0, XI1, 200)
+    for form in ("T", "phi"):
+        b = q.linear_effusivity_profile(xi, B0, B1, XI1, form)
+        assert np.all(np.diff(b) > 0.0), form
+
+
+def test_graded_invalid_form_raises():
+    with pytest.raises(ValueError):
+        q.graded_linear_layer(P, B0, B1, XI1, form="x")
