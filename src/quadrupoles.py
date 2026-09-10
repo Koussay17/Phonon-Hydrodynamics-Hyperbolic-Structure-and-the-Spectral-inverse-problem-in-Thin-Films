@@ -32,6 +32,9 @@ __all__ = [
     "compose",
     "front_face_temperature",
     "argument_magnitude",
+    "xi_from_thickness",
+    "linear_effusivity_profile",
+    "graded_linear_layer",
 ]
 
 # Above this value cosh and sinh overflow in double precision.
@@ -155,3 +158,92 @@ def argument_magnitude(p, lam: float, rho_c: float, e: float):
     """
     p = np.asarray(p, dtype=complex)
     return np.abs(np.sqrt(p / diffusivity(lam, rho_c)) * e)
+
+
+# --------------------------------------------------------------------------
+# Graded layers: linear metaproperty profiles
+# --------------------------------------------------------------------------
+
+def xi_from_thickness(e: float, a: float) -> float:
+    """Liouville coordinate of a slab of thickness `e` and constant diffusivity.
+
+    xi = e / sqrt(a), in s^(1/2).
+    """
+    return e / np.sqrt(a)
+
+
+def linear_effusivity_profile(xi, b0: float, b1: float, xi1: float,
+                              form: str = "T"):
+    """Effusivity profile of a 'linear' graded layer, Krapez (2018) eq. (18).
+
+    The metaproperty s = b^(+1/2) (form 'T') or b^(-1/2) (form 'phi') varies
+    linearly with the Liouville coordinate between the two faces.
+    """
+    sign = 1.0 if form == "T" else -1.0
+    xi = np.asarray(xi, dtype=float)
+    t = xi / xi1
+    s = b0 ** (sign / 2) * (1.0 - t) + b1 ** (sign / 2) * t
+    return s ** (2.0 / sign)
+
+
+def graded_linear_layer(p, b0: float, b1: float, xi1: float,
+                        form: str = "T") -> np.ndarray:
+    """Quadrupole of a graded layer with a linear metaproperty profile.
+
+    Krapez (2018) equation (27), per unit area.
+
+    Parameters
+    ----------
+    p : complex or array-like
+        Spectral parameter.
+    b0, b1 : float
+        Effusivity at the front and back faces.
+    xi1 : float
+        Liouville thickness of the layer, in s^(1/2).
+    form : {'T', 'phi'}
+        Temperature form uses s = b^(+1/2); flux form uses s = b^(-1/2)
+        followed by the pseudo-permutation of equation (A-6).
+
+    Notes
+    -----
+    Reduces exactly to `homogeneous_wall` when b1 == b0, and the determinant
+    is 1 for any parameters. Both properties are verified analytically.
+    """
+    if form not in ("T", "phi"):
+        raise ValueError("form must be 'T' or 'phi'")
+
+    p = np.asarray(p, dtype=complex)
+    sign = 1.0 if form == "T" else -1.0
+    s0 = b0 ** (sign / 2)
+    s1 = b1 ** (sign / 2)
+    x = s1 / s0
+
+    sp_ = np.sqrt(p)
+    arg = sp_ * xi1
+
+    if np.any(np.abs(arg) > _OVERFLOW_GUARD):
+        raise OverflowError(
+            f"|sqrt(p)*xi1| exceeds {_OVERFLOW_GUARD:.0f}; cosh and sinh overflow."
+        )
+
+    ch = np.cosh(arg)
+    # sinh(z)/z, continuous at z = 0
+    sn = np.where(np.abs(arg) < 1e-8, 1.0 + arg ** 2 / 6.0, np.sinh(arg) / arg)
+
+    u = (x - 1.0) * (1.0 - 1.0 / x)          # recurring coefficient of row C
+
+    a_ = x * ch + (1.0 - x) * sn
+    b_ = (xi1 / (s0 * s1)) * sn
+    c_ = (s0 * s1 / xi1) * (u * ch + (p * xi1 ** 2 - u) * sn)
+    d_ = (1.0 / x) * ch + (1.0 - 1.0 / x) * sn
+
+    m = np.empty(p.shape + (2, 2), dtype=complex)
+    if form == "T":
+        m[..., 0, 0], m[..., 0, 1] = a_, b_
+        m[..., 1, 0], m[..., 1, 1] = c_, d_
+    else:
+        # Pseudo-permutation, Krapez equation (A-6)
+        m[..., 0, 0], m[..., 0, 1] = d_, c_ / p
+        m[..., 1, 0], m[..., 1, 1] = p * b_, a_
+
+    return m if p.shape else m.reshape(2, 2)
