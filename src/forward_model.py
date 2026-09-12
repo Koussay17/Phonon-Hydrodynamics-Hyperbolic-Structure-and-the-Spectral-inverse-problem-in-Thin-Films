@@ -68,6 +68,13 @@ class Sample:
     front_losses : float
         Heat exchange coefficient on the free front face, in W / (m^2 K).
         Zero is the adiabatic case.
+    relaxation_time, sub_relaxation_time : float
+        Relaxation times of the Cattaneo constitutive law, in seconds, for the
+        film and the substrate. Zero recovers Fourier conduction.
+
+        The law replaces the spectral parameter p by p (1 + tau p) in the
+        layer concerned. Nothing else changes: the Liouville coordinate, the
+        effusivity and the potential keep their Fourier definitions.
     """
 
     film_lam: float = 60.0
@@ -82,6 +89,9 @@ class Sample:
 
     contact_resistance: float = 0.0
     front_losses: float = 0.0
+
+    relaxation_time: float = 0.0
+    sub_relaxation_time: float = 0.0
 
     # ---- derived quantities -------------------------------------------
 
@@ -112,6 +122,18 @@ class Sample:
     def diffusion_time(self) -> float:
         """Characteristic diffusion time through the film, thickness^2 / a."""
         return self.thickness ** 2 / self.film_a
+
+    @property
+    def relaxation_frequency(self) -> float:
+        """Frequency at which omega tau reaches one, in hertz.
+
+        The relaxation time only becomes measurable once the highest measured
+        frequency reaches this value; below it the uncertainty grows like the
+        inverse of the gap.
+        """
+        if self.relaxation_time <= 0.0:
+            return np.inf
+        return 1.0 / (2.0 * np.pi * self.relaxation_time)
 
     @property
     def effusivity_ratio(self) -> float:
@@ -176,6 +198,22 @@ class Sample:
 # Building blocks
 # --------------------------------------------------------------------------
 
+def effective_p(p, tau: float):
+    """Spectral parameter under the Cattaneo constitutive law.
+
+        P = p (1 + tau p)
+
+    With tau = 0 this is the identity, so Fourier conduction is the special
+    case rather than a separate code path.
+
+    In the modulated regime p = i omega, hence P = i omega - tau omega^2: a
+    real part appears, growing as the square of the frequency. The dimension-
+    less group governing the departure from Fourier is omega tau.
+    """
+    p = np.asarray(p, dtype=complex)
+    return p * (1.0 + tau * p)
+
+
 def interface_resistance(p, r: float) -> np.ndarray:
     """Quadrupole of a thermal contact resistance.
 
@@ -192,21 +230,27 @@ def interface_resistance(p, r: float) -> np.ndarray:
 
 
 def stack_matrix(p, s: Sample) -> np.ndarray:
-    """Quadrupole of film plus interface, front face to substrate."""
+    """Quadrupole of film plus interface, front face to substrate.
+
+    The film is evaluated at its own effective spectral parameter, so a
+    relaxation time in the film does not affect the substrate and conversely.
+    """
+    pf = effective_p(p, s.relaxation_time)
+
     if s.is_graded:
-        m = q.graded_linear_layer(p, s.film_b, s.film_b_back, s.xi1, form="T")
+        m = q.graded_linear_layer(pf, s.film_b, s.film_b_back, s.xi1, form="T")
     else:
-        m = q.homogeneous_wall(p, s.film_lam, s.film_rho_c, s.thickness)
+        m = q.homogeneous_wall(pf, s.film_lam, s.film_rho_c, s.thickness)
 
     if s.contact_resistance != 0.0:
-        m = m @ interface_resistance(p, s.contact_resistance)
+        m = m @ interface_resistance(pf, s.contact_resistance)
     return m
 
 
 def response(p, s: Sample, power=1.0):
     """Front-face temperature in the Laplace domain, per unit area."""
     m = stack_matrix(p, s)
-    z = q.semi_infinite_impedance(p, s.sub_b)
+    z = q.semi_infinite_impedance(effective_p(p, s.sub_relaxation_time), s.sub_b)
     return q.front_face_temperature(m, z, power=power, h=s.front_losses)
 
 
@@ -310,3 +354,16 @@ def contrast_report(s: Sample, warn_below: float = 0.05) -> str:
             "geometry that brings in a length other than the thickness."
         )
     return "\n".join(lines)
+
+
+def analogy_energy(freq, tau: float):
+    """Energy of the Schrodinger analogy under the Cattaneo law.
+
+        E = -P = tau omega^2 - i omega
+
+    Its argument, -arctan(1 / (omega tau)), depends on the product omega tau
+    alone. It equals -90 degrees in the diffusive limit, exactly -45 degrees
+    at omega tau = 1, and tends to zero as the wave limit is approached.
+    """
+    omega = 2.0 * np.pi * np.asarray(freq, dtype=float)
+    return -effective_p(1j * omega, tau)
