@@ -1,0 +1,311 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Fiche de lecture --- Controverse d'identifiabilité de 2023}\\[4pt]
+{\small Krapez, \emph{J. Appl. Phys.} \textbf{134}, 056101 (2023) ; réponse de Mandelis, Kooshki \&
+Melnikov, \emph{J. Appl. Phys.} \textbf{134}, 056102 (2023)}\\[2pt]
+{\small Version 1 --- 12 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+\section{Identification}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Article initial & A. Mandelis, S. Kooshki, A. Melnikov, \emph{Simultaneous density and thermal
+conductivity depth profile reconstructions from noised thermal-wave amplitude and phase data using a
+combined integral-equation and imperialist competitive algorithm method}, \emph{Journal of Applied
+Physics} \textbf{133}, 055102 (2023), doi:10.1063/5.0129536 \\
+\addlinespace
+Commentaire & J.-C. Krapez (ONERA, DOTA), \emph{Journal of Applied Physics} \textbf{134}, 056101 (2023),
+doi:10.1063/5.0151465, accès libre \\
+\addlinespace
+Réponse & A. Mandelis, S. Kooshki, A. Melnikov, \emph{Journal of Applied Physics} \textbf{134}, 056102
+(2023), doi:10.1063/5.0155055 \\
+\addlinespace
+Nature & Échange critique en trois pièces : méthode d'inversion, objection d'identifiabilité, réponse
+des auteurs \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Statut documentaire}
+
+Le texte intégral du Commentaire est en accès libre et a servi de base à la présente fiche. Le texte de
+la Réponse relève de l'accès sur abonnement et n'a pas pu être consulté lors de la rédaction : seules
+les données bibliographiques en ont été vérifiées. Aucun résumé de son argumentation n'est donc proposé
+ici. La section 8 se limite à situer la pièce dans l'échange et à énoncer les points sur lesquels une
+réfutation devrait porter pour être recevable.
+
+Les développements mathématiques des sections 5 et 6 sont des reconstructions établies dans les
+conventions du projet. Ils fournissent la structure de l'objection et se substituent, en l'état, à toute
+paraphrase des textes originaux.
+
+\section{Objet de la controverse}
+
+L'article initial présente une méthode d'inversion associant une formulation par équation intégrale du
+problème aux limites de l'onde thermique et un algorithme d'optimisation globale de type compétition
+impérialiste. La méthode est appliquée à un échantillon de métallurgie des poudres frittées présentant
+une couche superficielle plus dense que le volume, et revendique la reconstruction \emph{simultanée} des
+profils de masse volumique et de conductivité thermique en profondeur, la chaleur massique étant
+supposée connue et constante.
+
+Le Commentaire oppose que, pour la configuration thermophysique considérée, les profils de conductivité
+thermique et de capacité thermique volumique ne peuvent pas être identifiés simultanément, parce qu'ils
+sont pleinement corrélés. Le problème présente une non-identifiabilité inconditionnelle, d'où la
+non-unicité de la solution. Le succès apparent des tests d'inversion n'y change rien : pour toute
+solution apparemment optimale, on peut construire une infinité de couples de profils conjugués
+également satisfaisants. L'identification simultanée des deux profils est donc tenue pour un problème
+inverse insoluble.
+
+Le Commentaire indique enfin que la transformation de Liouville éclaire l'influence des deux profils sur
+la réponse en température, met en évidence le rôle propre de leur produit, c'est-à-dire de l'effusivité,
+et révèle par là même la corrélation complète des deux profils. L'argument s'appuie sur des travaux
+antérieurs de l'auteur consacrés à la modélisation du transfert thermique en milieu hétérogène gradué.
+
+\section{Rappels physiques}
+
+\subsection{Milieu gradué et grandeurs en jeu}
+
+Le milieu est décrit par deux fonctions de la profondeur, la conductivité $\lambda(z)$ et la capacité
+thermique volumique $\rho c(z)$, dont se déduisent
+\[ a(z) = \frac{\lambda(z)}{\rho c(z)} , \qquad b(z) = \sqrt{\lambda(z)\,\rho c(z)} . \]
+Lorsque la chaleur massique $c$ est supposée connue et constante, le profil de masse volumique se déduit
+immédiatement de $\rho c$ par division. Une indétermination portant sur $\rho c$ se transporte donc
+telle quelle sur la masse volumique.
+
+\subsection{Configuration expérimentale}
+
+L'expérience considérée consiste à appliquer un flux périodique à la surface d'un matériau opaque et à
+analyser la réponse en température de cette même surface, par balayage en fréquence de l'amplitude et
+de la phase. Le transfert est unidimensionnel, la loi de conduction est celle de Fourier, il n'y a pas
+de sources internes, et l'observable est une fonctionnelle des seules propriétés du milieu.
+
+\subsection{Équation à traiter}
+
+Après transformée temporelle et condition initiale nulle,
+\[ \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] = p\,\rho c(z)\,\theta ,
+\qquad \varphi = -\lambda(z)\,\frac{d\theta}{dz} . \]
+
+\section{Rappels mathématiques}
+
+\subsection{Transformation de Liouville}
+
+Avec la coordonnée transformée et la variable de flux
+\[ \xi(z) = \int_{0}^{z}\frac{du}{\sqrt{a(u)}} , \qquad \phi = -\,b(\xi)\,\theta' , \]
+l'équation précédente devient
+\[ \frac{d}{d\xi}\!\left[b(\xi)\,\frac{d\theta}{d\xi}\right] = p\,b(\xi)\,\theta . \]
+
+La vérification est directe : $d/dz = a^{-1/2}\,d/d\xi$, d'où
+$a^{-1/2}\,(b\,\theta_{\xi})_{\xi} = p\,\rho c\,\theta$, et l'identité $\rho c\,\sqrt{a} = b$ fournit le
+résultat.
+
+\subsection{Énoncé d'invariance}
+
+Le point décisif tient en une phrase : \emph{dans la coordonnée transformée, une seule fonction
+matériau subsiste, l'effusivité $b(\xi)$}. La réponse de surface, rapport de la température au flux en
+$\xi=0$, est donc une fonctionnelle de $b(\cdot)$ seule. Les deux fonctions $\lambda$ et $\rho c$
+n'interviennent que par cette combinaison et par le changement de variable qu'elles induisent.
+
+La forme normale s'en déduit par la substitution habituelle :
+\[ \frac{d^{2}\psi}{d\xi^{2}} - \bigl(V(\xi)+p\bigr)\psi = 0 ,
+\qquad \psi = s\,\theta , \qquad s = b^{\pm1/2} , \qquad V = \frac{s''}{s} . \]
+
+\subsection{Famille des profils conjugués}
+
+Soit $\hat z(\xi)$ une fonction quelconque, croissante et dérivable, telle que $\hat z(0)=0$. On pose
+\[ \tilde a(\hat z) = \left(\frac{d\hat z}{d\xi}\right)^{\!2} , \qquad
+\tilde b(\hat z) = b(\xi) , \]
+d'où, par les relations inverses,
+\[ \tilde\lambda = b\,\frac{d\hat z}{d\xi} , \qquad
+\widetilde{\rho c} = b\,\frac{d\xi}{d\hat z} , \qquad
+\tilde\lambda\,\widetilde{\rho c} = b^{2} = \lambda\,\rho c . \]
+
+Le milieu ainsi construit possède, par construction, la même effusivité exprimée dans la même
+coordonnée transformée. Sa réponse de surface est donc rigoureusement identique à celle du milieu
+initial, pour toute fréquence et en l'absence de bruit.
+
+La famille est paramétrée par une fonction arbitraire : l'indétermination est de dimension
+fonctionnelle et non de dimension finie. Le produit $\lambda\,\rho c$ est conservé, tandis que le
+rapport $\lambda/\rho c$ est entièrement libre.
+
+\subsection{Version infinitésimale}
+
+En posant $\hat z_{\varepsilon} = z + \varepsilon\,w$, la variation au premier ordre s'écrit, à
+coordonnée transformée fixée,
+\[ \frac{\delta\lambda}{\lambda} = \frac{w'}{z'} , \qquad
+\frac{\delta(\rho c)}{\rho c} = -\frac{w'}{z'} , \qquad
+\frac{\delta\lambda}{\lambda} + \frac{\delta(\rho c)}{\rho c} = 0 . \]
+Le noyau de l'application tangente est donc non réduit à zéro : toute perturbation relative opposée des
+deux profils, accompagnée du déplacement de profondeur correspondant, laisse l'observable inchangée.
+La matrice d'information associée à une discrétisation quelconque des deux profils est singulière, quel
+que soit le nombre de fréquences.
+
+\subsection{Réduction au cas homogène}
+
+Le choix particulier $\hat z = \mu z$ donne $d\hat z/d\xi = \mu\sqrt{a}$, d'où
+\[ \tilde a = \mu^{2}a , \qquad \tilde\lambda = \mu\lambda , \qquad
+\widetilde{\rho c} = \mu^{-1}\rho c , \qquad e \mapsto \mu\,e , \]
+c'est-à-dire exactement le groupe à un paramètre de la fiche relative à la note de 2017. Le résultat de
+2017 est donc le cas homogène du résultat de 2023 ; la relation d'Euler entre sensibilités y était la
+forme infinitésimale de la même invariance.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+& \textbf{Note de 2017} & \textbf{Commentaire de 2023} \\
+\midrule
+Objet & Couche homogène sur substrat & Milieu gradué semi-infini \\
+\addlinespace
+Inconnues & Trois scalaires : $L$, $a$, $\lambda$ & Deux fonctions : $\lambda(z)$, $\rho c(z)$ \\
+\addlinespace
+Quantités identifiables & $\xi_{1}=L/\sqrt{a}$ et le rapport d'effusivité & L'effusivité exprimée dans
+la coordonnée transformée \\
+\addlinespace
+Dimension de l'indétermination & Un paramètre & Une fonction \\
+\addlinespace
+Forme de l'argument & Dépendance linéaire des vecteurs de sensibilité & Noyau non trivial de
+l'application tangente \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Non-identifiabilité inconditionnelle}
+
+La qualification d'inconditionnelle signifie que la dégénérescence ne dépend ni du jeu de fréquences,
+ni du niveau de bruit, ni de la méthode d'optimisation. Elle se distingue du mauvais conditionnement,
+qui affecte une application injective mais instable. Les deux défauts se cumulent ici : à
+l'indétermination structurelle décrite ci-dessus s'ajoute la perte de sensibilité aux variations
+profondes, elle-même dépendante de la bande de mesure.
+
+Une conséquence pratique mérite d'être isolée. Un algorithme d'optimisation globale converge vers un
+point de l'orbite d'invariance, et non vers le profil réel. La qualité de l'ajustement n'est donc pas un
+indice d'exactitude : elle est identique en tout point de l'orbite.
+
+\section{Structure de l'objection}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Prémisse 1 & L'observable est la réponse en température de la face avant, sous excitation de flux en
+face avant, en transfert unidimensionnel sans sources internes \\
+\addlinespace
+Prémisse 2 & Après transformation de Liouville, cette observable ne dépend que de l'effusivité exprimée
+dans la coordonnée transformée \\
+\addlinespace
+Conclusion 1 & Deux profils de conductivité et de capacité volumique de même produit, moyennant le
+reparamétrage de profondeur associé, sont indiscernables \\
+\addlinespace
+Conclusion 2 & L'identification simultanée est impossible ; la chaleur massique étant supposée connue,
+l'indétermination se transporte sur la masse volumique \\
+\addlinespace
+Conclusion 3 & Le succès numérique de l'inversion ne constitue pas une réfutation, puisque tout point de
+l'orbite produit le même résidu \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Levées possibles de l'indétermination}
+
+L'invariance repose sur la liberté de reparamétrer la profondeur. Toute information imposant une échelle
+de longueur indépendante la restreint.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}L{4.6cm}XX@{}}
+\toprule
+\textbf{Information ajoutée} & \textbf{Effet sur l'orbite} & \textbf{Portée} \\
+\midrule
+Un des deux profils connu & Réduction à un point & Cas usuel : capacité volumique supposée scalaire
+connue \\
+\addlinespace
+Repère géométrique interne connu & Restriction par condition aux limites en $\hat z$ & L'indétermination
+demeure fonctionnelle, avec extrémité fixée \\
+\addlinespace
+Diffusion latérale, configuration bidimensionnelle & Introduction d'une longueur transverse & Brise
+l'invariance d'échelle en profondeur \\
+\addlinespace
+Sources internes dans la couche étudiée & Le champ source fixe la coordonnée physique & Brise
+l'invariance \\
+\addlinespace
+Mesure en face arrière d'un échantillon d'épaisseur connue & Fixe l'extrémité de l'orbite & Réduit sans
+supprimer l'indétermination \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Aucune de ces voies ne relève d'un raffinement de l'algorithme d'inversion : toutes consistent à
+modifier le dispositif ou à ajouter une mesure de nature différente.
+
+\section{Position de la Réponse}
+
+La Réponse constitue la troisième pièce de l'échange, publiée immédiatement à la suite du Commentaire
+dans le même numéro. Son texte n'a pas été consulté ; aucune de ses affirmations n'est donc rapportée
+ici.
+
+Pour mémoire, une réfutation recevable de l'objection devrait porter sur l'une au moins des prémisses de
+la section 6, à savoir :
+
+\begin{itemize}
+\item contester la prémisse 1, en montrant que le dispositif réel comporte une information non prise en
+compte dans le modèle unidimensionnel à excitation et détection en face avant ;
+\item contester la prémisse 2, en exhibant une dépendance de l'observable à une grandeur autre que
+l'effusivité exprimée dans la coordonnée transformée ;
+\item contester la conclusion 1, en exhibant une contrainte de régularité ou de positivité éliminant
+tous les profils conjugués sauf un.
+\end{itemize}
+
+Cette section reste à compléter dès l'obtention du texte intégral de la Réponse.
+
+\section{Rattachement au présent travail}
+
+\subsection{Continuité avec les conventions du projet}
+
+La coordonnée $\xi$, la forme normale et le potentiel $V=s''/s$ employés dans le Commentaire sont ceux
+que fixe le fichier de conventions. L'objection se formule donc sans conversion préalable.
+
+\subsection{Apport propre}
+
+Le Commentaire fournit un cas où la non-unicité structurelle est explicite et constructive : l'orbite
+d'invariance est exhibée, non seulement établie. Il documente, en outre, une confusion récurrente dans
+la littérature de métrologie thermique entre la convergence d'un algorithme et l'unicité de la solution.
+
+\subsection{Divergence de cadre}
+
+Comme la note de 2017, l'analyse se place sous la loi de Fourier. Sous une loi à temps de relaxation
+fini, le paramètre spectral devient $p+\tau p^{2}$ et la transformation de Liouville doit être reprise :
+la question de savoir si l'invariance décrite en 5.3 subsiste, se déforme ou disparaît n'est pas traitée
+par les textes de l'échange et demeure ouverte dans le présent travail.
+
+\section{Références}
+
+\begin{enumerate}[leftmargin=2.2em]
+\item A. Mandelis, S. Kooshki, A. Melnikov, \emph{Journal of Applied Physics} \textbf{133}, 055102
+(2023), doi:10.1063/5.0129536.
+\item J.-C. Krapez, \emph{Comment on ``Simultaneous density and thermal conductivity depth profile
+reconstructions from noised thermal-wave amplitude and phase data using a combined integral-equation and
+imperialist competitive algorithm method'' [J. Appl. Phys. 133, 055102 (2023)]}, \emph{Journal of Applied
+Physics} \textbf{134}, 056101 (2023), doi:10.1063/5.0151465.
+\item A. Mandelis, S. Kooshki, A. Melnikov, \emph{Response to ``Comment on \ldots'' [J. Appl. Phys. 134,
+056101 (2023)]}, \emph{Journal of Applied Physics} \textbf{134}, 056102 (2023), doi:10.1063/5.0155055.
+\item J.-C. Krapez, \emph{International Journal of Thermal Sciences} \textbf{136}, 182--199 (2018).
+\item D. Maillet, S. André, J.-C. Batsale, A. Degiovanni, C. Moyne, \emph{Thermal Quadrupoles: Solving
+the Heat Equation through Integral Transforms}, Wiley, 2000.
+\end{enumerate}
+\end{document}

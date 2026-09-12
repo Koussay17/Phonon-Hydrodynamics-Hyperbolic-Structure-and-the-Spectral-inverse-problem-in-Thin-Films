@@ -27,6 +27,7 @@ import quadrupoles as q
 
 __all__ = [
     "Sample",
+    "contrast_report",
     "interface_resistance",
     "stack_matrix",
     "response",
@@ -111,6 +112,45 @@ class Sample:
     def diffusion_time(self) -> float:
         """Characteristic diffusion time through the film, thickness^2 / a."""
         return self.thickness ** 2 / self.film_a
+
+    @property
+    def effusivity_ratio(self) -> float:
+        """Substrate effusivity divided by film effusivity.
+
+        Written b32 in the photothermal literature. Together with the transit
+        time it exhausts what the front-face measurement can determine about
+        the coating.
+        """
+        return self.sub_b / self.film_b
+
+    @property
+    def reflection_coefficient(self) -> float:
+        """Amplitude reflection coefficient of the thermal wave at the interface.
+
+            Gamma = (1 - b32) / (1 + b32)
+
+        The response can be written as a series of waves reflected between the
+        front face and the interface, with Gamma as the reflection factor. It
+        vanishes when film and substrate share the same effusivity, and the
+        interface then becomes strictly invisible: the front-face response
+        equals that of a semi-infinite medium, for any thickness and any
+        diffusivity contrast.
+
+        Krapez and Rigollet, arXiv:1708.07362 (2017), section on the
+        coating-substrate response.
+        """
+        r = self.effusivity_ratio
+        return (1.0 - r) / (1.0 + r)
+
+    @property
+    def blind_film_effusivity(self) -> float:
+        """Film effusivity at which the interface becomes invisible.
+
+        Equal to the substrate effusivity. A sample whose film sits near this
+        value cannot yield its transit time, hence neither its thickness nor
+        its diffusivity, whatever the inversion method.
+        """
+        return self.sub_b
 
     @property
     def characteristic_frequency(self) -> float:
@@ -242,3 +282,31 @@ def add_noise(amplitude, phase_deg=None, relative_amplitude=0.01,
     phase_deg = np.asarray(phase_deg, dtype=float)
     noisy_phase = phase_deg + absolute_phase_deg * rng.standard_normal(phase_deg.shape)
     return noisy_amp, noisy_phase
+
+
+def contrast_report(s: Sample, warn_below: float = 0.05) -> str:
+    """Readable assessment of the effusivity contrast of a sample.
+
+    A small reflection coefficient means the interface is nearly invisible and
+    the transit time nearly unmeasurable. The threshold is indicative: the
+    uncertainty grows continuously as the coefficient approaches zero, it does
+    not jump at any particular value.
+    """
+    g = s.reflection_coefficient
+    lines = [
+        f"film effusivity      : {s.film_b:10.0f}",
+        f"substrate effusivity : {s.sub_b:10.0f}",
+        f"ratio b32            : {s.effusivity_ratio:10.4f}",
+        f"reflection Gamma     : {g:+10.5f}",
+        f"blind at effusivity  : {s.blind_film_effusivity:10.0f}",
+    ]
+    if abs(g) < warn_below:
+        lines.append("")
+        lines.append(
+            "WARNING: the contrast is weak. The interface returns little "
+            "signal, so the transit time, and with it the thickness and the "
+            "diffusivity, are poorly determined. Raising the contrast requires "
+            "a different substrate, a transducer layer, or a measurement "
+            "geometry that brings in a length other than the thickness."
+        )
+    return "\n".join(lines)
