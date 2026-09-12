@@ -125,13 +125,32 @@ def _apply(sample: fm.Sample, names, log_values) -> fm.Sample:
     return replace(sample, **{n: float(np.exp(v)) for n, v in zip(names, log_values)})
 
 
+_INVALID = 1e6
+
+
 def _residuals(log_values, names, sample, freq, amp, phase,
                sigma_rel, sigma_phase):
+    """Weighted residuals, guarded against non-physical excursions.
+
+    On a badly conditioned problem the optimiser drifts along the
+    unconstrained direction until a parameter underflows to exactly zero, at
+    which point the forward model divides by zero. Returning a large finite
+    residual instead of raising keeps the optimiser inside the physical region
+    and lets it report failure rather than crash.
+    """
     s = _apply(sample, names, log_values)
-    a_mod, p_mod = fm.modulated_response(freq, s)
+    try:
+        a_mod, p_mod = fm.modulated_response(freq, s)
+    except (ZeroDivisionError, OverflowError, FloatingPointError):
+        return np.full(2 * freq.size, _INVALID)
+
+    if not np.all(np.isfinite(a_mod)) or np.any(a_mod <= 0.0):
+        return np.full(2 * freq.size, _INVALID)
+
     r_amp = (np.log(a_mod) - np.log(amp)) / sigma_rel
     r_phase = (p_mod - phase) / sigma_phase
-    return np.concatenate([r_amp, r_phase])
+    out = np.concatenate([r_amp, r_phase])
+    return np.where(np.isfinite(out), out, _INVALID)
 
 
 # --------------------------------------------------------------------------
@@ -169,7 +188,8 @@ def fisher_analysis(freq, sample: fm.Sample, names,
 # --------------------------------------------------------------------------
 
 def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
-                  sigma_rel=0.01, sigma_phase=0.1, **kwargs) -> FitResult:
+                  sigma_rel=0.01, sigma_phase=0.1, bounds=None,
+                  **kwargs) -> FitResult:
     """Estimate parameters from modulated data by Levenberg-Marquardt.
 
     Parameters
@@ -184,6 +204,10 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
         Fields of `Sample` to estimate. They must be strictly positive.
     sigma_rel, sigma_phase : float
         Noise levels: relative on amplitude, absolute in degrees on phase.
+    bounds : sequence of (low, high), optional
+        Bounds in linear units. Recommended whenever the problem may be badly
+        conditioned: without them the optimiser can wander arbitrarily far
+        along a direction the data do not constrain.
     """
     names = list(names)
     freq = np.asarray(freq, dtype=float)
@@ -196,15 +220,20 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
 
     log0 = np.array([np.log(getattr(initial, n)) for n in names])
 
-    out = least_squares(
-        _residuals, log0,
-        args=(names, initial, freq, amplitude, phase_deg, sigma_rel, sigma_phase),
-        method="lm", **kwargs,
-    )
+    args = (names, initial, freq, amplitude, phase_deg, sigma_rel, sigma_phase)
+    if bounds is None:
+        out = least_squares(_residuals, log0, args=args, method="lm", **kwargs)
+    else:
+        lb = np.log(np.asarray(bounds, dtype=float))
+        out = least_squares(_residuals, log0, args=args, method="trf",
+                            bounds=(lb[:, 0], lb[:, 1]), **kwargs)
 
     jac = out.jac
     fisher = jac.T @ jac
-    cov_log = np.linalg.inv(fisher)
+    try:
+        cov_log = np.linalg.inv(fisher)
+    except np.linalg.LinAlgError:
+        cov_log = np.full_like(fisher, np.inf)
 
     values = np.exp(out.x)
     # Delta method: a relative uncertainty in log space becomes an absolute

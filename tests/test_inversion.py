@@ -294,3 +294,38 @@ def test_summary_is_printable():
                             sigma_rel=SIGMA_REL, sigma_phase=SIGMA_PHASE)
     text = res.summary()
     assert "film_lam" in text and "correlation" in text
+
+
+def test_degenerate_band_does_not_crash_the_optimiser():
+    """On a badly conditioned problem the optimiser drifts along the
+    unconstrained direction until a parameter underflows to zero, at which
+    point the forward model would divide by zero.
+
+    The guard in the residuals turns that into a reported failure or a large
+    uncertainty, never an exception. This matters because such a crash would
+    otherwise appear only on the hardest cases, the ones most likely to be met
+    on real data.
+    """
+    s = truth()
+    f = band(s, 2, 3)
+    amp, ph = synthetic(s, f, rng=31)
+
+    res = inv.fit_modulated(f, amp, ph, s,
+                            names=["film_lam", "film_rho_c"],
+                            sigma_rel=SIGMA_REL, sigma_phase=SIGMA_PHASE)
+    assert np.all(np.isfinite(res.values))
+
+
+def test_bounds_keep_the_estimate_physical():
+    """With bounds the optimiser stays inside the allowed region even when the
+    data do not constrain one direction."""
+    s = truth()
+    f = band(s, 2, 3)
+    amp, ph = synthetic(s, f, rng=31)
+
+    res = inv.fit_modulated(f, amp, ph, s,
+                            names=["film_lam", "film_rho_c"],
+                            sigma_rel=SIGMA_REL, sigma_phase=SIGMA_PHASE,
+                            bounds=[(6.0, 600.0), (2.41e5, 2.41e7)])
+    assert 6.0 <= res.values[0] <= 600.0
+    assert 2.41e5 <= res.values[1] <= 2.41e7
