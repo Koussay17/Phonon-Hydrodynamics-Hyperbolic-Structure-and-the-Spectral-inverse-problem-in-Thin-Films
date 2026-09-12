@@ -131,7 +131,7 @@ so that the boundary between what is inherited and what is new is visible from t
 ## Licence
 
 Code in `src/`, `tests/` and `notebooks/` is released under the MIT licence. Manuscript text and
-figures are not covered by it. Laboratory data is not distributed..
+figures are not covered by it. Laboratory data is not distributed.
 
 ---
 
