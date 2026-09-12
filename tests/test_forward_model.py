@@ -194,3 +194,75 @@ def test_noise_amplitude_only():
     amp, _ = fm.modulated_response(FREQ, default_sample())
     out = fm.add_noise(amp, rng=1)
     assert out.shape == amp.shape
+
+
+# --------------------------------------------------------------------------
+# Effusivity contrast
+# --------------------------------------------------------------------------
+
+def test_reflection_coefficient_definition():
+    s = default_sample()
+    r = s.sub_b / s.film_b
+    assert s.effusivity_ratio == pytest.approx(r)
+    assert s.reflection_coefficient == pytest.approx((1.0 - r) / (1.0 + r))
+    assert s.blind_film_effusivity == pytest.approx(s.sub_b)
+
+
+def test_matched_effusivity_makes_the_interface_invisible():
+    """When film and substrate share the same effusivity, the front-face
+    response is exactly that of a semi-infinite medium, whatever the thickness
+    and whatever the diffusivity contrast.
+
+    This is the numerical counterpart of Krapez's result that the response
+    depends on the effusivity alone once expressed in the Liouville
+    coordinate. Here the diffusivities differ by a factor of 1.6 and the
+    thickness spans two decades, yet nothing of either is visible.
+    """
+    b = 10298.0
+    rc_f, rc_s = 2.41e6, 3.03e6
+    lam_f, lam_s = b ** 2 / rc_f, b ** 2 / rc_s
+
+    p = 2j * np.pi * np.logspace(3, 10, 20)
+    ref = 1.0 / (b * np.sqrt(p))
+
+    for e in (50e-9, 500e-9, 5e-6):
+        s = default_sample(film_lam=lam_f, film_rho_c=rc_f, thickness=e,
+                           sub_lam=lam_s, sub_rho_c=rc_s)
+        assert s.reflection_coefficient == pytest.approx(0.0, abs=1e-12)
+        assert np.allclose(fm.response(p, s), ref, rtol=1e-12)
+
+
+def test_uncertainty_diverges_at_the_blind_point():
+    """The blind point is approached continuously: the problem is merely
+    ill-conditioned nearby and exactly non-identifiable at the point itself.
+
+    Measured on AlN-like values over sapphire, the blind conductivity sits at
+    44 W/(m K), squarely inside the plausible range for a thin film.
+    """
+    import inversion as inv
+
+    rc, sub_l, sub_rc = 2.41e6, 35.0, 3.03e6
+    blind = q.effusivity(sub_l, sub_rc) ** 2 / rc
+
+    def sigma(lam):
+        s = default_sample(film_lam=lam, film_rho_c=rc,
+                           sub_lam=sub_l, sub_rho_c=sub_rc)
+        fc = np.log10(s.characteristic_frequency)
+        f = np.logspace(fc, fc + 1, 60)
+        _, cov = inv.fisher_analysis(f, s, ["film_lam", "film_rho_c"], 0.01, 0.1)
+        return np.sqrt(np.diag(cov)).max()
+
+    assert blind == pytest.approx(44.0, rel=1e-3)
+    assert sigma(blind) > 100.0 * sigma(blind * 1.25)
+    assert sigma(blind * 1.01) > sigma(blind * 1.10)
+
+
+def test_contrast_report_warns_when_blind():
+    rc, sub_l, sub_rc = 2.41e6, 35.0, 3.03e6
+    blind = q.effusivity(sub_l, sub_rc) ** 2 / rc
+    near = fm.contrast_report(default_sample(film_lam=blind, film_rho_c=rc,
+                                             sub_lam=sub_l, sub_rho_c=sub_rc))
+    far = fm.contrast_report(default_sample(film_lam=250.0, film_rho_c=rc,
+                                            sub_lam=sub_l, sub_rho_c=sub_rc))
+    assert "WARNING" in near
+    assert "WARNING" not in far

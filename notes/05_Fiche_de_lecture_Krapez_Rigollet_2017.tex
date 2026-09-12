@@ -1,0 +1,432 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Fiche de lecture --- Krapez \& Rigollet (2017)}\\[4pt]
+{\small Commentaire sur Guo, Mandelis, Tolev \& Tang, \emph{J. Appl. Phys.} \textbf{121}, 095101 (2017)}\\[2pt]
+{\small Version 1 --- 12 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+\section{Identification}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Auteurs & J.-C. Krapez (ONERA, DOTA, Salon-de-Provence) ; F. Rigollet (Aix-Marseille Univ., CNRS, IUSTI, Marseille) \\
+\addlinespace
+Titre & \emph{Comment on ``Photothermal radiometry parametric identifiability theory for reliable
+and unique nondestructive coating thickness and thermophysical measurements''} \\
+\addlinespace
+Article commenté & X. Guo, A. Mandelis, J. Tolev, K. Tang, \emph{Journal of Applied Physics}, volume 121,
+numéro 9, article 095101, 2017 \\
+\addlinespace
+Accès & Dépôt arXiv, identifiant 1708.07362v1, août 2017 \\
+\addlinespace
+Nature & Note critique courte, sans données expérimentales propres, à visée de réfutation \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Objet de la note}
+
+L'article commenté prétend établir que le signal de radiométrie photothermique obtenu en transfert
+unidimensionnel sur un échantillon revêtu opaque permet d'identifier séparément trois paramètres du
+revêtement : l'épaisseur, la diffusivité et la conductivité thermiques. La note établit la proposition
+inverse : ces trois paramètres sont structurellement corrélés dans la configuration considérée, le
+critère d'identifiabilité utilisé est fautif, et l'épaisseur qui en est déduite n'est pas exploitable.
+
+La thèse est de nature structurelle et non statistique. Elle ne porte ni sur le niveau de bruit, ni sur
+la qualité de l'ajustement, mais sur le rang de l'application paramètres $\rightarrow$ observable.
+
+\section{Rappels physiques}
+
+\subsection{Grandeurs thermiques et relations de dépendance}
+
+\[ a = \frac{\lambda}{\rho c} , \qquad b = \sqrt{\lambda\,\rho c} , \qquad
+\lambda = b\sqrt{a} , \qquad \rho c = \frac{b}{\sqrt{a}} . \]
+
+Deux grandeurs parmi $\lambda$, $\rho c$, $a$, $b$ suffisent à décrire complètement un milieu homogène ;
+les deux autres s'en déduisent. Cette redondance n'est pas en cause dans la controverse : le point en
+litige porte sur le triplet $(L,\lambda,a)$, qui comporte une grandeur géométrique supplémentaire.
+
+\subsection{Correspondance de notations}
+
+L'article commenté et la note emploient un jeu de symboles propre à la métrologie photothermique
+anglo-saxonne. La correspondance avec les conventions du projet est la suivante.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
+\toprule
+\textbf{Note} & \textbf{Projet} & \textbf{Grandeur} \\
+\midrule
+$L_{2}$ & $e$ & Épaisseur du revêtement \\
+$\alpha_{2}$ & $a$ & Diffusivité thermique du revêtement \\
+$\kappa_{2}$ & $\lambda$ & Conductivité thermique du revêtement \\
+$\rho_{2}C_{2}$ & $\rho c$ & Capacité thermique volumique du revêtement \\
+$P_{2}$ & $b$ & Effusivité thermique du revêtement \\
+$Q_{2}$ & $\xi_{1}$ & Racine du temps de transit thermique, $Q_{2}=L_{2}/\sqrt{\alpha_{2}}$ \\
+$b_{32}$ & --- & Rapport d'effusivité substrat sur revêtement, $b_{32}=P_{3}/P_{2}$ \\
+$p$ & $p$ & Variable de Laplace ; en régime harmonique, $p=2i\pi f$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Le paramètre $Q_{2}$ coïncide exactement avec la coordonnée transformée de Liouville évaluée à la face
+arrière du revêtement, puisque $\xi(z)=\int_{0}^{z}du/\sqrt{a(u)}$ se réduit à $e/\sqrt{a}$ en milieu
+homogène. Le jeu $\{Q_{2},P_{2}\}$ est donc le couple $\{\xi_{1},b\}$ des conventions du projet.
+
+\subsection{Régime harmonique et onde thermique}
+
+En milieu semi-infini homogène soumis à un flux modulé de densité $\wp$,
+\[ \theta_{0} = \frac{\wp}{b\sqrt{p}} , \qquad
+|\theta_{0}| = \frac{\wp}{b\sqrt{2\pi f}} , \qquad \arg(\theta_{0}) = -45^{\circ} , \qquad
+\mu = \sqrt{\frac{2a}{\omega}} . \]
+
+L'effusivité gouverne seule l'amplitude de la réponse de surface ; la diffusivité n'intervient que par
+la profondeur sondée $\mu$. Cette dissymétrie est à l'origine de toute la difficulté : l'épaisseur et la
+diffusivité ne se manifestent qu'au travers du même temps caractéristique.
+
+\subsection{Quadripôle de la couche}
+
+La note rappelle que, en l'absence de sources internes, la contribution de la couche est entièrement
+portée par le quadripôle
+\[ \mathbf{M} =
+\begin{pmatrix}
+\cosh\!\left(Q_{2}\sqrt{p}\right) & \dfrac{\sinh\!\left(Q_{2}\sqrt{p}\right)}{P_{2}\sqrt{p}} \\[10pt]
+P_{2}\sqrt{p}\,\sinh\!\left(Q_{2}\sqrt{p}\right) & \cosh\!\left(Q_{2}\sqrt{p}\right)
+\end{pmatrix} ,
+\qquad AD-BC = 1 . \]
+
+Cette expression est identique, terme à terme, à celle retenue dans les conventions du projet pour le
+mur homogène, à la section unitaire près : avec $k=\sqrt{p/a}$ et $\xi_{1}=e/\sqrt{a}$, les identités
+$ke=\sqrt{p}\,\xi_{1}$ et $\lambda k = b\sqrt{p}$ assurent la coïncidence.
+
+Seuls deux nombres caractérisent donc le revêtement dans le modèle direct : $Q_{2}$ et $P_{2}$. Les
+trois grandeurs physiques $L_{2}$, $\alpha_{2}$, $\kappa_{2}$ n'y entrent pas séparément.
+
+\subsection{Réponse de surface du système revêtement--substrat}
+
+Avec $Z=1/(P_{3}\sqrt{p})$ l'impédance du substrat semi-infini et un échange en face avant nul,
+\[ \theta_{0} = \wp\,\frac{AZ+B}{CZ+D}
+= \frac{\wp}{P_{2}\sqrt{p}}\cdot
+\frac{\cosh\!\left(Q_{2}\sqrt{p}\right)+b_{32}\sinh\!\left(Q_{2}\sqrt{p}\right)}
+{b_{32}\cosh\!\left(Q_{2}\sqrt{p}\right)+\sinh\!\left(Q_{2}\sqrt{p}\right)} , \]
+soit, sous forme d'ondes multiplement réfléchies,
+\[ \theta_{0} = \frac{\wp}{P_{2}\sqrt{p}}\cdot
+\frac{1+\Gamma\,e^{-2Q_{2}\sqrt{p}}}{1-\Gamma\,e^{-2Q_{2}\sqrt{p}}} ,
+\qquad \Gamma = \frac{1-b_{32}}{1+b_{32}} . \]
+
+Trois lectures immédiates s'en déduisent.
+
+\begin{itemize}
+\item Le revêtement n'intervient que par $P_{2}$, en facteur d'échelle, et par $Q_{2}$, dans
+l'exponentielle. Aucune combinaison de mesures ne peut donc séparer $L_{2}$, $\alpha_{2}$ et
+$\kappa_{2}$.
+\item Pour $b_{32}=1$, $\Gamma$ s'annule : l'interface devient indétectable et $Q_{2}$ cesse d'être
+identifiable, quelle que soit la méthode et quel que soit le régime, pulsé ou modulé.
+\item Lorsque l'amplitude est normalisée par une référence, le facteur $P_{2}$ disparaît et l'observable
+ne dépend plus que de $Q_{2}$ et $b_{32}$.
+\end{itemize}
+
+\section{Rappels mathématiques}
+
+\subsection{Vecteurs de sensibilité et matrice d'information}
+
+Soit $G(f_{i})$ l'observable, amplitude ou phase, mesurée aux fréquences $f_{i}$, et $\beta$ le vecteur
+des paramètres recherchés. La matrice de sensibilité $S$ a pour éléments $S_{ij}=\partial G(f_{i})/
+\partial\beta_{j}$. Dans l'approche des moindres carrés, la matrice d'information $S^{T}S$ doit être
+inversée, et la matrice de covariance des estimations est proportionnelle à $\left(S^{T}S\right)^{-1}$,
+dont la diagonale fournit les facteurs d'amplification de la variance du bruit.
+
+\subsection{Dépendance linéaire et rang déficient}
+
+Si les colonnes de $S$ satisfont une relation linéaire à coefficients non tous nuls, valable pour toutes
+les fréquences, alors $\operatorname{rang}(S) < \dim\beta$, donc $\det\left(S^{T}S\right)=0$ et
+l'inversion est impossible. La non-identifiabilité est alors dite \emph{inconditionnelle} : elle ne
+dépend ni du nombre de fréquences, ni de leur choix, ni du niveau de bruit.
+
+Une matrice $S^{T}S$ singulière peut néanmoins apparaître numériquement inversible lorsque les
+sensibilités sont obtenues par différences finies : les erreurs d'arrondi résiduelles écartent le
+déterminant de zéro. L'inversion aboutit alors formellement, sans que la corrélation ait disparu.
+
+\subsection{Non-identifiabilité et conditionnement}
+
+Deux notions doivent être distinguées.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+& \textbf{Non-identifiabilité structurelle} & \textbf{Mauvais conditionnement} \\
+\midrule
+Origine & Rang déficient de l'application directe & Valeurs propres faibles mais non nulles \\
+\addlinespace
+Dépendance au bruit & Aucune & Déterminante \\
+\addlinespace
+Dépendance à la bande & Aucune & Déterminante \\
+\addlinespace
+Effet & Solution non unique, incertitude infinie & Solution unique, incertitude grande \\
+\addlinespace
+Remède & Information supplémentaire de nature différente & Élargissement de bande, réduction du bruit,
+régularisation \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+La note se situe intégralement dans la première colonne. C'est la raison pour laquelle aucune
+optimisation du plan d'expérience ne peut y remédier.
+
+\subsection{Transposition entre domaines temporel et fréquentiel}
+
+La note énonce un principe de transposition : lorsqu'une combinaison de paramètres est non identifiable
+dans le domaine de Fourier pour tout jeu de fréquences, elle l'est également dans le domaine temporel
+pour tout jeu d'instants, et réciproquement. Ce principe découle du fait que la dépendance
+paramétrique s'exerce à travers le même modèle direct, la transformée intégrale n'étant qu'un changement
+de représentation. Une dégénérescence de rang indépendante de $p$ est donc invariante par inversion de
+la transformée.
+
+\subsection{Fonctions homogènes et identité d'Euler}
+
+Soit $G$ une fonction des paramètres, invariante sous l'action d'un groupe à un paramètre
+$\beta_{j}\mapsto\mu^{\,n_{j}}\beta_{j}$. La dérivation de $G$ par rapport à $\mu$ en $\mu=1$ fournit
+\[ \sum_{j} n_{j}\,\beta_{j}\,\frac{\partial G}{\partial\beta_{j}} = 0 . \]
+Cette identité est la forme d'Euler associée au groupe. Toute invariance d'échelle du modèle direct se
+traduit donc mécaniquement par une relation linéaire entre vecteurs de sensibilité, et réciproquement.
+Cette lecture, développée à la section 5.3, donne à l'argument de la note une origine géométrique.
+
+\section{Argument central}
+
+\subsection{Réduction à deux paramètres}
+
+Le modèle direct de l'article commenté peut être réécrit de sorte que les propriétés du revêtement
+n'interviennent que par
+\[ Q_{2} = \frac{L_{2}}{\sqrt{\alpha_{2}}} , \qquad P_{2} = \frac{\kappa_{2}}{\sqrt{\alpha_{2}}} . \]
+La note observe que les auteurs de l'article commenté mentionnent eux-mêmes cette réduction, mais n'en
+tirent pas la conséquence. Le formalisme des quadripôles la rend immédiate.
+
+Les deux combinaisons obtenues par produit et par quotient ne lèvent pas l'indétermination :
+\[ Q_{2}P_{2} = \rho_{2}C_{2}L_{2} , \qquad \frac{Q_{2}}{P_{2}} = \frac{L_{2}}{\kappa_{2}} , \]
+soit la capacité thermique surfacique et la résistance thermique du revêtement. L'épaisseur y demeure
+liée à une propriété thermophysique. Son extraction exige une mesure indépendante de $\alpha_{2}$,
+$\rho_{2}C_{2}$ ou $\kappa_{2}$ ; la connaissance de la seule effusivité est insuffisante.
+
+\subsection{Dépendance linéaire des vecteurs de sensibilité}
+
+Puisque $G=G(Q_{2},P_{2})$, la règle de dérivation composée donne, pour toute fréquence $f_{i}$ :
+\[
+\begin{aligned}
+\frac{\partial G(f_{i})}{\partial\alpha_{2}}
+&= -\frac{L_{2}}{2\alpha_{2}^{3/2}}\,\frac{\partial G(f_{i})}{\partial Q_{2}}
+   -\frac{\kappa_{2}}{2\alpha_{2}^{3/2}}\,\frac{\partial G(f_{i})}{\partial P_{2}} \\[2pt]
+\frac{\partial G(f_{i})}{\partial\kappa_{2}}
+&= \frac{1}{\alpha_{2}^{1/2}}\,\frac{\partial G(f_{i})}{\partial P_{2}} \\[2pt]
+\frac{\partial G(f_{i})}{\partial L_{2}}
+&= \frac{1}{\alpha_{2}^{1/2}}\,\frac{\partial G(f_{i})}{\partial Q_{2}}
+\end{aligned}
+\qquad ,\ \forall f_{i} .
+\]
+
+L'élimination de $\partial G/\partial Q_{2}$ et $\partial G/\partial P_{2}$ fournit la relation centrale
+de la note :
+\[ 2\alpha_{2}\,\frac{\partial G(f_{i})}{\partial\alpha_{2}}
++ \kappa_{2}\,\frac{\partial G(f_{i})}{\partial\kappa_{2}}
++ L_{2}\,\frac{\partial G(f_{i})}{\partial L_{2}} = 0 ,
+\qquad \forall f_{i} . \]
+
+Elle est valable pour toute fréquence et pour toute valeur des trois paramètres, malgré leur influence
+non linéaire sur la température. Les trois vecteurs de sensibilité sont donc linéairement dépendants :
+le triplet $\{L_{2},\alpha_{2},\kappa_{2}\}$ est pleinement corrélé et non identifiable.
+
+\subsection{Lecture par groupe d'invariance}
+
+La relation précédente est l'identité d'Euler associée au groupe à un paramètre
+\[ L_{2}\mapsto\mu\,L_{2} , \qquad \alpha_{2}\mapsto\mu^{2}\alpha_{2} ,
+\qquad \kappa_{2}\mapsto\mu\,\kappa_{2} , \qquad \mu>0 . \]
+
+Sous cette action, les grandeurs dérivées se transforment selon
+\[ \rho_{2}C_{2}\mapsto\mu^{-1}\rho_{2}C_{2} , \qquad P_{2}\mapsto P_{2} ,
+\qquad Q_{2}\mapsto Q_{2} , \]
+c'est-à-dire que l'effusivité et le temps de transit demeurent inchangés. Le quadripôle étant fonction
+de ces deux seules quantités, la réponse de surface est rigoureusement invariante le long de l'orbite,
+pour toute fréquence et en l'absence de bruit.
+
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Grandeur} & \textbf{Exposant} & \textbf{Statut} \\
+\midrule
+Épaisseur $L_{2}$ & $\mu^{1}$ & Variable le long de l'orbite \\
+Diffusivité $\alpha_{2}$ & $\mu^{2}$ & Variable le long de l'orbite \\
+Conductivité $\kappa_{2}$ & $\mu^{1}$ & Variable le long de l'orbite \\
+Capacité volumique $\rho_{2}C_{2}$ & $\mu^{-1}$ & Variable le long de l'orbite \\
+Effusivité $P_{2}$ & $\mu^{0}$ & Invariante \\
+Temps de transit $Q_{2}$ & $\mu^{0}$ & Invariante \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+L'ensemble des solutions admissibles est donc une courbe et non un point. L'incertitude portée par
+l'épaisseur n'est pas grande : elle est non bornée.
+
+\subsection{Le jeu $\{L_{2},\alpha_{2},P_{2}\}$}
+
+Le remplacement de la conductivité par l'effusivité ne résout rien. Les sensibilités à la diffusivité et
+à l'épaisseur restent linéairement dépendantes :
+\[ 2\alpha_{2}\,\frac{\partial G(f_{i})}{\partial\alpha_{2}}
++ L_{2}\,\frac{\partial G(f_{i})}{\partial L_{2}} = 0 , \qquad\forall f_{i} , \]
+ce qui annule à nouveau les déterminants correspondants. Le triplet $\{L_{2},\alpha_{2},P_{2}\}$ n'est
+pas davantage identifiable.
+
+\subsection{Conséquence sur les cartes d'identifiabilité}
+
+Les cartes de l'article commenté sont censées signaler par des marqueurs les configurations où la
+condition d'identifiabilité n'est pas remplie, c'est-à-dire où le déterminant de la matrice des
+coefficients de sensibilité s'annule. La note relève deux objections.
+
+\begin{itemize}
+\item Le déterminant considéré fait intervenir trois valeurs de fréquence, alors que chaque marqueur des
+cartes est rattaché à une fréquence unique.
+\item La relation de dépendance linéaire étant valable pour toute fréquence et pour toute valeur des
+paramètres, ces déterminants sont identiquement nuls. Une carte correcte serait uniformément couverte de
+marqueurs : la condition d'identifiabilité n'est jamais satisfaite.
+\end{itemize}
+
+Les valeurs non nulles obtenues par les auteurs sont attribuées aux erreurs d'arrondi accumulées dans
+l'approximation par différences finies des dérivées.
+
+\subsection{Conséquence sur la validation expérimentale}
+
+La validation expérimentale présentée dans l'article commenté repose sur l'identification simultanée de
+l'épaisseur totale et des propriétés thermophysiques, la première couche étant thermiquement mince et
+donc fusionnée avec le revêtement. La note tient cette estimation pour théoriquement impossible, quelle
+que soit la méthodologie employée, puisque la matrice d'information est singulière.
+
+Il en résulte que toute autre valeur d'épaisseur située sur l'orbite d'invariance, associée à la
+diffusivité correspondante, ajuste les données aussi bien. Les éléments diagonaux de la matrice de
+covariance n'ont pas été fournis ; la note observe qu'ils seraient très grands, et que l'affirmation
+d'unicité de la mesure est infondée.
+
+\section{Critique des critères d'identifiabilité employés}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+\textbf{Critère} & \textbf{Usage dans l'article commenté} & \textbf{Objection de la note} \\
+\midrule
+Annulation d'une courbe de sensibilité & Retenue comme signe de non-iden\-ti\-fia\-bi\-li\-té &
+L'identification n'utilise pas une fréquence unique mais l'ensemble de la bande \\
+\addlinespace
+Déterminant de la matrice de sensibilité & Fondé sur deux ou trois fréquences &
+Restriction arbitraire alors que les campagnes expérimentales en comportent 19 ou 59 \\
+\addlinespace
+Déterminant de $S^{T}S$ & Non employé & Critère recommandé ; sa maximisation minimise la région de
+confiance \\
+\addlinespace
+Nombre de conditionnement & Non employé & Signale les jeux de paramètres pathologiques \\
+\addlinespace
+Diagonale de $\left(S^{T}S\right)^{-1}$ & Non fournie & Donne directement les facteurs d'amplification
+de la variance \\
+\addlinespace
+Sensibilités réduites $\beta\,\partial G/\partial\beta$ & Non employées & Rendent les sensibilités
+homogènes et donc comparables entre elles \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Ce qui demeure identifiable}
+
+La conclusion opérationnelle de la note est la suivante. Dans la configuration examinée, deux quantités
+au plus sont accessibles :
+
+\begin{itemize}
+\item le rapport d'effusivité $b_{32}$ ;
+\item la racine du temps de transit $Q_{2}$, sous réserve que $b_{32}$ ne soit pas trop proche de
+l'unité, la bande de fréquences devant être optimisée pour minimiser les incertitudes.
+\end{itemize}
+
+L'épaisseur et la diffusivité ne s'obtiennent ensuite l'une de l'autre qu'au prix d'une mesure
+indépendante. Si l'effusivité du substrat est connue, $b_{32}$ fournit celle du revêtement, donc $P_{2}$ ;
+l'épaisseur se déduit alors de $Q_{2}$ moyennant la connaissance indépendante de la conductivité ou de
+la capacité thermique volumique. L'affirmation selon laquelle l'épaisseur serait identifiable
+séparément des propriétés thermophysiques est déclarée fausse.
+
+\section{Portée et limites}
+
+\subsection{Généralité du résultat}
+
+Le raisonnement ne dépend d'aucune particularité du revêtement. Il vaut pour toute couche d'épaisseur
+finie au sein d'un empilement multicouche, puisque la contribution de chaque couche passe par un
+quadripôle de même structure.
+
+\subsection{Voies de levée de l'indétermination}
+
+La note mentionne deux dispositifs qui apportent une information de nature différente et brisent
+l'invariance :
+
+\begin{itemize}
+\item une expérience photothermique bidimensionnelle mettant en jeu la diffusion latérale, et non
+seulement la diffusion transverse ;
+\item une expérience comportant des sources internes au sein de la couche étudiée.
+\end{itemize}
+
+Dans les deux cas, une longueur physique distincte de l'épaisseur entre dans le modèle direct, ce qui
+détruit l'invariance d'échelle décrite en 5.3. Ces configurations sortent du cadre de l'article
+commenté.
+
+\subsection{Ce que la note n'aborde pas}
+
+Le cadre constitutif reste celui de la loi de Fourier. Aucune analyse spectrale de l'opérateur associé
+n'est entreprise, et la question du conditionnement, distincte de celle de l'identifiabilité, n'est
+traitée que par renvoi à des critères existants.
+
+\section{Rattachement au présent travail}
+
+\subsection{Continuité formelle}
+
+Le couple $\{Q_{2},P_{2}\}$ est le couple $\{\xi_{1},b\}$ des conventions du projet : le quadripôle de
+l'équation (1) de la note est celui du mur homogène exprimé dans la coordonnée de Liouville. La
+vérification terme à terme déjà consignée dans le fichier de conventions s'applique sans modification.
+
+\subsection{Statut de l'argument}
+
+La note établit un résultat de non-unicité structurelle, indépendant du bruit et de la bande de mesure.
+Elle relève donc de la même catégorie que l'indétermination de la transformation inverse de Liouville,
+et se distingue du mauvais conditionnement de l'inversion en profondeur. La distinction entre les deux
+sources de non-détermination, déjà posée dans le présent travail, trouve ici un cas d'espèce
+élémentaire, où l'orbite d'invariance est explicite et de dimension un.
+
+\subsection{Point de vigilance}
+
+L'invariance décrite en 5.3 concerne le cas homogène. Le cas gradué comporte une invariance de même
+nature mais de dimension fonctionnelle, obtenue par reparamétrage de la coordonnée de profondeur. Ce
+prolongement fait l'objet de la fiche relative à la controverse de 2023.
+
+\section{Références}
+
+\begin{enumerate}[leftmargin=2.2em]
+\item J.-C. Krapez, F. Rigollet, \emph{Comment on ``Photothermal radiometry parametric identifiability
+theory for reliable and unique nondestructive coating thickness and thermophysical measurements''
+[J. Appl. Phys. 121(9), 095101 (2017)]}, arXiv:1708.07362v1, 2017.
+\item X. Guo, A. Mandelis, J. Tolev, K. Tang, \emph{Journal of Applied Physics} \textbf{121}, 095101
+(2017).
+\item D. Maillet, S. André, J.-C. Batsale, A. Degiovanni, C. Moyne, \emph{Thermal Quadrupoles: Solving
+the Heat Equation through Integral Transforms}, Wiley, 2000.
+\item J. Beck, K. Arnold, \emph{Parameter Estimation in Engineering and Science}, Wiley, 1977.
+\item H. S. Carslaw, J. C. Jaeger, \emph{Conduction of Heat in Solids}, Oxford University Press, 1959.
+\end{enumerate}
+\end{document}
