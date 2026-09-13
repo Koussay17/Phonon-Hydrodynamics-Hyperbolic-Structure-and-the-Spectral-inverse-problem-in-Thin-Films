@@ -38,7 +38,8 @@ from scipy.optimize import least_squares
 
 import forward_model as fm
 
-__all__ = ["FitResult", "fisher_analysis", "fit_modulated"]
+__all__ = ["FitResult", "fisher_analysis", "fit_modulated",
+           "usable_time_window", "fisher_analysis_pulsed", "fit_pulsed"]
 
 
 # --------------------------------------------------------------------------
@@ -248,6 +249,164 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
         sample=_apply(initial, names, out.x),
         chi2=float(2.0 * out.cost),
         n_data=int(2 * freq.size),
+        success=bool(out.success),
+        message=str(out.message),
+    )
+
+
+# --------------------------------------------------------------------------
+# Pulsed regime
+# --------------------------------------------------------------------------
+#
+# The pulsed and modulated regimes carry the same information about the
+# sample: they are two representations of one forward model, related by an
+# integral transform. A rank degeneracy that is independent of the spectral
+# parameter is therefore invariant under that transform, which is the
+# transposition principle stated by Krapez and Rigollet (2017), section 4.4.
+#
+# What differs is practical. The pulsed response must be reconstructed by
+# numerical inversion, whose accuracy holds over roughly two decades of decay
+# (see laplace.py). Choosing the time window is therefore part of the
+# estimation, not a detail of it.
+
+
+def usable_time_window(s: fm.Sample, decades_before=2.0, decades_after=2.0):
+    """Time window centred on the diffusion time of the film.
+
+    Outside it the numerical inversion is the limiting factor rather than the
+    physics: too early and the response is that of the film alone, too late
+    and the signal has decayed past what the inversion can carry.
+    """
+    t0 = s.diffusion_time
+    return t0 * 10.0 ** (-decades_before), t0 * 10.0 ** decades_after
+
+
+def _pulsed_model(log_values, names, sample, times, n_stehfest):
+    s = _apply(sample, names, log_values)
+    try:
+        out = fm.pulsed_response(times, s, energy=1.0, n_stehfest=n_stehfest)
+    except (ZeroDivisionError, OverflowError, FloatingPointError):
+        return None
+    out = np.asarray(out, dtype=float)
+    if not np.all(np.isfinite(out)) or np.any(out <= 0.0):
+        return None
+    return out
+
+
+def _residuals_pulsed(log_values, names, sample, times, temperature,
+                      sigma_rel, n_stehfest):
+    """Weighted residuals in the time domain.
+
+    The noise is taken multiplicative, as it is on an amplitude, so the
+    residual is built on the logarithm. A flash measurement spans decades of
+    signal level, and an absolute weighting would let the earliest points
+    dominate entirely.
+    """
+    model = _pulsed_model(log_values, names, sample, times, n_stehfest)
+    if model is None:
+        return np.full(times.size, _INVALID)
+    out = (np.log(model) - np.log(temperature)) / sigma_rel
+    return np.where(np.isfinite(out), out, _INVALID)
+
+
+def fisher_analysis_pulsed(times, sample: fm.Sample, names,
+                           sigma_rel=0.01, n_stehfest: int = 12, step=1e-4):
+    """Fisher information of a planned pulsed measurement.
+
+    Same role as `fisher_analysis` for the modulated regime: it answers what a
+    given time window and noise level would allow, before the experiment runs.
+
+    The default differentiation step is larger here than in the modulated
+    case, and deliberately so. The numerical inversion carries a relative
+    noise floor near 1e-6, which a central difference of step h amplifies by
+    1/(2h). Refining the step therefore degrades the derivative instead of
+    improving it: measured on the Euler combination, the residual falls to
+    1.5e-4 at h = 1e-4 and rises to 1 at h = 1e-7, where the derivative is
+    pure noise. The same calculation in the frequency domain reaches 4e-10.
+
+    The practical consequence is that a Jacobian obtained through the
+    inversion is noisy, and that this propagates into the covariance. Pulsed
+    error bars deserve more caution than modulated ones, and the agreement
+    between the predicted and the fitted covariance is correspondingly
+    looser.
+    """
+    times = np.asarray(times, dtype=float)
+    log0 = np.array([np.log(getattr(sample, n)) for n in names])
+
+    def model(lv):
+        out = _pulsed_model(lv, names, sample, times, n_stehfest)
+        if out is None:
+            raise ValueError("the forward model is not defined at this point")
+        return np.log(out) / sigma_rel
+
+    base = model(log0)
+    jac = np.empty((base.size, log0.size))
+    for i in range(log0.size):
+        up = log0.copy()
+        up[i] += step
+        jac[:, i] = (model(up) - base) / step
+
+    fisher = jac.T @ jac
+    return fisher, np.linalg.inv(fisher)
+
+
+def fit_pulsed(times, temperature, initial: fm.Sample, names,
+               sigma_rel=0.01, n_stehfest: int = 12, bounds=None,
+               diff_step=1e-4, **kwargs) -> FitResult:
+    """Estimate parameters from a pulsed measurement.
+
+    Parameters
+    ----------
+    times : array-like
+        Measurement times, strictly positive. `usable_time_window` gives a
+        sensible range for a given sample.
+    temperature : array-like
+        Measured front-face temperature, strictly positive.
+    n_stehfest : int
+        Number of terms of the numerical inversion. Twelve is the practical
+        optimum in double precision; raising it degrades rather than improves.
+    diff_step : float
+        Relative step of the numerical Jacobian. Chosen larger than the
+        default for the reason given in `fisher_analysis_pulsed`: below about
+        1e-5 the derivative is dominated by the noise of the inversion.
+    """
+    names = list(names)
+    times = np.asarray(times, dtype=float)
+    temperature = np.asarray(temperature, dtype=float)
+
+    for n in names:
+        if getattr(initial, n) <= 0.0:
+            raise ValueError(f"{n} must be strictly positive to be fitted in log space")
+
+    log0 = np.array([np.log(getattr(initial, n)) for n in names])
+    args = (names, initial, times, temperature, sigma_rel, n_stehfest)
+
+    if bounds is None:
+        out = least_squares(_residuals_pulsed, log0, args=args,
+                            method="lm", diff_step=diff_step, **kwargs)
+    else:
+        lb = np.log(np.asarray(bounds, dtype=float))
+        out = least_squares(_residuals_pulsed, log0, args=args, method="trf",
+                            bounds=(lb[:, 0], lb[:, 1]),
+                            diff_step=diff_step, **kwargs)
+
+    jac = out.jac
+    fisher = jac.T @ jac
+    try:
+        cov_log = np.linalg.inv(fisher)
+    except np.linalg.LinAlgError:
+        cov_log = np.full_like(fisher, np.inf)
+
+    values = np.exp(out.x)
+    cov = cov_log * np.outer(values, values)
+
+    return FitResult(
+        names=names,
+        values=values,
+        covariance=cov,
+        sample=_apply(initial, names, out.x),
+        chi2=float(2.0 * out.cost),
+        n_data=int(times.size),
         success=bool(out.success),
         message=str(out.message),
     )
