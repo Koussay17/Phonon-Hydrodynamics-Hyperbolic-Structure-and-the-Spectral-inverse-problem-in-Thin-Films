@@ -1,0 +1,278 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries Le gaz de phonons}\\[4pt]
+{\normalsize Vibrations du réseau, quantification, fonction de distribution}\\[2pt]
+{\small Notes de partie I --- 12 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+
+Ces notes établissent les objets sur lesquels repose la description cinétique du transport
+thermique dans un cristal. Elles ne supposent aucune connaissance préalable de la physique du
+solide. La chaîne conduisant de l'équation de transport à l'équation de Guyer--Krumhansl fait
+l'objet des notes suivantes.
+
+\section{Vibrations du réseau}
+
+\subsection{La chaîne monoatomique}
+
+Le modèle le plus simple d'un cristal est une chaîne d'atomes identiques de masse $M$, espacés de
+$a$, reliés par des ressorts de raideur $C$. En notant $u_n$ le déplacement du $n$-ième atome par
+rapport à sa position d'équilibre, la loi de Newton appliquée aux deux ressorts voisins donne
+\[ M\,\ddot{u}_n = C\,(u_{n+1} - u_n) + C\,(u_{n-1} - u_n) = C\,(u_{n+1} + u_{n-1} - 2u_n). \]
+
+Le système est linéaire et invariant par translation d'un pas de réseau. Ses solutions propres sont
+donc des ondes planes,
+\[ u_n(t) = A\,e^{i(kna - \omega t)} , \]
+où $k$ est le nombre d'onde et $\omega$ la pulsation.
+
+\subsection{Relation de dispersion}
+
+En reportant l'onde plane dans l'équation du mouvement et en simplifiant le facteur commun, il
+vient $-M\omega^2 = C\,(e^{ika} + e^{-ika} - 2) = 2C\,(\cos ka - 1)$, soit
+\[ \boxed{\;\omega(k) = 2\sqrt{\frac{C}{M}}\;\left|\sin\frac{ka}{2}\right|\;} \]
+
+Cette relation entre $\omega$ et $k$ s'appelle la \emph{relation de dispersion}. Elle contient
+toute la dynamique du réseau, et elle diffère fondamentalement du cas d'un milieu continu, où
+$\omega = vk$ serait linéaire pour tout $k$.
+
+\subsection{Limite des grandes longueurs d'onde}
+
+Pour $ka \ll 1$, le sinus se confond avec son argument et
+\[ \omega \simeq a\sqrt{\frac{C}{M}}\;k = v\,k , \qquad v = a\sqrt{\frac{C}{M}} . \]
+
+Le réseau se comporte alors comme un milieu continu, et $v$ est la vitesse du son. La structure
+discrète du cristal ne se manifeste que lorsque la longueur d'onde devient comparable au pas du
+réseau.
+
+\subsection{Zone de Brillouin}
+
+La relation de dispersion est périodique en $k$, de période $2\pi/a$. Deux valeurs de $k$ différant
+de $2\pi/a$ décrivent exactement le même mouvement des atomes : entre deux atomes voisins,
+l'information sur la phase est indiscernable.
+
+Il suffit donc de considérer l'intervalle
+\[ -\frac{\pi}{a} \;\le\; k \;\le\; \frac{\pi}{a} , \]
+appelé \emph{première zone de Brillouin}. Toute valeur extérieure s'y ramène par soustraction d'un
+multiple de $2\pi/a$.
+
+Cette périodicité n'est pas une commodité de notation. Elle est à l'origine des processus umklapp,
+qui gouvernent la résistance thermique intrinsèque d'un cristal.
+
+\subsection{Vitesse de groupe}
+
+L'énergie n'est pas transportée à la vitesse de phase $\omega/k$ mais à la vitesse de groupe
+\[ v_g = \frac{d\omega}{dk} = a\sqrt{\frac{C}{M}}\;\cos\frac{ka}{2} . \]
+
+Elle vaut $v$ au centre de la zone et s'annule au bord, en $k = \pi/a$. Les modes de bord de zone
+ne transportent donc pas d'énergie : ils correspondent à une onde stationnaire où deux atomes
+voisins vibrent en opposition de phase.
+
+C'est la vitesse de groupe, non la vitesse de phase, qui intervient dans toute expression de flux.
+
+\subsection{Chaîne diatomique, branches acoustique et optique}
+
+Lorsque la cellule élémentaire contient deux atomes de masses différentes, la résolution donne deux
+solutions pour chaque $k$.
+
+La branche \emph{acoustique} part de $\omega = 0$ en $k = 0$ : les deux atomes de la cellule se
+déplacent en phase, et le mode se réduit à une translation d'ensemble à grande longueur d'onde.
+C'est elle qui porte le son, et l'essentiel du transport thermique.
+
+La branche \emph{optique} conserve une pulsation finie en $k = 0$ : les deux atomes vibrent en
+opposition de phase, le centre de masse restant fixe. Sa vitesse de groupe est faible, et sa
+contribution au transport est modeste. Son nom vient de ce que, dans un cristal ionique, un tel
+mouvement crée un dipôle oscillant susceptible de coupler au champ électromagnétique.
+
+\subsection{Cas tridimensionnel}
+
+Dans un cristal à trois dimensions comportant $p$ atomes par cellule élémentaire, chaque valeur du
+vecteur d'onde $\mathbf{k}$ porte $3p$ modes : trois branches acoustiques --- une longitudinale,
+deux transverses --- et $3p - 3$ branches optiques.
+
+Le nitrure d'aluminium cristallise dans la structure wurtzite, dont la cellule élémentaire contient
+quatre atomes. Il possède donc douze branches : trois acoustiques et neuf optiques.
+
+Un mode est dès lors repéré par le couple $(\mathbf{k}, s)$, où $s$ désigne la branche. Toute somme
+sur les modes porte sur les deux indices. Dans la suite, l'indice de branche est laissé implicite.
+
+\section{Quantification}
+
+\subsection{Le phonon}
+
+Chaque mode de vibration est un oscillateur harmonique. La mécanique quantique impose que son
+énergie ne prenne que des valeurs discrètes,
+\[ E_n = \left(n + \tfrac{1}{2}\right)\hbar\omega , \qquad n = 0, 1, 2, \ldots \]
+
+Le quantum d'énergie $\hbar\omega$ porte le nom de \emph{phonon}. L'entier $n$ est le nombre de
+phonons présents dans le mode.
+
+Un phonon n'est pas une particule au sens d'un constituant de la matière : c'est une excitation
+collective du réseau, une quasi-particule. Le terme de gaz de phonons désigne l'ensemble de ces
+excitations, traitées comme des porteurs d'énergie susceptibles de se propager et de se heurter.
+
+\subsection{Quasi-moment}
+
+À un phonon de vecteur d'onde $\mathbf{k}$ on associe la quantité $\hbar\mathbf{k}$, appelée
+\emph{quasi-moment} ou moment cristallin.
+
+Elle se comporte comme une quantité de mouvement dans les lois de conservation, mais elle n'en est
+pas une : elle n'est définie qu'à un vecteur du réseau réciproque près, conséquence directe de la
+périodicité établie plus haut. Cette réserve est ce qui rend possible les processus umklapp.
+
+\subsection{Statistique de Bose--Einstein}
+
+Les phonons sont des bosons : un nombre arbitraire d'entre eux peut occuper le même mode. Leur
+nombre n'étant pas conservé --- un phonon peut être créé ou détruit par interaction avec le réseau
+--- le potentiel chimique est nul. Le nombre moyen d'occupation à l'équilibre thermique est
+\[ \boxed{\;n^0(\omega, T) = \frac{1}{\exp\!\left(\dfrac{\hbar\omega}{k_B T}\right) - 1}\;} \]
+
+\subsection{Limites de température}
+
+Pour $\hbar\omega \ll k_B T$, le développement de l'exponentielle donne
+\[ n^0 \simeq \frac{k_B T}{\hbar\omega} , \qquad\text{donc}\qquad \hbar\omega\, n^0 \simeq k_B T . \]
+Chaque mode porte alors une énergie $k_B T$ indépendante de sa pulsation : c'est l'équipartition
+classique, et la capacité thermique sature.
+
+Pour $\hbar\omega \gg k_B T$, l'occupation décroît exponentiellement, $n^0 \simeq e^{-\hbar\omega/k_BT}$.
+Les modes de haute pulsation sont gelés et cessent de contribuer.
+
+\subsection{Température de Debye}
+
+La frontière entre ces deux comportements est fixée par la température de Debye,
+\[ \Theta_D = \frac{\hbar\omega_{\max}}{k_B} , \]
+où $\omega_{\max}$ est la pulsation la plus élevée du spectre. Au-dessus de $\Theta_D$ tous les
+modes sont excités classiquement ; en dessous, une part croissante du spectre est gelée.
+
+Pour le nitrure d'aluminium, $\Theta_D$ est de l'ordre de mille kelvins. À température ambiante, le
+cristal est donc nettement en dessous de sa température de Debye, et une fraction appréciable des
+modes de haute pulsation contribue peu.
+
+\section{La fonction de distribution}
+
+\subsection{Définition}
+
+L'état du gaz de phonons est décrit par la fonction
+\[ f(\mathbf{r}, \mathbf{k}, t) , \]
+qui donne le nombre moyen de phonons du mode $\mathbf{k}$ présents au voisinage du point
+$\mathbf{r}$ à l'instant $t$.
+
+À l'équilibre thermique uniforme, elle se réduit à la distribution de Bose--Einstein,
+$f = n^0(\omega_\mathbf{k}, T)$, indépendante de $\mathbf{r}$. Tout écart à cette forme signale un
+déséquilibre, et c'est de cet écart que naît le transport.
+
+\subsection{Validité de la description}
+
+Parler simultanément de la position et du vecteur d'onde d'un phonon suppose de construire des
+paquets d'ondes localisés, ce qui n'est légitime que si la longueur d'onde reste petite devant
+l'échelle sur laquelle les grandeurs macroscopiques varient.
+
+Cette condition est la limite de validité de toute la description cinétique. Elle cesse d'être
+remplie lorsque l'épaisseur d'un film devient comparable au libre parcours moyen des phonons,
+régime dit balistique, où le transport ne se décrit plus par une équation de diffusion.
+
+\subsection{Distribution déplacée}
+
+Une seconde forme d'équilibre joue un rôle central dans la suite. Si le gaz de phonons possède une
+vitesse d'ensemble $\mathbf{u}$, la distribution qui annule les collisions conservant le
+quasi-moment est
+\[ f^{\,\mathrm{d}} = \frac{1}{\exp\!\left(\dfrac{\hbar\omega - \hbar\mathbf{k}\cdot\mathbf{u}}{k_B T}\right) - 1} . \]
+
+Elle décrit un gaz en équilibre interne mais globalement en mouvement, exactement comme une
+maxwellienne déplacée décrit un fluide en écoulement. Sa présence est ce qui donne au gaz de
+phonons un caractère hydrodynamique.
+
+\section{Les moments de la distribution}
+
+Les grandeurs mesurables ne sont pas la fonction de distribution elle-même, mais ses intégrales sur
+l'espace des vecteurs d'onde, appelées \emph{moments}.
+
+\subsection{Densité d'énergie}
+
+\[ u(\mathbf{r}, t) = \int \frac{d^3k}{(2\pi)^3}\; \hbar\omega_\mathbf{k}\; f(\mathbf{r}, \mathbf{k}, t) \]
+
+Chaque mode apporte son énergie $\hbar\omega$ multipliée par le nombre de phonons présents. C'est le
+moment d'ordre zéro.
+
+\subsection{Flux de chaleur}
+
+\[ \mathbf{q}(\mathbf{r}, t) = \int \frac{d^3k}{(2\pi)^3}\; \hbar\omega_\mathbf{k}\;
+\mathbf{v}_g(\mathbf{k})\; f(\mathbf{r}, \mathbf{k}, t) \]
+
+Chaque phonon transporte son énergie à sa vitesse de groupe. C'est le moment d'ordre un.
+
+À l'équilibre, $f$ ne dépend que de $\omega$, qui est une fonction paire de $\mathbf{k}$, tandis que
+$\mathbf{v}_g$ est impaire. L'intégrale s'annule : \textbf{un gaz de phonons à l'équilibre ne
+transporte aucune chaleur}. Le flux mesure exactement l'écart à l'équilibre.
+
+\subsection{Quasi-moment et capacité}
+
+Deux autres moments interviennent. La densité de quasi-moment,
+\[ \mathbf{P} = \int \frac{d^3k}{(2\pi)^3}\; \hbar\mathbf{k}\; f , \]
+est la grandeur que les processus normaux conservent.
+
+Pour une dispersion linéaire isotrope $\omega = vk$, la vitesse de groupe vaut
+$\mathbf{v}_g = v\,\hat{\mathbf{k}}$ et l'on obtient
+\[ \mathbf{q} = v^2\,\mathbf{P} . \]
+
+\textbf{Flux de chaleur et quasi-moment sont alors proportionnels.} Cette identité est ce qui rend
+la suite tractable : une collision qui conserve le quasi-moment conserve du même coup le flux de
+chaleur, et ne contribue donc pas à la résistance thermique.
+
+La capacité thermique volumique s'obtient enfin par dérivation de la densité d'énergie,
+\[ C = \frac{\partial u}{\partial T} . \]
+
+\subsection{Ce qui manque}
+
+Les moments sont les grandeurs mesurables, mais aucune équation ne les gouverne directement. Les
+obtenir exige une équation d'évolution pour $f$, puis un moyen de fermer le système qu'elle engendre.
+C'est l'objet des notes suivantes.
+
+\section{Ordres de grandeur}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXl@{}}
+\toprule
+\textbf{Grandeur} & \textbf{Expression ou valeur} & \textbf{Ordre} \\
+\midrule
+Pas de réseau & distance entre atomes voisins & $3\times10^{-10}$ m \\
+\addlinespace
+Vitesse du son, AlN & branche longitudinale & $\sim 1{,}1\times10^{4}$ m/s \\
+& branches transverses & $\sim 6\times10^{3}$ m/s \\
+\addlinespace
+Pulsation maximale & $\omega_{\max} = k_B\Theta_D/\hbar$ & $\sim 10^{14}$ rad/s \\
+\addlinespace
+Température de Debye, AlN & & $\sim 10^{3}$ K \\
+\addlinespace
+Temps de relaxation à 300 K & entre collisions de phonons & $10^{-12}$ à $10^{-11}$ s \\
+\addlinespace
+Libre parcours moyen & $\Lambda = v\,\tau$ & $10^{-8}$ à $10^{-7}$ m \\
+\addlinespace
+Capacité volumique, AlN & $\rho c_p$ & $2{,}4\times10^{6}$ J\,m$^{-3}$K$^{-1}$ \\
+\addlinespace
+Conductivité, AlN massif & & $150$ à $250$ W\,m$^{-1}$K$^{-1}$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Le rapprochement du libre parcours moyen, de l'ordre de la dizaine de nanomètres, et de l'épaisseur
+d'un film mince, de l'ordre de quelques centaines de nanomètres, situe le problème : les deux
+échelles ne sont séparées que d'un facteur dix à cent. La description purement diffusive n'y est
+donc pas acquise.
+\end{document}

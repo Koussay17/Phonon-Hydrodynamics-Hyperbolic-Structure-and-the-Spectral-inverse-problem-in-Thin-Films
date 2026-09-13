@@ -1,0 +1,328 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries De Boltzmann à Guyer--Krumhansl}\\[4pt]
+{\normalsize Collisions, approximation de Callaway, hiérarchie de moments, fermeture}\\[2pt]
+{\small Notes de partie I --- 12 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+
+Ces notes établissent la chaîne conduisant de l'équation de transport des phonons à une équation
+macroscopique du flux de chaleur. Les objets employés --- fonction de distribution, moments,
+quasi-moment, distribution déplacée --- sont ceux des notes précédentes.
+
+\section{L'équation de transport}
+
+\subsection{Forme générale}
+
+Le nombre de phonons d'un mode donné, au voisinage d'un point, varie pour deux raisons : les
+phonons se déplacent, et ils entrent en collision. Le bilan s'écrit
+\[ \boxed{\;\frac{\partial f}{\partial t} + \mathbf{v}_g \cdot \nabla_\mathbf{r} f
+= \left(\frac{\partial f}{\partial t}\right)_{\!\mathrm{coll}}\;} \]
+
+Le terme de gauche décrit le transport libre : un phonon de vitesse de groupe $\mathbf{v}_g$ quitte
+une région et en rejoint une autre. Le terme de droite décrit les collisions.
+
+Les phonons ne portant pas de charge, aucune force extérieure n'agit sur eux dans un cristal
+uniforme ; le terme en $\nabla_\mathbf{k} f$ qui figure dans l'équation de Boltzmann d'un gaz
+classique est donc absent.
+
+\subsection{Pourquoi cette équation n'est pas utilisable telle quelle}
+
+Elle est exacte, et pourtant inexploitable, pour trois raisons.
+
+L'inconnue $f(\mathbf{r}, \mathbf{k}, t)$ dépend de sept variables --- trois de position, trois de
+vecteur d'onde, une de temps --- et porte de surcroît un indice de branche.
+
+Le terme de collision est une intégrale sur tous les couples de modes susceptibles d'interagir, et
+il est quadratique en $f$ pour les processus à trois phonons.
+
+Les coefficients de couplage entre modes exigent la connaissance des constantes de force
+anharmoniques du cristal.
+
+Toute la suite consiste donc à remplacer cette équation par un petit nombre d'équations portant sur
+des moments, au prix d'hypothèses explicites.
+
+\section{Les collisions}
+
+\subsection{Processus normaux}
+
+Un processus à trois phonons combine deux phonons en un troisième, ou l'inverse. La conservation de
+l'énergie impose $\omega_1 + \omega_2 = \omega_3$. Pour le quasi-moment, deux cas se présentent.
+
+Lorsque
+\[ \mathbf{k}_1 + \mathbf{k}_2 = \mathbf{k}_3 , \]
+le quasi-moment total est conservé. Le processus est dit \emph{normal}.
+
+Un tel processus redistribue l'énergie entre modes, mais laisse inchangée la somme
+$\sum \hbar\mathbf{k}$. Comme le flux de chaleur est proportionnel à cette somme pour une dispersion
+linéaire, \textbf{un processus normal ne dégrade pas le flux}. Il ne crée donc aucune résistance
+thermique.
+
+Son rôle n'est pas nul pour autant : il établit l'équilibre interne du gaz de phonons, et pousse la
+distribution vers la forme déplacée.
+
+\subsection{Processus umklapp}
+
+Le quasi-moment n'étant défini qu'à un vecteur du réseau réciproque près, la conservation peut
+s'écrire
+\[ \mathbf{k}_1 + \mathbf{k}_2 = \mathbf{k}_3 + \mathbf{G} , \qquad \mathbf{G} \neq \mathbf{0} , \]
+où $\mathbf{G}$ est un vecteur du réseau réciproque. Le phonon résultant est ramené dans la première
+zone de Brillouin, et sa direction peut être opposée à celle des phonons incidents.
+
+Ces processus portent le nom allemand d'\emph{umklapp}, retournement. Ils ne conservent pas le
+quasi-moment, donc ils dégradent le flux : \textbf{ils sont la source de la résistance thermique
+intrinsèque d'un cristal parfait}.
+
+Ils exigent des phonons de grand vecteur d'onde, donc de haute énergie, et sont par conséquent gelés
+à basse température. C'est la raison pour laquelle la conductivité thermique d'un cristal pur croît
+fortement lorsque la température diminue, avant d'être limitée par d'autres mécanismes.
+
+\subsection{Autres mécanismes résistifs}
+
+La diffusion par les frontières de l'échantillon, celle par les impuretés et celle par les isotopes
+ne conservent pas davantage le quasi-moment. Toutes sont résistives et se regroupent, avec les
+processus umklapp, sous un temps de relaxation unique noté $\tau_R$.
+
+Dans un film mince, la diffusion aux frontières prend une importance particulière : dès que
+l'épaisseur devient comparable au libre parcours moyen, elle domine et la conductivité apparente
+chute.
+
+\subsection{Critère de Guyer}
+
+Le comportement du gaz de phonons est fixé par la hiérarchie des fréquences de collision. En notant
+$\tau_B$ le temps associé à la diffusion aux frontières, la fenêtre dite hydrodynamique est définie
+par
+\[ \frac{1}{\tau_N} \;\gg\; \frac{1}{\tau_B} \;\gg\; \frac{1}{\tau_R} . \]
+
+Les processus normaux doivent être très fréquents, pour que le gaz reste en équilibre interne, et
+les processus résistifs très rares, pour que le flux ne soit pas dégradé. Entre les deux, la
+géométrie fixe l'échelle.
+
+Hors de cette fenêtre, deux autres régimes apparaissent : le régime diffusif lorsque les processus
+résistifs dominent, et le régime balistique lorsque les frontières dominent tout le reste.
+
+\section{L'approximation de Callaway}
+
+\subsection{Principe}
+
+Le terme de collision exact est intraitable. L'approximation de Callaway le remplace par une
+relaxation vers deux états d'équilibre distincts, chacun avec son temps propre :
+\[ \boxed{\;\left(\frac{\partial f}{\partial t}\right)_{\!\mathrm{coll}}
+= -\,\frac{f - f^{\,\mathrm{d}}}{\tau_N} \;-\; \frac{f - f^{\,0}}{\tau_R}\;} \]
+
+Le premier terme décrit les processus normaux. Ils ramènent la distribution vers la forme déplacée
+$f^{\,\mathrm{d}}$, qui porte une vitesse d'ensemble $\mathbf{u}$ non nulle : le gaz s'équilibre
+sans cesser de s'écouler.
+
+Le second décrit les processus résistifs. Ils ramènent la distribution vers l'équilibre immobile
+$f^{\,0}$, de vitesse d'ensemble nulle : le gaz est arrêté.
+
+\subsection{Ce que l'approximation suppose}
+
+Elle suppose que le retour à l'équilibre est exponentiel, avec un temps caractéristique unique par
+famille de processus. Cette hypothèse efface la dépendance en fréquence des temps de collision, qui
+est en réalité marquée : les phonons de haute énergie subissent bien plus de processus umklapp que
+ceux de basse énergie.
+
+Les temps $\tau_N$ et $\tau_R$ qui apparaissent ensuite sont donc des moyennes pondérées sur le
+spectre, non des grandeurs microscopiques élémentaires.
+
+\subsection{Ce qu'elle préserve}
+
+Elle respecte les deux lois de conservation qui importent. L'énergie est conservée par les deux
+familles de processus, ce qui impose que les deux termes de collision s'annulent une fois
+multipliés par $\hbar\omega$ et intégrés. Le quasi-moment est conservé par les seuls processus
+normaux, ce qui impose que le premier terme s'annule une fois multiplié par $\hbar\mathbf{k}$ et
+intégré.
+
+Ces deux propriétés sont exactement ce qui produit la structure des équations de moments.
+
+\section{La hiérarchie de moments}
+
+\subsection{Moment d'ordre zéro}
+
+On multiplie l'équation de transport par $\hbar\omega_\mathbf{k}$ et on intègre sur les vecteurs
+d'onde. Le premier terme donne $\partial u/\partial t$, le second $\nabla \cdot \mathbf{q}$, et le
+terme de collision s'annule par conservation de l'énergie. Il reste
+\[ \boxed{\;\frac{\partial u}{\partial t} + \nabla \cdot \mathbf{q} = 0\;} \]
+
+C'est le bilan d'énergie, obtenu sans aucune hypothèse supplémentaire. En écrivant
+$\partial u/\partial t = C\,\partial T/\partial t$, on retrouve l'équation employée dans tout le
+travail de modélisation.
+
+Cette équation est exacte mais incomplète : elle relie deux inconnues, $u$ et $\mathbf{q}$, et n'en
+détermine aucune.
+
+\subsection{Moment d'ordre un}
+
+On multiplie cette fois par $\hbar\omega_\mathbf{k}\,\mathbf{v}_g$ et on intègre. Le premier terme
+donne $\partial \mathbf{q}/\partial t$. Le second fait apparaître un moment d'ordre supérieur,
+\[ \mathbf{Q} = \int \frac{d^3k}{(2\pi)^3}\; \hbar\omega\; \mathbf{v}_g \otimes \mathbf{v}_g\; f , \]
+tenseur d'ordre deux qui décrit le transport du flux lui-même.
+
+Pour le terme de collision, la proportionnalité $\mathbf{q} = v^2 \mathbf{P}$ établie dans les notes
+précédentes est décisive : les processus normaux conservant $\mathbf{P}$, ils conservent
+$\mathbf{q}$ et ne contribuent pas. Seuls les processus résistifs subsistent, et
+\[ \boxed{\;\frac{\partial \mathbf{q}}{\partial t} + \nabla \cdot \mathbf{Q}
+= -\,\frac{\mathbf{q}}{\tau_R}\;} \]
+
+\subsection{Le problème de fermeture}
+
+Le schéma se répète indéfiniment. L'équation du moment d'ordre zéro appelle le moment d'ordre un ;
+celle du moment d'ordre un appelle le moment d'ordre deux ; et ainsi de suite.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Ordre & Équation obtenue & Inconnue introduite \\
+\midrule
+0 & bilan d'énergie & le flux $\mathbf{q}$ \\
+1 & évolution du flux & le tenseur $\mathbf{Q}$ \\
+2 & évolution de $\mathbf{Q}$ & le moment d'ordre trois \\
+$\vdots$ & $\vdots$ & $\vdots$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Aucun niveau ne se referme de lui-même. Obtenir un système fini exige d'exprimer un moment en
+fonction des précédents, par une hypothèse qui ne découle pas de l'équation de transport. C'est la
+\emph{fermeture}, et c'est là que réside tout le contenu physique de l'approximation.
+
+\section{Fermeture et équation de Guyer--Krumhansl}
+
+\subsection{Développement}
+
+La fermeture retenue consiste à développer la distribution autour de la forme déplacée, au premier
+ordre en gradients et dans la limite où les processus normaux sont fréquents devant les processus
+résistifs. Le tenseur $\mathbf{Q}$ se décompose alors en une partie isotrope, qui redonne le terme
+de Fourier, et une partie déviatorique proportionnelle aux gradients du flux.
+
+\subsection{L'équation}
+
+\[ \boxed{\;\tau_R\,\frac{\partial \mathbf{q}}{\partial t} + \mathbf{q}
+= -\,\lambda\,\nabla T \;+\; \ell^2\left(\nabla^2 \mathbf{q}
++ 2\,\nabla\,(\nabla \cdot \mathbf{q})\right)\;} \]
+
+Trois familles de termes y coexistent.
+
+Le terme en $\tau_R\,\partial_t \mathbf{q}$ exprime que le flux ne s'établit pas instantanément : il
+lui faut un temps $\tau_R$ pour répondre à un gradient. C'est ce terme qui rend l'équation
+hyperbolique et donne une vitesse de propagation finie.
+
+Le terme en $-\lambda \nabla T$ est la loi de Fourier.
+
+Les termes en $\ell^2$ sont \emph{non locaux} : le flux en un point dépend de sa valeur au
+voisinage. Ils sont formellement analogues aux termes visqueux de l'équation de Navier--Stokes, et
+c'est à eux que le gaz de phonons doit son caractère hydrodynamique.
+
+\subsection{Les coefficients}
+
+\[ \lambda = \frac{1}{3}\,C\,v^2\,\tau_R , \qquad\qquad
+\ell^2 = \frac{1}{5}\,v^2\,\tau_N\,\tau_R . \]
+
+La conductivité est proportionnelle au temps résistif : plus les processus umklapp sont rares, plus
+le cristal conduit. La longueur non locale, elle, fait intervenir les \emph{deux} temps.
+
+\section{Les limites}
+
+\subsection{Limite de Cattaneo}
+
+Lorsque la longueur non locale devient négligeable devant l'échelle de variation du flux, les termes
+en $\ell^2$ disparaissent et il reste
+\[ \tau_R\,\frac{\partial \mathbf{q}}{\partial t} + \mathbf{q} = -\,\lambda\,\nabla T . \]
+
+C'est l'équation de Cattaneo, à un seul temps de relaxation. Elle conserve le caractère hyperbolique
+et la vitesse finie, mais perd le caractère hydrodynamique.
+
+\subsection{Limite de Fourier}
+
+Lorsque le temps de relaxation devient en outre négligeable devant l'échelle de temps de
+l'expérience, le terme instationnaire disparaît et il reste
+\[ \mathbf{q} = -\,\lambda\,\nabla T . \]
+
+C'est la loi de Fourier, dont la combinaison avec le bilan d'énergie donne l'équation de la chaleur
+parabolique, de vitesse de propagation infinie.
+
+\subsection{Récapitulation}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXl@{}}
+\toprule
+\textbf{Modèle} & \textbf{Condition} & \textbf{Paramètres} \\
+\midrule
+Guyer--Krumhansl & fenêtre hydrodynamique de Guyer & $\lambda$, $\tau_R$, $\ell$ \\
+\addlinespace
+Cattaneo & $\ell$ négligeable devant l'échelle spatiale & $\lambda$, $\tau_R$ \\
+\addlinespace
+Fourier & $\tau_R$ négligeable devant l'échelle temporelle & $\lambda$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Les deux paramètres et leurs dimensions}
+
+\subsection{Un temps et une longueur}
+
+L'équation de Guyer--Krumhansl introduit deux grandeurs au-delà de la conductivité.
+
+Le temps résistif $\tau_R$, en secondes, est le temps de relaxation qui figure dans la loi de
+Cattaneo. Il est de l'ordre de la picoseconde à quelques dizaines de picosecondes à température
+ambiante.
+
+La longueur non locale $\ell = v\sqrt{\tau_N \tau_R / 5}$, en mètres, n'a pas d'équivalent dans le
+modèle de Cattaneo. Elle est de l'ordre du libre parcours moyen, soit quelques dizaines de
+nanomètres.
+
+\subsection{Conséquence pour l'invariance d'échelle}
+
+Cette différence de dimension a une portée qui dépasse la partie I.
+
+L'invariance d'échelle établie sous la loi de Fourier, et dont la note de partie IV montre qu'elle
+survit à la loi de Cattaneo, repose sur le fait que $\tau_R$ est un temps : un changement d'échelle
+en profondeur le laisse inchangé, donc le paramètre spectral effectif reste invariant.
+
+\textbf{La longueur non locale, elle, est une longueur.} Sous un changement d'échelle en profondeur,
+une longueur doit se transformer. Or $\ell$ est fixée par une vitesse et deux temps, tous trois
+insensibles à un tel changement.
+
+La question de savoir si l'invariance se brise pour cette raison, et par conséquent si le terme non
+local restitue une identifiabilité que le seul temps de relaxation ne restitue pas, n'est pas
+tranchée par ces notes. Elle constitue le prolongement naturel de la partie IV.
+
+\section{Références}
+
+{\small
+\begin{enumerate}[leftmargin=1.6em,itemsep=0pt]
+\item J. Callaway, \emph{Model for lattice thermal conductivity at low temperatures}, Phys. Rev.
+\textbf{113}, 1046 (1959).
+\item R. A. Guyer, J. A. Krumhansl, \emph{Solution of the linearized phonon Boltzmann equation},
+Phys. Rev. \textbf{148}, 766 (1966).
+\item R. A. Guyer, J. A. Krumhansl, \emph{Thermal conductivity, second sound, and phonon
+hydrodynamic phenomena in nonmetallic crystals}, Phys. Rev. \textbf{148}, 778 (1966).
+\item N. W. Ashcroft, N. D. Mermin, \emph{Solid State Physics}, Holt (1976).
+\item C. Kittel, \emph{Introduction to Solid State Physics}, Wiley.
+\item G. P. Srivastava, \emph{The Physics of Phonons}, Adam Hilger (1990).
+\end{enumerate}}
+
+\vspace{4pt}
+\noindent\small
+Références à vérifier à la source avant citation. Notes associées : \texttt{08\_Le\_gaz\_de\_phonons},
+\texttt{07\_Note\_partie\_IV}.
+\end{document}
