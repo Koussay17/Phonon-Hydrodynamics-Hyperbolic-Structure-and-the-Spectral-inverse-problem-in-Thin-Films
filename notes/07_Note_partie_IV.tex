@@ -18,9 +18,9 @@
 \begin{document}
 
 \begin{center}
-{\Large\bfseries Identifiabilité sous une loi de conduction\\à temps de relaxation fini}\\[5pt]
+{\Large\bfseries Identifiabilité sous les lois de conduction\\non-Fourier}\\[5pt]
 {\normalsize Note de partie IV --- point de contrôle}\\[2pt]
-{\small 12 septembre 2026}
+{\small Version 2 --- 13 septembre 2026}
 \end{center}
 
 \vspace{4pt}
@@ -35,29 +35,47 @@ méthode d'optimisation. Le cas des milieux gradués présente la même invarian
 fonctionnelle au lieu de un.
 
 L'ensemble de ces travaux se place sous la loi de Fourier. La présente note examine ce que devient
-cette dégénérescence lorsque la loi de conduction possède un temps de relaxation fini, et ce que le
-paramètre supplémentaire ainsi introduit apporte ou non.
+cette dégénérescence sous les deux lois non-Fourier usuelles --- Cattaneo, puis Guyer--Krumhansl ---
+et ce que les paramètres supplémentaires ainsi introduits apportent ou non.
 
 \section{Cadre}
 
-La loi de Cattaneo s'écrit $\tau\,\partial_t\varphi + \varphi = -\lambda\,\partial_z T$. Combinée au
-bilan d'énergie et transformée en temps, elle donne
-\[ \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] = p\,(1+\tau p)\;\rho c(z)\;\theta . \]
+\subsection{Cattaneo}
 
-C'est l'équation de Fourier, dans laquelle le paramètre spectral a été remplacé :
-\[ p \;\longrightarrow\; P = p\,(1+\tau p) . \]
+La loi s'écrit $\tau_R\,\partial_t\varphi + \varphi = -\lambda\,\partial_z T$, d'où une conductivité
+effective $\lambda_{\mathrm{eff}} = \lambda/(1+\tau_R p)$ après transformation temporelle.
 
-Aucun autre élément de la structure n'est modifié. La transformation de Liouville, la coordonnée
-$\xi = \int dz/\sqrt{a}$, l'effusivité $b = \sqrt{\lambda\rho c}$ et le potentiel $V = s''/s$
-conservent leurs définitions. Le quadripôle d'une couche homogène est celui de Fourier évalué en $P$.
+\subsection{Guyer--Krumhansl}
 
-En régime modulé, $P = i\omega - \tau\omega^2$ : une partie réelle apparaît, croissant comme le carré
-de la fréquence. Le groupement sans dimension qui gouverne l'écart à Fourier est le produit
-$\omega\tau$.
+\[ \tau_R\,\frac{\partial \mathbf{q}}{\partial t} + \mathbf{q}
+= -\lambda\,\nabla T + \ell^2\left(\nabla^2\mathbf{q} + 2\nabla(\nabla\cdot\mathbf{q})\right) \]
 
-Cette substitution est obtenue indépendamment par Camacho de la Rosa \emph{et al.} sous la forme
-$\sigma^2_{cv} = \sigma^2_f\,(1+i\omega\tau)$, par une voie différente --- fonction de Green
-tridimensionnelle et transformée de Hankel --- ce qui en constitue une vérification croisée.
+En une dimension les deux termes non locaux se combinent en $3\,\partial_z^2 q$. L'élimination du
+flux par le bilan d'énergie donne alors une conductivité effective dépendant de la fréquence,
+\[ \lambda_{\mathrm{eff}}(p) = \frac{\lambda + 3\ell^2 p\,\rho c}{1 + \tau_R p} . \]
+
+\subsection{Les deux combinaisons}
+
+Dans les deux cas, la réponse de face avant ne dépend de la couche que par deux quantités :
+\[ \sigma e = \xi_1 \sqrt{\frac{p\,(1+\tau_R p)}{1+\tau_\ell p}} ,
+\qquad
+\lambda_{\mathrm{eff}}\,\sigma = b \sqrt{\frac{p\,(1+\tau_\ell p)}{1+\tau_R p}} , \]
+avec $\xi_1 = e/\sqrt{a}$, $b = \sqrt{\lambda\rho c}$, et
+\[ \tau_\ell = \frac{3\ell^2}{a} , \]
+temps de diffusion sur la longueur non locale. Cattaneo correspond à $\tau_\ell = 0$, Fourier à
+$\tau_R = \tau_\ell = 0$.
+
+\textbf{Les deux temps échangent leurs rôles} entre les deux combinaisons. Cette symétrie est à
+l'origine du résultat de la section~6.
+
+\subsection{Une substitution à écarter}
+
+Remplacer $p$ par $p(1+\tau_R p)$ dans l'ensemble du quadripôle de Fourier donne le bon argument des
+fonctions hyperboliques mais un coefficient de flux erroné d'un facteur $(1+\tau_R p)$. La phase
+d'un milieu semi-infini part alors de $-45^\circ$ vers $-90^\circ$, tandis que la forme fermée de
+Camacho de la Rosa \emph{et al.} donne $-45^\circ$ vers $0^\circ$.
+
+La forme retenue ici reproduit cette dernière à la précision machine.
 
 \section{Premier résultat : la dégénérescence n'est pas levée}
 
@@ -69,25 +87,35 @@ quadripôle également. La forme infinitésimale en est l'identité d'Euler
 + \lambda\,\frac{\partial G}{\partial \lambda} = 0
 \qquad\text{pour toute fréquence.} \]
 
-\textbf{Le temps de relaxation est un temps, non une longueur.} Un changement d'échelle en profondeur
-le laisse inchangé. Le paramètre effectif $P$ est donc invariant sous le groupe, et avec lui le
-quadripôle : l'invariance survit intacte.
+\textbf{Aucune longueur n'apparaît séparément dans la réponse.} Les quatre quantités dont elle
+dépend sont $\xi_1$, $b$, et deux temps. Le temps de relaxation en est un ; la longueur non locale
+n'entre que par $\tau_\ell = 3\ell^2/a$, qui en est un également. Or un changement d'échelle en
+profondeur laisse les temps inchangés.
 
-La vérification numérique confirme la dérivation. Le résidu relatif de la combinaison d'Euler,
-évalué sur quarante fréquences couvrant six décades, demeure au niveau de l'erreur de troncature des
-différences finies quelle que soit la valeur du temps de relaxation, jusqu'à des valeurs de
-$\omega\tau$ de plusieurs centaines. Le même calcul conduit dans le domaine temporel donne le même
-verdict, conformément au principe de transposition énoncé par Krapez et Rigollet.
+L'invariance survit donc aux deux lois. Sous Guyer--Krumhansl la relation d'Euler doit être étendue
+d'un terme, la longueur non locale se transformant comme une longueur :
+\[ e\,\partial_e G + 2a\,\partial_a G + \lambda\,\partial_\lambda G + \ell\,\partial_\ell G = 0 . \]
 
-\textbf{Conclusion.} Une loi de conduction à temps de relaxation fini ne restitue pas
+Cette transformation est cohérente avec la définition microscopique : $v^2 = 3a/\tau_R$ impose
+$v \to \mu v$, donc $\ell = v\sqrt{\tau_N\tau_R/5} \to \mu\ell$.
+
+La vérification numérique confirme la dérivation. Le résidu relatif de la combinaison d'Euler
+demeure au niveau de l'erreur de troncature des différences finies, quelles que soient les valeurs
+des deux temps. Le même calcul conduit dans le domaine temporel donne le même verdict, conformément
+au principe de transposition énoncé par Krapez et Rigollet.
+
+L'omission du terme en $\ell$ porte le résidu de $10^{-5}$ à $0{,}3$, ce qui établit que la longueur
+non locale participe bien à l'invariance au lieu de la briser.
+
+\textbf{Conclusion.} Ni un temps de relaxation fini, ni un terme non local ne restituent
 l'identifiabilité perdue sous Fourier. La levée de l'indétermination continue d'exiger une
 information imposant une échelle de longueur indépendante : mesure directe d'une propriété,
 épaisseur mesurée par ailleurs, diffusion latérale, ou sources internes.
 
-\section{Deuxième résultat : un paramètre authentiquement indépendant}
+\section{Deuxième résultat : des paramètres authentiquement indépendants}
 
-Le temps de relaxation n'appartient pas à l'orbite d'invariance. Il constitue donc un paramètre
-supplémentaire dont l'estimation est une question distincte de celle des deux autres.
+Les deux temps n'appartiennent pas à l'orbite d'invariance. Ils constituent donc des paramètres
+supplémentaires dont l'estimation est une question distincte de celle des deux autres.
 
 L'analyse de l'information de Fisher, conduite à épaisseur connue sur le triplet formé de la
 conductivité, de la capacité volumique et du temps de relaxation, montre que l'introduction du
@@ -124,6 +152,51 @@ La coïncidence n'est pas fortuite. La partie réelle du paramètre spectral, $\
 précisément ce que la mesure doit percevoir pour distinguer la loi de Cattaneo de celle de Fourier ;
 elle devient comparable à la partie imaginaire quand $\omega\tau$ atteint l'unité.
 
+\section{Quatrième résultat : une cécité intrinsèque au matériau}
+
+Les deux temps échangeant leurs rôles entre les deux combinaisons, leur égalité annule les racines :
+\[ \tau_R = \tau_\ell
+\qquad\Longrightarrow\qquad
+\sigma e = \xi_1\sqrt{p} , \quad \lambda_{\mathrm{eff}}\sigma = b\sqrt{p} . \]
+
+\textbf{La réponse est alors exactement celle d'un milieu de Fourier}, quelle que soit la valeur
+commune des deux temps. La vérification numérique donne un écart de $3\times10^{-16}$, soit la
+précision machine, sur quatre décades de temps de relaxation et huit de fréquence.
+
+Un tel matériau est thermiquement indiscernable d'un matériau de Fourier. Aucune mesure thermique ne
+peut le distinguer, et aucune amélioration du dispositif n'y change rien.
+
+\subsection{Écriture microscopique}
+
+Avec $\ell^2 = v^2\tau_N\tau_R/5$ et $a = v^2\tau_R/3$, il vient $\tau_\ell = \tfrac{9}{5}\tau_N$, de
+sorte que la condition s'écrit
+\[ \boxed{\;\tau_R = 1{,}8\;\tau_N\;} \]
+
+C'est un rapport entre les temps de collision résistifs et normaux. Ces deux temps suivant des lois
+de température différentes, un cristal peut traverser cette condition en refroidissant : il
+paraîtrait de Fourier à une température précise, et non-Fourier de part et d'autre. Cette
+conséquence est falsifiable.
+
+\subsection{Critère de séparabilité}
+
+\begin{center}
+\includegraphics[width=0.66\textwidth]{04_guyer_krumhansl_blindness.png}
+\end{center}
+
+Au bruit de référence, un pour cent en amplitude et un dixième de degré en phase, les deux temps
+doivent différer d'au moins $16\,\%$ pour une incertitude inférieure à $10\,\%$, et d'au moins
+$25\,\%$ pour une incertitude inférieure à $1\,\%$. Loin de la diagonale l'incertitude est plate,
+autour de $0{,}2$ à $0{,}4\,\%$ : il s'agit d'une crête étroite dans un plateau, non d'une
+dégradation progressive.
+
+\subsection{Comparaison avec la cécité d'interface}
+
+Une seconde cécité a été établie par ailleurs : lorsque les effusivités du film et du substrat
+coïncident, l'interface devient invisible et le temps de transit n'est plus mesurable.
+
+Les deux conditions diffèrent par leur nature. Celle de l'interface dépend du choix de substrat,
+donc elle se contourne. Celle-ci est intrinsèque au matériau et ne se contourne pas.
+
 \section{Conséquence instrumentale}
 
 Le seuil impose une condition sur la bande de mesure :
@@ -159,10 +232,15 @@ thermoréflectance en domaine fréquentiel.
 
 \section{Limites}
 
-La loi constitutive employée est celle de Cattaneo, à temps de relaxation unique et sans terme non
-local. Le modèle de Guyer--Krumhansl, qui comporte une longueur non locale supplémentaire, n'est pas
-traité ; la question de savoir si ce terme, qui est une longueur, brise l'invariance d'échelle reste
-ouverte et relève des parties~I et~II.
+Les lois employées comportent un temps de relaxation unique par famille de processus, conformément à
+l'approximation de Callaway. La dépendance en fréquence des temps de collision, qui est marquée dans
+un cristal réel, est donc effacée : $\tau_R$ et $\tau_\ell$ sont des moyennes pondérées sur le
+spectre.
+
+La configuration traitée est celle d'une couche homogène sur substrat semi-infini. Le cas gradué
+sous loi non-Fourier n'est pas examiné : la transformation de Liouville devrait y être reprise avec
+une conductivité effective dépendant de la fréquence, et rien n'assure que la coordonnée transformée
+reste indépendante de la fréquence. Le code refuse explicitement cette configuration.
 
 La constante de la loi d'échelle dépend du niveau de bruit, du nombre de points et de leur
 répartition. Seuls l'exposant et la position du seuil en sont indépendants.
@@ -172,8 +250,10 @@ cohérence interne du calcul, non l'adéquation du modèle à une expérience r�
 surface, ni la conductance d'interface, ni la phase de référence du montage n'y figurent, alors que
 chacune produit un décalage de phase de la même nature que la signature recherchée.
 
-Enfin, la configuration traitée est celle d'une couche homogène sur substrat semi-infini. Le cas
-gradué n'a pas été examiné sous la loi de Cattaneo.
+Cette réserve n'est pas formelle. Une erreur de coefficient de flux a survécu à cent treize tests de
+cohérence interne --- déterminant unimodulaire, limite homogène, composition, découpage --- parce
+qu'elle était cohérente avec elle-même. Seule la confrontation à la forme fermée d'un article publié
+l'a révélée. Toute loi implémentée exige désormais au moins une référence de validation extérieure.
 
 \section{Références}
 
