@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 12 septembre 2026.
+Dernière mise à jour : 13 septembre 2026.
 
 ---
 
@@ -109,26 +109,61 @@ d²ψ/dξ² − (V(ξ) + p) ψ = 0        V = s″/s        s = b^(±1/2)
 
 Exposant positif pour la formulation en température, négatif pour la formulation en flux.
 
-## 7. Loi constitutive non-Fourier
+## 7. Lois constitutives non-Fourier
 
-**Substitution retenue, loi de Cattaneo à un seul temps de relaxation :**
+### 7.1 Cattaneo
 
 ```
-p  →  P = p (1 + τ p)
+τ_R ∂φ/∂t + φ = −λ ∂T/∂z        d'où        λ_eff = λ / (1 + τ_R p)
 ```
 
-En régime modulé, `P = iω − τω²` : une partie réelle apparaît, croissant comme le carré de la
-fréquence. Le groupement sans dimension est `ωτ`.
+### 7.2 Guyer–Krumhansl
 
-**Rien d'autre ne change.** La coordonnée `ξ`, l'effusivité `b` et le potentiel `V` gardent leurs
-définitions de Fourier. Le quadripôle est celui de Fourier évalué en `P`.
+En une dimension, les deux termes non locaux se combinent en `3 ∂²q/∂z²`, et l'élimination du flux
+par le bilan d'énergie donne une **conductivité effective dépendant de la fréquence** :
 
-Vérification croisée : Camacho de la Rosa et al. (2025) obtiennent la même substitution par une voie
-indépendante — fonction de Green tridimensionnelle et transformée de Hankel — sous la forme
-`σ²_cv = σ²_f (1 + iωτ)`.
+```
+λ_eff(p) = ( λ + 3 ℓ² p ρc ) / ( 1 + τ_R p )
+```
 
-Chaque couche est évaluée à son propre `P` : un temps de relaxation dans le film n'affecte pas le
-substrat et réciproquement.
+### 7.3 Les deux seules combinaisons qui entrent dans la réponse
+
+```
+σ·e      = ξ₁ · √[ p (1 + τ_R p) / (1 + τ_ℓ p) ]
+λ_eff·σ  = b  · √[ p (1 + τ_ℓ p) / (1 + τ_R p) ]
+```
+
+avec
+
+```
+τ_ℓ = 3 ℓ² / a          le temps de diffusion sur la longueur non locale
+```
+
+Les deux temps **échangent leurs rôles** entre les deux combinaisons. Cattaneo correspond à
+`τ_ℓ = 0`, Fourier à `τ_R = τ_ℓ = 0`.
+
+### 7.4 Erreur à ne pas reproduire
+
+**Substituer `p → p(1+τ_R p)` dans l'ensemble du quadripôle de Fourier est faux.**
+
+Cette substitution donne le bon argument des fonctions hyperboliques, mais un coefficient de flux
+erroné d'un facteur `(1 + τ_R p)`. La conséquence est visible : la phase d'un milieu semi-infini
+part alors de −45° vers −90°, alors que la forme fermée de Camacho de la Rosa et al. (2025) donne
+−45° vers 0°, en passant par −22,5° à `ωτ = 1`.
+
+Cette erreur a survécu à cent treize tests de cohérence interne — déterminant unimodulaire, limite
+homogène, composition, découpage — parce qu'elle était cohérente avec elle-même. Seule la
+confrontation à une forme fermée extérieure l'a révélée.
+
+Elle n'a pas affecté les conclusions d'identifiabilité, le facteur fautif ne dépendant ni de `λ` ni
+de `ρc`, donc étant invariant sous le groupe. Elle affectait en revanche toute comparaison à une
+mesure réelle.
+
+### 7.5 Lien microscopique
+
+```
+ℓ² = v² τ_N τ_R / 5          a = v² τ_R / 3          d'où          τ_ℓ = 9 τ_N / 5
+```
 
 ## 8. Paramétrage naturel
 
@@ -168,16 +203,28 @@ tout reparamétrage croissant de la profondeur préservant `b(ξ)` laisse la ré
 directe d'une propriété, épaisseur mesurée indépendamment, diffusion latérale bidimensionnelle,
 sources internes.
 
-### 9.2 Sous Cattaneo
+### 9.2 Sous Cattaneo et sous Guyer–Krumhansl
 
-**L'invariance survit intacte.** `τ` est un temps, non une longueur : un changement d'échelle en
-profondeur ne l'affecte pas, donc `P` est invariant, donc le quadripôle l'est aussi.
+**L'invariance survit intacte dans les deux cas.**
 
-Vérifié numériquement : le résidu d'Euler reste au niveau de l'erreur de troncature quel que soit `τ`,
-jusqu'à `ωτ` de plusieurs centaines. Voir `tests/test_cattaneo.py`.
+La raison est structurelle : la réponse ne dépend du film que par `ξ₁`, `b`, `τ_R` et `τ_ℓ`.
+**Aucune longueur n'y figure séparément.** La longueur non locale n'entre que par `ℓ²/a`, qui est un
+temps, et les temps sont invariants par changement d'échelle en profondeur.
 
-`τ` entre en revanche comme un paramètre authentiquement indépendant : son estimation ne dégrade ni
-celle de `b` ni celle de `ξ₁`.
+La relation d'Euler doit alors être étendue :
+
+```
+e ∂G/∂e + 2a ∂G/∂a + λ ∂G/∂λ + ℓ ∂G/∂ℓ = 0
+```
+
+Le terme en `ℓ` est indispensable : résidu de 10⁻⁵ avec, de 0,3 sans. La longueur non locale se
+transforme donc bien comme une longueur, `ℓ → μℓ`, ce qui est cohérent avec `v → μv` puisque
+`v² = 3a/τ_R`.
+
+Voir `tests/test_cattaneo.py` et `tests/test_guyer_krumhansl.py`.
+
+Les deux temps entrent en revanche comme des paramètres authentiquement indépendants : leur
+estimation ne dégrade ni celle de `b` ni celle de `ξ₁`.
 
 ### 9.3 Sensibilité et identifiabilité
 
@@ -254,7 +301,31 @@ Le même seuil apparaît par trois voies indépendantes : l'argument de l'énerg
 spectrale vaut −45° en `ωτ = 1` ; la phase mesurable y franchit sa médiane à −22,5° ; et le plafond
 instrumental impose `ω_max·τ ≥ 1`. Figure `figures/02_omega_tau_threshold.png`.
 
-### 10.4 Débordement numérique
+### 10.4 Diagonale aveugle des deux temps
+
+```
+τ_R = τ_ℓ        soit, en grandeurs microscopiques,        τ_R = 1,8 τ_N
+```
+
+Quand les deux temps coïncident, les racines des deux combinaisons se simplifient et la réponse est
+**exactement celle d'un milieu de Fourier**, quelle que soit leur valeur commune. Vérifié à 10⁻¹³
+sur quatre décades de temps et huit décades de fréquence.
+
+Un tel matériau est thermiquement indiscernable d'un matériau de Fourier. Aucune mesure thermique ne
+peut le distinguer.
+
+**Critère de séparabilité**, au bruit de référence : les deux temps doivent différer d'au moins
+**16 %** pour une incertitude inférieure à 10 %, et d'au moins **25 %** pour une incertitude
+inférieure à 1 %.
+
+Cette cécité diffère de celle de la section 10.2 par sa nature. Celle de l'interface dépend du choix
+de substrat, donc elle se contourne. Celle-ci est **intrinsèque au matériau** : aucun changement de
+dispositif ne la lève. Elle dépend en revanche de la température, `τ_N` et `τ_R` suivant des lois
+différentes — un cristal peut donc traverser la condition en refroidissant.
+
+Figure `figures/04_guyer_krumhansl_blindness.png`.
+
+### 10.5 Débordement numérique
 
 ```
 |√P · ξ| < 700
@@ -300,6 +371,25 @@ phase de référence du montage, anisotropie.
 Une barre d'erreur n'est crédible que si elle a été confrontée à la dispersion observée sur de
 nombreuses réalisations de bruit. Voir `test_fisher_uncertainties_match_monte_carlo`.
 
+### Validation externe
+
+**Toute loi physique implémentée exige au moins une comparaison à une solution de référence prise
+hors du code.**
+
+Les tests de cohérence interne — déterminant unimodulaire, limite homogène, composition, découpage —
+ne détectent pas une erreur cohérente avec elle-même. L'épisode consigné en section 7.4 en donne un
+cas : une erreur de coefficient de flux a survécu à cent treize tests, et seule la confrontation à
+la forme fermée d'un article publié l'a révélée.
+
+Références de validation en usage :
+
+| Loi | Référence externe |
+|---|---|
+| Fourier, mur homogène | Maillet et al. §1.3.4, et solution analytique `℘/(b√p)` |
+| Fourier, impulsionnel | `Q/(b√(πt))` |
+| Cattaneo, semi-infini | Camacho de la Rosa et al. (2025), phase `−45° + ½·arctan(ωτ)` |
+| Guyer–Krumhansl | réduction exacte à Cattaneo et à Fourier |
+
 ## 13. Tests unitaires associés
 
 | Test | Critère |
@@ -312,5 +402,10 @@ nombreuses réalisations de bruit. Voir `test_fisher_uncertainties_match_monte_c
 | Interface aveugle | effusivités égales, la réponse est celle du semi-infini pour toute épaisseur |
 | Inversion de Laplace | écart borné à la solution analytique sur la plage utile |
 | Incertitudes | accord entre prédiction de Fisher et dispersion Monte-Carlo |
-| Relation d'Euler | résidu nul sous Fourier, et sous Cattaneo |
-| Limite Fourier | `τ = 0` redonne le modèle de Fourier à la précision machine |
+| Relation d'Euler | résidu nul sous Fourier, sous Cattaneo et sous Guyer–Krumhansl |
+| Terme en `ℓ` requis | omettre la dérivée en `ℓ` brise l'identité d'un facteur mille |
+| Limite Fourier | `τ_R = τ_ℓ = 0` redonne le modèle de Fourier à la précision machine |
+| Limite Cattaneo | `τ_ℓ = 0` redonne la forme de Cattaneo |
+| Diagonale aveugle | `τ_R = τ_ℓ` redonne la réponse de Fourier exactement |
+| Validation externe | phase comparée à la forme fermée de Camacho de la Rosa et al. |
+| Refus explicite | couche graduée avec relaxation : `NotImplementedError`, pas un résultat faux |
