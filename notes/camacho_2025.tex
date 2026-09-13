@@ -1,0 +1,1021 @@
+% notes/camacho_2025.tex
+% Fiche de lecture — Camacho de la Rosa, Esquivel-Sirvent & Becerril (2025)
+% Dépôt : Phonon Hydrodynamics, Hyperbolic Structure and the Spectral Inverse
+%         Problem in Thin Films
+% Compilation : pdflatex camacho_2025.tex  (deux passes)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[a4paper,top=23mm,bottom=23mm,left=24mm,right=24mm]{geometry}
+
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{textcomp}
+\usepackage{hyperref}
+
+% ---------------------------------------------------------------- couleurs
+\definecolor{filet}{gray}{0.78}
+\definecolor{codebg}{HTML}{F3F4F6}
+\definecolor{mut}{gray}{0.45}
+\definecolor{lien}{HTML}{1F4E79}
+\colorlet{shadecolor}{codebg}
+
+\hypersetup{
+  colorlinks=true, linkcolor=lien, urlcolor=lien, citecolor=lien,
+  pdftitle={Camacho de la Rosa, Esquivel-Sirvent \& Becerril (2025) --- fiche de lecture},
+  pdfsubject={Relaxation times of non-Fourier materials using frequency-domain thermoreflectance},
+  pdfkeywords={Cattaneo-Vernotte, FDTR, temps de relaxation, sensibilite, identifiabilite}
+}
+
+% ---------------------------------------------------------------- mise en page
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\renewcommand{\arraystretch}{1.25}
+
+\titleformat{\section}
+  {\normalfont\sffamily\large\bfseries}{\thesection.}{0.55em}{}
+  [\vspace{1.5pt}{\color{filet}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{1.6em}{0.7em}
+
+\titleformat{\subsection}
+  {\normalfont\sffamily\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.4em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\sffamily\color{mut}Fiche de lecture \quad Camacho de la Rosa 2025 \quad passe 2}
+\fancyfoot[R]{\footnotesize\sffamily\color{mut}\thepage}
+\fancypagestyle{plain}{\fancyhf{}%
+  \fancyfoot[L]{\footnotesize\sffamily\color{mut}Fiche de lecture \quad Camacho de la Rosa 2025 \quad passe 2}%
+  \fancyfoot[R]{\footnotesize\sffamily\color{mut}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+
+% ---------------------------------------------------------------- macros
+\newcommand{\sep}{\par\medskip\noindent{\color{filet}\rule{\linewidth}{0.6pt}}\par\medskip}
+\newenvironment{encadre}{\par\smallskip\begin{shaded}\vspace{-6pt}}{\vspace{-6pt}\end{shaded}\par\smallskip}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\begin{document}
+
+% ================================================================ titre
+{\sffamily\bfseries\LARGE Camacho de la Rosa, Esquivel-Sirvent \& Becerril (2025)\\[3pt]
+\large fiche de lecture\par}
+\vspace{4pt}
+{\color{filet}\rule{\linewidth}{1pt}}
+\vspace{6pt}
+
+\textbf{Référence.} A. Camacho de la Rosa, R. Esquivel-Sirvent, D. Becerril,
+\textit{Relaxation times of non-Fourier materials using frequency-domain thermoreflectance},
+Journal of Applied Physics \textbf{137}, 155103 (2025). DOI 10.1063/5.0257299.
+Soumis le 9 janvier 2025, accepté le 27 mars 2025, publié le 15 avril 2025. Licence CC BY 4.0.
+
+\textbf{Affiliations.} Centro de Investigación en Ciencias, Universidad Autónoma del Estado de
+Morelos, Cuernavaca (Camacho de la Rosa)~; Instituto de Física, UNAM, Mexico
+(Esquivel-Sirvent)~; Istituto di Struttura della Materia, CNR, Rome (Becerril, auteur
+correspondant).
+
+\textbf{Statut de lecture.} Passe 2, texte intégral. Matériel supplémentaire non consulté
+(voir §~11). Fiche établie le 12 septembre 2026.
+
+Article cité dans la section \textit{Prior work} du README. C'est la seule référence du corpus
+qui traite explicitement de la mesure du temps de relaxation par thermoréflectance, et la seule
+qui formule la sensibilité de la phase à ce paramètre. Sa lecture détermine la frontière entre
+ce qui est déjà publié et ce qui reste ouvert pour la partie IV.
+
+\sep
+
+% ================================================================ 1
+\section{Passe 1 --- les quatre réponses du protocole}
+
+\textbf{Type d'article.} Article théorique de modélisation directe. Aucune donnée
+expérimentale, aucun ajustement, aucune inversion. Le modèle de Cattaneo--Vernotte est inséré
+dans le modèle direct standard d'une expérience FDTR, et la réponse en phase est calculée pour
+trois configurations. Les auteurs l'énoncent eux-mêmes : «~in this work, we theoretically
+investigate the viability of using frequency-domain thermoreflectance to determine non-Fourier
+heat behavior~».
+
+\textbf{Résultat en une phrase.} Pour un matériau de Cattaneo--Vernotte, la phase de la réponse
+thermoréflectante acquiert une dépendance en fréquence qui disparaît sous Fourier, cette
+dépendance devient sensible au voisinage de $\omega \simeq \tau^{-1}$, et le coefficient de
+sensibilité $S_\tau = \mathrm{d}\phi/\mathrm{d}\ln\tau$ y prend une valeur non négligeable.
+
+\textbf{Compatibilité des hypothèses.} Compatible sur le fond, plus restreinte sur la forme.
+La loi constitutive est celle du présent travail (Cattaneo, un seul temps de relaxation, pas de
+terme non local). La substitution spectrale est identique à celle codée dans
+\code{src/\allowbreak forward\_model.py} (§~2.3). Les restrictions du modèle sont plus fortes : absence de
+conductance d'interface, absence de pertes, absence de modèle de bruit, absence de matrice de
+covariance (§~3.4).
+
+\textbf{Faut-il continuer.} Oui, une fois, intégralement. L'article contient trois éléments qui
+ne figurent nulle part ailleurs dans le corpus : la forme fermée de la phase en régime haute
+fréquence (§~4.1), la définition explicite de $S_\tau$ (§~5.1), et l'aveu de bande concernant
+la portée instrumentale du seuil (§~7.3).
+
+% ================================================================ 2
+\section{Rappel --- les deux modèles et la structure de la substitution}
+
+\subsection{Équations de champ}
+
+Les deux équations de champ utilisées sont, dans les notations de l'article (éq.~1 et 2) :
+\[
+\nabla^2 T(\mathbf r, t) - \frac{1}{\alpha}\,\partial_t T(\mathbf r, t)
+= -\frac{1}{k}\, s_f(\mathbf r, t)
+\]
+\[
+\nabla^2 T(\mathbf r, t) - \frac{1}{\alpha}\,\partial_t T(\mathbf r, t)
+- \frac{1}{v^2}\,\partial_t^2 T(\mathbf r, t) = -\frac{1}{k}\, s_{cv}(\mathbf r, t)
+\]
+avec $\alpha = k/(\rho c_v)$ la diffusivité, $k$ la conductivité, et
+\[
+v^2 = \frac{\alpha}{\tau}
+\]
+la vitesse de Cattaneo--Vernotte. Les lois de flux sont $\mathbf q_f = -k\nabla T_f$ pour
+Fourier et $\mathbf q + \tau\,\partial_t \mathbf q = -k\nabla T$ pour Cattaneo. Le bilan
+d'énergie est $\partial_t u + \nabla\!\cdot\mathbf q = s$, avec $u = \rho c_v T$. La limite
+$\tau \to 0$ restitue Fourier.
+
+\subsection{Transformation de la source --- dérivation}
+
+L'article donne (éq.~3) la relation entre les deux sources sans la dériver :
+\[
+s_{cv}(\mathbf r, t) = s_f(\mathbf r, t) + \tau\,\frac{\partial s_f(\mathbf r, t)}{\partial t}
+\]
+Cette relation n'est pas un choix de modélisation, c'est une conséquence algébrique. En
+appliquant l'opérateur $(1 + \tau\partial_t)$ au bilan d'énergie :
+\[
+(1+\tau\partial_t)\big[\rho c_v\,\partial_t T\big]
++ \nabla\!\cdot\big[(1+\tau\partial_t)\mathbf q\big] = (1+\tau\partial_t)\,s
+\]
+Le second terme se réduit par la loi de Cattaneo, $(1+\tau\partial_t)\mathbf q = -k\nabla T$,
+donc $\nabla\!\cdot[(1+\tau\partial_t)\mathbf q] = -k\nabla^2 T$. Il reste
+\[
+\rho c_v\,\partial_t T + \tau \rho c_v\,\partial_t^2 T - k\nabla^2 T = s + \tau\,\partial_t s
+\]
+soit, après division par $k$ et en utilisant $\tau/\alpha = 1/v^2$, exactement l'équation~(2)
+avec $s_{cv} = s + \tau\partial_t s$. La grandeur physiquement imposée est le flux absorbé~; le
+facteur $(1+\tau\partial_t)$ est le prix de l'élimination de $\mathbf q$ au profit de $T$. C'est
+ce facteur qui apparaît partout ensuite sous la forme $(1+i\omega\tau)$.
+
+\subsection{Le paramètre spectral effectif}
+
+En transformée de Fourier temporelle, l'article écrit (éq.~5)
+\[
+\nabla^2 T(\mathbf r,\omega) - \sigma^2_{f/cv}\,T(\mathbf r,\omega)
+= -\frac{1}{k}\,s_{f/cv}(\mathbf r,\omega)
+\]
+\[
+\sigma_f = \left(\frac{i\omega}{\alpha}\right)^{1/2}, \qquad
+\sigma_{cv} = \sqrt{\frac{i\omega}{\alpha} - \left(\frac{\omega}{v}\right)^{2}}, \qquad
+s_{cv}(\mathbf r,\omega) = s_f(\mathbf r,\omega)\,[1+i\omega\tau]
+\]
+Le point à expliciter, que l'article ne fait pas, est que ces deux nombres d'onde sont
+proportionnels :
+\[
+\sigma_{cv}^2 = \frac{i\omega}{\alpha} - \frac{\omega^2\tau}{\alpha}
+= \frac{i\omega}{\alpha}\,(1 + i\omega\tau) = \sigma_f^2\,(1+i\omega\tau)
+\]
+En posant $p = i\omega$, cela s'écrit
+\[
+\sigma_{cv}^2 = \frac{p\,(1+\tau p)}{\alpha}
+\]
+C'est la substitution $p \mapsto p(1+\tau p)$ utilisée dans le modèle direct du présent travail.
+L'article y parvient indépendamment, par une voie différente --- fonction de Green
+tridimensionnelle axisymétrique et transformée de Hankel --- et sans en tirer la conséquence
+structurelle : puisque la substitution n'affecte que $p$, la loi de Cattaneo laisse invariante
+toute structure du modèle direct qui ne dépend de $p$ que par $\sigma$. C'est le résultat
+négatif déjà consigné dans \code{tests/}.
+
+Le rapport des deux paramètres spectraux,
+\[
+\frac{\sigma_{cv}^2}{\sigma_f^2} = 1 + i\omega\tau
+\]
+ne dépend que du produit $\omega\tau$. Son argument vaut $\arctan(\omega\tau)$ et sa demi-valeur
+est exactement ce que la mesure de phase restitue (§~4.1).
+
+\subsection{Dépendance en température}
+
+L'article rappelle que $k$ et $\tau$ dépendent de la température, selon des lois de puissance
+inverses $k \sim T^{-m}$ et $\tau \sim T^{-n}$. Pour le silicium, $m = 1{,}4$ et $n = 1{,}3$
+(réf.~47, Glassbrenner \& Slack 1964). La limite de comportement Fourier est située à 500~K pour
+Si et vers 600~K pour SiC, avec des exposants voisins. À basse température le libre parcours
+moyen s'allonge et le régime devient balistique plutôt que diffusif (réf.~45, Auriault 2016).
+L'hypothèse retenue est que dans un montage FDTR à température ambiante, les excursions de
+température sont assez faibles pour que $k$ et $\tau$ soient constants.
+
+Le signe des exposants est porté par la mention «~inverse power law~» et non par l'exposant
+imprimé, qui est positif dans le texte. Cette ambiguïté typographique est sans conséquence sur
+les calculs de l'article, puisque aucune variation en température n'y est effectuée.
+
+% ================================================================ 3
+\section{Le modèle FDTR}
+
+\subsection{Hypothèses}
+
+\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=2pt]
+\item Absorption purement superficielle du pompe et de la sonde : aucune pénétration optique.
+      La source est portée par un $\delta(z)$ (éq.~6).
+\item Faisceaux gaussiens, pompe et sonde de même dimension pour le calcul de la phase moyennée
+      (§~III~B de l'article).
+\item Symétrie azimutale, problème réduit de trois à une dimension par transformée de Hankel.
+\item Continuité de la température et du flux aux interfaces, par application récursive des
+      conditions aux limites dans la matrice de transfert.
+\item Rugosité négligée devant la longueur d'onde de la sonde (limite reconnue en conclusion).
+\end{itemize}
+
+La source spatiale est écrite (éq.~7)
+\[
+F(r,\omega) = \frac{F_0}{2}\,e^{-r^2/W^2}\big(1 + e^{i\omega t}\big)
+\]
+Cette écriture mélange les domaines temporel et fréquentiel : une fonction notée $F(r,\omega)$
+ne peut contenir $e^{i\omega t}$. Le contenu utile est un profil gaussien d'échelle $W$, une
+composante continue et une composante modulée à $\omega$. Par ailleurs $W$ est appelé
+«~full-width half max~» alors que le profil $e^{-r^2/W^2}$ a pour largeur à mi-hauteur
+$2W\sqrt{\ln 2} \simeq 1{,}665\,W$~; $W$ est le rayon à $1/e$ de l'intensité. L'écart est un
+facteur $1{,}67$ sur la dimension du spot, donc un facteur $2{,}8$ sur toute grandeur
+quadratique en $W$. Le cas stratifié annonce un spot de 10~\textmu m de largeur à mi-hauteur,
+sans préciser laquelle des deux conventions est employée dans le calcul.
+
+\subsection{Demi-espace}
+
+Le problème de Green en coordonnées cylindriques (éq.~8) et la transformée de Hankel (éq.~9)
+\[
+g(\lambda, z; r_0, z_0; \omega) = \int_0^\infty G(r,z;r_0,z_0;\omega)\,J_0(\lambda r)\,r\,\mathrm{d}r
+\]
+conduisent à la solution en espace de Hankel (éq.~10)
+\[
+T_H^{\text{halfspace}}(\lambda, z;\omega)
+= \frac{F_0 W^2}{k}\,\frac{e^{-\varepsilon(\lambda,\omega)z}}{\varepsilon(\lambda,\omega)}\,
+e^{-\lambda^2 W^2/4}\,(1+i\omega\tau),
+\qquad \varepsilon(\lambda,\omega) = \sqrt{\lambda^2 + \sigma^2(\omega)}
+\]
+puis, par transformée inverse (éq.~11),
+\[
+T(r;\omega) = \frac{F_0 W^2}{k}\,(1+i\omega\tau)\int_0^\infty
+\frac{1}{\varepsilon(\lambda,\omega)}\,
+e^{-\varepsilon(\lambda,\omega)z - \lambda^2W^2/4}\,J_0(\lambda r)\,\lambda\,\mathrm{d}\lambda
+\]
+On écrit $T(r, z=0,\omega) = |T|\,e^{i\phi}$. Le facteur $e^{-\lambda^2 W^2/4}$ est la
+transformée de Hankel du profil gaussien~; la dépendance en $\tau$ entre par deux voies
+seulement, le préfacteur $(1+i\omega\tau)$ issu de la transformation de source, et $\sigma^2$
+dans $\varepsilon$. Les modèles CV et Fourier sont résolus par la même méthode et ne diffèrent
+que par l'expression de $\sigma$.
+
+L'étape intermédiaire de l'éq.~(10) telle qu'imprimée porte des facteurs
+$e^{-\varepsilon}/\varepsilon$ hors de l'intégrale qui ne se retrouvent pas dans le résultat. Le
+résultat final est la forme standard et c'est elle qui est employée par la suite.
+
+\subsection{Système stratifié}
+
+Matrice de transfert en espace de Hankel (éq.~12) :
+\[
+T_H^{\text{layered}}(\lambda,z;\omega) = (1+i\omega\tau)\,\frac{F_0}{k\,\varepsilon_1(\omega)}\,
+W^2 e^{-\lambda^2W^2/4}\,A_0\,
+\big(e^{\varepsilon_1^{cv}(\omega)z} + e^{-\varepsilon_1^{cv}(\omega)z}\big)
+\]
+avec $\varepsilon_i(\lambda,\omega) = \sqrt{\lambda^2+\sigma_i^2(\omega)}$, l'indice $i$
+désignant la couche, et (éq.~13)
+\[
+A_0(\lambda,z,\omega) = \frac{e^{-\varepsilon_1 z_0}}{2k_1\varepsilon_1}
+\left(\frac{e^{\varepsilon_1 z_0}[\mathcal T]_{12} + e^{-\varepsilon_1 z_0}[\mathcal T]_{22}}
+{e^{\varepsilon_1 z_0}[\mathcal T]_{12} - e^{-\varepsilon_1 z_0}[\mathcal T]_{22}}\right)
+\]
+où $[\mathcal T]_{ij}$ est l'élément $(i,j)$ de la matrice de transfert. $A_0$ est évalué en
+$z_0 = 0$, où l'expression se réduit à
+$A_0 = (2k_1\varepsilon_1)^{-1}\big([\mathcal T]_{12}+[\mathcal T]_{22}\big)
+\big/\big([\mathcal T]_{12}-[\mathcal T]_{22}\big)$.
+Les auteurs notent que la forme de $A_0$ est voisine de l'inverse d'un coefficient de réflexion.
+La température en surface du transducteur est (éq.~14)
+\[
+T(r,0;\omega) = 2(1+i\omega\tau)\,F_0\,k^{-1}W^2 \int_0^\infty
+A_0(\lambda,\omega)\,\varepsilon_1^{-1}(\lambda,\omega)\,e^{-\lambda^2W^2/4}\,
+J_0(\lambda r)\,\lambda\,\mathrm{d}\lambda
+\]
+La remarque structurelle importante est donnée par les auteurs : les solutions stratifiée et
+demi-espace sont identiques à ceci près que la seconde comporte le coefficient de transmission
+effectif $A_0$. Tout l'empilement --- conductivités, capacités, épaisseurs --- est contenu dans
+$A_0$ et dans $A_0$ seul.
+
+La phase mesurée est modélisée par une moyenne pondérée sur le spot de la sonde (réf.~51,
+Cahill 2004). Avec pompe et sonde de même largeur, la grandeur pertinente est l'argument de la
+moyenne complexe, soit
+\[
+\phi_w(\omega) = \arg\!\left[(1+i\omega\tau)\int_0^\infty
+\frac{A_0(\lambda,\omega)}{\varepsilon_1(\lambda,\omega)}\,e^{-\lambda^2W^2/2}\,
+\lambda\,\mathrm{d}\lambda\right]
+\]
+le second facteur gaussien provenant du recouvrement pompe--sonde. L'article écrit «~weighted
+average of the phase~», c'est-à-dire la moyenne de la phase, qui n'est pas l'argument de la
+moyenne. Les deux grandeurs diffèrent dès que la phase varie sur le spot, ce qui est
+précisément le cas dans les figures 4(c) et 4(d), où $\phi$ passe de $0$ à $-80^\circ$ sur
+$r/W \in [0,2]$. L'écart n'est pas quantifié dans l'article.
+
+\subsection{Ce que le modèle ne contient pas}
+
+Recensement, par lecture exhaustive des équations (1) à (15) et des paramètres annoncés.
+
+\smallskip
+{\small
+\begin{tabularx}{\linewidth}{@{}L{0.27\linewidth} L{0.22\linewidth} X@{}}
+\toprule
+\textbf{Élément} & \textbf{Présence} & \textbf{Conséquence} \\
+\midrule
+Conductance thermique d'interface $G$ & absente --- continuité de $T$ et $q$ &
+le compétiteur principal de $\tau$ dans un ajustement Au/SiC est retiré de l'analyse \\
+Pertes en face avant & absentes & sans effet aux fréquences considérées \\
+Capacité localisée du transducteur & non --- l'or est une couche à $k,\alpha$ propres &
+cohérent, plus détaillé que le modèle localisé usuel \\
+Pénétration optique & négligée & hypothèse standard pour un transducteur métallique \\
+Anisotropie & absente & signalée en conclusion comme extension possible \\
+Modèle de bruit & absent & $S_\tau$ n'est jamais converti en incertitude \\
+Matrice de covariance, matrice de Fisher & absentes & l'identifiabilité n'est pas abordée \\
+Ajustement, inversion, données synthétiques & absents &
+aucune estimation de $\tau$ n'est effectuée dans l'article \\
+Terme non local, Guyer--Krumhansl & absents &
+le modèle reste strictement Cattaneo~; DPL mentionné, non utilisé \\
+\bottomrule
+\end{tabularx}}
+
+\smallskip
+L'absence de conductance d'interface est la plus lourde des neuf. Dans une expérience FDTR
+réelle sur Au/SiC, $G$ est un paramètre d'ajustement dominant, et il est connu pour être
+fortement corrélé à la conductivité du substrat. Son absence retire du calcul de sensibilité le
+paramètre dont le vecteur de sensibilité est le plus susceptible d'être colinéaire à celui de
+$\tau$.
+
+% ================================================================ 4
+\section{Résultat analytique central --- la phase du demi-espace}
+
+\subsection{Forme fermée}
+
+L'article donne la limite haute fréquence pour le système stratifié (éq.~15) :
+\[
+\phi \simeq -\frac{\pi}{4} + \frac{1}{2}\arctan(\omega\tau)
++ \arctan\!\left(\frac{\operatorname{Im}A_0}{\operatorname{Re}A_0}\right)
+\]
+et précise que le troisième terme n'existe pas pour le demi-espace. La forme du demi-espace se
+retrouve directement. En régime unidimensionnel, l'intégrale de l'éq.~(11) est dominée par
+$\lambda \ll |\sigma|$, donc $\varepsilon \simeq \sigma$ et
+\[
+T \propto \frac{1+i\omega\tau}{\sigma_{cv}}
+= \frac{1+i\omega\tau}{\sqrt{i\omega/\alpha}\,\sqrt{1+i\omega\tau}}
+= \sqrt{1+i\omega\tau}\;\sqrt{\frac{\alpha}{i\omega}}
+\]
+d'où
+\begin{encadre}
+\[
+\phi(\omega) = -\frac{\pi}{4} + \frac{1}{2}\arctan(\omega\tau)
+\]
+\end{encadre}
+
+Trois lectures de ce résultat.
+
+\textbf{Première.} La dépendance en $\tau$ de la phase mesurée est \textit{la moitié de
+l'argument du rapport des paramètres spectraux} établi au §~2.3. La grandeur $1+i\omega\tau$ est
+le seul véhicule de $\tau$ dans l'observable, et la mesure n'en voit que la demi-phase.
+
+\textbf{Deuxième.} Les deux asymptotes sont $-\pi/4$ pour $\omega\tau \ll 1$ et $0$ pour
+$\omega\tau \gg 1$. La première est la phase de Fourier en régime unidimensionnel~; la seconde
+correspond au régime d'onde non amortie, où $\sigma_{cv}^2 \simeq -\omega^2/v^2$ donne
+$\sigma_{cv} \simeq i\omega/v$, nombre d'onde purement imaginaire. Le déphasage de $-90^\circ$
+apporté par $1/\sigma_{cv}$ est alors exactement compensé par le $+90^\circ$ de
+$(1+i\omega\tau)$. L'annulation est celle que les auteurs décrivent : «~in the high-frequency
+limit, the $\arctan(\omega\tau)$ asymptotically approaches $\pi/2$, and this leads to
+cancellation of the Fourier phase~».
+
+\textbf{Troisième.} La phase CV n'est pas monotone en fréquence pour un spot fini. À basse
+fréquence la longueur de diffusion excède le spot, la réponse est quasi stationnaire
+tridimensionnelle et $\phi \to 0$. Le régime unidimensionnel s'installe ensuite et tire $\phi$
+vers $-45^\circ$. Puis le terme en $\arctan(\omega\tau)$ la ramène vers $0$. La figure 3(a)
+montre ce minimum intermédiaire, situé autour de $\omega\tau \simeq 0{,}2$, à une valeur
+d'environ $-32^\circ$. La courbe de Fourier, elle, est monotone décroissante et sature à
+$-45^\circ$.
+
+La forme fermée unidimensionnelle donnerait, en $\omega\tau = 0{,}2$, une phase de
+$-39{,}3^\circ$, contre environ $-32^\circ$ lus sur la figure. L'écart de $7^\circ$ mesure la
+contribution tridimensionnelle résiduelle du spot à cette fréquence : le minimum de la courbe
+n'est donc pas atteint dans le domaine de validité de la forme fermée. Ce constat est à
+rapprocher du §~5.4, où la localisation de l'extremum de $S_\tau$ est en revanche conforme à la
+prédiction unidimensionnelle.
+
+\subsection{Le seuil $\omega\tau = 1$}
+
+La phase du demi-espace atteint la valeur médiane entre ses deux asymptotes,
+$-\pi/8 = -22{,}5^\circ$, exactement en $\omega\tau = 1$, puisque $\arctan(1) = \pi/4$. Le seuil
+n'est donc pas qualitatif : c'est le centre exact de la transition de phase, et c'est le même
+seuil que celui du critère spectral du présent travail.
+
+La dérivée logarithmique de la phase par rapport à $\tau$ se calcule sur la forme fermée :
+\[
+\frac{\mathrm{d}\phi}{\mathrm{d}\ln\tau} = \tau\,\frac{\partial\phi}{\partial\tau}
+= \frac{1}{2}\,\frac{\omega\tau}{1+(\omega\tau)^2}
+\]
+Cette fonction est maximale en $\omega\tau = 1$, où elle vaut $1/4$ radian, soit
+$14{,}32^\circ$ par facteur $e$ sur $\tau$, ou $32{,}98^\circ$ par décade. Elle décroît comme
+$\omega\tau/2$ en deçà du seuil et comme $1/(2\omega\tau)$ au-delà.
+
+\smallskip
+{\small\centering
+\begin{tabular}{@{}rrr@{}}
+\toprule
+$\omega\tau$ & $\mathrm{d}\phi/\mathrm{d}\ln\tau$ (deg) & par décade (deg) \\
+\midrule
+0,1 & 2,84 & 6,53 \\
+0,3 & 7,88 & 18,16 \\
+1 & 14,32 & 32,98 \\
+3 & 8,59 & 19,79 \\
+10 & 2,84 & 6,53 \\
+100 & 0,286 & 0,660 \\
+\bottomrule
+\end{tabular}\par}
+
+\smallskip
+La décroissance en $1/(2\omega\tau)$ au-delà du seuil est un point que l'article n'énonce pas et
+qui contredit l'intuition selon laquelle monter en fréquence améliore indéfiniment la mesure de
+$\tau$ : la sensibilité est maximale au seuil et se dégrade de part et d'autre, symétriquement
+en échelle logarithmique.
+
+\subsection{Le cas stratifié et l'enchevêtrement par $A_0$}
+
+Pour le système stratifié, le troisième terme de l'éq.~(15) réintroduit tout l'empilement. Les
+auteurs le formulent en ces termes : le troisième terme n'existe pas pour le demi-espace, «~so
+the value of the relaxation time could be determined through the phase alone~». La proposition
+contraposée, non écrite, est que pour le système stratifié la phase seule ne suffit pas ---
+puisque $\tau$ et $A_0$ y entrent additivement dans la même observable et que $A_0$ contient les
+conductivités, les capacités et les épaisseurs par la matrice de transfert.
+
+Trois régimes sont identifiés dans l'espace des fréquences :
+
+\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=2pt]
+\item $\omega \ll \tau^{-1}$ : la phase est approximativement constante, sans différence
+      significative entre modèles~; la dynamique est gouvernée par Fourier.
+\item $\omega \sim \tau^{-1}$ : régime de transition, où $\tau$ devient pertinent~; pour le
+      système stratifié, ce sont les parties réelle et imaginaire de $A_0$, qui contiennent le
+      nombre d'onde thermique $\sigma$, qui fixent le comportement.
+\item $\omega \gg \tau^{-1}$ : éq.~(15).
+\end{itemize}
+
+La dépendance de $\phi$ en l'épaisseur de la couche entre par la matrice de transfert, ce que
+les auteurs qualifient de «~not straightforward~», en constatant empiriquement (§~6.2) qu'une
+épaisseur de SiC de 1~\textmu m maximise l'écart CV--Fourier sans relation directe apparente
+avec l'épaisseur. Une explication quantitative s'obtient par confrontation d'échelles. La
+longueur de diffusion à la fréquence de seuil vaut
+\[
+\mu\big(\omega = \tau^{-1}\big) = \sqrt{\frac{2\alpha}{\omega}} = \sqrt{2\alpha\tau}
+= \sqrt{2}\;v\tau
+\]
+c'est-à-dire, à un facteur $\sqrt 2$ près, la distance parcourue par l'onde thermique pendant un
+temps de relaxation. La signature CV est maximale lorsque la couche est résolue exactement à la
+transition, soit $d \simeq \sqrt{2\alpha\tau}$. Avec des valeurs de littérature pour le SiC
+($k \simeq 370$~W\,m$^{-1}$K$^{-1}$, $\rho c_v \simeq 2{,}2\times10^6$~J\,m$^{-3}$K$^{-1}$, donc
+$\alpha \simeq 1{,}7\times10^{-4}$~m$^2$\,s$^{-1}$) et $\tau = 10^{-8}$~s, il vient
+$v \simeq 130$~m\,s$^{-1}$, $v\tau \simeq 1{,}3$~\textmu m et
+$\sqrt{2\alpha\tau} \simeq 1{,}8$~\textmu m. Pour une couche de 10~\textmu m, la couche paraît
+semi-infinie au seuil et le système se comporte comme le demi-espace~; pour 0,1~\textmu m, la
+couche est thermiquement mince au seuil et le substrat de Si, traité comme matériau de Fourier,
+domine. L'optimum observé à 1~\textmu m est donc la coïncidence de l'épaisseur avec la longueur
+balistique $v\tau$.
+
+Une troisième échelle achève de fixer la géométrie du problème au seuil. En régime d'onde,
+$\sigma_{cv} \simeq i\omega/v$, et la longueur d'onde thermique vaut $\Lambda = 2\pi v/\omega$,
+soit $2\pi v\tau \simeq 8{,}1$~\textmu m en $\omega = \tau^{-1}$. Trois longueurs coexistent
+donc à la transition : $\Lambda \simeq 8$~\textmu m, la largeur du spot annoncée à
+10~\textmu m, et l'épaisseur de la couche à 1~\textmu m. La première et la deuxième étant du
+même ordre, l'hypothèse unidimensionnelle n'est pas acquise au seuil pour le système stratifié,
+ce qui justifie que le comportement y soit gouverné par $A_0$ et non par la forme fermée de
+l'éq.~(15).
+
+Les valeurs de $\alpha$ employées dans ce paragraphe sont de littérature, la table de l'article
+figurant dans le matériel supplémentaire non consulté.
+
+% ================================================================ 5
+\section{La définition de la sensibilité}
+
+\subsection{Définition employée}
+
+L'article écrit, à la fin de la section III~A :
+\[
+S_\tau = \frac{\mathrm{d}\phi}{\mathrm{d}\ln\tau}
+\]
+en renvoyant à la référence 51 (Cahill, \textit{Rev. Sci. Instrum.} \textbf{75}, 5119, 2004).
+Puis : «~We observe that FDTR shows significant sensitivity for frequencies at the $\tau^{-1}$
+threshold~; therefore, it will be possible to fit for the time-relaxation parameter in this
+frequency range.~»
+
+C'est la seule grandeur de type métrologique calculée dans l'article, et elle est calculée pour
+les trois configurations : figure 3(b) pour le demi-espace, figure 4(e) pour Au/SiC/Si,
+figure 6(e) pour le miroir de Bragg.
+
+Deux remarques sur la définition elle-même. D'une part, le coefficient de sensibilité de
+Cahill (2004) est construit pour le signal de rapport $-V_{in}/V_{out}$ en TDTR~; sa
+transposition à la phase en FDTR est légitime mais n'est pas discutée. D'autre part, $S_\tau$
+est une dérivée logarithmique en $\tau$ mais pas en $\phi$ : elle est donc homogène à un angle,
+et sa valeur numérique dépend de l'unité d'angle et de la base du logarithme retenues. Ni l'une
+ni l'autre n'est spécifiée sur les axes des figures 3(b), 4(e) et 6(e), qui portent
+«~$S_\tau$~» sans unité.
+
+\subsection{Rappel --- sensibilité et identifiabilité}
+
+Soit $\boldsymbol\theta$ le vecteur des paramètres inconnus,
+$\phi(\omega_m;\boldsymbol\theta)$ le modèle direct, $\mathbf J$ la matrice jacobienne
+$J_{mi} = \partial\phi(\omega_m)/\partial\theta_i$ et $\boldsymbol\Sigma$ la covariance du bruit
+de phase. La borne de Cramér--Rao sur l'écart-type d'estimation du paramètre $i$ est
+\[
+\sigma^2_{\theta_i}
+= \Big[\big(\mathbf J^{\!\top}\boldsymbol\Sigma^{-1}\mathbf J\big)^{-1}\Big]_{ii}
+\]
+Dans le cas d'un paramètre unique et d'un bruit blanc d'écart-type $\sigma_\phi$, cela se réduit
+à
+\[
+\sigma^2_{\ln\tau} = \frac{\sigma_\phi^2}{\sum_m S_\tau(\omega_m)^2}
+\]
+et une grande valeur de $|S_\tau|$ borne effectivement l'incertitude. Dès que
+$\dim\boldsymbol\theta > 1$, l'inversion de
+$\mathbf J^{\!\top}\boldsymbol\Sigma^{-1}\mathbf J$ fait intervenir les corrélations, et
+l'élément diagonal $ii$ n'est plus contrôlé par la norme de la colonne $\mathbf J_{:,i}$ mais
+par sa composante orthogonale au sous-espace engendré par les autres colonnes. En notant
+$\mathbf J_{:,\tau}^{\perp}$ cette composante,
+\[
+\sigma_{\ln\tau} = \frac{\sigma_\phi}{\big\|\mathbf J_{:,\tau}^{\perp}\big\|}
+\]
+de sorte que $\sigma_{\ln\tau}$ peut être arbitrairement grande avec
+$\|\mathbf J_{:,\tau}\|$ arbitrairement grande, si l'angle entre $\mathbf J_{:,\tau}$ et le
+sous-espace des autres colonnes tend vers zéro. La grandeur déterminante est un angle, non une
+norme.
+
+C'est exactement la distinction que Krapez \& Rigollet opposent à Guo \textit{et al.} --- voir
+\code{notes/\allowbreak krapez\_2017.md}, §~6 : une dérivée du signal grande n'établit pas qu'un paramètre
+soit identifiable, seule la structure de corrélation le fait.
+
+\subsection{L'inférence de l'article}
+
+L'énoncé de l'article est de la forme «~$|S_\tau|$ est significative au seuil, \textbf{donc} il
+sera possible d'ajuster $\tau$ dans cette bande~». Le \textit{donc} n'est pas établi, et ne peut
+pas l'être à partir de $S_\tau$ seul, pour les raisons du §~5.2. Aucun des éléments suivants
+n'apparaît dans l'article : jacobienne complète, matrice de corrélation, borne de
+Cramér--Rao, écart-type de phase injecté, ajustement sur données synthétiques.
+
+Les paramètres maintenus fixes pendant le calcul de $S_\tau$, pour le cas Au/SiC/Si, sont au
+minimum : $k$ et $\rho c_v$ de l'or, du SiC et du Si (six valeurs, table supplémentaire),
+l'épaisseur du transducteur (100~nm), l'épaisseur de SiC (1~\textmu m), la dimension du spot
+(10~\textmu m), la puissance absorbée (1~mW). Aucun n'est varié conjointement avec $\tau$. À
+quoi s'ajoute, dans une expérience réelle, la conductance d'interface Au/SiC, absente du modèle
+(§~3.4), et la phase de référence du montage.
+
+Il faut noter que la localisation de $|S_\tau|$ maximal aggrave le problème plutôt qu'elle ne le
+résout. Dans le cas stratifié, l'extremum de la figure 4(e), $|S_\tau| \simeq 58$ près de
+$10^9$ sur l'abscisse, coïncide avec l'excursion brutale de phase de la figure 4(f) --- chute à
+environ $-70^\circ$ puis remontée à $+5^\circ$. Cette excursion est une quasi-résonance de
+$A_0$. En un tel point, toutes les sensibilités croissent simultanément, puisqu'elles sont
+toutes dominées par la dérivée du même dénominateur de $A_0$. C'est le régime où la colinéarité
+est maximale, et donc le plus défavorable du point de vue de l'identifiabilité, alors qu'il est
+le plus favorable du point de vue de la norme de la sensibilité.
+
+\subsection{Contrôle numérique de $S_\tau$}
+
+La forme fermée du §~4.2 fournit un contrôle indépendant de la figure 3(b).
+
+\textbf{Position.} L'extremum analytique est en $\omega\tau = 1$, soit $\omega = 10^{8}$ pour
+$\tau = 10^{-8}$~s. L'extremum de la figure 3(b) est situé aux environs de $10^{8}$ sur
+l'abscisse. La position concorde, et elle fixe la lecture de l'abscisse (§~7.1).
+
+\textbf{Amplitude.} Le maximum analytique est $14{,}32^\circ$ par facteur $e$, soit
+$32{,}98^\circ$ par décade. La figure 3(b) donne $|S_\tau| \simeq 30$. Le rapport entre
+l'amplitude tracée et la borne analytique par facteur $e$ est de $2{,}1$, proche de
+$\ln 10 = 2{,}303$. Deux lectures sont possibles, sans que le texte permette de trancher : soit
+la grandeur tracée est $\mathrm{d}\phi/\mathrm{d}\log_{10}\tau$ et non
+$\mathrm{d}\phi/\mathrm{d}\ln\tau$, soit le maximum tracé sort du domaine de validité de la
+forme asymptotique unidimensionnelle. Le facteur $2{,}303$ entre les deux conventions se
+répercute directement sur toute conversion de $S_\tau$ en incertitude.
+
+\textbf{Signe.} La dérivée analytique $\tfrac12\,\omega\tau/(1+(\omega\tau)^2)$ est strictement
+positive : augmenter $\tau$ relève la phase vers $0$. La figure 3(b) montre $S_\tau$ négatif,
+d'extremum $\simeq -30$. Sous la convention de phase de la figure 3(a), où la courbe de Fourier
+sature à $-45^\circ$, la grandeur tracée est donc $-\mathrm{d}\phi/\mathrm{d}\ln\tau$, ou la
+phase employée dans la définition est le retard $-\phi$. L'article ne le précise pas. Pour le
+cas stratifié, la figure 4(e) présente les deux signes, ce qui est attendu : le terme en $A_0$
+de l'éq.~(15) a une dérivée en $\tau$ de signe variable.
+
+\textbf{Amplitudes comparées des trois configurations.} $|S_\tau|_{\max} \simeq 30$ pour le
+demi-espace, $\simeq 58$ pour Au/SiC/Si, $\simeq 0{,}33$ pour le miroir de Bragg. L'étendue
+couvre plus de deux ordres de grandeur. La «~haute sensibilité~» annoncée dans le résumé n'est
+donc pas une propriété de la technique FDTR, mais de la configuration et de la portion de l'axe
+$\omega\tau$ effectivement atteinte.
+
+\textbf{Ce qu'une conversion naïve donnerait.} L'article invoque une résolution de phase de
+quelques millidegrés (réf.~40) sans jamais la combiner à $S_\tau$. La combinaison, pour un
+unique point de mesure au seuil et $\tau$ seul inconnu, donnerait
+$\delta\ln\tau \simeq \delta\phi/|S_\tau| \simeq 0{,}003/30 = 10^{-4}$, soit une incertitude
+relative de $10^{-2}$~\% sur un paramètre dont l'article rappelle par ailleurs qu'aucun modèle
+théorique ni procédure expérimentale n'en fixe la valeur. L'invraisemblance du résultat est le
+diagnostic : c'est le calcul à un paramètre qui n'est pas la grandeur pertinente.
+
+% ================================================================ 6
+\section{Résultats numériques et configurations}
+
+\subsection{Demi-espace SiC}
+
+$\tau_{SiC} = 10^{-8}$~s, valeur déclarée «~of the order but not equal to reported phonon
+relaxation times~», en renvoyant à Ezzahri \& Joulain (réf.~50), article théorique sur la
+conductivité thermique dynamique des cristaux semiconducteurs. Il s'agit donc d'un choix de
+plausibilité, non d'une mesure. L'article rappelle en introduction qu'aucun modèle théorique ni
+procédure expérimentale n'existe pour établir $\tau$ pour un matériau donné, et ne distingue pas
+le temps de relaxation de Cattaneo de la durée de vie des phonons autrement que par cette
+réserve.
+
+Figure 2 : cartes de $|\Delta T_{CV}|$ et $|\Delta T_F|$ en fonction de l'abscisse fréquentielle
+($10^5$ à $10^9$) et de $r/W_0 \in [0,5]$, échelle jusqu'à $0{,}3$~K~; coupe spectrale (c) et
+coupe spatiale (d). Sur la coupe spectrale, $|\Delta T|$ passe de $0{,}175$~K à $10^5$ à environ
+$0{,}02$~K (CV) contre $0{,}005$~K (Fourier) à $10^9$. Sur la coupe spatiale, $0{,}07$~K (CV)
+contre $0{,}056$~K (Fourier) au centre du spot. Les deux modèles ne diffèrent qu'au voisinage
+immédiat du maximum d'intensité laser~; au-delà, l'écart devient négligeable.
+
+Ce résultat sur le module est cohérent avec la structure du §~2.3 : le module de la réponse est
+peu discriminant, l'information sur $\tau$ étant portée par la phase. C'est la même conclusion
+que celle du présent travail sur l'amplitude contre la phase.
+
+Figure 3 : phase pondérée (a) et $S_\tau$ (b), $\tau = 10^{-8}$~s. Analysée aux §~4.1 et §~5.4.
+
+\subsection{Au/SiC/Si}
+
+Configuration : couche de SiC de 1~\textmu m sur substrat de Si, transducteur d'or de 100~nm,
+spot gaussien de 10~\textmu m de largeur à mi-hauteur, puissance transférée au système 1~mW,
+$\tau_{SiC} = 10^{-8}$~s. L'or et le silicium sont traités comme matériaux de Fourier, de sorte
+que seul le SiC possède un temps de réponse non négligeable.
+
+Figure 4 : cartes $|\Delta T_{CV}|$, $|\Delta T_F|$ (jusqu'à $0{,}3$~K), $\phi_{CV}$, $\phi_F$
+(de $0$ à $-80^\circ$) sur $r/W \in [0,2]$~; $S_\tau(\omega)$ en (e), lobe positif
+$\simeq +28$ vers $10^8$ et excursion négative $\simeq -58$ vers $10^9$~; phase pondérée en (f).
+Le module est très voisin entre les deux modèles~; c'est près de $\tau^{-1}$ qu'apparaît une
+forte région de retard de phase absente du modèle de Fourier.
+
+Figure 5(a) : phase pondérée, $\tau \in \{1, 3, 6, 10\}\times 10^{-9}$~s à
+$d_{SiC} = 10^{-6}$~m fixée. Énoncés associés : dans cette bande, les temps de relaxation
+inférieurs à $10^{-9}$~s sont pratiquement identiques et représentent la limite de Fourier du
+système~; la phase CV tend vers celle de Fourier quand $\tau$ tend vers zéro~; des écarts
+restent apparents jusqu'à $3\times10^{-9}$~s, mais pour cette valeur les différences se situent
+hors de la gamme de fréquences des montages FDTR courants.
+
+Figure 5(b) : $d_{SiC} \in \{10^{-5}, 10^{-6}, 10^{-7}\}$~m à $\tau = 10^{-8}$~s fixé, traits
+pleins pour CV, pointillés pour Fourier, abscisse de $10^4$ à $10^9$. Dépendance non triviale en
+épaisseur~; les écarts apparaissent à plus haute fréquence pour la couche la plus mince~; aucune
+relation directe apparente entre épaisseur et écart, $d_{SiC} = 10^{-6}$~m produisant les écarts
+les plus grands et constituant le cas idéal. Explication quantitative au §~4.3.
+
+\subsection{Miroir de Bragg thermique}
+
+Configuration : transducteur d'or de 100~nm, cellule unité formée d'une couche de derme de
+1~\textmu m et d'une couche d'épiderme de 1~\textmu m, de constantes de temps respectives 1~s et
+2~s, cellule répétée trois fois, substrat de Si. Paramètres repris de la réf.~11 (Camacho de la
+Rosa \textit{et al.}, \textit{Energies} \textbf{14}, 7452, 2021) pour permettre la comparaison.
+Spectre d'excitation de 0 à 40~Hz.
+
+Figure 6 : cartes de température (jusqu'à environ 7~mK) et de phase~; $S_\tau(\omega)$ en (e),
+entre $+0{,}15$ et $-0{,}33$~; phase pondérée en (f), atteignant environ $+85^\circ$ pour CV
+contre $+6^\circ$ pour Fourier à 40~Hz. Observations : moins d'échauffement de la surface du
+transducteur pour CV à basse fréquence~; formation d'un gap autour de 30~Hz, attribué aux
+interférences d'ondes thermiques entre couches~; à 30~Hz, creux de la distribution de
+température même pour $r/W < 1$, cohérent avec une forte transmissivité thermique dans cette
+fenêtre~; à 40~Hz, température comparable pour $r/W > 1$ et $r/W < 1$, indiquant que l'énergie
+thermique n'est pas aisément transmise selon $z$.
+
+Deux réserves de lecture. D'une part, la phase est ici \textbf{positive}, jusqu'à $+85^\circ$,
+alors qu'elle est négative dans toutes les autres figures. Pour une réponse causale avec la
+convention $T \propto e^{i\omega t}$, la température de surface est en retard sur le flux et la
+phase doit être négative. Les panneaux 6(c), 6(d) et 6(f) portent donc soit le retard $-\phi$,
+soit une phase déroulée à travers le gap. L'article ne signale pas le changement.
+
+D'autre part, la phrase introductive de la section III~C est contradictoire telle qu'imprimée :
+«~Although the frequency range of typical FDTR systems is in the order of tens of hertz and is
+outside the range of typical working conditions of FDTR~». La lecture cohérente est que c'est la
+gamme de fréquences \textit{de ce système}, fixée par $1/\tau$ avec $\tau$ de l'ordre de la
+seconde, qui est de quelques dizaines de hertz, et qui est hors des conditions habituelles de
+fonctionnement du FDTR (10~kHz -- 200~MHz). La configuration est donc explicitement présentée
+comme non réalisable dans un montage FDTR standard, et retenue pour la seule comparaison avec le
+travail antérieur.
+
+% ================================================================ 7
+\section{Bande de fréquences}
+
+\subsection{Ambiguïté d'abscisse}
+
+Toutes les figures portent en abscisse «~$\omega$ [Hz]~». L'étiquette est dimensionnellement
+incohérente : $\omega$ est une pulsation, en rad\,s$^{-1}$, et $\omega = 2\pi f$ avec $f$ en Hz.
+Deux lectures sont possibles, séparées par un facteur $2\pi \simeq 6{,}28$.
+
+Trois éléments internes départagent en faveur de l'abscisse en rad\,s$^{-1}$.
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+\item L'extremum de $S_\tau$ en figure 3(b) est situé vers $10^8$, et l'extremum analytique est
+      en $\omega\tau = 1$, soit $\omega = \tau^{-1} = 10^8$~rad\,s$^{-1}$ pour
+      $\tau = 10^{-8}$~s (§~5.4). Si l'abscisse portait $f$, l'extremum devrait se trouver à
+      $f = 1/(2\pi\tau) = 1{,}59\times10^7$.
+\item Le texte identifie systématiquement le seuil à la valeur $\tau^{-1}$ lue directement sur
+      l'abscisse.
+\item L'étendue des abscisses, $10^4$ à $10^9$, correspond en fréquence à
+      $1{,}6$~kHz~--~$160$~MHz, soit très exactement la bande 10~kHz~--~200~MHz que l'article
+      annonce lui-même en introduction comme gamme usuelle de modulation FDTR (réf.~39 et 40).
+\end{enumerate}
+
+Sous cette lecture, la fréquence de modulation au seuil est $f = 1/(2\pi\tau)$, et non
+$\tau^{-1}$.
+
+\subsection{Table des seuils}
+
+Bande FDTR retenue par l'article : 10~kHz à 200~MHz, la limite supérieure dépendant du rapport
+signal sur bruit (réf.~39, Regner \textit{et al.} 2013~; réf.~40, Kirsch \textit{et al.} 2024).
+
+\smallskip
+{\small\centering
+\begin{tabular}{@{}rrrl@{}}
+\toprule
+$\tau$ (s) & $\tau^{-1}$ (rad\,s$^{-1}$) & $f_{\text{seuil}} = 1/(2\pi\tau)$ &
+dans 10~kHz -- 200~MHz \\
+\midrule
+$10^{-6}$            & $10^{6}$             & 159~kHz   & oui \\
+$10^{-7}$            & $10^{7}$             & 1,59~MHz  & oui \\
+$10^{-8}$            & $10^{8}$             & 15,9~MHz  & oui \\
+$3\times10^{-9}$     & $3{,}3\times10^{8}$  & 53,1~MHz  & oui \\
+$10^{-9}$            & $10^{9}$             & 159~MHz   & limite \\
+$8{,}0\times10^{-10}$& $1{,}25\times10^{9}$ & 199~MHz   & plafond \\
+$10^{-10}$           & $10^{10}$            & 1,59~GHz  & non \\
+$10^{-12}$           & $10^{12}$            & 159~GHz   & non \\
+\bottomrule
+\end{tabular}\par}
+
+\smallskip
+Le plus petit temps de relaxation dont le centre de transition soit atteignable à 200~MHz est
+\begin{encadre}
+\[
+\tau_{\min} = \frac{1}{2\pi f_{\max}} = 8{,}0\times10^{-10}\ \text{s}
+\]
+\end{encadre}
+Cette valeur est indépendante du matériau et ne dépend que du plafond instrumental. Elle est
+cohérente avec l'énoncé de l'article selon lequel les temps inférieurs à $10^{-9}$~s sont
+indistinguables de Fourier dans la bande tracée (§~6.2), ce qui constitue un quatrième argument
+en faveur de la lecture du §~7.1.
+
+\subsection{L'énoncé des auteurs}
+
+L'article ne revendique pas la mesure de temps de relaxation arbitrairement courts. Il énonce,
+pour $\tau = 3\times10^{-9}$~s : «~While the analytical analysis is valid, FDTR capabilities will
+need to increase to reach this frequency range.~» Et pour la configuration de Bragg, que la
+gamme requise est hors des conditions de fonctionnement habituelles du FDTR (§~6.3).
+
+Il y a donc, dans un même article, une revendication de haute sensibilité au résumé et à la
+conclusion, et la reconnaissance dans le corps du texte que la bande où cette sensibilité
+s'exprime n'est pas atteinte par l'instrumentation existante pour
+$\tau \lesssim 3\times10^{-9}$~s. Les deux énoncés ne sont pas contradictoires --- l'un porte
+sur une dérivée, l'autre sur une plage d'accès --- mais leur coexistence interdit de citer le
+premier sans le second.
+
+% ================================================================ 8
+\section{Écart entre le corps de l'article et sa conclusion}
+
+La conclusion (§~IV de l'article) énonce quatre propositions qui ne sont pas établies par le
+corps du texte.
+
+\smallskip
+{\small
+\begin{tabularx}{\linewidth}{@{}X X@{}}
+\toprule
+\textbf{Énoncé de la conclusion} & \textbf{État dans le corps de l'article} \\
+\midrule
+«~demonstrates a robust methodology for determining relaxation times~» &
+aucune méthodologie d'estimation n'est spécifiée : ni fonction de coût, ni algorithme, ni plan
+de fréquences, ni traitement des paramètres de nuisance \\
+«~we effectively captured high-resolution transient thermal responses~» &
+aucune donnée, expérimentale ou synthétique, n'est produite~; toutes les figures sont des
+calculs de modèle direct \\
+«~enabling precise fitting to a non-Fourier heat conduction model~» &
+aucun ajustement n'est effectué \\
+«~allowing for accurate quantification of relaxation times~» &
+aucune quantification, donc aucune incertitude \\
+\bottomrule
+\end{tabularx}}
+
+\smallskip
+Ce qui est effectivement établi est plus restreint et n'en est pas moins utilisable : la forme
+de la réponse en phase sous CV pour trois géométries, la localisation du régime de transition en
+$\omega \sim \tau^{-1}$, le calcul du coefficient $S_\tau$ dans ces trois géométries, et la
+constatation que le module de la réponse est peu discriminant tandis que la phase l'est.
+
+Une limite est reconnue explicitement : la rugosité est supposée négligeable devant la longueur
+d'onde de la sonde, alors qu'en pratique elle doit être mesurée car elle peut induire un
+changement de phase sans lien avec un comportement non-Fourier (réf.~52 et 53). La remarque est
+plus lourde qu'elle n'en a l'air, puisqu'un décalage de phase systématique est exactement la
+forme que prend la signature revendiquée. Elle s'ajoute aux deux autres sources de décalage de
+phase non modélisées : la conductance d'interface absente du modèle (§~3.4) et la phase de
+référence du montage.
+
+% ================================================================ 9
+\section{Points non tranchés et obscurités relevées}
+
+Liste exhaustive des points que la lecture du seul texte publié ne permet pas de fixer.
+
+\begin{enumerate}[leftmargin=1.7em,itemsep=3pt,topsep=2pt]
+\item \textbf{Unité et base du logarithme de $S_\tau$.} Facteur $\ln 10 = 2{,}303$ d'écart entre
+      $\mathrm{d}\phi/\mathrm{d}\ln\tau$ et $\mathrm{d}\phi/\mathrm{d}\log_{10}\tau$ (§~5.4).
+\item \textbf{Signe de $S_\tau$.} Le signe tracé est opposé à celui de la dérivée analytique
+      sous la convention de phase des figures (§~5.4).
+\item \textbf{Convention d'abscisse.} $\omega$ en rad\,s$^{-1}$ ou $f$ en Hz~; facteur $2\pi$
+      (§~7.1). L'évidence interne tranche en faveur de rad\,s$^{-1}$, sans que le texte le dise.
+\item \textbf{Convention de phase de la figure 6.} Phase positive jusqu'à $+85^\circ$, contre
+      phase négative partout ailleurs (§~6.3).
+\item \textbf{Définition de $W$.} Rayon à $1/e$ ou largeur à mi-hauteur~; facteur $1{,}665$
+      (§~3.1).
+\item \textbf{Moyenne de la phase ou argument de la moyenne.} Les deux diffèrent là où la phase
+      varie sur le spot, c'est-à-dire précisément dans la région exploitée (§~3.3).
+\item \textbf{Propriétés thermiques employées.} Table 1 du matériel supplémentaire, non
+      consultée~; aucun des résultats numériques n'est reproductible à partir du seul corps de
+      l'article.
+\item \textbf{Expression de la matrice de transfert.} Matériel supplémentaire également. Le
+      préfacteur $\varepsilon_1^{-1}$ apparaît à la fois dans $A_0$ (éq.~13) et dans l'intégrande
+      de l'éq.~(14)~; la cohérence des deux écritures demande la dérivation complète.
+\item \textbf{Étape intermédiaire de l'éq.~(10).} Facteurs $e^{-\varepsilon}/\varepsilon$ hors
+      intégrale, absents du résultat final (§~3.2).
+\item \textbf{Écriture de l'éq.~(7).} Mélange des domaines temporel et fréquentiel (§~3.1).
+\item \textbf{Phrase introductive de la section III~C.} Contradictoire telle qu'imprimée~;
+      lecture cohérente proposée au §~6.3.
+\item \textbf{Disponibilité des données.} «~available from the corresponding author upon
+      reasonable request~». Aucun code, aucun jeu déposé.
+\end{enumerate}
+
+Aucun de ces points n'affecte la validité de la structure analytique des §~2 à~4, qui a été
+recalculée indépendamment. Les points 1, 2 et 3 affectent toute conversion numérique de
+$S_\tau$ en incertitude~; les points 7 et 8 affectent la reproductibilité des figures.
+
+% ================================================================ 10
+\section{Position par rapport au présent travail}
+
+\subsection{Ce que l'article confirme}
+
+\textbf{La substitution spectrale.} $\sigma_{cv}^2 = p(1+\tau p)/\alpha$ (§~2.3) est la
+substitution implantée dans \code{src/\allowbreak forward\_model.py}, obtenue ici par une voie
+indépendante --- Green tridimensionnel et Hankel plutôt que quadripôles unidimensionnels. La
+concordance vaut vérification croisée du modèle direct.
+
+\textbf{Le seuil.} Le seuil $\omega\tau = 1$ apparaît dans l'article comme frontière des trois
+régimes, et analytiquement comme centre exact de la transition de phase et maximum exact de
+$\mathrm{d}\phi/\mathrm{d}\ln\tau$ (§~4.2). C'est le même seuil que celui du critère spectral du
+présent travail, atteint par une autre route.
+
+\textbf{La phase contre le module.} L'article établit numériquement, dans les trois
+configurations, que le module de la réponse discrimine mal les deux modèles tandis que la phase
+les discrimine.
+
+\subsection{Ce que l'article laisse ouvert}
+
+\textbf{L'identifiabilité.} L'article calcule $\partial\phi/\partial\ln\tau$~; il ne calcule ni
+$\big[(\mathbf J^{\!\top}\boldsymbol\Sigma^{-1}\mathbf J)^{-1}\big]_{\tau\tau}$, ni aucune
+corrélation. La question de savoir si $\tau$ se sépare des autres paramètres n'est pas posée.
+
+\textbf{L'enchevêtrement par $A_0$.} Les auteurs constatent que pour le demi-espace $\tau$ peut
+être déterminé par la phase seule parce que le terme en $A_0$ est absent, et n'énoncent pas la
+contraposée pour le cas stratifié (§~4.3). Or le cas stratifié est le seul réaliste.
+
+\textbf{La conductance d'interface.} Absente du modèle. C'est le paramètre dont la sensibilité
+est \textit{a priori} la plus susceptible d'être colinéaire à celle de $\tau$, et son absence
+vide de contenu le passage de $S_\tau$ à une conclusion sur l'ajustabilité.
+
+\textbf{La conception d'expérience.} L'article constate empiriquement un optimum en épaisseur à
+1~\textmu m sans l'expliquer. Le critère $d \simeq \sqrt{2\alpha\tau} = \sqrt2\,v\tau$ du §~4.3
+en rend compte et se généralise.
+
+\subsection{Absences de citation significatives}
+
+L'article ne cite ni la littérature d'identifiabilité en thermique photothermique (Krapez,
+Krapez \& Rigollet), ni aucune analyse d'incertitude en thermoréflectance, ni la borne de
+Cramér--Rao, ni la matrice de Fisher. Le formalisme de Guyer--Krumhansl est absent : le modèle
+reste strictement Cattaneo, le DPL est mentionné en introduction sans être employé, et la revue
+de Kovács est citée sans que le terme non local soit repris. L'article n'entre donc en
+concurrence ni avec la partie~I ni avec la partie~II du présent travail.
+
+\subsection{Formulation citable}
+
+L'article est citable sur trois points, et sur trois points seulement :
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+\item comme énoncé du problème ouvert de la caractérisation de $\tau$ --- aucun modèle théorique
+      ni procédure expérimentale n'établit sa valeur pour un matériau donné~;
+\item comme source de la forme de la réponse en phase sous CV et du calcul de $S_\tau$ pour
+      trois géométries~;
+\item comme constat, par ses propres auteurs, que la bande requise dépasse les capacités FDTR
+      actuelles pour $\tau \lesssim 3\times10^{-9}$~s.
+\end{enumerate}
+
+La formule «~forte sensibilité en FDTR~» du résumé ne peut pas être citée isolément : elle
+désigne une dérivée du signal, non une incertitude de paramètre, et le corps de l'article
+contient la restriction de bande qui l'accompagne.
+
+% ================================================================ 11
+\section{Matériel non consulté}
+
+Le matériel supplémentaire n'a pas été consulté. Il contient, d'après l'annonce de l'article :
+la table 1 des propriétés thermiques de tous les matériaux employés~; l'équation de la fonction
+de Green associée en coordonnées cylindriques~; la dérivation des équations du système
+stratifié, en particulier l'équation~(13) du coefficient de transmission.
+
+Les points 7 et 8 du §~9 en dépendent, ainsi que la vérification numérique des valeurs
+$\alpha_{SiC}$, $v = \sqrt{\alpha/\tau}$ et $\sqrt{2\alpha\tau}$ employées au §~4.3, qui sont
+ici des valeurs de littérature.
+
+Aucun résumé de ce matériel n'est donné dans la présente fiche.
+
+% ================================================================ 12
+\section{Références de l'article utiles au projet}
+
+Extraites de la bibliographie de l'article, avec leur fonction dans celui-ci.
+
+\smallskip
+{\small
+\begin{tabularx}{\linewidth}{@{}c L{0.40\linewidth} X@{}}
+\toprule
+\textbf{Réf.} & \textbf{Source} & \textbf{Fonction} \\
+\midrule
+11 & Camacho de la Rosa, Becerril, Gómez-Farfán, Esquivel-Sirvent, \textit{Energies}
+\textbf{14}, 7452 (2021) &
+miroirs de Bragg pour ondes thermiques~; origine des paramètres de la section III~C \\
+12 & Gandolfi, Benetti, Glorieux, Giannetti, Banfi, \textit{Int. J. Heat Mass Transf.}
+\textbf{143}, 118553 (2019) & relation de dispersion des ondes de température \\
+13 & Camacho de la Rosa, Esquivel-Sirvent, \textit{J. Phys. Commun.} \textbf{6}, 105003 (2022) &
+causalité en conduction non-Fourier~; pertinent pour la partie~II \\
+19 & R. Kovács, \textit{Phys. Rep.} \textbf{1048}, 1 (2024) &
+revue des équations de la chaleur au-delà de Fourier~; pertinent pour les parties~I et~II \\
+31 & Gandolfi, Giannetti, Banfi, \textit{Phys. Rev. Lett.} \textbf{125}, 265901 (2020) &
+cristal tempéronique dans le graphène \\
+39 & Regner, Majumdar, Malen, \textit{Rev. Sci. Instrum.} \textbf{84}, 064901 (2013) &
+instrumentation FDTR large bande~; origine du plafond de 200~MHz \\
+40 & Kirsch, Martin, Warzoha, McLean, Windover, Takeuchi, \textit{Rev. Sci. Instrum.}
+\textbf{95}, 103006 (2024) &
+guide d'instrumentation FDTR~; origine de la résolution de phase de quelques millidegrés \\
+45 & J.-L. Auriault, \textit{Int. J. Eng. Sci.} \textbf{101}, 45 (2016) &
+CV contre Fourier thermoélastique~; régime balistique à basse température \\
+50 & Y. Ezzahri, K. Joulain, \textit{J. Appl. Phys.} \textbf{112}, 083515 (2012) &
+conductivité thermique dynamique des cristaux semiconducteurs~; origine de l'ordre de grandeur
+de $\tau_{SiC}$ \\
+51 & D. G. Cahill, \textit{Rev. Sci. Instrum.} \textbf{75}, 5119 (2004) &
+matrice de transfert, pondération par le spot, définition du coefficient de sensibilité~; cité
+trois fois pour trois usages distincts \\
+52 & Maity, Banerjee, Mitra, \textit{Proc. SPIE} \textbf{7792}, 77920D (2010) &
+dépendance en température de la réflectance des métaux \\
+53 & Wang, Park, Koh, Cahill, \textit{J. Appl. Phys.} \textbf{108}, 043507 (2010) &
+thermoréflectance des transducteurs métalliques~; confondant de rugosité \\
+\bottomrule
+\end{tabularx}}
+
+% ================================================================ 13
+\section{Résumé de la fiche en cinq énoncés}
+
+\begin{enumerate}[leftmargin=1.7em,itemsep=4pt,topsep=2pt]
+\item Article de modélisation directe, sans données ni ajustement. La substitution
+      $p \mapsto p(1+\tau p)$ y est établie indépendamment et coïncide avec celle du présent
+      travail.
+\item La phase du demi-espace admet la forme fermée
+      $\phi = -\pi/4 + \tfrac12\arctan(\omega\tau)$, dont le seuil $\omega\tau = 1$ est le
+      centre exact de transition et le maximum exact de $\mathrm{d}\phi/\mathrm{d}\ln\tau$, de
+      valeur $1/4$~rad soit $14{,}32^\circ$ par facteur $e$.
+\item La sensibilité est définie comme $S_\tau = \mathrm{d}\phi/\mathrm{d}\ln\tau$, dérivée
+      logarithmique à un seul paramètre. L'article en déduit l'ajustabilité de $\tau$~; la
+      déduction n'est pas valide, faute de jacobienne complète, de corrélations, de bruit et de
+      conductance d'interface.
+\item Les auteurs reconnaissent dans le corps du texte que la bande requise dépasse les
+      capacités FDTR courantes pour $\tau \lesssim 3\times10^{-9}$~s. Le seuil instrumental, à
+      200~MHz, est $\tau_{\min} = 1/(2\pi f_{\max}) = 8{,}0\times10^{-10}$~s.
+\item La conclusion de l'article revendique une méthodologie d'estimation, un ajustement et une
+      quantification qui ne figurent pas dans son corps. La question de l'identifiabilité de
+      $\tau$ reste entière.
+\end{enumerate}
+
+\sep
+
+\section*{À compléter}
+\addcontentsline{toc}{section}{À compléter}
+
+\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=2pt]
+\item Table 1 du matériel supplémentaire : propriétés thermiques employées, et reprise des
+      échelles du §~4.3 avec les valeurs exactes.
+\item Dérivation de la matrice de transfert du matériel supplémentaire, pour lever le point 8
+      du §~9.
+\item Confrontation de $S_\tau$ au calcul complet de
+      $\big[(\mathbf J^{\!\top}\boldsymbol\Sigma^{-1}\mathbf J)^{-1}\big]_{\tau\tau}$ sur la même
+      configuration Au/SiC/Si, conductance d'interface incluse.
+\item Reprise de la figure 5(b) avec le critère $d \simeq \sqrt{2\alpha\tau}$, pour vérifier que
+      l'optimum en épaisseur suit la longueur balistique lorsque $\tau$ varie.
+\end{itemize}
+
+\end{document}
