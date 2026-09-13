@@ -25,9 +25,14 @@ import numpy as np
 import laplace as lp
 import quadrupoles as q
 
+_RELAX_OVERFLOW = 700.0
+
 __all__ = [
     "Sample",
     "contrast_report",
+    "relaxation_pair",
+    "relaxation_wall",
+    "relaxation_impedance",
     "interface_resistance",
     "stack_matrix",
     "response",
@@ -69,12 +74,27 @@ class Sample:
         Heat exchange coefficient on the free front face, in W / (m^2 K).
         Zero is the adiabatic case.
     relaxation_time, sub_relaxation_time : float
-        Relaxation times of the Cattaneo constitutive law, in seconds, for the
-        film and the substrate. Zero recovers Fourier conduction.
+        Resistive relaxation time of the constitutive law, in seconds. Zero
+        recovers Fourier conduction.
+    nonlocal_time, sub_nonlocal_time : float
+        Nonlocal time of the Guyer-Krumhansl law, tau_l = 3 ell^2 / a, in
+        seconds. Zero reduces the law to Cattaneo.
 
-        The law replaces the spectral parameter p by p (1 + tau p) in the
-        layer concerned. Nothing else changes: the Liouville coordinate, the
-        effusivity and the potential keep their Fourier definitions.
+        Under Guyer-Krumhansl the effective conductivity becomes frequency
+        dependent,
+
+            lambda_eff(p) = (lambda + 3 ell^2 p rho c) / (1 + tau_R p),
+
+        and the response depends on the layer through two combinations only:
+
+            sigma e      = xi_1 sqrt[ p (1 + tau_R p) / (1 + tau_l p) ]
+            lambda_eff s = b    sqrt[ p (1 + tau_l p) / (1 + tau_R p) ]
+
+        Substituting p by p (1 + tau_R p) throughout the Fourier quadrupole is
+        NOT equivalent: it gives the right argument but the wrong flux
+        coefficient, by a factor (1 + tau_R p). The correct form reproduces
+        the closed-form phase of Camacho de la Rosa et al. (2025), which runs
+        from -45 to 0 degrees; the naive substitution runs the other way.
     """
 
     film_lam: float = 60.0
@@ -92,6 +112,8 @@ class Sample:
 
     relaxation_time: float = 0.0
     sub_relaxation_time: float = 0.0
+    nonlocal_time: float = 0.0
+    sub_nonlocal_time: float = 0.0
 
     # ---- derived quantities -------------------------------------------
 
@@ -199,19 +221,61 @@ class Sample:
 # --------------------------------------------------------------------------
 
 def effective_p(p, tau: float):
-    """Spectral parameter under the Cattaneo constitutive law.
+    """Spectral parameter of the propagation constant, P = p (1 + tau p).
 
-        P = p (1 + tau p)
-
-    With tau = 0 this is the identity, so Fourier conduction is the special
-    case rather than a separate code path.
-
-    In the modulated regime p = i omega, hence P = i omega - tau omega^2: a
-    real part appears, growing as the square of the frequency. The dimension-
-    less group governing the departure from Fourier is omega tau.
+    It governs the argument of the hyperbolic functions, not the flux
+    coefficient. See `relaxation_pair`.
     """
     p = np.asarray(p, dtype=complex)
     return p * (1.0 + tau * p)
+
+
+def relaxation_pair(p, b: float, xi1: float, tau_r: float, tau_l: float):
+    """The two combinations through which a layer enters the response.
+
+    Returns (sigma e, lambda_eff sigma). With both times zero these reduce to
+    xi_1 sqrt(p) and b sqrt(p), the Fourier case, exactly.
+
+    When the two times coincide the square roots cancel and the pair is the
+    Fourier one whatever their common value: such a medium is thermally
+    indistinguishable from a Fourier medium.
+    """
+    p = np.asarray(p, dtype=complex)
+    num = 1.0 + tau_r * p
+    den = 1.0 + tau_l * p
+    arg = xi1 * np.sqrt(p * num / den)
+    coeff = b * np.sqrt(p * den / num)
+    return arg, coeff
+
+
+def relaxation_wall(p, b: float, xi1: float, tau_r: float = 0.0,
+                    tau_l: float = 0.0) -> np.ndarray:
+    """Quadrupole of a homogeneous layer under Guyer-Krumhansl, per unit area."""
+    p = np.asarray(p, dtype=complex)
+    arg, coeff = relaxation_pair(p, b, xi1, tau_r, tau_l)
+
+    if np.any(np.abs(arg) > _RELAX_OVERFLOW):
+        raise OverflowError(
+            f"|sigma e| exceeds {_RELAX_OVERFLOW:.0f}; cosh and sinh overflow."
+        )
+
+    ch, sh = np.cosh(arg), np.sinh(arg)
+    m = np.empty(p.shape + (2, 2), dtype=complex)
+    m[..., 0, 0] = ch
+    m[..., 0, 1] = sh / coeff
+    m[..., 1, 0] = coeff * sh
+    m[..., 1, 1] = ch
+    return m if p.shape else m.reshape(2, 2)
+
+
+def relaxation_impedance(p, b: float, tau_r: float = 0.0, tau_l: float = 0.0):
+    """Impedance of a semi-infinite medium under Guyer-Krumhansl.
+
+    Equal to the reciprocal of the flux coefficient. Reduces to 1/(b sqrt(p))
+    when both times vanish.
+    """
+    _, coeff = relaxation_pair(p, b, 1.0, tau_r, tau_l)
+    return 1.0 / coeff
 
 
 def interface_resistance(p, r: float) -> np.ndarray:
@@ -235,22 +299,28 @@ def stack_matrix(p, s: Sample) -> np.ndarray:
     The film is evaluated at its own effective spectral parameter, so a
     relaxation time in the film does not affect the substrate and conversely.
     """
-    pf = effective_p(p, s.relaxation_time)
-
     if s.is_graded:
-        m = q.graded_linear_layer(pf, s.film_b, s.film_b_back, s.xi1, form="T")
+        if s.relaxation_time != 0.0 or s.nonlocal_time != 0.0:
+            raise NotImplementedError(
+                "a graded layer with a finite relaxation time is not treated; "
+                "the Liouville transformation would have to be redone with a "
+                "frequency-dependent effective conductivity"
+            )
+        m = q.graded_linear_layer(p, s.film_b, s.film_b_back, s.xi1, form="T")
     else:
-        m = q.homogeneous_wall(pf, s.film_lam, s.film_rho_c, s.thickness)
+        m = relaxation_wall(p, s.film_b, s.xi1,
+                            s.relaxation_time, s.nonlocal_time)
 
     if s.contact_resistance != 0.0:
-        m = m @ interface_resistance(pf, s.contact_resistance)
+        m = m @ interface_resistance(p, s.contact_resistance)
     return m
 
 
 def response(p, s: Sample, power=1.0):
     """Front-face temperature in the Laplace domain, per unit area."""
     m = stack_matrix(p, s)
-    z = q.semi_infinite_impedance(effective_p(p, s.sub_relaxation_time), s.sub_b)
+    z = relaxation_impedance(p, s.sub_b,
+                             s.sub_relaxation_time, s.sub_nonlocal_time)
     return q.front_face_temperature(m, z, power=power, h=s.front_losses)
 
 
