@@ -1,0 +1,198 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{14pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Identifiabilité sous une loi de conduction\\à temps de relaxation fini}\\[5pt]
+{\normalsize Note de partie IV --- point de contrôle}\\[2pt]
+{\small 12 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+\section{Objet}
+
+Krapez et Rigollet ont établi qu'en configuration revêtement sur substrat, sous excitation et
+détection en face avant et en transfert unidimensionnel, l'épaisseur, la diffusivité et la
+conductivité du revêtement ne sont pas identifiables séparément. La dégénérescence est qualifiée
+d'\emph{inconditionnelle} : elle ne dépend ni du jeu de fréquences, ni du niveau de bruit, ni de la
+méthode d'optimisation. Le cas des milieux gradués présente la même invariance, de dimension
+fonctionnelle au lieu de un.
+
+L'ensemble de ces travaux se place sous la loi de Fourier. La présente note examine ce que devient
+cette dégénérescence lorsque la loi de conduction possède un temps de relaxation fini, et ce que le
+paramètre supplémentaire ainsi introduit apporte ou non.
+
+\section{Cadre}
+
+La loi de Cattaneo s'écrit $\tau\,\partial_t\varphi + \varphi = -\lambda\,\partial_z T$. Combinée au
+bilan d'énergie et transformée en temps, elle donne
+\[ \frac{d}{dz}\!\left[\lambda(z)\,\frac{d\theta}{dz}\right] = p\,(1+\tau p)\;\rho c(z)\;\theta . \]
+
+C'est l'équation de Fourier, dans laquelle le paramètre spectral a été remplacé :
+\[ p \;\longrightarrow\; P = p\,(1+\tau p) . \]
+
+Aucun autre élément de la structure n'est modifié. La transformation de Liouville, la coordonnée
+$\xi = \int dz/\sqrt{a}$, l'effusivité $b = \sqrt{\lambda\rho c}$ et le potentiel $V = s''/s$
+conservent leurs définitions. Le quadripôle d'une couche homogène est celui de Fourier évalué en $P$.
+
+En régime modulé, $P = i\omega - \tau\omega^2$ : une partie réelle apparaît, croissant comme le carré
+de la fréquence. Le groupement sans dimension qui gouverne l'écart à Fourier est le produit
+$\omega\tau$.
+
+Cette substitution est obtenue indépendamment par Camacho de la Rosa \emph{et al.} sous la forme
+$\sigma^2_{cv} = \sigma^2_f\,(1+i\omega\tau)$, par une voie différente --- fonction de Green
+tridimensionnelle et transformée de Hankel --- ce qui en constitue une vérification croisée.
+
+\section{Premier résultat : la dégénérescence n'est pas levée}
+
+L'invariance établie sous Fourier est celle du groupe à un paramètre
+\[ e \to \mu e, \qquad a \to \mu^2 a, \qquad \lambda \to \mu\lambda, \qquad \rho c \to \mu^{-1}\rho c , \]
+sous lequel le temps de transit $\xi_1 = e/\sqrt{a}$ et l'effusivité $b$ sont invariants, donc le
+quadripôle également. La forme infinitésimale en est l'identité d'Euler
+\[ e\,\frac{\partial G}{\partial e} + 2a\,\frac{\partial G}{\partial a}
++ \lambda\,\frac{\partial G}{\partial \lambda} = 0
+\qquad\text{pour toute fréquence.} \]
+
+\textbf{Le temps de relaxation est un temps, non une longueur.} Un changement d'échelle en profondeur
+le laisse inchangé. Le paramètre effectif $P$ est donc invariant sous le groupe, et avec lui le
+quadripôle : l'invariance survit intacte.
+
+La vérification numérique confirme la dérivation. Le résidu relatif de la combinaison d'Euler,
+évalué sur quarante fréquences couvrant six décades, demeure au niveau de l'erreur de troncature des
+différences finies quelle que soit la valeur du temps de relaxation, jusqu'à des valeurs de
+$\omega\tau$ de plusieurs centaines. Le même calcul conduit dans le domaine temporel donne le même
+verdict, conformément au principe de transposition énoncé par Krapez et Rigollet.
+
+\textbf{Conclusion.} Une loi de conduction à temps de relaxation fini ne restitue pas
+l'identifiabilité perdue sous Fourier. La levée de l'indétermination continue d'exiger une
+information imposant une échelle de longueur indépendante : mesure directe d'une propriété,
+épaisseur mesurée par ailleurs, diffusion latérale, ou sources internes.
+
+\section{Deuxième résultat : un paramètre authentiquement indépendant}
+
+Le temps de relaxation n'appartient pas à l'orbite d'invariance. Il constitue donc un paramètre
+supplémentaire dont l'estimation est une question distincte de celle des deux autres.
+
+L'analyse de l'information de Fisher, conduite à épaisseur connue sur le triplet formé de la
+conductivité, de la capacité volumique et du temps de relaxation, montre que l'introduction du
+troisième paramètre laisse les incertitudes sur les deux premiers pratiquement inchangées. Il n'y a
+donc pas de compétition entre eux : le temps de relaxation est porté par une direction de l'espace
+des paramètres que les deux autres n'occupent pas.
+
+\section{Troisième résultat : la loi d'échelle et son seuil}
+
+La sensibilité de la phase mesurable au temps de relaxation se calcule en forme fermée. Pour un
+milieu semi-infini en régime unidimensionnel,
+\[ \varphi(\omega) = -\frac{\pi}{4} + \frac{1}{2}\arctan(\omega\tau) ,
+\qquad
+\frac{\partial\varphi}{\partial \ln\tau} = \frac{1}{2}\,\frac{\omega\tau}{1+(\omega\tau)^2} . \]
+
+Cette sensibilité est maximale exactement en $\omega\tau = 1$, où elle vaut un quart de radian, et
+décroît symétriquement de part et d'autre en échelle logarithmique.
+
+L'incertitude relative d'estimation suit la loi correspondante. Le produit de l'incertitude relative
+et de $\omega_{\max}\tau$ est constant sur plusieurs décades en deçà du seuil ; l'exposant local vaut
+$-1{,}000$ à trois décimales, puis s'effondre au voisinage de l'unité. La constante dépend du niveau
+de bruit et du nombre de points de mesure ; l'exposant et la position du seuil n'en dépendent pas.
+
+\begin{center}
+\includegraphics[width=0.52\textwidth]{02_omega_tau_threshold.png}
+\end{center}
+
+\textbf{Trois grandeurs distinctes ont leur point remarquable à la même abscisse.} L'argument de
+l'énergie associée à la forme normale, $E = \tau\omega^2 - i\omega$, franchit la médiane de son
+excursion à $-45^\circ$ en $\omega\tau = 1$. La phase mesurable franchit la sienne à $-22{,}5^\circ$
+au même point. Et la sensibilité y est maximale, donc l'incertitude minimale.
+
+La coïncidence n'est pas fortuite. La partie réelle du paramètre spectral, $\tau\omega^2$, est
+précisément ce que la mesure doit percevoir pour distinguer la loi de Cattaneo de celle de Fourier ;
+elle devient comparable à la partie imaginaire quand $\omega\tau$ atteint l'unité.
+
+\section{Conséquence instrumentale}
+
+Le seuil impose une condition sur la bande de mesure :
+\[ \omega_{\max}\,\tau \;\gtrsim\; 1
+\qquad\text{soit}\qquad
+\tau \;\gtrsim\; \frac{1}{2\pi f_{\max}} . \]
+
+Pour un banc de thermoréflectance en domaine fréquentiel dont la limite supérieure est de 200~MHz,
+cette condition donne $\tau_{\min} = 8{,}0\times10^{-10}$~s. Cette valeur ne dépend que de
+l'instrument, non du matériau.
+
+Elle recoupe l'énoncé de Camacho de la Rosa \emph{et al.}, selon lequel les temps de relaxation
+inférieurs à $3\times10^{-9}$~s se situent hors de la gamme de fréquences des montages courants.
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Matériau & $\tau$ typique & $\omega_{\max}\tau$ à 200~MHz & Accessible \\
+\midrule
+Solides, borne basse & $10^{-14}$ s & $1{,}3\times10^{-5}$ & non \\
+Solides, valeur courante & $10^{-12}$ s & $1{,}3\times10^{-3}$ & non \\
+Solides, borne haute & $10^{-10}$ s & $0{,}13$ & marginalement \\
+Gaz & $10^{-8}$ s & $12{,}6$ & oui \\
+Milieux biologiques & $10^{-6}$ s & $1{,}3\times10^{3}$ & oui \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Cas du nitrure d'aluminium.} Les temps de relaxation phononiques y sont de l'ordre de la
+picoseconde à quelques dizaines de picosecondes, soit deux à trois ordres de grandeur en dessous du
+plafond instrumental. Le temps de relaxation de l'AlN n'est pas accessible à une mesure de
+thermoréflectance en domaine fréquentiel.
+
+\section{Limites}
+
+La loi constitutive employée est celle de Cattaneo, à temps de relaxation unique et sans terme non
+local. Le modèle de Guyer--Krumhansl, qui comporte une longueur non locale supplémentaire, n'est pas
+traité ; la question de savoir si ce terme, qui est une longueur, brise l'invariance d'échelle reste
+ouverte et relève des parties~I et~II.
+
+La constante de la loi d'échelle dépend du niveau de bruit, du nombre de points et de leur
+répartition. Seuls l'exposant et la position du seuil en sont indépendants.
+
+Les vérifications numériques emploient le modèle qui a engendré les données. Elles établissent la
+cohérence interne du calcul, non l'adéquation du modèle à une expérience réelle : ni la rugosité de
+surface, ni la conductance d'interface, ni la phase de référence du montage n'y figurent, alors que
+chacune produit un décalage de phase de la même nature que la signature recherchée.
+
+Enfin, la configuration traitée est celle d'une couche homogène sur substrat semi-infini. Le cas
+gradué n'a pas été examiné sous la loi de Cattaneo.
+
+\section{Références}
+
+{\small
+\begin{enumerate}[leftmargin=1.6em,itemsep=0pt]
+\item J.-C. Krapez, F. Rigollet, \emph{Comment on ``Photothermal radiometry parametric identifiability
+theory\ldots''}, arXiv:1708.07362 (2017).
+\item J.-C. Krapez, \emph{Comment on ``Simultaneous density and thermal conductivity depth profile
+reconstructions\ldots''}, J. Appl. Phys. \textbf{134}, 056101 (2023).
+\item J.-C. Krapez, \emph{Linear, trigonometric and hyperbolic profiles of thermal effusivity in the
+Liouville space and related quadrupoles}, Int. J. Therm. Sci. \textbf{136}, 182--199 (2018).
+\item A. Camacho de la Rosa, R. Esquivel-Sirvent, D. Becerril, \emph{Relaxation times of non-Fourier
+materials using frequency-domain thermoreflectance}, J. Appl. Phys. \textbf{137}, 155103 (2025).
+\item D. Maillet \emph{et al.}, \emph{Thermal Quadrupoles}, Wiley (2000).
+\end{enumerate}}
+
+\vspace{4pt}
+\noindent\small
+Vérifications : \texttt{tests/test\_cattaneo.py}, \texttt{tests/test\_pulsed\_inversion.py}.
+Figure : \texttt{notebooks/02\_omega\_tau\_threshold.py}. Seuils : \texttt{notes/conventions.md}.
+
+\end{document}
