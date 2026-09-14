@@ -1,0 +1,163 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{14pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Régimes de transport phononique\\et position de la condition de cécité}\\[5pt]
+{\normalsize Note de partie III --- point de contrôle}\\[2pt]
+{\small 13 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+\section{Objet}
+
+Le transport phononique dans un film mince relève de trois régimes selon la hiérarchie des temps de
+collision. La partie~IV établit par ailleurs une condition sous laquelle un milieu de
+Guyer--Krumhansl devient thermiquement indiscernable d'un milieu de Fourier. La présente note situe
+cette condition sur la carte des régimes.
+
+\section{Variables réduites}
+
+Le critère de Guyer pour la fenêtre hydrodynamique s'écrit
+\[ \tau_N \;\ll\; \tau_B \;\ll\; \tau_R , \]
+où $\tau_N$ est le temps des processus normaux, $\tau_R$ celui des processus résistifs, et $\tau_B$
+celui associé à la diffusion aux frontières. Deux nombres sans dimension en découlent :
+\[ x = \frac{\tau_R}{\tau_N} , \qquad\qquad y = \frac{\tau_B}{\tau_N} . \]
+
+Le second admet une lecture directe. Avec $\tau_B = d/v$ et $\tau_N = \Lambda_N / v$, il vient
+$y = d/\Lambda_N$ : l'épaisseur du film exprimée en libres parcours moyens des processus normaux.
+
+Le critère devient alors $1 \ll y \ll x$, et la carte se partage en trois régions.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Condition} & \textbf{Régime} \\
+\midrule
+$y < 1$ & balistique : les frontières l'emportent sur les processus normaux \\
+$y > x$ & diffusif : les processus résistifs l'emportent sur les frontières \\
+$1 < y < x$ & hydrodynamique \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La fenêtre hydrodynamique est un coin dont le sommet se trouve en $(1,\,1)$. Sa largeur, en décades,
+vaut $\log_{10} x$.
+
+\section{Position de la condition de cécité}
+
+La partie~IV établit qu'un milieu de Guyer--Krumhansl dont les deux temps coïncident,
+$\tau_R = \tau_\ell$, produit exactement la réponse d'un milieu de Fourier, quelle que soit leur
+valeur commune. Avec $\tau_\ell = \tfrac{9}{5}\tau_N$, cette condition s'écrit
+\[ \tau_R = 1{,}8\,\tau_N , \qquad\text{soit}\qquad x = 1{,}8 . \]
+
+C'est une droite verticale, et elle passe \textbf{juste à droite du sommet du coin}.
+
+\begin{center}
+\includegraphics[width=0.78\textwidth]{05_regime_map.png}
+\end{center}
+
+\begin{center}
+\begin{tabular}{@{}cc@{}}
+\toprule
+$x = \tau_R/\tau_N$ & Largeur de la fenêtre \\
+\midrule
+$1{,}2$ & $0{,}08$ décade \\
+$\mathbf{1{,}8}$ & $\mathbf{0{,}26}$ \textbf{décade} \\
+$5$ & $0{,}70$ décade \\
+$10$ & $1{,}00$ décade \\
+$100$ & $2{,}00$ décades \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Énoncé}
+
+À l'abscisse de la cécité, la fenêtre hydrodynamique mesure un quart de décade. Elle n'en atteint une
+qu'à $x = 10$.
+
+Un matériau qui refroidit voit $\tau_R/\tau_N$ croître, les processus umklapp gelant plus rapidement
+que les processus normaux. Il traverse donc la droite de cécité \textbf{au moment précis où la
+fenêtre hydrodynamique s'ouvre}.
+
+\subsection{Conséquence}
+
+Au voisinage de l'entrée dans le régime hydrodynamique, un matériau devrait paraître thermiquement de
+Fourier alors même qu'il cesse de l'être. La signature non-Fourier ne deviendrait détectable qu'une
+fois la fenêtre franchement ouverte, soit à $x$ nettement supérieur à l'unité.
+
+Cette conséquence est falsifiable : elle prédit, sur une mesure en température, une plage où l'écart
+à Fourier passe par un minimum au lieu de croître de façon monotone.
+
+\section{Portée et limites}
+
+\subsection{La carte est en variables réduites}
+
+Elle est indépendante du matériau. Un matériau donné y trace une courbe lorsque la température varie,
+$\tau_N$ et $\tau_R$ suivant des lois différentes. La production de cette courbe pour l'AlN exige les
+coefficients d'un modèle de Callaway ajusté, qui ne sont pas établis à ce jour.
+
+\subsection{Le rapport des temps dépend de la fréquence}
+
+Les calculs de premiers principes sur l'AlN wurtzite donnent, à basse fréquence,
+$1/\tau_U \propto \omega^3$ pour les branches acoustiques, tandis que $1/\tau_N \propto \omega$ pour
+les modes transverses et $\omega^2$ pour les longitudinaux.
+
+Il en résulte $\tau_R/\tau_N \propto \omega^{-2}$ pour les modes transverses. \textbf{L'abscisse de
+la carte n'est donc pas une constante du matériau} : les modes de basse fréquence se placent loin à
+droite, ceux de haute fréquence à gauche. Un matériau occupe une plage, non un point.
+
+La condition de cécité portant sur les temps moyennés de l'équation de Guyer--Krumhansl, sa
+confrontation à un matériau réel exige de savoir comment cette moyenne est pondérée. Ce point n'est
+pas tranché.
+
+\subsection{Erreur propre du cadre}
+
+Le modèle de Callaway s'écarte de la solution exacte de l'équation de Boltzmann de $+1\,\%$ dans le
+plan et de $-12\,\%$ hors plan pour l'AlN. La direction hors plan étant celle de la configuration
+étudiée, ce cadre porte une erreur propre de l'ordre de dix pour cent, antérieure à toute mesure.
+
+\subsection{Ce qui est supposé}
+
+Le critère de Guyer emploie un temps de frontière unique, $\tau_B = d/v$, sans facteur de forme ni
+spécularité. Une frontière partiellement spéculaire allonge ce temps et déplace la limite balistique
+vers le bas.
+
+Les trois régions sont séparées par des inégalités strictes traitées ici comme des égalités. Les
+frontières de la carte sont donc des transitions graduelles, non des lignes.
+
+\section{Suite}
+
+\begin{itemize}
+\item Récupérer les coefficients $B_N$ et $B_U$ de l'AlN. Deux références à ouvrir :
+Phys. Rev. B \textbf{90}, 035203, source des lois d'échelle ci-dessus ; et
+Phys. Rev. Materials \textbf{4}, 044602, mesures sur monocristal de 130 à 480~K.
+\item Tracer la trajectoire de l'AlN en fonction de la température, pour plusieurs épaisseurs de
+film. La fonction correspondante est écrite et attend ces coefficients.
+\item Confronter aux mesures de transition balistique vers diffusif publiées sur films d'AlN de
+1,6 à 2440~nm.
+\end{itemize}
+
+\vspace{4pt}
+\noindent\small
+Figure et calculs : \texttt{notebooks/05\_regime\_map.py}. Données matériau et limites :
+\texttt{notes/conventions.md}, section~11. Condition de cécité : note de partie~IV, section~6.
+Références à vérifier à la source avant citation.
+
+\end{document}
