@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 13 septembre 2026.
+Dernière mise à jour : 13 septembre 2026, seconde révision.
 
 ---
 
@@ -247,9 +247,84 @@ angle et non une norme :
 Un point où toutes les sensibilités croissent simultanément — typiquement une quasi-résonance — est
 le plus favorable en norme et le plus défavorable en angle.
 
-## 10. Contraintes instrumentales établies
+## 10. Admissibilité des lois constitutives
 
-### 10.1 Fréquence caractéristique du film
+### 10.1 Les deux critères sont indépendants
+
+| Loi | Entropie convexe | Seconde loi | Propagation |
+|---|---|---|---|
+| Fourier | oui | oui, si `λ > 0` | **infinie** |
+| Cattaneo | oui, si `τ_R > 0` | oui, si `λ > 0` | **finie**, `√(a/τ_R)` |
+| Guyer–Krumhansl | oui, si `τ_R > 0` | oui, si `λ > 0` et `ℓ² ≥ 0` | **infinie** |
+
+Les trois lois sont thermodynamiquement admissibles. **Une seule propage à vitesse finie.** La
+hiérarchie Fourier → Cattaneo → Guyer–Krumhansl n'est donc pas un raffinement monotone : le modèle
+le plus riche perd la propriété qui motive habituellement l'abandon de Fourier.
+
+### 10.2 Dispersion
+
+```
+σ² = p (1 + τ_R p) / [ a (1 + τ_ℓ p) ]          σ = i k
+```
+
+Comportement du nombre d'onde à haute fréquence, exposant mesuré :
+
+| Loi | `k ∝ ω^n` | Vitesse de phase |
+|---|---|---|
+| Fourier | `n = 0,5000` | non bornée |
+| Cattaneo | `n = 1,0000` | sature à `√(a/τ_R)` |
+| Guyer–Krumhansl | `n = 0,5004` | non bornée |
+
+Le terme non local est **diffusif sur le flux lui-même**. Au-dessus de la fréquence où il domine le
+terme en `τ_R ∂q/∂t`, la partie principale du système redevient parabolique.
+
+En modèle de Debye, `a = v²τ_R/3`, donc la vitesse limite de Cattaneo vaut `v/√3`.
+
+### 10.3 Entropie étendue
+
+La thermodynamique irréversible étendue prend le flux comme variable d'état :
+
+```
+s(u, q) = s_éq(u) − ( τ_R / 2λT₀² ) · q²
+```
+
+concave si `τ_R > 0`. Production, avec le flux d'entropie `q/T` :
+
+```
+Cattaneo :          σ_s = q² / (λT₀²)
+Guyer–Krumhansl :   σ_s = [ q² + 3ℓ² (∂q/∂z)² ] / (λT₀²)
+```
+
+La seconde exige un **flux d'entropie étendu** :
+
+```
+J_s = q/T + ( 3ℓ² / λT₀² ) · q · ∂q/∂z
+```
+
+Sans ce terme supplémentaire, la production conserve un terme croisé de signe indéfini et n'est pas
+une somme de carrés.
+
+**Piège de dérivation.** Le flux d'entropie doit être pris en `q/T`, non en `q/T₀`. La différence est
+exactement le terme qui compense la contribution du gradient de température ; avec `q/T₀` il subsiste
+un résidu en `q·∂T/∂z` qui ne s'annule pas.
+
+### 10.4 Système caractéristique
+
+Partie principale du système de Cattaneo en variables `(u, q)` :
+
+```
+A = [[0, 1], [a/τ_R, 0]]          valeurs propres  ±√(a/τ_R)
+```
+
+Deux valeurs propres réelles distinctes : strictement hyperbolique. Le théorème de Godunov et Mock
+relie cette propriété à l'existence d'une entropie convexe.
+
+Implanté : `src/admissibility.py`. Vérifications : `tests/test_admissibility.py`, dont la dérivation
+symbolique des deux productions d'entropie.
+
+## 11. Contraintes instrumentales établies
+
+### 11.1 Fréquence caractéristique du film
 
 ```
 f_c = 1 / (2π ξ₁²)        ξ₁ = e/√a
@@ -262,7 +337,7 @@ l'onde dans le film exige environ deux décades au-dessus.
 
 Implanté : `Sample.characteristic_frequency`.
 
-### 10.2 Effusivité aveugle
+### 11.2 Effusivité aveugle
 
 ```
 Γ = (1 − b₃₂)/(1 + b₃₂)        b₃₂ = b_substrat / b_film
@@ -279,7 +354,7 @@ un écart de 1 W·m⁻¹·K⁻¹.
 
 Implanté : `Sample.reflection_coefficient`, `Sample.blind_film_effusivity`, `contrast_report()`.
 
-### 10.3 Seuil de mesurabilité du temps de relaxation
+### 11.3 Seuil de mesurabilité du temps de relaxation
 
 ```
 ω_max · τ ≥ 1        soit        τ ≥ 1/(2π f_max)
@@ -301,7 +376,7 @@ Le même seuil apparaît par trois voies indépendantes : l'argument de l'énerg
 spectrale vaut −45° en `ωτ = 1` ; la phase mesurable y franchit sa médiane à −22,5° ; et le plafond
 instrumental impose `ω_max·τ ≥ 1`. Figure `figures/02_omega_tau_threshold.png`.
 
-### 10.4 Diagonale aveugle des deux temps
+### 11.4 Diagonale aveugle des deux temps
 
 ```
 τ_R = τ_ℓ        soit, en grandeurs microscopiques,        τ_R = 1,8 τ_N
@@ -325,7 +400,7 @@ différentes — un cristal peut donc traverser la condition en refroidissant.
 
 Figure `figures/04_guyer_krumhansl_blindness.png`.
 
-### 10.5 Débordement numérique
+### 11.5 Débordement numérique
 
 ```
 |√P · ξ| < 700
@@ -338,7 +413,7 @@ exploitable se rétrécit comme l'inverse du carré de la fréquence maximale qu
 Limite de la représentation matricielle, non de la physique. Une formulation à facteur exponentiel
 extrait la lèverait.
 
-## 11. Inversion numérique de Laplace
+## 12. Inversion numérique de Laplace
 
 **Méthode initiale : Gaver–Stehfest**, Maillet appendice 1.1 page 28. **Repli : De Hoog**, employée
 par Krapez.
@@ -358,7 +433,7 @@ jusqu'à 12 puis se dégrade.
 Validation obligatoire avant tout usage sur bicouche : comparaison à la solution analytique du mur
 homogène.
 
-## 12. Validation sur données synthétiques
+## 13. Validation sur données synthétiques
 
 Valider une inversion avec le modèle même qui a engendré les données porte un nom : **crime inverse**
 (Krapez 2023, section IV).
@@ -390,7 +465,7 @@ Références de validation en usage :
 | Cattaneo, semi-infini | Camacho de la Rosa et al. (2025), phase `−45° + ½·arctan(ωτ)` |
 | Guyer–Krumhansl | réduction exacte à Cattaneo et à Fourier |
 
-## 13. Tests unitaires associés
+## 14. Tests unitaires associés
 
 | Test | Critère |
 |---|---|
@@ -408,4 +483,8 @@ Références de validation en usage :
 | Limite Cattaneo | `τ_ℓ = 0` redonne la forme de Cattaneo |
 | Diagonale aveugle | `τ_R = τ_ℓ` redonne la réponse de Fourier exactement |
 | Validation externe | phase comparée à la forme fermée de Camacho de la Rosa et al. |
+| Dispersion | exposant de `k` en `ω` : 0,5 pour Fourier, 1,0 pour Cattaneo, 0,5 pour Guyer–Krumhansl |
+| Vitesse de Cattaneo | sature à `√(a/τ_R)`, soit `v/√3` en modèle de Debye |
+| Production d'entropie | somme de carrés, dérivée symboliquement depuis les bilans |
+| Flux d'entropie étendu | coefficient `3ℓ²/(λT₀²)`, obtenu en annulant le terme croisé |
 | Refus explicite | couche graduée avec relaxation : `NotImplementedError`, pas un résultat faux |
