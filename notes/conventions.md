@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 13 septembre 2026, seconde révision.
+Dernière mise à jour : 13 septembre 2026, troisième révision.
 
 ---
 
@@ -322,9 +322,74 @@ relie cette propriété à l'existence d'une entropie convexe.
 Implanté : `src/admissibility.py`. Vérifications : `tests/test_admissibility.py`, dont la dérivation
 symbolique des deux productions d'entropie.
 
-## 11. Contraintes instrumentales établies
+## 11. Données matériau et limites du cadre de Callaway
 
-### 11.1 Fréquence caractéristique du film
+### 11.1 Valeurs établies pour l'AlN
+
+| Grandeur | Valeur | Source |
+|---|---|---|
+| Température de Debye | **988 K** | étude des défauts ponctuels dans l'AlN monocristallin |
+| Capacité volumique | 2,4 × 10⁶ J·m⁻³·K⁻¹ | valeur usuelle, à vérifier |
+| Conductivité, massif de haute pureté | 216 à 278 W·m⁻¹·K⁻¹ à 300 K | mesures sur monocristaux |
+| Vitesse du son, longitudinale | ~1,1 × 10⁴ m/s | à vérifier |
+| Vitesse du son, transverse | ~6 × 10³ m/s | à vérifier |
+
+### 11.2 Lois d'échelle en fréquence, calculées ab initio pour l'AlN wurtzite
+
+À basse fréquence :
+
+```
+1/τ_U  ∝  ω³        branches TA et LA
+1/τ_N  ∝  ω         branche TA
+1/τ_N  ∝  ω²        branche LA
+```
+
+**Conséquence pour la carte des régimes.** Le rapport `τ_R/τ_N` varie comme `ω⁻²` pour les modes
+transverses. La coordonnée `x` de la carte est donc **fortement dépendante de la fréquence** : les
+modes de basse fréquence se placent loin à droite, ceux de haute fréquence à gauche. Un même
+matériau occupe une plage sur la carte, non un point.
+
+### 11.3 Portée de la diagonale aveugle
+
+Les temps `τ_R` et `τ_ℓ` de Guyer–Krumhansl sont des **moyennes pondérées sur le spectre**, issues de
+l'approximation de Callaway qui efface la dépendance en fréquence des temps de collision.
+
+La condition de cécité `τ_R = 1,8 τ_N` porte donc sur ces moyennes, non sur chaque mode. Un matériau
+réel la satisfait ou non selon l'ensemble de son spectre. L'énoncé reste bien défini au niveau du
+modèle effectif, mais cette réserve doit accompagner toute confrontation à un matériau réel.
+
+### 11.4 Erreur propre du modèle de Callaway sur l'AlN
+
+Une comparaison première-principes conclut que ni le modèle de Callaway original ni la version
+modifiée d'Allen ne garantissent une amélioration sur l'approximation du temps de relaxation.
+
+Écart à la solution exacte de l'équation de Boltzmann, pour l'AlN :
+
+| Direction | Écart du modèle de Callaway |
+|---|---|
+| Dans le plan | +1 % |
+| **Hors plan** | **−12 %** |
+
+**Hors plan est la géométrie du présent travail** : film sur substrat, flux perpendiculaire au film.
+Le cadre de Callaway y porte donc une erreur propre de l'ordre de dix pour cent, indépendante de
+toute considération d'identifiabilité. Cette limite doit figurer dans toute annonce de valeur issue
+de la partie I.
+
+### 11.5 À récupérer
+
+Les coefficients `B_N` et `B_U` de l'AlN ne sont pas dans les résumés consultés. Deux références à
+ouvrir :
+
+- Phys. Rev. B **90**, 035203 — examen du modèle de Callaway sur Si, diamant et AlN wurtzite ; source
+  des lois d'échelle ci-dessus.
+- Phys. Rev. Materials **4**, 044602 — mesures sur AlN monocristallin de 130 à 480 K, avec ajustement
+  Callaway.
+
+Références à vérifier à la source avant citation.
+
+## 12. Contraintes instrumentales établies
+
+### 12.1 Fréquence caractéristique du film
 
 ```
 f_c = 1 / (2π ξ₁²)        ξ₁ = e/√a
@@ -337,7 +402,7 @@ l'onde dans le film exige environ deux décades au-dessus.
 
 Implanté : `Sample.characteristic_frequency`.
 
-### 11.2 Effusivité aveugle
+### 12.2 Effusivité aveugle
 
 ```
 Γ = (1 − b₃₂)/(1 + b₃₂)        b₃₂ = b_substrat / b_film
@@ -354,7 +419,7 @@ un écart de 1 W·m⁻¹·K⁻¹.
 
 Implanté : `Sample.reflection_coefficient`, `Sample.blind_film_effusivity`, `contrast_report()`.
 
-### 11.3 Seuil de mesurabilité du temps de relaxation
+### 12.3 Seuil de mesurabilité du temps de relaxation
 
 ```
 ω_max · τ ≥ 1        soit        τ ≥ 1/(2π f_max)
@@ -376,7 +441,7 @@ Le même seuil apparaît par trois voies indépendantes : l'argument de l'énerg
 spectrale vaut −45° en `ωτ = 1` ; la phase mesurable y franchit sa médiane à −22,5° ; et le plafond
 instrumental impose `ω_max·τ ≥ 1`. Figure `figures/02_omega_tau_threshold.png`.
 
-### 11.4 Diagonale aveugle des deux temps
+### 12.4 Diagonale aveugle des deux temps
 
 ```
 τ_R = τ_ℓ        soit, en grandeurs microscopiques,        τ_R = 1,8 τ_N
@@ -400,7 +465,7 @@ différentes — un cristal peut donc traverser la condition en refroidissant.
 
 Figure `figures/04_guyer_krumhansl_blindness.png`.
 
-### 11.5 Débordement numérique
+### 12.5 Débordement numérique
 
 ```
 |√P · ξ| < 700
@@ -413,7 +478,7 @@ exploitable se rétrécit comme l'inverse du carré de la fréquence maximale qu
 Limite de la représentation matricielle, non de la physique. Une formulation à facteur exponentiel
 extrait la lèverait.
 
-## 12. Inversion numérique de Laplace
+## 13. Inversion numérique de Laplace
 
 **Méthode initiale : Gaver–Stehfest**, Maillet appendice 1.1 page 28. **Repli : De Hoog**, employée
 par Krapez.
@@ -433,7 +498,7 @@ jusqu'à 12 puis se dégrade.
 Validation obligatoire avant tout usage sur bicouche : comparaison à la solution analytique du mur
 homogène.
 
-## 13. Validation sur données synthétiques
+## 14. Validation sur données synthétiques
 
 Valider une inversion avec le modèle même qui a engendré les données porte un nom : **crime inverse**
 (Krapez 2023, section IV).
@@ -465,7 +530,7 @@ Références de validation en usage :
 | Cattaneo, semi-infini | Camacho de la Rosa et al. (2025), phase `−45° + ½·arctan(ωτ)` |
 | Guyer–Krumhansl | réduction exacte à Cattaneo et à Fourier |
 
-## 14. Tests unitaires associés
+## 15. Tests unitaires associés
 
 | Test | Critère |
 |---|---|

@@ -138,11 +138,20 @@ $f^{\,0}$, de vitesse d'ensemble nulle : le gaz est arrêté.
 
 Elle suppose que le retour à l'équilibre est exponentiel, avec un temps caractéristique unique par
 famille de processus. Cette hypothèse efface la dépendance en fréquence des temps de collision, qui
-est en réalité marquée : les phonons de haute énergie subissent bien plus de processus umklapp que
-ceux de basse énergie.
+est en réalité marquée.
 
-Les temps $\tau_N$ et $\tau_R$ qui apparaissent ensuite sont donc des moyennes pondérées sur le
-spectre, non des grandeurs microscopiques élémentaires.
+Les calculs de premiers principes sur l'AlN wurtzite donnent, à basse fréquence,
+\[ \frac{1}{\tau_U} \propto \omega^3 \quad\text{(TA et LA)} , \qquad
+\frac{1}{\tau_N} \propto \omega \quad\text{(TA)} , \qquad
+\frac{1}{\tau_N} \propto \omega^2 \quad\text{(LA)} . \]
+
+Le rapport $\tau_R/\tau_N$ varie donc comme $\omega^{-2}$ pour les modes transverses : il n'est en
+aucune façon constant sur le spectre.
+
+Les temps $\tau_N$ et $\tau_R$ qui apparaissent ensuite sont par conséquent des \textbf{moyennes
+pondérées sur le spectre}, non des grandeurs microscopiques élémentaires. Toute condition portant
+sur leur rapport --- et la partie~IV en produit une --- est une condition sur ces moyennes, non sur
+chaque mode.
 
 \subsection{Ce qu'elle préserve}
 
@@ -306,6 +315,31 @@ La question de savoir si l'invariance se brise pour cette raison, et par conséq
 local restitue une identifiabilité que le seul temps de relaxation ne restitue pas, n'est pas
 tranchée par ces notes. Elle constitue le prolongement naturel de la partie IV.
 
+\section{Limites du cadre}
+
+\subsection{Erreur propre de l'approximation de Callaway}
+
+Une comparaison entre le modèle de Callaway et la résolution exacte de l'équation de Boltzmann, menée
+par méthode itérative sur des taux de diffusion calculés de premiers principes, conclut que ni le
+modèle original ni la version modifiée d'Allen ne garantissent une amélioration sur l'approximation
+du temps de relaxation.
+
+Pour l'AlN wurtzite, l'écart du modèle de Callaway à la solution exacte vaut $+1\,\%$ dans le plan et
+$-12\,\%$ hors plan.
+
+\textbf{La direction hors plan est celle du présent travail} : film mince sur substrat, flux
+perpendiculaire au film. Le cadre de Callaway y porte donc une erreur propre de l'ordre de dix pour
+cent, indépendante de toute considération d'identifiabilité, et antérieure à toute mesure.
+
+\subsection{Portée}
+
+Cette limite n'invalide pas la chaîne exposée ici : elle en fixe la précision. Une valeur de temps de
+relaxation obtenue dans ce cadre ne peut pas prétendre à mieux que l'ordre de grandeur de cet écart,
+quelle que soit la qualité de l'inversion qui l'a produite.
+
+Elle borne également ce qu'une confrontation expérimentale peut établir : un désaccord inférieur à
+dix pour cent entre modèle et mesure ne constitue pas une réfutation.
+
 \section{Références}
 
 {\small
@@ -319,6 +353,10 @@ hydrodynamic phenomena in nonmetallic crystals}, Phys. Rev. \textbf{148}, 778 (1
 \item N. W. Ashcroft, N. D. Mermin, \emph{Solid State Physics}, Holt (1976).
 \item C. Kittel, \emph{Introduction to Solid State Physics}, Wiley.
 \item G. P. Srivastava, \emph{The Physics of Phonons}, Adam Hilger (1990).
+\item Examen du modèle de Callaway pour Si, diamant et AlN wurtzite, Phys. Rev. B \textbf{90},
+035203. Source des lois d'échelle en fréquence et de l'écart hors plan.
+\item Mesures de conductivité sur AlN monocristallin de 130 à 480 K, Phys. Rev. Materials
+\textbf{4}, 044602.
 \end{enumerate}}
 
 \vspace{4pt}
