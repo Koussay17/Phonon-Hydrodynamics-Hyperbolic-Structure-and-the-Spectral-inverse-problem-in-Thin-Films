@@ -30,6 +30,7 @@ _RELAX_OVERFLOW = 700.0
 __all__ = [
     "Sample",
     "contrast_report",
+    "regime_report",
     "relaxation_pair",
     "relaxation_wall",
     "relaxation_impedance",
@@ -115,6 +116,8 @@ class Sample:
     nonlocal_time: float = 0.0
     sub_nonlocal_time: float = 0.0
 
+    phonon_velocity: float = 6000.0
+
     # ---- derived quantities -------------------------------------------
 
     @property
@@ -156,6 +159,39 @@ class Sample:
         if self.relaxation_time <= 0.0:
             return np.inf
         return 1.0 / (2.0 * np.pi * self.relaxation_time)
+
+    @property
+    def mean_free_path(self) -> float:
+        """Total phonon mean free path, from kinetic theory.
+
+            Lambda = 3 lambda / (rho c v)
+
+        This is the length that decides whether transport is ballistic. It
+        must not be confused with the mean free path of the normal processes
+        alone, v tau_N, which decides whether phonon hydrodynamics is possible
+        at all and is typically three orders of magnitude larger.
+        """
+        return 3.0 * self.film_lam / (self.film_rho_c * self.phonon_velocity)
+
+    @property
+    def knudsen_number(self) -> float:
+        """Mean free path divided by thickness.
+
+        Above one the carriers cross the film without scattering and transport
+        is ballistic. Below about a tenth it is diffusive. In between the
+        extracted conductivity is an apparent value, reduced by boundary
+        scattering and dependent on thickness.
+        """
+        return self.mean_free_path / self.thickness
+
+    @property
+    def transport_regime(self) -> str:
+        kn = self.knudsen_number
+        if kn > 1.0:
+            return "ballistic"
+        if kn > 0.1:
+            return "transitional"
+        return "diffusive"
 
     @property
     def effusivity_ratio(self) -> float:
@@ -437,3 +473,30 @@ def analogy_energy(freq, tau: float):
     """
     omega = 2.0 * np.pi * np.asarray(freq, dtype=float)
     return -effective_p(1j * omega, tau)
+
+
+def regime_report(s: Sample) -> str:
+    """Readable assessment of the transport regime of a sample.
+
+    Two lengths are reported and must not be confused. The total mean free
+    path decides whether transport is ballistic; the mean free path of the
+    normal processes alone decides whether phonon hydrodynamics is possible,
+    and is typically a thousand times larger.
+    """
+    kn = s.knudsen_number
+    lines = [
+        f"thickness            : {s.thickness * 1e9:10.1f} nm",
+        f"mean free path       : {s.mean_free_path * 1e9:10.1f} nm",
+        f"Knudsen number       : {kn:10.3f}",
+        f"transport regime     : {s.transport_regime}",
+    ]
+    if kn > 0.1:
+        lines.append("")
+        lines.append(
+            "WARNING: the mean free path is not negligible against the thickness. "
+            "A conductivity extracted here is an apparent value, reduced by "
+            "boundary scattering and dependent on thickness; it is not an "
+            "intrinsic property of the material. Reporting it as such, or "
+            "comparing it with a bulk value, is not meaningful."
+        )
+    return "\n".join(lines)

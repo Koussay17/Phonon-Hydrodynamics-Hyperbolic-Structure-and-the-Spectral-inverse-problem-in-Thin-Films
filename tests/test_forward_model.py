@@ -266,3 +266,64 @@ def test_contrast_report_warns_when_blind():
                                             sub_lam=sub_l, sub_rho_c=sub_rc))
     assert "WARNING" in near
     assert "WARNING" not in far
+
+
+# --------------------------------------------------------------------------
+# Transport regime
+# --------------------------------------------------------------------------
+
+def test_two_mean_free_paths_must_not_be_confused():
+    """The total mean free path and that of the normal processes answer two
+    different questions and differ by three orders of magnitude.
+
+    The total one, 3 lambda / (rho c v), decides whether transport is
+    ballistic. The normal one, v tau_N, decides whether phonon hydrodynamics
+    is possible at all. For AlN at 300 K the first is near 67 nm and the
+    second between 2.4 and 60 micrometres.
+    """
+    s = default_sample(film_lam=321.0, film_rho_c=2.41e6, thickness=500e-9)
+    assert s.mean_free_path == pytest.approx(3.0 * 321.0 / (2.41e6 * 6000.0))
+    assert 60e-9 < s.mean_free_path < 70e-9
+
+    normal_mfp = 6000.0 * 4.0e-10          # v tau_N at 10 THz, shortest case
+    assert normal_mfp > 30.0 * s.mean_free_path
+
+
+def test_knudsen_number_and_regime():
+    for thickness, expected in ((50e-9, "ballistic"),
+                                (500e-9, "transitional"),
+                                (5e-6, "diffusive")):
+        s = default_sample(film_lam=321.0, film_rho_c=2.41e6,
+                           thickness=thickness)
+        assert s.transport_regime == expected, thickness
+        assert s.knudsen_number == pytest.approx(s.mean_free_path / thickness)
+
+
+def test_a_five_hundred_nanometre_aln_film_is_not_ballistic():
+    """It is transitional: the carriers scatter several times on crossing, but
+    boundary scattering still matters.
+
+    The conductivity extracted there is an apparent value, dependent on
+    thickness, which is what Hoque et al. measure by varying the thickness
+    from 1.6 to 2440 nm.
+    """
+    s = default_sample(film_lam=321.0, film_rho_c=2.41e6, thickness=500e-9)
+    assert s.knudsen_number == pytest.approx(0.133, abs=0.005)
+    assert s.transport_regime == "transitional"
+
+
+def test_regime_report_warns_outside_the_diffusive_regime():
+    thin = fm.regime_report(default_sample(film_lam=321.0, film_rho_c=2.41e6,
+                                           thickness=500e-9))
+    thick = fm.regime_report(default_sample(film_lam=321.0, film_rho_c=2.41e6,
+                                            thickness=5e-6))
+    assert "WARNING" in thin and "apparent" in thin
+    assert "WARNING" not in thick
+
+
+def test_velocity_enters_the_diagnostic_only():
+    """Changing the phonon velocity must not alter the thermal response."""
+    p = 2j * np.pi * FREQ
+    a = fm.response(p, default_sample(phonon_velocity=6000.0))
+    b = fm.response(p, default_sample(phonon_velocity=11000.0))
+    assert np.allclose(a, b, rtol=1e-14)

@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 13 septembre 2026, cinquième révision.
+Dernière mise à jour : 13 septembre 2026, sixième révision.
 
 ---
 
@@ -427,27 +427,58 @@ coordonnée `x` n'est pas une constante du matériau.
 **Ordonnée.** Le libre parcours moyen des processus normaux vaut `Λ_N = v·τ_N`, soit **2,4 à 60 µm**
 avec `v = 6000 m/s`. Très grand devant un film mince.
 
-| Épaisseur | y = τ_B/τ_N | Régime |
+| Épaisseur | y = τ_B/τ_N | Position |
 |---|---|---|
-| **500 nm** | 0,008 à 0,21 | **balistique** |
-| 5 µm | 0,08 à 2,1 | mixte |
-| 20 µm | 0,33 à 8,3 | mixte |
-| 500 µm | 8,3 à 208 | hydrodynamique |
+| 500 nm | 0,008 à 0,21 | très en dessous de la fenêtre |
+| 5 µm | 0,08 à 2,1 | à la frontière |
+| 20 µm | 0,33 à 8,3 | à la frontière |
+| 500 µm | 8,3 à 208 | dans la fenêtre |
 
-**Conséquence majeure : un film d'AlN submicronique est balistique à 300 K.** Ni Fourier, ni
-Cattaneo, ni Guyer–Krumhansl ne s'y appliquent — ce sont des lois de milieu continu, et l'épaisseur
-est trop faible pour qu'une description par équation de diffusion garde un sens.
+**Conséquence : un film d'AlN submicronique est hors de la fenêtre hydrodynamique**, de deux décades.
+Les processus normaux y sont trop rares devant la diffusion aux frontières pour que le gaz de phonons
+s'équilibre intérieurement. Le terme non local de Guyer–Krumhansl n'y a donc pas de fondement.
 
-Cohérent avec la transition balistique vers diffusif mesurée par Hoque *et al.* sur films d'AlN de
+### 11.7 Deux libres parcours moyens à ne pas confondre
+
+L'ordonnée de la carte emploie le libre parcours des **processus normaux seuls**. Elle ne dit rien du
+caractère balistique du transport, qui dépend du libre parcours **total**.
+
+| Longueur | Expression | Valeur AlN à 300 K | Ce qu'elle décide |
+|---|---|---|---|
+| Normal | `Λ_N = v τ_N` | 2,4 à 60 µm | possibilité de l'hydrodynamique |
+| **Total** | `Λ = 3λ/(ρc v)` | **67 nm** | caractère balistique du transport |
+
+Elles diffèrent de trois ordres de grandeur. Confondre les deux conduit à qualifier de balistique un
+film qui ne l'est pas.
+
+**Nombre de Knudsen**, `Kn = Λ/d`, avec `Λ = 67 nm` :
+
+| Épaisseur | Kn | Régime de transport |
+|---|---|---|
+| 50 nm | 1,33 | balistique |
+| 200 nm | 0,33 | transitionnel |
+| **500 nm** | **0,13** | **transitionnel** |
+| 2 µm | 0,033 | diffusif |
+
+**Un film d'AlN de 500 nm n'est pas balistique : il est transitionnel.** Le libre parcours vaut un
+huitième de l'épaisseur. Les phonons y diffusent plusieurs fois en traversant, mais la diffusion aux
+frontières reste sensible.
+
+**Conséquence pour le livrable.** Le modèle de diffusion reste applicable, mais **la conductivité
+extraite est une valeur apparente, réduite par la diffusion aux frontières et dépendante de
+l'épaisseur.** Ce n'est pas une propriété intrinsèque du matériau, et la comparer à une valeur massive
+n'a pas de sens. C'est précisément ce que Hoque *et al.* mesurent en faisant varier l'épaisseur de
 1,6 à 2440 nm.
 
-**Ceci déplace la première question à poser au laboratoire : l'épaisseur des films passe avant la
-bande de fréquences.** Si le dépôt est submicronique, l'inversion d'un modèle de diffusion repose sur
-un modèle hors de son domaine.
+**L'épaisseur des films est donc la première caractéristique à établir**, avant la bande de
+fréquences : elle décide de ce que le livrable peut annoncer.
+
+Implanté : `Sample.mean_free_path`, `Sample.knudsen_number`, `Sample.transport_regime`,
+`regime_report()`.
 
 Figure : `figures/05_regime_map.png`.
 
-### 11.7 Ce que les sources ne fournissent pas
+### 11.8 Ce que les sources ne fournissent pas
 
 Le modèle de Cheng *et al.* **n'inclut pas les processus normaux** :
 
