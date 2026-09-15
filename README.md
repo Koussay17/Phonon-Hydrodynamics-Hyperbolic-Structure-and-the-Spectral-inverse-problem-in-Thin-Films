@@ -38,10 +38,10 @@ A single quantity runs through all four: the **relaxation time τ**.
 
 | Part | Status |
 |---|---|
-| I — kinetic closure | Course notes written: phonon gas, then Boltzmann to Guyer–Krumhansl. The derivation for the manuscript is not written. |
-| II — admissibility | Not started |
-| III — AlN regime map | Not started |
-| IV — spectral inverse problem | Four results established and tested. See below. |
+| I — kinetic closure | Course notes and an exercise sheet. The derivation for the manuscript is not written. |
+| II — admissibility | Note written, results tested. Entropy production and propagation speeds. |
+| III — AlN regime map | Note written, figure produced, AlN placed from published relaxation times. Temperature trajectory still missing. |
+| IV — spectral inverse problem | Four results established and tested. |
 | Laboratory deliverable | Complete except for real data. Forward model in both regimes, inversion, uncertainties validated by Monte Carlo, identifiability analysis, experiment design map. |
 
 ### Results established in Part IV
@@ -60,16 +60,37 @@ independent routes give the same number.
 
 **A medium with `τ_R = τ_ℓ` is thermally indistinguishable from a Fourier medium**, whatever the
 common value. In microscopic terms this reads `τ_R = 1.8 τ_N`, a ratio of collision times that varies
-with temperature.
+with temperature. On the regime map that condition falls just at the apex of the hydrodynamic wedge:
+a material crosses it exactly as the window opens.
+
+### Results established in Part II
+
+**Thermodynamic admissibility and finite propagation speed are independent criteria.** All three laws
+admit a convex entropy with non-negative production; only Cattaneo propagates at finite speed. The
+nonlocal term of Guyer–Krumhansl is diffusive in the flux and restores the infinite speed that
+Cattaneo had removed. The hierarchy Fourier, Cattaneo, Guyer–Krumhansl is not a monotone refinement.
+
+### Results established in Part III
+
+**A submicron AlN film sits two decades below the hydrodynamic window** and is transitional rather
+than ballistic: the total mean free path is near 67 nm against a thickness of 500 nm. A conductivity
+extracted there is an apparent, thickness-dependent value, not an intrinsic property.
+
+The normal-process mean free path, 2.4 to 60 micrometres, and the total one, 67 nm, answer different
+questions and must not be confused.
 
 ### Instrumental thresholds, for the laboratory
 
 | Quantity | Formula | Value for a 500 nm AlN film |
 |---|---|---|
 | Characteristic frequency | `1/(2π ξ₁²)` | 16 MHz — below it the film is invisible |
-| Blind interface | `b_film = b_substrate` | film conductivity 44 W m⁻¹K⁻¹ on sapphire |
-| Relaxation threshold | `ω_max τ ≥ 1` | `τ ≥ 8×10⁻¹⁰ s` for a 200 MHz bench |
-| Blind diagonal | `τ_R = τ_ℓ` | intrinsic to the material, cannot be worked around |
+| Blind interface | `b_film = b_substrate` | 44 W m⁻¹K⁻¹ on sapphire. Measured films sit at 321, so the contrast is 0.46: **not a practical risk for this system** |
+| Relaxation threshold | `ω_max τ ≥ 1` | `τ ≥ 8×10⁻¹⁰ s` for a 200 MHz bench. AlN phonon times are two to three decades below: **out of reach of FDTR** |
+| Blind diagonal | `τ_R = τ_ℓ` | intrinsic to the material, cannot be worked around. AlN sits at `τ_R/τ_N = 10` to `200` at 300 K, far from it |
+| Knudsen number | `3λ/(ρc v d)` | `0.13` — transitional, so the extracted conductivity is an apparent value |
+
+The first question to settle with the laboratory is the **film thickness**: it decides what the
+deliverable can claim, ahead of the measurement bandwidth.
 
 ---
 
@@ -105,7 +126,12 @@ Necessary, and insufficient: an error consistent with itself passes all of them.
 hundred and thirteen tests.
 
 **External validation** — comparison with a closed form taken from outside the codebase. Every
-constitutive law implemented carries at least one. The list is in `notes/conventions.md`, section 12.
+constitutive law implemented carries at least one. The list is in `notes/conventions.md`, section 14.
+
+Three errors were caught during development, and each was caught the same way: by confronting the
+work with something outside it. A wrong flux coefficient, by a published closed form; an overstated
+risk, by measured data; a confusion between two mean free paths, by a definitional check. None was
+caught by internal consistency.
 
 ---
 
@@ -144,6 +170,15 @@ declines the spectral reading of the resulting operator.
 materials using frequency-domain thermoreflectance*, J. Appl. Phys. **137**, 155103 (2025). Provides
 the closed form used as external validation of the Cattaneo response, and the instrumental bandwidth
 that fixes the measurability threshold.
+
+**J. Ma, W. Li, X. Luo**, *Examining the Callaway model for lattice thermal conductivity*, Phys. Rev.
+B **90**, 035203 (2014). Source of the frequency scaling laws and of the relaxation times used to
+place AlN on the regime map. Establishes that the Callaway model corrects the relaxation-time
+approximation by only 0.7 per cent in the cross-plane direction, where 12.3 per cent is needed.
+
+**Y. Cheng et al.**, *Experimental observation of high intrinsic thermal conductivity of AlN*, Phys.
+Rev. Materials **4**, 044602 (2020). Measured conductivities, including 321 W m⁻¹K⁻¹ for MOCVD films
+on sapphire.
 
 **P. Chen, I. M. Gamba, Q. Li, L. Wang**, *Reconstruction of heat relaxation index in phonon transport
 equation*, arXiv:2502.19533 (2025), accepted in SIAM J. Appl. Math. Numerical reconstruction of the
