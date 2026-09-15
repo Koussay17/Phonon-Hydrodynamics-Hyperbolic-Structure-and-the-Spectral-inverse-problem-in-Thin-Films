@@ -18,22 +18,26 @@
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 
 \begin{center}
 {\Large\bfseries Corrections, démonstrations et rappels de mécanique quantique}\\[4pt]
-{\normalsize Document d'accompagnement des notes 01 à 04 sur Krapez (2018)}\\[2pt]
+{\normalsize Document d'accompagnement des notes 01 à 04 sur Krapez (2019, en ligne 2018)}\\[2pt]
 {\small 8 septembre 2026}
 \end{center}
 
 \vspace{6pt}
 
+Les erreurs décrites dans la première partie concernent les anciennes versions
+des notes 01 à 04 ; les fichiers actuels intègrent les corrections.
 Ce document comporte quatre parties. La première recense les erreurs relevées dans les fichiers 01 à 04
 et donne pour chacune la vérification qui tranche. La deuxième contient les onze démonstrations écrites
 en entier, sans étape sautée. La troisième expose ce qu'est réellement l'équation de Schrödinger, afin
 que l'analogie puisse être décrite sans erreur. La quatrième liste les formulations à ne pas employer.
 
-\section{Errata}
+\section{Errata historiques}
 
 \subsection{Signe du potentiel : inversé dans deux fichiers sur trois}
 
@@ -274,8 +278,7 @@ température.
 On applique §2.6, $\phi = -b\,\theta'$, en se rappelant que dans le cas température $b = s^{2}$ :
 \[ \phi = -s^{2}\cdot\frac{W(s,\psi)}{s^{2}} = -W(s,\psi) . \]
 
-\textbf{Rappel sur le wronskien.} Il mesure l'indépendance de deux fonctions : nul, elles sont
-proportionnelles. Pour une équation en forme normale --- sans terme de dérivée première, ce qui est
+\textbf{Rappel sur le wronskien.} Pour deux solutions d'une même EDO linéaire régulière du second ordre, sa nullité caractérise la dépendance linéaire ; ce n'est pas un critère universel pour deux fonctions quelconques. Pour une équation en forme normale --- sans terme de dérivée première, ce qui est
 précisément notre cas après §2.4 --- le théorème d'Abel garantit que le wronskien de deux solutions est
 \emph{constant}. C'est de là que vient le déterminant unité du quadripôle.
 
@@ -338,7 +341,7 @@ C = b\sqrt{p}\,\sinh\bigl(\sqrt{p}\,\xi_{1}\bigr) . \]
 $\xi_{1} = D_{\text{ép}}/\sqrt{a}$, donc $\sqrt{p}\,\xi_{1} = D_{\text{ép}}\sqrt{p/a}$. On retrouve
 exactement le quadripôle classique du livre de Maillet.
 
-C'est le premier test à écrire dans \texttt{tests/}, avant toute autre ligne de code. Un quadripôle
+C'est le premier test à écrire dans \texttt{tests/\allowbreak }, avant toute autre ligne de code. Un quadripôle
 gradué qui ne redonne pas cette expression quand on égalise les effusivités aux deux faces est faux.
 
 \subsection{Cattaneo : le décalage spectral et la rotation de l'énergie}
@@ -640,7 +643,7 @@ même forme » \\
 vocabulaire n'en est pas une \\
 \addlinespace
 « La transformation de Liouville que je propose »
-& « La transformation de Liouville, établie pour l'équation de la chaleur par Krapez (2018) » \\
+& « La transformation de Liouville, établie pour l'équation de la chaleur par Krapez (2019, en ligne 2018) » \\
 \addlinespace
 « La diffusivité disparaît »
 & « La diffusivité est absorbée dans la coordonnée : elle sort de l'équation mais reste dans la
@@ -659,4 +662,6 @@ théoriquement injectif tout en étant pratiquement indistinguable, sous bruit e
 finie. Cette distinction doit rester nette dans tout ce qui sera rédigé --- c'est elle qui permet de
 citer Krapez sans le contredire, et d'ajouter quelque chose par-dessus.
 
+\section*{Portée de la version corrigée --- 15 septembre 2026}
+Les corrections de signe sont historiques : les notes associées les intègrent désormais. Le wronskien caractérise l'indépendance pour les solutions d'une même EDO linéaire du second ordre sur un intervalle régulier, pas pour deux fonctions arbitraires.
 \end{document}

@@ -162,38 +162,26 @@ def test_entropy_flux_coefficient():
 # --------------------------------------------------------------------------
 
 def test_entropy_production_derivation():
-    """Re-derives both productions from the balance equations.
-
-    Uses the entropy flux q / T, not q / T0: the difference is exactly the
-    term that cancels the contribution of the temperature gradient.
-    """
-    sp = pytest.importorskip("sympy")
-
-    t, z = sp.symbols("t z")
-    T = sp.Function("T")(z, t)
-    q = sp.Function("q")(z, t)
-    lam, tau, c_, t0, l2, beta = sp.symbols("lambda tau_R C T_0 ell2 beta",
-                                            positive=True)
-
-    def production(dqdt, extra_flux=0):
-        dTdt = -sp.diff(q, z) / c_
-        s_dot = c_ * dTdt / T + sp.diff(-tau / (2 * lam * t0 ** 2) * q ** 2, t).doit()
-        s_dot = s_dot.subs({sp.Derivative(q, t): dqdt}).doit()
-        out = sp.expand(s_dot + sp.diff(q / T + extra_flux, z).doit())
-        return sp.simplify(sp.expand(out.subs(T, t0).doit()))
-
-    cattaneo = production((-q - lam * sp.diff(T, z)) / tau)
-    assert sp.simplify(cattaneo - q ** 2 / (lam * t0 ** 2)) == 0
-
-    gk_law = (-q - lam * sp.diff(T, z) + 3 * l2 * sp.diff(q, z, 2)) / tau
-    raw = production(gk_law, beta * q * sp.diff(q, z))
-    solutions = sp.solve(sp.Eq(sp.expand(raw).coeff(sp.Derivative(q, z, 2)), 0), beta)
-    assert solutions, "no entropy flux cancels the cross term"
-    assert sp.simplify(solutions[0] - 3 * l2 / (lam * t0 ** 2)) == 0
-
-    gk = sp.simplify(sp.expand(raw.subs(beta, solutions[0])))
-    target = (q ** 2 + 3 * l2 * sp.diff(q, z) ** 2) / (lam * t0 ** 2)
-    assert sp.simplify(gk - target) == 0
+    """Keep gradients while expanding to quadratic order about equilibrium."""
+    import sympy as sp
+    z, eps = sp.symbols("z eps")
+    theta = sp.Function("theta")(z)
+    j = sp.Function("j")(z)
+    lam, tau, t0, l2, beta = sp.symbols("lam tau T0 l2 beta", positive=True)
+    T, flux = t0 + eps * theta, eps * j
+    def production(extra, wrong_flux=False):
+        qt = (-flux-lam*sp.diff(T,z)+3*l2*sp.diff(flux,z,2))/tau
+        sdot = -sp.diff(flux,z)/T - tau*flux*qt/(lam*t0**2)
+        js = flux/(t0 if wrong_flux else T) + extra*flux*sp.diff(flux,z)
+        return sp.expand(sp.series(sdot+sp.diff(js,z),eps,0,3).removeO()).coeff(eps,2)
+    raw = production(beta)
+    solution = sp.solve(sp.Eq(raw.coeff(sp.diff(j,z,2)),0),beta)[0]
+    assert sp.simplify(solution-3*l2/(lam*t0**2)) == 0
+    target = (j*j+3*l2*sp.diff(j,z)**2)/(lam*t0**2)
+    assert sp.simplify(raw.subs(beta,solution)-target) == 0
+    assert sp.simplify(production(0).subs(l2,0)-j*j/(lam*t0**2)) == 0
+    # This mutation must fail; replacing T by T0 too early used to hide it.
+    assert sp.simplify(production(solution,True)-target) != 0
 
 
 def test_table_is_printable():

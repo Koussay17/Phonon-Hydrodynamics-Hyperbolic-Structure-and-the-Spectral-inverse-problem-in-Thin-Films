@@ -55,6 +55,13 @@ class Layer:
     thickness: float
     lam_back: float | None = None
     rho_c_back: float | None = None
+    graded_xi1: float | None = None
+
+    def __post_init__(self):
+        fm.Sample(film_lam=self.lam, film_rho_c=self.rho_c,
+                  thickness=self.thickness, film_lam_back=self.lam_back,
+                  film_rho_c_back=self.rho_c_back, graded_xi1=self.graded_xi1)
+
 
     @property
     def a(self) -> float:
@@ -72,11 +79,13 @@ class Layer:
 
     @property
     def xi(self) -> float:
+        if self.graded_xi1 is not None:
+            return self.graded_xi1
         return q.xi_from_thickness(self.thickness, self.a)
 
     @property
     def diffusion_time(self) -> float:
-        return self.thickness ** 2 / self.a
+        return self.xi ** 2
 
     @property
     def is_graded(self) -> bool:
@@ -99,6 +108,9 @@ class Stack:
     front_losses: float = 0.0
 
     def __post_init__(self):
+        q._positive(sub_lam=self.sub_lam, sub_rho_c=self.sub_rho_c)
+        if any(not np.isfinite(v) or v < 0 for v in [self.front_losses, *self.contact_resistances]):
+            raise ValueError("losses and contact resistances must be finite and nonnegative")
         if not self.layers:
             raise ValueError("a stack needs at least one layer")
         if not self.contact_resistances:
@@ -148,13 +160,23 @@ def stack_matrix(p, s: Stack) -> np.ndarray:
 
 def response(p, s: Stack, power=1.0):
     """Front-face temperature in the Laplace domain, per unit area."""
-    m = stack_matrix(p, s)
+    p = np.asarray(p, dtype=complex)
     z = q.semi_infinite_impedance(p, s.sub_b)
-    return q.front_face_temperature(m, z, power=power, h=s.front_losses)
+    for layer, resistance in reversed(list(zip(s.layers, s.contact_resistances))):
+        z = z + resistance
+        if layer.is_graded:
+            z = q.front_face_temperature(layer.matrix(p), z)
+        else:
+            coeff = layer.b * np.sqrt(p)
+            t = q.stable_tanh(layer.xi * np.sqrt(p))
+            z = (z + t / coeff) / (1 + coeff * z * t)
+    return power * z / (1 + s.front_losses * z)
 
 
 def modulated_response(freq, s: Stack, power=1.0):
     freq = np.asarray(freq, dtype=float)
+    if np.any(~np.isfinite(freq)) or np.any(freq <= 0):
+        raise ValueError("frequencies must be finite and positive")
     theta = response(2j * np.pi * freq, s, power=power)
     return np.abs(theta), np.degrees(np.angle(theta))
 

@@ -31,6 +31,7 @@ on it. The reference is one per cent on amplitude and a tenth of a degree on
 phase, a plausible lock-in pairing. Both axes are dimensionless, so the map
 holds for any film thickness and any diffusivity.
 """
+from pathlib import Path
 
 import os
 import sys
@@ -167,7 +168,7 @@ ax1 = fig.add_subplot(gs[1, :])
 col = grid[:, bj]
 ax1.loglog(contrasts, col, lw=2, color="#5b4a8a")
 ax1.axvline(1.0, color="#b03030", lw=1.4)
-ax1.annotate("interface aveugle", (1.0, col.max() * 0.7), rotation=90,
+ax1.annotate("interface aveugle", (1.0, np.nanmax(col) * 0.7), rotation=90,
              fontsize=8.5, color="#b03030", ha="right", va="top")
 ax1.set_xlabel("contraste d'effusivité")
 ax1.set_ylabel(r"$\sigma$ relative")
@@ -189,6 +190,6 @@ ax2.grid(alpha=0.3, which="both")
 ax2.legend(fontsize=8.5, loc="upper left")
 ax2.set_title("Coupes à contraste fixé", fontsize=10)
 
-plt.savefig("../figures/03_experiment_design_map.png", dpi=180,
+plt.savefig(Path(__file__).resolve().parents[1] / "figures/03_experiment_design_map.png", dpi=180,
             bbox_inches="tight")
 plt.show()

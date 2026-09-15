@@ -18,12 +18,14 @@
 
 \newcommand{\rep}[1]{\par\smallskip\noindent\textcolor{teal}{\textbf{Résultat attendu.}}\; #1\par\smallskip}
 
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 
 \begin{center}
 {\Large\bfseries Exercices de partie I}\\[5pt]
 {\normalsize De l'équation de Boltzmann à l'équation de Guyer--Krumhansl}\\[2pt]
-{\small 13 septembre 2026}
+{\small Version corrigée --- 15 septembre 2026}
 \end{center}
 
 \vspace{4pt}
@@ -161,7 +163,7 @@ Poser $\tau_R = \tau_\ell$ dans le résultat précédent. Conclure.
 
 \rep{Les racines se simplifient, $\sigma e = \xi_1\sqrt{p}$ et
 $\lambda_{\mathrm{eff}}\sigma = b\sqrt{p}$ : la réponse est exactement celle d'un milieu de Fourier,
-quelle que soit la valeur commune des deux temps.}
+quelle que soit la valeur commune des deux temps, dans le problème 1D homogène sans source intérieure ni perturbation initiale. Cette propriété est la résonance de Fourier (Kovács, 2018).}
 
 \subsection*{Exercice 16 --- Écriture microscopique de la cécité}
 
@@ -169,7 +171,7 @@ quelle que soit la valeur commune des deux temps.}
 $\tau_N$ seul, puis traduire la condition de cécité.
 
 \rep{$\tau_\ell = \tfrac{9}{5}\tau_N$, donc la condition s'écrit $\tau_R = 1{,}8\,\tau_N$ : un
-rapport de temps de collision, qui varie avec la température.}
+rapport formel de temps de collision. À ce rapport, $\tau_N\ll\tau_R$ n'est pas satisfait ; l'extrapolation ne démontre pas une fenêtre hydrodynamique.}
 
 \section{Admissibilité}
 
@@ -195,7 +197,7 @@ $\tau_\ell = 0$ ; les deux non nuls. Conclure sur la vitesse de phase.
 
 Avec l'entropie étendue $s = s_{\mathrm{éq}}(u) - \dfrac{\tau_R}{2\lambda T_0^{\,2}}\,q^2$ et le flux
 d'entropie $\mathbf{J}_s = \mathbf{q}/T$, calculer $\partial_t s + \nabla\cdot\mathbf{J}_s$ en
-utilisant le bilan d'énergie et la loi de Cattaneo. Linéariser à la fin seulement.
+utilisant le bilan d'énergie et la loi de Cattaneo. Développer avec $T=T_0+\varepsilon\theta$ et $q=\varepsilon j$, puis conserver les termes en $\varepsilon^2$ ; ne pas annuler les gradients en posant trop tôt $T=T_0$.
 
 \rep{$\sigma_s = q^2/(\lambda T_0^{\,2}) \ge 0$. \textbf{Piège :} le flux d'entropie doit être pris
 en $\mathbf{q}/T$ et non en $\mathbf{q}/T_0$, sans quoi subsiste un résidu en $q\,\partial_z T$ qui
@@ -221,7 +223,7 @@ $\tau_\ell = 3\ell^2/a$ a bien la dimension d'un temps.
 \subsection*{Exercice 22 --- Ordres de grandeur pour l'AlN}
 
 Avec $v \approx 6\times10^3$~m/s et $\tau \approx 10^{-11}$~s, estimer le libre parcours moyen.
-Comparer à l'épaisseur d'un film de 500~nm et conclure sur la validité de la description diffusive.
+Comparer à l'épaisseur d'un film de 500~nm. Préciser pourquoi ce diagnostic gris illustratif ne suffit pas à valider un modèle de diffusion pour tout le spectre.
 
 \rep{$\Lambda = v\tau \approx 60$~nm, soit environ un huitième de l'épaisseur. Les deux échelles ne
 sont pas séparées : la description purement diffusive n'est pas acquise.}
@@ -232,12 +234,12 @@ Traduire le critère $\tau_N \ll \tau_B \ll \tau_R$ en termes de $x = \tau_R/\ta
 $y = \tau_B/\tau_N$. Décrire la région obtenue et situer la condition de cécité.
 
 \rep{$1 \ll y \ll x$ : un coin de sommet $(1,1)$. La cécité est la verticale $x = 1{,}8$, qui passe
-juste à droite du sommet. À cette abscisse la fenêtre mesure un quart de décade.}
+juste à droite du sommet géométrique. L'intervalle $1<y<x$ n'y mesure que $0{,}255$ décade et ne satisfait pas la séparation forte $1\ll y\ll x$.}
 
 \vspace{8pt}
 \noindent\small
-Notes associées : \texttt{08\_Le\_gaz\_de\_phonons}, \texttt{09\_De\_Boltzmann\_a\_Guyer\_Krumhansl},
-\texttt{11\_Note\_partie\_II}, \texttt{12\_Note\_partie\_III}. Vérifications numériques
-correspondantes : \texttt{tests/test\_guyer\_krumhansl.py}, \texttt{tests/test\_admissibility.py}.
+Notes associées : \texttt{08\_\allowbreak Le\_\allowbreak gaz\_\allowbreak de\_\allowbreak phonons}, \texttt{09\_\allowbreak De\_\allowbreak Boltzmann\_\allowbreak a\_\allowbreak Guyer\_\allowbreak Krumhansl},
+\texttt{11\_\allowbreak Note\_\allowbreak partie\_\allowbreak II}, \texttt{12\_\allowbreak Note\_\allowbreak partie\_\allowbreak III}. Vérifications numériques
+correspondantes : \texttt{tests/\allowbreak test\_\allowbreak guyer\_\allowbreak krumhansl.py}, \texttt{tests/\allowbreak test\_\allowbreak admissibility.py}.
 
 \end{document}

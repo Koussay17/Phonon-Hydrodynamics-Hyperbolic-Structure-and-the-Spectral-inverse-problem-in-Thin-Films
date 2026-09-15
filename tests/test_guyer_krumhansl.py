@@ -95,7 +95,7 @@ def test_sample_without_relaxation_is_unchanged():
 
 def test_graded_layer_with_relaxation_is_refused():
     """Not treated, and refused rather than silently wrong."""
-    s = fm.Sample(film_lam_back=120.0, film_rho_c_back=2.41e6,
+    s = fm.Sample(film_lam_back=120.0, film_rho_c_back=2.41e6, graded_xi1=500e-9/np.sqrt(60/2.41e6),
                   relaxation_time=1e-11)
     with pytest.raises(NotImplementedError):
         fm.stack_matrix(2j * np.pi * 1e8, s)

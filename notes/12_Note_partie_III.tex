@@ -5,6 +5,7 @@
 \usepackage[margin=2.2cm]{geometry}
 \usepackage{booktabs,array,tabularx}
 \usepackage{graphicx}
+\graphicspath{{../figures/}}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{parskip}
@@ -15,259 +16,198 @@
 \titlespacing*{\subsection}{0pt}{10pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 
 \begin{center}
 {\Large\bfseries Régimes de transport phononique\\et position de la condition de cécité}\\[5pt]
 {\normalsize Note de partie III --- point de contrôle}\\[2pt]
-{\small 13 septembre 2026}
+{\small Version corrigée --- 15 septembre 2026}
 \end{center}
 
 \vspace{4pt}
 
 \section{Objet}
-
-Le transport phononique dans un film mince relève de trois régimes selon la hiérarchie des temps de
-collision. La partie~IV établit par ailleurs une condition sous laquelle un milieu de
-Guyer--Krumhansl devient thermiquement indiscernable d'un milieu de Fourier. La présente note situe
-cette condition sur la carte des régimes.
+Cette note distingue une carte schématique de hiérarchies de collision, des lectures
+modales sur l'AlN à 300~K et un diagnostic gris tiré d'une conductivité.
+Ces trois niveaux ne constituent pas une classification expérimentale complète du film.
 
 \section{Variables réduites}
-
-Le critère de Guyer pour la fenêtre hydrodynamique s'écrit
-\[ \tau_N \;\ll\; \tau_B \;\ll\; \tau_R , \]
-où $\tau_N$ est le temps des processus normaux, $\tau_R$ celui des processus résistifs, et $\tau_B$
-celui associé à la diffusion aux frontières. Deux nombres sans dimension en découlent :
-\[ x = \frac{\tau_R}{\tau_N} , \qquad\qquad y = \frac{\tau_B}{\tau_N} . \]
-
-Le second admet une lecture directe. Avec $\tau_B = d/v$ et $\tau_N = \Lambda_N / v$, il vient
-$y = d/\Lambda_N$ : l'épaisseur du film exprimée en libres parcours moyens des processus normaux.
-
-Le critère devient alors $1 \ll y \ll x$, et la carte se partage en trois régions.
+Avec $\tau_N$ le temps normal, $\tau_R$ le temps résistif et
+$\tau_B=d/v$ une approximation de frontière diffuse,
+\[
+x=\frac{\tau_R}{\tau_N},\qquad y=\frac{\tau_B}{\tau_N}
+=\frac{d}{v\tau_N}.
+\]
+Le critère hydrodynamique usuel exige $1\ll y\ll x$.
+Les lignes d'égalité servent de repères ; une faible inégalité ne garantit pas
+la séparation d'échelles nécessaire à une fermeture hydrodynamique.
 
 \begin{center}
-\begin{tabular}{@{}ll@{}}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
 \toprule
-\textbf{Condition} & \textbf{Régime} \\
+Condition & Lecture schématique \\
 \midrule
-$y < 1$ & balistique : les frontières l'emportent sur les processus normaux \\
-$y > x$ & diffusif : les processus résistifs l'emportent sur les frontières \\
-$1 < y < x$ & hydrodynamique \\
+$y<\min(1,x)$ & frontières plus rapides que les collisions normales et résistives \\
+$x<1,\ y>x$ & relaxation résistive plus rapide que les deux autres \\
+$1<y<x$ & ordre candidat à l'hydrodynamique ; exiger des séparations fortes \\
+$y>x>1$ & frontières plus lentes que la relaxation résistive \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
+La seule inégalité $y<1$ ne prouve pas le transport balistique :
+si $x=0{,}1$ et $y=0{,}5$, la relaxation résistive domine.
 
-La fenêtre hydrodynamique est un coin dont le sommet se trouve en $(1,\,1)$. Sa largeur, en décades,
-vaut $\log_{10} x$.
-
-\section{Position de la condition de cécité}
-
-La partie~IV établit qu'un milieu de Guyer--Krumhansl dont les deux temps coïncident,
-$\tau_R = \tau_\ell$, produit exactement la réponse d'un milieu de Fourier, quelle que soit leur
-valeur commune. Avec $\tau_\ell = \tfrac{9}{5}\tau_N$, cette condition s'écrit
-\[ \tau_R = 1{,}8\,\tau_N , \qquad\text{soit}\qquad x = 1{,}8 . \]
-
-C'est une droite verticale, et elle passe \textbf{juste à droite du sommet du coin}.
+\section{Position de la résonance de Fourier}
+Dans le modèle GK homogène 1D, à perturbation initiale nulle, sans source
+intérieure et avec les conditions de bord du projet, $\tau_R=\tau_\ell$
+redonne le quadripôle de Fourier. Il s'agit de la \emph{résonance de Fourier}
+déjà décrite par Kovács (2018), et non d'une nouvelle propriété découverte ici.
+Les coefficients isotropes de Lebon et Dauby donnent
+\[
+a=\frac{v^2\tau_R}{3},\quad
+\ell^2=\frac{v^2\tau_N\tau_R}{5},\quad
+\tau_\ell=\frac{3\ell^2}{a}=\frac95\tau_N.
+\]
+La droite formelle est donc $x=1{,}8$.
 
 \begin{center}
 \includegraphics[width=0.78\textwidth]{05_regime_map.png}
 \end{center}
 
-\begin{center}
-\begin{tabular}{@{}cc@{}}
-\toprule
-$x = \tau_R/\tau_N$ & Largeur de la fenêtre \\
-\midrule
-$1{,}2$ & $0{,}08$ décade \\
-$\mathbf{1{,}8}$ & $\mathbf{0{,}26}$ \textbf{décade} \\
-$5$ & $0{,}70$ décade \\
-$10$ & $1{,}00$ décade \\
-$100$ & $2{,}00$ décades \\
-\bottomrule
-\end{tabular}
-\end{center}
+L'intervalle géométrique $1<y<x$ a une largeur $\log_{10}(x)$,
+soit $0{,}255$ décade à $x=1{,}8$. Il ne permet pas $1\ll y\ll x$.
+L'ancienne affirmation d'un passage par la résonance au moment précis de
+l'ouverture hydrodynamique est retirée. Une trajectoire en température exige
+des temps effectifs et leur pondération ; elle n'est pas établie.
 
-\subsection{Énoncé}
-
-À l'abscisse de la cécité, la fenêtre hydrodynamique mesure un quart de décade. Elle n'en atteint une
-qu'à $x = 10$.
-
-Un matériau qui refroidit voit $\tau_R/\tau_N$ croître, les processus umklapp gelant plus rapidement
-que les processus normaux. Il traverse donc la droite de cécité \textbf{au moment précis où la
-fenêtre hydrodynamique s'ouvre}.
-
-\subsection{Conséquence}
-
-Au voisinage de l'entrée dans le régime hydrodynamique, un matériau devrait paraître thermiquement de
-Fourier alors même qu'il cesse de l'être. La signature non-Fourier ne deviendrait détectable qu'une
-fois la fenêtre franchement ouverte, soit à $x$ nettement supérieur à l'unité.
-
-Cette conséquence est falsifiable : elle prédit, sur une mesure en température, une plage où l'écart
-à Fourier passe par un minimum au lieu de croître de façon monotone.
-
-\section{Position de l'AlN}
-
+\section{Position illustrative de modes de l'AlN}
 \subsection{Temps de relaxation}
-
-Les temps de relaxation de l'AlN wurtzite à 300~K sont relevés sur la figure~7 de Ma, Li et Luo,
-entre 2 et 10~THz. La lecture est faite à l'{\oe}il sur une échelle logarithmique et porte une
-incertitude d'un facteur deux. Elle se valide toutefois elle-même : les exposants ajustés sur les
-valeurs relevées donnent $-2{,}00$ pour $\tau_N$ de la branche LA et $-1{,}00$ pour celle des
-branches TA, exactement les lois énoncées dans l'article.
+Les valeurs suivantes sont des lectures graphiques approximatives de la
+figure~7 de Ma, Li et Luo, Phys. Rev. B \textbf{90}, 035203 (2014).
+Elles concernent une portion acoustique de l'axe de \emph{pulsation}
+$\omega$, étiqueté THz dans l'article, entre 2 et 10 ; ce n'est pas une
+bande FDTR ni tout le spectre phononique. La précision est de l'ordre d'un
+facteur deux, sans propagation statistique contrôlée.
 
 \begin{center}
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Branche & $\omega$ & $\tau_U$ & $\tau_N$ & $x = \tau_U/\tau_N$ \\
+Branche & $\omega$ (axe source) & $\tau_U$ (ps) & $\tau_N$ (ps) & $x$ \\
 \midrule
-LA & 2 THz & $7\times10^{5}$ ps & $1{,}0\times10^{4}$ ps & 70 \\
-LA & 10 THz & $1{,}0\times10^{4}$ ps & $4\times10^{2}$ ps & 25 \\
-TA & 2 THz & $4\times10^{5}$ ps & $2{,}0\times10^{3}$ ps & 200 \\
-TA & 10 THz & $4\times10^{3}$ ps & $4\times10^{2}$ ps & 10 \\
+LA & 2 & $7\times10^5$ & $10^4$ & 70 \\
+LA & 10 & $10^4$ & $4\times10^2$ & 25 \\
+TA & 2 & $4\times10^5$ & $2\times10^3$ & 200 \\
+TA & 10 & $4\times10^3$ & $4\times10^2$ & 10 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\textbf{L'abscisse de l'AlN à 300~K vaut donc $x = 10$ à $200$.} La droite de cécité étant à $1{,}8$,
-le facteur de sécurité est de six au pire : \textbf{l'AlN n'est pas près de la cécité à température
-ambiante}.
+L'accord de pentes avec une loi asymptotique ne valide pas la normalisation
+de ces lectures. Ici $\tau_U$ sert d'approximation de $\tau_R$ pour ces points ;
+les défauts, isotopes et autres processus résistifs ne sont pas additionnés.
+La plage $10$--$200$ n'est donc ni un rapport effectif unique de l'AlN
+ni un facteur de sécurité global vis-à-vis de la résonance.
 
-La plage d'un facteur vingt sur une seule décade de fréquence confirme quantitativement l'énoncé de
-la section~5.2 : un matériau occupe une plage, non un point.
-
-\subsection{Ordonnée et régimes}
-
-Le libre parcours moyen des processus normaux vaut $\Lambda_N = v\,\tau_N$, soit $2{,}4$ à
-$60\ \mu$m avec $v = 6000$~m/s. Cette longueur est très grande devant l'épaisseur d'un film mince.
+\subsection{Ordonnée et appariement des modes}
+Avec la vitesse illustrative $v=6000$~m/s, les lectures donnent
+$v\tau_N=2{,}4$ à $60~\mu$m. Chaque ordonnée doit être associée au
+$x$ du \emph{même mode}. Les rectangles qui combinaient tous les extrêmes
+ont été remplacés par des points appariés ; les segments sont des guides visuels.
 
 \begin{center}
 \begin{tabular}{@{}lcl@{}}
 \toprule
-Épaisseur & $y = \tau_B/\tau_N$ & Position \\
+Épaisseur & Plage marginale de $y$ & Interprétation des points \\
 \midrule
-500 nm & $0{,}008$ à $0{,}21$ & très en dessous de la fenêtre \\
-5 $\mu$m & $0{,}08$ à $2{,}1$ & à la frontière \\
-20 $\mu$m & $0{,}33$ à $8{,}3$ & à la frontière \\
-500 $\mu$m & $8{,}3$ à $208$ & dans la fenêtre \\
+500 nm & $0{,}0083$ à $0{,}208$ & tous sous $y=1$ \\
+5 $\mu$m & $0{,}083$ à $2{,}08$ & plusieurs ordres de collision \\
+20 $\mu$m & $0{,}333$ à $8{,}33$ & plusieurs ordres de collision \\
+500 $\mu$m & $8{,}33$ à $208$ & certains points au-dessus de $y=x$ \\
 \bottomrule
 \end{tabular}
 \end{center}
+Par exemple, à 500~$\mu$m le point TA d'abscisse $x=10$ a $y=208$ :
+il est hors du coin $1<y<x$. La classification antérieure de toute cette
+épaisseur comme hydrodynamique était incorrecte.
+À 500~nm, ces points ne satisfont pas l'ordre hydrodynamique ; cela ne
+démontre pas une exclusion portant sur l'ensemble du spectre.
 
-\textbf{Un film submicronique est donc hors de la fenêtre hydrodynamique}, de deux décades. Les
-processus normaux y sont trop rares devant la diffusion aux frontières pour que le gaz de phonons
-s'équilibre intérieurement : le terme non local de Guyer--Krumhansl n'y a pas de fondement.
-
-\subsection{Deux libres parcours moyens à ne pas confondre}
-
-L'ordonnée de la carte emploie le libre parcours des \emph{processus normaux seuls}. Elle ne dit rien
-du caractère balistique du transport, qui dépend du libre parcours \emph{total}.
-
+\subsection{Deux longueurs de nature différente}
 \begin{center}
-\begin{tabularx}{\textwidth}{@{}lllX@{}}
+\begin{tabularx}{\textwidth}{@{}llX@{}}
 \toprule
-& Expression & AlN à 300 K & Ce qu'elle décide \\
+Quantité & Valeur illustrative & Portée \\
 \midrule
-Normal & $\Lambda_N = v\,\tau_N$ & 2,4 à 60 $\mu$m & possibilité de l'hydrodynamique \\
-\textbf{Total} & $\Lambda = 3\lambda/(\rho c\,v)$ & \textbf{67 nm} & caractère balistique du
-transport \\
+$v\tau_N$ & 2,4 à 60 $\mu$m & longueurs normales des modes lus \\
+$\Lambda_g=3\lambda/(Cv)$ & 66,6 nm pour $\lambda=321$ & estimation grise liée à la conductivité \\
 \bottomrule
 \end{tabularx}
 \end{center}
+$\Lambda_g$ n'est pas un libre parcours de toutes les collisions.
+Les processus normaux conservent le quasi-moment ; une conductivité et une
+vitesse moyenne ne permettent pas de reconstruire leur spectre de durées.
+Le rapport des deux longueurs vaut environ 36 à 901 pour ces hypothèses,
+et non toujours trois ordres de grandeur.
 
-Ces deux longueurs diffèrent de trois ordres de grandeur. Les confondre conduit à qualifier de
-balistique un film qui ne l'est pas.
-
-\subsection{Régime de transport réel}
-
-Le nombre de Knudsen, $\mathrm{Kn} = \Lambda/d$ avec $\Lambda = 67$~nm, donne
-
+\subsection{Diagnostic gris et propriétés de film}
+Pour $C=2{,}41\times10^6$~J\,m$^{-3}$K$^{-1}$ et $v=6000$~m/s,
 \begin{center}
-\begin{tabular}{@{}lcl@{}}
+\begin{tabular}{@{}lrr@{}}
 \toprule
-Épaisseur & Kn & Régime \\
+Scénario à 500 nm & $\Lambda_g$ & $\mathrm{Kn}_g=\Lambda_g/d$ \\
 \midrule
-50 nm & $1{,}33$ & balistique \\
-200 nm & $0{,}33$ & transitionnel \\
-\textbf{500 nm} & $\mathbf{0{,}13}$ & \textbf{transitionnel} \\
-2 $\mu$m & $0{,}033$ & diffusif \\
+$\lambda=60$ W\,m$^{-1}$K$^{-1}$ & 12,4 nm & 0,0249 \\
+$\lambda=321$ W\,m$^{-1}$K$^{-1}$ & 66,6 nm & 0,133 \\
 \bottomrule
 \end{tabular}
 \end{center}
+Les étiquettes usuelles diffusif ($\mathrm{Kn}<0{,}1$), transitionnel et
+balistique ($\mathrm{Kn}>1$) sont ici heuristiques.
+La valeur 321 vient de films MOCVD de 18 et 22,5~$\mu$m chez Cheng et al.,
+pas d'une mesure du film hypothétique de 500~nm.
+Le diagnostic ne démontre ni l'applicabilité d'un modèle de diffusion ni
+la réduction exacte de conductivité due aux frontières.
 
-\textbf{Un film d'AlN de 500~nm n'est pas balistique : il est transitionnel.} Le libre parcours vaut
-un huitième de l'épaisseur ; les phonons y diffusent plusieurs fois en traversant, mais la diffusion
-aux frontières reste sensible.
-
-\subsection{Conséquence pour l'extraction de propriétés}
-
-Le modèle de diffusion reste applicable. En revanche, \textbf{la conductivité extraite est une valeur
-apparente}, réduite par la diffusion aux frontières et dépendante de l'épaisseur. Ce n'est pas une
-propriété intrinsèque du matériau, et la comparer à une valeur massive n'a pas de sens.
-
-C'est précisément ce que mesurent Hoque \emph{et al.} en faisant varier l'épaisseur de 1,6 à
-2440~nm.
-
-Il en résulte que \textbf{l'épaisseur des films est la première caractéristique à établir}, avant la
-bande de fréquences : elle décide de ce que le livrable peut annoncer.
+Une conductivité ajustée doit être rapportée avec l'épaisseur, la direction,
+la température et les hypothèses. La comparer à une valeur massive est
+pertinent pour quantifier une suppression ; cette comparaison n'était pas
+dénuée de sens comme l'affirmait la version précédente.
+Hoque et al. (2024) étudient des films de 1,6 à 2440~nm et une transition
+propre à leurs échantillons, autour de 30~nm ; elle ne justifie pas un seuil
+universel égal à la longueur grise de 67~nm.
 
 \section{Portée et limites}
+Les lois basses fréquences rapportées par Ma et al. donnent
+$1/\tau_U\propto\omega^3$, $1/\tau_N\propto\omega$ pour TA et
+$1/\tau_N\propto\omega^2$ pour LA, dans leur domaine asymptotique.
+Les temps effectifs de GK exigent une pondération sur les modes et une fermeture.
 
-\subsection{La carte reste en variables réduites}
+L'écart d'environ $-12\,\%$ du modèle de Callaway à la conductivité
+stationnaire hors plan calculée par résolution itérative de Boltzmann
+est un résultat pour cette conductivité. Il ne constitue pas une barre
+d'erreur universelle sur un temps dynamique ou un paramètre inverse.
+L'anisotropie d'environ 5\,\% est celle du calcul de référence de Ma et al.
 
-Les bandes portées sur la figure correspondent à une seule température, 300~K. La trajectoire de
-l'AlN lorsque la température varie exige les coefficients d'un modèle de Callaway ajusté, ou le
-modèle de Debye--Callaway modifié de Morelli qui les exprime par les paramètres de Grüneisen. Ni
-l'un ni l'autre n'est établi à ce jour.
+Le temps de frontière $d/v$ ignore la spécularité et la géométrie détaillée.
+La carte ne suffit pas à traiter une expérience transversale, un transducteur
+ou une distribution spectrale de libres parcours.
 
-Les valeurs employées proviennent d'une lecture graphique et portent un facteur deux. Cela n'autorise
-pas de conclusion au pourcent près ; cela suffit au placement des régimes, qui se joue sur des
-décades.
-
-\subsection{Le rapport des temps dépend de la fréquence}
-
-Les calculs de premiers principes sur l'AlN wurtzite donnent, à basse fréquence,
-$1/\tau_U \propto \omega^3$ pour les branches acoustiques, tandis que $1/\tau_N \propto \omega$ pour
-les modes transverses et $\omega^2$ pour les longitudinaux.
-
-Il en résulte $\tau_R/\tau_N \propto \omega^{-2}$ pour les modes transverses. \textbf{L'abscisse de
-la carte n'est donc pas une constante du matériau} : les modes de basse fréquence se placent loin à
-droite, ceux de haute fréquence à gauche. Un matériau occupe une plage, non un point.
-
-La condition de cécité portant sur les temps moyennés de l'équation de Guyer--Krumhansl, sa
-confrontation à un matériau réel exige de savoir comment cette moyenne est pondérée. Ce point n'est
-pas tranché.
-
-\subsection{Erreur propre du cadre}
-
-Le modèle de Callaway s'écarte de la solution exacte de l'équation de Boltzmann de $+1\,\%$ dans le
-plan et de $-12\,\%$ hors plan pour l'AlN. La direction hors plan étant celle de la configuration
-étudiée, ce cadre porte une erreur propre de l'ordre de dix pour cent, antérieure à toute mesure.
-
-\subsection{Ce qui est supposé}
-
-Le critère de Guyer emploie un temps de frontière unique, $\tau_B = d/v$, sans facteur de forme ni
-spécularité. Une frontière partiellement spéculaire allonge ce temps et déplace la limite balistique
-vers le bas.
-
-Les trois régions sont séparées par des inégalités strictes traitées ici comme des égalités. Les
-frontières de la carte sont donc des transitions graduelles, non des lignes.
-
-\section{Suite}
-
+\section{Suite et références}
 \begin{itemize}
-\item Récupérer les coefficients $B_N$ et $B_U$ de l'AlN. Deux références à ouvrir :
-Phys. Rev. B \textbf{90}, 035203, source des lois d'échelle ci-dessus ; et
-Phys. Rev. Materials \textbf{4}, 044602, mesures sur monocristal de 130 à 480~K.
-\item Tracer la trajectoire en température, pour plusieurs épaisseurs. La fonction correspondante
-est écrite et attend ces coefficients.
-\item Confronter aux mesures de transition balistique vers diffusif publiées sur films d'AlN de
-1,6 à 2440~nm.
+\item Fixer les épaisseurs et les propriétés des échantillons du laboratoire,
+la bande et les paramètres de calibration ; analyser leur incertitude ensemble.
+\item Obtenir des taux modaux et leur pondération, puis établir une trajectoire
+en température avec domaine de validité explicite. Les coefficients de Morelli
+ne sont pas encore introduits.
+\item Ma, Li et Luo (2014), doi:\allowbreak 10.1103/\allowbreak PhysRevB.90.035203 ;
+Cheng et al. (2020), doi:\allowbreak 10.1103/\allowbreak PhysRevMaterials.4.044602 ;
+Hoque et al. (2024), arXiv:2409.14328.
+\item Kovács (2018), arXiv:1804.05225, résonance de Fourier ;
+Lebon et Dauby (1990), Phys. Rev. A \textbf{42}, 4710.
 \end{itemize}
-
-\vspace{4pt}
-\noindent\small
-Figure et calculs : \texttt{notebooks/05\_regime\_map.py}. Données matériau et limites :
-\texttt{notes/conventions.md}, section~11. Condition de cécité : note de partie~IV, section~6.
-Références à vérifier à la source avant citation.
+\noindent\small Figure : \texttt{notebooks/\allowbreak 05\_\allowbreak regime\_\allowbreak map.py}.
+Conventions et diagnostics : \texttt{notes/\allowbreak conventions.md}.
 
 \end{document}

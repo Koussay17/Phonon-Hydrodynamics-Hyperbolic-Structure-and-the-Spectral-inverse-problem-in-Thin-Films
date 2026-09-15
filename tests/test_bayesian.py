@@ -76,8 +76,10 @@ def test_sampling_is_reproducible():
     amp, ph = synthetic(s, f, rng=13)
     kw = dict(n_walkers=16, n_steps=600, seed=7)
     a = bay.sample_posterior(f, amp, ph, s, ["film_lam"], **kw)
+    np.random.seed(987654)
     b = bay.sample_posterior(f, amp, ph, s, ["film_lam"], **kw)
-    assert np.allclose(a.median, b.median)
+    assert np.array_equal(a.chain, b.chain)
+    assert a.acceptance == b.acceptance
 
 
 def test_rejects_non_positive_parameter():

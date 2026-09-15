@@ -1,21 +1,20 @@
 """Identifiability under the Cattaneo constitutive law.
 
-This file records three results, each verified independently of the
-analytical derivation that produced it.
+Checks of homogeneous model identities and conditional sensitivities.
+Algebraic consistency is distinct from independent experimental validation.
 
 1. Negative. The relaxation term does not lift the degeneracy established by
    Krapez and Rigollet under Fourier. Their scaling invariance survives
    intact, because the transit time, the effusivity and the relaxation time
    are all invariant under the group.
 
-2. Positive. The relaxation time enters as a genuinely independent parameter.
-   Estimating it degrades neither the effusivity nor the transit time.
+2. Relaxation is not a scale-gauge parameter, but can correlate with thermal
+   properties and increase their marginal uncertainty.
 
 3. Quantitative. Its relative uncertainty follows an inverse scaling law in
    the product of the highest measured angular frequency and the relaxation
-   time, with a threshold at one. That threshold coincides with the spectral
-   transition where the energy of the Schrodinger analogy leaves the
-   imaginary axis.
+   time in the small-product regime of the specified experiment.
+   A sensitivity crossover is not a universal detectability threshold.
 """
 
 import os
@@ -126,29 +125,20 @@ def test_relaxation_does_not_lift_the_degeneracy():
 
 
 # --------------------------------------------------------------------------
-# Result 2, positive: the relaxation time is an independent parameter
+# Result 2: nuisance relaxation can increase marginal uncertainty
 # --------------------------------------------------------------------------
 
-def test_estimating_relaxation_does_not_degrade_the_others():
-    """Adding the relaxation time to the fit leaves the uncertainties on the
-    conductivity and the heat capacity essentially unchanged.
-
-    The thickness is held fixed, as it must be: it is known independently, and
-    without it the triplet is not identifiable at all.
-    """
-    tau = 1e-10
-    s = sample_from_triplet(L0, ALPHA0, KAPPA0, tau)
-    f = band_above_diffusion(s)
-
-    _, cov2 = inv.fisher_analysis(f, s, ["film_lam", "film_rho_c"],
-                                  SIGMA_REL, SIGMA_PHASE)
-    _, cov3 = inv.fisher_analysis(f, s, ["film_lam", "film_rho_c",
-                                         "relaxation_time"],
-                                  SIGMA_REL, SIGMA_PHASE)
-
-    s2 = np.sqrt(np.diag(cov2))
-    s3 = np.sqrt(np.diag(cov3))[:2]
-    assert np.all(s3 < 2.0 * s2)
+def test_estimating_relaxation_increases_marginal_uncertainty():
+    s = fm.Sample(film_lam=321.0, relaxation_time=1e-9)
+    f = np.logspace(5, 8, 80)
+    names = ["film_lam", "film_rho_c"]
+    _, conditional = inv.fisher_analysis(f, s, names, SIGMA_REL, SIGMA_PHASE)
+    _, marginal = inv.fisher_analysis(f, s, names + ["relaxation_time"],
+                                     SIGMA_REL, SIGMA_PHASE)
+    ratio = np.sqrt(np.diag(marginal)[:2]/np.diag(conditional))
+    assert np.all(ratio >= 1)
+    assert ratio[0] > 3
+    assert ratio[1] > 1.5
 
 
 def test_relaxation_is_identifiable_inside_the_band():
@@ -254,7 +244,7 @@ def test_analogy_energy_argument():
     """The energy of the Schrodinger analogy reaches exactly -45 degrees at
     omega tau = 1, which is the threshold found above from estimation theory.
 
-    Two independent routes, one spectral and one statistical, single out the
+    Two algebraically related descriptions single out the
     same value of the product omega tau.
     """
     tau = 1e-10
@@ -277,41 +267,17 @@ def test_analogy_energy_depends_only_on_the_product():
 # A constraint the relaxation term introduces on the formalism itself
 # --------------------------------------------------------------------------
 
-def test_relaxation_shrinks_the_usable_band():
-    """The transfer matrix overflows sooner when a relaxation time is present.
+def test_large_imaginary_argument_does_not_overflow():
+    p = 1j * 1e6
+    arg, _ = fm.relaxation_pair(p, 2.0, 1.0, 1.0, 0.0)
+    assert abs(arg) > 700 and abs(arg.real) < 1
+    assert np.all(np.isfinite(fm.relaxation_wall(p, 2.0, 1.0, 1.0)))
 
-    The effective parameter behaves as tau omega squared once omega tau
-    exceeds one, so the argument of the hyperbolic functions grows linearly
-    with frequency instead of as its square root. The band that double
-    precision can carry therefore shrinks as the relaxation time grows.
 
-    This is a limitation of the transfer-matrix representation, not of the
-    physics, and it bounds the range over which the optimum of the previous
-    test can be sought.
-    """
-    s_f = sample_from_triplet(L0, ALPHA0, KAPPA0, 0.0)
-    f = band_above_diffusion(s_f)
-    p = 2j * np.pi * f
-
-    # Fourier: the band is carried without difficulty
-    fm.response(p, s_f)
-
-    # a large relaxation time overflows on the very same band
+def test_real_matrix_overflow_and_stable_response():
     with pytest.raises(OverflowError):
-        fm.response(p, sample_from_triplet(L0, ALPHA0, KAPPA0, 1e-5))
-
-
-def test_overflow_threshold_follows_the_predicted_law():
-    """The argument scales as omega sqrt(tau) xi1, so the largest usable
-    relaxation time falls as the inverse square of the highest frequency."""
-    s = sample_from_triplet(L0, ALPHA0, KAPPA0, 0.0)
-    f = band_above_diffusion(s)
-    omega_max = 2.0 * np.pi * f.max()
-    predicted = (700.0 / (omega_max * s.xi1)) ** 2
-
-    ok = sample_from_triplet(L0, ALPHA0, KAPPA0, 0.3 * predicted)
-    fm.response(2j * np.pi * f, ok)
-
-    with pytest.raises(OverflowError):
-        fm.response(2j * np.pi * f,
-                    sample_from_triplet(L0, ALPHA0, KAPPA0, 3.0 * predicted))
+        fm.relaxation_wall(1e8, 2.0, 1.0)
+    s = fm.Sample(thickness=1.0)
+    p = 1e8
+    expected = 1 / (s.film_b * np.sqrt(p))
+    assert fm.response(p, s) == pytest.approx(expected, rel=1e-12)

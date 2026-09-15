@@ -2,148 +2,104 @@
 
 **From Kinetic Closure to the Limits of Thermal Depth Profiling**
 
-> **Status — work in progress.** Research internship, September 2026 to January 2027, CRTEn.
-> Nothing here is peer reviewed. Results, figures and claims may change without notice.
-
----
+> Research in progress — CRTEn internship, September 2026–January 2027.
+> Corrected baseline: 15 September 2026. No experimental validation or general novelty claim.
 
 ## Scope
 
-This repository accompanies a study of a single question: **when can thermal transport parameters
-actually be recovered from a surface measurement on a thin film, and when can they not?**
-
-The physical setting is aluminium nitride thin films, where the phonon mean free path and the phonon
-relaxation time are not negligible compared with the film thickness and the modulation period. In
-that regime Fourier's law is no longer the obvious starting point, and the inverse problem changes
-character.
-
-The work has four strands:
-
-- **Part I — kinetics.** Deriving the Guyer–Krumhansl equation from the Boltzmann transport equation
-  through a moment hierarchy and a closure, using the Callaway separation between normal and umklapp
-  scattering.
-- **Part II — admissibility.** Which non-Fourier models are compatible with a convex entropy and with
-  finite characteristic speeds, and what that imposes on the relaxation time and the nonlocal length.
-- **Part III — regimes.** A transport regime map for AlN as a function of temperature and film
-  thickness, anchored to published measurements rather than to estimates.
-- **Part IV — the inverse problem.** After a Liouville transformation the spatial operator takes the
-  form of a stationary Schrödinger operator. The question is what the position of the associated
-  spectral parameter in the complex plane implies for the conditioning of parameter recovery.
-
-A single quantity runs through all four: the **relaxation time τ**.
-
----
+When can a surface thermal measurement determine thin-film properties separately?
+This project studies Fourier, Cattaneo and Guyer–Krumhansl (GK) models,
+their kinetics, entropy, transport regimes and inverse problems.
 
 ## Current state
 
 | Part | Status |
 |---|---|
-| I — kinetic closure | Course notes and an exercise sheet. The derivation for the manuscript is not written. |
-| II — admissibility | Note written, results tested. Entropy production and propagation speeds. |
-| III — AlN regime map | Note written, figure produced, AlN placed from published relaxation times. Temperature trajectory still missing. |
-| IV — spectral inverse problem | Four results established and tested. |
-| Laboratory deliverable | Complete except for real data. Forward model in both regimes, inversion, uncertainties validated by Monte Carlo, identifiability analysis, experiment design map. |
+| I — kinetic closure | Course notes/exercises; complete closure remains unwritten. |
+| II — admissibility | Near-equilibrium entropy and homogeneous propagation checks; GK infinite speed requires a nonzero nonlocal term. |
+| III — AlN regimes | Paired approximate mode readings at 300 K; no full-spectrum classification or temperature trajectory. |
+| IV — inverse problem | Homogeneous scale invariance, conditional sensitivities and reproduction of Fourier resonance. |
+| Laboratory tools | Synthetic tools available; sample geometry, calibration, nuisance parameters and real-data validation remain required. |
 
-### Results established in Part IV
+## Corrected conclusions
 
-**The scale invariance of Krapez and Rigollet survives every non-Fourier law examined.** Neither a
-finite relaxation time nor a nonlocal term restores the identifiability lost under Fourier. The
-reason is structural: the response depends on the layer through `ξ₁`, `b`, and two *times*, and no
-length appears separately.
+- Homogeneous 1D scale invariance holds for free thermal parameters through
+  `b, ξ₁, τ_R, τ_ℓ`. Independent thickness or constitutive constraints can restrict it.
+  Graded non-Fourier layers are not implemented.
+- Relaxation parameters can correlate with other fitted properties. One fixed-band
+  example raises conductivity/capacity standard errors by factors 3.13 and 1.61.
+- `ωτ=1` maximizes single-frequency phase sensitivity, not detectability.
+  Spectral angle and half-space phase are algebraically related.
+- `τ_R=τ_ℓ` gives **Fourier resonance**, established prior art, under the
+  homogeneous source-free, zero-initial-perturbation boundary-value problem.
+- The formal kinetic ratio `τ_R/τ_N=1.8` lacks the strong separation required
+  for hydrodynamic closure and does not prove a temperature-dependent crossing.
+- `3λ/(Cv)` is a **grey conductivity-derived length**, not an all-collision
+  mean free path. Comparing apparent film conductivity with bulk is meaningful.
 
-**The relaxation times enter as genuinely independent parameters.** Estimating them degrades neither
-the effusivity nor the transit time.
+## Numerical scenarios, kept separate
 
-**Their identifiability obeys an inverse scaling law** whose threshold sits at `ω τ = 1`, the same
-value at which the energy of the Schrödinger analogy crosses the midpoint of its excursion. Three
-independent routes give the same number.
+For d=500 nm, C=2.41×10⁶ J·m⁻³·K⁻¹, v=6000 m/s and the illustrative sapphire substrate:
 
-**A medium with `τ_R = τ_ℓ` is thermally indistinguishable from a Fourier medium**, whatever the
-common value. In microscopic terms this reads `τ_R = 1.8 τ_N`, a ratio of collision times that varies
-with temperature. On the regime map that condition falls just at the apex of the hydrodynamic wedge:
-a material crosses it exactly as the window opens.
-
-### Results established in Part II
-
-**Thermodynamic admissibility and finite propagation speed are independent criteria.** All three laws
-admit a convex entropy with non-negative production; only Cattaneo propagates at finite speed. The
-nonlocal term of Guyer–Krumhansl is diffusive in the flux and restores the infinite speed that
-Cattaneo had removed. The hierarchy Fourier, Cattaneo, Guyer–Krumhansl is not a monotone refinement.
-
-### Results established in Part III
-
-**A submicron AlN film sits two decades below the hydrodynamic window** and is transitional rather
-than ballistic: the total mean free path is near 67 nm against a thickness of 500 nm. A conductivity
-extracted there is an apparent, thickness-dependent value, not an intrinsic property.
-
-The normal-process mean free path, 2.4 to 60 micrometres, and the total one, 67 nm, answer different
-questions and must not be confused.
-
-### Instrumental thresholds, for the laboratory
-
-| Quantity | Formula | Value for a 500 nm AlN film |
+| Quantity | λ=60 W·m⁻¹·K⁻¹ | λ=321 W·m⁻¹·K⁻¹ |
 |---|---|---|
-| Characteristic frequency | `1/(2π ξ₁²)` | 16 MHz — below it the film is invisible |
-| Blind interface | `b_film = b_substrate` | 44 W m⁻¹K⁻¹ on sapphire. Measured films sit at 321, so the contrast is 0.46: **not a practical risk for this system** |
-| Relaxation threshold | `ω_max τ ≥ 1` | `τ ≥ 8×10⁻¹⁰ s` for a 200 MHz bench. AlN phonon times are two to three decades below: **out of reach of FDTR** |
-| Blind diagonal | `τ_R = τ_ℓ` | intrinsic to the material, cannot be worked around. AlN sits at `τ_R/τ_N = 10` to `200` at 300 K, far from it |
-| Knudsen number | `3λ/(ρc v d)` | `0.13` — transitional, so the extracted conductivity is an apparent value |
+| Characteristic frequency a/(2πd²) | 15.85 MHz | 84.80 MHz |
+| Fourier perfect-contact reflection Γ | 0.077 | 0.460 |
+| Grey transport length | 12.45 nm | 66.60 nm |
+| Grey Knudsen number | 0.0249 | 0.1332 |
 
-The first question to settle with the laboratory is the **film thickness**: it decides what the
-deliverable can claim, ahead of the measurement bandwidth.
+The default 60 is illustrative. Cheng's 321 reference comes from 18 and 22.5 µm
+films, not the hypothetical 500 nm film.
+Equal effusivity at λ≈44 makes the ideal Fourier interface invisible;
+contacts and differing non-Fourier times require a fuller analysis.
 
----
+A 200 MHz upper frequency reaches ωτ=1 at 0.796 ns. This does not prove shorter
+times inaccessible: an ideal half-space with τ=10 ps has a 0.360° phase shift there.
+Real detectability depends on noise, calibration and nuisance parameters.
 
 ## Repository layout
 
 | Folder | Contents |
 |---|---|
-| `notes/` | Reading notes, one file per paper. Conventions and verified thresholds. Part I and Part IV notes. |
-| `theory/` | Derivations in LaTeX, one file per step of the chain. |
-| `src/` | Quadrupole assembly, numerical Laplace inversion, forward model, inversion, Bayesian sampling. |
-| `notebooks/` | Figure-producing scripts, numbered in the order they were written. |
-| `tests/` | Unit tests. Every routine must pass an analytical benchmark before it touches real data. |
-| `data/` | **Never committed.** |
-| `figures/` | Generated figures, regenerable from `notebooks/`. |
-| `paper/` | Manuscript sources. |
+| `notes/` | Authored LaTeX/PDF notes, conventions and third-party reference PDFs. |
+| `src/` | Transfer matrices, stable homogeneous impedance responses, Stehfest inversion, fitting and Bayesian sampling. |
+| `notebooks/` | Four figure scripts and one notebook. |
+| `tests/` | Analytical benchmarks, regressions and synthetic estimator checks. |
+| `figures/` | Generated figures. |
+| `theory/`, `paper/` | Placeholders; no completed manuscript is implied. |
+| `data/` | README; laboratory files excluded by .gitignore. |
+| `scripts/` | Figure and PDF rebuild command. |
 
-`notes/conventions.md` is the reference for every convention, threshold and verification used in
-`src/`. Any external expression must be converted to those conventions before use.
+## Install, test and rebuild
 
----
-
-## Testing
-
-```
-pip install -r requirements.txt
-python -m pytest tests/ -v
+```powershell
+python -m pip install -r requirements-dev.txt
+python -B -m pytest tests/ -q -p no:cacheprovider
+python scripts/rebuild.py
 ```
 
-Two classes of test are kept deliberately distinct.
+PDF builds require XeLaTeX, pdfLaTeX, declared LaTeX packages and DejaVu Sans.
+Each note retains its existing fonts, margins and heading style; Camacho retains
+its separate Latin Modern layout. Only PDFs with matching authored TeX are rebuilt.
+See [conventions](notes/conventions.md) and [correction log](CORRECTIONS.md).
 
-**Internal consistency** — unimodular determinant, homogeneous limit, composition, layer splitting.
-Necessary, and insufficient: an error consistent with itself passes all of them. One did, for a
-hundred and thirteen tests.
+`fisher_analysis` raises `NonIdentifiableError` for unsupported separate uncertainties.
+A fit's `success` reports optimizer convergence; inspect covariance too.
+Graded variable diffusivity requires an explicit `graded_xi1`.
+Bayesian priors are bounded log-uniform; seed controls the full chain, and
+autocorrelation reliability is reported separately.
 
-**External validation** — comparison with a closed form taken from outside the codebase. Every
-constitutive law implemented carries at least one. The list is in `notes/conventions.md`, section 14.
+## Data and references
 
-Three errors were caught during development, and each was caught the same way: by confronting the
-work with something outside it. A wrong flux coefficient, by a published closed form; an overstated
-risk, by measured data; a confusion between two mean free paths, by a definitional check. None was
-caught by internal consistency.
+No laboratory data are included. Synthetic tests do not establish model adequacy
+for a real FDTR bench. Several third-party reference PDFs already exist in `notes/`;
+they are distinct from the authored notes and remain intact.
 
----
+## Work before extending the conclusions
 
-## Data policy
-
-**Laboratory data is not published in this repository, and never will be.** The `data/` folder is
-excluded by `.gitignore`, which was added before the first commit. Notebooks requiring real
-measurements will fail on a fresh clone; that is intended. Synthetic data generators are provided in
-`src/` so that every theoretical result can be reproduced without laboratory access.
-
-Papers are not committed either. Bibliographic records live in a Zotero library; this repository
-holds citations, not copies.
+Complete the kinetic closure, justify spectral averaging and a temperature trajectory,
+compare remaining prior work, then specify the actual sample, beams, interfaces,
+calibration, frequencies and noise for experimental inversion.
 
 ---
 
@@ -155,33 +111,33 @@ Listed so that the boundary between what is inherited and what is new is visible
 for reliable and unique nondestructive coating thickness and thermophysical measurements"*,
 arXiv:1708.07362 (2017). Establishes that thickness, diffusivity and conductivity of a coating are
 structurally correlated under front-face measurement, and identifies the transit time and the
-effusivity as the two quantities the measurement determines. **The degeneracy this work extends.**
+effusivity as the two quantities the measurement determines. The homogeneous non-Fourier code reproduces the analogous invariance.
 
 **J.-C. Krapez**, *Comment on "Simultaneous density and thermal conductivity depth profile
 reconstructions…"*, J. Appl. Phys. **134**, 056101 (2023). The graded counterpart: the same
 invariance, of functional dimension. Contains a section on inverse crime.
 
 **J.-C. Krapez**, *Linear, trigonometric and hyperbolic profiles of thermal effusivity in the
-Liouville space and related quadrupoles*, Int. J. Therm. Sci. **136**, 182–199 (2018). The Liouville
+Liouville space and related quadrupoles*, Int. J. Therm. Sci. **136**, 182–199 (2019; online 2018). The Liouville
 transformation of the heat equation and the identification of the Schrödinger potential. Explicitly
 declines the spectral reading of the resulting operator.
 
 **A. Camacho de la Rosa, R. Esquivel-Sirvent, D. Becerril**, *Relaxation times of non-Fourier
 materials using frequency-domain thermoreflectance*, J. Appl. Phys. **137**, 155103 (2025). Provides
 the closed form used as external validation of the Cattaneo response, and the instrumental bandwidth
-that fixes the measurability threshold.
+used for conditional sensitivity analysis; bandwidth alone is not a detectability threshold.
 
 **J. Ma, W. Li, X. Luo**, *Examining the Callaway model for lattice thermal conductivity*, Phys. Rev.
 B **90**, 035203 (2014). Source of the frequency scaling laws and of the relaxation times used to
 place AlN on the regime map. Establishes that the Callaway model corrects the relaxation-time
 approximation by only 0.7 per cent in the cross-plane direction, where 12.3 per cent is needed.
 
-**Y. Cheng et al.**, *Experimental observation of high intrinsic thermal conductivity of AlN*, Phys.
+**Z. Cheng et al.**, *Experimental observation of high intrinsic thermal conductivity of AlN*, Phys.
 Rev. Materials **4**, 044602 (2020). Measured conductivities, including 321 W m⁻¹K⁻¹ for MOCVD films
-on sapphire.
+on sapphire, 18 and 22.5 µm thick.
 
 **P. Chen, I. M. Gamba, Q. Li, L. Wang**, *Reconstruction of heat relaxation index in phonon transport
-equation*, arXiv:2502.19533 (2025), accepted in SIAM J. Appl. Math. Numerical reconstruction of the
+equation*, arXiv:2502.19533 (2025), preprint. Numerical reconstruction of the
 relaxation time; leaves the sensitivity question open.
 
 **M. S. B. Hoque et al.**, *Experimental observation of ballistic to diffusive transition in phonon
@@ -194,6 +150,12 @@ Reference text for the transfer matrix formalism used throughout `src/`.
 **113**, 1046 (1959). The kinetic foundation of Part I.
 
 ---
+
+**R. Kovács**, [Analytic solution of Guyer–Krumhansl equation for laser flash experiments](https://arxiv.org/abs/1804.05225) (2018). Fourier resonance is established prior art.
+
+**M. G. Hennessy, T. G. Myers**, [Guyer–Krumhansl Heat Conduction in Thermoreflectance Experiments](https://doi.org/10.1007/978-3-030-64272-3_2) (2021). Complete comparison remains pending.
+
+**G. Lebon, P. C. Dauby**, [Phys. Rev. A 42, 4710](https://doi.org/10.1103/PhysRevA.42.4710) (1990). Kinetic coefficients and assumptions.
 
 ## Licence
 

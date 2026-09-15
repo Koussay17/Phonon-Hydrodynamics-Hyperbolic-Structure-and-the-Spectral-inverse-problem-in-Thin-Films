@@ -55,3 +55,6 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# Local rebuild intermediates
+.build/

@@ -14,6 +14,8 @@
 \titlespacing*{\subsection}{0pt}{12pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 \begin{center}
 {\Large\bfseries Fiche de lecture --- Controverse d'identifiabilité de 2023}\\[4pt]
@@ -32,13 +34,13 @@ Melnikov, \emph{J. Appl. Phys.} \textbf{134}, 056102 (2023)}\\[2pt]
 Article initial & A. Mandelis, S. Kooshki, A. Melnikov, \emph{Simultaneous density and thermal
 conductivity depth profile reconstructions from noised thermal-wave amplitude and phase data using a
 combined integral-equation and imperialist competitive algorithm method}, \emph{Journal of Applied
-Physics} \textbf{133}, 055102 (2023), doi:10.1063/5.0129536 \\
+Physics} \textbf{133}, 055102 (2023), doi:\allowbreak 10.1063/\allowbreak 5.0129536 \\
 \addlinespace
 Commentaire & J.-C. Krapez (ONERA, DOTA), \emph{Journal of Applied Physics} \textbf{134}, 056101 (2023),
-doi:10.1063/5.0151465, accès libre \\
+doi:\allowbreak 10.1063/\allowbreak 5.0151465, accès libre \\
 \addlinespace
 Réponse & A. Mandelis, S. Kooshki, A. Melnikov, \emph{Journal of Applied Physics} \textbf{134}, 056102
-(2023), doi:10.1063/5.0155055 \\
+(2023), doi:\allowbreak 10.1063/\allowbreak 5.0155055 \\
 \addlinespace
 Nature & Échange critique en trois pièces : méthode d'inversion, objection d'identifiabilité, réponse
 des auteurs \\
@@ -48,11 +50,11 @@ des auteurs \\
 
 \section{Statut documentaire}
 
-Le texte intégral du Commentaire est en accès libre et a servi de base à la présente fiche. Le texte de
-la Réponse relève de l'accès sur abonnement et n'a pas pu être consulté lors de la rédaction : seules
-les données bibliographiques en ont été vérifiées. Aucun résumé de son argumentation n'est donc proposé
-ici. La section 8 se limite à situer la pièce dans l'échange et à énoncer les points sur lesquels une
-réfutation devrait porter pour être recevable.
+Le Commentaire a servi de base aux reconstructions mathématiques de cette fiche.
+La Réponse de Mandelis, Kooshki et Melnikov a maintenant été consultée dans le PDF
+conservé au dépôt. La section 8 résume son argumentation et distingue les contraintes
+d'inversion invoquées d'une preuve d'unicité. Le présent texte ne prétend pas
+remplacer une comparaison exhaustive avec l'article initial et ses données.
 
 Les développements mathématiques des sections 5 et 6 sont des reconstructions établies dans les
 conventions du projet. Ils fournissent la structure de l'objection et se substituent, en l'état, à toute
@@ -254,24 +256,25 @@ Aucune de ces voies ne relève d'un raffinement de l'algorithme d'inversion : to
 modifier le dispositif ou à ajouter une mesure de nature différente.
 
 \section{Position de la Réponse}
+La Réponse de Mandelis, Kooshki et Melnikov, J. Appl. Phys. \textbf{134}, 056102
+(2023), doi:\allowbreak 10.1063/\allowbreak 5.0155055, a été consultée dans le PDF conservé au dépôt.
 
-La Réponse constitue la troisième pièce de l'échange, publiée immédiatement à la suite du Commentaire
-dans le même numéro. Son texte n'a pas été consulté ; aucune de ses affirmations n'est donc rapportée
-ici.
+Les auteurs reconnaissent la non-unicité associée à la transformation de Liouville,
+mais soutiennent que leur formulation intégrale de Fredholm traite distinctement
+la conductivité et la capacité volumique. Ils invoquent les valeurs massives connues,
+une solution de base approchée et des itérations de leur algorithme ICA pour reconstruire
+les profils. Leur argument porte donc sur une formulation et des contraintes d'inversion
+qui doivent être explicitées dans une comparaison.
 
-Pour mémoire, une réfutation recevable de l'objection devrait porter sur l'une au moins des prémisses de
-la section 6, à savoir :
+Une reformulation équivalente du problème direct ne crée pas de nouvelle information.
+Pour établir l'unicité dans une classe restreinte de profils, il faut montrer que
+les contraintes supplémentaires éliminent les profils conjugués par reparamétrage.
+La convergence d'une itération ou l'existence d'une pseudo-inverse ne prouve pas cette propriété.
+Cette observation distingue la question structurelle de la réussite numérique rapportée ;
+elle ne remplace pas l'analyse complète des hypothèses de l'article initial.
 
-\begin{itemize}
-\item contester la prémisse 1, en montrant que le dispositif réel comporte une information non prise en
-compte dans le modèle unidimensionnel à excitation et détection en face avant ;
-\item contester la prémisse 2, en exhibant une dépendance de l'observable à une grandeur autre que
-l'effusivité exprimée dans la coordonnée transformée ;
-\item contester la conclusion 1, en exhibant une contrainte de régularité ou de positivité éliminant
-tous les profils conjugués sauf un.
-\end{itemize}
-
-Cette section reste à compléter dès l'obtention du texte intégral de la Réponse.
+La suite consiste à écrire explicitement la classe admissible des deux approches et
+à y appliquer la transformation constructive de la section précédente.
 
 \section{Rattachement au présent travail}
 
@@ -297,14 +300,14 @@ par les textes de l'échange et demeure ouverte dans le présent travail.
 
 \begin{enumerate}[leftmargin=2.2em]
 \item A. Mandelis, S. Kooshki, A. Melnikov, \emph{Journal of Applied Physics} \textbf{133}, 055102
-(2023), doi:10.1063/5.0129536.
+(2023), doi:\allowbreak 10.1063/\allowbreak 5.0129536.
 \item J.-C. Krapez, \emph{Comment on ``Simultaneous density and thermal conductivity depth profile
 reconstructions from noised thermal-wave amplitude and phase data using a combined integral-equation and
 imperialist competitive algorithm method'' [J. Appl. Phys. 133, 055102 (2023)]}, \emph{Journal of Applied
-Physics} \textbf{134}, 056101 (2023), doi:10.1063/5.0151465.
+Physics} \textbf{134}, 056101 (2023), doi:\allowbreak 10.1063/\allowbreak 5.0151465.
 \item A. Mandelis, S. Kooshki, A. Melnikov, \emph{Response to ``Comment on \ldots'' [J. Appl. Phys. 134,
-056101 (2023)]}, \emph{Journal of Applied Physics} \textbf{134}, 056102 (2023), doi:10.1063/5.0155055.
-\item J.-C. Krapez, \emph{International Journal of Thermal Sciences} \textbf{136}, 182--199 (2018).
+056101 (2023)]}, \emph{Journal of Applied Physics} \textbf{134}, 056102 (2023), doi:\allowbreak 10.1063/\allowbreak 5.0155055.
+\item J.-C. Krapez, \emph{International Journal of Thermal Sciences} \textbf{136}, 182--199 (2019 ; en ligne 2018).
 \item D. Maillet, S. André, J.-C. Batsale, A. Degiovanni, C. Moyne, \emph{Thermal Quadrupoles: Solving
 the Heat Equation through Integral Transforms}, Wiley, 2000.
 \end{enumerate}

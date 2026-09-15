@@ -20,13 +20,15 @@ survives Guyer--Krumhansl as well.
 
 The two times exchange their roles between the two combinations. When they
 coincide the square roots cancel and the response is exactly that of a Fourier
-medium, whatever their common value. Since tau_l = 9 tau_N / 5, this blindness
+medium, whatever their common value. Under isotropic kinetic assumptions tau_l = 9 tau_N / 5, this blindness
 occurs at tau_R = 1.8 tau_N, a ratio of collision times that varies with
 temperature.
 
-This script maps how far from that diagonal a measurement must sit for the two
-times to be separable.
+Fourier resonance is established prior art (Kovacs 2018, arXiv:1804.05225).
+The kinetic ratio 1.8 is outside strong normal/resistive separation.
+This script maps conditional local uncertainties, not universal separation cutoffs.
 """
+from pathlib import Path
 
 import os
 import sys
@@ -38,6 +40,7 @@ from matplotlib.colors import LogNorm
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 import quadrupoles as q  # noqa: E402
+import inversion as inv
 
 # --------------------------------------------------------------------------
 # Film and bench
@@ -64,11 +67,9 @@ def response(freq, xi1, b, tau_r, tau_l):
     p = 2j * np.pi * np.asarray(freq, dtype=float)
     x = xi1 * np.sqrt(p * (1.0 + tau_r * p) / (1.0 + tau_l * p))
     ls = b * np.sqrt(p * (1.0 + tau_l * p) / (1.0 + tau_r * p))
-    a_ = d_ = np.cosh(x)
-    b_ = np.sinh(x) / ls
-    c_ = ls * np.sinh(x)
+    t = q.stable_tanh(x)
     z = 1.0 / (B_SUB * np.sqrt(p))
-    return (a_ * z + b_) / (c_ * z + d_)
+    return (z + t / ls) / (1 + ls * z * t)
 
 
 def observables(freq, theta):
@@ -95,11 +96,13 @@ def covariance(freq, params, step=1e-5):
         col = model(up)
         if not np.all(np.isfinite(col)):
             return None
-        jac[:, i] = (col - base) / step
+        down = log0.copy()
+        down[i] -= step
+        jac[:, i] = (col - model(down)) / (2 * step)
 
     fisher = jac.T @ jac
     try:
-        cov = np.linalg.inv(fisher)
+        _, cov = inv.information_from_jacobian(jac)
     except np.linalg.LinAlgError:
         return None
     if np.any(np.diag(cov) <= 0.0):
@@ -107,22 +110,9 @@ def covariance(freq, params, step=1e-5):
     return cov
 
 
-def band_for(tau_r, tau_l, decades=4.0, x_max=400.0):
-    """Fixed band starting at the characteristic frequency of the film.
-
-    The upper limit is capped so that the argument of the hyperbolic functions
-    stays within reach of double precision. At high frequency the two factors
-    partly cancel and the argument tends to xi_1 sqrt(tau_R / tau_l) sqrt(p),
-    which sets the cap.
-
-    A band whose limits jump with the parameters introduces spurious structure
-    in the scan; the band is therefore fixed except for that cap.
-    """
-    omega_cap = (x_max / (XI1 * np.sqrt(tau_r / tau_l))) ** 2
-    f_top = min(F_C * 10.0 ** decades, omega_cap / (2.0 * np.pi))
-    if f_top <= F_C * 10.0:
-        return None
-    return np.logspace(np.log10(F_C), np.log10(f_top), N_POINTS)
+def band_for(tau_r, tau_l):
+    """The same illustrative bench band for every sample: 10 kHz to 200 MHz."""
+    return np.logspace(4, np.log10(2e8), N_POINTS)
 
 
 def sigma_times(tau_r, tau_l):
@@ -180,7 +170,7 @@ ax1.annotate(r"$\tau_R = \tau_\ell$ : réponse de Fourier exacte",
 ax1.set_xlabel(r"$\tau_\ell\,/\,\tau_R$")
 ax1.set_ylabel(r"$\sigma$ relative, pire des deux temps")
 ax1.grid(alpha=0.3, which="both")
-ax1.set_title("Divergence à la cécité", fontsize=11)
+ax1.set_title(r"Résonance de Fourier : $\tau_R=100$ ps, bruit 1 % et 0,1°", fontsize=10)
 
 # ---- two-dimensional map --------------------------------------------------
 tr = np.logspace(-12, -8, 41)
@@ -200,9 +190,9 @@ ax2.set_xscale("log")
 ax2.set_yscale("log")
 ax2.set_xlabel(r"$\tau_\ell$  [s]")
 ax2.set_ylabel(r"$\tau_R$  [s]")
-ax2.set_title("Incertitude sur les deux temps", fontsize=11)
-fig.colorbar(mesh, ax=ax2, label=r"$\sigma$ relative")
+ax2.set_title("10 kHz–200 MHz, 80 points ; quatre paramètres libres", fontsize=10)
+fig.colorbar(mesh, ax=ax2, label=r"$\sigma$ relative", extend="max")
 
 plt.tight_layout()
-plt.savefig("../figures/04_guyer_krumhansl_blindness.png", dpi=180)
+plt.savefig(Path(__file__).resolve().parents[1] / "figures/04_guyer_krumhansl_blindness.png", dpi=180)
 plt.show()

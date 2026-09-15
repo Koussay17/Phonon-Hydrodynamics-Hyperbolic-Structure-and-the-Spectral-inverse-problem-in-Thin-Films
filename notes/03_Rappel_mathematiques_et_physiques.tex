@@ -14,14 +14,16 @@
 \titlespacing*{\subsection}{0pt}{12pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 \begin{center}
 {\Large\bfseries Rappels mathématiques et physiques}\\[4pt]
-{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2019) 182--199}\\[2pt]
 {\small Version corrigée --- 8 septembre 2026}
 \end{center}
 
-space{4pt}
+\vspace{4pt}
 
 
 \section{Grandeurs thermiques}
@@ -158,8 +160,7 @@ est une combinaison linéaire. Deux conditions aux limites fixent les deux const
 
 \[ W(f,g) = f g' - f' g . \]
 
-Le wronskien mesure l'indépendance de deux fonctions : il s'annule si et seulement si elles sont
-proportionnelles. Pour une équation en forme normale, dépourvue de terme en dérivée première, le
+Pour deux solutions de la même EDO linéaire régulière du second ordre, le wronskien est nul si et seulement si elles sont linéairement dépendantes. Cet énoncé ne vaut pas pour deux fonctions arbitraires. Pour une équation en forme normale, dépourvue de terme en dérivée première, le
 théorème d'Abel établit que le wronskien de deux solutions est constant. Cette propriété est à
 l'origine du déterminant unité de la matrice quadripolaire.
 
@@ -212,4 +213,6 @@ La correspondance avec la forme normale de Liouville est formelle. Dans le cas t
 pas une amplitude de probabilité, aucune condition de normalisation ne s'applique, le potentiel a la
 dimension d'un inverse de temps et le paramètre $E = -p$ est complexe. Les méthodes de construction de
 solutions restent transposables ; les interprétations physiques ne le sont pas.
+\section*{Portée de la version corrigée --- 15 septembre 2026}
+Le critère du wronskien s'applique ici à deux solutions de la même EDO linéaire régulière. Les exemples numériques sont illustratifs ; une analogie de Schrödinger ne transfère pas automatiquement les résultats spectraux quantiques au problème thermique.
 \end{document}

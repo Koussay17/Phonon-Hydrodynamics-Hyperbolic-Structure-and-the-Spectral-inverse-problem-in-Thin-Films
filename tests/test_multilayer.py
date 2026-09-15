@@ -47,9 +47,9 @@ def test_single_layer_with_resistance_matches_sample():
 
 def test_graded_layer_matches_sample():
     st = ml.Stack([ml.Layer(60.0, 2.41e6, 500e-9,
-                            lam_back=120.0, rho_c_back=2.41e6)])
+                            lam_back=120.0, rho_c_back=2.41e6, graded_xi1=500e-9/np.sqrt(60/2.41e6))])
     sa = fm.Sample(film_lam=60.0, film_rho_c=2.41e6, thickness=500e-9,
-                   film_lam_back=120.0, film_rho_c_back=2.41e6)
+                   film_lam_back=120.0, film_rho_c_back=2.41e6, graded_xi1=500e-9/np.sqrt(60/2.41e6))
     assert np.allclose(ml.response(P, st), fm.response(P, sa), rtol=1e-12)
 
 

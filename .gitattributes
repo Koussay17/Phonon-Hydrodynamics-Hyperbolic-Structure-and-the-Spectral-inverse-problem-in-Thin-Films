@@ -1,0 +1,3 @@
+# Generated documents and figures are binary assets.
+*.pdf binary
+*.png binary

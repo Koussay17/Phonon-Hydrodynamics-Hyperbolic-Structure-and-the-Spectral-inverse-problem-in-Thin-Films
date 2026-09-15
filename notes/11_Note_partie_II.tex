@@ -14,12 +14,14 @@
 \titlespacing*{\subsection}{0pt}{10pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 
 \begin{center}
 {\Large\bfseries Admissibilité des lois de conduction non-Fourier}\\[5pt]
 {\normalsize Note de partie II --- point de contrôle}\\[2pt]
-{\small 13 septembre 2026}
+{\small Version corrigée --- 15 septembre 2026}
 \end{center}
 
 \vspace{4pt}
@@ -39,19 +41,19 @@ qu'ils sont indépendants, et que cette hiérarchie n'est pas monotone.
 \begin{center}
 \begin{tabularx}{\textwidth}{@{}lXXl@{}}
 \toprule
-\textbf{Loi} & \textbf{Entropie convexe} & \textbf{Second principe} & \textbf{Propagation} \\
+\textbf{Loi} & \textbf{Entropie math.} & \textbf{Second principe} & \textbf{Propagation} \\
 \midrule
 Fourier & oui & oui, si $\lambda > 0$ & infinie \\
 \addlinespace
 Cattaneo & oui, si $\tau_R > 0$ & oui, si $\lambda > 0$ & finie, $\sqrt{a/\tau_R}$ \\
 \addlinespace
-Guyer--Krumhansl & oui, si $\tau_R > 0$ & oui, si $\lambda > 0$ et $\ell^2 \ge 0$ & infinie \\
+Guyer--Krumhansl & oui, si $\tau_R > 0$ & oui, si $\lambda > 0$ et $\ell^2 \ge 0$ & infinie si $\ell>0$ \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
 \medskip
-Les trois lois sont thermodynamiquement admissibles. \textbf{Une seule propage à vitesse finie.} Le
+Le tableau emploie l'opposé de l'entropie physique, qui est concave. Les trois lois sont admissibles près de l'équilibre. Cattaneo propage à vitesse finie ; GK avec $\ell=0$ se réduit à ce cas. Le
 modèle le plus riche des trois perd la propriété qui motive habituellement l'abandon de Fourier.
 
 \section{Vitesse de propagation}
@@ -60,8 +62,8 @@ modèle le plus riche des trois perd la propriété qui motive habituellement l'
 
 La combinaison de la loi constitutive et du bilan d'énergie donne, pour une onde plane en milieu
 homogène,
-\[ \sigma^2 = \frac{p\,(1+\tau_R p)}{a\,(1+\tau_\ell p)} , \qquad p = i\omega , \qquad \sigma = ik , \]
-où $\tau_\ell = 3\ell^2/a$ est le temps de diffusion sur la longueur non locale. Cattaneo correspond
+\[ \sigma^2 = \frac{p\,(1+\tau_R p)}{a\,(1+\tau_\ell p)} , \qquad p = i\omega , \qquad \sigma = -ik , \]
+où le champ est proportionnel à $\exp(i\omega t+ikz)$ et où $\tau_\ell = 3\ell^2/a$ est le temps de diffusion sur la longueur non locale. Cattaneo correspond
 à $\tau_\ell = 0$, Fourier à $\tau_R = \tau_\ell = 0$.
 
 Le comportement du nombre d'onde à haute fréquence décide de la vitesse. Les exposants mesurés sur
@@ -74,7 +76,7 @@ quatre décades :
 \midrule
 Fourier & $n = 0{,}5000$ & non bornée \\
 Cattaneo & $n = 1{,}0000$ & sature à $\sqrt{a/\tau_R}$ \\
-Guyer--Krumhansl & $n = 0{,}5004$ & non bornée \\
+Guyer--Krumhansl ($\ell>0$) & $n = 0{,}5004$ & non bornée \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -97,9 +99,7 @@ En variables $(u, q)$, la partie principale s'écrit $\partial_t U + A\,\partial
 \[ A = \begin{pmatrix} 0 & 1 \\[2pt] a/\tau_R & 0 \end{pmatrix} ,
 \qquad \text{valeurs propres } \pm\sqrt{a/\tau_R} . \]
 
-Deux valeurs propres réelles distinctes : le système est strictement hyperbolique. Le théorème de
-Godunov et Mock relie cette propriété à l'existence d'une entropie convexe, ce que la section
-suivante établit indépendamment.
+Deux valeurs propres réelles distinctes : le système est strictement hyperbolique. Une entropie mathématique strictement convexe peut symétriser un système de conservation sous les hypothèses du théorème de Godunov--Mock ; l'hyperbolicité seule ne prouve pas l'existence d'une telle entropie. La section suivante vérifie directement l'entropie de ce modèle.
 
 En modèle de Debye, $a = v^2\tau_R/3$, de sorte que la vitesse limite vaut $v/\sqrt{3}$ : elle est
 fixée par la vitesse du son et ne contient aucune information supplémentaire.
@@ -111,13 +111,15 @@ fixée par la vitesse du son et ne contient aucune information supplémentaire.
 La thermodynamique irréversible étendue prend le flux comme variable d'état à part entière :
 \[ s(u, q) = s_{\mathrm{éq}}(u) - \frac{\tau_R}{2\lambda T_0^{\,2}}\;q^2 . \]
 
-La partie hors équilibre est une forme quadratique définie négative dès que $\tau_R > 0$ et
+L'entropie physique est concave ; son opposé, utilisé comme entropie mathématique,
+est convexe. La partie hors équilibre est une forme quadratique définie négative dès que $\tau_R > 0$ et
 $\lambda > 0$ : l'entropie est concave, donc l'état d'équilibre est stable.
 
 \subsection{Productions}
 
-Avec le flux d'entropie $\mathbf{J}_s = \mathbf{q}/T$, la dérivation depuis les équations de bilan
-donne, au premier ordre autour d'une température de référence $T_0$,
+Avec le flux classique pour Cattaneo et le flux étendu ci-dessous pour GK,
+la dérivation depuis les équations de bilan
+donne, à l'ordre quadratique des perturbations autour d'une température de référence $T_0$,
 \[ \boxed{\;\sigma_s^{\text{Cat}} = \frac{q^2}{\lambda T_0^{\,2}}\;}
 \qquad\qquad
 \boxed{\;\sigma_s^{\text{GK}} = \frac{q^2 + 3\ell^2\,(\partial_z q)^2}{\lambda T_0^{\,2}}\;} \]
@@ -148,14 +150,14 @@ n'est pas définie positive.
 Le terme non local de Guyer--Krumhansl produit trois effets distincts, établis séparément :
 
 \begin{itemize}
-\item il \textbf{ajoute} un paramètre identifiable, $\tau_\ell$, dont l'estimation ne dégrade pas
-celle des autres ;
+\item il \textbf{ajoute} un paramètre, $\tau_\ell$, dont l'identifiabilité dépend
+de la bande, du bruit et des corrélations ; le libérer peut dégrader les autres estimations ;
 \item il \textbf{ne lève pas} la dégénérescence d'échelle du problème inverse, n'entrant dans
 l'observable que par un temps ;
-\item il \textbf{détruit} la finitude de la vitesse de propagation.
+\item pour $\ell>0$, il \textbf{détruit} la finitude de la vitesse de propagation ; $\ell=0$ redonne Cattaneo.
 \end{itemize}
 
-Un gain, une neutralité et une perte, tous trois attribuables au même terme. Le choix entre Cattaneo
+Une liberté supplémentaire, une invariance conservée et un changement de propagation. Le choix entre Cattaneo
 et Guyer--Krumhansl ne se réduit donc pas à retenir le modèle le plus complet.
 
 \subsection{Ce qui n'est pas établi}
@@ -186,14 +188,14 @@ les fréquences où il se manifeste.
 \item D. Jou, J. Casas-Vázquez, G. Lebon, \emph{Extended Irreversible Thermodynamics}, Springer.
 \item S. K. Godunov, \emph{An interesting class of quasilinear systems}, Dokl. Akad. Nauk SSSR
 \textbf{139}, 521 (1961).
-\item D. J. Mock, \emph{Systems of conservation laws of mixed type}, J. Differential Equations
+\item M. S. Mock, \emph{Systems of conservation laws of mixed type}, J. Differential Equations
 \textbf{37}, 70 (1980).
 \end{enumerate}}
 
 \vspace{4pt}
 \noindent\small
-Vérifications : \texttt{tests/test\_admissibility.py}, dont la dérivation symbolique des deux
-productions d'entropie. Implantation : \texttt{src/admissibility.py}. Conventions :
-\texttt{notes/conventions.md}, section~10. Références à vérifier à la source avant citation.
+Vérifications : \texttt{tests/\allowbreak test\_\allowbreak admissibility.py}, dont la dérivation symbolique des deux
+productions d'entropie. Implantation : \texttt{src/\allowbreak admissibility.py}. Conventions :
+\texttt{notes/\allowbreak conventions.md}, section~10. Références à vérifier à la source avant citation.
 
 \end{document}

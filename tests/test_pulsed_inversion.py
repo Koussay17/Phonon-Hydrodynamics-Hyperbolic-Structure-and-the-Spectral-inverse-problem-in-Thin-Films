@@ -161,15 +161,10 @@ def test_inversion_noise_floors_the_derivatives():
     assert fine > 100.0 * coarse
 
 
-def test_thickness_alone_is_not_identifiable_either():
-    """A corollary: with the three parameters free, the covariance blows up,
-    exactly as it does in the frequency domain."""
-    t = times(20)
-    s = truth()
-    _, cov = inv.fisher_analysis_pulsed(t, s,
-                                        ["thickness", "film_lam", "film_rho_c"],
-                                        SIGMA_REL)
-    assert np.sqrt(np.abs(np.diag(cov))).max() > 1.0     # worse than 100 per cent
+def test_free_thickness_conductivity_capacity_are_not_identifiable():
+    with pytest.raises(inv.NonIdentifiableError):
+        inv.fisher_analysis_pulsed(times(20), truth(),
+                                  ["thickness", "film_lam", "film_rho_c"], SIGMA_REL)
 
 
 def test_two_parameters_are_identifiable_once_thickness_is_known():
