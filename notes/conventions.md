@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 13 septembre 2026, troisième révision.
+Dernière mise à jour : 13 septembre 2026, cinquième révision.
 
 ---
 
@@ -324,68 +324,146 @@ symbolique des deux productions d'entropie.
 
 ## 11. Données matériau et limites du cadre de Callaway
 
-### 11.1 Valeurs établies pour l'AlN
+Sources dépouillées : Ma, Li, Luo, *Phys. Rev. B* **90**, 035203 (2014) ; Cheng *et al.*,
+*Phys. Rev. Materials* **4**, 044602 (2020).
 
-| Grandeur | Valeur | Source |
+### 11.1 Conductivité mesurée et calculée de l'AlN
+
+| Échantillon | κ à 300 K | Source |
 |---|---|---|
-| Température de Debye | **988 K** | étude des défauts ponctuels dans l'AlN monocristallin |
-| Capacité volumique | 2,4 × 10⁶ J·m⁻³·K⁻¹ | valeur usuelle, à vérifier |
-| Conductivité, massif de haute pureté | 216 à 278 W·m⁻¹·K⁻¹ à 300 K | mesures sur monocristaux |
-| Vitesse du son, longitudinale | ~1,1 × 10⁴ m/s | à vérifier |
-| Vitesse du son, transverse | ~6 × 10³ m/s | à vérifier |
+| Film MOCVD **sur saphir**, 18 et 22,5 µm | **321 W·m⁻¹·K⁻¹** | Cheng *et al.*, mesure |
+| Cristal parfait | 318 W·m⁻¹·K⁻¹ | DFT |
+| Substrat massif PVT, Samp_3 | 278 W·m⁻¹·K⁻¹ | Cheng *et al.*, mesure |
+| Substrat massif PVT, Samp_4 | 216 W·m⁻¹·K⁻¹ | Cheng *et al.*, mesure |
+| Calcul ab initio, dans le plan | 300 W·m⁻¹·K⁻¹ | Ma *et al.* |
+| Calcul ab initio, **hors plan** | 286 W·m⁻¹·K⁻¹ | Ma *et al.* |
 
-### 11.2 Lois d'échelle en fréquence, calculées ab initio pour l'AlN wurtzite
+**Anisotropie réelle : 5 %.** Les films MOCVD sur saphir dépassent la valeur de 285 longtemps
+admise comme référence pour l'AlN massif.
 
-À basse fréquence :
+Autres valeurs établies : structure wurtzite, quatre atomes par maille, trois branches acoustiques et
+neuf optiques. Densité de dislocations des films MOCVD sur saphir, 1,6 × 10⁸ cm⁻². Lacunes
+d'aluminium négligeables dans les films MOCVD, 3 × 10¹⁹ à 1,5 × 10²⁰ cm⁻³ dans les substrats PVT.
+Mesures de 80 à 480 K.
+
+### 11.2 Correction du contraste d'effusivité
+
+L'hypothèse de travail initiale, une conductivité de film de 60 W·m⁻¹·K⁻¹, était **très pessimiste**.
+
+| Cas | κ | b film | b₃₂ | Γ |
+|---|---|---|---|---|
+| Valeurs mesurées, film sur saphir | 321 | 27 814 | 0,370 | **+0,46** |
+| Substrat PVT le moins bon | 216 | 22 816 | 0,451 | +0,38 |
+| Hypothèse initiale | 60 | 12 025 | 0,856 | +0,08 |
+| Point aveugle | 44 | 10 298 | 1,000 | 0 |
+
+**Le contraste réel est de l'ordre de 0,46, non de 0,08.** C'est le meilleur régime accessible sur la
+carte de conception : l'incertitude y tombe à environ 0,2 %.
+
+**La cécité d'interface n'est donc pas un risque pratique pour l'AlN sur saphir.** Le point aveugle à
+44 W·m⁻¹·K⁻¹ exigerait un film très dégradé.
+
+Nuance : les films mesurés font 18 à 22,5 µm. Le libre parcours moyen valant `Λ = 3κ/(Cv) ≈ 67 nm` à
+300 K, un film de 500 nm donne `d/Λ ≈ 7,5` : la diffusion aux frontières réduira la conductivité d'un
+facteur, non d'un ordre de grandeur.
+
+### 11.3 Lois d'échelle en fréquence, calculées ab initio pour l'AlN wurtzite
 
 ```
 1/τ_U  ∝  ω³        branches TA et LA
-1/τ_N  ∝  ω         branche TA
-1/τ_N  ∝  ω²        branche LA
+1/τ_N  ∝  ω         branche TA, indépendant de la symétrie du réseau
+1/τ_N  ∝  ω²        branche LA, conforme à la prédiction de Herring pour le réseau hexagonal
 ```
 
-**Conséquence pour la carte des régimes.** Le rapport `τ_R/τ_N` varie comme `ω⁻²` pour les modes
-transverses. La coordonnée `x` de la carte est donc **fortement dépendante de la fréquence** : les
-modes de basse fréquence se placent loin à droite, ceux de haute fréquence à gauche. Un même
-matériau occupe une plage sur la carte, non un point.
+Le rapport `τ_R/τ_N` varie donc comme `ω⁻²` pour les modes transverses. La coordonnée `x` de la carte
+des régimes est **fortement dépendante de la fréquence** : un matériau occupe une plage, non un point.
 
-### 11.3 Portée de la diagonale aveugle
+### 11.4 Portée de la diagonale aveugle
 
-Les temps `τ_R` et `τ_ℓ` de Guyer–Krumhansl sont des **moyennes pondérées sur le spectre**, issues de
-l'approximation de Callaway qui efface la dépendance en fréquence des temps de collision.
+Les temps `τ_R` et `τ_ℓ` de Guyer–Krumhansl sont des **moyennes pondérées sur le spectre**. La
+condition `τ_R = 1,8 τ_N` porte sur ces moyennes, non sur chaque mode. L'énoncé reste bien défini au
+niveau du modèle effectif, mais cette réserve doit accompagner toute confrontation à un matériau réel.
 
-La condition de cécité `τ_R = 1,8 τ_N` porte donc sur ces moyennes, non sur chaque mode. Un matériau
-réel la satisfait ou non selon l'ensemble de son spectre. L'énoncé reste bien défini au niveau du
-modèle effectif, mais cette réserve doit accompagner toute confrontation à un matériau réel.
+### 11.5 Le cadre de Callaway échoue précisément hors plan
 
-### 11.4 Erreur propre du modèle de Callaway sur l'AlN
+Écart à la solution exacte de l'équation de Boltzmann, AlN à 300 K :
 
-Une comparaison première-principes conclut que ni le modèle de Callaway original ni la version
-modifiée d'Allen ne garantissent une amélioration sur l'approximation du temps de relaxation.
+| Direction | RTA | Callaway | Allen modifié |
+|---|---|---|---|
+| Dans le plan | −11 % | ~0 % au-dessus de 150 K | +10 % |
+| **Hors plan** | **−12,3 %** | **−11,6 %** | −8 % |
 
-Écart à la solution exacte de l'équation de Boltzmann, pour l'AlN :
+**Le modèle de Callaway n'apporte qu'une correction de 0,7 % au-dessus de la RTA hors plan**, alors
+que la correction nécessaire est de 12,3 %. Dans la direction qui est celle du présent travail, il ne
+corrige donc pratiquement rien.
 
-| Direction | Écart du modèle de Callaway |
-|---|---|
-| Dans le plan | +1 % |
-| **Hors plan** | **−12 %** |
+Anisotropie prédite : RTA 7 %, Callaway 19 %, Allen 29 %, contre 5 % en réalité. Le modèle de
+Callaway dégrade l'anisotropie au lieu de l'améliorer.
 
-**Hors plan est la géométrie du présent travail** : film sur substrat, flux perpendiculaire au film.
-Le cadre de Callaway y porte donc une erreur propre de l'ordre de dix pour cent, indépendante de
-toute considération d'identifiabilité. Cette limite doit figurer dans toute annonce de valeur issue
-de la partie I.
+**Raison identifiée par les auteurs.** Entre 50 et 80 THz, de nombreux modes présentent un produit
+`v·q` négatif dans la direction hors plan : la vitesse de groupe y est opposée au vecteur d'onde. Le
+terme correctif de Callaway change alors de signe et s'annule en moyenne.
 
-### 11.5 À récupérer
+### 11.6 Position de l'AlN sur la carte des régimes
 
-Les coefficients `B_N` et `B_U` de l'AlN ne sont pas dans les résumés consultés. Deux références à
-ouvrir :
+Temps de relaxation relevés sur la figure 7 de Ma *et al.*, AlN wurtzite à 300 K, entre 2 et 10 THz.
+**Lecture à l'œil sur échelle logarithmique : précision d'un facteur deux.** Elle se valide
+toutefois elle-même — les exposants ajustés de `τ_N` sortent à `−2,00` pour LA et `−1,00` pour TA,
+exactement les valeurs publiées.
 
-- Phys. Rev. B **90**, 035203 — examen du modèle de Callaway sur Si, diamant et AlN wurtzite ; source
-  des lois d'échelle ci-dessus.
-- Phys. Rev. Materials **4**, 044602 — mesures sur AlN monocristallin de 130 à 480 K, avec ajustement
-  Callaway.
+| Branche | ω | τ_U | τ_N | x = τ_U/τ_N |
+|---|---|---|---|---|
+| LA | 2 THz | 7 × 10⁵ ps | 1,0 × 10⁴ ps | 70 |
+| LA | 10 THz | 1,0 × 10⁴ ps | 4 × 10² ps | 25 |
+| TA | 2 THz | 4 × 10⁵ ps | 2,0 × 10³ ps | 200 |
+| TA | 10 THz | 4 × 10³ ps | 4 × 10² ps | 10 |
 
-Références à vérifier à la source avant citation.
+**Abscisse de l'AlN à 300 K : `x = 10` à `200`.** La droite de cécité étant à 1,8, le facteur de
+sécurité est de 6 au pire. **L'AlN n'est pas près de la cécité à température ambiante.**
+
+La plage d'un facteur 20 sur une seule décade de fréquence confirme quantitativement que la
+coordonnée `x` n'est pas une constante du matériau.
+
+**Ordonnée.** Le libre parcours moyen des processus normaux vaut `Λ_N = v·τ_N`, soit **2,4 à 60 µm**
+avec `v = 6000 m/s`. Très grand devant un film mince.
+
+| Épaisseur | y = τ_B/τ_N | Régime |
+|---|---|---|
+| **500 nm** | 0,008 à 0,21 | **balistique** |
+| 5 µm | 0,08 à 2,1 | mixte |
+| 20 µm | 0,33 à 8,3 | mixte |
+| 500 µm | 8,3 à 208 | hydrodynamique |
+
+**Conséquence majeure : un film d'AlN submicronique est balistique à 300 K.** Ni Fourier, ni
+Cattaneo, ni Guyer–Krumhansl ne s'y appliquent — ce sont des lois de milieu continu, et l'épaisseur
+est trop faible pour qu'une description par équation de diffusion garde un sens.
+
+Cohérent avec la transition balistique vers diffusif mesurée par Hoque *et al.* sur films d'AlN de
+1,6 à 2440 nm.
+
+**Ceci déplace la première question à poser au laboratoire : l'épaisseur des films passe avant la
+bande de fréquences.** Si le dépôt est submicronique, l'inversion d'un modèle de diffusion repose sur
+un modèle hors de son domaine.
+
+Figure : `figures/05_regime_map.png`.
+
+### 11.7 Ce que les sources ne fournissent pas
+
+Le modèle de Cheng *et al.* **n'inclut pas les processus normaux** :
+
+```
+1/τ_C = 1/τ_U + 1/τ_M + 1/τ_B
+1/τ_U = B T ω² exp(−C/T)
+1/τ_M = ( V ω⁴ / 4π v³ ) Σ x_i (ΔM_i/M)²
+1/τ_B = v / d
+```
+
+Il s'agit d'une RTA avec règle de Matthiessen. Il ne peut donc **pas fournir `τ_N`**, donc pas
+l'abscisse de la carte des régimes. Les auteurs attribuent eux-mêmes leurs écarts à basse température
+aux limites du modèle de Callaway.
+
+Pour obtenir `τ_N`, il faut soit les données de la figure 7 de Ma *et al.*, soit le modèle de
+Debye–Callaway modifié de Morelli, qui exprime les coefficients par les paramètres de Grüneisen.
 
 ## 12. Contraintes instrumentales établies
 
@@ -413,9 +491,13 @@ effusivités sont égales, et **l'interface devient alors strictement invisible*
 avant est celle d'un milieu semi-infini, pour toute épaisseur et tout contraste de diffusivité.
 Vérifié numériquement à 10⁻¹² près.
 
-**AlN sur saphir : l'interface est aveugle pour une conductivité de film de 44,0 W·m⁻¹·K⁻¹**, valeur
-qui tombe au milieu de la plage plausible d'un film mince. L'incertitude passe de 8 % à 2300 % pour
-un écart de 1 W·m⁻¹·K⁻¹.
+**AlN sur saphir : l'interface est aveugle pour une conductivité de film de 44,0 W·m⁻¹·K⁻¹.**
+L'incertitude passe de 8 % à 2300 % pour un écart de 1 W·m⁻¹·K⁻¹ autour de cette valeur.
+
+**Mais ce point est loin des valeurs réelles.** Les films d'AlN sur saphir mesurent 321 W·m⁻¹·K⁻¹, et
+les substrats les plus dégradés 216, soit `Γ` entre 0,38 et 0,46. Voir section 11.2. La cécité
+d'interface est donc un cas limite du formalisme, non un risque pratique pour ce système. Elle le
+redeviendrait pour un film fortement dégradé, ou pour un autre couple film-substrat.
 
 Implanté : `Sample.reflection_coefficient`, `Sample.blind_film_effusivity`, `contrast_report()`.
 
