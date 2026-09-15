@@ -143,29 +143,72 @@ $60\ \mu$m avec $v = 6000$~m/s. Cette longueur est très grande devant l'épaiss
 \begin{center}
 \begin{tabular}{@{}lcl@{}}
 \toprule
-Épaisseur & $y = \tau_B/\tau_N$ & Régime \\
+Épaisseur & $y = \tau_B/\tau_N$ & Position \\
 \midrule
-\textbf{500 nm} & $0{,}008$ à $0{,}21$ & \textbf{balistique} \\
-5 $\mu$m & $0{,}08$ à $2{,}1$ & mixte \\
-20 $\mu$m & $0{,}33$ à $8{,}3$ & mixte \\
-500 $\mu$m & $8{,}3$ à $208$ & hydrodynamique \\
+500 nm & $0{,}008$ à $0{,}21$ & très en dessous de la fenêtre \\
+5 $\mu$m & $0{,}08$ à $2{,}1$ & à la frontière \\
+20 $\mu$m & $0{,}33$ à $8{,}3$ & à la frontière \\
+500 $\mu$m & $8{,}3$ à $208$ & dans la fenêtre \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection{Conséquence}
+\textbf{Un film submicronique est donc hors de la fenêtre hydrodynamique}, de deux décades. Les
+processus normaux y sont trop rares devant la diffusion aux frontières pour que le gaz de phonons
+s'équilibre intérieurement : le terme non local de Guyer--Krumhansl n'y a pas de fondement.
 
-\textbf{À 300~K, un film d'AlN submicronique est balistique.} Ni la loi de Fourier, ni celle de
-Cattaneo, ni celle de Guyer--Krumhansl ne s'y appliquent : toutes trois sont des lois de milieu
-continu, et l'épaisseur est trop faible pour qu'une description par équation de diffusion conserve un
-sens.
+\subsection{Deux libres parcours moyens à ne pas confondre}
 
-Ce placement est cohérent avec la transition balistique vers diffusif mesurée par Hoque \emph{et al.}
-sur des films d'AlN de 1,6 à 2440~nm.
+L'ordonnée de la carte emploie le libre parcours des \emph{processus normaux seuls}. Elle ne dit rien
+du caractère balistique du transport, qui dépend du libre parcours \emph{total}.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lllX@{}}
+\toprule
+& Expression & AlN à 300 K & Ce qu'elle décide \\
+\midrule
+Normal & $\Lambda_N = v\,\tau_N$ & 2,4 à 60 $\mu$m & possibilité de l'hydrodynamique \\
+\textbf{Total} & $\Lambda = 3\lambda/(\rho c\,v)$ & \textbf{67 nm} & caractère balistique du
+transport \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Ces deux longueurs diffèrent de trois ordres de grandeur. Les confondre conduit à qualifier de
+balistique un film qui ne l'est pas.
+
+\subsection{Régime de transport réel}
+
+Le nombre de Knudsen, $\mathrm{Kn} = \Lambda/d$ avec $\Lambda = 67$~nm, donne
+
+\begin{center}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+Épaisseur & Kn & Régime \\
+\midrule
+50 nm & $1{,}33$ & balistique \\
+200 nm & $0{,}33$ & transitionnel \\
+\textbf{500 nm} & $\mathbf{0{,}13}$ & \textbf{transitionnel} \\
+2 $\mu$m & $0{,}033$ & diffusif \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Un film d'AlN de 500~nm n'est pas balistique : il est transitionnel.} Le libre parcours vaut
+un huitième de l'épaisseur ; les phonons y diffusent plusieurs fois en traversant, mais la diffusion
+aux frontières reste sensible.
+
+\subsection{Conséquence pour l'extraction de propriétés}
+
+Le modèle de diffusion reste applicable. En revanche, \textbf{la conductivité extraite est une valeur
+apparente}, réduite par la diffusion aux frontières et dépendante de l'épaisseur. Ce n'est pas une
+propriété intrinsèque du matériau, et la comparer à une valeur massive n'a pas de sens.
+
+C'est précisément ce que mesurent Hoque \emph{et al.} en faisant varier l'épaisseur de 1,6 à
+2440~nm.
 
 Il en résulte que \textbf{l'épaisseur des films est la première caractéristique à établir}, avant la
-bande de fréquences de la mesure. Sur un dépôt submicronique, l'extraction de propriétés par
-inversion d'un modèle de diffusion repose sur un modèle hors de son domaine de validité.
+bande de fréquences : elle décide de ce que le livrable peut annoncer.
 
 \section{Portée et limites}
 
