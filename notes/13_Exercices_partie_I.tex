@@ -1,0 +1,243 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xcolor}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=4pt,topsep=4pt}
+
+\newcommand{\rep}[1]{\par\smallskip\noindent\textcolor{teal}{\textbf{Résultat attendu.}}\; #1\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Exercices de partie I}\\[5pt]
+{\normalsize De l'équation de Boltzmann à l'équation de Guyer--Krumhansl}\\[2pt]
+{\small 13 septembre 2026}
+\end{center}
+
+\vspace{4pt}
+
+Chaque exercice énonce une étape de la chaîne et donne le résultat à obtenir. Le calcul est laissé de
+côté. Les notes 08 et 09 contiennent les définitions et le fil conducteur ; elles ne contiennent pas
+les calculs intermédiaires.
+
+L'ordre est celui de la chaîne : rien n'y est utilisé avant d'avoir été établi.
+
+\section{Le réseau et sa dispersion}
+
+\subsection*{Exercice 1 --- Relation de dispersion de la chaîne monoatomique}
+
+Établir la relation de dispersion d'une chaîne d'atomes identiques de masse $M$, espacés de $a$,
+reliés par des ressorts de raideur $C$, en partant de la loi de Newton appliquée au $n$-ième atome
+et en cherchant des solutions en ondes planes.
+
+\rep{$\omega(k) = 2\sqrt{C/M}\;\bigl|\sin(ka/2)\bigr|$}
+
+\subsection*{Exercice 2 --- Limite continue et vitesse du son}
+
+Développer le résultat précédent pour $ka \ll 1$ et identifier la vitesse du son.
+
+\rep{$\omega \simeq vk$ avec $v = a\sqrt{C/M}$.}
+
+\subsection*{Exercice 3 --- Vitesse de groupe au bord de zone}
+
+Calculer $v_g = d\omega/dk$ et montrer qu'elle s'annule en $k = \pi/a$. Décrire le mouvement des
+atomes voisins dans ce mode et expliquer pourquoi il ne transporte pas d'énergie.
+
+\rep{$v_g = a\sqrt{C/M}\,\cos(ka/2)$, nulle en bord de zone. Les atomes voisins y vibrent en
+opposition de phase : onde stationnaire.}
+
+\subsection*{Exercice 4 --- Périodicité et zone de Brillouin}
+
+Montrer que deux valeurs de $k$ différant de $2\pi/a$ décrivent le même mouvement des atomes.
+Expliquer en quoi cette propriété rend possible l'existence de processus umklapp.
+
+\section{Statistique et moments}
+
+\subsection*{Exercice 5 --- Limites de la distribution de Bose--Einstein}
+
+Développer $n^0 = \bigl[\exp(\hbar\omega/k_BT) - 1\bigr]^{-1}$ dans les deux limites
+$\hbar\omega \ll k_BT$ et $\hbar\omega \gg k_BT$. Interpréter chacune.
+
+\rep{$n^0 \simeq k_BT/\hbar\omega$, d'où $\hbar\omega\,n^0 \simeq k_BT$ : équipartition. Puis
+$n^0 \simeq e^{-\hbar\omega/k_BT}$ : modes gelés.}
+
+\subsection*{Exercice 6 --- Le flux est nul à l'équilibre}
+
+Montrer que $\mathbf{q} = \int \frac{d^3k}{(2\pi)^3}\,\hbar\omega\,\mathbf{v}_g\,f$ s'annule
+identiquement lorsque $f$ ne dépend que de $\omega$. Utiliser les parités respectives de $\omega$ et
+de $\mathbf{v}_g$ en $\mathbf{k}$.
+
+\rep{$\omega$ paire, $\mathbf{v}_g$ impaire, intégrande impaire, intégrale nulle. \textbf{Le flux
+mesure exactement l'écart à l'équilibre.}}
+
+\subsection*{Exercice 7 --- Proportionnalité du flux et du quasi-moment}
+
+Pour une dispersion linéaire isotrope $\omega = vk$, montrer que $\mathbf{q} = v^2\,\mathbf{P}$, où
+$\mathbf{P} = \int \frac{d^3k}{(2\pi)^3}\,\hbar\mathbf{k}\,f$.
+
+En déduire pourquoi un processus conservant le quasi-moment ne crée aucune résistance thermique.
+
+\rep{$\mathbf{v}_g = v\hat{\mathbf{k}}$ et $\hbar\omega = \hbar v k$, d'où
+$\hbar\omega\,\mathbf{v}_g = v^2\,\hbar\mathbf{k}$. Cette identité est \textbf{la clé de toute la
+suite} : elle fait disparaître les processus normaux du bilan de flux.}
+
+\section{Hiérarchie de moments}
+
+\subsection*{Exercice 8 --- Moment d'ordre zéro}
+
+Multiplier l'équation de transport par $\hbar\omega_\mathbf{k}$ et intégrer sur les vecteurs d'onde.
+Justifier l'annulation du terme de collision.
+
+\rep{$\partial u/\partial t + \nabla\cdot\mathbf{q} = 0$, sans aucune hypothèse supplémentaire. Le
+terme de collision s'annule parce que les deux familles de processus conservent l'énergie.}
+
+\subsection*{Exercice 9 --- Moment d'ordre un}
+
+Multiplier cette fois par $\hbar\omega_\mathbf{k}\,\mathbf{v}_g$ et intégrer. Identifier le moment
+d'ordre deux qui apparaît. Montrer, en s'appuyant sur l'exercice~7, que seuls les processus
+résistifs subsistent au second membre.
+
+\rep{$\partial\mathbf{q}/\partial t + \nabla\cdot\mathbf{Q} = -\mathbf{q}/\tau_R$, avec
+$\mathbf{Q} = \int \frac{d^3k}{(2\pi)^3}\,\hbar\omega\,\mathbf{v}_g \otimes \mathbf{v}_g\,f$.}
+
+\subsection*{Exercice 10 --- Le problème de fermeture}
+
+Écrire l'équation du moment d'ordre deux et constater qu'elle appelle le moment d'ordre trois.
+Énoncer en une phrase pourquoi aucun niveau ne se referme de lui-même, et ce que doit fournir une
+fermeture.
+
+\subsection*{Exercice 11 --- Retrouver Fourier}
+
+Dans l'équation du moment d'ordre un, supposer le régime stationnaire et la partie déviatorique de
+$\mathbf{Q}$ négligeable. Montrer qu'on retrouve la loi de Fourier et identifier la conductivité.
+
+\rep{$\mathbf{q} = -\lambda\nabla T$ avec $\lambda = \tfrac{1}{3}\,C\,v^2\,\tau_R$. La conductivité
+est proportionnelle au temps résistif : plus les umklapp sont rares, plus le cristal conduit.}
+
+\section{Vers Guyer--Krumhansl}
+
+\subsection*{Exercice 12 --- Réduction unidimensionnelle}
+
+Montrer qu'en une dimension, avec $\mathbf{q} = q(z)\,\hat{\mathbf{z}}$, les deux termes non locaux
+se combinent :
+\[ \nabla^2\mathbf{q} + 2\nabla(\nabla\cdot\mathbf{q}) \;\longrightarrow\;
+3\,\frac{\partial^2 q}{\partial z^2} . \]
+
+\subsection*{Exercice 13 --- Conductivité effective}
+
+Transformer l'équation unidimensionnelle en temps, puis éliminer $\partial^2 q/\partial z^2$ à
+l'aide du bilan d'énergie. En déduire que le flux s'écrit $\phi = -\lambda_{\mathrm{eff}}(p)\,\theta'$
+et donner $\lambda_{\mathrm{eff}}$.
+
+\rep{$\lambda_{\mathrm{eff}}(p) = \dfrac{\lambda + 3\ell^2 p\,\rho c}{1 + \tau_R p}$. Ce n'est pas un
+simple décalage de $p$ : la structure de l'équation a changé.}
+
+\subsection*{Exercice 14 --- Les deux combinaisons}
+
+Poser $\xi_1 = e/\sqrt{a}$, $b = \sqrt{\lambda\rho c}$ et $\sigma^2 = p\,\rho c/\lambda_{\mathrm{eff}}$.
+Montrer que
+\[ \sigma e = \xi_1\sqrt{\frac{p(1+\tau_R p)}{1+\tau_\ell p}} , \qquad
+\lambda_{\mathrm{eff}}\,\sigma = b\sqrt{\frac{p(1+\tau_\ell p)}{1+\tau_R p}} , \]
+et identifier $\tau_\ell$.
+
+\rep{$\tau_\ell = 3\ell^2/a$, qui est \textbf{un temps}. Les deux temps échangent leurs rôles entre
+les deux expressions.}
+
+\subsection*{Exercice 15 --- La condition de cécité}
+
+Poser $\tau_R = \tau_\ell$ dans le résultat précédent. Conclure.
+
+\rep{Les racines se simplifient, $\sigma e = \xi_1\sqrt{p}$ et
+$\lambda_{\mathrm{eff}}\sigma = b\sqrt{p}$ : la réponse est exactement celle d'un milieu de Fourier,
+quelle que soit la valeur commune des deux temps.}
+
+\subsection*{Exercice 16 --- Écriture microscopique de la cécité}
+
+À partir de $\ell^2 = v^2\tau_N\tau_R/5$ et $a = v^2\tau_R/3$, exprimer $\tau_\ell$ en fonction de
+$\tau_N$ seul, puis traduire la condition de cécité.
+
+\rep{$\tau_\ell = \tfrac{9}{5}\tau_N$, donc la condition s'écrit $\tau_R = 1{,}8\,\tau_N$ : un
+rapport de temps de collision, qui varie avec la température.}
+
+\section{Admissibilité}
+
+\subsection*{Exercice 17 --- Vitesse de propagation de Cattaneo}
+
+Écrire le système de Cattaneo en variables $(u, q)$ sous la forme
+$\partial_t U + A\,\partial_z U = 0$, calculer les valeurs propres de $A$, et conclure sur le
+caractère hyperbolique.
+
+\rep{$\pm\sqrt{a/\tau_R}$, réelles et distinctes : strictement hyperbolique. En modèle de Debye,
+cette vitesse vaut $v/\sqrt{3}$.}
+
+\subsection*{Exercice 18 --- Guyer--Krumhansl perd la vitesse finie}
+
+À partir de la relation de dispersion $\sigma^2 = p(1+\tau_R p)/[a(1+\tau_\ell p)]$, déterminer le
+comportement de $k$ à haute fréquence dans les trois cas : $\tau_R = \tau_\ell = 0$ ;
+$\tau_\ell = 0$ ; les deux non nuls. Conclure sur la vitesse de phase.
+
+\rep{$k \propto \sqrt{\omega}$, puis $k \propto \omega$, puis $k \propto \sqrt{\omega}$ à nouveau.
+\textbf{Le terme non local restaure la vitesse de propagation infinie que Cattaneo avait corrigée.}}
+
+\subsection*{Exercice 19 --- Production d'entropie de Cattaneo}
+
+Avec l'entropie étendue $s = s_{\mathrm{éq}}(u) - \dfrac{\tau_R}{2\lambda T_0^{\,2}}\,q^2$ et le flux
+d'entropie $\mathbf{J}_s = \mathbf{q}/T$, calculer $\partial_t s + \nabla\cdot\mathbf{J}_s$ en
+utilisant le bilan d'énergie et la loi de Cattaneo. Linéariser à la fin seulement.
+
+\rep{$\sigma_s = q^2/(\lambda T_0^{\,2}) \ge 0$. \textbf{Piège :} le flux d'entropie doit être pris
+en $\mathbf{q}/T$ et non en $\mathbf{q}/T_0$, sans quoi subsiste un résidu en $q\,\partial_z T$ qui
+ne s'annule pas.}
+
+\subsection*{Exercice 20 --- Flux d'entropie étendu de Guyer--Krumhansl}
+
+Reprendre le calcul précédent avec la loi de Guyer--Krumhansl, en postulant un flux d'entropie
+$\mathbf{J}_s = \mathbf{q}/T + \beta\,q\,\partial_z q$. Déterminer $\beta$ en annulant le terme
+croisé en $q\,\partial_z^2 q$, puis écrire la production.
+
+\rep{$\beta = 3\ell^2/(\lambda T_0^{\,2})$, et
+$\sigma_s = \bigl[q^2 + 3\ell^2(\partial_z q)^2\bigr]/(\lambda T_0^{\,2})$, somme de carrés. Sans ce
+terme supplémentaire, la production n'est pas définie positive.}
+
+\section{Contrôles}
+
+\subsection*{Exercice 21 --- Dimensions}
+
+Vérifier que $[\xi] = \mathrm{s}^{1/2}$, que $[V] = \mathrm{s}^{-1}$ où $V = s''/s$, et que
+$\tau_\ell = 3\ell^2/a$ a bien la dimension d'un temps.
+
+\subsection*{Exercice 22 --- Ordres de grandeur pour l'AlN}
+
+Avec $v \approx 6\times10^3$~m/s et $\tau \approx 10^{-11}$~s, estimer le libre parcours moyen.
+Comparer à l'épaisseur d'un film de 500~nm et conclure sur la validité de la description diffusive.
+
+\rep{$\Lambda = v\tau \approx 60$~nm, soit environ un huitième de l'épaisseur. Les deux échelles ne
+sont pas séparées : la description purement diffusive n'est pas acquise.}
+
+\subsection*{Exercice 23 --- Fenêtre de Guyer en variables réduites}
+
+Traduire le critère $\tau_N \ll \tau_B \ll \tau_R$ en termes de $x = \tau_R/\tau_N$ et
+$y = \tau_B/\tau_N$. Décrire la région obtenue et situer la condition de cécité.
+
+\rep{$1 \ll y \ll x$ : un coin de sommet $(1,1)$. La cécité est la verticale $x = 1{,}8$, qui passe
+juste à droite du sommet. À cette abscisse la fenêtre mesure un quart de décade.}
+
+\vspace{8pt}
+\noindent\small
+Notes associées : \texttt{08\_Le\_gaz\_de\_phonons}, \texttt{09\_De\_Boltzmann\_a\_Guyer\_Krumhansl},
+\texttt{11\_Note\_partie\_II}, \texttt{12\_Note\_partie\_III}. Vérifications numériques
+correspondantes : \texttt{tests/test\_guyer\_krumhansl.py}, \texttt{tests/test\_admissibility.py}.
+
+\end{document}
