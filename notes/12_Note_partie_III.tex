@@ -105,13 +105,80 @@ fois la fenêtre franchement ouverte, soit à $x$ nettement supérieur à l'unit
 Cette conséquence est falsifiable : elle prédit, sur une mesure en température, une plage où l'écart
 à Fourier passe par un minimum au lieu de croître de façon monotone.
 
+\section{Position de l'AlN}
+
+\subsection{Temps de relaxation}
+
+Les temps de relaxation de l'AlN wurtzite à 300~K sont relevés sur la figure~7 de Ma, Li et Luo,
+entre 2 et 10~THz. La lecture est faite à l'{\oe}il sur une échelle logarithmique et porte une
+incertitude d'un facteur deux. Elle se valide toutefois elle-même : les exposants ajustés sur les
+valeurs relevées donnent $-2{,}00$ pour $\tau_N$ de la branche LA et $-1{,}00$ pour celle des
+branches TA, exactement les lois énoncées dans l'article.
+
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Branche & $\omega$ & $\tau_U$ & $\tau_N$ & $x = \tau_U/\tau_N$ \\
+\midrule
+LA & 2 THz & $7\times10^{5}$ ps & $1{,}0\times10^{4}$ ps & 70 \\
+LA & 10 THz & $1{,}0\times10^{4}$ ps & $4\times10^{2}$ ps & 25 \\
+TA & 2 THz & $4\times10^{5}$ ps & $2{,}0\times10^{3}$ ps & 200 \\
+TA & 10 THz & $4\times10^{3}$ ps & $4\times10^{2}$ ps & 10 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{L'abscisse de l'AlN à 300~K vaut donc $x = 10$ à $200$.} La droite de cécité étant à $1{,}8$,
+le facteur de sécurité est de six au pire : \textbf{l'AlN n'est pas près de la cécité à température
+ambiante}.
+
+La plage d'un facteur vingt sur une seule décade de fréquence confirme quantitativement l'énoncé de
+la section~5.2 : un matériau occupe une plage, non un point.
+
+\subsection{Ordonnée et régimes}
+
+Le libre parcours moyen des processus normaux vaut $\Lambda_N = v\,\tau_N$, soit $2{,}4$ à
+$60\ \mu$m avec $v = 6000$~m/s. Cette longueur est très grande devant l'épaisseur d'un film mince.
+
+\begin{center}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+Épaisseur & $y = \tau_B/\tau_N$ & Régime \\
+\midrule
+\textbf{500 nm} & $0{,}008$ à $0{,}21$ & \textbf{balistique} \\
+5 $\mu$m & $0{,}08$ à $2{,}1$ & mixte \\
+20 $\mu$m & $0{,}33$ à $8{,}3$ & mixte \\
+500 $\mu$m & $8{,}3$ à $208$ & hydrodynamique \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Conséquence}
+
+\textbf{À 300~K, un film d'AlN submicronique est balistique.} Ni la loi de Fourier, ni celle de
+Cattaneo, ni celle de Guyer--Krumhansl ne s'y appliquent : toutes trois sont des lois de milieu
+continu, et l'épaisseur est trop faible pour qu'une description par équation de diffusion conserve un
+sens.
+
+Ce placement est cohérent avec la transition balistique vers diffusif mesurée par Hoque \emph{et al.}
+sur des films d'AlN de 1,6 à 2440~nm.
+
+Il en résulte que \textbf{l'épaisseur des films est la première caractéristique à établir}, avant la
+bande de fréquences de la mesure. Sur un dépôt submicronique, l'extraction de propriétés par
+inversion d'un modèle de diffusion repose sur un modèle hors de son domaine de validité.
+
 \section{Portée et limites}
 
-\subsection{La carte est en variables réduites}
+\subsection{La carte reste en variables réduites}
 
-Elle est indépendante du matériau. Un matériau donné y trace une courbe lorsque la température varie,
-$\tau_N$ et $\tau_R$ suivant des lois différentes. La production de cette courbe pour l'AlN exige les
-coefficients d'un modèle de Callaway ajusté, qui ne sont pas établis à ce jour.
+Les bandes portées sur la figure correspondent à une seule température, 300~K. La trajectoire de
+l'AlN lorsque la température varie exige les coefficients d'un modèle de Callaway ajusté, ou le
+modèle de Debye--Callaway modifié de Morelli qui les exprime par les paramètres de Grüneisen. Ni
+l'un ni l'autre n'est établi à ce jour.
+
+Les valeurs employées proviennent d'une lecture graphique et portent un facteur deux. Cela n'autorise
+pas de conclusion au pourcent près ; cela suffit au placement des régimes, qui se joue sur des
+décades.
 
 \subsection{Le rapport des temps dépend de la fréquence}
 
@@ -148,8 +215,8 @@ frontières de la carte sont donc des transitions graduelles, non des lignes.
 \item Récupérer les coefficients $B_N$ et $B_U$ de l'AlN. Deux références à ouvrir :
 Phys. Rev. B \textbf{90}, 035203, source des lois d'échelle ci-dessus ; et
 Phys. Rev. Materials \textbf{4}, 044602, mesures sur monocristal de 130 à 480~K.
-\item Tracer la trajectoire de l'AlN en fonction de la température, pour plusieurs épaisseurs de
-film. La fonction correspondante est écrite et attend ces coefficients.
+\item Tracer la trajectoire en température, pour plusieurs épaisseurs. La fonction correspondante
+est écrite et attend ces coefficients.
 \item Confronter aux mesures de transition balistique vers diffusif publiées sur films d'AlN de
 1,6 à 2440~nm.
 \end{itemize}

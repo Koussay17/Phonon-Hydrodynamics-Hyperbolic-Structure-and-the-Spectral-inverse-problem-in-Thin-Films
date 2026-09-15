@@ -35,6 +35,36 @@ from matplotlib.patches import Polygon
 
 BLIND_X = 1.8          # tau_R / tau_N at which the medium mimics Fourier
 
+# --------------------------------------------------------------------------
+# AlN at 300 K
+# --------------------------------------------------------------------------
+#
+# Relaxation times read off figure 7 of Ma, Li and Luo, Phys. Rev. B 90,
+# 035203 (2014), for wurtzite AlN at 300 K, over the range 2 to 10 THz.
+# The readings are made by eye on a logarithmic plot and carry a factor of
+# about two; they validate themselves against the published scaling laws,
+# the fitted exponents of tau_N coming out at -2.00 for LA and -1.00 for TA,
+# exactly the values the paper states.
+#
+# Sound velocity taken as 6000 m/s, the transverse value.
+
+ALN_X_RANGE = (10.0, 200.0)            # tau_R / tau_N across the acoustic spectrum
+ALN_TAU_N = (4.0e-10, 1.0e-8)          # seconds, from 10 THz down to 2 THz
+ALN_VELOCITY = 6000.0                  # m/s
+
+ALN_THICKNESSES = [
+    (500e-9, "500 nm", "#b03030"),
+    (5e-6, "5 µm", "#8a6a20"),
+    (20e-6, "20 µm", "#1f6f8b"),
+    (500e-6, "500 µm", "#20591f"),
+]
+
+
+def aln_y_range(thickness, velocity=ALN_VELOCITY, tau_n=ALN_TAU_N):
+    """Range of y = tau_B / tau_N spanned by the acoustic spectrum."""
+    tau_b = thickness / velocity
+    return tau_b / tau_n[1], tau_b / tau_n[0]
+
 
 def regime(x, y):
     """Name of the regime at a point of the map."""
@@ -83,7 +113,7 @@ def trajectory(temperatures, tau_n, tau_r, thickness, velocity):
 # --------------------------------------------------------------------------
 
 X_MIN, X_MAX = 1e-1, 1e4
-Y_MIN, Y_MAX = 1e-1, 1e4
+Y_MIN, Y_MAX = 1e-3, 1e4
 
 fig, ax = plt.subplots(figsize=(7.4, 6.4))
 
@@ -105,8 +135,8 @@ ax.plot(xs, xs, color="0.3", lw=1.3)
 # ---- the blind line -------------------------------------------------------
 ax.axvline(BLIND_X, color="#b03030", lw=2.0)
 ax.annotate(r"$\tau_R = \tau_\ell = 1{,}8\,\tau_N$" "\n" "réponse de Fourier exacte",
-            (BLIND_X, 3.2e3), color="#b03030", fontsize=9.5,
-            ha="left", va="top",
+            (BLIND_X, 4e-3), color="#b03030", fontsize=9.5,
+            ha="left", va="bottom",
             textcoords="offset points", xytext=(8, 0))
 
 # ---- apex -----------------------------------------------------------------
@@ -115,16 +145,27 @@ ax.annotate("sommet du coin", (1.0, 1.0), fontsize=9, color="0.2",
             ha="right", va="top", textcoords="offset points", xytext=(-8, -6))
 
 # ---- region labels --------------------------------------------------------
-ax.text(3e2, 3.0, "hydrodynamique", fontsize=12, color="#20591f",
+ax.text(1.5e3, 12.0, "hydrodynamique", fontsize=12, color="#20591f",
         ha="center", va="center", rotation=32)
-ax.text(0.28, 1.2e3, "diffusif", fontsize=12, color="#8a6a20",
+ax.text(0.3, 2e3, "diffusif", fontsize=12, color="#8a6a20",
         ha="center", va="center")
-ax.text(3e2, 0.3, "balistique", fontsize=12, color="#2a5a80",
+ax.text(3e3, 3e-2, "balistique", fontsize=12, color="#2a5a80",
         ha="center", va="center")
+
+# ---- AlN bands ------------------------------------------------------------
+for thickness, label, colour in ALN_THICKNESSES:
+    y_lo, y_hi = aln_y_range(thickness)
+    ax.add_patch(Polygon(
+        [(ALN_X_RANGE[0], y_lo), (ALN_X_RANGE[1], y_lo),
+         (ALN_X_RANGE[1], y_hi), (ALN_X_RANGE[0], y_hi)],
+        closed=True, facecolor="none", edgecolor=colour, lw=1.8, zorder=6))
+    ax.annotate(f"AlN, {label}", (ALN_X_RANGE[1], y_hi), color=colour,
+                fontsize=9.5, ha="left", va="center",
+                textcoords="offset points", xytext=(8, 0), zorder=7)
 
 ax.set_xscale("log")
 ax.set_yscale("log")
-ax.set_xlim(X_MIN, X_MAX)
+ax.set_xlim(X_MIN, 1e5)
 ax.set_ylim(Y_MIN, Y_MAX)
 ax.set_xlabel(r"$x = \tau_R / \tau_N$   —   les processus normaux dominent vers la droite")
 ax.set_ylabel(r"$y = \tau_B / \tau_N$   —   épaisseur en libres parcours normaux")
@@ -155,3 +196,25 @@ print()
 print("Contrôle des régions :")
 for x, y in ((10.0, 0.5), (2.0, 100.0), (100.0, 10.0)):
     print(f"  x = {x:6.1f}, y = {y:6.1f}  ->  {regime(x, y)}")
+print()
+print("AlN à 300 K, d'après la figure 7 de Ma, Li et Luo")
+print(f"  x = tau_R/tau_N sur les branches acoustiques : "
+      f"{ALN_X_RANGE[0]:.0f} à {ALN_X_RANGE[1]:.0f}")
+print(f"  facteur de sécurité vis-à-vis de la cécité   : "
+      f"{ALN_X_RANGE[0] / BLIND_X:.0f} au pire")
+print(f"  libre parcours normal, v tau_N               : "
+      f"{ALN_VELOCITY * ALN_TAU_N[0] * 1e6:.1f} à "
+      f"{ALN_VELOCITY * ALN_TAU_N[1] * 1e6:.0f} µm")
+print()
+print(f"  {'épaisseur':>10} {'y = tau_B/tau_N':>24} {'régime':>16}")
+for thickness, label, _ in ALN_THICKNESSES:
+    y_lo, y_hi = aln_y_range(thickness)
+    if y_hi < 1.0:
+        reg = "balistique"
+    elif y_lo > ALN_X_RANGE[1]:
+        reg = "diffusif"
+    elif y_lo > 1.0:
+        reg = "hydrodynamique"
+    else:
+        reg = "mixte"
+    print(f"  {label:>10} {y_lo:9.3f} à {y_hi:9.3f} {reg:>16}")
