@@ -24,16 +24,14 @@ signal has decayed from its maximum:
     above 1e-2               ->  ~7e-3
     above 1e-3               ->  ~1e-1
 
-Practical rule: the inversion holds over roughly two decades of decay. A fit
-performed on a tail beyond that is driven by numerical noise rather than by
-the physics. This bears directly on experiment design: acquiring a long
-decaying tail does not add usable information if the model is evaluated
-through this inversion.
+These figures describe the exponential benchmark, not a universal time window.
+Validate each signal and its parameter derivatives against an independent
+solution before fitting. Wave fronts and oscillations need particular care.
 
 The method also assumes a smooth, non-oscillatory f(t): step discontinuities
 away from the origin and oscillations are not recovered. For those cases the
 De Hoog method, based on Fourier series with epsilon acceleration, is the
-usual replacement. Krapez (2018) uses De Hoog.
+usual replacement, but is not implemented here. Krapez (2019) uses De Hoog.
 
 Reference: Maillet, Andre, Batsale, Degiovanni, Moyne, *Thermal Quadrupoles*,
 Wiley (2000), chapter 9, section 9.3.2 and appendix 1.1.
@@ -59,9 +57,10 @@ def stehfest_coefficients(n: int = 12) -> np.ndarray:
     """Stehfest weights V_k for k = 1..n. `n` must be even.
 
     The weights sum to zero for n >= 2, which is a useful sanity check: it is
-    what makes the method exact on constants.
+    consistent with a constant Laplace transform vanishing away from t=0.
+    A constant time signal instead uses the identity sum(V_k/k) = 1.
     """
-    if n % 2 or n < 2:
+    if not isinstance(n, (int, np.integer)) or n % 2 or n < 2:
         raise ValueError("n must be an even integer >= 2")
     if n in _CACHE:
         return _CACHE[n]
@@ -103,7 +102,7 @@ def stehfest_inverse(f_laplace, t, n: int = 12):
         Number of terms, even. 12 is a reasonable default in double precision.
     """
     t = np.asarray(t, dtype=float)
-    if np.any(t <= 0.0):
+    if t.ndim > 1 or np.any(~np.isfinite(t)) or np.any(t <= 0.0):
         raise ValueError("t must be strictly positive")
 
     v = stehfest_coefficients(n)

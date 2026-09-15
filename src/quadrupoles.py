@@ -37,7 +37,7 @@ __all__ = [
     "graded_linear_layer",
 ]
 
-# Above this value cosh and sinh overflow in double precision.
+# Bound on the real part: a large imaginary argument alone does not overflow.
 _OVERFLOW_GUARD = 700.0
 
 
@@ -45,13 +45,37 @@ _OVERFLOW_GUARD = 700.0
 # Material properties
 # --------------------------------------------------------------------------
 
+def _positive(**values):
+    for name, value in values.items():
+        if not np.isfinite(value) or value <= 0:
+            raise ValueError(f"{name} must be finite and positive")
+
+
+def stable_tanh(z):
+    """tanh with its saturated real-part limits, avoiding spurious overflow."""
+    z = np.asarray(z, dtype=complex)
+    saturated = np.abs(z.real) > 20
+    safe = np.where(saturated, 0j, z)
+    return np.where(saturated, np.sign(z.real).astype(complex), np.tanh(safe))
+
+
+def sinhc(z):
+    """sinh(z)/z with its analytic value at zero and a small-argument series."""
+    z = np.asarray(z, dtype=complex)
+    small = np.abs(z) < 1e-4
+    safe = np.where(small, 1.0, z)
+    return np.where(small, 1 + z*z/6 + z**4/120, np.sinh(safe)/safe)
+
+
 def diffusivity(lam: float, rho_c: float) -> float:
     """Thermal diffusivity a = lambda / (rho c), in m^2/s."""
+    _positive(lam=lam, rho_c=rho_c)
     return lam / rho_c
 
 
 def effusivity(lam: float, rho_c: float) -> float:
     """Thermal effusivity b = sqrt(lambda * rho c), in W s^(1/2) m^-2 K^-1."""
+    _positive(lam=lam, rho_c=rho_c)
     return np.sqrt(lam * rho_c)
 
 
@@ -60,6 +84,7 @@ def from_diffusivity_effusivity(a: float, b: float) -> tuple[float, float]:
 
     Inverse of the two definitions above:  lambda = b sqrt(a),  rho c = b / sqrt(a).
     """
+    _positive(a=a, b=b)
     return b * np.sqrt(a), b / np.sqrt(a)
 
 
@@ -91,16 +116,18 @@ def homogeneous_wall(p, lam: float, rho_c: float, e: float) -> np.ndarray:
     holds, which is what makes the two possible parameterisations agree.
     """
     p = np.asarray(p, dtype=complex)
+    if not np.isfinite(e) or e < 0:
+        raise ValueError("e must be finite and nonnegative")
     a = diffusivity(lam, rho_c)
     b = effusivity(lam, rho_c)
 
     k = np.sqrt(p / a)
     ke = k * e
 
-    if np.any(np.abs(ke) > _OVERFLOW_GUARD):
+    if np.any(np.abs(ke.real) > _OVERFLOW_GUARD):
         raise OverflowError(
-            f"|k*e| exceeds {_OVERFLOW_GUARD:.0f}; cosh and sinh overflow in double "
-            "precision. Reduce the frequency range or split the layer."
+            f"|Re(k*e)| exceeds {_OVERFLOW_GUARD:.0f}; cosh and sinh overflow in double "
+            "precision. Use impedance recursion for optically thick layers."
         )
 
     ch = np.cosh(ke)
@@ -109,8 +136,8 @@ def homogeneous_wall(p, lam: float, rho_c: float, e: float) -> np.ndarray:
 
     m = np.empty(p.shape + (2, 2), dtype=complex)
     m[..., 0, 0] = ch
-    m[..., 0, 1] = sh / bsp
-    m[..., 1, 0] = bsp * sh
+    m[..., 0, 1] = (e / lam) * sinhc(ke)
+    m[..., 1, 0] = rho_c * e * p * sinhc(ke)
     m[..., 1, 1] = ch
     return m if p.shape else m.reshape(2, 2)
 
@@ -124,6 +151,9 @@ def semi_infinite_impedance(p, b: float):
     Krapez (2018) equation (29).
     """
     p = np.asarray(p, dtype=complex)
+    _positive(b=b)
+    if np.any(p == 0):
+        raise ValueError("a semi-infinite DC impedance is unbounded")
     return 1.0 / (b * np.sqrt(p))
 
 
@@ -152,7 +182,7 @@ def front_face_temperature(m: np.ndarray, z, power=1.0, h: float = 0.0):
 
 
 def argument_magnitude(p, lam: float, rho_c: float, e: float):
-    """Return |k e|, the argument that drives numerical overflow.
+    """Return |k e|, an optical-thickness diagnostic (overflow depends on Re(k e)).
 
     Useful to check a frequency range before building the matrices.
     """
@@ -179,6 +209,9 @@ def linear_effusivity_profile(xi, b0: float, b1: float, xi1: float,
     The metaproperty s = b^(+1/2) (form 'T') or b^(-1/2) (form 'phi') varies
     linearly with the Liouville coordinate between the two faces.
     """
+    if form not in ("T", "phi"):
+        raise ValueError("form must be T or phi")
+    _positive(b0=b0, b1=b1, xi1=xi1)
     sign = 1.0 if form == "T" else -1.0
     xi = np.asarray(xi, dtype=float)
     t = xi / xi1
@@ -213,6 +246,9 @@ def graded_linear_layer(p, b0: float, b1: float, xi1: float,
         raise ValueError("form must be 'T' or 'phi'")
 
     p = np.asarray(p, dtype=complex)
+    if form not in ("T", "phi"):
+        raise ValueError("form must be T or phi")
+    _positive(b0=b0, b1=b1, xi1=xi1)
     sign = 1.0 if form == "T" else -1.0
     s0 = b0 ** (sign / 2)
     s1 = b1 ** (sign / 2)
@@ -221,20 +257,25 @@ def graded_linear_layer(p, b0: float, b1: float, xi1: float,
     sp_ = np.sqrt(p)
     arg = sp_ * xi1
 
-    if np.any(np.abs(arg) > _OVERFLOW_GUARD):
+    if np.any(np.abs(arg.real) > _OVERFLOW_GUARD):
         raise OverflowError(
-            f"|sqrt(p)*xi1| exceeds {_OVERFLOW_GUARD:.0f}; cosh and sinh overflow."
+            f"|Re(sqrt(p)*xi1)| exceeds {_OVERFLOW_GUARD:.0f}; cosh and sinh overflow."
         )
 
     ch = np.cosh(arg)
     # sinh(z)/z, continuous at z = 0
-    sn = np.where(np.abs(arg) < 1e-8, 1.0 + arg ** 2 / 6.0, np.sinh(arg) / arg)
+    sn = sinhc(arg)
 
     u = (x - 1.0) * (1.0 - 1.0 / x)          # recurring coefficient of row C
 
     a_ = x * ch + (1.0 - x) * sn
     b_ = (xi1 / (s0 * s1)) * sn
-    c_ = (s0 * s1 / xi1) * (u * ch + (p * xi1 ** 2 - u) * sn)
+    small = np.abs(arg) < 1e-3
+    safe = np.where(small, 1.0, arg)
+    ratio = np.where(small, 1/3 + arg**2/30 + arg**4/840,
+                     (np.cosh(safe) - sinhc(safe)) / safe**2)
+    c_over_p = s0 * s1 * xi1 * (sn + u * ratio)
+    c_ = p * c_over_p
     d_ = (1.0 / x) * ch + (1.0 - 1.0 / x) * sn
 
     m = np.empty(p.shape + (2, 2), dtype=complex)
@@ -243,7 +284,7 @@ def graded_linear_layer(p, b0: float, b1: float, xi1: float,
         m[..., 1, 0], m[..., 1, 1] = c_, d_
     else:
         # Pseudo-permutation, Krapez equation (A-6)
-        m[..., 0, 0], m[..., 0, 1] = d_, c_ / p
+        m[..., 0, 0], m[..., 0, 1] = d_, c_over_p
         m[..., 1, 0], m[..., 1, 1] = p * b_, a_
 
     return m if p.shape else m.reshape(2, 2)

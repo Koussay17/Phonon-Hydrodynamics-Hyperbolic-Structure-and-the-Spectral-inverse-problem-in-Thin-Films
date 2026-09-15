@@ -13,6 +13,8 @@
 \titlespacing*{\section}{0pt}{15pt}{5pt}
 \titlespacing*{\subsection}{0pt}{11pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 \begin{center}
 {\Large\bfseries De Boltzmann à Guyer--Krumhansl}\\[4pt]
@@ -232,8 +234,10 @@ de Fourier, et une partie déviatorique proportionnelle aux gradients du flux.
 Trois familles de termes y coexistent.
 
 Le terme en $\tau_R\,\partial_t \mathbf{q}$ exprime que le flux ne s'établit pas instantanément : il
-lui faut un temps $\tau_R$ pour répondre à un gradient. C'est ce terme qui rend l'équation
-hyperbolique et donne une vitesse de propagation finie.
+lui faut un temps $\tau_R$ pour répondre à un gradient. En l'absence du terme
+non local, le système de Cattaneo est hyperbolique et sa vitesse est finie.
+Avec $\ell>0$, GK comporte une diffusion du flux et n'a pas cette propriété
+de propagation finie ; voir la note de partie II.
 
 Le terme en $-\lambda \nabla T$ est la loi de Fourier.
 
@@ -242,6 +246,10 @@ voisinage. Ils sont formellement analogues aux termes visqueux de l'équation de
 c'est à eux que le gaz de phonons doit son caractère hydrodynamique.
 
 \subsection{Les coefficients}
+Les coefficients suivants sont ceux de la fermeture isotrope dans la limite
+de processus normaux dominants (Lebon et Dauby, Phys. Rev. A \textbf{42}, 4710, 1990).
+Leur dérivation complète depuis la hiérarchie des moments reste à rédiger ;
+cette note en expose la structure, sans prétendre accomplir la fermeture.
 
 \[ \lambda = \frac{1}{3}\,C\,v^2\,\tau_R , \qquad\qquad
 \ell^2 = \frac{1}{5}\,v^2\,\tau_N\,\tau_R . \]
@@ -257,8 +265,9 @@ Lorsque la longueur non locale devient négligeable devant l'échelle de variati
 en $\ell^2$ disparaissent et il reste
 \[ \tau_R\,\frac{\partial \mathbf{q}}{\partial t} + \mathbf{q} = -\,\lambda\,\nabla T . \]
 
-C'est l'équation de Cattaneo, à un seul temps de relaxation. Elle conserve le caractère hyperbolique
-et la vitesse finie, mais perd le caractère hydrodynamique.
+C'est l'équation de Cattaneo, à un seul temps de relaxation. Pour $\tau_R>0$,
+elle est strictement hyperbolique et sa vitesse caractéristique est finie.
+Le terme de diffusion spatiale du flux a disparu.
 
 \subsection{Limite de Fourier}
 
@@ -292,28 +301,24 @@ Fourier & $\tau_R$ négligeable devant l'échelle temporelle & $\lambda$ \\
 L'équation de Guyer--Krumhansl introduit deux grandeurs au-delà de la conductivité.
 
 Le temps résistif $\tau_R$, en secondes, est le temps de relaxation qui figure dans la loi de
-Cattaneo. Il est de l'ordre de la picoseconde à quelques dizaines de picosecondes à température
-ambiante.
+Cattaneo. Sa valeur dépend du matériau et de la moyenne cinétique adoptée ;
+les temps des modes individuels ne sont pas un temps effectif unique.
 
 La longueur non locale $\ell = v\sqrt{\tau_N \tau_R / 5}$, en mètres, n'a pas d'équivalent dans le
-modèle de Cattaneo. Elle est de l'ordre du libre parcours moyen, soit quelques dizaines de
-nanomètres.
+modèle de Cattaneo. Sa valeur doit être calculée avec des temps compatibles
+avec cette fermeture, et ne doit pas être assimilée à une longueur grise issue de la conductivité.
 
 \subsection{Conséquence pour l'invariance d'échelle}
+Dans le modèle homogène 1D du projet, la réponse dépend de
+$b,\xi_1,\tau_R$ et $\tau_\ell=3\ell^2/a$.
+La transformation $d\mapsto\mu d$, $\lambda\mapsto\mu\lambda$,
+$C\mapsto C/\mu$, $\ell\mapsto\mu\ell$ conserve ces quatre quantités.
+La longueur non locale ne lève donc pas la dégénérescence lorsque ces paramètres sont libres.
 
-Cette différence de dimension a une portée qui dépasse la partie I.
-
-L'invariance d'échelle établie sous la loi de Fourier, et dont la note de partie IV montre qu'elle
-survit à la loi de Cattaneo, repose sur le fait que $\tau_R$ est un temps : un changement d'échelle
-en profondeur le laisse inchangé, donc le paramètre spectral effectif reste invariant.
-
-\textbf{La longueur non locale, elle, est une longueur.} Sous un changement d'échelle en profondeur,
-une longueur doit se transformer. Or $\ell$ est fixée par une vitesse et deux temps, tous trois
-insensibles à un tel changement.
-
-La question de savoir si l'invariance se brise pour cette raison, et par conséquent si le terme non
-local restitue une identifiabilité que le seul temps de relaxation ne restitue pas, n'est pas
-tranchée par ces notes. Elle constitue le prolongement naturel de la partie IV.
+Si $v$ est connu indépendamment et si $a=v^2\tau_R/3$ est imposé,
+cette information supplémentaire contraint $a$ ; l'invariance précédente
+ne respecte alors plus toutes les données imposées.
+L'extension aux profils gradués non-Fourier reste hors du code actuel.
 
 \section{Limites du cadre}
 
@@ -327,18 +332,16 @@ du temps de relaxation.
 Pour l'AlN wurtzite, l'écart du modèle de Callaway à la solution exacte vaut $+1\,\%$ dans le plan et
 $-12\,\%$ hors plan.
 
-\textbf{La direction hors plan est celle du présent travail} : film mince sur substrat, flux
-perpendiculaire au film. Le cadre de Callaway y porte donc une erreur propre de l'ordre de dix pour
-cent, indépendante de toute considération d'identifiabilité, et antérieure à toute mesure.
+\textbf{La direction hors plan est celle du présent travail.}
+L'écart cité concerne une conductivité stationnaire calculée, pour le modèle
+et le matériau de Ma, Li et Luo (2014). Il n'est pas une incertitude universelle
+de dix pour cent sur une réponse dynamique.
 
 \subsection{Portée}
-
-Cette limite n'invalide pas la chaîne exposée ici : elle en fixe la précision. Une valeur de temps de
-relaxation obtenue dans ce cadre ne peut pas prétendre à mieux que l'ordre de grandeur de cet écart,
-quelle que soit la qualité de l'inversion qui l'a produite.
-
-Elle borne également ce qu'une confrontation expérimentale peut établir : un désaccord inférieur à
-dix pour cent entre modèle et mesure ne constitue pas une réfutation.
+Un temps de relaxation extrait ne reçoit pas automatiquement la même erreur
+relative que la conductivité. Les erreurs de fermeture doivent être propagées
+à l'observable et à l'estimateur. Un désaccord expérimental de moins de dix pour cent
+ne peut pas être déclaré acceptable sans cette analyse et les erreurs de mesure.
 
 \section{Références}
 
@@ -361,6 +364,6 @@ hydrodynamic phenomena in nonmetallic crystals}, Phys. Rev. \textbf{148}, 778 (1
 
 \vspace{4pt}
 \noindent\small
-Références à vérifier à la source avant citation. Notes associées : \texttt{08\_Le\_gaz\_de\_phonons},
-\texttt{07\_Note\_partie\_IV}.
+Références à vérifier à la source avant citation. Notes associées : \texttt{08\_\allowbreak Le\_\allowbreak gaz\_\allowbreak de\_\allowbreak phonons},
+\texttt{07\_\allowbreak Note\_\allowbreak partie\_\allowbreak IV}.
 \end{document}

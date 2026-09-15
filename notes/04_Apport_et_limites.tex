@@ -14,14 +14,16 @@
 \titlespacing*{\subsection}{0pt}{12pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 \begin{center}
 {\Large\bfseries Apport et limites --- positionnement}\\[4pt]
-{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2018) 182--199}\\[2pt]
+{\small Krapez, \emph{International Journal of Thermal Sciences} \textbf{136} (2019) 182--199}\\[2pt]
 {\small Version corrigée --- 8 septembre 2026}
 \end{center}
 
-space{4pt}
+\vspace{4pt}
 
 
 \section{Ce que l'article établit}
@@ -150,7 +152,7 @@ transformations de Darboux conjointes ; travail fondateur du présent article \\
 Krapez, postérieur à 2018 & À rechercher : l'auteur annonce en conclusion la mise en {\oe}uvre de ces
 outils pour les problèmes d'inversion \\
 \addlinespace
-Chen, Gamba, Li \& Wang (2025) & arXiv:2502.19533, accepté au \emph{SIAM J. Appl. Math.}
+Chen, Gamba, Li \& Wang (2025) & arXiv:2502.19533, prépublication (2025)
 Reconstruction numérique du temps de relaxation par optimisation sous contrainte \\
 \addlinespace
 Camacho de la Rosa \emph{et al.} (2025) & \emph{J. Appl. Phys.} \textbf{137}, 155103. Caractérisation
@@ -169,8 +171,9 @@ matriciel employé \\
 
 Le cadre de l'article est celui de la loi de Fourier, sous lequel le paramètre spectral s'écrit
 $p = i\omega$ et l'énergie associée à la forme de Schrödinger reste sur l'axe imaginaire. Dans ce
-régime, la structure spectrale --- états liés, seuils, résonances --- est sans objet, ce qui justifie
-que l'auteur écarte cette lecture.
+régime, les états liés du problème quantique à énergie réelle ne se transposent pas
+directement à la mesure harmonique. Cela ne rend pas toute analyse spectrale ou
+tout prolongement analytique sans objet ; l'article ne développe pas cette interprétation.
 
 Sous une loi constitutive à temps de relaxation fini, le paramètre devient $p + \tau p^{2}$, soit
 $i\omega - \tau\omega^{2}$ en régime harmonique. L'énergie
@@ -189,4 +192,6 @@ relaxation sans analyse de la sensibilité en fonction de la bande de mesure.
 Le résultat rapporté par l'auteur en section 4, selon lequel le passage à l'équation d'onde
 s'accompagne d'une perte d'unicité dans le cas électromagnétique, constitue l'objection principale à
 cette orientation et devra être traité explicitement.
+\section*{Portée de la version corrigée --- 15 septembre 2026}
+Les perspectives spectrales sont des pistes de recherche. La résonance de Fourier de GK est déjà décrite par Kovács (2018), arXiv:1804.05225 ; aucune nouveauté globale n'est établie par ces notes. Le statut de publication du préprint Chen et al. doit être vérifié avant citation.
 \end{document}

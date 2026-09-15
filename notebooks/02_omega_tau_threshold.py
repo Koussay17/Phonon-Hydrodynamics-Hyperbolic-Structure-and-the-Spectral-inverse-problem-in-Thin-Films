@@ -1,4 +1,4 @@
-"""Central figure of Part IV: three distinguished points at the same abscissa.
+"""Central figure of Part IV: three related points at the same abscissa.
 
 Everything on this figure is analytic and can be checked by hand.
 
@@ -31,6 +31,7 @@ raising the frequency indefinitely does not help.
 The vertical markers show where the ceiling of a frequency-domain
 thermoreflectance bench, 200 MHz, falls on this axis for two relaxation times.
 """
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -62,8 +63,8 @@ F_MAX = 2.0e8                                  # hertz, ceiling of a FDTR bench
 OMEGA_MAX = 2.0 * np.pi * F_MAX
 
 CASES = [
-    (1.0e-8, r"SiC, $\tau = 10$ ns", "#1f6f8b"),
-    (1.0e-11, r"AlN, $\tau = 10$ ps", "#b03030"),
+    (1.0e-8, r"exemple, $\tau = 10$ ns", "#1f6f8b"),
+    (1.0e-11, r"exemple, $\tau = 10$ ps", "#b03030"),
 ]
 
 # --------------------------------------------------------------------------
@@ -129,11 +130,11 @@ ax2.set_title("Incertitude sur le temps de relaxation, résolution de phase "
               f"de {SIGMA_PHI_DEG:g}" + r"$^\circ$", fontsize=11)
 
 plt.tight_layout()
-plt.savefig("../figures/02_omega_tau_threshold.png", dpi=180)
+plt.savefig(Path(__file__).resolve().parents[1] / "figures/02_omega_tau_threshold.png", dpi=180)
 plt.show()
 
 # --------------------------------------------------------------------------
-# Numerical check of the three distinguished values
+# Numerical check of the three related values
 # --------------------------------------------------------------------------
 
 print("Contrôles à omega tau = 1")
@@ -146,4 +147,4 @@ print()
 print("Plafond d'un banc à 200 MHz")
 for tau, label, _ in CASES:
     print(f"  {label:<26} omega_max tau = {OMEGA_MAX * tau:9.3e}")
-print(f"  tau minimal accessible     = {1.0 / OMEGA_MAX:9.3e} s")
+print(f"  temps au centre à f_max     = {1.0 / OMEGA_MAX:9.3e} s")

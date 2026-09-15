@@ -1,7 +1,7 @@
 """Admissibility of the non-Fourier conduction laws.
 
 Two criteria are usually conflated and are in fact independent: whether a law
-admits a convex entropy with non-negative production, and whether it
+admits a concave physical entropy (negative entropy is convex), and whether it
 propagates at finite speed. The results below show that all three laws pass
 the first and that only one passes the second.
 
@@ -12,7 +12,7 @@ in a homogeneous medium,
 
     sigma^2 = p (1 + tau_R p) / [ a (1 + tau_l p) ],    p = i omega,
 
-with sigma = i k. The high-frequency behaviour of k decides the propagation
+with sigma = -i k for fields exp(i k z). The high-frequency behaviour of k decides the propagation
 speed:
 
     Fourier            k ~ sqrt(omega)     phase velocity unbounded
@@ -70,11 +70,13 @@ def wavenumber(omega, a: float, tau_r: float = 0.0, tau_l: float = 0.0):
     """Complex wavenumber of a plane thermal wave.
 
     Returns k such that the field varies as exp(i k z), with
-    sigma = i k and sigma^2 = p (1 + tau_R p) / [a (1 + tau_l p)].
+    sigma = -i k and sigma^2 = p (1 + tau_R p) / [a (1 + tau_l p)].
     """
+    if a <= 0 or tau_r < 0 or tau_l < 0:
+        raise ValueError("require positive diffusivity and nonnegative times")
     p = 1j * np.asarray(omega, dtype=float)
     sigma = np.sqrt(p * (1.0 + tau_r * p) / (a * (1.0 + tau_l * p)))
-    return -1j * sigma
+    return 1j * sigma
 
 
 def phase_velocity(omega, a: float, tau_r: float = 0.0, tau_l: float = 0.0):
@@ -89,7 +91,9 @@ def cattaneo_speed(a: float, tau_r: float) -> float:
     Also called the second sound velocity. Equal to v / sqrt(3) in the Debye
     model, since a = v^2 tau_R / 3.
     """
-    if tau_r <= 0.0:
+    if not np.isfinite(a) or a <= 0 or not np.isfinite(tau_r) or tau_r < 0:
+        raise ValueError("require a > 0 and tau_R >= 0")
+    if tau_r == 0.0:
         return np.inf
     return float(np.sqrt(a / tau_r))
 
@@ -102,11 +106,12 @@ def characteristic_matrix(a: float, tau_r: float) -> np.ndarray:
     """Principal part of the Cattaneo system in the variables (u, q).
 
         du/dt + dq/dz = 0
-        tau_R dq/dt + (a / tau_R is carried here) du/dz = 0
+        dq/dt + (a / tau_R) du/dz = 0
 
     The matrix is not symmetric but has two real distinct eigenvalues, so the
-    system is strictly hyperbolic. Godunov and Mock's theorem then relates
-    that property to the existence of a convex entropy.
+    system is strictly hyperbolic. A strictly convex mathematical entropy
+    can symmetrize conservation laws under the Godunov-Mock hypotheses;
+    hyperbolicity alone is not an entropy-existence theorem.
     """
     if tau_r <= 0.0:
         raise ValueError("tau_R must be strictly positive for the system to be hyperbolic")
@@ -137,7 +142,8 @@ def entropy_production(q, dq_dz, lam: float, t0: float, ell_sq: float = 0.0):
 
         sigma_s = [ q^2 + 3 ell^2 (dq/dz)^2 ] / (lambda T0^2)
 
-    Non-negative whenever lambda > 0 and ell^2 >= 0, whatever the fields.
+    Quadratic near-equilibrium production; nonnegative for positive lambda
+    and nonnegative ell^2. This is not a far-from-equilibrium entropy theorem.
     """
     q = np.asarray(q, dtype=float)
     dq_dz = np.asarray(dq_dz, dtype=float)
@@ -156,7 +162,7 @@ def admissibility_table() -> str:
         "Cattaneo          yes, tau_R > 0      yes, lambda > 0       finite, "
         "sqrt(a/tau_R)\n"
         "Guyer-Krumhansl   yes, tau_R > 0      yes, lambda > 0,      infinite\n"
-        "                                      ell^2 >= 0\n"
+        "                                      ell^2 > 0 (ell=0: Cattaneo)\n"
         "\n"
         "Thermodynamic admissibility and finite propagation speed are "
         "independent criteria.\n"

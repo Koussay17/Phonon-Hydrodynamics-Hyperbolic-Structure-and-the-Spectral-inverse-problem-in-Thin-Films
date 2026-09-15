@@ -81,7 +81,7 @@
 
 \textbf{Référence.} A. Camacho de la Rosa, R. Esquivel-Sirvent, D. Becerril,
 \textit{Relaxation times of non-Fourier materials using frequency-domain thermoreflectance},
-Journal of Applied Physics \textbf{137}, 155103 (2025). DOI 10.1063/5.0257299.
+Journal of Applied Physics \textbf{137}, 155103 (2025). DOI 10.1063/\allowbreak 5.0257299.
 Soumis le 9 janvier 2025, accepté le 27 mars 2025, publié le 15 avril 2025. Licence CC BY 4.0.
 
 \textbf{Affiliations.} Centro de Investigación en Ciencias, Universidad Autónoma del Estado de
@@ -90,7 +90,7 @@ Morelos, Cuernavaca (Camacho de la Rosa)~; Instituto de Física, UNAM, Mexico
 correspondant).
 
 \textbf{Statut de lecture.} Passe 2, texte intégral. Matériel supplémentaire non consulté
-(voir §~11). Fiche établie le 12 septembre 2026.
+(voir §~11). Fiche établie le 12 septembre 2026, corrigée le 16 septembre 2026.
 
 Article cité dans la section \textit{Prior work} du README. C'est la seule référence du corpus
 qui traite explicitement de la mesure du temps de relaxation par thermoréflectance, et la seule
@@ -412,7 +412,7 @@ n'est donc pas atteint dans le domaine de validité de la forme fermée. Ce cons
 rapprocher du §~5.4, où la localisation de l'extremum de $S_\tau$ est en revanche conforme à la
 prédiction unidimensionnelle.
 
-\subsection{Le seuil $\omega\tau = 1$}
+\subsection{Le centre de transition \texorpdfstring{$\omega\tau = 1$}{omega tau = 1}}
 
 La phase du demi-espace atteint la valeur médiane entre ses deux asymptotes,
 $-\pi/8 = -22{,}5^\circ$, exactement en $\omega\tau = 1$, puisque $\arctan(1) = \pi/4$. Le seuil
@@ -449,7 +449,7 @@ qui contredit l'intuition selon laquelle monter en fréquence améliore indéfin
 $\tau$ : la sensibilité est maximale au seuil et se dégrade de part et d'autre, symétriquement
 en échelle logarithmique.
 
-\subsection{Le cas stratifié et l'enchevêtrement par $A_0$}
+\subsection{Le cas stratifié et l'enchevêtrement par \texorpdfstring{$A_0$}{A0}}
 
 Pour le système stratifié, le troisième terme de l'éq.~(15) réintroduit tout l'empilement. Les
 auteurs le formulent en ces termes : le troisième terme n'existe pas pour le demi-espace, «~so
@@ -585,7 +585,7 @@ toutes dominées par la dérivée du même dénominateur de $A_0$. C'est le rég
 est maximale, et donc le plus défavorable du point de vue de l'identifiabilité, alors qu'il est
 le plus favorable du point de vue de la norme de la sensibilité.
 
-\subsection{Contrôle numérique de $S_\tau$}
+\subsection{Contrôle numérique de \texorpdfstring{$S_\tau$}{S tau}}
 
 La forme fermée du §~4.2 fournit un contrôle indépendant de la figure 3(b).
 
@@ -761,13 +761,15 @@ $10^{-12}$           & $10^{12}$            & 159~GHz   & non \\
 Le plus petit temps de relaxation dont le centre de transition soit atteignable à 200~MHz est
 \begin{encadre}
 \[
-\tau_{\min} = \frac{1}{2\pi f_{\max}} = 8{,}0\times10^{-10}\ \text{s}
+\tau_{\mathrm{centre}} = \frac{1}{2\pi f_{\max}} = 8{,}0\times10^{-10}\ \text{s}
 \]
 \end{encadre}
-Cette valeur est indépendante du matériau et ne dépend que du plafond instrumental. Elle est
-cohérente avec l'énoncé de l'article selon lequel les temps inférieurs à $10^{-9}$~s sont
-indistinguables de Fourier dans la bande tracée (§~6.2), ce qui constitue un quatrième argument
-en faveur de la lecture du §~7.1.
+Cette valeur localise le centre de transition, pas un temps minimal détectable.
+L'indiscernabilité visuelle dans une figure ne remplace pas une analyse de bruit.
+À 200~MHz, $\tau=10$~ps produit un écart de phase de $0{,}360^\circ$ dans le
+demi-espace idéal. Avec $0{,}01^\circ$ de bruit et tous les autres paramètres connus,
+l'incertitude relative locale est $2{,}78\,\%$. Ce contre-exemple réfute une
+impossibilité fondée sur la seule bande, sans établir la faisabilité sur un film réel.
 
 \subsection{L'énoncé des auteurs}
 
@@ -867,12 +869,15 @@ $S_\tau$ en incertitude~; les points 7 et 8 affectent la reproductibilité des f
 \textbf{La substitution spectrale.} $\sigma_{cv}^2 = p(1+\tau p)/\alpha$ (§~2.3) est la
 substitution implantée dans \code{src/\allowbreak forward\_model.py}, obtenue ici par une voie
 indépendante --- Green tridimensionnel et Hankel plutôt que quadripôles unidimensionnels. La
-concordance vaut vérification croisée du modèle direct.
+concordance vérifie la constante de propagation. Le coefficient de flux exige
+en plus $\lambda_{\mathrm{eff}}=\lambda/(1+\tau p)$ ; remplacer $p$ dans tout
+le quadripôle de Fourier donnerait une phase erronée.
 
 \textbf{Le seuil.} Le seuil $\omega\tau = 1$ apparaît dans l'article comme frontière des trois
 régimes, et analytiquement comme centre exact de la transition de phase et maximum exact de
 $\mathrm{d}\phi/\mathrm{d}\ln\tau$ (§~4.2). C'est le même seuil que celui du critère spectral du
-présent travail, atteint par une autre route.
+présent travail. Dans le demi-espace, $\phi=\arg(E)/2$ : il s'agit de la même
+information algébrique, pas d'une validation indépendante ni d'un seuil de détection.
 
 \textbf{La phase contre le module.} L'article établit numériquement, dans les trois
 configurations, que le module de la réponse discrimine mal les deux modèles tandis que la phase
@@ -984,7 +989,7 @@ thermoréflectance des transducteurs métalliques~; confondant de rugosité \\
 \begin{enumerate}[leftmargin=1.7em,itemsep=4pt,topsep=2pt]
 \item Article de modélisation directe, sans données ni ajustement. La substitution
       $p \mapsto p(1+\tau p)$ y est établie indépendamment et coïncide avec celle du présent
-      travail.
+      travail pour la constante de propagation ; le flux requiert la conductivité effective.
 \item La phase du demi-espace admet la forme fermée
       $\phi = -\pi/4 + \tfrac12\arctan(\omega\tau)$, dont le seuil $\omega\tau = 1$ est le
       centre exact de transition et le maximum exact de $\mathrm{d}\phi/\mathrm{d}\ln\tau$, de
@@ -994,8 +999,8 @@ thermoréflectance des transducteurs métalliques~; confondant de rugosité \\
       déduction n'est pas valide, faute de jacobienne complète, de corrélations, de bruit et de
       conductance d'interface.
 \item Les auteurs reconnaissent dans le corps du texte que la bande requise dépasse les
-      capacités FDTR courantes pour $\tau \lesssim 3\times10^{-9}$~s. Le seuil instrumental, à
-      200~MHz, est $\tau_{\min} = 1/(2\pi f_{\max}) = 8{,}0\times10^{-10}$~s.
+      capacités discutées pour leurs configurations. Le centre de transition accessible, à
+      200~MHz, est $\tau_{\mathrm{centre}} = 1/(2\pi f_{\max}) = 8{,}0\times10^{-10}$~s.
 \item La conclusion de l'article revendique une méthodologie d'estimation, un ajustement et une
       quantification qui ne figurent pas dans son corps. La question de l'identifiabilité de
       $\tau$ reste entière.

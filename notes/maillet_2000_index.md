@@ -70,7 +70,7 @@ La valeur de la remarque 2 coïncide avec l'impédance employée par Krapez à s
 | Appendice 1.1 | 28 | Coefficients de Stehfest et implémentation MATLAB |
 
 Krapez emploie pour sa part la méthode de De Hoog. Stehfest est plus simple à implémenter mais se
-dégrade sur les réponses oscillantes et requiert une arithmétique en précision étendue. Toute
+dégrade sur les réponses oscillantes ; augmenter fortement son ordre peut nécessiter une arithmétique en précision étendue. Toute
 implémentation doit être validée contre le cas analytique du mur homogène avant application à un
 bicouche.
 
@@ -82,3 +82,7 @@ bicouche.
 - Sources internes, localisées et distribuées
 - Régime périodique établi : formulation complète
 - Estimation de paramètres et sensibilités, si le chapitre correspondant existe
+
+## Mise à jour du projet — 15 septembre 2026
+
+Stehfest est implémenté ; De Hoog reste une piste, pas une méthode de repli disponible. La précision et la fenêtre temporelle doivent être validées pour chaque observable et ses sensibilités.

@@ -38,7 +38,7 @@ def test_derived_quantities_are_consistent():
 
 
 def test_graded_flag():
-    s = default_sample(film_lam_back=120.0, film_rho_c_back=2.41e6)
+    s = default_sample(film_lam_back=120.0, film_rho_c_back=2.41e6, graded_xi1=500e-9/np.sqrt(60/2.41e6))
     assert s.is_graded
     assert s.film_b_back == pytest.approx(np.sqrt(120.0 * 2.41e6))
 
@@ -253,7 +253,9 @@ def test_uncertainty_diverges_at_the_blind_point():
         return np.sqrt(np.diag(cov)).max()
 
     assert blind == pytest.approx(44.0, rel=1e-3)
-    assert sigma(blind) > 100.0 * sigma(blind * 1.25)
+    with pytest.raises(inv.NonIdentifiableError):
+        sigma(blind)
+    assert sigma(blind * 1.001) > 100 * sigma(blind * 1.25)
     assert sigma(blind * 1.01) > sigma(blind * 1.10)
 
 
@@ -273,14 +275,7 @@ def test_contrast_report_warns_when_blind():
 # --------------------------------------------------------------------------
 
 def test_two_mean_free_paths_must_not_be_confused():
-    """The total mean free path and that of the normal processes answer two
-    different questions and differ by three orders of magnitude.
-
-    The total one, 3 lambda / (rho c v), decides whether transport is
-    ballistic. The normal one, v tau_N, decides whether phonon hydrodynamics
-    is possible at all. For AlN at 300 K the first is near 67 nm and the
-    second between 2.4 and 60 micrometres.
-    """
+    """Grey length and illustrative mode-resolved normal length are distinct."""
     s = default_sample(film_lam=321.0, film_rho_c=2.41e6, thickness=500e-9)
     assert s.mean_free_path == pytest.approx(3.0 * 321.0 / (2.41e6 * 6000.0))
     assert 60e-9 < s.mean_free_path < 70e-9
@@ -299,14 +294,8 @@ def test_knudsen_number_and_regime():
         assert s.knudsen_number == pytest.approx(s.mean_free_path / thickness)
 
 
-def test_a_five_hundred_nanometre_aln_film_is_not_ballistic():
-    """It is transitional: the carriers scatter several times on crossing, but
-    boundary scattering still matters.
-
-    The conductivity extracted there is an apparent value, dependent on
-    thickness, which is what Hoque et al. measure by varying the thickness
-    from 1.6 to 2440 nm.
-    """
+def test_grey_label_for_the_321_conductivity_scenario():
+    """An arithmetic diagnostic, not a full-spectrum material classification."""
     s = default_sample(film_lam=321.0, film_rho_c=2.41e6, thickness=500e-9)
     assert s.knudsen_number == pytest.approx(0.133, abs=0.005)
     assert s.transport_regime == "transitional"

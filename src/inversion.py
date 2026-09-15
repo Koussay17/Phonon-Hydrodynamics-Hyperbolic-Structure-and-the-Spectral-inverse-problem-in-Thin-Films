@@ -87,8 +87,9 @@ class FitResult:
         space far more tightly than others. It is the numerical counterpart
         of the identifiability question.
         """
-        fisher = np.linalg.inv(self.covariance)
-        return float(np.linalg.cond(fisher))
+        if not np.all(np.isfinite(self.covariance)):
+            return np.inf
+        return float(np.linalg.cond(self.covariance / np.outer(self.values, self.values)))
 
     @property
     def reduced_chi2(self) -> float:
@@ -139,17 +140,17 @@ def _residuals(log_values, names, sample, freq, amp, phase,
     residual instead of raising keeps the optimiser inside the physical region
     and lets it report failure rather than crash.
     """
-    s = _apply(sample, names, log_values)
     try:
+        s = _apply(sample, names, log_values)
         a_mod, p_mod = fm.modulated_response(freq, s)
-    except (ZeroDivisionError, OverflowError, FloatingPointError):
+    except (ValueError, ZeroDivisionError, OverflowError, FloatingPointError):
         return np.full(2 * freq.size, _INVALID)
 
     if not np.all(np.isfinite(a_mod)) or np.any(a_mod <= 0.0):
         return np.full(2 * freq.size, _INVALID)
 
     r_amp = (np.log(a_mod) - np.log(amp)) / sigma_rel
-    r_phase = (p_mod - phase) / sigma_phase
+    r_phase = ((p_mod - phase + 180) % 360 - 180) / sigma_phase
     out = np.concatenate([r_amp, r_phase])
     return np.where(np.isfinite(out), out, _INVALID)
 
@@ -157,6 +158,44 @@ def _residuals(log_values, names, sample, freq, amp, phase,
 # --------------------------------------------------------------------------
 # Identifiability without fitting
 # --------------------------------------------------------------------------
+
+class NonIdentifiableError(np.linalg.LinAlgError):
+    """The sensitivity columns do not support separate parameter uncertainties."""
+
+
+def information_from_jacobian(jac, rcond=1e-7):
+    """SVD covariance in log parameters, with column-scaled rank detection.
+
+    A small but independent sensitivity gives a large uncertainty. A dependent
+    sensitivity gives an explicit failure, not a finite inverse of roundoff.
+    """
+    jac = np.asarray(jac, dtype=float)
+    norms = np.linalg.norm(jac, axis=0)
+    if not np.all(np.isfinite(jac)) or np.any(norms == 0):
+        raise NonIdentifiableError("zero or nonfinite sensitivity")
+    _, singular, vt = np.linalg.svd(jac / norms, full_matrices=False)
+    if len(singular) < jac.shape[1] or singular[-1] <= rcond * singular[0]:
+        raise NonIdentifiableError("rank-deficient sensitivity: fix a parameter or add independent information")
+    inv = (vt.T / singular**2) @ vt
+    covariance = inv / np.outer(norms, norms)
+    return jac.T @ jac, covariance
+
+
+def _check_design(sample, names, sigma, step):
+    if not names or len(set(names)) != len(names):
+        raise ValueError("choose distinct parameter names")
+    if not np.isfinite(sigma) or sigma <= 0 or not np.isfinite(step) or step <= 0:
+        raise ValueError("noise and differentiation step must be finite and positive")
+    for name in names:
+        value = getattr(sample, name)
+        if value is None or not np.isfinite(value) or value <= 0:
+            raise ValueError(f"{name} must be finite and positive")
+
+
+def _check_scale_gauge(sample, names):
+    if not sample.is_graded and {"film_lam", "film_rho_c", "thickness"} <= set(names):
+        raise NonIdentifiableError("film conductivity, heat capacity and thickness share an exact scale gauge")
+
 
 def fisher_analysis(freq, sample: fm.Sample, names,
                     sigma_rel=0.01, sigma_phase=0.1, step=1e-5):
@@ -166,7 +205,13 @@ def fisher_analysis(freq, sample: fm.Sample, names,
     would allow, before the experiment is run. Returns the information matrix
     and the covariance it implies.
     """
+    names = list(names)
+    _check_design(sample, names, sigma_rel, step)
+    _check_scale_gauge(sample, names)
     log0 = np.array([np.log(getattr(sample, n)) for n in names])
+
+    if not np.isfinite(sigma_phase) or sigma_phase <= 0:
+        raise ValueError("phase noise must be finite and positive")
 
     def model(lv):
         s = _apply(sample, names, lv)
@@ -178,10 +223,11 @@ def fisher_analysis(freq, sample: fm.Sample, names,
     for i in range(log0.size):
         up = log0.copy()
         up[i] += step
-        jac[:, i] = (model(up) - base) / step
+        down = log0.copy()
+        down[i] -= step
+        jac[:, i] = (model(up) - model(down)) / (2 * step)
 
-    fisher = jac.T @ jac
-    return fisher, np.linalg.inv(fisher)
+    return information_from_jacobian(jac)
 
 
 # --------------------------------------------------------------------------
@@ -219,8 +265,15 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
         if getattr(initial, n) <= 0.0:
             raise ValueError(f"{n} must be strictly positive to be fitted in log space")
 
+    _check_design(initial, names, sigma_rel, 1e-5)
     log0 = np.array([np.log(getattr(initial, n)) for n in names])
 
+    if not np.isfinite(sigma_phase) or sigma_phase <= 0:
+        raise ValueError("phase noise must be finite and positive")
+    if (freq.ndim != 1 or not freq.size or amplitude.shape != freq.shape or phase_deg.shape != freq.shape
+        or np.any(amplitude <= 0) or not np.all(np.isfinite(amplitude))
+        or not np.all(np.isfinite(phase_deg))):
+        raise ValueError("require matching finite data vectors and positive amplitudes")
     args = (names, initial, freq, amplitude, phase_deg, sigma_rel, sigma_phase)
     if bounds is None:
         out = least_squares(_residuals, log0, args=args, method="lm", **kwargs)
@@ -232,7 +285,8 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
     jac = out.jac
     fisher = jac.T @ jac
     try:
-        cov_log = np.linalg.inv(fisher)
+        _check_scale_gauge(initial, names)
+        _, cov_log = information_from_jacobian(jac)
     except np.linalg.LinAlgError:
         cov_log = np.full_like(fisher, np.inf)
 
@@ -262,10 +316,10 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
 # sample: they are two representations of one forward model, related by an
 # integral transform. A rank degeneracy that is independent of the spectral
 # parameter is therefore invariant under that transform, which is the
-# transposition principle stated by Krapez and Rigollet (2017), section 4.4.
+# transposition principle stated by Krapez and Rigollet (2017), page 1 (transposition paragraph).
 #
 # What differs is practical. The pulsed response must be reconstructed by
-# numerical inversion, whose accuracy holds over roughly two decades of decay
+# numerical inversion, whose accuracy depends on the signal and time window
 # (see laplace.py). Choosing the time window is therefore part of the
 # estimation, not a detail of it.
 
@@ -273,19 +327,18 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
 def usable_time_window(s: fm.Sample, decades_before=2.0, decades_after=2.0):
     """Time window centred on the diffusion time of the film.
 
-    Outside it the numerical inversion is the limiting factor rather than the
-    physics: too early and the response is that of the film alone, too late
-    and the signal has decayed past what the inversion can carry.
+    This is a heuristic sampling range, not a certified accuracy window.
+    Validate the inversion and its derivatives against an independent solution.
     """
     t0 = s.diffusion_time
     return t0 * 10.0 ** (-decades_before), t0 * 10.0 ** decades_after
 
 
 def _pulsed_model(log_values, names, sample, times, n_stehfest):
-    s = _apply(sample, names, log_values)
     try:
+        s = _apply(sample, names, log_values)
         out = fm.pulsed_response(times, s, energy=1.0, n_stehfest=n_stehfest)
-    except (ZeroDivisionError, OverflowError, FloatingPointError):
+    except (ValueError, ZeroDivisionError, OverflowError, FloatingPointError):
         return None
     out = np.asarray(out, dtype=float)
     if not np.all(np.isfinite(out)) or np.any(out <= 0.0):
@@ -331,6 +384,9 @@ def fisher_analysis_pulsed(times, sample: fm.Sample, names,
     looser.
     """
     times = np.asarray(times, dtype=float)
+    names = list(names)
+    _check_design(sample, names, sigma_rel, step)
+    _check_scale_gauge(sample, names)
     log0 = np.array([np.log(getattr(sample, n)) for n in names])
 
     def model(lv):
@@ -344,10 +400,11 @@ def fisher_analysis_pulsed(times, sample: fm.Sample, names,
     for i in range(log0.size):
         up = log0.copy()
         up[i] += step
-        jac[:, i] = (model(up) - base) / step
+        down = log0.copy()
+        down[i] -= step
+        jac[:, i] = (model(up) - model(down)) / (2 * step)
 
-    fisher = jac.T @ jac
-    return fisher, np.linalg.inv(fisher)
+    return information_from_jacobian(jac)
 
 
 def fit_pulsed(times, temperature, initial: fm.Sample, names,
@@ -364,7 +421,7 @@ def fit_pulsed(times, temperature, initial: fm.Sample, names,
         Measured front-face temperature, strictly positive.
     n_stehfest : int
         Number of terms of the numerical inversion. Twelve is the practical
-        optimum in double precision; raising it degrades rather than improves.
+        default in double precision; the best order is signal dependent.
     diff_step : float
         Relative step of the numerical Jacobian. Chosen larger than the
         default for the reason given in `fisher_analysis_pulsed`: below about
@@ -378,7 +435,12 @@ def fit_pulsed(times, temperature, initial: fm.Sample, names,
         if getattr(initial, n) <= 0.0:
             raise ValueError(f"{n} must be strictly positive to be fitted in log space")
 
+    _check_design(initial, names, sigma_rel, 1e-5)
     log0 = np.array([np.log(getattr(initial, n)) for n in names])
+    if (times.ndim != 1 or not times.size or temperature.shape != times.shape
+        or np.any(times <= 0) or np.any(temperature <= 0)
+        or not np.all(np.isfinite(times)) or not np.all(np.isfinite(temperature))):
+        raise ValueError("require matching finite positive time and temperature vectors")
     args = (names, initial, times, temperature, sigma_rel, n_stehfest)
 
     if bounds is None:
@@ -393,7 +455,8 @@ def fit_pulsed(times, temperature, initial: fm.Sample, names,
     jac = out.jac
     fisher = jac.T @ jac
     try:
-        cov_log = np.linalg.inv(fisher)
+        _check_scale_gauge(initial, names)
+        _, cov_log = information_from_jacobian(jac)
     except np.linalg.LinAlgError:
         cov_log = np.full_like(fisher, np.inf)
 

@@ -13,6 +13,8 @@
 \titlespacing*{\section}{0pt}{15pt}{5pt}
 \titlespacing*{\subsection}{0pt}{11pt}{4pt}
 \setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
 \begin{document}
 \begin{center}
 {\Large\bfseries Le gaz de phonons}\\[4pt]
@@ -185,9 +187,11 @@ Parler simultanément de la position et du vecteur d'onde d'un phonon suppose de
 paquets d'ondes localisés, ce qui n'est légitime que si la longueur d'onde reste petite devant
 l'échelle sur laquelle les grandeurs macroscopiques varient.
 
-Cette condition est la limite de validité de toute la description cinétique. Elle cesse d'être
-remplie lorsque l'épaisseur d'un film devient comparable au libre parcours moyen des phonons,
-régime dit balistique, où le transport ne se décrit plus par une équation de diffusion.
+Cette condition concerne la longueur d'onde et la description semi-classique.
+Une épaisseur comparable au libre parcours remet en cause l'approximation diffusive,
+mais pas automatiquement l'équation de Boltzmann : celle-ci peut décrire le transport
+balistique avec des conditions de bord appropriées. Ne pas confondre longueur d'onde
+et libre parcours.
 
 \subsection{Distribution déplacée}
 
@@ -262,13 +266,13 @@ Pulsation maximale & $\omega_{\max} = k_B\Theta_D/\hbar$ & $\sim 10^{14}$ rad/s 
 \addlinespace
 Température de Debye, AlN & valeur mesurée & $988$ K \\
 \addlinespace
-Temps de relaxation à 300 K & entre collisions de phonons & $10^{-12}$ à $10^{-11}$ s \\
+Temps effectif illustratif & sans moyenne spectrale établie & $10^{-12}$ à $10^{-11}$ s \\
 \addlinespace
-Libre parcours moyen & $\Lambda = v\,\tau$ & $10^{-8}$ à $10^{-7}$ m \\
+Longueur grise illustrative & $\Lambda = v\,\tau$ & $10^{-8}$ à $10^{-7}$ m \\
 \addlinespace
 Capacité volumique, AlN & $\rho c_p$ & $2{,}4\times10^{6}$ J\,m$^{-3}$K$^{-1}$ \\
 \addlinespace
-Conductivité, AlN massif & & $150$ à $250$ W\,m$^{-1}$K$^{-1}$ \\
+Conductivité, AlN & dépend de la qualité du cristal & $150$ à $321$ W\,m$^{-1}$K$^{-1}$ \\
 \bottomrule
 \end{tabularx}
 \end{center}
