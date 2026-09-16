@@ -32,9 +32,19 @@
 
 Chaque exercice énonce une étape de la chaîne et donne le résultat à obtenir. Le calcul est laissé de
 côté. Les notes 08 et 09 contiennent les définitions et le fil conducteur ; elles ne contiennent pas
-les calculs intermédiaires.
+les calculs intermédiaires. La note~14 fournit maintenant le calcul détaillé de la fermeture.
+Les exercices 12--16 et 20--23 utilisent la convention historique ; refaire aussi la conversion conservatrice.
 
 L'ordre est celui de la chaîne : rien n'y est utilisé avant d'avoir été établi.
+
+\paragraph{Convention après la dérivation du 16 septembre.}
+Les facteurs $3\ell^2$ de cette note désignent la forme GK historique.
+La fermeture grise conservatrice de la note~14 donne $L^2=4\ell^2/3$.
+Dans les formules 1D, remplacer $3\ell^2$ par $L^2$ et poser
+$\tau_\ell=L^2/a$ conserve la structure des réponses et de l'entropie.
+La conversion dominante vaut alors $\tau_\ell=4\tau_N/5$, au lieu de
+$9\tau_N/5$ pour la forme historique. Ces conversions ne sont pas des
+lois effectives établies pour l'AlN.
 
 \section{Le réseau et sa dispersion}
 
@@ -50,11 +60,11 @@ et en cherchant des solutions en ondes planes.
 
 Développer le résultat précédent pour $ka \ll 1$ et identifier la vitesse du son.
 
-\rep{$\omega \simeq vk$ avec $v = a\sqrt{C/M}$.}
+\rep{$\omega \simeq v|k|$ avec $v = a\sqrt{C/M}$.}
 
 \subsection*{Exercice 3 --- Vitesse de groupe au bord de zone}
 
-Calculer $v_g = d\omega/dk$ et montrer qu'elle s'annule en $k = \pi/a$. Décrire le mouvement des
+Pour $0<k\le\pi/a$, calculer $v_g = d\omega/dk$ et montrer qu'elle s'annule en $k = \pi/a$. Décrire le mouvement des
 atomes voisins dans ce mode et expliquer pourquoi il ne transporte pas d'énergie.
 
 \rep{$v_g = a\sqrt{C/M}\,\cos(ka/2)$, nulle en bord de zone. Les atomes voisins y vibrent en
@@ -81,8 +91,7 @@ Montrer que $\mathbf{q} = \int \frac{d^3k}{(2\pi)^3}\,\hbar\omega\,\mathbf{v}_g\
 identiquement lorsque $f$ ne dépend que de $\omega$. Utiliser les parités respectives de $\omega$ et
 de $\mathbf{v}_g$ en $\mathbf{k}$.
 
-\rep{$\omega$ paire, $\mathbf{v}_g$ impaire, intégrande impaire, intégrale nulle. \textbf{Le flux
-mesure exactement l'écart à l'équilibre.}}
+\rep{$\omega$ paire, $\mathbf{v}_g$ impaire, intégrande impaire, intégrale nulle. \textbf{Un flux non nul signale un déséquilibre ; un flux nul ne suffit pas à prouver l'équilibre.}}
 
 \subsection*{Exercice 7 --- Proportionnalité du flux et du quasi-moment}
 
@@ -177,7 +186,7 @@ rapport formel de temps de collision. À ce rapport, $\tau_N\ll\tau_R$ n'est pas
 
 \subsection*{Exercice 17 --- Vitesse de propagation de Cattaneo}
 
-Écrire le système de Cattaneo en variables $(u, q)$ sous la forme
+Écrire la partie principale du système de Cattaneo en variables $(u, q)$ sous la forme
 $\partial_t U + A\,\partial_z U = 0$, calculer les valeurs propres de $A$, et conclure sur le
 caractère hyperbolique.
 

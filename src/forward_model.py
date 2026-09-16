@@ -57,9 +57,8 @@ class Sample:
     Attributes
     ----------
     film_lam, film_rho_c : float
-        Film conductivity and volumetric heat capacity. The defaults are a
-        thin-film value, well below bulk AlN, since interfaces and
-        microstructure reduce conductivity substantially.
+        Film conductivity and volumetric heat capacity. The defaults are
+        illustrative placeholders, not measurements of a particular AlN film.
     thickness : float
         Film thickness in metres.
     film_lam_back, film_rho_c_back : float or None
@@ -80,13 +79,14 @@ class Sample:
         Resistive relaxation time of the constitutive law, in seconds. Zero
         recovers Fourier conduction.
     nonlocal_time, sub_nonlocal_time : float
-        Nonlocal time of the Guyer-Krumhansl law, tau_l = 3 ell^2 / a, in
-        seconds. Zero reduces the law to Cattaneo.
+        Nonlocal time tau_l = L^2 / a, in seconds. Historical GK uses
+        L^2 = 3 ell^2; the conserving grey closure uses L^2 = 4 ell^2 / 3.
+        Zero reduces the law to Cattaneo. See note 14 for the conversion.
 
         Under Guyer-Krumhansl the effective conductivity becomes frequency
         dependent,
 
-            lambda_eff(p) = (lambda + 3 ell^2 p rho c) / (1 + tau_R p),
+            lambda_eff(p) = lambda * (1 + tau_l p) / (1 + tau_R p),
 
         and the response depends on the layer through two combinations only:
 

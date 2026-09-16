@@ -46,6 +46,11 @@ def figures():
             (ROOT/".build"/(script.stem+".txt")).write_text(output.getvalue(),encoding="utf-8")
             plt.close("all")
             print("FIGURE",script.stem,flush=True)
+        result=subprocess.run([sys.executable,"-X","utf8","-B",
+                               str(ROOT/"scripts/analyse_experiment.py")],
+                              cwd=ROOT,capture_output=True,check=True)
+        (ROOT/".build/experimental_analysis.txt").write_bytes(result.stdout)
+        print("FIGURE 06 and synthetic experimental analysis",flush=True)
     finally:
         os.chdir(prior)
 

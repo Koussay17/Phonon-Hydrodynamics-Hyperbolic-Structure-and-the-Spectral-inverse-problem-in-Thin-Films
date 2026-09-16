@@ -47,7 +47,7 @@ classique est donc absent.
 
 \subsection{Pourquoi cette équation n'est pas utilisable telle quelle}
 
-Elle est exacte, et pourtant inexploitable, pour trois raisons.
+C'est le point de départ cinétique sous les hypothèses semi-classiques retenues. Sa résolution directe reste coûteuse.
 
 L'inconnue $f(\mathbf{r}, \mathbf{k}, t)$ dépend de sept variables --- trois de position, trois de
 vecteur d'onde, une de temps --- et porte de surcroît un indice de branche.
@@ -98,13 +98,14 @@ fortement lorsque la température diminue, avant d'être limitée par d'autres m
 
 \subsection{Autres mécanismes résistifs}
 
-La diffusion par les frontières de l'échantillon, celle par les impuretés et celle par les isotopes
-ne conservent pas davantage le quasi-moment. Toutes sont résistives et se regroupent, avec les
-processus umklapp, sous un temps de relaxation unique noté $\tau_R$.
+La diffusion par les impuretés et les isotopes est regroupée avec les processus umklapp dans
+un temps résistif volumique $\tau_R$ du modèle gris. Les frontières interviennent par
+leurs conditions de bord et par un temps géométrique indicatif $\tau_B$ ; elles ne sont
+pas ajoutées une seconde fois dans ce $\tau_R$. Leur résistance dépend notamment de la spécularité.
 
 Dans un film mince, la diffusion aux frontières prend une importance particulière : dès que
-l'épaisseur devient comparable au libre parcours moyen, elle domine et la conductivité apparente
-chute.
+l'épaisseur devient comparable aux longueurs de transport pertinentes, elle peut réduire la
+conductivité apparente ; son importance exige le spectre et les propriétés des frontières.
 
 \subsection{Critère de Guyer}
 
@@ -150,10 +151,9 @@ Les calculs de premiers principes sur l'AlN wurtzite donnent, à basse fréquenc
 Le rapport $\tau_R/\tau_N$ varie donc comme $\omega^{-2}$ pour les modes transverses : il n'est en
 aucune façon constant sur le spectre.
 
-Les temps $\tau_N$ et $\tau_R$ qui apparaissent ensuite sont par conséquent des \textbf{moyennes
-pondérées sur le spectre}, non des grandeurs microscopiques élémentaires. Toute condition portant
-sur leur rapport --- et la partie~IV en produit une --- est une condition sur ces moyennes, non sur
-chaque mode.
+Les temps constants employés ensuite définissent un modèle gris. Leur interprétation comme
+paramètres effectifs exige une pondération dérivée de la fermeture, et non une moyenne choisie
+arbitrairement. La note~14 précise cette restriction ; aucune moyenne spectrale de l'AlN n'est fournie.
 
 \subsection{Ce qu'elle préserve}
 
@@ -216,46 +216,34 @@ Aucun niveau ne se referme de lui-même. Obtenir un système fini exige d'exprim
 fonction des précédents, par une hypothèse qui ne découle pas de l'équation de transport. C'est la
 \emph{fermeture}, et c'est là que réside tout le contenu physique de l'approximation.
 
-\section{Fermeture et équation de Guyer--Krumhansl}
+\section{Fermeture et convention constitutive}
+La dérivation complète est désormais donnée dans la note~14. Dans le modèle
+gris linéarisé, $Q_{ij}=Cv^2\theta\,\delta_{ij}/3+\Pi_{ij}$ et
+$\Pi_{ii}=0$. Avec
+$\tau_c=(\tau_N^{-1}+\tau_R^{-1})^{-1}$, l'élimination du moment rapide donne
+\[
+ \Pi_{ij}=-\frac{v^2\tau_c}{5}
+ \left(\partial_iq_j+\partial_jq_i-\frac23\delta_{ij}\nabla\cdot\mathbf q\right).
+\]
+La divergence du tenseur conduit à
+\[
+ \tau_R\partial_t\mathbf q+\mathbf q=-\lambda\nabla T+
+ \ell_c^2\left[\nabla^2\mathbf q+\frac13\nabla(\nabla\cdot\mathbf q)\right],
+ \quad
+ \lambda=\frac13Cv^2\tau_R,\quad \ell_c^2=\frac15v^2\tau_R\tau_c .
+\]
+La limite collective donne $\tau_c\simeq\tau_N$.
+Elle exige $\tau_N/\tau_R\ll1$, $|p|\tau_N\ll1$ et $v\tau_N/L\ll1$.
+La projection sans trace préserve la définition énergétique de la température.
 
-\subsection{Développement}
-
-La fermeture retenue consiste à développer la distribution autour de la forme déplacée, au premier
-ordre en gradients et dans la limite où les processus normaux sont fréquents devant les processus
-résistifs. Le tenseur $\mathbf{Q}$ se décompose alors en une partie isotrope, qui redonne le terme
-de Fourier, et une partie déviatorique proportionnelle aux gradients du flux.
-
-\subsection{L'équation}
-
-\[ \boxed{\;\tau_R\,\frac{\partial \mathbf{q}}{\partial t} + \mathbf{q}
-= -\,\lambda\,\nabla T \;+\; \ell^2\left(\nabla^2 \mathbf{q}
-+ 2\,\nabla\,(\nabla \cdot \mathbf{q})\right)\;} \]
-
-Trois familles de termes y coexistent.
-
-Le terme en $\tau_R\,\partial_t \mathbf{q}$ exprime que le flux ne s'établit pas instantanément : il
-lui faut un temps $\tau_R$ pour répondre à un gradient. En l'absence du terme
-non local, le système de Cattaneo est hyperbolique et sa vitesse est finie.
-Avec $\ell>0$, GK comporte une diffusion du flux et n'a pas cette propriété
-de propagation finie ; voir la note de partie II.
-
-Le terme en $-\lambda \nabla T$ est la loi de Fourier.
-
-Les termes en $\ell^2$ sont \emph{non locaux} : le flux en un point dépend de sa valeur au
-voisinage. Ils sont formellement analogues aux termes visqueux de l'équation de Navier--Stokes, et
-c'est à eux que le gaz de phonons doit son caractère hydrodynamique.
-
-\subsection{Les coefficients}
-Les coefficients suivants sont ceux de la fermeture isotrope dans la limite
-de processus normaux dominants (Lebon et Dauby, Phys. Rev. A \textbf{42}, 4710, 1990).
-Leur dérivation complète depuis la hiérarchie des moments reste à rédiger ;
-cette note en expose la structure, sans prétendre accomplir la fermeture.
-
-\[ \lambda = \frac{1}{3}\,C\,v^2\,\tau_R , \qquad\qquad
-\ell^2 = \frac{1}{5}\,v^2\,\tau_N\,\tau_R . \]
-
-La conductivité est proportionnelle au temps résistif : plus les processus umklapp sont rares, plus
-le cristal conduit. La longueur non locale, elle, fait intervenir les \emph{deux} temps.
+La forme GK historique remplace $1/3$ par $2$. Elle est utilisée dans les
+notes antérieures comme modèle constitutif, mais n'est pas le résultat de
+cette fermeture conservatrice. La différence est discutée dans Sendra et al.,
+Phys. Rev. B \textbf{106}, 155301 (2022), équation (21).
+Les deux conventions ont les mêmes limites Fourier et Cattaneo.
+En 1D on pose $L^2=(1+\alpha)\ell^2$ et $\tau_\ell=L^2/a$ :
+$\alpha=2$ pour GK historique, $\alpha=1/3$ pour la fermeture conservatrice.
+Le code utilise directement $\tau_\ell$, sans imposer une interprétation de $\ell$.
 
 \section{Les limites}
 
@@ -310,7 +298,7 @@ avec cette fermeture, et ne doit pas être assimilée à une longueur grise issu
 
 \subsection{Conséquence pour l'invariance d'échelle}
 Dans le modèle homogène 1D du projet, la réponse dépend de
-$b,\xi_1,\tau_R$ et $\tau_\ell=3\ell^2/a$.
+$b,\xi_1,\tau_R$ et $\tau_\ell=L^2/a$, avec $L^2=3\ell^2$ dans la convention historique.
 La transformation $d\mapsto\mu d$, $\lambda\mapsto\mu\lambda$,
 $C\mapsto C/\mu$, $\ell\mapsto\mu\ell$ conserve ces quatre quantités.
 La longueur non locale ne lève donc pas la dégénérescence lorsque ces paramètres sont libres.
@@ -364,6 +352,6 @@ hydrodynamic phenomena in nonmetallic crystals}, Phys. Rev. \textbf{148}, 778 (1
 
 \vspace{4pt}
 \noindent\small
-Références à vérifier à la source avant citation. Notes associées : \texttt{08\_\allowbreak Le\_\allowbreak gaz\_\allowbreak de\_\allowbreak phonons},
+La fermeture grise et ses contrôles sont détaillés dans la note~14 ; la comparaison des sources et ses limites d'accès figurent dans la note~15. Notes associées : \texttt{08\_\allowbreak Le\_\allowbreak gaz\_\allowbreak de\_\allowbreak phonons},
 \texttt{07\_\allowbreak Note\_\allowbreak partie\_\allowbreak IV}.
 \end{document}

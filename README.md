@@ -3,7 +3,7 @@
 **From Kinetic Closure to the Limits of Thermal Depth Profiling**
 
 > Research in progress — CRTEn internship, September 2026–January 2027.
-> Corrected baseline: 15 September 2026. No experimental validation or general novelty claim.
+> Corrected baseline and research continuation: 16 September 2026. No experimental validation or general novelty claim.
 
 ## Scope
 
@@ -15,11 +15,11 @@ their kinetics, entropy, transport regimes and inverse problems.
 
 | Part | Status |
 |---|---|
-| I — kinetic closure | Course notes/exercises; complete closure remains unwritten. |
+| I — kinetic closure | Linear grey conserving closure derived and checked (note 14); spectral AlN closure remains open. |
 | II — admissibility | Near-equilibrium entropy and homogeneous propagation checks; GK infinite speed requires a nonzero nonlocal term. |
 | III — AlN regimes | Paired approximate mode readings at 300 K; no full-spectrum classification or temperature trajectory. |
 | IV — inverse problem | Homogeneous scale invariance, conditional sensitivities and reproduction of Fourier resonance. |
-| Laboratory tools | Synthetic tools available; sample geometry, calibration, nuisance parameters and real-data validation remain required. |
+| Laboratory tools | Axisymmetric Fourier FDTR model and synthetic nuisance-parameter study (note 16); actual sample/calibration/data required. |
 
 ## Corrected conclusions
 
@@ -32,7 +32,7 @@ their kinetics, entropy, transport regimes and inverse problems.
   Spectral angle and half-space phase are algebraically related.
 - `τ_R=τ_ℓ` gives **Fourier resonance**, established prior art, under the
   homogeneous source-free, zero-initial-perturbation boundary-value problem.
-- The formal kinetic ratio `τ_R/τ_N=1.8` lacks the strong separation required
+- Under the historical GK convention, the formal kinetic ratio `τ_R/τ_N=1.8` lacks the strong separation required
   for hydrodynamic closure and does not prove a temperature-dependent crossing.
 - `3λ/(Cv)` is a **grey conductivity-derived length**, not an all-collision
   mean free path. Comparing apparent film conductivity with bulk is meaningful.
@@ -63,10 +63,11 @@ Real detectability depends on noise, calibration and nuisance parameters.
 |---|---|
 | `notes/` | Authored LaTeX/PDF notes, conventions and third-party reference PDFs. |
 | `src/` | Transfer matrices, stable homogeneous impedance responses, Stehfest inversion, fitting and Bayesian sampling. |
-| `notebooks/` | Four figure scripts and one notebook. |
+| `notebooks/` | Four figure scripts and one notebook; the experimental figure is produced by scripts/analyse_experiment.py. |
 | `tests/` | Analytical benchmarks, regressions and synthetic estimator checks. |
 | `figures/` | Generated figures. |
-| `theory/`, `paper/` | Placeholders; no completed manuscript is implied. |
+| `theory/` | Reproducible synthetic results, source-access record and experimental input checklist. |
+| `paper/` | Placeholder; no completed manuscript is implied. |
 | `data/` | README; laboratory files excluded by .gitignore. |
 | `scripts/` | Figure and PDF rebuild command. |
 
@@ -97,9 +98,38 @@ they are distinct from the authored notes and remain intact.
 
 ## Work before extending the conclusions
 
-Complete the kinetic closure, justify spectral averaging and a temperature trajectory,
-compare remaining prior work, then specify the actual sample, beams, interfaces,
-calibration, frequencies and noise for experimental inversion.
+The grey kinetic derivation is complete in note 14. It gives a longitudinal
+coefficient 4 ell²/3, compared with 3 ell² for historical GK. Both use the
+existing solver through nonlocal_time=L²/a; interpreting that time requires
+an explicit closure convention. The conserving leading-order conversion is
+tau_l=4 tau_N/5, rather than the historical 9 tau_N/5.
+
+Note 15 compares the accessible primary sources and checks the Hennessy–Myers
+1D limit and an independently constructed Darboux profile. The full Krapez
+IJHMT 2016 text and Camacho supplement remain unavailable; their detailed
+comparison is explicitly incomplete.
+
+Note 16 supplies an axisymmetric Fourier FDTR baseline and an entirely synthetic
+design study, including a transducer, two interfaces, Gaussian beams and
+calibration parameters. At the illustrative conductivity of 60 W/(m K),
+the local uncertainty grows from 0.58% with two free thermal parameters to
+7.33% with ten free parameters. These are conditional design calculations,
+not measured AlN properties.
+
+Next inputs needed: actual sample, beams, interfaces, calibration, frequencies
+and noise. Spectral averaging and an AlN temperature trajectory remain open.
+
+### New deliverables
+
+- [14 — kinetic derivation](notes/14_Derivation_fermeture_cinetique.pdf)
+- [15 — comparison with prior work](notes/15_Comparaison_travaux_anterieurs.pdf)
+- [16 — experimental preparation](notes/16_Analyse_experimentale_FDTR.pdf)
+- [Synthetic results](theory/experimental_results.json)
+- [Experimental input checklist](theory/experimental_inputs.template.json)
+- [Source access record](theory/source_access.md)
+
+Reproduce the synthetic study with: python -X utf8 -B scripts/analyse_experiment.py.
+It uses no laboratory data. The full rebuild command also regenerates this study.
 
 ---
 
@@ -153,9 +183,11 @@ Reference text for the transfer matrix formalism used throughout `src/`.
 
 **R. Kovács**, [Analytic solution of Guyer–Krumhansl equation for laser flash experiments](https://arxiv.org/abs/1804.05225) (2018). Fourier resonance is established prior art.
 
-**M. G. Hennessy, T. G. Myers**, [Guyer–Krumhansl Heat Conduction in Thermoreflectance Experiments](https://doi.org/10.1007/978-3-030-64272-3_2) (2021). Complete comparison remains pending.
+**M. G. Hennessy, T. G. Myers**, [Guyer–Krumhansl Heat Conduction in Thermoreflectance Experiments](https://doi.org/10.1007/978-3-030-64272-3_2) (2021). Accepted manuscript compared in note 15; its 1D phase agrees after convention conversion.
 
 **G. Lebon, P. C. Dauby**, [Phys. Rev. A 42, 4710](https://doi.org/10.1103/PhysRevA.42.4710) (1990). Kinetic coefficients and assumptions.
+
+**L. Sendra et al.**, [Phys. Rev. B 106, 155301 (2022)](https://doi.org/10.1103/PhysRevB.106.155301). Conserving longitudinal coefficient and general dispersion.
 
 ## Licence
 
