@@ -1,0 +1,255 @@
+{
+  "temperature_K": 300,
+  "model": "Rao dataset; diagonal RTA postprocessing",
+  "C_J_m3K": 2434255.791302975,
+  "cell_volume_m3": 4.092987467964552e-29,
+  "normal_umklapp_split_available": false,
+  "minimum_positive_frequency_THz": 0.49928810509779453,
+  "basal_grazing_weight_fraction_abs_vz_lt_1e_10": 0.12966485991612772,
+  "gamma_zero_modes": 3,
+  "gamma_capacity_fraction": 3.0072129675253946e-05,
+  "directions": {
+    "basal": {
+      "kappa": 309.77515678492,
+      "velocity_moment": 12900772000886.66,
+      "tau_static_s": 2.4012141038042484e-11,
+      "tau_memory_s": 1.4930400592044724e-10,
+      "normal_mfp_quantiles_m_10_50_90": [
+        0.0,
+        5.33285083118117e-08,
+        9.776905869534365e-07
+      ],
+      "branch_4_to_12_fraction": 0.18543721310519606
+    },
+    "c_axis": {
+      "kappa": 302.44261601535095,
+      "velocity_moment": 14695111944316.703,
+      "tau_static_s": 2.0581171287525977e-11,
+      "tau_memory_s": 2.3165515125784469e-10,
+      "normal_mfp_quantiles_m_10_50_90": [
+        2.9021997538392285e-08,
+        1.613234454175364e-07,
+        3.427117109339585e-06
+      ],
+      "branch_4_to_12_fraction": 0.18802860585384717
+    }
+  },
+  "branches": [
+    {
+      "index": 1,
+      "frequency_min_THz": 0.0,
+      "frequency_max_THz": 10.761844531743225,
+      "C_J_m3K": 305215.1290066311,
+      "kappa_basal_W_mK": 86.43729486818302,
+      "kappa_c_W_mK": 90.32412003820845
+    },
+    {
+      "index": 2,
+      "frequency_min_THz": 0.0,
+      "frequency_max_THz": 10.761844531743225,
+      "C_J_m3K": 297959.02183051384,
+      "kappa_basal_W_mK": 84.23323301140744,
+      "kappa_c_W_mK": 81.48541368989862
+    },
+    {
+      "index": 3,
+      "frequency_min_THz": 0.0,
+      "frequency_max_THz": 12.639061594961518,
+      "C_J_m3K": 278872.916397783,
+      "kappa_basal_W_mK": 81.6607871419088,
+      "kappa_c_W_mK": 73.765218847087
+    },
+    {
+      "index": 4,
+      "frequency_min_THz": 5.267830641916475,
+      "frequency_max_THz": 14.079127861932973,
+      "C_J_m3K": 266740.7054261831,
+      "kappa_basal_W_mK": 25.531634782745094,
+      "kappa_c_W_mK": 26.93963884000953
+    },
+    {
+      "index": 5,
+      "frequency_min_THz": 6.554336279552758,
+      "frequency_max_THz": 17.28073911427241,
+      "C_J_m3K": 233638.6885372687,
+      "kappa_basal_W_mK": 23.328332191227,
+      "kappa_c_W_mK": 19.49313735074702
+    },
+    {
+      "index": 6,
+      "frequency_min_THz": 10.76403239973182,
+      "frequency_max_THz": 17.28382603580214,
+      "C_J_m3K": 209430.7974365626,
+      "kappa_basal_W_mK": 4.466396866509635,
+      "kappa_c_W_mK": 6.318725128096256
+    },
+    {
+      "index": 7,
+      "frequency_min_THz": 18.616117571185427,
+      "frequency_max_THz": 20.383210495742816,
+      "C_J_m3K": 159446.80926968635,
+      "kappa_basal_W_mK": 0.3664465970512867,
+      "kappa_c_W_mK": 0.9517622695989747
+    },
+    {
+      "index": 8,
+      "frequency_min_THz": 19.162578948995918,
+      "frequency_max_THz": 20.479352813765775,
+      "C_J_m3K": 152333.77940793458,
+      "kappa_basal_W_mK": 0.2993416904997241,
+      "kappa_c_W_mK": 0.13285533948231198
+    },
+    {
+      "index": 9,
+      "frequency_min_THz": 20.136765862281084,
+      "frequency_max_THz": 21.283689126149422,
+      "C_J_m3K": 146459.8307369801,
+      "kappa_basal_W_mK": 0.2254665722853963,
+      "kappa_c_W_mK": 0.09558214698789355
+    },
+    {
+      "index": 10,
+      "frequency_min_THz": 20.263968938575324,
+      "frequency_max_THz": 21.368830543097403,
+      "C_J_m3K": 144471.40785928222,
+      "kappa_basal_W_mK": 0.1935839025229385,
+      "kappa_c_W_mK": 0.07917249466606285
+    },
+    {
+      "index": 11,
+      "frequency_min_THz": 20.452832570950456,
+      "frequency_max_THz": 24.71059251150657,
+      "C_J_m3K": 127687.15819751378,
+      "kappa_basal_W_mK": 0.437529618984023,
+      "kappa_c_W_mK": 1.5895397286967523
+    },
+    {
+      "index": 12,
+      "frequency_min_THz": 21.915813344332452,
+      "frequency_max_THz": 27.51215019911543,
+      "C_J_m3K": 111999.54719663535,
+      "kappa_basal_W_mK": 2.595109541595633,
+      "kappa_c_W_mK": 1.267450141872067
+    }
+  ],
+  "thickness_diagnostics": [
+    {
+      "thickness_m": 3e-08,
+      "basal_weight_Knz_gt_0.1": 0.84956660159804,
+      "basal_weight_Knz_gt_1.0": 0.6208690795762704,
+      "c_axis_weight_Knz_gt_0.1": 0.9989130518494098,
+      "c_axis_weight_Knz_gt_1.0": 0.8952851936374451,
+      "inplane_kappa_p_0.0": 110.03177680657413,
+      "inplane_kappa_p_0.5": 149.43728317404012,
+      "inplane_kappa_p_1.0": 309.77515678492
+    },
+    {
+      "thickness_m": 5e-07,
+      "basal_weight_Knz_gt_0.1": 0.5198229250948405,
+      "basal_weight_Knz_gt_1.0": 0.17240585518574633,
+      "c_axis_weight_Knz_gt_0.1": 0.7865460940378687,
+      "c_axis_weight_Knz_gt_1.0": 0.3481882573821149,
+      "inplane_kappa_p_0.0": 231.64305824885136,
+      "inplane_kappa_p_0.5": 258.5690965263813,
+      "inplane_kappa_p_1.0": 309.77515678492
+    },
+    {
+      "thickness_m": 5e-06,
+      "basal_weight_Knz_gt_0.1": 0.17240585518574633,
+      "basal_weight_Knz_gt_1.0": 2.2480920305408058e-64,
+      "c_axis_weight_Knz_gt_0.1": 0.3481882573821149,
+      "c_axis_weight_Knz_gt_1.0": 0.07298253587432472,
+      "inplane_kappa_p_0.0": 290.9565816079037,
+      "inplane_kappa_p_0.5": 299.87820897465,
+      "inplane_kappa_p_1.0": 309.77515678492
+    },
+    {
+      "thickness_m": 2e-05,
+      "basal_weight_Knz_gt_0.1": 0.057351977615375666,
+      "basal_weight_Knz_gt_1.0": 0.0,
+      "c_axis_weight_Knz_gt_0.1": 0.16458406321874472,
+      "c_axis_weight_Knz_gt_1.0": 0.0,
+      "inplane_kappa_p_0.0": 304.52785526396826,
+      "inplane_kappa_p_0.5": 307.1503954761878,
+      "inplane_kappa_p_1.0": 309.77515678492
+    },
+    {
+      "thickness_m": 0.0005,
+      "basal_weight_Knz_gt_0.1": 0.0,
+      "basal_weight_Knz_gt_1.0": 0.0,
+      "c_axis_weight_Knz_gt_0.1": 0.0,
+      "c_axis_weight_Knz_gt_1.0": 0.0,
+      "inplane_kappa_p_0.0": 309.56508686172924,
+      "inplane_kappa_p_0.5": 309.6701218233246,
+      "inplane_kappa_p_1.0": 309.77515678492
+    }
+  ],
+  "harmonic_capacity_trajectory": [
+    {
+      "T_K": 30,
+      "C_J_m3K": 11569.775869139004,
+      "branch_4_to_12_fraction": 0.005941606254259775
+    },
+    {
+      "T_K": 50,
+      "C_J_m3K": 69220.3210739392,
+      "branch_4_to_12_fraction": 0.05872048489471258
+    },
+    {
+      "T_K": 75,
+      "C_J_m3K": 240163.92862685278,
+      "branch_4_to_12_fraction": 0.14800919614703134
+    },
+    {
+      "T_K": 100,
+      "C_J_m3K": 478478.7998267638,
+      "branch_4_to_12_fraction": 0.237972444831622
+    },
+    {
+      "T_K": 150,
+      "C_J_m3K": 1021911.8507211739,
+      "branch_4_to_12_fraction": 0.40362383352137315
+    },
+    {
+      "T_K": 200,
+      "C_J_m3K": 1567129.3707086034,
+      "branch_4_to_12_fraction": 0.5208887539633046
+    },
+    {
+      "T_K": 250,
+      "C_J_m3K": 2046123.2415217704,
+      "branch_4_to_12_fraction": 0.5931945373477309
+    },
+    {
+      "T_K": 300,
+      "C_J_m3K": 2434255.791302975,
+      "branch_4_to_12_fraction": 0.6376522671174183
+    },
+    {
+      "T_K": 400,
+      "C_J_m3K": 2972206.6897844444,
+      "branch_4_to_12_fraction": 0.6851660247942329
+    },
+    {
+      "T_K": 600,
+      "C_J_m3K": 3499120.6918341834,
+      "branch_4_to_12_fraction": 0.7207787357267916
+    },
+    {
+      "T_K": 800,
+      "C_J_m3K": 3722664.5344023667,
+      "branch_4_to_12_fraction": 0.7334986734110583
+    },
+    {
+      "T_K": 1000,
+      "C_J_m3K": 3834483.1533940006,
+      "branch_4_to_12_fraction": 0.73942202507657
+    }
+  ],
+  "temperature_transport_scope": "Independent published bulk kappa(T); no modal rate trajectory inferred.",
+  "temperature_display_range_K": [
+    100,
+    1000
+  ],
+  "high_T_fit_exponent_RTA_c_400_1000": 1.1440172606563102
+}

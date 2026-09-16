@@ -1,0 +1,63 @@
+{
+  "rao": {
+    "doi": "10.17632/w9hg2mnnwy.1",
+    "url": "https://data.mendeley.com/public-files/datasets/w9hg2mnnwy/files/c91f4a36-8294-4e63-99ee-a2d1528d21ba/file_downloaded",
+    "archive_sha256": "ee51e6c7e7c51105504bed98298f96826fcd56ac5542c686f6955d33496d0709",
+    "license": "CC BY 4.0",
+    "temperature_K": 300,
+    "irreducible_q": 793,
+    "branches": 12,
+    "full_q": 13824,
+    "references": {
+      "C_J_m3K": 2434255.36067354,
+      "kappa_RTA_W_mK": [
+        [
+          309.78,
+          3.2983e-14,
+          -2.0893e-18
+        ],
+        [
+          3.2699e-14,
+          309.78,
+          -2.0063e-18
+        ],
+        [
+          2.715e-18,
+          -1.475e-18,
+          302.45
+        ]
+      ],
+      "kappa_iterative_W_mK": [
+        [
+          344.25,
+          3.6323e-14,
+          -7.9056e-19
+        ],
+        [
+          3.8602e-14,
+          344.25,
+          5.7711e-19
+        ],
+        [
+          4.9128e-19,
+          1.1745e-18,
+          342.68
+        ]
+      ]
+    },
+    "normal_umklapp_split_available": false,
+    "conversion": "rad/ps -> rad/s, km/s -> m/s, ps^-1 -> s^-1. q index first then branch. Original arrays retained, no fitted rates."
+  },
+  "olympics": {
+    "doi": "10.1063/5.0289819",
+    "url": "https://raw.githubusercontent.com/McGaughey-Lab/Phonon-Olympics/0640f07735059be9717a7565c2a0f22dc0da7a17/Aluminum%20Nitride/ShengBTE/AlN_final%20result/5.thermal%20conductivity/Thermal%20conductivity%20vs%20Temperature.xlsx",
+    "sha256": "b7c07d2170e9047250f9fcd1da4a188f4086a452012746364e042dff1309cf67",
+    "commit": "0640f07735059be9717a7565c2a0f22dc0da7a17"
+  },
+  "missing": [
+    "mode-resolved N/U separation versus temperature",
+    "full collision operator for dynamic GK closure",
+    "mesh convergence for the Rao dataset and derived higher moments",
+    "sample defect populations and boundary properties"
+  ]
+}

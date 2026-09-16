@@ -341,7 +341,8 @@ Les priors log-uniformes bornés sont des hypothèses explicites.
 
 La fermeture grise est dérivée dans la note 14, les comparaisons sont dans la
 note 15, l'étude expérimentale synthétique dans la note 16.
-Restent : fermeture/spectre propre à l'AlN, trajectoire en température,
+La note 17 ajoute le spectre RTA à 300 K et une trajectoire massive publiée.
+Restent : fermeture dynamique de l'AlN et trajectoire N/U en température,
 géométrie/calibration du banc et données réelles. Le texte intégral IJHMT de
 Krapez 2016 et le supplément Camacho n'ont pas été obtenus.
 
@@ -354,3 +355,17 @@ La phase est l'argument de la moyenne complexe, pas une moyenne de phases.
 Cette base ne contient pas les conditions de bord hydrodynamiques 3D de Beardo.
 scripts/analyse_experiment.py produit uniquement des résultats synthétiques
 définis dans theory/experimental_results.json et la figure 06.
+
+## 17. Traitement spectral AlN
+
+Les données Rao comportent 12 branches à 300 K. Les taux anharmoniques
+ne séparent pas normal et umklapp ; plus/minus désignent absorption/émission.
+Les temps statique et mémoire ont des pondérations différentes et ne sont
+pas des temps GK identifiés. Les opérateurs conservateurs demandent la zone
+complète ou une reconstruction explicite des symétries.
+
+La loi de suppression de src/spectral.py concerne la conduction parallèle
+entre surfaces réfléchissantes, sous RTA stationnaire. Pas de double comptage
+des frontières, ni de transposition directe à FDTR transversal.
+La courbe kappa(T) publiée et le spectre Rao sont deux calculs indépendants.
+C(T) est harmonique, à fréquences fixes ; les durées ne sont pas extrapolées.
