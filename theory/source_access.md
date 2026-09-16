@@ -1,6 +1,6 @@
 # Primary-source access record — 16 September 2026
 
-This records what was actually consulted. Downloaded papers remain in the ignored local .build/research folder; no new third-party PDFs are added to the repository.
+This records what was actually consulted. Downloaded papers remain in the ignored local .build/research folder; no new third-party PDFs are added to the repository. The later spectral extension adds an attributed CC BY numerical subset, not a paper PDF.
 
 | Source | Access and use |
 |---|---|
@@ -19,4 +19,14 @@ This records what was actually consulted. Downloaded papers remain in the ignore
 - Note 14 completes the linear grey conserving moment closure under its stated asymptotic assumptions.
 - Note 15 compares the accessible sources and identifies exactly which full-text comparisons remain blocked.
 - Note 16 and the FDTR code provide a synthetic preparation study. Actual sample geometry, calibration, noise and measurements are still needed.
-- A spectral AlN closure and a temperature trajectory require justified mode-resolved inputs; neither is fabricated from a few modal readings.
+- Note 17 now adds a published 300 K spectral dataset and a separate bulk conductivity temperature table; the quantitative normal/resistive dynamic closure remains open.
+
+## Spectral AlN extension — 16 September 2026
+
+- [Rao et al. dataset, DOI 10.17632/w9hg2mnnwy.1](https://data.mendeley.com/datasets/w9hg2mnnwy/1): archive retrieved through its public file endpoint, published SHA-256 verified. Raw AlN ShengBTE files and MATLAB sampling script inspected. Only T300K is present; no N/U split. A converted CC BY subset is included under theory/aln with attribution; the full archive stays ignored.
+- [McGaughey et al., Phonon Olympics](https://doi.org/10.1063/5.0289819): accessible [NIMS paper](https://mdr.nims.go.jp/filesets/3113ca3b-841a-4fe0-bc12-d2b28c9eea1c/download), AlN section, tables XII–XIII, convergence discussion and data-availability statement consulted. The [author repository](https://github.com/McGaughey-Lab/Phonon-Olympics) was inspected at commit 0640f07735059be9717a7565c2a0f22dc0da7a17. The numerical temperature spreadsheet and associated CONTROL were read; rate-file header inspected only. Force constants were located but no BTE calculation was rerun.
+- [Morelli and Slack chapter](https://djena.engineering.cornell.edu/hws/slack_high_thermal_conductivity_solids.pdf): public chapter consulted, notably table 2.3 and discussion of AlN defects. Its global parameters were not substituted for branch-resolved N/U rates.
+- [Ravichandran and Minnich (2016)](https://doi.org/10.1103/PhysRevB.93.035314): [accepted manuscript](https://link.aps.org/accepted/10.1103/PhysRevB.93.035314) accessible; steady-state film formulation and boundary conditions consulted. Our modal stationary suppression is independently derived and checked against transport ODE integration; the paper's transient calculation is not reproduced.
+- [ShengBTE official documentation page](https://www.shengbte.org/documentation) links to the Bitbucket README; direct retrieval of that README was unsuccessful. Output-unit descriptions were read in a [public code mirror](https://github.com/wxmwy/ShengBTE), then independently checked by reconstructing the original dataset's heat capacity and RTA conductivities. No software version-specific N/U output capability is assumed.
+
+Note 17 provides a 300 K spectral baseline and a sourced bulk conductivity trajectory. It does not claim a normal/resistive temperature trajectory, a converged AlN GK closure, or a cross-plane film prediction.

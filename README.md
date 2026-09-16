@@ -15,9 +15,9 @@ their kinetics, entropy, transport regimes and inverse problems.
 
 | Part | Status |
 |---|---|
-| I — kinetic closure | Linear grey conserving closure derived and checked (note 14); spectral AlN closure remains open. |
+| I — kinetic closure | Linear grey conserving closure derived and checked (note 14); spectral data and conserving projection framework added (note 17); quantitative AlN GK closure remains open. |
 | II — admissibility | Near-equilibrium entropy and homogeneous propagation checks; GK infinite speed requires a nonzero nonlocal term. |
-| III — AlN regimes | Paired approximate mode readings at 300 K; no full-spectrum classification or temperature trajectory. |
+| III — AlN regimes | Twelve-branch RTA spectrum at 300 K and published bulk conductivity trajectory; no validated N/U hydrodynamic classification. |
 | IV — inverse problem | Homogeneous scale invariance, conditional sensitivities and reproduction of Fourier resonance. |
 | Laboratory tools | Axisymmetric Fourier FDTR model and synthetic nuisance-parameter study (note 16); actual sample/calibration/data required. |
 
@@ -117,19 +117,30 @@ the local uncertainty grows from 0.58% with two free thermal parameters to
 not measured AlN properties.
 
 Next inputs needed: actual sample, beams, interfaces, calibration, frequencies
-and noise. Spectral averaging and an AlN temperature trajectory remain open.
+and noise. Note 17 adds spectral AlN sums and a published bulk temperature
+trajectory; separate normal/resistive rates and a validated dynamic closure
+remain missing.
 
 ### New deliverables
 
 - [14 — kinetic derivation](notes/14_Derivation_fermeture_cinetique.pdf)
 - [15 — comparison with prior work](notes/15_Comparaison_travaux_anterieurs.pdf)
 - [16 — experimental preparation](notes/16_Analyse_experimentale_FDTR.pdf)
+- [17 — spectral AlN, temperature and boundaries](notes/17_AlN_spectral_temperature.pdf)
+- [Spectral data, attribution and reproducibility](theory/aln/README.md)
 - [Synthetic results](theory/experimental_results.json)
 - [Experimental input checklist](theory/experimental_inputs.template.json)
 - [Source access record](theory/source_access.md)
 
 Reproduce the synthetic study with: python -X utf8 -B scripts/analyse_experiment.py.
-It uses no laboratory data. The full rebuild command also regenerates this study.
+It uses no laboratory data. The full rebuild command also regenerates this study and the AlN spectral figures.
+Reproduce the spectral study offline with: python -X utf8 -B scripts/analyse_aln_spectrum.py.
+
+The new AlN inputs are published calculations, not laboratory measurements.
+At 300 K, the source RTA capacity and conductivities are reproduced; this
+checks unit conversion and quadrature weights, not mesh convergence. The
+in-plane surface calculation is not a cross-plane FDTR prediction.
+The full test suite now contains 200 passing tests.
 
 ---
 
@@ -192,7 +203,8 @@ Reference text for the transfer matrix formalism used throughout `src/`.
 ## Licence
 
 Code in `src/`, `tests/` and `notebooks/` is released under the MIT licence. Manuscript text and
-figures are not covered by it. Laboratory data is not distributed.
+figures are not covered by it. The converted Rao data retain CC BY 4.0;
+see theory/aln/README.md for attribution. Laboratory data is not distributed.
 
 ---
 

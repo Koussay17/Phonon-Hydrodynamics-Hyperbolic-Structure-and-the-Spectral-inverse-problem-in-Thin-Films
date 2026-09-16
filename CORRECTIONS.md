@@ -106,8 +106,9 @@ updated to agree with the new derivation. Pagination can change with content.
 ## Research that remains open
 
 The grey derivation is complete within its assumptions. A spectral AlN
-closure, justified spectral averaging and the temperature trajectory remain
-open. The full Krapez 2016 sources and Camacho supplementary material are
+dynamic closure and the normal/resistive temperature trajectory remain
+open. Note 17 now supplies observable-specific spectral averages, a 300 K
+RTA spectrum, harmonic capacity and a published bulk conductivity trajectory. The full Krapez 2016 sources and Camacho supplementary material are
 still missing; the literature comparison explicitly identifies these gaps.
 Real experimental analysis requires sample properties, geometry, calibration
 and measured data. The new Fourier baseline is not a three-dimensional GK
@@ -122,3 +123,19 @@ The original repository was backed up separately before editing.
 
 The continuation described above is included in this revision. The earlier
 update archive covers only the initial correction pass.
+
+## Spectral AlN continuation — 16 September 2026
+
+- Note 17 preserves the original note layout and documents mode weights,
+  two distinct lifetime averages, conserving collision projections and
+  free-flight versus viscous wall times.
+- Published CC BY AlN data: 12 branches, 793 irreducible points, 24^3 grid,
+  300 K; archive checksum verified and SI conversion reproducible.
+- Published bulk temperature table is kept separate from the spectral source.
+- Steady in-plane boundary suppression is checked against an independent
+  transport ODE; no cross-plane FDTR or hydrodynamic prediction is claimed.
+- 200 tests passed without warnings in the full numerical run.
+- Source-rate separation, collision matrix and q-grid convergence remain open.
+
+Notes 14–16 were pushed in commit 951d254. This revision includes the
+spectral AlN continuation described above.
