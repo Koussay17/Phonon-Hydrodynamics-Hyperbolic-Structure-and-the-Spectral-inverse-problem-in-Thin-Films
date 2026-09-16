@@ -1,0 +1,289 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Fermeture cinétique : dérivation complète}\\[4pt]
+{\normalsize Modèle gris isotrope, conservation et convention GK historique}\\[2pt]
+{\small Partie I --- 16 septembre 2026}
+\end{center}
+
+\section{Résultat et domaine de validité}
+On achève ici la fermeture \emph{linéaire, grise et isotrope} annoncée dans la note~09.
+On ne dérive pas un modèle spectral de l'AlN réel. Le calcul ci-dessous est explicite :
+distribution déplacée, moments angulaires, projection déviatorique, élimination du
+moment rapide, puis réduction au modèle de face avant.
+
+Une distinction est nécessaire. Avec la température définie par l'énergie locale,
+la fermeture conservatrice donne
+\[
+ \tau_R\partial_t\mathbf q+\mathbf q=-\lambda\nabla T+
+ \ell^2\left[\nabla^2\mathbf q+\frac13\nabla(\nabla\cdot\mathbf q)\right],
+ \qquad
+ \lambda=\frac13Cv^2\tau_R,\quad
+ \ell^2=\frac15v^2\tau_N\tau_R .
+\]
+Les coefficients microscopiques sont ici donnés à l'ordre dominant en
+$\tau_N/\tau_R$. Le coefficient $1/3$ diffère du $2$ de l'équation GK
+historique employée jusqu'ici. Cette différence n'est pas une découverte du
+projet : voir Sendra et al. (2022), équation~(21), et Struchtrup (2025).
+La dérivation indépendante qui suit indique exactement où intervient la trace.
+
+Hypothèses : cristal uniforme, vitesse $v$ commune aux modes, dispersion
+$\omega_{\mathbf k}=v|\mathbf k|$, temps $\tau_N,\tau_R$ constants et positifs,
+petites perturbations autour de $T_0$, collisions conservant l'énergie,
+pas de source volumique. Les temps résistifs sont ceux du \emph{volume}
+(umklapp, défauts, isotopes dans l'approximation grise). Les frontières demandent
+des conditions de bord ; on ne les compte pas une seconde fois dans $\tau_R$.
+L'élimination du moment rapide exige $|p|\tau_N\ll1$ et
+$v\tau_N/L\ll1$ ; la limite collective ajoute $\tau_N/\tau_R\ll1$.
+$L$ est l'échelle des variations, qui peut être plus petite que l'épaisseur.
+
+\section{Équilibre déplacé et compatibilité}
+Posons $\epsilon_{\mathbf k}=\hbar v|\mathbf k|$ et
+$d\Gamma=d^3k/(2\pi)^3$, avec multiplicité de branches identiques incluse
+dans les intégrales. La distribution immobile et sa version déplacée sont
+\[
+ f^0(T)=\frac1{\exp(\epsilon_{\mathbf k}/k_BT)-1},\qquad
+ f^d(T,\mathbf u_d)=
+ \frac1{\exp[(\epsilon_{\mathbf k}-\hbar\mathbf k\cdot\mathbf u_d)/(k_BT)]-1}.
+\]
+À l'ordre linéaire, pour $\theta=T-T_0$ et $\mathbf n=\mathbf k/|\mathbf k|$,
+\[
+ f^d-f^0(T_0)=
+ \partial_T f^0(T_0)\left(\theta+\frac{T_0}{v}\mathbf n\cdot\mathbf u_d\right).
+\]
+En effet $\partial_T f^0=f^0(1+f^0)\epsilon/(k_BT_0^2)$.
+On définit $E=\int\epsilon f\,d\Gamma$ et
+$C=\partial E^0/\partial T|_{T_0}$. La température énergétique impose
+$E-E_0=C\theta$. Au premier ordre, le terme de dérive est impair et ne change
+pas $E$. La contrainte sur le quasi-moment fixe $\mathbf u_d$.
+
+Le modèle de Callaway est
+\[
+ \partial_t f+v n_i\partial_i f
+ =-\frac{f-f^d}{\tau_N}-\frac{f-f^0}{\tau_R}.
+\]
+Les états cibles doivent satisfaire
+$\int\epsilon(f-f^d)d\Gamma=\int\epsilon(f-f^0)d\Gamma=0$ et
+$\int\hbar k_i(f-f^d)d\Gamma=0$.
+Ces égalités sont des \emph{conditions de compatibilité}, pas une conséquence
+automatique de la présence de deux termes de relaxation.
+Pour des temps dépendant du mode, les contraintes portent sur les intégrales
+pondérées par $1/\tau_{\mathbf k}$ ; les étapes grises suivantes ne se transposent
+pas en remplaçant simplement chaque temps par une moyenne arithmétique.
+
+\section{Intégrales angulaires et premiers moments}
+Avec $\langle\cdot\rangle=(4\pi)^{-1}\int_{S^2}\cdot\,d\Omega$,
+l'isotropie et $n_i n_i=1$ donnent
+\[
+ \langle n_i n_j\rangle=\frac{\delta_{ij}}3,\qquad
+ \langle n_i n_j n_k n_l\rangle=
+ \frac{\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}
+       +\delta_{il}\delta_{jk}}{15}.
+\]
+Pour établir $1/15$, on écrit la forme isotrope avec un coefficient $A$,
+puis contracte $i=j$ et $k=l$ : $1=A(9+3+3)$.
+Les moments impairs sont nuls par inversion de $\mathbf n$.
+
+Introduisons une densité énergétique angulaire $g$, normalisée par
+$\langle g\rangle=E-E_0$ et $\mathbf q=v\langle\mathbf n g\rangle$.
+Sa partie déplacée linéarisée est
+\[
+ g^d=C\theta+\frac3v\,\mathbf n\cdot\mathbf q,\qquad
+ \mathbf q=\frac13CT_0\mathbf u_d .
+\]
+Les moments d'ordre deux et trois (perturbations) sont
+\[
+ Q_{ij}=v^2\langle n_i n_j g\rangle,\qquad
+ R_{ijk}=v^3\langle n_i n_j n_k g\rangle.
+\]
+La partie déplacée donne
+\[
+ Q^d_{ij}=\frac{v^2C\theta}{3}\delta_{ij},\qquad
+ R^d_{ijk}=\frac{v^2}{5}
+ (q_i\delta_{jk}+q_j\delta_{ik}+q_k\delta_{ij}).
+\]
+Pour \emph{toute} distribution, $Q_{ii}=v^2C\theta$.
+On doit donc écrire $Q_{ij}=v^2C\theta\,\delta_{ij}/3+\Pi_{ij}$
+avec $\Pi_{ii}=0$.
+Enfin $\mathbf q=v^2\mathbf P$ pour
+$\mathbf P=\int\hbar\mathbf k f\,d\Gamma$.
+Cette identité exige la même vitesse linéaire isotrope : elle n'est pas
+une loi universelle pour toutes les branches d'un cristal.
+
+\section{Bilans exacts dans le modèle gris}
+Les moments d'ordre zéro et un de l'équation cinétique donnent
+\[
+ C\partial_t\theta+\partial_iq_i=0,\qquad
+ \partial_tq_i+\frac{Cv^2}{3}\partial_i\theta+\partial_j\Pi_{ij}
+ =-\frac{q_i}{\tau_R}.
+\]
+Le terme normal disparaît du bilan de flux grâce à la compatibilité du
+quasi-moment. Le moment d'ordre deux donne
+\[
+ \partial_t Q_{ij}+\partial_k R_{ijk}
+ =-\frac{\Pi_{ij}}{\tau_c},\qquad
+ \tau_c=\left(\tau_N^{-1}+\tau_R^{-1}\right)^{-1}.
+\]
+La trace reproduit le bilan d'énergie, puisque $R_{iik}=v^2q_k$.
+La projection déviatorique est donc obligatoire.
+
+À l'ordre nécessaire à l'élimination du moment rapide, on remplace
+$R$ par $R^d$. Avec le bilan d'énergie,
+\[
+ \partial_t\Pi_{ij}+
+ \frac{v^2}{5}\left(\partial_iq_j+\partial_jq_i
+             -\frac23\delta_{ij}\partial_kq_k\right)
+ =-\frac{\Pi_{ij}}{\tau_c}.
+\]
+Le terme $-\frac23\delta_{ij}\nabla\cdot\mathbf q$ résulte de
+$-\frac{Cv^2}{3}\delta_{ij}\partial_t\theta$ après projection ;
+il garantit une trace nulle.
+
+\section{Élimination du moment rapide}
+Si $\tau_c\partial_t\Pi$ est petit devant $\Pi$,
+\[
+ \Pi_{ij}=-\frac{v^2\tau_c}{5}
+ \left(\partial_iq_j+\partial_jq_i
+             -\frac23\delta_{ij}\partial_kq_k\right).
+\]
+Cette relation est une fermeture au premier ordre, pas une identité exacte
+à toute fréquence. La contribution du moment d'ordre trois non déplacé et
+la mémoire de $\Pi$ appartiennent aux termes négligés.
+Prendre la divergence donne
+\[
+ \partial_j\Pi_{ij}
+ =-\frac{v^2\tau_c}{5}
+   \left(\nabla^2q_i+\frac13\partial_i\nabla\cdot\mathbf q\right).
+\]
+Substituer dans le bilan de flux et multiplier par $\tau_R$ produit
+\[
+ \tau_R\partial_t\mathbf q+\mathbf q
+ =-\lambda\nabla T+\ell_c^2
+   \left[\nabla^2\mathbf q+\frac13\nabla(\nabla\cdot\mathbf q)\right],
+ \quad \lambda=\frac13Cv^2\tau_R,\quad
+ \ell_c^2=\frac15v^2\tau_R\tau_c .
+\]
+Garder $\tau_c$ décrit la fermeture quasi stationnaire du moment d'ordre deux.
+Cela ne prouve pas l'exactitude de tous les autres termes à ordre supérieur.
+Dans la limite collective, $\tau_c=\tau_N[1+O(\tau_N/\tau_R)]$ et
+$\ell_c^2\simeq\ell^2=v^2\tau_R\tau_N/5$.
+
+\subsection{Origine de la forme historique}
+Si l'on supprime $\partial_tQ_{ij}$ \emph{avant} de séparer sa trace énergétique,
+on obtiendrait à tort, pour la même température,
+\[
+ Q_{ij}\simeq\frac{Cv^2\theta}{3}\delta_{ij}
+ -\frac{v^2\tau_c}{5}
+   (\partial_iq_j+\partial_jq_i+\delta_{ij}\nabla\cdot\mathbf q).
+\]
+Sa trace vaut $Cv^2\theta-v^2\tau_c\nabla\cdot\mathbf q$ au lieu de
+$Cv^2\theta$. Sa divergence produit précisément le coefficient historique $2$.
+Cette opération peut appartenir à une autre approximation en temps lent,
+mais ne constitue pas la fermeture conservatrice générale annoncée.
+L'accord en régime stationnaire solénoïdal ne résout pas le désaccord transitoire.
+La forme historique reste un modèle constitutif utilisable et étudié :
+son interprétation cinétique doit être indiquée.
+
+\section{Réduction 1D et raccord au code}
+Écrivons de façon générale le terme spatial
+$\ell^2[\nabla^2\mathbf q+\alpha\nabla(\nabla\cdot\mathbf q)]$.
+Pour un champ strictement longitudinal $\mathbf q=q(z,t)\mathbf e_z$,
+\[
+ \tau_R q_t+q=-\lambda T_z+L^2 q_{zz},
+ \qquad L^2=(1+\alpha)\ell^2,\qquad \tau_\ell=L^2/a,\quad a=\lambda/C.
+\]
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Convention & $\alpha$ & $L^2$ & $\tau_\ell$ (limite collective)\\
+\midrule
+GK historique & $2$ & $3\ell^2$ & $9\tau_N/5$\\
+Conservatrice grise & $1/3$ & $4\ell^2/3$ & $4\tau_N/5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Le code reçoit directement $\tau_\ell$ ; aucune formule du quadripôle ne change.
+Il faut fournir $4\tau_N/5$ pour la seconde convention, et $9\tau_N/5$
+seulement pour la première. Les longueurs physiques déduites d'un même
+$\tau_\ell$ diffèrent : $\ell_{\rm CE}=(3/2)\ell_{\rm hist}$.
+
+À conditions initiales nulles, le bilan d'énergie donne
+$\phi'=-Cp\theta$, donc $\phi''=-Cp\theta'$.
+La loi de flux devient
+\[
+ \phi=-\lambda_{\rm eff}(p)\theta',\qquad
+ \lambda_{\rm eff}(p)=\lambda\frac{1+p\tau_\ell}{1+p\tau_R}.
+\]
+On obtient $\theta''=\sigma^2\theta$ avec
+\[
+ \sigma^2=\frac{p}{a}\frac{1+p\tau_R}{1+p\tau_\ell},\qquad
+ M=\begin{pmatrix}
+ \cosh(\sigma d)&\sinh(\sigma d)/(\lambda_{\rm eff}\sigma)\\
+ \lambda_{\rm eff}\sigma\sinh(\sigma d)&\cosh(\sigma d)
+ \end{pmatrix}.
+\]
+$M$ relie l'état arrière à l'état avant, flux positif vers $z>0$.
+Les limites $p=0$ se prennent analytiquement.
+
+\section{Résonance, entropie et portée expérimentale}
+La résonance $\tau_\ell=\tau_R$ annule le facteur constitutif et redonne
+Fourier pour ce problème aux limites sans source ni perturbation initiale.
+Son existence algébrique ne dépend pas de $\alpha$.
+La traduction $\tau_R/\tau_N=9/5$ appartient à la convention historique.
+La conversion conservatrice dominante donnerait formellement $4/5$ ;
+aucun de ces rapports n'est dans $\tau_N/\tau_R\ll1$.
+Avec $\tau_c$ conservé, $\tau_\ell/\tau_R=
+4\tau_N/[5(\tau_R+\tau_N)]<4/5$ : pas d'égalité à temps positifs
+dans cette fermeture. Ce constat n'est pas une trajectoire en température.
+
+Pour $L^2\ge0$, la production 1D au second ordre autour de $T_0$ est
+\[
+ s=s_{\rm eq}(E)-\frac{\tau_Rq^2}{2\lambda T_0^2},\quad
+ J_s=\frac qT+\frac{L^2qq_z}{\lambda T_0^2},\quad
+ \sigma_s=\frac{q^2+L^2q_z^2}{\lambda T_0^2}\ge0.
+\]
+L'entropie n'impose donc pas à elle seule la valeur cinétique de $\alpha$.
+De même, une mesure 1D dépend de $L^2$ seulement : si $\ell$ est libre,
+elle ne distingue pas $\alpha=2$ de $\alpha=1/3$ par simple ajustement.
+Une géométrie multidimensionnelle et des informations constitutives indépendantes
+sont nécessaires pour tester cette distinction.
+
+\section{Contrôles et références}
+Les tests angulaires du projet intègrent numériquement sur la sphère, vérifient
+les moments d'ordres deux et quatre, la conservation de la correction,
+la trace de $\Pi$ et le coefficient longitudinal. Un test de réponse vérifie
+l'identité des deux paramétrisations à $L^2$ fixé.
+Ils contrôlent cette dérivation grise ; ils ne valident pas le modèle de l'AlN.
+
+\begin{enumerate}
+\item J. Callaway, Phys. Rev. \textbf{113}, 1046 (1959) ;
+R. A. Guyer et J. A. Krumhansl, Phys. Rev. \textbf{148}, 766 et 778 (1966) :
+origine des modèles, et non reproduction complète de leurs opérateurs ici.
+\item L. Sendra et al., Phys. Rev. B \textbf{106}, 155301 (2022),
+doi:\allowbreak 10.1103/\allowbreak PhysRevB.106.155301.
+Manuscrit intégral consulté ; équation (21), discussion du coefficient $1/3$.
+\item H. Struchtrup, \emph{Phonon hydrodynamics revisited} (2025),
+doi:\allowbreak 10.1007/\allowbreak 978-3-031-93918-1\_27.
+Notice institutionnelle et résumé consultés ; le chapitre intégral n'a pas
+été obtenu par le dépôt institutionnel.
+\item M. G. Hennessy et T. G. Myers (2021),
+doi:\allowbreak 10.1007/\allowbreak 978-3-030-64272-3\_2.
+Manuscrit accepté intégral consulté ; forme historique, équation (2).
+\end{enumerate}
+\end{document}

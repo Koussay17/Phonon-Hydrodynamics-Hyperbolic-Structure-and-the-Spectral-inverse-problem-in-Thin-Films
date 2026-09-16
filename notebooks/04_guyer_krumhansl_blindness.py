@@ -20,12 +20,14 @@ survives Guyer--Krumhansl as well.
 
 The two times exchange their roles between the two combinations. When they
 coincide the square roots cancel and the response is exactly that of a Fourier
-medium, whatever their common value. Under isotropic kinetic assumptions tau_l = 9 tau_N / 5, this blindness
+medium, whatever their common value. Under the historical GK kinetic convention tau_l = 9 tau_N / 5, this blindness
 occurs at tau_R = 1.8 tau_N, a ratio of collision times that varies with
 temperature.
 
 Fourier resonance is established prior art (Kovacs 2018, arXiv:1804.05225).
-The kinetic ratio 1.8 is outside strong normal/resistive separation.
+The historical kinetic ratio 1.8 is outside strong normal/resistive separation.
+The conserving grey closure instead gives tau_l = 4 tau_N / 5 at leading order;
+this plot fits tau_l directly and does not choose a kinetic closure (note 14).
 This script maps conditional local uncertainties, not universal separation cutoffs.
 """
 from pathlib import Path

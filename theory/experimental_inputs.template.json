@@ -1,0 +1,60 @@
+{
+  "status": "UNCONFIRMED — fill from measurements; no default sample is assumed",
+  "temperature_K": null,
+  "sample": {
+    "film_material": null,
+    "crystal_orientation": null,
+    "film_thickness_m": null,
+    "film_thickness_sd_m": null,
+    "film_heat_capacity_J_m3K": null,
+    "film_heat_capacity_sd": null,
+    "film_anisotropy_known": null,
+    "substrate_material": null,
+    "substrate_thickness_m": null,
+    "substrate_conductivity_inplane_W_mK": null,
+    "substrate_conductivity_crossplane_W_mK": null,
+    "substrate_heat_capacity_J_m3K": null
+  },
+  "transducer": {
+    "material": null,
+    "thickness_m": null,
+    "thickness_sd_m": null,
+    "adhesion_material": null,
+    "adhesion_thickness_m": null,
+    "conductivity_W_mK": null,
+    "heat_capacity_J_m3K": null
+  },
+  "optics": {
+    "pump_radius_1e2_m": null,
+    "probe_radius_1e2_m": null,
+    "radius_covariance_m2": null,
+    "offset_m": null,
+    "pump_wavelength_m": null,
+    "absorption_depth_m": null,
+    "absorbed_power_W": null,
+    "thermoreflectance_coefficient_1_K": null
+  },
+  "instrument": {
+    "frequency_min_Hz": null,
+    "frequency_max_Hz": null,
+    "phase_convention": null,
+    "phase_offset_deg": null,
+    "delay_ns": null,
+    "reference_sample": null,
+    "repetitions": null
+  },
+  "data": {
+    "local_file": null,
+    "columns": [
+      "frequency_Hz",
+      "amplitude",
+      "phase_deg",
+      "sigma_log_amplitude",
+      "sigma_phase_deg"
+    ],
+    "amplitude_units": null,
+    "complex_data_available": null,
+    "frequency_noise_covariance_available": null
+  },
+  "notes": "Keep laboratory files under ignored data/. This template is a checklist, not a dataset or runnable analysis configuration."
+}

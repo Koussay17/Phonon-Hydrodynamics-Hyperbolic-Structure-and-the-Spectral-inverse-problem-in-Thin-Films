@@ -4,7 +4,8 @@ Source: Ma, Li and Luo (2014), Fig. 7; restricted acoustic slice of the
 angular-frequency axis marked omega (THz), 2 to 10. Readings are approximate
 (factor about two), not digitized data and not a full-spectrum average.
 Fourier resonance: Kovacs (2018), arXiv:1804.05225.
-The formal kinetic x=1.8 line does not satisfy tau_N << tau_R.
+The formal historical-GK x=1.8 line does not satisfy tau_N << tau_R.
+The conserving closure has a different conversion; see note 14.
 """
 from pathlib import Path
 import numpy as np
@@ -60,7 +61,7 @@ def main():
     ax.plot(xs,xs,color=".3",lw=1.3)
     ax.axhline(1,color=".3",lw=1.3)
     ax.axvline(BLIND_X,color="#b03030",lw=1.5,ls="--")
-    ax.annotate("x = 1,8 : extrapolation cinétique\nsans séparation forte",
+    ax.annotate("x = 1,8 : GK historique extrapolé\nsans séparation forte",
                 (BLIND_X,2e-3),xytext=(6,3),textcoords="offset points",
                 fontsize=8,color="#b03030")
     ax.text(.3,2e3,"résistif",fontsize=11,color="#8a6a20",ha="center")

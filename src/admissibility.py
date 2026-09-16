@@ -44,6 +44,9 @@ without which the production is not a sum of squares. With it,
     sigma_s = [ q^2 + 3 ell^2 (dq/dz)^2 ] / (lambda T0^2) .
 
 Both are non-negative for lambda > 0 and ell^2 >= 0.
+The ell_sq API retains the historical GK convention L^2 = 3 ell_sq.
+For a physical conserving-closure length ell_CE, pass ell_sq = 4 ell_CE^2 / 9;
+then the functions use the same longitudinal coefficient L^2 as note 14.
 """
 
 from __future__ import annotations

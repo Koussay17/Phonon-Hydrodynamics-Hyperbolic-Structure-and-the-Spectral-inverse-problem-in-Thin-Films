@@ -3,7 +3,7 @@
 Ce fichier fixe les conventions du projet. Il fait autorité sur toute expression employée dans `src/`.
 Toute source extérieure doit être convertie vers ces conventions avant usage.
 
-Dernière mise à jour : 15 septembre 2026, version corrigée après audit.
+Dernière mise à jour : 16 septembre 2026, après dérivation de la fermeture grise.
 
 ---
 
@@ -116,7 +116,7 @@ pas de source intérieure, conditions de bord du modèle de face avant.
 
 ```
 Cattaneo : τ_R ∂q/∂t + q = −λ ∂T/∂z
-GK :       τ_R ∂q/∂t + q = −λ ∂T/∂z + 3ℓ² ∂²q/∂z²
+GK historique : τ_R ∂q/∂t + q = −λ ∂T/∂z + 3ℓ² ∂²q/∂z²
 λ_eff(p) = λ (1 + τ_ℓ p)/(1 + τ_R p)       τ_ℓ = 3ℓ²/a
 σd = ξ₁ √[p(1+τ_R p)/(1+τ_ℓ p)]
 λ_eff σ = b √[p(1+τ_ℓ p)/(1+τ_R p)]
@@ -125,6 +125,21 @@ GK :       τ_R ∂q/∂t + q = −λ ∂T/∂z + 3ℓ² ∂²q/∂z²
 Remplacer `p` par `p(1+τ_R p)` dans tout le quadripôle de Fourier donne le mauvais
 coefficient de flux. La phase du demi-espace de Cattaneo est
 `φ = −π/4 + arctan(ωτ_R)/2`, et non une phase tendant vers −π/2.
+
+
+### 7.1 Convention de fermeture après dérivation
+
+La note 14 établit la fermeture grise conservatrice : le terme 3D est
+ell² [laplacien(q) + (1/3) grad(div q)], au lieu du coefficient historique 2.
+Poser L²=(1+alpha)ell² et tau_l=L²/a :
+historique alpha=2, conservatrice alpha=1/3.
+La structure du solveur en tau_l ne change pas. Dans la limite collective,
+tau_l=9 tau_N/5 pour la convention historique et 4 tau_N/5 pour la
+conservatrice. Ni 1,8 ni 0,8 n'est un rapport hydrodynamique fortement séparé.
+Le temps résistif volumique ne doit pas compter à nouveau les frontières déjà
+décrites par leurs conditions de bord.
+L'API d'entropie ell_sq conserve L²=3 ell_sq : pour une longueur CE
+physique, fournir ell_sq=4 ell_CE²/9.
 
 ## 8. Invariance et portée
 
@@ -148,9 +163,9 @@ C'est la **résonance de Fourier** déjà décrite par
 [Kovács (2018)](https://arxiv.org/abs/1804.05225).
 La reproduction numérique n'établit pas une nouveauté.
 [Hennessy et Myers (2021)](https://doi.org/10.1007/978-3-030-64272-3_2)
-traite directement GK en thermoréflectance ; comparaison complète à poursuivre.
+traite directement GK en thermoréflectance ; le manuscrit accepté est comparé dans la note 15.
 
-Avec les coefficients isotropes `a=v²τ_R/3` et `ℓ²=v²τ_Nτ_R/5`
+Dans la convention historique, avec les coefficients isotropes `a=v²τ_R/3` et `ℓ²=v²τ_Nτ_R/5`
 ([Lebon et Dauby, 1990](https://doi.org/10.1103/PhysRevA.42.4710)),
 `τ_ℓ=9τ_N/5`. Le rapport formel `τ_R/τ_N=1,8` ne satisfait pas `τ_N≪τ_R`.
 Il ne prouve pas l'ouverture hydrodynamique lors d'un refroidissement.
@@ -324,6 +339,18 @@ Installer `requirements-dev.txt`, lancer pytest puis `scripts/rebuild.py`.
 chaîne suffit à l'estimation d'autocorrélation ; il ne certifie pas toute convergence.
 Les priors log-uniformes bornés sont des hypothèses explicites.
 
-Restent : fermeture complète de la partie I, pondération spectrale et trajectoire
-en température, géométrie/calibration du banc, données réelles, comparaison complète
-avec Hennessy/Myers et Krapez 2016.
+La fermeture grise est dérivée dans la note 14, les comparaisons sont dans la
+note 15, l'étude expérimentale synthétique dans la note 16.
+Restent : fermeture/spectre propre à l'AlN, trajectoire en température,
+géométrie/calibration du banc et données réelles. Le texte intégral IJHMT de
+Krapez 2016 et le supplément Camacho n'ont pas été obtenus.
+
+## 16. Base FDTR axisymétrique
+
+src/fdtr.py implémente Fourier uniquement, avec absorption surfacique,
+faisceaux gaussiens coaxiaux, couches homogènes éventuellement anisotropes et
+substrat semi-infini. Rayons à 1/e² ; puissance absorbée totale ; réponse en K/W.
+La phase est l'argument de la moyenne complexe, pas une moyenne de phases.
+Cette base ne contient pas les conditions de bord hydrodynamiques 3D de Beardo.
+scripts/analyse_experiment.py produit uniquement des résultats synthétiques
+définis dans theory/experimental_results.json et la figure 06.

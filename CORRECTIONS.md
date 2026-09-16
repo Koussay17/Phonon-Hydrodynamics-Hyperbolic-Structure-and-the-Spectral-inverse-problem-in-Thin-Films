@@ -1,7 +1,9 @@
 # Corrected baseline — 15–16 September 2026
 
 Prepared locally from commit e80fd6c442e9ff810ffb15ba1e90ae5f9136284a.
-No commit or push was performed.
+The corrected baseline was committed as `8ae5b50` and pushed to GitHub `main`
+on 16 September 2026. The two reference PDFs added remotely in `642e6a5`
+were incorporated before that push.
 
 ## What changed
 
@@ -60,18 +62,63 @@ The detailed reproducibility commands are in README.md.
 The build script stages PDFs and only replaces requested repository PDFs after
 their builds succeed. Local logs and review renders are excluded in .build/.
 
+## Continuation — 16 September 2026
+
+The continuation adds notes 14–16, retaining the existing note typography,
+page size, margins and heading styles. Existing notes and conventions were
+updated to agree with the new derivation. Pagination can change with content.
+
+### Derivation and literature comparisons
+
+- Note 14 completes the conserving linear grey kinetic closure under its
+  stated isotropic, constant-relaxation-time assumptions. It distinguishes
+  the historical longitudinal coefficient 3 ell² from the conserving
+  coefficient 4 ell²/3. The existing one-dimensional solver uses the
+  longitudinal nonlocal time directly and supports either convention.
+- Note 15 compares the accessible Hennessy/Myers and Beardo manuscripts,
+  documents a factor-three discrepancy in the Hennessy/Myers accepted
+  manuscript, and independently checks a Darboux graded-profile example.
+- Source access and its limits are recorded in theory/source_access.md.
+  Abstracts and indexed excerpts are not presented as full-paper reviews.
+
+### Experimental preparation
+
+- Note 16 and src/fdtr.py provide an axisymmetric Fourier multilayer baseline
+  with Gaussian pump/probe averaging and interface resistances.
+- scripts/analyse_experiment.py generates the synthetic design study,
+  theory/experimental_results.json and figures/06_experimental_design.png.
+  Calibration uncertainty and correlations are included explicitly.
+- The two hypothetical conductivity scenarios are not measurements of a
+  real sample. The synthetic multistart fit is a reproducibility check.
+- theory/experimental_inputs.template.json lists missing experimental
+  inputs; it is a checklist, not a runnable configuration or a dataset.
+
+### Continuation validation
+
+- 182 tests passed without warnings in the full numerical run.
+- Added independent angular-moment, published-formula, graded-profile ODE,
+  Gaussian half-space and anisotropic radial-ODE checks.
+- Repeated synthetic study runs gave identical outputs; three fit starts
+  converged successfully without reaching bounds.
+- All new and modified notes compiled with zero reported build warnings.
+  Rendered page sheets of notes 14–16 were visually inspected.
+
 ## Research that remains open
 
-This update does not supply missing laboratory data or finish an unwritten derivation.
-Remaining work includes the complete Part I closure, spectral averaging and a
-temperature trajectory, experimental geometry and calibration, source supplements,
-and a complete comparison with Hennessy/Myers and Krapez 2016.
-The historical Camacho reading note explicitly lists unconsulted supplementary
-material. These limitations are preserved rather than represented as resolved.
+The grey derivation is complete within its assumptions. A spectral AlN
+closure, justified spectral averaging and the temperature trajectory remain
+open. The full Krapez 2016 sources and Camacho supplementary material are
+still missing; the literature comparison explicitly identifies these gaps.
+Real experimental analysis requires sample properties, geometry, calibration
+and measured data. The new Fourier baseline is not a three-dimensional GK
+model and does not reproduce every boundary condition in Beardo's model.
 
 ## Updating GitHub
 
-Review the local diff and rebuilt PDFs, then commit and push through your usual
-Git client. An update archive accompanies this local version and contains only
-changed/new project files, preserving their relative paths.
+The corrected files are available on GitHub `main` in commit `8ae5b50`.
+The local update archive contains the 62 changed/new project files from the
+correction pass, preserving their relative paths; it is not a full repository clone.
 The original repository was backed up separately before editing.
+
+The continuation described above is included in this revision. The earlier
+update archive covers only the initial correction pass.

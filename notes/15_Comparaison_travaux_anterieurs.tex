@@ -1,0 +1,196 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Comparaison avec les travaux antérieurs}\\[4pt]
+{\normalsize Fermeture, thermoréflectance, profils gradués et identifiabilité}\\[2pt]
+{\small 16 septembre 2026 --- conventions du projet}
+\end{center}
+
+\section{Périmètre et état des sources}
+Cette comparaison sépare ce qui est établi dans une source lue, ce qui est
+recalculé ici et ce qui reste inaccessible. Les contrôles indépendants sont
+des reproductions ou des vérifications, sans revendication de nouveauté.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+Source & Accès obtenu & Portée de la comparaison\\
+\midrule
+Hennessy--Myers (2021) & Manuscrit accepté intégral, 14 pages &
+Équations, conditions de bord, limite 1D, mesure pondérée\\
+Beardo et al. (2020) & Article intégral, annexes incluses &
+Transducteur, interfaces, différence avec le modèle du projet\\
+Sendra et al. (2022) & Manuscrit intégral & Coefficient longitudinal et limite collective\\
+Krapez (2016), IJHMT & Résumé et introduction de l'éditeur &
+Structure PROFIDT ; pas de vérification ligne à ligne du texte intégral\\
+Krapez (2016), JPCS & Notice HAL, extraits du texte déposé par l'auteur &
+Article de conférence distinct ; téléchargement intégral indisponible\\
+Camacho et al. (2025) & Corps de l'article déjà local &
+Supplément toujours manquant, pas de reproduction de ses tables\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Les deux articles Krapez 2016 ne sont pas interchangeables.
+L'accès web au PDF HAL/IOP n'a pas fourni le document intégral.
+Cette limite d'accès reste ouverte ; elle ne transforme pas une lecture
+du résumé en validation des équations de l'article.
+
+\section{Hennessy et Myers : raccord explicite}
+Le manuscrit utilise GK historique ($\alpha=2$), un demi-espace isotrope,
+un chauffage surfacique gaussien et une condition de glissement tangentielle.
+Le transducteur métallique est omis. Sa décomposition du flux contient un mode
+longitudinal et un mode transverse ; seul le premier porte une divergence,
+mais les conditions de bord couplent leurs amplitudes. La température mesurée
+est une moyenne spatiale complexe, puis on prend son argument.
+Les équations (11)--(18) permettent un contrôle direct de la limite 1D.
+Source : doi:\allowbreak 10.1007/\allowbreak 978-3-030-64272-3\_2.
+
+\subsection{Conversion recalculée dans nos conventions}
+Le manuscrit choisit $\exp(-i\omega t)$ ; le projet choisit $\exp(+i\omega t)$.
+Les amplitudes sont donc conjuguées à paramètres réels.
+Avec $k$ le nombre d'onde radial et $p=i\omega$,
+\[
+ \gamma_P^2=k^2+\frac{p(1+p\tau_R)}{a+3\ell^2p},
+ \qquad
+ \gamma_S^2=k^2+\frac{1+p\tau_R}{\ell^2}.
+\]
+Les racines ont une partie réelle positive.
+Pour $k=0$, le mode transverse ne contribue pas au flux normal ;
+la solution décroissante et $q=-\lambda_{\rm eff}T_z$ donnent
+\[
+ Z_{\rm 1D}=\frac1{\lambda_{\rm eff}\gamma_P}
+ =\frac1{b\sqrt p}\sqrt{\frac{1+p\tau_R}{1+3\ell^2p/a}},
+ \qquad
+ \varphi=-\frac\pi4+\frac12\arctan(\omega\tau_R)
+                  -\frac12\arctan(3\omega\ell^2/a).
+\]
+C'est exactement la réponse du code avec $\tau_\ell=3\ell^2/a$.
+Le test numérique compare cette réduction à l'API du projet.
+
+\subsection{Facteur trois dans le manuscrit accepté}
+L'équation (18) contient $6\ell^2/L_F^2=3\omega\ell^2/a$.
+La phrase suivante annonce une résonance à $\tau_R a/\ell^2=1$.
+Avec \emph{ses propres} équations (2), (17) et (18), la condition exacte est
+$\tau_R a/\ell^2=3$. Ce désaccord a été contrôlé sur le rendu de la page~9.
+On retient la condition algébrique et on ne transpose pas la phrase isolée.
+Cela ne constitue pas une vérification de la version finale éditée.
+
+\section{Beardo et al. : ce qui manque à une expérience réelle}
+L'article sur le silicium inclut un métal Fourier, un substrat hydrodynamique,
+une source dans le métal et des faisceaux finis. L'annexe A impose continuité
+du flux normal, saut de température avec corrections de non-équilibre, et
+glissement du flux tangent. Les paramètres et comparaisons concernent le Si,
+pas l'AlN. Son accord expérimental ne valide donc pas nos paramètres.
+Source : Phys. Rev. B \textbf{101}, 075303 (2020),
+doi:\allowbreak 10.1103/\allowbreak PhysRevB.101.075303.
+
+Conséquence pour notre travail : un modèle 1D avec une simple résistance $R$
+ne reproduit pas ce problème complet. Avant de tester un temps de relaxation,
+il faut construire et contrôler au minimum le modèle Fourier du transducteur,
+des deux interfaces et des rayons optiques. Une correction de conductivité
+ne doit pas absorber automatiquement une erreur de spot ou de phase instrumentale.
+
+\section{Krapez : propriétés transformées et problème inverse}
+L'article IJHMT 99, 485--503 (2016),
+doi:\allowbreak 10.1016/\allowbreak j.ijheatmasstransfer.2016.03.122,
+présente une construction conjointe des profils d'effusivité solubles et des
+champs thermiques par Liouville puis Darboux, avec des assemblages de profils.
+Le texte intégral n'a pas été obtenu ; aucune formule numérotée ne lui est
+attribuée ci-dessous. L'article JPCS 745, 032059 (2016),
+doi:\allowbreak 10.1088/\allowbreak 1742-6596/745/3/032059,
+traite des exemples de demi-espace et possède la notice HAL hal-01394669.
+
+\subsection{Calcul indépendant : ce que la transformation conserve}
+Pour Fourier gradué, $\xi=\int_0^z a^{-1/2}du$,
+$b=\sqrt{\lambda C}$, $s=\sqrt b$, $\psi=sT$ donnent
+\[
+ \psi''=(p+V)\psi,\qquad s''=Vs,\qquad V=s''/s,\qquad
+ q=s'\psi-s\psi'.
+\]
+Si $h''=(V+p_*)h$ et $r=h'/h$, poser
+\[
+ \widetilde V=V-2r',\quad
+ \widetilde\psi=\psi'-r\psi,\quad
+ \widetilde s=s'-rs .
+\]
+En dérivant et en utilisant $r'+r^2=V+p_*$, on retrouve
+$\widetilde\psi''=(p+\widetilde V)\widetilde\psi$ et
+$\widetilde s''=\widetilde V\widetilde s$.
+Le profil thermique admissible exige $\widetilde s\ne0$ dans le domaine,
+$\widetilde b=\widetilde s^2>0$ et des conditions de bord transformées cohérentes.
+La construction d'une solution exacte n'est pas une preuve d'unicité inverse.
+
+\subsection{Exemple de contrôle avec effusivité de volume finie}
+Partons de $V=0$ et $h=\cosh(\xi/c+u_0)$, $c,u_0>0$.
+Une normalisation de la propriété transformée donne
+\[
+ s=A\tanh(\xi/c+u_0),\quad
+ V=-2c^{-2}\operatorname{sech}^2(\xi/c+u_0),\quad
+ b_\infty=A^2 .
+\]
+Avec $\nu=\sqrt p$ et $t=\tanh u_0$, une solution décroissante fournit
+\[
+ Z(0,p)=\frac{\nu+c^{-1}t}
+ {A^2t\nu(c^{-1}+t\nu)} .
+\]
+On vérifie $Z\sim1/(b_\infty\sqrt p)$ à basse fréquence et
+$Z\sim1/(b_0\sqrt p)$ à haute fréquence, avec $b_0=A^2t^2$.
+Le test indépendant intègre $T'=-q/b$, $q'=-pbT$ depuis une profondeur
+suffisante et compare l'impédance à cette expression.
+Cet exemple est un calcul de contrôle de la méthode, pas une extension
+déjà intégrée dans l'API des couches graduées.
+
+Enfin toute fonction positive $a(\xi)$ donne
+$z(\xi)=\int_0^\xi\sqrt a\,d\xi$,
+$\lambda=b\sqrt a$, $C=b/\sqrt a$.
+Un même $b(\xi)$ admet donc des profils physiques différents.
+Ni Darboux ni une optimisation réussie ne suppriment cette liberté sans données
+indépendantes. Les notes 05--06 traitent déjà les commentaires et la réponse
+de Mandelis ; aucune nouvelle conclusion d'unicité n'est ajoutée ici.
+
+\section{Fermeture et comparaison avec les résultats déjà acquis}
+Sendra et al. (2022), doi:\allowbreak 10.1103/\allowbreak PhysRevB.106.155301,
+équation (21), obtient $1/3$ en approximation de Debye tridimensionnelle
+et discute la différence avec le $2$ historique. Notre note~14 retrouve ce
+coefficient par projection sans trace. Les expressions générales du manuscrit
+font intervenir la dispersion et les collisions ; elles n'autorisent pas
+à convertir quelques lectures de temps modaux en paramètres uniques d'AlN.
+
+La résonance de Fourier était déjà identifiée chez Kovács (2018),
+arXiv:1804.05225. Nous reproduisons la propriété sous nos conditions de bord.
+Chez Camacho et al. (2025), la phase du demi-espace Cattaneo est un contrôle
+du coefficient de flux. Sa sensibilité conditionnelle ne suffit pas à une
+estimation jointe des paramètres. Le supplément absent empêche une reproduction
+numérique exacte de tous ses exemples ; la nouvelle étude sera un scénario
+autonome et intégralement spécifié.
+
+\section{Décisions pour la suite}
+\begin{enumerate}
+\item Conserver le solveur 1D en $(b,\xi_1,\tau_R,\tau_\ell)$, dont les
+relations sont inchangées ; annoncer la convention avant toute conversion cinétique.
+\item Employer la fermeture conservatrice pour une interprétation issue du
+modèle gris énergétique. Conserver la forme historique comme comparaison.
+\item Construire l'analyse FDTR Fourier axisymétrique, puis examiner les
+corrélations avec les interfaces, le transducteur et la calibration.
+\item Ne pas annoncer une validation de GK 3D : les conditions de bord
+non-Fourier correspondantes ne sont pas implémentées dans cette nouvelle base.
+\item Pour achever la comparaison documentaire exhaustive, obtenir le texte
+IJHMT 2016 et le supplément Camacho ; les limites sont localisées, pas masquées.
+\end{enumerate}
+\end{document}
