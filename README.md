@@ -217,7 +217,7 @@ Issues and corrections are welcome, including on the derivations.
 
 ## Audited spectral continuation — 17 September 2026
 
-Four independent mathematical branches, a second-generation experiment, four independent hostile reviews, and attacks on four alternative formulations are archived under theory/aln/closure/. The final report supersedes the frozen first-pass reports where explicit errata apply.
+Four independent mathematical branches, a second-generation experiment, and attacks on four alternative formulations are archived under theory/aln/closure/. The final report supersedes the frozen first-pass reports where explicit errata apply.
 
 A broad positive-matrix counterexample does **not** establish microscopic AlN nonidentifiability. In a fixed finite event cone, bounded DC response bounds the first memory moment; the bound is not uniform under mesh refinement. The supplied AlN data still lack a validated physical collision action and N/U temperature trajectory.
 
