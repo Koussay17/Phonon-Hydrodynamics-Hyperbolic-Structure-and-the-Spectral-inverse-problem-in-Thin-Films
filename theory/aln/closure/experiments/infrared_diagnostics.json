@@ -1,0 +1,598 @@
+{
+  "scope": "RTA diagnostics on one 24^3 grid, not mesh convergence or identification of continuum exponents",
+  "temperature_K": 300,
+  "q_shape": [
+    793,
+    3
+  ],
+  "q_degeneracy_sum": 13824,
+  "min_positive_frequency_THz": 0.4992881050977946,
+  "capacity_independent_max_relative_difference": 8.582034241923479e-16,
+  "total_rate_component_max_relative_residual": 9.014277245106392e-10,
+  "directions": {
+    "basal": {
+      "M0": 12900772000886.664,
+      "M1_kappa_W_mK": 309.77515678492006,
+      "M2": 4.6250671842623174e-08,
+      "M3": 2.5775754160253718e-17,
+      "tau_static_ps": 24.01214103804248,
+      "tau_memory_ps": 149.30400592044725,
+      "r_min_active_s-1": 411994312.7,
+      "r_max_active_s-1": 1453138476000.0,
+      "rate_dynamic_range_active": 3527.083824232606,
+      "f_min_relaxation_MHz": 65.57093139195304,
+      "tau_max_active_ps": 2427.217971642646,
+      "max_numpy_vs_fsum_relative_difference": 1.834989592153607e-16,
+      "cumulative_frequency": [
+        {
+          "cutoff_THz": 0.5,
+          "irreducible_modes": 2,
+          "M1_fraction": 1.993349915196658e-64,
+          "M2_fraction": 3.240534288878814e-63,
+          "M3_fraction": 1.4113275752691536e-62,
+          "tau_memory_after_deleting_resolved_low_f_ps": 149.30400592044725
+        },
+        {
+          "cutoff_THz": 0.75,
+          "irreducible_modes": 2,
+          "M1_fraction": 1.993349915196658e-64,
+          "M2_fraction": 3.240534288878814e-63,
+          "M3_fraction": 1.4113275752691536e-62,
+          "tau_memory_after_deleting_resolved_low_f_ps": 149.30400592044725
+        },
+        {
+          "cutoff_THz": 1.0,
+          "irreducible_modes": 6,
+          "M1_fraction": 0.018243351324636913,
+          "M2_fraction": 0.1428458623770203,
+          "M3_fraction": 0.31517483012398,
+          "tau_memory_after_deleting_resolved_low_f_ps": 130.3546521544517
+        },
+        {
+          "cutoff_THz": 1.5,
+          "irreducible_modes": 12,
+          "M1_fraction": 0.04220262475072221,
+          "M2_fraction": 0.2754835231512464,
+          "M3_fraction": 0.5253656130646128,
+          "tau_memory_after_deleting_resolved_low_f_ps": 112.93955814060836
+        },
+        {
+          "cutoff_THz": 2.0,
+          "irreducible_modes": 27,
+          "M1_fraction": 0.13483941397493507,
+          "M2_fraction": 0.6160751145944674,
+          "M3_fraction": 0.8944189015838705,
+          "tau_memory_after_deleting_resolved_low_f_ps": 66.25535685456431
+        },
+        {
+          "cutoff_THz": 3.0,
+          "irreducible_modes": 62,
+          "M1_fraction": 0.22067637315498487,
+          "M2_fraction": 0.7496419058971895,
+          "M3_fraction": 0.9540091692241556,
+          "tau_memory_after_deleting_resolved_low_f_ps": 47.96398450728813
+        },
+        {
+          "cutoff_THz": 5.0,
+          "irreducible_modes": 246,
+          "M1_fraction": 0.436490903441877,
+          "M2_fraction": 0.9149850502673451,
+          "M3_fraction": 0.9955881277614619,
+          "tau_memory_after_deleting_resolved_low_f_ps": 22.525053518637602
+        }
+      ],
+      "lifetime_tail": [
+        {
+          "tau_cutoff_ps": 100,
+          "M1_fraction": 0.3350495666363205,
+          "M2_fraction": 0.8680731168718696
+        },
+        {
+          "tau_cutoff_ps": 300,
+          "M1_fraction": 0.13649555770717994,
+          "M2_fraction": 0.6263938485084262
+        },
+        {
+          "tau_cutoff_ps": 1000,
+          "M1_fraction": 0.025799290453323836,
+          "M2_fraction": 0.20274608205940484
+        },
+        {
+          "tau_cutoff_ps": 3000,
+          "M1_fraction": 0.0,
+          "M2_fraction": 0.0
+        }
+      ],
+      "mode_concentration": {
+        "M1": {
+          "max_irreducible_mode_fraction": 0.02868406190049758,
+          "top_10_irreducible_modes_fraction": 0.1264310491708812,
+          "participation_effective_irreducible_count": 310.10445671074234
+        },
+        "M2": {
+          "max_irreducible_mode_fraction": 0.13034233028798295,
+          "top_10_irreducible_modes_fraction": 0.5652757060841573,
+          "participation_effective_irreducible_count": 18.86074713775028
+        },
+        "M3": {
+          "max_irreducible_mode_fraction": 0.26591424912297024,
+          "top_10_irreducible_modes_fraction": 0.8589130634106099,
+          "participation_effective_irreducible_count": 6.792513057009013
+        }
+      },
+      "positive_laplace_slope": [
+        {
+          "p_over_min_rate": 0.0001,
+          "p_s-1": 41199.43127,
+          "secant_over_M2": 0.9999770401410719,
+          "relative_first_order_remainder_to_pM2": 2.2959858928084387e-05
+        },
+        {
+          "p_over_min_rate": 0.001,
+          "p_s-1": 411994.3127,
+          "secant_over_M2": 0.999770474373507,
+          "relative_first_order_remainder_to_pM2": 0.00022952562649303232
+        },
+        {
+          "p_over_min_rate": 0.01,
+          "p_s-1": 4119943.127,
+          "secant_over_M2": 0.9977120096881765,
+          "relative_first_order_remainder_to_pM2": 0.0022879903118234735
+        },
+        {
+          "p_over_min_rate": 0.1,
+          "p_s-1": 41199431.27,
+          "secant_over_M2": 0.9778177117390774,
+          "relative_first_order_remainder_to_pM2": 0.02218228826092261
+        },
+        {
+          "p_over_min_rate": 1,
+          "p_s-1": 411994312.7,
+          "secant_over_M2": 0.8279995373038574,
+          "relative_first_order_remainder_to_pM2": 0.17200046269614255
+        },
+        {
+          "p_over_min_rate": 10,
+          "p_s-1": 4119943127.0,
+          "secant_over_M2": 0.40632059392390507,
+          "relative_first_order_remainder_to_pM2": 0.5936794060760949
+        }
+      ],
+      "harmonic_response": [
+        {
+          "modulation_frequency_Hz": 100000.0,
+          "normalized_RTA_real": 0.9999999671508312,
+          "normalized_RTA_imag": 9.381045593368337e-05,
+          "relative_onepole_memory_fit_error": 2.4048770471123003e-08
+        },
+        {
+          "modulation_frequency_Hz": 1000000.0,
+          "normalized_RTA_real": 0.999996715195838,
+          "normalized_RTA_imag": 0.0009380870405461773,
+          "relative_onepole_memory_fit_error": 2.404830455637289e-06
+        },
+        {
+          "modulation_frequency_Hz": 10000000.0,
+          "normalized_RTA_real": 0.9996726404986961,
+          "normalized_RTA_imag": 0.00936343125000578,
+          "relative_onepole_memory_fit_error": 0.00024001942659657784
+        },
+        {
+          "modulation_frequency_Hz": 100000000.0,
+          "normalized_RTA_real": 0.9747433717276905,
+          "normalized_RTA_imag": 0.08127928977042163,
+          "relative_onepole_memory_fit_error": 0.020714646108566673
+        },
+        {
+          "modulation_frequency_Hz": 1000000000.0,
+          "normalized_RTA_real": 0.736257823719062,
+          "normalized_RTA_imag": 0.24156715763823608,
+          "relative_onepole_memory_fit_error": 0.42415653576208245
+        }
+      ],
+      "grazing_velocity_thresholds": [
+        {
+          "abs_vz_le_m_s": 0,
+          "irreducible_modes": 720,
+          "M1_fraction": 0.12966002360135914,
+          "M2_fraction": 0.33380865462143056
+        },
+        {
+          "abs_vz_le_m_s": 1e-14,
+          "irreducible_modes": 720,
+          "M1_fraction": 0.12966002360135914,
+          "M2_fraction": 0.33380865462143056
+        },
+        {
+          "abs_vz_le_m_s": 1e-12,
+          "irreducible_modes": 720,
+          "M1_fraction": 0.12966002360135914,
+          "M2_fraction": 0.33380865462143056
+        },
+        {
+          "abs_vz_le_m_s": 1e-10,
+          "irreducible_modes": 734,
+          "M1_fraction": 0.12966485991612772,
+          "M2_fraction": 0.333808765060017
+        },
+        {
+          "abs_vz_le_m_s": 1e-08,
+          "irreducible_modes": 734,
+          "M1_fraction": 0.12966485991612772,
+          "M2_fraction": 0.333808765060017
+        },
+        {
+          "abs_vz_le_m_s": 1e-06,
+          "irreducible_modes": 734,
+          "M1_fraction": 0.12966485991612772,
+          "M2_fraction": 0.333808765060017
+        },
+        {
+          "abs_vz_le_m_s": 1,
+          "irreducible_modes": 752,
+          "M1_fraction": 0.12980112497310603,
+          "M2_fraction": 0.33381821771354414
+        },
+        {
+          "abs_vz_le_m_s": 10,
+          "irreducible_modes": 837,
+          "M1_fraction": 0.13040859890869108,
+          "M2_fraction": 0.3339024214139161
+        },
+        {
+          "abs_vz_le_m_s": 100,
+          "irreducible_modes": 1614,
+          "M1_fraction": 0.13873347267080446,
+          "M2_fraction": 0.3351557705028797
+        }
+      ],
+      "grazing_angle_thresholds": [
+        {
+          "abs_cos_velocity_angle_le": 1e-12,
+          "M1_fraction": 0.12966485991612772
+        },
+        {
+          "abs_cos_velocity_angle_le": 0.0001,
+          "M1_fraction": 0.1297626429661407
+        },
+        {
+          "abs_cos_velocity_angle_le": 0.001,
+          "M1_fraction": 0.13025139830396962
+        },
+        {
+          "abs_cos_velocity_angle_le": 0.01,
+          "M1_fraction": 0.13273293767403774
+        },
+        {
+          "abs_cos_velocity_angle_le": 0.1,
+          "M1_fraction": 0.1874116710901504
+        }
+      ],
+      "film": [
+        {
+          "thickness_nm": 500,
+          "kappa_diffuse_W_mK": 231.64305824885142,
+          "relative_bulk": 0.7477780356985937,
+          "effectively_grazing_fraction_of_film": 0.1734001986231,
+          "max_abs_suppression_difference_independent_eval": 2.220446049250313e-16
+        },
+        {
+          "thickness_nm": 100,
+          "kappa_diffuse_W_mK": 163.31982938606293,
+          "relative_bulk": 0.5272205527425735,
+          "effectively_grazing_fraction_of_film": 0.24594044985844718,
+          "max_abs_suppression_difference_independent_eval": 2.220446049250313e-16
+        },
+        {
+          "thickness_nm": 30,
+          "kappa_diffuse_W_mK": 110.03177680657416,
+          "relative_bulk": 0.3551988414712362,
+          "effectively_grazing_fraction_of_film": 0.3650486566314657,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 10,
+          "kappa_diffuse_W_mK": 75.07898151882803,
+          "relative_bulk": 0.24236605122907293,
+          "effectively_grazing_fraction_of_film": 0.5349959668797617,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 3,
+          "kappa_diffuse_W_mK": 54.526211090348816,
+          "relative_bulk": 0.1760186699807141,
+          "effectively_grazing_fraction_of_film": 0.7366540147720394,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 1,
+          "kappa_diffuse_W_mK": 46.161481655373805,
+          "relative_bulk": 0.14901608681106787,
+          "effectively_grazing_fraction_of_film": 0.8701400143497603,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 0.1,
+          "kappa_diffuse_W_mK": 41.06492595724684,
+          "relative_bulk": 0.13256365159636938,
+          "effectively_grazing_fraction_of_film": 0.9781328316975764,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 0.01,
+          "kappa_diffuse_W_mK": 40.302393354075,
+          "relative_bulk": 0.13010208362853756,
+          "effectively_grazing_fraction_of_film": 0.9966393796300896,
+          "max_abs_suppression_difference_independent_eval": 3.3306690738754696e-16
+        },
+        {
+          "thickness_nm": 0.001,
+          "kappa_diffuse_W_mK": 40.18750750781727,
+          "relative_bulk": 0.12973121513330346,
+          "effectively_grazing_fraction_of_film": 0.9994885177240679,
+          "max_abs_suppression_difference_independent_eval": 2.561156581953883e-16
+        }
+      ]
+    },
+    "c_axis": {
+      "M0": 14695111944316.705,
+      "M1_kappa_W_mK": 302.44261601535095,
+      "M2": 7.006238995985439e-08,
+      "M3": 8.435753804805953e-17,
+      "tau_static_ps": 20.581171287525972,
+      "tau_memory_ps": 231.65515125784478,
+      "r_min_active_s-1": 411994312.7,
+      "r_max_active_s-1": 1453138476000.0,
+      "rate_dynamic_range_active": 3527.083824232606,
+      "f_min_relaxation_MHz": 65.57093139195304,
+      "tau_max_active_ps": 2427.217971642646,
+      "max_numpy_vs_fsum_relative_difference": 1.3290984154464818e-16,
+      "cumulative_frequency": [
+        {
+          "cutoff_THz": 0.5,
+          "irreducible_modes": 2,
+          "M1_fraction": 0.02726273161883963,
+          "M2_fraction": 0.28559393449332093,
+          "M3_fraction": 0.5756143623827383,
+          "tau_memory_after_deleting_resolved_low_f_ps": 170.1341673069558
+        },
+        {
+          "cutoff_THz": 0.75,
+          "irreducible_modes": 2,
+          "M1_fraction": 0.02726273161883963,
+          "M2_fraction": 0.28559393449332093,
+          "M3_fraction": 0.5756143623827383,
+          "tau_memory_after_deleting_resolved_low_f_ps": 170.1341673069558
+        },
+        {
+          "cutoff_THz": 1.0,
+          "irreducible_modes": 6,
+          "M1_fraction": 0.036758942660505146,
+          "M2_fraction": 0.3208617069567246,
+          "M3_fraction": 0.600814839974132,
+          "tau_memory_after_deleting_resolved_low_f_ps": 163.3297114997091
+        },
+        {
+          "cutoff_THz": 1.5,
+          "irreducible_modes": 12,
+          "M1_fraction": 0.11552150784865546,
+          "M2_fraction": 0.6570217108101063,
+          "M3_fraction": 0.9239131500999316,
+          "tau_memory_after_deleting_resolved_low_f_ps": 89.82998248740493
+        },
+        {
+          "cutoff_THz": 2.0,
+          "irreducible_modes": 27,
+          "M1_fraction": 0.16158940723089615,
+          "M2_fraction": 0.7442149450872377,
+          "M3_fraction": 0.9605225228075279,
+          "tau_memory_after_deleting_resolved_low_f_ps": 70.67411372941758
+        },
+        {
+          "cutoff_THz": 3.0,
+          "irreducible_modes": 62,
+          "M1_fraction": 0.27514049866578455,
+          "M2_fraction": 0.8711300541107688,
+          "M3_fraction": 0.9904686015962424,
+          "tau_memory_after_deleting_resolved_low_f_ps": 41.185066557878244
+        },
+        {
+          "cutoff_THz": 5.0,
+          "irreducible_modes": 246,
+          "M1_fraction": 0.47061451344269584,
+          "M2_fraction": 0.9560978208985993,
+          "M3_fraction": 0.999000598162124,
+          "tau_memory_after_deleting_resolved_low_f_ps": 19.21126702286927
+        }
+      ],
+      "lifetime_tail": [
+        {
+          "tau_cutoff_ps": 100,
+          "M1_fraction": 0.36552743119087583,
+          "M2_fraction": 0.9263516367776056
+        },
+        {
+          "tau_cutoff_ps": 300,
+          "M1_fraction": 0.19788619703857482,
+          "M2_fraction": 0.802162207395713
+        },
+        {
+          "tau_cutoff_ps": 1000,
+          "M1_fraction": 0.07089847089402858,
+          "M2_fraction": 0.5380384456374729
+        },
+        {
+          "tau_cutoff_ps": 3000,
+          "M1_fraction": 0.0,
+          "M2_fraction": 0.0
+        }
+      ],
+      "mode_concentration": {
+        "M1": {
+          "max_irreducible_mode_fraction": 0.03622359321381958,
+          "top_10_irreducible_modes_fraction": 0.16386546961461465,
+          "participation_effective_irreducible_count": 218.5677193769576
+        },
+        "M2": {
+          "max_irreducible_mode_fraction": 0.22010947081631624,
+          "top_10_irreducible_modes_fraction": 0.7285600031550942,
+          "participation_effective_irreducible_count": 10.170078240846738
+        },
+        "M3": {
+          "max_irreducible_mode_fraction": 0.2879806074943878,
+          "top_10_irreducible_modes_fraction": 0.95518203718863,
+          "participation_effective_irreducible_count": 4.266514112607233
+        }
+      },
+      "positive_laplace_slope": [
+        {
+          "p_over_min_rate": 0.0001,
+          "p_s-1": 41199.43127,
+          "secant_over_M2": 0.9999503982640521,
+          "relative_first_order_remainder_to_pM2": 4.960173594792394e-05
+        },
+        {
+          "p_over_min_rate": 0.001,
+          "p_s-1": 411994.3127,
+          "secant_over_M2": 0.9995043245801283,
+          "relative_first_order_remainder_to_pM2": 0.0004956754198717217
+        },
+        {
+          "p_over_min_rate": 0.01,
+          "p_s-1": 4119943.127,
+          "secant_over_M2": 0.9950771446886596,
+          "relative_first_order_remainder_to_pM2": 0.004922855311340402
+        },
+        {
+          "p_over_min_rate": 0.1,
+          "p_s-1": 41199431.27,
+          "secant_over_M2": 0.9538913599586397,
+          "relative_first_order_remainder_to_pM2": 0.04610864004136028
+        },
+        {
+          "p_over_min_rate": 1,
+          "p_s-1": 411994312.7,
+          "secant_over_M2": 0.7096367400810679,
+          "relative_first_order_remainder_to_pM2": 0.2903632599189321
+        },
+        {
+          "p_over_min_rate": 10,
+          "p_s-1": 4119943127.0,
+          "secant_over_M2": 0.28491080099744315,
+          "relative_first_order_remainder_to_pM2": 0.7150891990025569
+        }
+      ],
+      "harmonic_response": [
+        {
+          "modulation_frequency_Hz": 100000.0,
+          "normalized_RTA_real": 0.9999998898866526,
+          "normalized_RTA_imag": 0.0001455530955280722,
+          "relative_onepole_memory_fit_error": 8.892770435525721e-08
+        },
+        {
+          "modulation_frequency_Hz": 1000000.0,
+          "normalized_RTA_real": 0.9999889903751109,
+          "normalized_RTA_imag": 0.0014554035235539926,
+          "relative_onepole_memory_fit_error": 8.892031353457322e-06
+        },
+        {
+          "modulation_frequency_Hz": 10000000.0,
+          "normalized_RTA_real": 0.9989157869614512,
+          "normalized_RTA_imag": 0.014428985337275031,
+          "relative_onepole_memory_fit_error": 0.0008819285429835095
+        },
+        {
+          "modulation_frequency_Hz": 100000000.0,
+          "normalized_RTA_real": 0.9491986349005833,
+          "normalized_RTA_imag": 0.09665059875317394,
+          "relative_onepole_memory_fit_error": 0.05748866266495168
+        },
+        {
+          "modulation_frequency_Hz": 1000000000.0,
+          "normalized_RTA_real": 0.7059853455479597,
+          "normalized_RTA_imag": 0.22502464046485196,
+          "relative_onepole_memory_fit_error": 0.6138626929797555
+        }
+      ]
+    }
+  },
+  "acoustic_rate_frequency_window_fits": [
+    {
+      "branch_index": 1,
+      "upper_frequency_THz": 1.5,
+      "irreducible_points": 6,
+      "fitted_rate_vs_frequency_exponent": 1.2860056038868228,
+      "weighted_log_residual_RMS": 0.17341593644171913
+    },
+    {
+      "branch_index": 1,
+      "upper_frequency_THz": 2.0,
+      "irreducible_points": 13,
+      "fitted_rate_vs_frequency_exponent": 1.3630203218599821,
+      "weighted_log_residual_RMS": 0.17762549945733153
+    },
+    {
+      "branch_index": 1,
+      "upper_frequency_THz": 3.0,
+      "irreducible_points": 30,
+      "fitted_rate_vs_frequency_exponent": 1.49545197392066,
+      "weighted_log_residual_RMS": 0.14418309069280733
+    },
+    {
+      "branch_index": 1,
+      "upper_frequency_THz": 4.0,
+      "irreducible_points": 60,
+      "fitted_rate_vs_frequency_exponent": 1.6303161854224004,
+      "weighted_log_residual_RMS": 0.14014231870192714
+    },
+    {
+      "branch_index": 2,
+      "upper_frequency_THz": 1.5,
+      "irreducible_points": 5,
+      "fitted_rate_vs_frequency_exponent": 1.7843139657363987,
+      "weighted_log_residual_RMS": 0.1911086164644397
+    },
+    {
+      "branch_index": 2,
+      "upper_frequency_THz": 2.0,
+      "irreducible_points": 11,
+      "fitted_rate_vs_frequency_exponent": 1.7979026293759894,
+      "weighted_log_residual_RMS": 0.2555998287778138
+    },
+    {
+      "branch_index": 2,
+      "upper_frequency_THz": 3.0,
+      "irreducible_points": 26,
+      "fitted_rate_vs_frequency_exponent": 1.6971366688145018,
+      "weighted_log_residual_RMS": 0.24696212773206988
+    },
+    {
+      "branch_index": 2,
+      "upper_frequency_THz": 4.0,
+      "irreducible_points": 56,
+      "fitted_rate_vs_frequency_exponent": 1.8623601693798526,
+      "weighted_log_residual_RMS": 0.29039782541806813
+    },
+    {
+      "branch_index": 3,
+      "upper_frequency_THz": 2.0,
+      "irreducible_points": 3,
+      "fitted_rate_vs_frequency_exponent": 1.3365198623299688,
+      "weighted_log_residual_RMS": 0.024433437019277734
+    },
+    {
+      "branch_index": 3,
+      "upper_frequency_THz": 3.0,
+      "irreducible_points": 6,
+      "fitted_rate_vs_frequency_exponent": 1.9008481558138368,
+      "weighted_log_residual_RMS": 0.09504833936495591
+    },
+    {
+      "branch_index": 3,
+      "upper_frequency_THz": 4.0,
+      "irreducible_points": 15,
+      "fitted_rate_vs_frequency_exponent": 2.0843196033909543,
+      "weighted_log_residual_RMS": 0.16559740019950303
+    }
+  ]
+}

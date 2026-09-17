@@ -1,0 +1,8 @@
+{
+  "seed": 16092026,
+  "synthetic_SPD_operators": 100,
+  "positive_Laplace_points_each": 40,
+  "maximum_relative_bound_violation": 0.0,
+  "minimum_relative_margin": 1.7320967463553967e-11,
+  "scope": "positive real Laplace parameter; finite dissipative SPD space; no AlN inference"
+}
