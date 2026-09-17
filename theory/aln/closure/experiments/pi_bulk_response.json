@@ -1,0 +1,154 @@
+{
+  "scope": "uniform bulk diagonal RTA conductivity at 300 K; no spatial streaming, no FDTR boundary response, no N/U inference",
+  "harmonic_convention": "exp(+i omega t)",
+  "directions": {
+    "basal": {
+      "moments": {
+        "kappa": 309.77515678492,
+        "velocity_moment": 12900772000886.664,
+        "tau_static_s": 2.4012141038042474e-11,
+        "tau_memory_s": 1.4930400592044724e-10
+      },
+      "response": [
+        {
+          "frequency_Hz": 1000.0,
+          "kappa_real_W_mK": 309.77515678390245,
+          "kappa_imag_W_mK": -0.0002906015417632726,
+          "phase_degree": -5.3749442130507874e-05,
+          "static_pole_relative_complex_error": 7.8723200452956e-07,
+          "memory_pole_relative_complex_error": 2.404937359542534e-12
+        },
+        {
+          "frequency_Hz": 100000.0,
+          "kappa_real_W_mK": 309.77514660906365,
+          "kappa_imag_W_mK": -0.0290601486949216,
+          "phase_degree": -0.005374943359993249,
+          "static_pole_relative_complex_error": 7.872319175920079e-05,
+          "memory_pole_relative_complex_error": 2.4048770246158923e-08
+        },
+        {
+          "frequency_Hz": 1000000.0,
+          "kappa_real_W_mK": 309.7741392341958,
+          "kappa_imag_W_mK": -0.29059606006309374,
+          "phase_degree": -0.053748589026371044,
+          "static_pole_relative_complex_error": 0.0007872233102680329,
+          "memory_pole_relative_complex_error": 2.4048304553588572e-06
+        },
+        {
+          "frequency_Hz": 10000000.0,
+          "kappa_real_W_mK": 309.6737489440786,
+          "kappa_imag_W_mK": -2.9005583835153605,
+          "phase_degree": -0.5366450802375308,
+          "static_pole_relative_complex_error": 0.007863661028526002,
+          "memory_pole_relative_complex_error": 0.000240019426596455
+        },
+        {
+          "frequency_Hz": 50000000.0,
+          "kappa_real_W_mK": 307.42597574790784,
+          "kappa_imag_W_mK": -13.913136907796579,
+          "phase_degree": -2.5912593894650784,
+          "static_pole_relative_complex_error": 0.03837289049489625,
+          "memory_pole_relative_complex_error": 0.005747376901116221
+        },
+        {
+          "frequency_Hz": 100000000.0,
+          "kappa_real_W_mK": 301.951280802007,
+          "kappa_imag_W_mK": -25.17830473199931,
+          "phase_degree": -4.766599857538675,
+          "static_pole_relative_complex_error": 0.07235188825008187,
+          "memory_pole_relative_complex_error": 0.02071464610856645
+        },
+        {
+          "frequency_Hz": 200000000.0,
+          "kappa_real_W_mK": 289.2017610992676,
+          "kappa_imag_W_mK": -40.064586283219384,
+          "phase_degree": -7.887273083456785,
+          "static_pole_relative_complex_error": 0.12611662990028175,
+          "memory_pole_relative_complex_error": 0.0649267609355
+        },
+        {
+          "frequency_Hz": 1000000000.0,
+          "kappa_real_W_mK": 228.0743827766965,
+          "kappa_imag_W_mK": -74.83150413147209,
+          "phase_degree": -18.16473120062578,
+          "static_pole_relative_complex_error": 0.3344480042334045,
+          "memory_pole_relative_complex_error": 0.4241565357620823
+        }
+      ]
+    },
+    "c_axis": {
+      "moments": {
+        "kappa": 302.44261601535095,
+        "velocity_moment": 14695111944316.703,
+        "tau_static_s": 2.0581171287525977e-11,
+        "tau_memory_s": 2.3165515125784474e-10
+      },
+      "response": [
+        {
+          "frequency_Hz": 1000.0,
+          "kappa_real_W_mK": 302.4426160120207,
+          "kappa_imag_W_mK": -0.000440214979142706,
+          "phase_degree": -8.339585444630703e-05,
+          "static_pole_relative_complex_error": 1.3262169296074537e-06,
+          "memory_pole_relative_complex_error": 8.892561358281097e-12
+        },
+        {
+          "frequency_Hz": 100000.0,
+          "kappa_real_W_mK": 302.4425827123821,
+          "kappa_imag_W_mK": -0.044021458980642435,
+          "phase_degree": -0.008339578928228697,
+          "static_pole_relative_complex_error": 0.00013262162299881113,
+          "memory_pole_relative_complex_error": 8.892770439167773e-08
+        },
+        {
+          "frequency_Hz": 1000000.0,
+          "kappa_real_W_mK": 302.43928623559816,
+          "kappa_imag_W_mK": -0.440176049021629,
+          "phase_degree": -0.08338933859441926,
+          "static_pole_relative_complex_error": 0.0013261469717912953,
+          "memory_pole_relative_complex_error": 8.892031353370482e-06
+        },
+        {
+          "frequency_Hz": 10000000.0,
+          "kappa_real_W_mK": 302.1147037876543,
+          "kappa_imag_W_mK": -4.363940071852601,
+          "phase_degree": -0.8275597229509365,
+          "static_pole_relative_complex_error": 0.013193295199077377,
+          "memory_pole_relative_complex_error": 0.0008819285429835137
+        },
+        {
+          "frequency_Hz": 50000000.0,
+          "kappa_real_W_mK": 296.2860252357133,
+          "kappa_imag_W_mK": -18.65591962171132,
+          "phase_degree": -3.6029244894848493,
+          "static_pole_relative_complex_error": 0.05994074585773725,
+          "memory_pole_relative_complex_error": 0.018849067104171197
+        },
+        {
+          "frequency_Hz": 100000000.0,
+          "kappa_real_W_mK": 287.0781182575324,
+          "kappa_imag_W_mK": -29.231259926359947,
+          "phase_degree": -5.81401108822656,
+          "static_pole_relative_complex_error": 0.10254832461629446,
+          "memory_pole_relative_complex_error": 0.05748866266495161
+        },
+        {
+          "frequency_Hz": 200000000.0,
+          "kappa_real_W_mK": 272.3612603640098,
+          "kappa_imag_W_mK": -41.11126615781808,
+          "phase_degree": -8.583648736492076,
+          "static_pole_relative_complex_error": 0.1624115657894003,
+          "memory_pole_relative_complex_error": 0.14728879313614648
+        },
+        {
+          "frequency_Hz": 1000000000.0,
+          "kappa_real_W_mK": 213.52005477602643,
+          "kappa_imag_W_mK": -68.05704093010362,
+          "phase_degree": -17.67907771758473,
+          "static_pole_relative_complex_error": 0.3971836078729254,
+          "memory_pole_relative_complex_error": 0.6138626929797553
+        }
+      ]
+    }
+  }
+}

@@ -56,6 +56,11 @@ def figures():
                               cwd=ROOT,capture_output=True,check=True)
         (ROOT/".build/aln_spectral_analysis.txt").write_bytes(result.stdout)
         print("FIGURES 07-08 and spectral AlN analysis",flush=True)
+        result=subprocess.run([sys.executable,"-X","utf8","-B",
+                               str(ROOT/"scripts/analyse_aln_response.py")],
+                              cwd=ROOT,capture_output=True,check=True)
+        (ROOT/".build/aln_bulk_response.txt").write_bytes(result.stdout)
+        print("Bulk RTA response diagnostic",flush=True)
     finally:
         os.chdir(prior)
 

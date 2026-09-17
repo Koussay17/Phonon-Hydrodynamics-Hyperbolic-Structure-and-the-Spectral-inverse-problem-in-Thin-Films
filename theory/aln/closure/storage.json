@@ -1,0 +1,6 @@
+{
+  "bulk_storage_root": "D:\\ResearchLab",
+  "campaign_mirror": "D:\\ResearchLab\\orchestration\\campaigns\\20260916-210742-aln-spectral-closure",
+  "active_agent_campaign": "C:\\Users\\Koussay\\ResearchLab\\orchestration\\campaigns\\20260916-210742-aln-spectral-closure",
+  "policy": "Preserve existing C files; new large datasets/cache/scratch go to D. Synchronize completed agent reports to D; no deletion."
+}

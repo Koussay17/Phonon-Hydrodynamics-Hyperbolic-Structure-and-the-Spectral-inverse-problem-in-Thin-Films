@@ -369,3 +369,13 @@ entre surfaces réfléchissantes, sous RTA stationnaire. Pas de double comptage
 des frontières, ni de transposition directe à FDTR transversal.
 La courbe kappa(T) publiée et le spectre Rao sont deux calculs indépendants.
 C(T) est harmonique, à fréquences fixes ; les durées ne sont pas extrapolées.
+
+## 18. Audit de fermeture spectrale
+
+La note 18 et theory/aln/closure/13-final-report.md font autorité pour la synthèse de cette campagne. Les rapports initiaux sont conservés avec un erratum explicite.
+
+Les taux d'entrée d'une relaxation projetée ne sont pas sa diagonale finale. Une égalité de conductivité statique n'identifie pas les couplages, la viscosité ou la mémoire. La non-identifiabilité dans la classe PSD générale ne prouve pas la même assertion dans un cône microscopique fixé. Dans un cône fini fixé, une conductivité bornée borne le premier temps de mémoire ; aucune uniformité de continuum n'est acquise.
+
+Les réponses du nouveau diagnostic utilisent exp(+i omega t). Les erreurs relatives à la réponse totale et à sa correction dynamique sont distinctes. La formule de variance évite la perte de précision aux très faibles fréquences. Une mémoire sur grille finie n'est pas automatiquement un paramètre matériau.
+
+L'export scalaire réductible phono3py inspecté est équivalent sur le secteur impair de conduction, pas un certificat du générateur physique pair requis par l'énergie et les sources visqueuses. Ne pas employer une matrice après écrasement par un solveur comme opérateur initial.

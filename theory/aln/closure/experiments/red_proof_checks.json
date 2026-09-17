@@ -1,0 +1,43 @@
+{
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "sympy": "1.14.0",
+  "D": {
+    "K0": "1",
+    "M2": "1 + t**(-2)",
+    "response": "(p + t**2)/(p**2 + p*(t**2 + 2) + t**2)",
+    "physical_characteristic_polynomial": "x*(x - 1)**2*(-t + x - 1)*(t + x - 1)*(t**2 + x - 2)*(-t**2*x + t**2 + x**2 - 2*x)",
+    "physical_diagonal_energy_parity_tensor_residuals": "identically zero"
+  },
+  "B1": {
+    "four_coordinate_common_kernel": "span(1,1,1,1)",
+    "first_derivative_zero_test": "0",
+    "second_derivative_same_test": "48"
+  },
+  "B_surrogate": {
+    "rational_Moore_Penrose_conditions": "all exact",
+    "diagonal": [
+      "20/23",
+      "254/161",
+      "78/161",
+      "116/161"
+    ]
+  },
+  "A": {
+    "exact_inverse_Schur_identity": "zero residual",
+    "static_sign_check": "228/175 - 11*I/45"
+  },
+  "C_density_counterexample": {
+    "rate": "q**2*(q*sin(1/q) + 1)",
+    "derivative": "q**2*(sin(1/q) - cos(1/q)/q) + 2*q*(q*sin(1/q) + 1)",
+    "even_sequence_density_ratio": "2",
+    "odd_sequence_density_ratio": "2/3",
+    "satisfies_value_asymptotic": true,
+    "pointwise_density_asymptotic": false,
+    "moment_thresholds_and_cumulative_tail_conclusions": "not refuted"
+  },
+  "PI": {
+    "lower": "49/45",
+    "actual": "25/21",
+    "upper": "21/17"
+  }
+}

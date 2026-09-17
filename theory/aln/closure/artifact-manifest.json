@@ -1,0 +1,332 @@
+{
+  "generated_utc": "2026-09-17T22:17:33.491607+00:00",
+  "path_base": "repository root",
+  "scope": "Working-tree bytes; manifest excludes itself. Re-running experiments can change environment metadata.",
+  "artifacts": [
+    {
+      "path": "theory/aln/closure/00-question.md",
+      "bytes": 1545,
+      "sha256": "874b218f9bf39154d99d29bd90089e19843722e956b87f1e35932c7aa2574cf6"
+    },
+    {
+      "path": "theory/aln/closure/01-known-results.md",
+      "bytes": 630,
+      "sha256": "3925e71b77ca6d7835de16f3ab09fd8161b05559adc864a557846f6cdae789b0"
+    },
+    {
+      "path": "theory/aln/closure/02-assumptions.md",
+      "bytes": 1126,
+      "sha256": "59bcc563601fb86cc5852af176022ef4053f58755eed0cbb70d32dab7c369259"
+    },
+    {
+      "path": "theory/aln/closure/03-hypotheses.md",
+      "bytes": 882,
+      "sha256": "3598c7d2e1ce14789f0b90a8135147b0cc6939ae36657fb8fea42b89122d6ee0"
+    },
+    {
+      "path": "theory/aln/closure/04-agent-branches.md",
+      "bytes": 1324,
+      "sha256": "b8d186631f634c816f851b94f55419e3dffc2084ced7da0641165f30b3258a60"
+    },
+    {
+      "path": "theory/aln/closure/05-evidence-ledger.md",
+      "bytes": 2282,
+      "sha256": "6fdbbbcd671acbc49d7283a444020155c116eb377924cfd5cea74f930b1f670a"
+    },
+    {
+      "path": "theory/aln/closure/06-disagreements.md",
+      "bytes": 1395,
+      "sha256": "0f96870d56e25a9269f2d68bc182b5c7fae68c54a28226fe5ef4c1072da76eed"
+    },
+    {
+      "path": "theory/aln/closure/07-experiments.md",
+      "bytes": 1140,
+      "sha256": "f87aee8d37461b4dde4adbe5ed9866447811fdad5cad4b74044a736a70423ab0"
+    },
+    {
+      "path": "theory/aln/closure/08-literature.md",
+      "bytes": 852,
+      "sha256": "d1b93bc475f013ddc0cd77dd69f7fea22324751c535994db245c1c034b52b90b"
+    },
+    {
+      "path": "theory/aln/closure/09-failed-approaches.md",
+      "bytes": 1544,
+      "sha256": "6c20ea4974ecb5ee539704822b68ec0c4192456c18b6f6ec4f44a7133e000ea2"
+    },
+    {
+      "path": "theory/aln/closure/10-proof-status.md",
+      "bytes": 1124,
+      "sha256": "bb641811c2d998e83797ed23fd2864dc014d2a5b25fc384d17387f5d243c05b1"
+    },
+    {
+      "path": "theory/aln/closure/11-open-questions.md",
+      "bytes": 1259,
+      "sha256": "cd80068bf2525a7ee295a65cccaedd14434e8a70f8d5f88bddd426260ab53e5e"
+    },
+    {
+      "path": "theory/aln/closure/12-peer-review.md",
+      "bytes": 1447,
+      "sha256": "a1aab6c51e71c7c696933180f2ed3542aefbaeb11e5f69e986f2f68bb9bd035c"
+    },
+    {
+      "path": "theory/aln/closure/13-final-report.md",
+      "bytes": 10937,
+      "sha256": "ffea6fe28200e4524e52b688772de951d4fe56235743a813cf04cf1f8cce23bc"
+    },
+    {
+      "path": "theory/aln/closure/CAMPAIGN.md",
+      "bytes": 965,
+      "sha256": "f01ffb8b8383c4a0473c6f29e5c0d6756d4836de3a272d3973057d7234476e50"
+    },
+    {
+      "path": "theory/aln/closure/checkpoint-01.md",
+      "bytes": 2752,
+      "sha256": "c04113cc7ecb81a219387280c66c2cc6bd2fdd3e3de8e163674d6d169597506d"
+    },
+    {
+      "path": "theory/aln/closure/checkpoint-02.md",
+      "bytes": 2646,
+      "sha256": "613b4d97a9b1f3a8bc06e35d5e773d0cede4d361cdc46cd7306d639c03c972d0"
+    },
+    {
+      "path": "theory/aln/closure/CLAIM_LEDGER.md",
+      "bytes": 1803,
+      "sha256": "1ac1a2922a05ea95967b8c25801178f5f6d1e3ba6ccb4295b5d50e1477fc925e"
+    },
+    {
+      "path": "theory/aln/closure/data-requirements.md",
+      "bytes": 2891,
+      "sha256": "72ba5a1374418fe63aa4b798ee317beb88084b2fc36f14eda381089c0ae91c44"
+    },
+    {
+      "path": "theory/aln/closure/environment.json",
+      "bytes": 1033,
+      "sha256": "0a79ab6cf530853c25379f8646b96210867019bbe1ef1e8e4aa7ede157dca6e7"
+    },
+    {
+      "path": "theory/aln/closure/errata.md",
+      "bytes": 2790,
+      "sha256": "261d29adbd8b141b2e18368a64890d1bfb772be0b164df01c00c1899edd55cb9"
+    },
+    {
+      "path": "theory/aln/closure/experiments/constructive_collision.py",
+      "bytes": 10536,
+      "sha256": "a054e18e9cc81d065fb997181850b715c348751acc302489c1b5f99b24e9a23f"
+    },
+    {
+      "path": "theory/aln/closure/experiments/constructive_collision_results.json",
+      "bytes": 16636,
+      "sha256": "50c3fc0d41abb54e7467c5c8c759ddc8ddaff877bb0ebe7c887f43f13d0639fd"
+    },
+    {
+      "path": "theory/aln/closure/experiments/infrared_audit.py",
+      "bytes": 13486,
+      "sha256": "26279a900ced49c21a4564aa903f1206ecfb96bc43fa1cabb7fff4bd036245d3"
+    },
+    {
+      "path": "theory/aln/closure/experiments/infrared_benchmarks.json",
+      "bytes": 23520,
+      "sha256": "ff156d30a6ca1cc76c84c0e39f97dc8e54bec30d6c6909bc816de899344ccea9"
+    },
+    {
+      "path": "theory/aln/closure/experiments/infrared_diagnostics.json",
+      "bytes": 21899,
+      "sha256": "0d014c1f12b8d48441c2287be2cd418244167287baf9b22909c9647156cff5fd"
+    },
+    {
+      "path": "theory/aln/closure/experiments/operator_storage.json",
+      "bytes": 345,
+      "sha256": "dda33401b98461870fe14b9b724625215a058a310f3ce1e43e9839766fbba3f9"
+    },
+    {
+      "path": "theory/aln/closure/experiments/pi_bulk_response.json",
+      "bytes": 6348,
+      "sha256": "cc2af590d8a42837debf8a557995ea21b56f8dbbb2a3632913b9c0736064f076"
+    },
+    {
+      "path": "theory/aln/closure/experiments/pi_response_bounds.json",
+      "bytes": 293,
+      "sha256": "e0a4e3b966edb846cbc35c891ef5f7ac65076a5618c6842fd225a849d3185c42"
+    },
+    {
+      "path": "theory/aln/closure/experiments/pi_response_bounds.py",
+      "bytes": 1170,
+      "sha256": "3ef6bfa63b62a74852e02c169610ed038b5145aa4c75aac4d0cf08709cced4bb"
+    },
+    {
+      "path": "theory/aln/closure/experiments/red_numerical_audit.py",
+      "bytes": 8843,
+      "sha256": "6f5d6e912299e9cd408b23bdf7c0af885fdfe9bb5337aa2c6778285e03402aad"
+    },
+    {
+      "path": "theory/aln/closure/experiments/red_numerical_results.json",
+      "bytes": 25012,
+      "sha256": "f7be64befc71adf48a3c005e5fefbeb2587833ab75592d7d8d0d23d38de9360b"
+    },
+    {
+      "path": "theory/aln/closure/experiments/red_proof_checks.json",
+      "bytes": 1366,
+      "sha256": "8cba898161cea6a6ca018585f358b07247633400e6be46574077bef2246c64ee"
+    },
+    {
+      "path": "theory/aln/closure/experiments/red_proof_checks.py",
+      "bytes": 4048,
+      "sha256": "de9ff610d4e7444da255ddb06e524ba36d01a4a9c1e5e2e37d1c885ea2893ab4"
+    },
+    {
+      "path": "theory/aln/closure/experiments/second_generation_console.txt",
+      "bytes": 26003,
+      "sha256": "5ec6ba5de0da443a4ecd3d5be34d110bd210c73f1a7dfa0e1704dd53f7746c4b"
+    },
+    {
+      "path": "theory/aln/closure/experiments/second_generation_results.json",
+      "bytes": 897740,
+      "sha256": "09c94b9503c40f8a560e7e83a8b7efa758f2086b3f8a9854346bdaaca77e6358"
+    },
+    {
+      "path": "theory/aln/closure/experiments/second_generation_schur.py",
+      "bytes": 11579,
+      "sha256": "06d71ba44e965b7d510a06977589405b760b639538db0bada0fd7e7a4c64755a"
+    },
+    {
+      "path": "theory/aln/closure/README.md",
+      "bytes": 2555,
+      "sha256": "1c330e29faad925d0d69fa71d9de2edc7701105bf49331aeee29fadfec6fe7bd"
+    },
+    {
+      "path": "theory/aln/closure/reports/A-projection.md",
+      "bytes": 14563,
+      "sha256": "b4ecee819344a517ee9d6222aecb852a0eab5de995fc779aeba727d8c7349bee"
+    },
+    {
+      "path": "theory/aln/closure/reports/B-variational.md",
+      "bytes": 18367,
+      "sha256": "7950c1a9f15fc453067a44544cf7726303649d1739aafa6d6b68ed7bcbbafd67"
+    },
+    {
+      "path": "theory/aln/closure/reports/C-infrared.md",
+      "bytes": 20803,
+      "sha256": "a8e21c95268b8a9f5e2b446e396472f82f6f9a346b9568180df65eb1fc957c4d"
+    },
+    {
+      "path": "theory/aln/closure/reports/D-constructive.md",
+      "bytes": 17014,
+      "sha256": "ddb36e0e08962fc372be651fffb2a9631ee5de4978bbcef85196b754c52abdaf"
+    },
+    {
+      "path": "theory/aln/closure/reports/discovery-A.md",
+      "bytes": 13802,
+      "sha256": "8bd82e50aaa874f6d641a8e7c31367d94bbc0386b9b79a58f86b484d337b5078"
+    },
+    {
+      "path": "theory/aln/closure/reports/discovery-attacks.md",
+      "bytes": 13183,
+      "sha256": "349df068beb8800555d218a4435b1b908688058460c0149ce50c688592e7d06c"
+    },
+    {
+      "path": "theory/aln/closure/reports/discovery-B.md",
+      "bytes": 16452,
+      "sha256": "11144db5952f9938ed833460ead4f5f7b6d25c99d0ae6c2e8ff47fc39379e4f3"
+    },
+    {
+      "path": "theory/aln/closure/reports/event-cone-proof-audit.md",
+      "bytes": 8192,
+      "sha256": "920cf6d721a03159a83afb7bba18a1034d916277c0182f0449509ae3e0a3f99c"
+    },
+    {
+      "path": "theory/aln/closure/reports/L-literature.md",
+      "bytes": 20203,
+      "sha256": "6dd366cccf1fecdc51053e43d78962438dc4e68d877d5fca464da10be3f809b6"
+    },
+    {
+      "path": "theory/aln/closure/reports/L2-literature.md",
+      "bytes": 21854,
+      "sha256": "c31b21531187f1d7108a8d249a7932aa4f84ba78c1e3bf07200c70a5fde54840"
+    },
+    {
+      "path": "theory/aln/closure/reports/operator-parity-check.md",
+      "bytes": 6057,
+      "sha256": "bf25cd5b6c75cd9e2e1159cfaf6c5f2bb014bf1a94c89459d43cb6541fb25a72"
+    },
+    {
+      "path": "theory/aln/closure/reports/red-counterexample.md",
+      "bytes": 13002,
+      "sha256": "c7176ec05449e284f9ca76e2b0d79c3df0a0d340bc802c2e4048e470817829d6"
+    },
+    {
+      "path": "theory/aln/closure/reports/red-numerical.md",
+      "bytes": 13645,
+      "sha256": "4598b43962e4b7308f803229fe6446b42bdf218a5feef5c4b900b03834f8d468"
+    },
+    {
+      "path": "theory/aln/closure/reports/red-peer-sources.md",
+      "bytes": 4369,
+      "sha256": "247303aee0c8e6a868108ab958f6d2d67988620b9068624b8eb9846172137ce6"
+    },
+    {
+      "path": "theory/aln/closure/reports/red-peer.md",
+      "bytes": 15898,
+      "sha256": "2ee26a465f54cc5042eb606ea4bb840231f69da6cd52fa4d3c7fed843c2c4e99"
+    },
+    {
+      "path": "theory/aln/closure/reports/red-proof.md",
+      "bytes": 16991,
+      "sha256": "da8016d07daefba6f71e5623eb739219154199ef8df6862564655bc717caa74a"
+    },
+    {
+      "path": "theory/aln/closure/reports/second-generation-D.md",
+      "bytes": 15110,
+      "sha256": "ca6c3151a6544a7fdded4ff8a76695d53bc70e5d5caea80db93f0b5ae0e42535"
+    },
+    {
+      "path": "theory/aln/closure/resume-environment.json",
+      "bytes": 238,
+      "sha256": "f5eb61c96efb2f2a2dfb16fc432de442190d24a1e49c1f1a383a94fe10b40902"
+    },
+    {
+      "path": "theory/aln/closure/storage.json",
+      "bytes": 420,
+      "sha256": "c28c92200d42ea99b5cc4eabb2eb962cfaa2fcd3f8edd65c5b8451644ba12bf7"
+    },
+    {
+      "path": "notes/17_AlN_spectral_temperature.tex",
+      "bytes": 14185,
+      "sha256": "4d865dd5cebcccb20dbe02498dbcf117445f6a1e938333de27648bf049eb5ac6"
+    },
+    {
+      "path": "notes/17_AlN_spectral_temperature.pdf",
+      "bytes": 478872,
+      "sha256": "44f1b21e9277ffd8dfad3e9a128cadb11b5390762a1714015a7017f0bca55c42"
+    },
+    {
+      "path": "notes/18_Audit_fermeture_spectrale.tex",
+      "bytes": 17579,
+      "sha256": "8ac3b783dbad6048d96dccb252cb2f6b30007e67ddf037c8b15ddaba7cbed991"
+    },
+    {
+      "path": "notes/18_Audit_fermeture_spectrale.pdf",
+      "bytes": 90151,
+      "sha256": "b62f1b3372404e397af0022ce1aa12d2c06e002458580dae2c8ed134759cc6ee"
+    },
+    {
+      "path": "scripts/analyse_aln_response.py",
+      "bytes": 4174,
+      "sha256": "a2313924cd8fe213d2c6f3e9f5e367f396dc787e7122e6cd0c9f3822df8ad1b2"
+    },
+    {
+      "path": "tests/test_aln_response.py",
+      "bytes": 2084,
+      "sha256": "d1b0a2048dbd5cc2e662f81176dc1d821640c8ad8da01858b997b735f183d9dc"
+    },
+    {
+      "path": "theory/aln/rao_300K_modes.npz",
+      "bytes": 426975,
+      "sha256": "b6712ecbbbfd2388fecce89557c6d6138309c8fe8bce148a5b9449fa404bbb87"
+    },
+    {
+      "path": "theory/aln/bulk_response.json",
+      "bytes": 9428,
+      "sha256": "68934e230c539dc51c31c9350c243104b9d8e2b134a23ba3420a5f006661495c"
+    }
+  ]
+}

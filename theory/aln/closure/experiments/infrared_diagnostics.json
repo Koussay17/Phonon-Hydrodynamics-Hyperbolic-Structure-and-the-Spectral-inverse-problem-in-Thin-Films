@@ -594,5 +594,13 @@
       "fitted_rate_vs_frequency_exponent": 2.0843196033909543,
       "weighted_log_residual_RMS": 0.16559740019950303
     }
-  ]
+  ],
+  "provenance": {
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mpmath": "1.3.0",
+    "input_sha256": "b6712ecbbbfd2388fecce89557c6d6138309c8fe8bce148a5b9449fa404bbb87",
+    "script_sha256": "26279a900ced49c21a4564aa903f1206ecfb96bc43fa1cabb7fff4bd036245d3"
+  }
 }

@@ -1,0 +1,297 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Audit de la fermeture spectrale de l'AlN}\\[4pt]
+{\normalsize Identifiabilité, mémoire et limites physiques}\\[2pt]
+{\small Parties I et III --- 17 septembre 2026}
+\end{center}
+\section{Résultat et portée}
+Quatre branches indépendantes ont traité le problème par projection, formulation variationnelle, asymptotiques et constructions matricielles. Quatre revues contradictoires ont ensuite attaqué les preuves, les calculs et l'interprétation physique. Les rapports et les résultats négatifs sont conservés.
+
+Le résultat principal est une distinction : \textbf{une non-identifiabilité dans la classe des matrices positives ne démontre pas une non-identifiabilité microscopique de l'AlN}. Les contraintes des événements changent même la conclusion concernant une mémoire non bornée. Les données de la note 17 permettent des diagnostics RTA à 300~K ; elles ne certifient ni une fermeture GK de l'AlN, ni sa convergence dans le continuum, ni une fenêtre hydrodynamique expérimentale.
+
+\section{Le modèle conservateur n'est pas l'opérateur identifié}
+Dans des coordonnées entropiques, sur une grille complète finie et sous bilan détaillé,
+\[
+ \partial_t y+V_i\partial_i y=-{\cal C}y+s,\qquad
+ {\cal C}={\cal C}^T\ge0,\quad {\cal C}e=0,\quad b_i=V_i e .
+\]
+Sur l'espace dissipatif, pour un courant non nul orthogonal aux invariants,
+\[
+ K_i(z)=b_i^T({\cal C}+zI)^{-1}b_i,\qquad
+ \kappa_i(z)=\frac{K_i(z)}{k_BT^2},\qquad
+ \tau_{{\rm mem},i}=\frac{\|{\cal C}^{+}b_i\|^2}{b_i^T{\cal C}^{+}b_i}.
+\]
+Un courant couplé à un invariant produit un terme en $1/z$ ; une pseudo-inverse ne doit pas masquer cette divergence.
+
+La projection de la note 17, pour $D>0$ et $H$ de rang colonne plein,
+\[
+ {\cal C}_D=D-DH(H^TDH)^{-1}H^TD,
+\]
+modifie la diagonale :
+\[
+ ({\cal C}_D)_{\mu\mu}
+ =d_\mu-d_\mu^2h_\mu^T(H^TDH)^{-1}h_\mu .
+\]
+Les $d_\mu$ sont des paramètres avant projection. Pourtant, pour le projecteur orthogonal $Q_H$ sur $H^\perp$,
+\[
+ {\cal C}_D^+=Q_HD^{-1}Q_H,\qquad
+ b^T{\cal C}_D^+b=b^TD^{-1}b\quad(b\perp H).
+\]
+Un accord statique RTA peut subsister sans préserver la diagonale physique. Conservation et positivité ne suffisent pas à valider un opérateur de collision.
+
+\section{Même conductivité, mémoires différentes}
+\subsection{Exemple réversible à quatre modes}
+Pour $a,\beta,c\ge0$, $a+\beta+c=1$, soit
+\[
+ L(a,\beta,c)=
+ \begin{pmatrix}
+ 1&-a&-\beta&-c\\-a&1&-c&-\beta\\
+ -\beta&-c&1&-a\\-c&-\beta&-a&1
+ \end{pmatrix}.
+\]
+Ce laplacien de graphe est positif et conserve $e=(1,1,1,1)^T/2$.
+Avec $b=(1,0,0,-1)^T$, comparons
+$ {\cal C}_A=L(1/3,1/3,1/3)$ et
+$ {\cal C}_B=L(1/2,0,1/2)$ :
+\[
+ K_A(z)=\frac{2}{z+4/3},\qquad
+ K_B(z)=\frac1{z+1}+\frac1{z+2}.
+\]
+Les deux diagonales valent 1 et les seuls invariants sont proportionnels à $e$.
+Les conductivités réduites sont identiques, $K_A(0)=K_B(0)=3/2$, mais
+\[
+ \tau_A=3/4,\qquad \tau_B=5/6.
+\]
+Les unités sont celles d'un taux commun fixé. Ce réseau abstrait ne réalise pas les contraintes microscopiques de l'AlN.
+
+\subsection{Mémoire non bornée dans la classe positive générale}
+Soit $H$ la matrice orthogonale de Walsh à huit modes,
+$H_{ij}=(-1)^{{\rm popcount}(i\,{\rm AND}\,j)}/\sqrt8$.
+Pour $0<t<1$, les seuls coefficients non nuls de $A(t)$ sont sa diagonale et deux paires :
+\[
+ \operatorname{diag}A=(0,t^2,2,2-t^2,1,1,1,1),\qquad
+ A_{12}=A_{21}=t,\quad A_{47}=A_{74}=-t .
+\]
+Les indices vont de 0 à 7. Posons $ {\cal C}=HAH^T$, $e=h_0$, $b=h_2$.
+Les blocs
+$\bigl(\begin{smallmatrix}t^2&t\\t&2\end{smallmatrix}\bigr)$ et
+$\bigl(\begin{smallmatrix}1&-t\\-t&1\end{smallmatrix}\bigr)$
+sont positifs définis. L'identité des caractères de Walsh annule les contributions croisées à chaque diagonale physique, qui vaut donc 1. Le seul invariant est $e$.
+
+L'identité exacte $ {\cal C}(-h_1/t+h_2)=b$ donne
+\[
+ K_t(0)=1,\qquad \tau_t=1+t^{-2},\qquad
+ K_t(z)=\frac{z+t^2}{z^2+(2+t^2)z+t^2}.
+\]
+La preuve est algébrique, indépendante d'un inverse numérique mal conditionné.
+La construction respecte la parité courant impair/énergie paire, mais pas toutes les contraintes de l'AlN.
+
+Pour $|\omega|\ge\omega_{\min}>0$,
+\[
+ \left|\frac{K_t(i\omega)}{1/(i\omega+2)}-1\right|
+ \le \frac{t^2}{2\omega_{\min}} .
+\]
+Une mémoire définie par la pente en zéro peut donc diverger sans produire un écart important sur une bande expérimentale fixée.
+
+
+\section{Le cône des événements change la conclusion}
+Un modèle à modes, température, coordonnées et événements fixés a une structure plus restrictive :
+\[
+ {\cal C}=\sum_\alpha g_\alpha z_\alpha z_\alpha^T,\qquad g_\alpha\ge0.
+\]
+Les vecteurs d'affinité sont fixés ; seules leurs intensités varient.
+Pour deux vecteurs fixés $u,b$, l'inégalité triangulaire donne
+\[
+ |u^T{\cal C}b|\le R\,u^T{\cal C}u,\qquad
+ R=\max_{\alpha:u^Tz_\alpha\ne0}
+ \frac{|b^Tz_\alpha|}{|u^Tz_\alpha|}.
+\]
+Si tous les dénominateurs sont nuls, ou si $R=0$, le terme croisé est nul.
+Sinon la famille précédente exige $t\le Rt^2$ : elle ne peut appartenir à un même cône fini lorsque $t\to0$.
+
+\subsection{Borne conditionnelle démontrée et auditée}
+Fixons un espace dissipatif réel de dimension $d$, une liste finie de vecteurs $a_\alpha$ et un courant $b\ne0$.
+Pour $A=\sum g_\alpha a_\alpha a_\alpha^T>0$, posons $x=A^{-1}b$, $K=b^Tx$.
+À chaque sous-ensemble $I$ de $d-1$ événements correspond $v_I$ défini par $\det[a_I,y]=v_I^Ty$.
+Cauchy--Binet donne
+\[
+ \operatorname{adj}A=\sum_I c_Iv_Iv_I^T,\qquad c_I=\prod_{\alpha\in I}g_\alpha\ge0.
+\]
+Les sous-ensembles dépendants contribuent zéro. Comme
+$b^T\operatorname{adj}(A)b=\det(A)K>0$,
+\[
+ \frac{x}{K}=\sum_{I:v_I^Tb\ne0}\theta_I\frac{v_I}{v_I^Tb},
+ \quad \theta_I=\frac{c_I(v_I^Tb)^2}{\det(A)K},\quad \sum_I\theta_I=1.
+\]
+Par convexité,
+\[
+ \|A^{-1}b\|\le MK,\qquad
+ \tau_{\rm mem}\le M^2K,\qquad
+ M=\max_{I:v_I^Tb\ne0}\frac{\|v_I\|}{|v_I^Tb|}.
+\]
+Les termes de projection nulle ne contribuent ni au numérateur ni au dénominateur. Le cas $d=1$ utilise le sous-ensemble vide.
+Ainsi, \textbf{dans un cône fini fixé, une conductivité bornée implique une mémoire bornée}. Une diagonale fixée n'est pas nécessaire.
+Il n'y a aucune contradiction avec la classe positive générale : la géométrie admissible diffère.
+La constante peut être immense et varier avec le maillage, les fréquences, la température ou les coordonnées.
+Aucune borne uniforme de continuum, ni valeur de $M$ pour l'AlN, n'a été obtenue. Aucune nouveauté n'est revendiquée.
+
+\section{Élimination contrôlée des modes rapides}
+Sur une décomposition orthogonale retenue/éliminée, écrivons
+\[
+ {\cal C}=\begin{pmatrix}A&K^*\\K&D\end{pmatrix},\qquad
+ V_{\bf k}=\begin{pmatrix}U&B^*\\B&W\end{pmatrix}.
+\]
+Pour $\Re z\ge0$ et $D\ge\gamma I>0$, l'élimination exacte donne
+\[
+ S=z+A+iU-(K^*+iB^*)(z+D+iW)^{-1}(K+iB).
+\]
+Le facteur gauche n'est pas l'adjoint du facteur droit à $ {\bf k}$ fixé.
+Remplacer le résolvant rapide par $D^{-1}$ définit $S_0$, avec
+\[
+ \|S-S_0\|\le
+ \frac{(\|K\|+\|B\|)^2(|z|+\|W\|)}
+      {\gamma(\gamma+\Re z)}.
+\]
+Cette borne est absolue, sans garantie relative uniforme près d'un pôle lent.
+Les sources et populations initiales éliminées apportent aussi des termes qu'il faut conserver ou exclure par hypothèse.
+
+Pour un espace invariant par $ {\cal C}$, $K=0$ et le terme spatial dissipatif est $B^*D^{-1}B$.
+Des problèmes de cellule évitent un inverse dense.
+Pour des moments normaux énergie/quasi-moment, $K=Q{\cal C}_RE$ n'est généralement pas nul.
+À $ {\bf k}=0$,
+\[
+ S(z,0)=A-K^*D^{-1}K+z[I+K^*D^{-2}K]+O(z^2).
+\]
+L'exemple $ {\cal C}=\bigl(\begin{smallmatrix}1+\varepsilon&1\\1&1\end{smallmatrix}\bigr)$ a un taux lent $\varepsilon/2+O(\varepsilon^2)$ ; une élimination statique avec inertie unité prédit $\varepsilon$.
+Des coordonnées mal choisies produisent donc une erreur d'ordre un malgré une basse fréquence.
+Le contrôle de second tour compare 600 systèmes complets et réduits, en distinguant erreur de modèle et arrondi près des pôles. Ces systèmes sont synthétiques.
+
+\section{Conductivité finie ne signifie pas mémoire finie}
+À température strictement positive, pour une branche acoustique linéaire, un coefficient angulaire de taux borné et non nul et un couplage de courant non dégénéré,
+\[
+ r(q,\Omega)\sim a(\Omega)q^\alpha,\qquad
+ M_m=\int Cv_i^2r^{-m}\,d\mu
+ \ \sim\ \int_0^{q_0}q^{n-1-m\alpha}\,dq .
+\]
+Le critère est $m\alpha<n$ ; l'égalité donne une divergence logarithmique.
+En dimension trois, la conductivité demande $\alpha<3$, mais une mémoire finie demande $2\alpha<3$.
+Ces hypothèses ne déterminent pas l'exposant non résolu de l'AlN.
+
+L'exemple exact
+\[
+ K(z)=\int_0^1\frac{q^2}{q^2+z}\,dq
+ =1-\sqrt z\,\arctan(1/\sqrt z)
+\]
+a une conductivité finie et une pente infinie à $z=0^+$.
+Avec une coupure $q_{\min}=1/N$, $M_1=1-1/N$ et $\tau_{\rm mem}=N$.
+
+\textbf{Correction issue de l'audit.}
+Déduire une densité ponctuelle $\rho(r)\propto r^{n/\alpha-1}$ demande davantage que $r\sim aq^\alpha$ : par exemple monotonie et
+$\partial_qr\sim\alpha aq^{\alpha-1}$ avec contrôle uniforme des angles.
+Le taux $r(q)=q^2[1+q\sin(1/q)]$ est positif et monotone près de zéro, mais sa densité transformée oscille.
+Le critère des moments reste valide. Une formulation par mesure cumulée est une autre voie, à justifier séparément.
+
+
+\section{Diagnostics sur les données disponibles}
+Les nombres suivants sont des diagnostics RTA sur \emph{une seule} grille $24^3$ à 300~K. Une sommation indépendante à 75 chiffres retrouve les réponses complexes avec un écart relatif maximal de $2{,}37\,10^{-16}$ ; cela contrôle l'arithmétique, pas le modèle physique.
+
+\begin{center}\begin{tabularx}{\textwidth}{@{}Xrr@{}}\toprule
+Diagnostic & Basal & Axe $c$\\\midrule
+$\kappa(0)$ (W\,m$^{-1}$K$^{-1}$) & 309,775 & 302,443\\
+$\tau_{\rm mem}$ sur cette grille (ps) & 149,30 & 231,66\\
+Part de $\kappa$ sous 2 THz & 13,48\,\% & 16,16\,\%\\
+Part de $M_2$ sous 2 THz & 61,61\,\% & 74,42\,\%\\
+Erreur du pôle mémoire à 200 MHz, relative à $|\kappa|$ & 6,49\,\% & 14,73\,\%\\
+Même erreur, relative à $|\kappa-\kappa(0)|$ & 42,09\,\% & 79,64\,\%\\\bottomrule
+\end{tabularx}\end{center}
+Le pôle comparé vaut $\kappa(0)/(1+z\tau_{\rm mem})$.
+Les THz désignent les phonons ; les MHz désignent la modulation.
+Aucun de ces écarts n'est une erreur de mesure FDTR.
+
+Les nœuds exactement rasants portent 12,966\,\% du transport basal massif.
+Ils produisent un plancher formel de 40,165 W\,m$^{-1}$K$^{-1}$ dans la limite d'épaisseur nulle de la \emph{quadrature fixe}. Ce n'est pas une limite physique de film.
+Une quadrature angulaire régulière à parois diffuses donne au contraire, pour $\epsilon=d/(v\tau)$,
+\[
+ R(\epsilon)=\frac34\epsilon[\log(1/\epsilon)+1-\gamma_{\rm E}]
+ +O(\epsilon^2).
+\]
+Supprimer les modes rasants ne corrige pas cette erreur : leur voisinage continu transporte réellement de la chaleur. Il faut résoudre les cellules correspondantes.
+
+\subsection{Correction numérique}
+Pour des contributions DC $w_\mu$, $K_0=\sum w_\mu$ et
+$\bar\tau=\sum w_\mu\tau_\mu/K_0$,
+\[
+ K(z)-\frac{K_0}{1+z\bar\tau}
+ =\frac{z^2}{(1+z\bar\tau)^2}
+ \sum_\mu\frac{w_\mu(\tau_\mu-\bar\tau)^2}{1+z\tau_\mu}.
+\]
+Cette identité évite la soustraction de réponses presque égales. Elle est vérifiée contre une soustraction directe à 100 chiffres, y compris aux très faibles fréquences. Les fichiers générés portent les versions et empreintes des entrées.
+
+Près de $t=1$ dans la famille à huit modes, une erreur numérique de mémoire de 77,6\,\% peut coexister avec une conductivité correcte à la précision machine : l'arrondi contamine un mode exactement invisible au courant.
+Les contrôles aux deux extrémités singulières, les preuves exactes et les échecs sont conservés. Un petit résidu ne suffit pas à certifier un moment inverse.
+
+\section{Nouvelles formulations : critères d'arrêt}
+Deux chercheurs ont proposé indépendamment quatre pistes ; chacune a été attaquée avant toute implémentation importante :
+\begin{itemize}
+\item Variables minimisant la dissipation : une forme statique finie ne garantit pas que la variable reconstruite possède une norme entropique finie.
+\item Mémoire continue passive : il faut un poids dominant non nul dans la direction étudiée ; les seules données temporelles n'identifient pas la dépendance spatiale.
+\item Bornes par mesures spectrales positives : elles peuvent encadrer une réponse de Laplace, mais des contraintes finies ne suffisent pas à borner sa pente en zéro dans cette classe relâchée.
+\item Sous-espace commun des collisions et vitesses : il peut être exactement tout l'espace des modes. Une réduction approchée demande alors un contrôle sur la bande visée.
+\end{itemize}
+Ces objections définissent les tests à effectuer, pas une raison de choisir arbitrairement une autre fermeture.
+
+\section{Route logicielle et données encore nécessaires}
+Un fichier nommé \texttt{collision\_matrix} ne garantit ni sa base, ni son état avant/après inversion, ni son action sur toutes les parités.
+Deux inspections indépendantes des équations de Chaput et du chemin Python/C de phono3py v4.5.0 distinguent l'opérateur physique $\Omega'$ d'un opérateur $\Omega$ équivalent sur les populations impaires :
+\[
+ \Omega-\Omega'=2\mathsf H P_+ .
+\]
+Ici $P_+$ projette sur les populations paires et $\mathsf H$ représente des canaux de collision.
+L'équivalence pour le courant uniforme ne suffit donc pas pour l'énergie et les sources visqueuses paires.
+La conclusion concerne le chemin inspecté ; les autres implémentations ne sont pas déclarées impossibles. La normalisation d'un export et sa position avant mutation par le solveur demandent aussi un contrôle.
+
+La suite exige un même jeu de constantes de force, des taux $N/U$ documentés selon la convention de zone, une action physique des collisions vérifiée dans les deux parités, ses invariants, les problèmes de cellule et leur convergence. Température, défauts et frontières doivent être contrôlés séparément. Aucun calcul de cette trajectoire complète n'a été exécuté ici.
+
+Le SSD D: accueille la sauvegarde de campagne et les futures données volumineuses.
+Une matrice dense pour $24^3$ points et 12 branches contient environ 205 Gio, contre environ 28 Gio de RAM sur le PC. Du stockage supplémentaire ne remplace pas une action sans matrice dense ou un solveur adapté.
+
+\section{Statut et reproduction}
+Les preuves auditées portent sur leurs classes et hypothèses explicites.
+Aucune vérification formelle par assistant de preuve, nouveauté, réalisation microscopique de la famille à huit modes, convergence du continuum AlN ou validation expérimentale n'est revendiquée.
+
+Le rapport final, les registres, les corrections des rapports initiaux, les expériences et leurs résultats se trouvent dans \texttt{theory/aln/closure/}.
+Le diagnostic massif se reproduit avec \texttt{scripts/analyse\_aln\_response.py}.
+La mise en page reprend le préambule exact de la note 17.
+
+\section{Sources et travaux antérieurs}
+\begin{enumerate}
+\item A. Cepellotti et N. Marzari, Phys. Rev. X \textbf{6}, 041013 (2016), doi:\allowbreak10.1103/PhysRevX.6.041013 ; erratum \textbf{10}, 049901 (2020). L'erratum corrige une inégalité de Matthiessen, pas un vecteur nul.
+\item M. Simoncelli, N. Marzari et A. Cepellotti, Phys. Rev. X \textbf{10}, 011019 (2020), doi:\allowbreak10.1103/PhysRevX.10.011019 : équations visqueuses, secteurs pairs et impairs.
+\item L. Chaput, Phys. Rev. Lett. \textbf{110}, 265506 (2013), doi:\allowbreak10.1103/PhysRevLett.110.265506 ; manuscrit arXiv:1303.4062v1 : comparaison des opérateurs.
+\item J. Ma, W. Li et X. Luo, Phys. Rev. B \textbf{90}, 035203 (2014) : limites du modèle de Callaway pour l'AlN.
+\item G. Fugallo et al., arXiv:1212.0470v2, annexe A : décomposition des collisions en contributions positives d'événements.
+\item X. Rao et al., Mendeley Data V1, doi:\allowbreak10.17632/w9hg2mnnwy.1, CC BY 4.0 : spectre retraité de la note 17.
+\item R. Zwanzig (1961), doi:\allowbreak10.1103/PhysRev.124.983 ; H. Mori (1965), doi:\allowbreak10.1143/PTP.33.423 : projections et mémoire.
+\item Sources phono3py v4.5.0, version exacte et lignes consignées dans les rapports L2 et de vérification de parité. Les prépublications de 2026 sont séparées des résultats établis dans le registre bibliographique.
+\end{enumerate}
+\end{document}

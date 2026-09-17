@@ -5,6 +5,9 @@ campaign artifacts. The single AlN mesh is NOT treated as a convergence study.
 """
 from pathlib import Path
 import json
+import hashlib
+import platform
+import scipy
 import math
 import sys
 
@@ -249,6 +252,13 @@ def benchmarks():
 
 def main():
     data,checks=analyze_data(),benchmarks()
+    source=ROOT/"theory/aln/rao_300K_modes.npz"
+    provenance={"python":platform.python_version(),"numpy":np.__version__,
+                "scipy":scipy.__version__,"mpmath":mp.__version__,
+                "input_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
+                "script_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    data["provenance"]=provenance
+    checks["provenance"]=provenance
     (OUT/"infrared_diagnostics.json").write_text(json.dumps(data,indent=2)+"\n",encoding="utf-8")
     (OUT/"infrared_benchmarks.json").write_text(json.dumps(checks,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"minimum_frequency_THz":data["min_positive_frequency_THz"],

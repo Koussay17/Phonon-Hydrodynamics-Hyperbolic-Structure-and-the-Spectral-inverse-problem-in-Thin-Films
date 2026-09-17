@@ -40,7 +40,7 @@ Les taux disponibles vérifient $r=r_{\rm anh}+r_{\rm iso}$, $\tau=1/r$. La part
 Posons $A_\mu=C_\mu v_{\mu i}^2$. Une durée reproduit la conductivité statique, une autre la pente de sa réponse RTA de Laplace :
 \[\tau_{{\rm stat},i}=\frac{\sum A_\mu\tau_\mu}{\sum A_\mu},\qquad \kappa_i(p)=\sum_\mu\frac{A_\mu\tau_\mu}{1+p\tau_\mu}=\kappa_i(0)[1-p\tau_{{\rm mem},i}+O(p^2)],\]
 \[\tau_{{\rm mem},i}=\frac{\sum A_\mu\tau_\mu^2}{\sum A_\mu\tau_\mu}\ \ge\ \tau_{{\rm stat},i}.\]
-La dernière inégalité découle de Cauchy--Schwarz ; l'égalité exige une durée commune aux modes de poids non nul. La mémoire ajuste une pente, pas toute la réponse. Aucun des deux temps n'est automatiquement un temps GK.
+La dernière inégalité découle de Cauchy--Schwarz ; l'égalité exige une durée commune aux modes de poids non nul. La mémoire ajuste une pente, pas toute la réponse. Le développement affiché est valable sur la grille finie ; dans le continuum, sa pente et son reste demandent la convergence des moments inverses correspondants (note 18). Aucun des deux temps n'est automatiquement un temps GK.
 \begin{center}\begin{tabular}{@{}lrr@{}}\toprule
 Rao, 300 K & Plan basal & Axe $c$\\\midrule
 $\kappa^{\rm RTA}$ (W\,m$^{-1}$K$^{-1}$) & 309,775 & 302,443\\
@@ -54,7 +54,7 @@ Avec des taux variables, deux cibles utilisant la même température énergétiq
 \[y_\mu=\frac{\sqrt{W_\mu}\delta n_\mu}{\sqrt{n_\mu^0(1+n_\mu^0)}},\quad e_\mu=\epsilon_\mu\sqrt{W_\mu n_\mu^0(1+n_\mu^0)},\quad P_{\mu j}=\hbar q_{\mu j}\sqrt{W_\mu n_\mu^0(1+n_\mu^0)}.\]
 Ces opérateurs se construisent sur la zone complète, avec les vecteurs dans une première zone de Brillouin cohérente, ou après reconstruction explicite des symétries. Les seuls représentants irréductibles ne suffisent pas pour les moments de quasi-moment. Les translations demandent un traitement par limite. Pour $D_N=\mathrm{diag}(r_{N,\mu})$ et $H_N=(e,P_x,P_y,P_z)$, une relaxation projetée conservatrice s'écrit
 \[{\cal C}_N=D_N-D_NH_N(H_N^TD_NH_N)^+H_N^TD_N.\]
-Pour ${\cal C}_R$, conserver seulement $H_R=e$. On a $H_N^T{\cal C}_Ny=0$ et $e^T{\cal C}_Ry=0$. Avec $U=D^{1/2}H$, l'opérateur devient $D^{1/2}[I-U(U^TU)^+U^T]D^{1/2}$ : symétrique positif semi-défini. Le code applique cette projection sans matrice dense. C'est un modèle de relaxation, pas la matrice ab initio des collisions : les diagonales ne fixent pas les couplages.
+Pour ${\cal C}_R$, conserver seulement $H_R=e$. On a $H_N^T{\cal C}_Ny=0$ et $e^T{\cal C}_Ry=0$. Avec $U=D^{1/2}H$, l'opérateur devient $D^{1/2}[I-U(U^TU)^+U^T]D^{1/2}$ : symétrique positif semi-défini. Le code applique cette projection sans matrice dense. C'est un modèle de relaxation, pas la matrice ab initio des collisions : les diagonales ne fixent pas les couplages. La projection modifie aussi la diagonale de départ ; ses taux sont des paramètres avant projection, pas la diagonale finale. L'identité de pseudo-inverse et les limites de cette interprétation sont auditées dans la note 18.
 Pour un opérateur complet ${\cal C}$ et $b_{\mu i}=\epsilon_\mu v_{\mu i}\sqrt{W_\mu n_\mu^0(1+n_\mu^0)}$, sur le sous-espace dissipatif,
 \[\kappa_i(p)=\frac{b_i^T({\cal C}+pI)^{-1}b_i}{k_BT^2},\qquad \tau_{{\rm mem},i}=\frac{b_i^T{\cal C}^{-2}b_i}{b_i^T{\cal C}^{-1}b_i}.\]
 Un invariant restant couplé au flux peut empêcher une conductivité DC finie. Dans une limite de dérive lente $y\simeq P\mathbf a$, les matrices $S=P^TP$ et $M=P^T{\cal C}_RP$ donnent $S\dot{\mathbf a}=-M\mathbf a$ en géométrie uniforme. Les taux sont les valeurs propres généralisées de $(M,S)$.

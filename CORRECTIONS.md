@@ -139,3 +139,16 @@ update archive covers only the initial correction pass.
 
 Notes 14–16 were pushed in commit 951d254. This revision includes the
 spectral AlN continuation described above.
+
+## Audited closure continuation — 17 September 2026
+
+- Note 18 preserves the previous typography and gives the audited operator, event-cone and convergence distinctions.
+- Broad PSD nonidentifiability is not microscopic AlN nonidentifiability. A fixed finite event cone bounds memory at bounded DC; no uniform continuum/material bound is supplied.
+- Added the missing derivative condition for a pointwise rate-density inference; retained its counterexample and all failed numerical regimes.
+- Corrected very-low-frequency reduction-error cancellation; recorded provenance and both total-response/dynamic-correction error metrics.
+- Five new independent 100-digit tests; the full suite passed 205 tests in 186.54 seconds.
+- Updated note 17 to distinguish bare projected-relaxation parameters from final diagonals and finite-grid Taylor expansions from continuum claims.
+- Exact phono3py source/parity scope, incomplete checks and source access are recorded in the closure reports. No physical AlN even-sector collision export is certified.
+- The campaign and future bulky storage use the user-authorized D: SSD; repository files remain in their existing checkout.
+
+First independent-report/experiment checkpoint pushed as 8b252a0. This continuation contains the reviewed synthesis and numerical corrections.

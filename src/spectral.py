@@ -86,7 +86,9 @@ def conserving_collision_action(rate, invariants, perturbation):
     H columns span conserved moments in entropy-normalized coordinates.
     For N collisions use energy + crystal momentum; for R use energy only.
     The mode quadrature weights must already be included in H and y.
-    Positive rates required. SVD avoids an ill-conditioned Gram inversion.
+    Input rates are bare model parameters: projection changes the resulting
+    collision diagonal. Positive rates required. SVD avoids an ill-conditioned
+    Gram inversion.
     """
     r = np.asarray(rate, float)
     h = np.asarray(invariants, float)
