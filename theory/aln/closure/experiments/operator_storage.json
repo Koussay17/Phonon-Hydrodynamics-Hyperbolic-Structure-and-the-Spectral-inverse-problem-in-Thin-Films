@@ -1,0 +1,16 @@
+[
+  {
+    "q_grid": 24,
+    "modes": 165888,
+    "dense_float64_bytes": 220150628352,
+    "dense_GiB": 205.03125,
+    "four_slow_vectors_MiB": 5.0625
+  },
+  {
+    "q_grid": 45,
+    "modes": 1093500,
+    "dense_float64_bytes": 9565938000000,
+    "dense_GiB": 8908.974006772041,
+    "four_slow_vectors_MiB": 33.3709716796875
+  }
+]

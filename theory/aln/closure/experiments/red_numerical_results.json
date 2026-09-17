@@ -1,0 +1,614 @@
+{
+  "environment": {
+    "python": "3.14.7",
+    "executable": "C:\\Users\\Koussay\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "numpy": "2.5.3",
+    "mpmath": "1.3.0"
+  },
+  "input_sha256": "b6712ecbbbfd2388fecce89557c6d6138309c8fe8bce148a5b9449fa404bbb87",
+  "script_sha256": "6f5d6e912299e9cd408b23bdf7c0af885fdfe9bb5337aa2c6778285e03402aad",
+  "D": {
+    "exact": [
+      {
+        "t": "0.5",
+        "dc": "1",
+        "memory": "5",
+        "zero_residual": true,
+        "fixed_diagonal": true,
+        "energy_conservation": true
+      },
+      {
+        "t": "0.001",
+        "dc": "1",
+        "memory": "1000001",
+        "zero_residual": true,
+        "fixed_diagonal": true,
+        "energy_conservation": true
+      },
+      {
+        "t": "1e-8",
+        "dc": "1",
+        "memory": "10000000000000001",
+        "zero_residual": true,
+        "fixed_diagonal": true,
+        "energy_conservation": true
+      },
+      {
+        "t": "1e-20",
+        "dc": "1",
+        "memory": "10000000000000000000000000000000000000001",
+        "zero_residual": true,
+        "fixed_diagonal": true,
+        "energy_conservation": true
+      }
+    ],
+    "double": [
+      {
+        "t": "0.001",
+        "assembly": "target_transform",
+        "exact_condition": 4000002.00000075,
+        "assembly_difference_norm": 2.9884892357908127e-16,
+        "dc": 1.0000000000183178,
+        "memory": 1000001.0000549447,
+        "dc_error": 1.8317791727895383e-11,
+        "memory_relative_error": 5.494449339948915e-11,
+        "unlifted_residual": 1.1503282157455565e-13,
+        "normwise_backward_error": 5.9769778399123e-17,
+        "spectral": {
+          "least_eigenvalue": 4.999998749843144e-07,
+          "dc": 1.000000000015483,
+          "memory": 1000001.0000468541,
+          "memory_relative_error": 4.6854076174440706e-11
+        },
+        "p_point3_resolvent_error": 0.0
+      },
+      {
+        "t": "0.001",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 4000002.00000075,
+        "assembly_difference_norm": 0.0,
+        "dc": 1.0000000000392362,
+        "memory": 1000001.000117801,
+        "dc_error": 3.923616986867273e-11,
+        "memory_relative_error": 1.17800880161667e-10,
+        "unlifted_residual": 1.007493139449912e-13,
+        "normwise_backward_error": 5.019524825255043e-17,
+        "spectral": {
+          "least_eigenvalue": 4.999998749230409e-07,
+          "dc": 1.0000000000769065,
+          "memory": 1000001.0002308248,
+          "memory_relative_error": 2.3082447064837197e-10
+        },
+        "p_point3_resolvent_error": 5.551115123125783e-17
+      },
+      {
+        "t": "1e-5",
+        "assembly": "target_transform",
+        "exact_condition": 40000000002.0,
+        "assembly_difference_norm": 1.1415455055362368e-16,
+        "dc": 0.9999995076468622,
+        "memory": 9999985230.418804,
+        "dc_error": 4.923531378153712e-07,
+        "memory_relative_error": 1.4770581192591337e-06,
+        "unlifted_residual": 1.0647871483118602e-11,
+        "normwise_backward_error": 7.754452619319462e-17,
+        "spectral": {
+          "least_eigenvalue": 5.000000306038953e-11,
+          "dc": 0.9999999693768867,
+          "memory": 9999999082.44101,
+          "memory_relative_error": 9.185589888716095e-08
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "1e-5",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 40000000002.0,
+        "assembly_difference_norm": 0.0,
+        "dc": 0.9999990219184838,
+        "memory": 9999970658.490057,
+        "dc_error": 9.780815162230283e-07,
+        "memory_relative_error": 2.9342509938468098e-06,
+        "unlifted_residual": 1.5697721094680936e-11,
+        "normwise_backward_error": 8.460427010775177e-17,
+        "spectral": {
+          "least_eigenvalue": 5.0000039178092967e-11,
+          "dc": 0.9999996081918308,
+          "memory": 9999988247.05739,
+          "memory_relative_error": 1.1753942606995693e-06
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "1e-6",
+        "assembly": "target_transform",
+        "exact_condition": 4000000000002.0,
+        "assembly_difference_norm": 9.814458896668254e-17,
+        "dc": 0.9998307069181465,
+        "memory": 999492149613.5918,
+        "dc_error": 0.00016929308185353875,
+        "memory_relative_error": 0.0005078503874077489,
+        "unlifted_residual": 3.008135341925829e-10,
+        "normwise_backward_error": 1.0474265533643322e-16,
+        "spectral": {
+          "least_eigenvalue": 5.000119533534259e-13,
+          "dc": 0.9999880468610929,
+          "memory": 999964140869.3857,
+          "memory_relative_error": 3.5859131614190964e-05
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "1e-6",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 4000000000002.0,
+        "assembly_difference_norm": 0.0,
+        "dc": 0.9998341740865726,
+        "memory": 999502549764.002,
+        "dc_error": 0.0001658259134273976,
+        "memory_relative_error": 0.0004974502369975431,
+        "unlifted_residual": 1.563736116076674e-10,
+        "normwise_backward_error": 6.583867522613824e-17,
+        "spectral": {
+          "least_eigenvalue": 5.00069969075203e-13,
+          "dc": 0.9999300406435385,
+          "memory": 999790126968.4724,
+          "memory_relative_error": 0.00020987303252739675
+        },
+        "p_point3_resolvent_error": 5.551115123125783e-17
+      },
+      {
+        "t": "1e-7",
+        "assembly": "target_transform",
+        "exact_condition": 400000000000002.0,
+        "assembly_difference_norm": 3.0617630729379714e-16,
+        "dc": 1.0014446331188083,
+        "memory": 100433598609645.16,
+        "dc_error": 0.0014446331188082695,
+        "memory_relative_error": 0.004335986096441369,
+        "unlifted_residual": 1.2688965143959273e-09,
+        "normwise_backward_error": 3.9890885515895946e-17,
+        "spectral": {
+          "least_eigenvalue": 4.969569322856326e-15,
+          "dc": 1.0030617023036914,
+          "memory": 100919445099826.38,
+          "memory_relative_error": 0.009194450998253556
+        },
+        "p_point3_resolvent_error": 5.551115123125783e-17
+      },
+      {
+        "t": "1e-7",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 400000000000002.0,
+        "assembly_difference_norm": 0.0,
+        "dc": 1.0028443413320929,
+        "memory": 100854108885815.08,
+        "dc_error": 0.002844341332092881,
+        "memory_relative_error": 0.008541088858140533,
+        "unlifted_residual": 8.385019639778269e-10,
+        "normwise_backward_error": 4.644279526168965e-17,
+        "spectral": {
+          "least_eigenvalue": 4.996652897005965e-15,
+          "dc": 1.0003349361146339,
+          "memory": 100100491728113.7,
+          "memory_relative_error": 0.001004917281126838
+        },
+        "p_point3_resolvent_error": 5.551115123125783e-17
+      },
+      {
+        "t": "1e-8",
+        "assembly": "target_transform",
+        "exact_condition": 4e+16,
+        "assembly_difference_norm": 1.118006732348346e-16,
+        "dc": 0.7183563429862261,
+        "memory": 2654921476785324.0,
+        "dc_error": 0.2816436570137739,
+        "memory_relative_error": 0.7345078523214676,
+        "unlifted_residual": 7.51052472200862e-09,
+        "normwise_backward_error": 7.68867121064324e-17,
+        "spectral": {
+          "least_eigenvalue": 2.0870676493628408e-17,
+          "dc": 1.6978528624945508,
+          "memory": 3.3803906945824744e+16,
+          "memory_relative_error": 2.3803906945824744
+        },
+        "p_point3_resolvent_error": 1.6653345369377348e-16
+      },
+      {
+        "t": "1e-8",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 4e+16,
+        "assembly_difference_norm": 0.0,
+        "dc": 0.7183563429862261,
+        "memory": 2654921560154770.0,
+        "dc_error": 0.2816436570137739,
+        "memory_relative_error": 0.734507843984523,
+        "unlifted_residual": 5.925391630294311e-09,
+        "normwise_backward_error": 4.2675530745958324e-17,
+        "spectral": {
+          "least_eigenvalue": 1.5557400529311936e-17,
+          "dc": 2.106952236846229,
+          "memory": 4.902428236804453e+16,
+          "memory_relative_error": 3.902428236804453
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "1e-9",
+        "assembly": "target_transform",
+        "exact_condition": 4e+18,
+        "assembly_difference_norm": 8.324037097411163e-17,
+        "dc": 0.5144115220755339,
+        "memory": 1614986463964208.0,
+        "dc_error": 0.48558847792446613,
+        "memory_relative_error": 0.9983850135360358,
+        "unlifted_residual": 5.594921944225827e-09,
+        "normwise_backward_error": 5.59098632067013e-17,
+        "spectral": {
+          "least_eigenvalue": -2.7698044944090053e-19,
+          "dc": -0.4025908927221379,
+          "memory": -8.094273694887783e+18,
+          "memory_relative_error": 9.094273694887784
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "1e-9",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 4e+18,
+        "assembly_difference_norm": 0.0,
+        "dc": 0.5021835633087903,
+        "memory": 37977740538582.82,
+        "dc_error": 0.4978164366912097,
+        "memory_relative_error": 0.9999620222594614,
+        "unlifted_residual": 9.37144130170522e-10,
+        "normwise_backward_error": 8.608783219543057e-17,
+        "spectral": {
+          "least_eigenvalue": -3.619780155950782e-18,
+          "dc": 0.4309350235769286,
+          "memory": 4.427554144770003e+16,
+          "memory_relative_error": 0.9557244585522999
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "0.9999999999999999",
+        "assembly": "target_transform",
+        "exact_condition": 2.6180339887498948e+16,
+        "assembly_difference_norm": 3.22610197952911e-16,
+        "dc": 0.9999999999999999,
+        "memory": 2.000635823925684,
+        "dc_error": 1.1102230246251565e-16,
+        "memory_relative_error": 0.0003179119628420324,
+        "unlifted_residual": 2.482534153247273e-16,
+        "normwise_backward_error": 4.8665962312175655e-17,
+        "spectral": {
+          "least_eigenvalue": 5.0318132297185896e-17,
+          "dc": 0.9999999999999993,
+          "memory": 3.551993212369804,
+          "memory_relative_error": 0.775996606184902
+        },
+        "p_point3_resolvent_error": 1.1102230246251565e-16
+      },
+      {
+        "t": "0.9999999999999999",
+        "assembly": "exact_entries_rounded_once",
+        "exact_condition": 2.6180339887498948e+16,
+        "assembly_difference_norm": 0.0,
+        "dc": 0.9999999999999999,
+        "memory": 2.007591991411009,
+        "dc_error": 1.1102230246251565e-16,
+        "memory_relative_error": 0.0037959957055044846,
+        "unlifted_residual": 1.8410966031475738e-16,
+        "normwise_backward_error": 3.5361326851451224e-17,
+        "spectral": {
+          "least_eigenvalue": 1.4051260155412137e-16,
+          "dc": 1.0,
+          "memory": 2.00944775225016,
+          "memory_relative_error": 0.004723876125080073
+        },
+        "p_point3_resolvent_error": 0.0
+      }
+    ],
+    "precision": [
+      {
+        "t": "1e-20",
+        "decimal_precision": 50,
+        "dc": "0.9999999999937141279983105",
+        "memory": "9.99999999981142383994971e+39",
+        "dc_error": "6.28587200169e-12",
+        "memory_relative_error": "1.8857616005e-11",
+        "residual": "2.03547793391e-32"
+      },
+      {
+        "t": "1e-20",
+        "decimal_precision": 80,
+        "dc": "1.0",
+        "memory": "1.0e+40",
+        "dc_error": "2.8614293636e-42",
+        "memory_relative_error": "8.58428809079e-42",
+        "residual": "1.54738022883e-62"
+      },
+      {
+        "t": "1e-20",
+        "decimal_precision": 110,
+        "dc": "1.0",
+        "memory": "1.0e+40",
+        "dc_error": "7.10568771475e-73",
+        "memory_relative_error": "2.13170631442e-72",
+        "residual": "9.43004137916e-93"
+      },
+      {
+        "t": "1e-40",
+        "decimal_precision": 50,
+        "error": "matrix is numerically singular"
+      },
+      {
+        "t": "1e-40",
+        "decimal_precision": 80,
+        "dc": "0.9677860994066144311010287",
+        "memory": "9.044305758564789105985279e+79",
+        "dc_error": "0.0322139005934",
+        "memory_relative_error": "0.0955694241435",
+        "residual": "7.96781253872e-43"
+      },
+      {
+        "t": "1e-40",
+        "decimal_precision": 110,
+        "dc": "1.0",
+        "memory": "1.0e+80",
+        "dc_error": "2.34378283572e-32",
+        "memory_relative_error": "7.03134850716e-32",
+        "residual": "2.32439922278e-73"
+      }
+    ],
+    "perturbation": [
+      {
+        "t": "1/100000000",
+        "perturbation_spectral_norm": "1/10000000000000000",
+        "dc": "2/3",
+        "memory_ratio": "5000000000000002/30000000000000003",
+        "psd": true,
+        "description": "Add delta to Walsh A11 and subtract delta from A33: diagonal, energy, parity and b preserved; DC changes."
+      },
+      {
+        "t": "1/100000000",
+        "perturbation_spectral_norm": "49/1000000000000000000",
+        "dc": "51/2",
+        "memory_ratio": "100000000000000002601/1020000000000000102",
+        "psd": true,
+        "description": "Add delta to Walsh A11 and subtract delta from A33: diagonal, energy, parity and b preserved; DC changes."
+      }
+    ]
+  },
+  "bulk": {
+    "shape": [
+      793,
+      12
+    ],
+    "degeneracy_sum": 13824,
+    "mp_dps": 75,
+    "constants": "Exact SI h and kB; hbar=h/(2pi)",
+    "directions": {
+      "basal": {
+        "moments": [
+          "12900772000886.66273978781",
+          "309.7751567849200133259223",
+          "4.625067184262317117446138e-8",
+          "2.577575416025371267678773e-17"
+        ],
+        "memory_ps": 149.30400592044725,
+        "static_ps": 24.01214103804248,
+        "published_dc_relative_error": 4.2812346033676395e-17,
+        "published_memory_relative_error": 4.0137309504501626e-17,
+        "response": [
+          {
+            "f_Hz": 1000.0,
+            "real": 309.77515678390245,
+            "imag": -0.00029060154176327257,
+            "response_relative_error": 6.031323541223842e-17,
+            "memory_pole_relative_error": 2.4048774982894013e-12,
+            "reported_error_relative_discrepancy": 2.4891601828044708e-05,
+            "stable_identity_relative_discrepancy": 1.0162214960110072e-16,
+            "memory_pole_dynamic_correction_error": 2.563549042287261e-06,
+            "static_pole_dynamic_correction_error": 0.8391728280152003
+          },
+          {
+            "f_Hz": 100000.0,
+            "real": 309.77514660906365,
+            "imag": -0.029060148694921604,
+            "response_relative_error": 5.69622465643516e-17,
+            "memory_pole_relative_error": 2.404877027885835e-08,
+            "reported_error_relative_discrepancy": 1.3597130035996745e-09,
+            "stable_identity_relative_discrepancy": 2.7439432023361753e-16,
+            "memory_pole_dynamic_correction_error": 0.0002563548794317489,
+            "static_pole_dynamic_correction_error": 0.8391728183147006
+          },
+          {
+            "f_Hz": 1000000.0,
+            "real": 309.7741392341958,
+            "imag": -0.29059606006309374,
+            "response_relative_error": 1.0969414654885564e-17,
+            "memory_pole_relative_error": 2.4048304553938274e-06,
+            "reported_error_relative_discrepancy": 1.4541587316989171e-11,
+            "stable_identity_relative_discrepancy": 2.9953826574021387e-16,
+            "memory_pole_dynamic_correction_error": 0.0025635242438352026,
+            "static_pole_dynamic_correction_error": 0.8391718578987375
+          },
+          {
+            "f_Hz": 10000000.0,
+            "real": 309.6737489440786,
+            "imag": -2.9005583835153605,
+            "response_relative_error": 4.274018103095452e-17,
+            "memory_pole_relative_error": 0.0002400194265965491,
+            "reported_error_relative_discrepancy": 3.921008810495648e-13,
+            "stable_identity_relative_discrepancy": 5.774754956403433e-16,
+            "memory_pole_dynamic_correction_error": 0.025610789443242736,
+            "static_pole_dynamic_correction_error": 0.8390761102564386
+          },
+          {
+            "f_Hz": 50000000.0,
+            "real": 307.42597574790784,
+            "imag": -13.913136907796577,
+            "response_relative_error": 7.252808754799873e-17,
+            "memory_pole_relative_error": 0.005747376901116192,
+            "reported_error_relative_discrepancy": 4.963312601027497e-15,
+            "stable_identity_relative_discrepancy": 1.6777582400313578e-16,
+            "memory_pole_dynamic_correction_error": 0.12535031280945702,
+            "static_pole_dynamic_correction_error": 0.8369128925587127
+          },
+          {
+            "f_Hz": 100000000.0,
+            "real": 301.9512808020069,
+            "imag": -25.17830473199931,
+            "response_relative_error": 1.9331000728964992e-16,
+            "memory_pole_relative_error": 0.020714646108566707,
+            "reported_error_relative_discrepancy": 1.2360823826904537e-14,
+            "stable_identity_relative_discrepancy": 3.3260682141985195e-17,
+            "memory_pole_dynamic_correction_error": 0.23805461816283874,
+            "static_pole_dynamic_correction_error": 0.8314745538235696
+          },
+          {
+            "f_Hz": 200000000.0,
+            "real": 289.20176109926757,
+            "imag": -40.064586283219384,
+            "response_relative_error": 1.8527381458246438e-16,
+            "memory_pole_relative_error": 0.06492676093550019,
+            "reported_error_relative_discrepancy": 3.066391668854237e-15,
+            "stable_identity_relative_discrepancy": 7.395794029639655e-17,
+            "memory_pole_dynamic_correction_error": 0.42089333184225647,
+            "static_pole_dynamic_correction_error": 0.8175619389388445
+          },
+          {
+            "f_Hz": 1000000000.0,
+            "real": 228.0743827766965,
+            "imag": -74.83150413147209,
+            "response_relative_error": 3.5418985830410045e-17,
+            "memory_pole_relative_error": 0.42415653576208234,
+            "reported_error_relative_discrepancy": 1.1713847804978588e-16,
+            "stable_identity_relative_discrepancy": 1.1713847804978588e-16,
+            "memory_pole_dynamic_correction_error": 0.9189615691145677,
+            "static_pole_dynamic_correction_error": 0.724602444720929
+          }
+        ],
+        "infrared": {
+          "M1_below_1_THz_fraction": 0.01824335132463691,
+          "M2_below_1_THz_fraction": 0.1428458623770203,
+          "M1_below_2_THz_fraction": 0.13483941397493507,
+          "M2_below_2_THz_fraction": 0.6160751145944673
+        },
+        "grazing_zero_dc_fraction": 0.12966002360135917,
+        "grazing_zero_M2_fraction": 0.3338086546214306,
+        "grazing_zero_floor": 40.16545413984746
+      },
+      "c_axis": {
+        "moments": [
+          "14695111944316.7040973498",
+          "302.4426160153509520769559",
+          "7.006238995985437598944941e-8",
+          "8.435753804805950727777386e-17"
+        ],
+        "memory_ps": 231.65515125784472,
+        "static_ps": 20.581171287525976,
+        "published_dc_relative_error": 6.982771747496705e-18,
+        "published_memory_relative_error": 5.754771776734147e-17,
+        "response": [
+          {
+            "f_Hz": 1000.0,
+            "real": 302.44261601202066,
+            "imag": -0.000440214979142706,
+            "response_relative_error": 2.3629390653554785e-16,
+            "memory_pole_relative_error": 8.892777924024747e-12,
+            "reported_error_relative_discrepancy": 2.4352991326224624e-05,
+            "stable_identity_relative_discrepancy": 3.38041935169944e-16,
+            "memory_pole_dynamic_correction_error": 6.109639940284707e-06,
+            "static_pole_dynamic_correction_error": 0.9111559955546817
+          },
+          {
+            "f_Hz": 100000.0,
+            "real": 302.44258271238203,
+            "imag": -0.044021458980642435,
+            "response_relative_error": 1.4270071063832973e-16,
+            "memory_pole_relative_error": 8.892770457870827e-08,
+            "reported_error_relative_discrepancy": 2.103175100503908e-09,
+            "stable_identity_relative_discrepancy": 5.928048735650115e-17,
+            "memory_pole_dynamic_correction_error": 0.0006109637858165639,
+            "static_pole_dynamic_correction_error": 0.9111559693613289
+          },
+          {
+            "f_Hz": 1000000.0,
+            "real": 302.43928623559816,
+            "imag": -0.44017604902162905,
+            "response_relative_error": 8.360818542237804e-19,
+            "memory_pole_relative_error": 8.892031353354146e-06,
+            "reported_error_relative_discrepancy": 1.83707457334361e-12,
+            "stable_identity_relative_discrepancy": 4.4318871108029013e-16,
+            "memory_pole_dynamic_correction_error": 0.006109431730667957,
+            "static_pole_dynamic_correction_error": 0.9111533762119288
+          },
+          {
+            "f_Hz": 10000000.0,
+            "real": 302.1147037876543,
+            "imag": -4.363940071852601,
+            "response_relative_error": 6.001816320129804e-17,
+            "memory_pole_relative_error": 0.0008819285429834107,
+            "reported_error_relative_discrepancy": 1.1684959323275006e-13,
+            "stable_identity_relative_discrepancy": 3.07820324067027e-16,
+            "memory_pole_dynamic_correction_error": 0.060890448558276876,
+            "static_pole_dynamic_correction_error": 0.9108965448788003
+          },
+          {
+            "f_Hz": 50000000.0,
+            "real": 296.2860252357132,
+            "imag": -18.655919621711323,
+            "response_relative_error": 9.797589617087423e-17,
+            "memory_pole_relative_error": 0.01884906710417126,
+            "reported_error_relative_discrepancy": 3.282028038378365e-15,
+            "stable_identity_relative_discrepancy": 1.529289770163753e-16,
+            "memory_pole_dynamic_correction_error": 0.28483702841273717,
+            "static_pole_dynamic_correction_error": 0.9057925167650699
+          },
+          {
+            "f_Hz": 100000000.0,
+            "real": 287.0781182575324,
+            "imag": -29.231259926359947,
+            "response_relative_error": 4.26724904966405e-17,
+            "memory_pole_relative_error": 0.057488662664951624,
+            "reported_error_relative_discrepancy": 2.8822575621947195e-16,
+            "stable_identity_relative_discrepancy": 1.6752554191204163e-16,
+            "memory_pole_dynamic_correction_error": 0.5023453809320729,
+            "static_pole_dynamic_correction_error": 0.8960841112890344
+          },
+          {
+            "f_Hz": 200000000.0,
+            "real": 272.36126036400975,
+            "imag": -41.111266157818086,
+            "response_relative_error": 1.081870262490309e-16,
+            "memory_pole_relative_error": 0.1472887931361465,
+            "reported_error_relative_discrepancy": 1.0883518345929994e-16,
+            "stable_identity_relative_discrepancy": 2.680512723890147e-16,
+            "memory_pole_dynamic_correction_error": 0.79640927727869,
+            "static_pole_dynamic_correction_error": 0.8781800364979275
+          },
+          {
+            "f_Hz": 1000000000.0,
+            "real": 213.5200547760264,
+            "imag": -68.05704093010362,
+            "response_relative_error": 1.0415254961287434e-16,
+            "memory_pole_relative_error": 0.6138626929797553,
+            "reported_error_relative_discrepancy": 3.002681082483566e-17,
+            "stable_identity_relative_discrepancy": 2.108853378736151e-16,
+            "memory_pole_dynamic_correction_error": 1.2285407735993052,
+            "static_pole_dynamic_correction_error": 0.7948947907366304
+          }
+        ],
+        "infrared": {
+          "M1_below_1_THz_fraction": 0.036758942660505146,
+          "M2_below_1_THz_fraction": 0.3208617069567246,
+          "M1_below_2_THz_fraction": 0.16158940723089613,
+          "M2_below_2_THz_fraction": 0.7442149450872377
+        }
+      }
+    }
+  }
+}

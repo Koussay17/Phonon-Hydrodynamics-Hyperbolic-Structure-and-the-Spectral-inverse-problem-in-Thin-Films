@@ -1,0 +1,36 @@
+{
+  "python": "3.14.7",
+  "packages": {
+    "numpy": true,
+    "scipy": true,
+    "sympy": true,
+    "mpmath": true,
+    "phono3py": false,
+    "phonopy": false,
+    "spglib": false,
+    "h5py": false,
+    "matplotlib": true
+  },
+  "inputs": {
+    "notes/17_AlN_spectral_temperature.tex": {
+      "bytes": 13782,
+      "sha256": "2628f72436d378ae1c230d9bacef3bceaa602b429de8702493f1a5588b86ea70"
+    },
+    "src/spectral.py": {
+      "bytes": 5963,
+      "sha256": "83f1f126ea35dd6a16a0b23e5104f6f67d74ff75b034c61c2ea1a9c97b103027"
+    },
+    "theory/aln/rao_300K_modes.npz": {
+      "bytes": 426975,
+      "sha256": "b6712ecbbbfd2388fecce89557c6d6138309c8fe8bce148a5b9449fa404bbb87"
+    },
+    "theory/aln/sources.json": {
+      "bytes": 1956,
+      "sha256": "766da4e16081f65ce3375a5fc0e3c6826aceeb60cc251dc00f5ec0396179c6aa"
+    },
+    "theory/aln/olympics_temperature.json": {
+      "bytes": 3560,
+      "sha256": "d6dd4d8cbd9f9058cb23adf9e722569ef90dab151bb345f8b7cfbb0cc1eaece8"
+    }
+  }
+}

@@ -15,7 +15,7 @@ their kinetics, entropy, transport regimes and inverse problems.
 
 | Part | Status |
 |---|---|
-| I — kinetic closure | Linear grey conserving closure derived and checked (note 14); spectral data and conserving projection framework added (note 17); quantitative AlN GK closure remains open. |
+| I — kinetic closure | Linear grey conserving closure derived and checked (note 14); spectral data and conserving projection framework added (note 17); operator identifiability and event-cone limits audited (note 18); quantitative AlN GK closure remains open. |
 | II — admissibility | Near-equilibrium entropy and homogeneous propagation checks; GK infinite speed requires a nonzero nonlocal term. |
 | III — AlN regimes | Twelve-branch RTA spectrum at 300 K and published bulk conductivity trajectory; no validated N/U hydrodynamic classification. |
 | IV — inverse problem | Homogeneous scale invariance, conditional sensitivities and reproduction of Fourier resonance. |
@@ -127,6 +127,8 @@ remain missing.
 - [15 — comparison with prior work](notes/15_Comparaison_travaux_anterieurs.pdf)
 - [16 — experimental preparation](notes/16_Analyse_experimentale_FDTR.pdf)
 - [17 — spectral AlN, temperature and boundaries](notes/17_AlN_spectral_temperature.pdf)
+- [18 — audited spectral closure and physical limits](notes/18_Audit_fermeture_spectrale.pdf)
+- [Research synthesis, reviews and reproducible experiments](theory/aln/closure/13-final-report.md)
 - [Spectral data, attribution and reproducibility](theory/aln/README.md)
 - [Synthetic results](theory/experimental_results.json)
 - [Experimental input checklist](theory/experimental_inputs.template.json)
@@ -140,7 +142,7 @@ The new AlN inputs are published calculations, not laboratory measurements.
 At 300 K, the source RTA capacity and conductivities are reproduced; this
 checks unit conversion and quadrature weights, not mesh convergence. The
 in-plane surface calculation is not a cross-plane FDTR prediction.
-The full test suite now contains 200 passing tests.
+The full test suite now contains 205 passing tests (17 September 2026).
 
 ---
 
@@ -212,3 +214,13 @@ see theory/aln/README.md for attribution. Laboratory data is not distributed.
 
 Koussay Mansouri — internship supervised at CRTEn.
 Issues and corrections are welcome, including on the derivations.
+
+## Audited spectral continuation — 17 September 2026
+
+Four independent mathematical branches, a second-generation experiment, four independent hostile reviews, and attacks on four alternative formulations are archived under theory/aln/closure/. The final report supersedes the frozen first-pass reports where explicit errata apply.
+
+A broad positive-matrix counterexample does **not** establish microscopic AlN nonidentifiability. In a fixed finite event cone, bounded DC response bounds the first memory moment; the bound is not uniform under mesh refinement. The supplied AlN data still lack a validated physical collision action and N/U temperature trajectory.
+
+The bulk RTA diagnostic records provenance and evaluates pole errors without low-frequency cancellation. Its 200 MHz memory-pole errors are 6.49% basal and 14.73% along c relative to total response; these are discrete bulk-model errors, not FDTR measurement errors. Static agreement does not establish continuum moment convergence.
+
+The inspected phono3py v4.5.0 reducible conductivity matrix is equivalent to the physical operator on odd populations; its shape alone does not certify even-sector energy/viscosity dynamics. Source and parity checks record exact scope. No large first-principles rerun or experimental validation was performed.

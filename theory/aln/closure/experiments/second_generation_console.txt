@@ -1,0 +1,651 @@
+{
+  "metadata": {
+    "seed": 20260917,
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mpmath": "1.3.0",
+    "float_epsilon": 2.220446049250313e-16,
+    "mpmath_digits_poor": 90,
+    "mpmath_digits_near_pole": 110,
+    "domain": "One spatial Fourier mode of a finite accretive kinetic matrix",
+    "physical_status": "Abstract operator tests; no AlN coefficients"
+  },
+  "random_sweep": {
+    "count": 600,
+    "max_full_reconstruction_relative_error": 2.5072802871972875e-08,
+    "max_projected_resolvent_relative_error": 2.507279147788824e-08,
+    "max_full_backward_residual": 5.128239305455427e-16,
+    "max_direct_full_backward_residual": 1.9603483523806547e-16,
+    "max_condition_full": 2097843080.6155455,
+    "max_condition_schur": 800100.97093444,
+    "max_forward_error_over_eps_condition": 3.759132936198973,
+    "max_A5_ratio": 0.5202674411224404,
+    "max_A3_ratio": 1.0000000000000018,
+    "max_A6_ratio": 0.9491041431310069,
+    "max_S_inverse_times_sigma": 1.0000000004125913,
+    "max_S0_inverse_times_sigma": 1.0000000004125913,
+    "max_source_correction_ratio": 0.6714499087650826,
+    "max_S0_expansion_discrepancy": 1.824373201857436e-14,
+    "max_delta_difference_roundoff": 7.98084104047916e-14,
+    "minimum_static_hermitian_part": -4.1633363423443376e-17,
+    "minimum_exact_schur_margin": -4.163336342344337e-17,
+    "moderate_condition_count": 590,
+    "moderate_max_projected_error": 6.901237721884443e-12,
+    "worst_projected_case": {
+      "kscale": 5,
+      "z": [
+        1e-07,
+        0.0
+      ],
+      "k": 0,
+      "gamma": 0.5000000000000012,
+      "condition_full": 2097843080.6155455,
+      "condition_schur": 800100.97093444,
+      "full_reconstruction_relative_error": 2.5072802871972875e-08,
+      "projected_resolvent_relative_error": 2.507279147788824e-08,
+      "full_backward_residual": 7.628017619154518e-17,
+      "direct_full_backward_residual": 4.6229095023529315e-17,
+      "forward_error_over_eps_condition": 0.05382569683821098,
+      "S0_expansion_discrepancy": 5.9396931817445875e-15,
+      "delta_difference_roundoff": 3.320876220988473e-14,
+      "delta_norm": 1.9342118023232123e-05,
+      "A5_bound": 9.869458883558464e-05,
+      "A5_ratio": 0.1959795187500519,
+      "A3_ratio": 1.0000000000000018,
+      "A6_actual_inverse_difference": 0.02751725690075556,
+      "A6_bound": 1934211802.3232126,
+      "A6_ratio": 1.422659962456239e-11,
+      "S_inverse_times_sigma": 0.9999999288638567,
+      "S0_inverse_times_sigma": 0.9999999288638567,
+      "source_correction_ratio": 0.27295195940330175,
+      "S0_generator_min_hermitian_eigenvalue": 7.113614843992416e-15,
+      "S_min_hermitian_eigenvalue_minus_sigma": 7.113614844243611e-15,
+      "perturbation_eta_actual": 193.42116647308444,
+      "local_inverse_relative_error": 2.7517258858227227e-09
+    }
+  },
+  "K_zero_scaling": [
+    {
+      "k": 0.1,
+      "delta_norm": 0.0005146801032655894,
+      "A5_bound": 0.004730084070295934,
+      "scaled_error_delta_over_k3": 0.5146801032655893
+    },
+    {
+      "k": 0.03162277660168379,
+      "delta_norm": 1.5788542290297982e-05,
+      "A5_bound": 0.00015560077818532338,
+      "scaled_error_delta_over_k3": 0.4992775457123302,
+      "observed_power": 3.0263906893949484
+    },
+    {
+      "k": 0.01,
+      "delta_norm": 4.950524666741159e-07,
+      "A5_bound": 4.983985203294495e-06,
+      "scaled_error_delta_over_k3": 0.49505246667411584,
+      "observed_power": 3.0073816118699286
+    },
+    {
+      "k": 0.0031622776601683794,
+      "delta_norm": 1.5622047186112777e-08,
+      "A5_bound": 1.5825283173726553e-07,
+      "scaled_error_delta_over_k3": 0.4940125082274073,
+      "observed_power": 3.001826567081908
+    },
+    {
+      "k": 0.001,
+      "delta_norm": 4.937250973435105e-10,
+      "A5_bound": 5.010882584969007e-09,
+      "scaled_error_delta_over_k3": 0.49372509734351044,
+      "observed_power": 3.0005054822808574
+    },
+    {
+      "k": 0.00031622776601683794,
+      "delta_norm": 1.561022716593696e-11,
+      "A5_bound": 1.5852301774665622e-10,
+      "scaled_error_delta_over_k3": 0.49363872636996003,
+      "observed_power": 3.0001519619674304
+    },
+    {
+      "k": 0.0001,
+      "delta_norm": 4.936118762293416e-13,
+      "A5_bound": 5.013588299279282e-12,
+      "scaled_error_delta_over_k3": 0.4936118762293415,
+      "observed_power": 3.0000472458274774
+    },
+    {
+      "k": 3.1622776601683795e-05,
+      "delta_norm": 1.560911106271093e-14,
+      "A5_bound": 1.58550087103849e-13,
+      "scaled_error_delta_over_k3": 0.49360343208697877,
+      "observed_power": 3.000014858944758
+    },
+    {
+      "k": 1e-05,
+      "delta_norm": 4.93600766481585e-16,
+      "A5_bound": 5.013859031995558e-15,
+      "scaled_error_delta_over_k3": 0.4936007664815849,
+      "observed_power": 3.000004690651499
+    },
+    {
+      "k": 3.162277660168379e-06,
+      "delta_norm": 1.560900012701677e-17,
+      "A5_bound": 1.585527946047144e-16,
+      "scaled_error_delta_over_k3": 0.4935999239923053,
+      "observed_power": 3.00000148252913
+    },
+    {
+      "k": 1e-06,
+      "delta_norm": 4.935996575622226e-19,
+      "A5_bound": 5.013886112543154e-18,
+      "scaled_error_delta_over_k3": 0.4935996575622226,
+      "observed_power": 3.000000468837779
+    }
+  ],
+  "poor_coordinate": {
+    "rows": [
+      {
+        "epsilon": "1e-2",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "0.004987500078124023452758522",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "0.01",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.005012499921876,
+        "static_complex_eigenvalue_relative_error": 1.005012499921876,
+        "mass_corrected_eigenvalue_relative_error": 0.0025062499609379884,
+        "mp_dense_eigenvalue_relative_error": 1.7686270039668362e-89,
+        "mp_dense_vs_schur_relative_error": 5.187804871323325e-90,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 0.000999000999000999,
+        "A5_bound": 0.000999000999000999,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09081827263645445,
+        "perturbation_eta_actual": 0.09081827263645445
+      },
+      {
+        "epsilon": "1e-2",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "0.005037499453010734146054937",
+          "-0.00005000187504296362221476168"
+        ],
+        "static_eigenvalue": [
+          "0.01",
+          "0.01"
+        ],
+        "static_to_exact_decay_rate": 1.9851118780813675,
+        "static_complex_eigenvalue_relative_error": 2.224889562850207,
+        "mass_corrected_eigenvalue_relative_error": 0.012406570707230828,
+        "mp_dense_eigenvalue_relative_error": 2.2649625934639384e-89,
+        "mp_dense_vs_schur_relative_error": 4.3355878983585625e-90,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 0.010039334833521941,
+        "A5_bound": 0.01098901098901099,
+        "A5_ratio": 0.9135794698504965,
+        "causal_static_response_relative_error": 0.6753187412329709,
+        "perturbation_eta_actual": 0.6753187412329709
+      },
+      {
+        "epsilon": "1e-4",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "0.00004999875000000078124999902",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "0.0001",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.00005000125,
+        "static_complex_eigenvalue_relative_error": 1.00005000125,
+        "mass_corrected_eigenvalue_relative_error": 2.5000624999999608e-05,
+        "mp_dense_eigenvalue_relative_error": 6.272854068422407e-88,
+        "mp_dense_vs_schur_relative_error": 1.50371298445961e-89,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 9.99990000099999e-06,
+        "A5_bound": 9.99990000099999e-06,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09090818182727263,
+        "perturbation_eta_actual": 0.09090818182727263
+      },
+      {
+        "epsilon": "1e-4",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "0.00005000374999999453124988574",
+          "-5.000000018750000042968749e-9"
+        ],
+        "static_eigenvalue": [
+          "0.0001",
+          "0.0001"
+        ],
+        "static_to_exact_decay_rate": 1.9998500112493751,
+        "static_complex_eigenvalue_relative_error": 2.235956174102871,
+        "mass_corrected_eigenvalue_relative_error": 0.00012499062531258397,
+        "mp_dense_eigenvalue_relative_error": 2.285685134416023e-87,
+        "mp_dense_vs_schur_relative_error": 4.667834894147396e-88,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 0.00010049775073121786,
+        "A5_bound": 0.00010999890001099989,
+        "A5_ratio": 0.9136250518975015,
+        "causal_static_response_relative_error": 0.6760210277471328,
+        "perturbation_eta_actual": 0.6760210277471328
+      },
+      {
+        "epsilon": "1e-6",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "0.0000004999998750000000000078125",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "0.000001",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.000000500000125,
+        "static_complex_eigenvalue_relative_error": 1.000000500000125,
+        "mass_corrected_eigenvalue_relative_error": 2.500000625e-07,
+        "mp_dense_eigenvalue_relative_error": 1.0946323855013887e-85,
+        "mp_dense_vs_schur_relative_error": 2.225529951640165e-86,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 9.9999990000001e-08,
+        "A5_bound": 9.9999990000001e-08,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09090908181818273,
+        "perturbation_eta_actual": 0.09090908181818273
+      },
+      {
+        "epsilon": "1e-6",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "0.0000005000003749999999999453125",
+          "-5.000000000001875e-13"
+        ],
+        "static_eigenvalue": [
+          "0.000001",
+          "0.000001"
+        ],
+        "static_to_exact_decay_rate": 1.999998500001125,
+        "static_complex_eigenvalue_relative_error": 2.236066859465801,
+        "mass_corrected_eigenvalue_relative_error": 1.2499990625003126e-06,
+        "mp_dense_eigenvalue_relative_error": 1.838024758333652e-86,
+        "mp_dense_vs_schur_relative_error": 2.0135476342834983e-86,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 1.0049874616128405e-06,
+        "A5_bound": 1.099999890000011e-06,
+        "A5_ratio": 0.9136250564650786,
+        "causal_static_response_relative_error": 0.6760277237343711,
+        "perturbation_eta_actual": 0.6760277237343711
+      },
+      {
+        "epsilon": "1e-8",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "4.9999999875e-9",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "1.0e-8",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.000000005,
+        "static_complex_eigenvalue_relative_error": 1.000000005,
+        "mass_corrected_eigenvalue_relative_error": 2.50000000625e-09,
+        "mp_dense_eigenvalue_relative_error": 1.3790668684497309e-83,
+        "mp_dense_vs_schur_relative_error": 3.1250653694971855e-85,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 9.99999999e-10,
+        "A5_bound": 9.99999999e-10,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09090909081818181,
+        "perturbation_eta_actual": 0.09090909081818181
+      },
+      {
+        "epsilon": "1e-8",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "5.000000037499999999999999e-9",
+          "-5.0000000000000001875e-17"
+        ],
+        "static_eigenvalue": [
+          "1.0e-8",
+          "1.0e-8"
+        ],
+        "static_to_exact_decay_rate": 1.999999985,
+        "static_complex_eigenvalue_relative_error": 2.2360679663194496,
+        "mass_corrected_eigenvalue_relative_error": 1.249999990625e-08,
+        "mp_dense_eigenvalue_relative_error": 2.5334289734846895e-84,
+        "mp_dense_vs_schur_relative_error": 1.8889324115313869e-84,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 1.0049875611071014e-08,
+        "A5_bound": 1.0999999989e-08,
+        "A5_ratio": 0.9136250564655354,
+        "causal_static_response_relative_error": 0.6760277906614537,
+        "perturbation_eta_actual": 0.6760277906614537
+      },
+      {
+        "epsilon": "1e-10",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "4.999999999875e-11",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "1.0e-10",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.00000000005,
+        "static_complex_eigenvalue_relative_error": 1.00000000005,
+        "mass_corrected_eigenvalue_relative_error": 2.5000000000625e-11,
+        "mp_dense_eigenvalue_relative_error": 2.3314850401448115e-82,
+        "mp_dense_vs_schur_relative_error": 3.064147718592579e-82,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 9.9999999999e-12,
+        "A5_bound": 9.9999999999e-12,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09090909090818182,
+        "perturbation_eta_actual": 0.09090909090818182
+      },
+      {
+        "epsilon": "1e-10",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "5.000000000375e-11",
+          "-5.00000000000000000001875e-21"
+        ],
+        "static_eigenvalue": [
+          "1.0e-10",
+          "1.0e-10"
+        ],
+        "static_to_exact_decay_rate": 1.99999999985,
+        "static_complex_eigenvalue_relative_error": 2.2360679773879863,
+        "mass_corrected_eigenvalue_relative_error": 1.24999999990625e-10,
+        "mp_dense_eigenvalue_relative_error": 1.739147327047784e-81,
+        "mp_dense_vs_schur_relative_error": 2.6970104111330243e-82,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 1.0049875621020392e-10,
+        "A5_bound": 1.099999999989e-10,
+        "A5_ratio": 0.9136250564655355,
+        "causal_static_response_relative_error": 0.6760277913307212,
+        "perturbation_eta_actual": 0.6760277913307212
+      },
+      {
+        "epsilon": "1e-12",
+        "k_over_epsilon": 0.0,
+        "full_slow_eigenvalue": [
+          "4.99999999999875e-13",
+          "0.0"
+        ],
+        "static_eigenvalue": [
+          "1.0e-12",
+          "0.0"
+        ],
+        "static_to_exact_decay_rate": 2.0000000000005,
+        "static_complex_eigenvalue_relative_error": 1.0000000000005,
+        "mass_corrected_eigenvalue_relative_error": 2.500000000000625e-13,
+        "mp_dense_eigenvalue_relative_error": 1.666035067731707e-79,
+        "mp_dense_vs_schur_relative_error": 3.610597963741398e-80,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 9.999999999999e-14,
+        "A5_bound": 9.999999999999e-14,
+        "A5_ratio": 1.0,
+        "causal_static_response_relative_error": 0.09090909090908182,
+        "perturbation_eta_actual": 0.09090909090908182
+      },
+      {
+        "epsilon": "1e-12",
+        "k_over_epsilon": 1.0,
+        "full_slow_eigenvalue": [
+          "5.00000000000375e-13",
+          "-5.000000000000000000000002e-25"
+        ],
+        "static_eigenvalue": [
+          "1.0e-12",
+          "1.0e-12"
+        ],
+        "static_to_exact_decay_rate": 1.9999999999985,
+        "static_complex_eigenvalue_relative_error": 2.2360679774986716,
+        "mass_corrected_eigenvalue_relative_error": 1.2499999999990625e-12,
+        "mp_dense_eigenvalue_relative_error": 2.3379376671756362e-80,
+        "mp_dense_vs_schur_relative_error": 3.555881293020091e-80,
+        "causal_z_over_epsilon": 0.1,
+        "delta_norm": 1.0049875621119886e-12,
+        "A5_bound": 1.09999999999989e-12,
+        "A5_ratio": 0.9136250564655355,
+        "causal_static_response_relative_error": 0.676027791337414,
+        "perturbation_eta_actual": 0.676027791337414
+      }
+    ],
+    "A5_sharp_calibration": {
+      "z": 0.3,
+      "k": 0,
+      "actual_error": 0.23076923076923078,
+      "bound": 0.23076923076923078
+    },
+    "streaming_commutator_norm_for_k1": 2.0
+  },
+  "near_pole": {
+    "k_float": 0.01,
+    "exact_slow_rate": "0.00010001000200050014420618246378771285",
+    "static_slow_rate": 0.0001,
+    "pole_shift": "0.000000010002000500140042846121443375775156",
+    "wrong_Y_equals_X_adjoint_static_rate": -0.0001,
+    "rows": [
+      {
+        "intended_distance_to_exact_pole": "1e-3",
+        "actual_float_input_distance_to_exact_pole": "0.001000000000000000044490597",
+        "z_float": 0.0008999899979994999,
+        "inside_stated_A5_half_plane": true,
+        "condition_full": 1001.1996606586673,
+        "full_float64_response_relative_error": 2.002046044005612e-17,
+        "schur_float64_response_relative_error": 2.002046044005612e-17,
+        "mp_dense_schur_relative_error": 5.57138288575988e-113,
+        "full_float64_backward_residual": 0.0,
+        "static_response_relative_error": 8.991897380194246e-05,
+        "operator_difference": 8.991807443232153e-08,
+        "scalar_extended_bound": 8.991807443232153e-08,
+        "perturbation_eta_actual": 8.991897380194246e-05
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-6",
+        "actual_float_input_distance_to_exact_pole": "0.0000009999999999999937707521839",
+        "z_float": -9.901000200050015e-05,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 1000201.0596199564,
+        "full_float64_response_relative_error": 8.216895577232145e-15,
+        "schur_float64_response_relative_error": 5.40233474613626e-15,
+        "mp_dense_schur_relative_error": 6.5455327089810126e-111,
+        "full_float64_backward_residual": 1.420841744202657e-20,
+        "static_response_relative_error": 0.01000202081233601,
+        "operator_difference": 9.901980595168553e-09,
+        "scalar_extended_bound": 9.901980595168553e-09,
+        "perturbation_eta_actual": 0.01000202081233601
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-8",
+        "actual_float_input_distance_to_exact_pole": "1.000000000000494344689771e-8",
+        "z_float": -0.00010000000200050014,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 100020006.98655234,
+        "full_float64_response_relative_error": 1.2139200478103656e-12,
+        "schur_float64_response_relative_error": 1.4150300301464893e-13,
+        "mp_dense_schur_relative_error": 3.671568674526429e-108,
+        "full_float64_backward_residual": 1.1639203410708665e-18,
+        "static_response_relative_error": 4999.249999852217,
+        "operator_difference": 1.000100030010003e-08,
+        "scalar_extended_bound": 1.000100030010003e-08,
+        "perturbation_eta_actual": 4999.249999852217
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-10",
+        "actual_float_input_distance_to_exact_pole": "1.000000000035643958576772e-10",
+        "z_float": -0.00010000990200050014,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 10002000612.677761,
+        "full_float64_response_relative_error": 5.056542785003875e-11,
+        "schur_float64_response_relative_error": 8.497342051347172e-11,
+        "mp_dense_schur_relative_error": 3.4486311091310653e-106,
+        "full_float64_backward_residual": 1.4898635309787e-18,
+        "static_response_relative_error": 1.0100979592963752,
+        "operator_difference": 1.0001990498139543e-08,
+        "scalar_extended_bound": 1.0001990498139543e-08,
+        "perturbation_eta_actual": 1.0100979592963752
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-12",
+        "actual_float_input_distance_to_exact_pole": "1.000000006125585506930009e-12",
+        "z_float": -0.00010001000100050014,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 1000199761075.6807,
+        "full_float64_response_relative_error": 7.766962972711799e-09,
+        "schur_float64_response_relative_error": 7.766962972711799e-09,
+        "mp_dense_schur_relative_error": 3.174964682180622e-104,
+        "full_float64_backward_residual": 1.4898635288497e-20,
+        "static_response_relative_error": 1.000099979995612,
+        "operator_difference": 1.0002000400120036e-08,
+        "scalar_extended_bound": 1.0002000400120036e-08,
+        "perturbation_eta_actual": 1.000099979995612
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-14",
+        "actual_float_input_distance_to_exact_pole": "9.999999781509640070198043e-15",
+        "z_float": -0.00010001000199050014,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 100019420749269.38,
+        "full_float64_response_relative_error": 1.4298094584012004e-06,
+        "schur_float64_response_relative_error": 7.442318591419235e-08,
+        "mp_dense_schur_relative_error": 9.408500530131036e-103,
+        "full_float64_backward_residual": 1.221205143383103e-18,
+        "static_response_relative_error": 1.0000009997009676,
+        "operator_difference": 1.0002000499139842e-08,
+        "scalar_extended_bound": 1.0002000499139842e-08,
+        "perturbation_eta_actual": 1.0000009997009676
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-16",
+        "actual_float_input_distance_to_exact_pole": "1.000006667457823264163151e-16",
+        "z_float": -0.00010001000200040014,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 1.0234941861899354e+16,
+        "full_float64_response_relative_error": 0.00013432655582724744,
+        "schur_float64_response_relative_error": 1.1933240106590538e-06,
+        "mp_dense_schur_relative_error": 3.6883357443328475e-100,
+        "full_float64_backward_residual": 1.2206310604809842e-20,
+        "static_response_relative_error": 1.0000000099970667,
+        "operator_difference": 1.000200050013004e-08,
+        "scalar_extended_bound": 1.000200050013004e-08,
+        "perturbation_eta_actual": 1.0000000099970667
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-18",
+        "actual_float_input_distance_to_exact_pole": "9.994558706997027860095842e-19",
+        "z_float": -0.00010001000200049914,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 4.5033744192357146e+17,
+        "full_float64_response_relative_error": 0.0035209394447759815,
+        "schur_float64_response_relative_error": 0.0035209394447759815,
+        "mp_dense_schur_relative_error": 1.2625267914991455e-98,
+        "full_float64_backward_residual": 1.5669020515189153e-20,
+        "static_response_relative_error": 1.0000000000999156,
+        "operator_difference": 1.0002000500139943e-08,
+        "scalar_extended_bound": 1.0002000500139943e-08,
+        "perturbation_eta_actual": 1.0000000000999156
+      },
+      {
+        "intended_distance_to_exact_pole": "1e-20",
+        "actual_float_input_distance_to_exact_pole": "1.012138830667998997778356e-20",
+        "z_float": -0.00010001000200050013,
+        "inside_stated_A5_half_plane": false,
+        "condition_full": 4.5033744192357146e+17,
+        "full_float64_response_relative_error": 0.2532480585483245,
+        "schur_float64_response_relative_error": 0.2532480585483245,
+        "mp_dense_schur_relative_error": 3.7266014145345315e-96,
+        "full_float64_backward_residual": 1.3551171767800814e-20,
+        "static_response_relative_error": 1.0000000000010119,
+        "operator_difference": 1.0002000500140043e-08,
+        "scalar_extended_bound": 1.0002000500140043e-08,
+        "perturbation_eta_actual": 1.0000000000010119
+      }
+    ]
+  },
+  "causal_aligned_control": [
+    {
+      "k": 0.1,
+      "z_over_k2": 0,
+      "response_relative_error": 0.0,
+      "analytic_relative_error": 0.0
+    },
+    {
+      "k": 0.1,
+      "z_over_k2": 0.1,
+      "response_relative_error": 0.0009081827263643927,
+      "analytic_relative_error": 0.0009081827263645448
+    },
+    {
+      "k": 0.1,
+      "z_over_k2": 1,
+      "response_relative_error": 0.004950495049504955,
+      "analytic_relative_error": 0.004950495049504951
+    },
+    {
+      "k": 0.01,
+      "z_over_k2": 0,
+      "response_relative_error": 0.0,
+      "analytic_relative_error": 0.0
+    },
+    {
+      "k": 0.01,
+      "z_over_k2": 0.1,
+      "response_relative_error": 9.090818182788674e-06,
+      "analytic_relative_error": 9.090818182727264e-06
+    },
+    {
+      "k": 0.01,
+      "z_over_k2": 1,
+      "response_relative_error": 4.999500049995831e-05,
+      "analytic_relative_error": 4.999500049995001e-05
+    },
+    {
+      "k": 0.001,
+      "z_over_k2": 0,
+      "response_relative_error": 0.0,
+      "analytic_relative_error": 0.0
+    },
+    {
+      "k": 0.001,
+      "z_over_k2": 0.1,
+      "response_relative_error": 9.09090818179692e-08,
+      "analytic_relative_error": 9.090908181818273e-08
+    },
+    {
+      "k": 0.001,
+      "z_over_k2": 1,
+      "response_relative_error": 4.999994999144164e-07,
+      "analytic_relative_error": 4.999995000005e-07
+    },
+    {
+      "k": 0.0001,
+      "z_over_k2": 0,
+      "response_relative_error": 0.0,
+      "analytic_relative_error": 0.0
+    },
+    {
+      "k": 0.0001,
+      "z_over_k2": 0.1,
+      "response_relative_error": 9.090910246811745e-10,
+      "analytic_relative_error": 9.090909081818181e-10
+    },
+    {
+      "k": 0.0001,
+      "z_over_k2": 1,
+      "response_relative_error": 4.999999969612645e-09,
+      "analytic_relative_error": 4.999999950000001e-09
+    }
+  ]
+}

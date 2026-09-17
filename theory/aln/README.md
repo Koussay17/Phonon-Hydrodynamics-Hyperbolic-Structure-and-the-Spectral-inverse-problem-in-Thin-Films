@@ -50,3 +50,11 @@ The importer downloads only when its ignored `.build/research` cache is absent. 
 ## Next quantitative calculation
 
 Use one consistent set of harmonic and cubic force constants (available in the Phonon Olympics author repository), converge q grids at each temperature, and output normal and umklapp rates using a documented first-zone convention. Keep isotopes/defects separate. Export frequencies, full-zone velocities, weights, rates and, for a dynamic closure, the collision operator or enough information to validate its projection. Do not mix the two existing datasets to fill missing fields. No such first-principles rerun has been performed in this project.
+
+## Audited closure investigation
+
+See closure/13-final-report.md, closure/errata.md and note 18. Four independent mathematical methods and four hostile reviews distinguish broad operator ambiguity from the tighter fixed finite event cone, for which an audited memory bound holds. Its geometric constant is not a converged AlN estimate.
+
+scripts/analyse_aln_response.py writes bulk_response.json with input/software fingerprints and cancellation-free errors. It is a uniform bulk RTA diagnostic, not an FDTR simulation. Higher inverse moments are strongly concentrated in the lowest resolved modes; no new physical mesh sequence was generated.
+
+The inspected phono3py v4.5.0 reducible Python/C formula is conductivity-equivalent on odd populations. Its scalar full-grid shape does not certify the physical even action. A signed event operator or separately validated even action is needed before energy/viscosity closure. This does not rule out other implementations. Exact source scope and export mutation/normalization caveats are in the reports.

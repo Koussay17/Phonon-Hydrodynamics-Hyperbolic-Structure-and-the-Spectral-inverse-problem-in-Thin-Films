@@ -30,3 +30,16 @@ This records what was actually consulted. Downloaded papers remain in the ignore
 - [ShengBTE official documentation page](https://www.shengbte.org/documentation) links to the Bitbucket README; direct retrieval of that README was unsuccessful. Output-unit descriptions were read in a [public code mirror](https://github.com/wxmwy/ShengBTE), then independently checked by reconstructing the original dataset's heat capacity and RTA conductivities. No software version-specific N/U output capability is assumed.
 
 Note 17 provides a 300 K spectral baseline and a sourced bulk conductivity trajectory. It does not claim a normal/resistive temperature trajectory, a converged AlN GK closure, or a cross-plane film prediction.
+
+## Closure audit — 17 September 2026
+
+Detailed read scope, versioned code pointers and access failures are in [L](aln/closure/reports/L-literature.md), [L2](aln/closure/reports/L2-literature.md), [peer sources](aln/closure/reports/red-peer-sources.md), and [independent parity check](aln/closure/reports/operator-parity-check.md).
+
+- [Relaxon erratum](https://doi.org/10.1103/PhysRevX.10.049901): complete one-page publisher PDF inspected. It reverses a Matthiessen inequality, not the zero-mode statement.
+- [Viscous heat equations](https://doi.org/10.1103/PhysRevX.10.011019): primary derivations and assumptions inspected.
+- [Chaput author manuscript](https://arxiv.org/abs/1303.4062v1): physical versus odd-equivalent collision operators compared independently with the [phono3py v4.5.0 source snapshot](https://github.com/phonopy/phono3py/tree/21fa8f3817fbcc603254656f525bb5aec113afb6). The inspected Python/C path does not certify even-sector physics. Alternate backends and an actual exported AlN operator were not validated.
+- [Fugallo et al.](https://arxiv.org/html/1212.0470v2): Appendix A supports positive event contributions; the campaign's finite-cone bound has its own audited proof.
+- [arXiv:2605.17947v2](https://arxiv.org/abs/2605.17947v2) and [arXiv:2606.17829v1](https://arxiv.org/abs/2606.17829v1): exact version dates and targeted equations inspected. These remain preprints and are not wurtzite-AlN validation.
+- Current research did not resolve the previously recorded Krapez full-text or Camacho supplement gaps.
+
+No novelty claim, full physical event export, converged temperature/rate calculation or experimental validation follows from this source access.
