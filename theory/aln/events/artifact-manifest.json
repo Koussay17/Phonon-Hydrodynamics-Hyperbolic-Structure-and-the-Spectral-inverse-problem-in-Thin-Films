@@ -1,0 +1,282 @@
+{
+  "generated_utc": "2026-09-24T09:46:22.070709+00:00",
+  "path_base": "repository root",
+  "scope": "Working-tree bytes; excludes this manifest. Audit inputs preserve exact bytes.",
+  "artifacts": [
+    {
+      "path": "theory/aln/events/00-question.md",
+      "bytes": 945,
+      "sha256": "e44736074e88159fd60d76425a82112f7af240c35b429f806cb9a83e522dfb50"
+    },
+    {
+      "path": "theory/aln/events/01-known-results.md",
+      "bytes": 403,
+      "sha256": "f2b46970910566e7d65943861e725d996be8f70c5a431980738eeea1ee218b40"
+    },
+    {
+      "path": "theory/aln/events/02-assumptions.md",
+      "bytes": 724,
+      "sha256": "e81b8bd05854a23b56bbc3c78dda5ca855d08c52a95ac9fb8bc9e627460b7619"
+    },
+    {
+      "path": "theory/aln/events/03-hypotheses.md",
+      "bytes": 485,
+      "sha256": "4c053a389446cb8e23b1b95a870c85a87aaeb2e5d6ad08682277b6719b99f319"
+    },
+    {
+      "path": "theory/aln/events/04-agent-branches.md",
+      "bytes": 826,
+      "sha256": "6f8110b734ea9c0108d4ba8dcff41fecc23758446d89ac20553d5c3ee91d62a8"
+    },
+    {
+      "path": "theory/aln/events/05-evidence-ledger.md",
+      "bytes": 1046,
+      "sha256": "5f1a56e4205c8bb9f3050d281cb287bb8dd04951a21a136470dbcd3a9ed46a9a"
+    },
+    {
+      "path": "theory/aln/events/06-disagreements.md",
+      "bytes": 652,
+      "sha256": "19e90796602454456c1319d9e69ab078d5b998c32cc6b20f3dac5722566873f3"
+    },
+    {
+      "path": "theory/aln/events/07-experiments.md",
+      "bytes": 898,
+      "sha256": "6e8d1a7dbdcb65d6ad95eca5e126e7c038cb2f3dcc34e528184e196b7e5f9f93"
+    },
+    {
+      "path": "theory/aln/events/08-literature.md",
+      "bytes": 390,
+      "sha256": "104d5267bbbe90341be5d3638d47b1576ceb6f17d3ef4a4f13a9cc2f7fc06400"
+    },
+    {
+      "path": "theory/aln/events/09-failed-approaches.md",
+      "bytes": 948,
+      "sha256": "6380b5f91cb00b38ac2e8c15d9c12275e7a7a03be4fdd7520ce95d63a47f8290"
+    },
+    {
+      "path": "theory/aln/events/10-proof-status.md",
+      "bytes": 528,
+      "sha256": "a7a92bbed034dfedebaf4143efda1e444a03e3862cb3c14b518cb4b5ef1bc998"
+    },
+    {
+      "path": "theory/aln/events/11-open-questions.md",
+      "bytes": 839,
+      "sha256": "fd630df90944edfe550359dcd4b6038d7d278cc5f8bca70c3f9784f0d0586364"
+    },
+    {
+      "path": "theory/aln/events/12-peer-review.md",
+      "bytes": 1057,
+      "sha256": "0424eed104bff81e58d9a6a613e172244de8c623cd722422307ca797e9429d36"
+    },
+    {
+      "path": "theory/aln/events/13-final-report.md",
+      "bytes": 4698,
+      "sha256": "f2d04a2d4511746735fe1401fd95cdc7fd4e3377ad9ca12d467f374ab02b6d84"
+    },
+    {
+      "path": "theory/aln/events/branches/A-bose-linearization.md",
+      "bytes": 11380,
+      "sha256": "17d539ffb69e091e5d896ae3930b9367e70335ccf4c57063de54f20f61046c06"
+    },
+    {
+      "path": "theory/aln/events/branches/B-entropy-geometry.md",
+      "bytes": 16258,
+      "sha256": "5104f18f065cf59cea64a42d8044006711b777aaad9a50fe035a563d1f5ba8a7"
+    },
+    {
+      "path": "theory/aln/events/branches/C-parity-spectrum.md",
+      "bytes": 11894,
+      "sha256": "49c560e1a4841161398f9af1c2ce5148998b39186cad134b046b6527f7f42b00"
+    },
+    {
+      "path": "theory/aln/events/branches/D-numerical-limits.md",
+      "bytes": 13756,
+      "sha256": "b6423920789978dadf4bfe5c1a9150405bccf8d4f1d900765685643e871dead6"
+    },
+    {
+      "path": "theory/aln/events/branches/L-event-sources.md",
+      "bytes": 16801,
+      "sha256": "777ca5be6f11b6c4e8cae6d19eeb4c7f78920dc583ef42682be1683f9b802829"
+    },
+    {
+      "path": "theory/aln/events/branches/red-counterexamples.md",
+      "bytes": 7170,
+      "sha256": "8a73143d5295e03f28ab35e29536299620a910fadfa7bffed9368059f80bf8b2"
+    },
+    {
+      "path": "theory/aln/events/branches/red-numerical.md",
+      "bytes": 11179,
+      "sha256": "a6f06d934fa71e9e2d98dc07601252425f23b2eaac43b2b60c83d0ea55b9e7fe"
+    },
+    {
+      "path": "theory/aln/events/branches/red-peer.md",
+      "bytes": 10604,
+      "sha256": "33383aa49a5e5dbf820d4f2f2b74a3db0a58d6f60997c2b70f688969d3b39fbb"
+    },
+    {
+      "path": "theory/aln/events/branches/red-proof.md",
+      "bytes": 11039,
+      "sha256": "0b18ef9429923b4e502137b7310e1fcb8b7d15c26a58295f9887487897e48776"
+    },
+    {
+      "path": "theory/aln/events/branches/second-generation-import-check.md",
+      "bytes": 11091,
+      "sha256": "c338dea4bf8f5731881368d3adf0ab3055a6bc06eaae064072a119e6ae71734b"
+    },
+    {
+      "path": "theory/aln/events/checkpoint-01.md",
+      "bytes": 2488,
+      "sha256": "b4f143df52d7ad613babfa84aa5e4061b605b4c2d0c79299d667285e4082df0e"
+    },
+    {
+      "path": "theory/aln/events/CLAIM_LEDGER.md",
+      "bytes": 920,
+      "sha256": "19758bde56ad610191f1502f8dddb4497f5f3981f2c4fc3e4ea50fafa15cb6d4"
+    },
+    {
+      "path": "theory/aln/events/experiments/C_parity_events.py",
+      "bytes": 10073,
+      "sha256": "de62b4b2906f8d74ed53b48999f5a598a8cf31f091dbd0a524d9b3e0335092b6"
+    },
+    {
+      "path": "theory/aln/events/experiments/C_parity_results.json",
+      "bytes": 10366,
+      "sha256": "278f9f898c425021bbd0fb933d5f2fe414e47565786b9fc4feaa0665e5963160"
+    },
+    {
+      "path": "theory/aln/events/experiments/D_bose_jacobian.py",
+      "bytes": 10599,
+      "sha256": "3754e9f244df4187f34a54d0a44d9155fc6f761a4ed10fa6f3bf53625a413427"
+    },
+    {
+      "path": "theory/aln/events/experiments/D_bose_jacobian_results.json",
+      "bytes": 35315,
+      "sha256": "01f67eeeec67dbf48f1a50087363fb7433357d9e5eaab03bafce9e76beecc306"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_counter_checks.json",
+      "bytes": 2303,
+      "sha256": "e1e82780367f865689ab956de5da8d48db8c82c20999283688abaf42dfa7a4f0"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_counter_checks.py",
+      "bytes": 4610,
+      "sha256": "6c839de4ff50783e2882c8d25f0b6f8dd78fbe4be36b9bb65889157733dab5bb"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_numerical_api.py",
+      "bytes": 4257,
+      "sha256": "6a1849a421892795971478ed9b8b222183e73b609116e7fce3a4fdd4bab53315"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_numerical_api_results.json",
+      "bytes": 4312,
+      "sha256": "54254ef4773b872a6e3958e17ac7fbd5342087d41cc12364c8f8c0b55adabfb7"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_proof_event_checks.json",
+      "bytes": 1831,
+      "sha256": "5a6cc76a45c492f27e9c005d6f558bfe10e259aadbd3a89016152c9250f459d8"
+    },
+    {
+      "path": "theory/aln/events/experiments/red_proof_event_checks.py",
+      "bytes": 3761,
+      "sha256": "073b82667861d41dd1d8f2dcdb427f9c5067e87c2e266ee3e0686a7ba3255adf"
+    },
+    {
+      "path": "theory/aln/events/experiments/second_import_check.py",
+      "bytes": 9395,
+      "sha256": "9d46b899dcaa738a3d58782c7127adb6666687240e61ded21fcb5e74df9ce723"
+    },
+    {
+      "path": "theory/aln/events/experiments/second_import_results.json",
+      "bytes": 10602,
+      "sha256": "565296fd9dec26f0bebd449328ccd9b4cadf8bb5c34035b7f1762c57e550e24e"
+    },
+    {
+      "path": "theory/aln/events/input-download-manifest.json",
+      "bytes": 1989,
+      "sha256": "4e5245af0031fa817ed933540ac52be837260da4d9d29d54729a806660ff67cb"
+    },
+    {
+      "path": "theory/aln/events/post-fix-import-results.json",
+      "bytes": 10620,
+      "sha256": "dfee700b3afad5d50bb4cf6d72b34428d17c2ab6de71c45bd2c748f7f8344d3a"
+    },
+    {
+      "path": "theory/aln/events/post-fix-replay.md",
+      "bytes": 574,
+      "sha256": "292d728208786f86a95036e9a03a1f471a766e210e7a35f1c7a23c49152c88b1"
+    },
+    {
+      "path": "theory/aln/events/README.md",
+      "bytes": 1754,
+      "sha256": "d9e07131278622619f9f1b1b71568e05d97fca60ac10d592ba4bf0fee0b2674c"
+    },
+    {
+      "path": "theory/aln/events/resume-storage.json",
+      "bytes": 457,
+      "sha256": "643e1e9f005ee9ec799b1b4c26e2fc5c47b7ab72460d3b19c0cec8e9c80e184c"
+    },
+    {
+      "path": "theory/aln/events/review-inputs/19_Validation_evenements_collision.tex",
+      "bytes": 8601,
+      "sha256": "13fb8125871bfb4fe01ef75ea9ef69bde1b2735b3598beed9ce545e3c7a40041"
+    },
+    {
+      "path": "theory/aln/events/review-inputs/collision_events.py",
+      "bytes": 6484,
+      "sha256": "8daa09d8f851da3b7823bdd5cc1ad86f98ced5892c814a380dcb58ce50f020c6"
+    },
+    {
+      "path": "theory/aln/events/review-inputs/manifest.json",
+      "bytes": 432,
+      "sha256": "c9723c05b991a72e65c573b72fc4e4521dcb9abc343c1a3abe9223880a3b8b1a"
+    },
+    {
+      "path": "theory/aln/events/review-inputs/test_collision_events.py",
+      "bytes": 5649,
+      "sha256": "a26a011b02b361fbcda17e9b502a43f9b3835750154970398d919db28d03f0fb"
+    },
+    {
+      "path": "theory/aln/events/review-target.md",
+      "bytes": 1562,
+      "sha256": "f667d9c3548ab7d6eee110fb5944ea9897833e7ca3a46c7c71e4783f54f7239c"
+    },
+    {
+      "path": "theory/aln/events/storage-restored.json",
+      "bytes": 188,
+      "sha256": "6b4ed2376cd9c85b1f142632611d727343359cc35e84c5dd96f5b890c7682356"
+    },
+    {
+      "path": "theory/aln/events/validation.json",
+      "bytes": 689,
+      "sha256": "1daa205d4230778774edbadb160c2609d80f714b8c1c625ff47a5c539e0b152b"
+    },
+    {
+      "path": "src/collision_events.py",
+      "bytes": 7297,
+      "sha256": "77196934d0e3ee209e7121f31655af48e074864d7fff5668cfb6f07b1ea99e6c"
+    },
+    {
+      "path": "tests/test_collision_events.py",
+      "bytes": 7172,
+      "sha256": "6415c146bb7e60e3e2b14c8f0dd54165ce8e0bdd94206a8d04b186b43259cf75"
+    },
+    {
+      "path": "notes/19_Validation_evenements_collision.tex",
+      "bytes": 9660,
+      "sha256": "2bc52a205a2b550eae11a217594ea66f3c38bfea8d76a9c91c054f42e7236aa0"
+    },
+    {
+      "path": "notes/19_Validation_evenements_collision.pdf",
+      "bytes": 63235,
+      "sha256": "819c6532a40c29872a6a9bb5e6306a3a90fd9017b02e59acb7f963699ca58b91"
+    },
+    {
+      "path": "paper/RESEARCH_PLAN.md",
+      "bytes": 2867,
+      "sha256": "1b4b71ac290ecdf169138a65b13653b78464446e1b0c12497af78a14da64abfe"
+    }
+  ]
+}

@@ -152,3 +152,11 @@ spectral AlN continuation described above.
 - The campaign and future bulky storage use the user-authorized D: SSD; repository files remain in their existing checkout.
 
 First independent-report/experiment checkpoint pushed as 8b252a0. This continuation contains the reviewed synthesis and numerical corrections.
+
+## 24 September 2026 ? event validation
+Four independent hostile reviews found that ordered subtraction could hide an
+order-one thermal detuning at huge energies. Both daughter orders now use a
+compensated sum, and exact stored resonances work at zero tolerance.
+The API distinguishes accepted nonzero detuning from an exact equilibrium
+Jacobian, documents entropy-scale underflow and self-reciprocal orbit counting,
+and validates matrix-valued inputs consistently. See theory/aln/events/12-peer-review.md.

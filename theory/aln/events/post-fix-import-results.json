@@ -1,0 +1,357 @@
+{
+  "metadata": {
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "source_frozen": "D:\\ResearchLab\\scratch\\20260924-event-postfix-replay\\review-inputs\\collision_events.py",
+    "source_reference": "D:\\ResearchLab\\scratch\\20260924-event-postfix-replay\\experiments\\C_parity_events.py",
+    "source_hash_before": {
+      "frozen": "77196934d0e3ee209e7121f31655af48e074864d7fff5668cfb6f07b1ea99e6c",
+      "independent_reference": "de62b4b2906f8d74ed53b48999f5a598a8cf31f091dbd0a524d9b3e0335092b6"
+    },
+    "source_hash_after": {
+      "frozen": "77196934d0e3ee209e7121f31655af48e074864d7fff5668cfb6f07b1ea99e6c",
+      "independent_reference": "de62b4b2906f8d74ed53b48999f5a598a8cf31f091dbd0a524d9b3e0335092b6"
+    },
+    "script_sha256": "782eb87683e50d8819f663374e5a1311281c427f18a572dc08d7713b9f7db909",
+    "scope": "Frozen snapshot, distinct positive-frequency exact-resonance events, equal full-grid weights",
+    "bytecode_writes_disabled": true
+  },
+  "adapter": {
+    "original_daughters_daughters_parent": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        0,
+        3,
+        6
+      ]
+    ],
+    "adapted_parent_daughters": [
+      [
+        2,
+        0,
+        1
+      ],
+      [
+        5,
+        3,
+        4
+      ],
+      [
+        6,
+        0,
+        3
+      ]
+    ],
+    "prefactors": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "operator": {
+    "full_relative_error": 1.6186553404275584e-16,
+    "even_relative_error": 1.7198088014552418e-16,
+    "odd_relative_error": 1.2444687762470153e-16,
+    "mixed_collision_block_norm": 4.466627780862302e-17,
+    "entropy_scale_relative_error": 0.0,
+    "complex_action_relative_error": 1.6689971161009004e-16,
+    "complex_linear_operator_relative_error": 2.006045683179157e-16,
+    "energy_relative_residual": 5.0107477866351294e-17,
+    "momentum_relative_residual": 3.479679322559279e-17,
+    "eigenvalues": [
+      -3.4496649089213473e-16,
+      -9.362246291684164e-17,
+      6.051300489804356e-17,
+      2.9525392987208556e-16,
+      2.2555198182709635,
+      2.3721973062554724,
+      3.131549029962483
+    ]
+  },
+  "nonlinear": [
+    {
+      "direction": "even",
+      "h": 0.001,
+      "nonlinear_rhs_relative_error": 1.763180032841676e-14,
+      "entropy_derivative_relative_error": 3.1335029321065253e-14
+    },
+    {
+      "direction": "odd",
+      "h": 0.001,
+      "nonlinear_rhs_relative_error": 2.723740516368979e-12,
+      "entropy_derivative_relative_error": 9.844596556858913e-13
+    },
+    {
+      "direction": "generic",
+      "h": 0.001,
+      "nonlinear_rhs_relative_error": 2.0281249773160843e-13,
+      "entropy_derivative_relative_error": 7.675091315242653e-14
+    }
+  ],
+  "responses": [
+    {
+      "z": [
+        0.25,
+        0.0
+      ],
+      "k": 0.0,
+      "full_relative_error": 8.894996129263366e-16,
+      "even_block_relative_error": 7.768295785948951e-16,
+      "odd_block_relative_error": 4.1357952740803765e-16,
+      "parity_cross_absolute_error": 7.4314616035731835e-16,
+      "current_response": [
+        10.417786523833403,
+        0.0
+      ],
+      "independent_current_response": [
+        10.417786523833406,
+        0.0
+      ],
+      "current_response_relative_error": 3.410238509565099e-16,
+      "energy_response": [
+        20.024281081406368,
+        0.0
+      ],
+      "independent_energy_response": [
+        20.024281081406368,
+        0.0
+      ],
+      "energy_response_relative_error": 0.0,
+      "normalized_equation_residual": 6.60960203208633e-17,
+      "condition_full": 13.526196119849944
+    },
+    {
+      "z": [
+        0.25,
+        0.0
+      ],
+      "k": 0.03,
+      "full_relative_error": 3.7180744250563236e-16,
+      "even_block_relative_error": 3.388712051071993e-16,
+      "odd_block_relative_error": 3.848301471893109e-16,
+      "parity_cross_absolute_error": 2.5518252512406107e-16,
+      "current_response": [
+        10.331874085197613,
+        1.6653345369377348e-16
+      ],
+      "independent_current_response": [
+        10.331874085197613,
+        2.7755575615628914e-17
+      ],
+      "current_response_relative_error": 1.3432014069642063e-17,
+      "energy_response": [
+        19.875502094579517,
+        1.6506343635390966e-16
+      ],
+      "independent_energy_response": [
+        19.875502094579513,
+        -4.428322959572983e-18
+      ],
+      "energy_response_relative_error": 1.789516759905146e-16,
+      "normalized_equation_residual": 4.313788025231117e-17,
+      "condition_full": 13.488066613775349
+    },
+    {
+      "z": [
+        0.25,
+        0.0
+      ],
+      "k": 0.1,
+      "full_relative_error": 4.681750792480036e-16,
+      "even_block_relative_error": 4.073289733103324e-16,
+      "odd_block_relative_error": 4.4325357848702277e-16,
+      "parity_cross_absolute_error": 1.023225035357778e-15,
+      "current_response": [
+        9.541427837567706,
+        -2.498001805406602e-16
+      ],
+      "independent_current_response": [
+        9.541427837567705,
+        -2.220446049250313e-16
+      ],
+      "current_response_relative_error": 1.861957871343453e-16,
+      "energy_response": [
+        18.497652627395535,
+        -1.1821041852182282e-17
+      ],
+      "independent_energy_response": [
+        18.49765262739554,
+        -3.366000622839289e-16
+      ],
+      "energy_response_relative_error": 1.9286382185471345e-16,
+      "normalized_equation_residual": 6.998121720941928e-17,
+      "condition_full": 13.120021389335054
+    },
+    {
+      "z": [
+        0.25,
+        0.0
+      ],
+      "k": 0.3,
+      "full_relative_error": 2.5400988775563736e-16,
+      "even_block_relative_error": 1.3991255397943415e-16,
+      "odd_block_relative_error": 1.4545520278951624e-16,
+      "parity_cross_absolute_error": 6.503263765312427e-16,
+      "current_response": [
+        5.780665100501496,
+        -3.608224830031759e-16
+      ],
+      "independent_current_response": [
+        5.780665100501497,
+        -1.1102230246251565e-16
+      ],
+      "current_response_relative_error": 1.5960760028520934e-16,
+      "energy_response": [
+        11.700123336684216,
+        4.3228034862453466e-16
+      ],
+      "independent_energy_response": [
+        11.700123336684214,
+        -4.960672061849385e-16
+      ],
+      "energy_response_relative_error": 1.7130704450698472e-16,
+      "normalized_equation_residual": 6.128778989484934e-17,
+      "condition_full": 10.81849594480643
+    },
+    {
+      "z": [
+        0.25,
+        0.0
+      ],
+      "k": 1.0,
+      "full_relative_error": 2.5457287988723804e-16,
+      "even_block_relative_error": 4.165826595042727e-16,
+      "odd_block_relative_error": 3.2995588467412643e-16,
+      "parity_cross_absolute_error": 2.354993950693493e-16,
+      "current_response": [
+        1.0893795853223156,
+        2.7755575615628914e-17
+      ],
+      "independent_current_response": [
+        1.0893795853223156,
+        -1.3877787807814457e-16
+      ],
+      "current_response_relative_error": 1.5286999677389868e-16,
+      "energy_response": [
+        2.5942077162493153,
+        3.212824074153277e-16
+      ],
+      "independent_energy_response": [
+        2.5942077162493153,
+        -1.7713291838291933e-17
+      ],
+      "energy_response_relative_error": 1.3067407714897129e-16,
+      "normalized_equation_residual": 4.3443730228572863e-17,
+      "condition_full": 5.140158290220522
+    },
+    {
+      "z": [
+        0.25,
+        0.4
+      ],
+      "k": 0.3,
+      "full_relative_error": 2.505972417295541e-16,
+      "even_block_relative_error": 2.6273173149415715e-16,
+      "odd_block_relative_error": 2.5861203630538805e-16,
+      "parity_cross_absolute_error": 3.596488229562867e-16,
+      "current_response": [
+        4.2351493246104654,
+        -4.118016391552319
+      ],
+      "independent_current_response": [
+        4.235149324610465,
+        -4.1180163915523185
+      ],
+      "current_response_relative_error": 2.1263581743077694e-16,
+      "energy_response": [
+        7.872751201307023,
+        -8.189736852501955
+      ],
+      "independent_energy_response": [
+        7.872751201307023,
+        -8.189736852501957
+      ],
+      "energy_response_relative_error": 1.5636798534646848e-16,
+      "normalized_equation_residual": 2.1326922154804682e-17,
+      "condition_full": 11.615246104021038
+    }
+  ],
+  "duplicate_self_reciprocal_control": {
+    "rows": [
+      [
+        2,
+        0,
+        1
+      ],
+      [
+        5,
+        3,
+        4
+      ],
+      [
+        6,
+        0,
+        3
+      ],
+      [
+        6,
+        3,
+        0
+      ]
+    ],
+    "accepted_by_constructor": true,
+    "independent_double_model_relative_error": 1.64447501790757e-16,
+    "full_action_relative_change": 0.9627412865428112,
+    "even_block_relative_change": 0.9627412865428114,
+    "odd_block_absolute_change": 3.787726769781942e-35,
+    "even_direction_relative_change": 0.9866883025991896,
+    "z": 0.25,
+    "k": 1.0,
+    "energy_response_relative_change": 0.04580047107193562,
+    "current_response_relative_change": 0.006816720330058454
+  },
+  "negative_controls": {
+    "original_daughters_first_order": {
+      "rejected": true,
+      "exception_type": "ValueError",
+      "message": "events must conserve energy; broadening is not supported"
+    },
+    "detuned_reciprocal_pair": {
+      "rejected": true,
+      "exception_type": "ValueError",
+      "message": "events must conserve energy; broadening is not supported"
+    },
+    "repeated_daughter": {
+      "rejected": true,
+      "exception_type": "ValueError",
+      "message": "repeated indices require a separately validated counting convention"
+    },
+    "detuning_added": 1e-06,
+    "constructor_default_resonance_tolerance": 1e-12
+  },
+  "checks": {
+    "frozen_hash_matches_manifest": true,
+    "sources_unchanged": true,
+    "full_operator": true,
+    "both_parity_operators": true,
+    "nonlinear_population": true,
+    "nonlinear_derivative": true,
+    "complex_action": true,
+    "full_and_both_parity_responses": true,
+    "detuned_event_rejected": true,
+    "repeated_index_explicitly_unsupported": true,
+    "wrong_adapter_order_rejected": true,
+    "duplicate_matches_independent_full_failure": true,
+    "odd_only_check_misses_duplicate": true
+  }
+}

@@ -43,3 +43,13 @@ Detailed read scope, versioned code pointers and access failures are in [L](aln/
 - Current research did not resolve the previously recorded Krapez full-text or Camacho supplement gaps.
 
 No novelty claim, full physical event export, converged temperature/rate calculation or experimental validation follows from this source access.
+
+## Event-level continuation ? 24 September 2026
+[The source report](aln/events/branches/L-event-sources.md) records checked
+Fugallo equations, exact-resonance/broadening scope, phono3py interaction-export
+fields and pinned Phonon Olympics input directories.
+Five public AlN input files (POSCAR, BORN, fc2.hdf5, fc3.hdf5, README) were
+downloaded to D from commit 0640f07735059be9717a7565c2a0f22dc0da7a17.
+Sizes and SHA-256 hashes were verified again after D was reconnected.
+Only the manifest is published. No material calculation or source-to-event
+unit/counting conversion was performed.

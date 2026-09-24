@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-09-23T20:25:31.583336+00:00",
+  "D_available": false,
+  "C_free_bytes": 48241975296,
+  "status": "D mirror attempt failed because drive is absent. Active campaign remains on C. Prior downloaded input checksums are historical provenance; current payload availability is unconfirmed.",
+  "python": "3.14.7",
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mpmath": "1.3.0",
+    "pytest": "9.1.1"
+  }
+}

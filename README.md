@@ -67,7 +67,7 @@ Real detectability depends on noise, calibration and nuisance parameters.
 | `tests/` | Analytical benchmarks, regressions and synthetic estimator checks. |
 | `figures/` | Generated figures. |
 | `theory/` | Reproducible synthetic results, source-access record and experimental input checklist. |
-| `paper/` | Placeholder; no completed manuscript is implied. |
+| `paper/` | Manuscript scope plan; no completed manuscript is implied. |
 | `data/` | README; laboratory files excluded by .gitignore. |
 | `scripts/` | Figure and PDF rebuild command. |
 
@@ -142,7 +142,7 @@ The new AlN inputs are published calculations, not laboratory measurements.
 At 300 K, the source RTA capacity and conductivities are reproduced; this
 checks unit conversion and quadrature weights, not mesh convergence. The
 in-plane surface calculation is not a cross-plane FDTR prediction.
-The full test suite now contains 205 passing tests (17 September 2026).
+The full test suite now contains 233 passing tests (24 September 2026).
 
 ---
 
@@ -224,3 +224,18 @@ A broad positive-matrix counterexample does **not** establish microscopic AlN no
 The bulk RTA diagnostic records provenance and evaluates pole errors without low-frequency cancellation. Its 200 MHz memory-pole errors are 6.49% basal and 14.73% along c relative to total response; these are discrete bulk-model errors, not FDTR measurement errors. Static agreement does not establish continuum moment convergence.
 
 The inspected phono3py v4.5.0 reducible conductivity matrix is equivalent to the physical operator on odd populations; its shape alone does not certify even-sector energy/viscosity dynamics. Source and parity checks record exact scope. No large first-principles rerun or experimental validation was performed.
+
+
+## Physical event reference ? 24 September 2026
+
+[The new campaign](theory/aln/events/13-final-report.md) validates a finite,
+exactly resonant Bose-event reference using four independent approaches,
+a second-generation comparison and four hostile audits. Those audits exposed
+a hidden-detuning bug; compensated summation and dedicated regressions now
+reject both counterexamples. The broken candidate remains archived for reproduction.
+
+This supplies an import-validation reference, not a real-AlN collision operator.
+Event normalization, energy integration, material convergence and measurements
+remain open. Public force constants are stored locally on D with recorded hashes.
+[The manuscript plan](paper/RESEARCH_PLAN.md) separates the focused methods
+paper requirements from a quantitative AlN/FDTR study.

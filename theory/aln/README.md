@@ -58,3 +58,9 @@ See closure/13-final-report.md, closure/errata.md and note 18. Four independent 
 scripts/analyse_aln_response.py writes bulk_response.json with input/software fingerprints and cancellation-free errors. It is a uniform bulk RTA diagnostic, not an FDTR simulation. Higher inverse moments are strongly concentrated in the lowest resolved modes; no new physical mesh sequence was generated.
 
 The inspected phono3py v4.5.0 reducible Python/C formula is conductivity-equivalent on odd populations. Its scalar full-grid shape does not certify the physical even action. A signed event operator or separately validated even action is needed before energy/viscosity closure. This does not rule out other implementations. Exact source scope and export mutation/normalization caveats are in the reports.
+
+## Finite-event reference
+See events/13-final-report.md and note 19. The sparse event action has independent
+nonlinear, geometric, parity and numerical checks. The available AlN force
+constants are only inputs for a future export pilot; no material event
+normalization, physical energy integration or converged hydrodynamic model follows.

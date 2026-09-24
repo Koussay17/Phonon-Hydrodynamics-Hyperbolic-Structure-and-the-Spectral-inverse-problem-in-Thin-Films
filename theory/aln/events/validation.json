@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-24",
+  "full_suite": {
+    "passed": 233,
+    "seconds": 189.4
+  },
+  "event_tests_passed": 28,
+  "post_fix_independent_model_checks_passed": 13,
+  "portable_archived_replays": [
+    "second_import_check.py",
+    "red_counter_checks.py"
+  ],
+  "pdf": {
+    "file": "notes/19_Validation_evenements_collision.pdf",
+    "pages": 3,
+    "reported_warnings": 0,
+    "preamble_identical_to_note18": true,
+    "visual_inspection_completed": false,
+    "visual_limit": "view_image failed at Windows sandbox ACL initialization"
+  },
+  "restored_D_input_payloads_rehashed": 5,
+  "material_event_export_validated": false,
+  "formal_verification": false
+}

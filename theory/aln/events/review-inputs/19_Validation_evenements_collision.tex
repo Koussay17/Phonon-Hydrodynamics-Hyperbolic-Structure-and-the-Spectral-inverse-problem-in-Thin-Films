@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+\begin{center}
+{\Large\bfseries Validation d'un opérateur par événements}\\[4pt]
+{\normalsize Collisions de Bose, conservation et parité}\\[2pt]
+{\small Partie I --- 18 septembre 2026}
+\end{center}
+\section{Question et statut}
+La note 18 identifie un obstacle : une diagonale de durées de vie ou un
+opérateur équivalent pour la conductivité ne suffit pas à certifier la
+dynamique des populations. Cette note construit une référence finie
+permettant de vérifier un futur import d'événements.
+Les énergies et les taux des exemples sont synthétiques. Aucun taux
+microscopique de l'AlN n'est déduit de ces exemples.
+
+\section{Un événement réversible compté une fois}
+On considère des modes distincts, des fréquences strictement positives,
+une température positive et une grille complète à poids commun.
+Pour $i\leftrightarrow j+k$, on pose
+\[
+ x_\mu=\frac{\epsilon_\mu}{k_BT},\quad x_i=x_j+x_k,\quad
+ N_\mu=\frac{1}{e^{x_\mu}-1},\quad
+ d_\mu=\sqrt{N_\mu(1+N_\mu)}.
+\]
+Le vecteur stoechiométrique vaut $s=-e_i+e_j+e_k$ et
+\[
+ \dot n=sF(n),\qquad
+ F(n)=\Gamma\{n_i(1+n_j)(1+n_k)-(1+n_i)n_jn_k\},\quad \Gamma\ge0.
+\]
+La réaction inverse est déjà incluse dans cette différence. Un partenaire
+obtenu par inversion des vecteurs d'onde est un autre événement, sauf
+si le triplet non ordonné se retrouve identique. Les permutations des deux
+filles ne doivent pas multiplier involontairement le taux.
+La convention de $\Gamma$ inclut les facteurs de comptage et d'unités :
+aucune conversion depuis une largeur de raie n'est supposée ici.
+
+\section{Linéarisation et invariants}
+Le bilan détaillé donne
+\[
+ A=\Gamma N_i(1+N_j)(1+N_k)
+   =\Gamma(1+N_i)N_jN_k .
+\]
+Avec $D=\operatorname{diag}(d_\mu)$ et $y=D^{-1}\delta n$,
+\[
+ \delta F=-A\,s^TD^{-2}\delta n,\qquad
+ \partial_t y=-Cy,\qquad
+ C=A(D^{-1}s)(D^{-1}s)^T.
+\]
+La somme des événements conserve la positivité et la symétrie.
+Pour toute quantité additive $h$ vérifiant $s^Th=0$ événement par événement,
+\[
+ C(Dh)=0,\qquad y^TCy=A|(D^{-1}s)^Ty|^2\ge0.
+\]
+L'énergie est conservée par résonance. L'impulsion cristalline est
+conservée pour un événement normal, mais sa variation peut être un
+vecteur réciproque non nul pour un événement Umklapp.
+Une paire de vecteurs réciproques opposés ne fait pas disparaître
+la dissipation quadratique de l'impulsion.
+
+La Hessienne de l'entropie relative de Bose à l'équilibre est
+$D^{-2}$ : la même transformation est obtenue par une deuxième voie.
+Le rang est celui des vecteurs d'événements actifs. Quelques événements
+laissent généralement des invariants accidentels ; on ne peut en déduire
+un temps de relaxation global ni une conductivité statique finie.
+
+\section{Pourquoi la parité doit être vérifiée}
+Soit $J$ l'inversion des modes. Des partenaires de mêmes énergies
+et de mêmes coefficients assurent $JC=CJ$. Un événement
+$(+q,-q)\leftrightarrow0$, avec un mode optique positif en $q=0$,
+peut être invariant par $J$ et agir uniquement dans le secteur pair.
+Changer son coefficient peut donc préserver tout le bloc impair tout
+en modifiant la dynamique complète.
+
+Le transport spatial couple les secteurs. Pour des vitesses réciproques,
+l'élimination exacte du secteur pair donne, pour $\Re z>0$,
+\[
+ S_{\rm impair}=z+C_{\rm impair}
+  +k^2V_{\rm impair,pair}(z+C_{\rm pair})^{-1}V_{\rm pair,impair}.
+\]
+L'égalité des opérateurs impairs ne certifie donc pas la réponse à $k\ne0$.
+Il s'agit d'un contre-exemple fini contrôlé, pas d'une mesure de l'AlN.
+
+\section{Le contrôle négatif : événement non résonant}
+Si $\Delta=x_i-x_j-x_k\ne0$, le rapport des facteurs de Bose directs et
+inverses à l'équilibre vaut $e^{-\Delta}$. L'état thermique n'est plus
+stationnaire pour le crochet non modifié. La production d'énergie vaut
+\[
+ \epsilon^T\dot n
+ =-k_BT\,\Delta\,\Gamma(1+N_i)N_jN_k(e^{-\Delta}-1)>0 .
+\]
+Les désaccords de signes opposés ne se compensent donc pas dans cette
+production à l'état thermique avec des poids positifs.
+Une pondération d'élargissement n'est pas une preuve de conservation.
+Cette remarque ne remplace pas l'analyse d'une quadrature sur les surfaces
+d'énergie du problème continu.
+
+Une tolérance relative seule est insuffisante lorsque $x$ est très grand.
+Le code contrôle également $|\Delta|$. Cette tolérance couvre l'arrondi
+numérique ; elle ne représente pas une largeur spectrale physique.
+
+\section{Implémentation et vérifications}
+Le fichier \texttt{src/collision\_events.py} forme une matrice creuse $R$
+à trois entrées par événement, telle que $C=R^TR$. L'application
+$y\mapsto R^T(Ry)$ évite toute matrice dense de taille modes par modes.
+La génération et le stockage des événements peuvent néanmoins devenir
+coûteux : ce prototype ne résout pas à lui seul le problème de ressources.
+
+Les facteurs sont évalués avec des différences d'énergies et des logarithmes
+stables. Cela évite de perdre le coefficient de désintégration lorsque les
+occupations thermiques deviennent très petites.
+L'équation non linéaire est conservée séparément comme référence à
+occupations modérées.
+
+Les tests comparent la matrice à la dérivée de cette équation, y compris
+avec une arithmétique à 100 chiffres. Ils contrôlent énergie, impulsion
+normale, dissipation Umklapp, parité, duplication et limites numériques.
+Le flux se simplifie en
+\[
+ F(n)=\Gamma[n_i(1+n_j+n_k)-n_jn_k].
+\]
+Il est quadratique : une différence centrée n'a pas d'erreur de troncature
+en arithmétique exacte. Les erreurs observées lors de ce test sont donc
+des erreurs d'arrondi ou de formulation, plutôt qu'une convergence
+quadratique à rechercher systématiquement.
+
+Les indices répétés sont exclus de cette API. Leur vecteur
+stoechiométrique contient une multiplicité deux ; les facteurs
+microscopiques supplémentaires doivent être vérifiés avant extension.
+Les modes de fréquence exactement nulle et les poids irréductibles
+inégaux sont également exclus.
+
+\section{Passage aux données réelles}
+Une famille complète d'entrées publiques AlN a été téléchargée sur le
+SSD D, depuis une révision fixée du dépôt Phonon Olympics :
+structure, correction polaire, constantes harmoniques et cubiques.
+Les tailles et empreintes sont enregistrées. Ces fichiers ne sont
+ni des événements déjà validés ni une trajectoire en température.
+
+Le prochain import doit documenter : cartes de modes et d'inversion,
+unités du couplage cubique, poids et multiplicités, canaux, vecteurs
+réciproques, traitement de la conservation d'énergie et normalisation
+temporelle. Un petit export des interactions est préférable comme
+premier contrôle à une utilisation directe de la matrice de conductivité.
+Aucun calcul de transport de l'AlN ni aucune validation expérimentale
+n'est annoncé dans cette note.
+
+\section{Sources et portée}
+Fugallo et al., \emph{Ab initio variational approach for evaluating lattice
+thermal conductivity}, arXiv:1212.0470v2, équations (4), (13), annexe A :
+structure signée et conventions. Leur discussion de l'élargissement
+souligne que le bilan détaillé devient approximatif.
+Les références exactes, les accès et les réserves sont conservés dans
+le rapport bibliographique de la campagne.
+
+La décomposition par événements est un cadre connu. Cette note fournit
+une validation limitée et reproductible, sans revendication de nouveauté.
+La principale raison pour laquelle une extension pourrait échouer est
+une différence de comptage, de coordonnées ou d'intégration énergétique
+entre ces événements idéaux et l'export matériel.
+\end{document}
