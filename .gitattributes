@@ -1,3 +1,7 @@
 # Generated documents and figures are binary assets.
 *.pdf binary
 *.png binary
+
+# Preserve byte-exact scientific audit inputs and their source-hash checks.
+# Historical reports/scripts retain their original trailing blank lines.
+theory/aln/events/** -text whitespace=cr-at-eol,-blank-at-eof

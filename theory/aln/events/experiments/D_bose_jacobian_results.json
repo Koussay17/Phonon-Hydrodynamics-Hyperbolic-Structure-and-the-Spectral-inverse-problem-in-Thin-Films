@@ -1,0 +1,1202 @@
+{
+  "environment": {
+    "python": "3.14.7",
+    "executable": "C:\\Users\\Koussay\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "numpy": "2.5.3",
+    "mpmath": "1.3.0"
+  },
+  "script_sha256": "3754e9f244df4187f34a54d0a44d9155fc6f761a4ed10fa6f3bf53625a413427",
+  "gamma": 1,
+  "retained_failure": "Initial run used negative indexing of an mpmath matrix, returning zero in an eigenvalue ratio. Corrected to the explicit last row; no physical inference used that failed ratio.",
+  "precision_tests": [
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 50,
+      "fd_norm_relative_error": "5.4599080402073e-46",
+      "fd_max_entry_relative_error": "8.4176861713604e-46",
+      "analytic_vs_resonant_outer_error": "2.3196307092537e-51",
+      "normalized_energy_residual": "5.9695210406935e-52",
+      "symmetry_defect": "3.0371095169997e-51",
+      "nonzero_eigenvalue_trace": "3.5747217921853",
+      "minimum_physical_entropy_step": "0.4065696597406"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 80,
+      "fd_norm_relative_error": "8.3758863640209e-76",
+      "fd_max_entry_relative_error": "2.7094028794189e-75",
+      "analytic_vs_resonant_outer_error": "1.3988790869473e-81",
+      "normalized_energy_residual": "4.5289403777724e-82",
+      "symmetry_defect": "9.556163420986e-82",
+      "nonzero_eigenvalue_trace": "3.5747217921853",
+      "minimum_physical_entropy_step": "0.4065696597406"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 120,
+      "fd_norm_relative_error": "5.530201373638e-116",
+      "fd_max_entry_relative_error": "9.9228272881181e-116",
+      "analytic_vs_resonant_outer_error": "4.2822251671613e-122",
+      "normalized_energy_residual": "4.4611237136428e-122",
+      "symmetry_defect": "4.2822251671613e-122",
+      "nonzero_eigenvalue_trace": "3.5747217921853",
+      "minimum_physical_entropy_step": "0.4065696597406"
+    },
+    {
+      "x": [
+        "3e-30",
+        "1e-30",
+        "2e-30"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 50,
+      "fd_norm_relative_error": "2.826804797443e-16",
+      "fd_max_entry_relative_error": "6.0227319343728e-16",
+      "analytic_vs_resonant_outer_error": "1.8598939087844e-51",
+      "normalized_energy_residual": "4.6864921405784e-52",
+      "symmetry_defect": "2.2959028855962e-51",
+      "nonzero_eigenvalue_trace": "2.3333333333333e+30",
+      "minimum_physical_entropy_step": "1.0"
+    },
+    {
+      "x": [
+        "3e-30",
+        "1e-30",
+        "2e-30"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 80,
+      "fd_norm_relative_error": "2.2223592359243e-46",
+      "fd_max_entry_relative_error": "2.60046848e-46",
+      "analytic_vs_resonant_outer_error": "1.899548077774e-81",
+      "normalized_energy_residual": "6.7383745367724e-82",
+      "symmetry_defect": "1.6697959768701e-81",
+      "nonzero_eigenvalue_trace": "2.3333333333333e+30",
+      "minimum_physical_entropy_step": "1.0"
+    },
+    {
+      "x": [
+        "3e-30",
+        "1e-30",
+        "2e-30"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 120,
+      "fd_norm_relative_error": "1.657401337222e-86",
+      "fd_max_entry_relative_error": "3.4636002811904e-86",
+      "analytic_vs_resonant_outer_error": "1.3728332265696e-121",
+      "normalized_energy_residual": "5.481130459525e-122",
+      "symmetry_defect": "1.57792289956e-121",
+      "nonzero_eigenvalue_trace": "2.3333333333333e+30",
+      "minimum_physical_entropy_step": "1.0"
+    },
+    {
+      "x": [
+        "1000",
+        "400",
+        "600"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 50,
+      "fd_norm_relative_error": "6.4828175319757e-46",
+      "fd_max_entry_relative_error": "6.4828273930165e-46",
+      "analytic_vs_resonant_outer_error": "1.3363823550461e-51",
+      "normalized_energy_residual": "5.0841185433213e-182",
+      "symmetry_defect": "0.0",
+      "nonzero_eigenvalue_trace": "1.0",
+      "minimum_physical_entropy_step": "7.1245764067413e-218"
+    },
+    {
+      "x": [
+        "1000",
+        "400",
+        "600"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 80,
+      "fd_norm_relative_error": "6.7316150746704e-76",
+      "fd_max_entry_relative_error": "6.7316150746704e-76",
+      "analytic_vs_resonant_outer_error": "1.9010915662952e-211",
+      "normalized_energy_residual": "6.9641486637094e-212",
+      "symmetry_defect": "2.6885494763677e-211",
+      "nonzero_eigenvalue_trace": "1.0",
+      "minimum_physical_entropy_step": "7.1245764067413e-218"
+    },
+    {
+      "x": [
+        "1000",
+        "400",
+        "600"
+      ],
+      "event": [
+        0,
+        1,
+        2
+      ],
+      "dps": 120,
+      "fd_norm_relative_error": "4.0091007798478e-117",
+      "fd_max_entry_relative_error": "4.0091007798478e-117",
+      "analytic_vs_resonant_outer_error": "8.7293843616244e-252",
+      "normalized_energy_residual": "8.1849823290017e-252",
+      "symmetry_defect": "1.2345213755377e-251",
+      "nonzero_eigenvalue_trace": "1.0",
+      "minimum_physical_entropy_step": "7.1245764067413e-218"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "event": [
+        0,
+        1,
+        1
+      ],
+      "dps": 50,
+      "fd_norm_relative_error": "9.6095837192571e-46",
+      "fd_max_entry_relative_error": "1.2432586006123e-45",
+      "analytic_vs_resonant_outer_error": "1.9059320513425e-51",
+      "normalized_energy_residual": "1.6309948284103e-52",
+      "symmetry_defect": "2.6953949559701e-51",
+      "nonzero_eigenvalue_trace": "5.6093599102015",
+      "minimum_physical_entropy_step": "0.49658530379141"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "event": [
+        0,
+        1,
+        1
+      ],
+      "dps": 80,
+      "fd_norm_relative_error": "7.0085070498154e-76",
+      "fd_max_entry_relative_error": "9.5815550238185e-76",
+      "analytic_vs_resonant_outer_error": "1.0631458524474e-81",
+      "normalized_energy_residual": "8.5823025246834e-82",
+      "symmetry_defect": "1.0631458524474e-81",
+      "nonzero_eigenvalue_trace": "5.6093599102015",
+      "minimum_physical_entropy_step": "0.49658530379141"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "event": [
+        0,
+        1,
+        1
+      ],
+      "dps": 120,
+      "fd_norm_relative_error": "3.321509167145e-116",
+      "fd_max_entry_relative_error": "4.1825332510239e-116",
+      "analytic_vs_resonant_outer_error": "9.7634526847815e-122",
+      "normalized_energy_residual": "1.5493884841505e-122",
+      "symmetry_defect": "9.7634526847815e-122",
+      "nonzero_eigenvalue_trace": "5.6093599102015",
+      "minimum_physical_entropy_step": "0.49658530379141"
+    }
+  ],
+  "directional_convergence": [
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "0.1",
+      "forward_error": "0.013941845198598",
+      "central_error": "2.3683897745633e-90",
+      "min_relative_population": "0.96"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "0.01",
+      "forward_error": "0.0013941845198598",
+      "central_error": "7.4649142712089e-90",
+      "min_relative_population": "0.996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "0.001",
+      "forward_error": "0.00013941845198598",
+      "central_error": "6.9142689619046e-89",
+      "min_relative_population": "0.9996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "0.0001",
+      "forward_error": "1.3941845198598e-5",
+      "central_error": "3.1346004004457e-87",
+      "min_relative_population": "0.99996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-5",
+      "forward_error": "1.3941845198598e-6",
+      "central_error": "5.6238558280984e-87",
+      "min_relative_population": "0.999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-6",
+      "forward_error": "1.3941845198598e-7",
+      "central_error": "1.627244594787e-86",
+      "min_relative_population": "0.9999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-7",
+      "forward_error": "1.3941845198598e-8",
+      "central_error": "2.611297050967e-84",
+      "min_relative_population": "0.99999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-8",
+      "forward_error": "1.3941845198598e-9",
+      "central_error": "1.574914525406e-83",
+      "min_relative_population": "0.999999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-9",
+      "forward_error": "1.3941845198598e-10",
+      "central_error": "3.8991888635112e-83",
+      "min_relative_population": "0.9999999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-10",
+      "forward_error": "1.3941845198598e-11",
+      "central_error": "3.6743809137385e-82",
+      "min_relative_population": "0.99999999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-11",
+      "forward_error": "1.3941845198598e-12",
+      "central_error": "5.8415414718494e-81",
+      "min_relative_population": "0.999999999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.8",
+        ".7",
+        "1.1"
+      ],
+      "eta": "1.0e-12",
+      "forward_error": "1.3941845198598e-13",
+      "central_error": "1.3648514641974e-79",
+      "min_relative_population": "0.9999999999996",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "0.1",
+      "forward_error": "0.01820892047229",
+      "central_error": "1.7872488631862e-90",
+      "min_relative_population": "1.03"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "0.01",
+      "forward_error": "0.001820892047229",
+      "central_error": "4.5739329218281e-90",
+      "min_relative_population": "1.003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "0.001",
+      "forward_error": "0.0001820892047229",
+      "central_error": "1.8495211177348e-88",
+      "min_relative_population": "1.0003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "0.0001",
+      "forward_error": "1.820892047229e-5",
+      "central_error": "1.6587012798399e-87",
+      "min_relative_population": "1.00003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-5",
+      "forward_error": "1.820892047229e-6",
+      "central_error": "1.7289095959648e-86",
+      "min_relative_population": "1.000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-6",
+      "forward_error": "1.820892047229e-7",
+      "central_error": "8.797618888299e-86",
+      "min_relative_population": "1.0000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-7",
+      "forward_error": "1.820892047229e-8",
+      "central_error": "3.330849590585e-85",
+      "min_relative_population": "1.00000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-8",
+      "forward_error": "1.820892047229e-9",
+      "central_error": "1.2298750897938e-83",
+      "min_relative_population": "1.000000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-9",
+      "forward_error": "1.820892047229e-10",
+      "central_error": "5.086042846059e-83",
+      "min_relative_population": "1.0000000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-10",
+      "forward_error": "1.820892047229e-11",
+      "central_error": "7.912619633356e-82",
+      "min_relative_population": "1.00000000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-11",
+      "forward_error": "1.820892047229e-12",
+      "central_error": "1.7633709800363e-80",
+      "min_relative_population": "1.000000000003",
+      "observed_forward_order": "1.0"
+    },
+    {
+      "x": [
+        "1.4",
+        ".7"
+      ],
+      "eta": "1.0e-12",
+      "forward_error": "1.820892047229e-13",
+      "central_error": "2.4921736755873e-79",
+      "min_relative_population": "1.0000000000003",
+      "observed_forward_order": "1.0"
+    }
+  ],
+  "binary64_small": [
+    {
+      "epsilon": "1",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.0731550780345036e-14,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 1.006775997269388e-12,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 4.239576742375631e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 5.441027861291076e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 5.300591665828619e-15,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 7.123274387308186e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 3.863911904571259e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 3.75462137108129e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.2302757111190664e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 2.8164498255455595e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 3.3603151378630336e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.9411380144757012e-07,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.4202049955134327e-14,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 7.256981932021133e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 7.483285446250264e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-2",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.3817646418286454e-08,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 2.200712742506648e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 3.114026342131142e-07,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 3.528710657426951e-05,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 0.0036784199234251493,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.0601375930980401e-15,
+      "equilibrium_entropy_drift_over_operator_norm": 1.9574797991638357e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 7.857234802394132e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 1.9574797991638357e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 1.0383093954649845e-10,
+      "equilibrium_entropy_drift_over_operator_norm": 1.9574797991638357e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-6",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 2.456571677458522e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 1.9574797991638357e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.0223637355977146e-05,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 0.005292168906394543,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 0.4377076301908849,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 27.68863600144666,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 6.546406399722774e-15,
+      "equilibrium_entropy_drift_over_operator_norm": 1.3136424562479485e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 6.251290307204636e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 1.3136424562479485e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 7.339673307539309e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 1.3136424562479485e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-10",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 6.801310841069377e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 1.3136424562479485e-16,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 0.13443954912774866,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 27.790338235397876,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 2194.0248761397816,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.162479073472362e-14,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 8.637417884935887e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 2.977853731095573e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-14",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.949342316847186e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.2860907334608542e-14,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 9.886380562135128e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 6.330442676686498e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-18",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 6.858348088454278e-09,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "products",
+      "eta": 0.01,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "products",
+      "eta": 0.0001,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "products",
+      "eta": 1e-06,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "products",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.0,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": true
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "quadratic",
+      "eta": 0.01,
+      "jacobian_relative_error": 9.541336380494583e-15,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "quadratic",
+      "eta": 0.0001,
+      "jacobian_relative_error": 9.30987417070628e-13,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "quadratic",
+      "eta": 1e-06,
+      "jacobian_relative_error": 8.812997957707856e-11,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    },
+    {
+      "epsilon": "1e-30",
+      "form": "quadratic",
+      "eta": 1e-08,
+      "jacobian_relative_error": 1.1193080459132444e-08,
+      "equilibrium_entropy_drift_over_operator_norm": 0.0,
+      "all_fd_entries_zero": false
+    }
+  ],
+  "asymptotic_limits": {
+    "small": [
+      {
+        "epsilon": "1e-2",
+        "repeated": false,
+        "epsilon_times_rate": "2.3333333338333",
+        "asymptotic_coefficient": "2.3333333333333",
+        "relative_asymptotic_error": "2.1427976205059e-10"
+      },
+      {
+        "epsilon": "1e-2",
+        "repeated": true,
+        "epsilon_times_rate": "3.9999833336944",
+        "asymptotic_coefficient": "4.0",
+        "relative_asymptotic_error": "4.1665763898975e-6"
+      },
+      {
+        "epsilon": "1e-6",
+        "repeated": false,
+        "epsilon_times_rate": "2.3333333333333",
+        "asymptotic_coefficient": "2.3333333333333",
+        "relative_asymptotic_error": "2.1428571428565e-26"
+      },
+      {
+        "epsilon": "1e-6",
+        "repeated": true,
+        "epsilon_times_rate": "3.9999999999998",
+        "asymptotic_coefficient": "4.0",
+        "relative_asymptotic_error": "4.1666666666658e-14"
+      },
+      {
+        "epsilon": "1e-12",
+        "repeated": false,
+        "epsilon_times_rate": "2.3333333333333",
+        "asymptotic_coefficient": "2.3333333333333",
+        "relative_asymptotic_error": "2.1428571428571e-50"
+      },
+      {
+        "epsilon": "1e-12",
+        "repeated": true,
+        "epsilon_times_rate": "4.0",
+        "asymptotic_coefficient": "4.0",
+        "relative_asymptotic_error": "4.1666666666667e-26"
+      },
+      {
+        "epsilon": "1e-30",
+        "repeated": false,
+        "epsilon_times_rate": "2.3333333333333",
+        "asymptotic_coefficient": "2.3333333333333",
+        "relative_asymptotic_error": "1.9362959574247e-121"
+      },
+      {
+        "epsilon": "1e-30",
+        "repeated": true,
+        "epsilon_times_rate": "4.0",
+        "asymptotic_coefficient": "4.0",
+        "relative_asymptotic_error": "4.1666666666667e-62"
+      }
+    ],
+    "large": [
+      {
+        "x": [
+          "20",
+          "8",
+          "12"
+        ],
+        "high_precision_rate": "1.0006834347796",
+        "parent_diagonal": "1.0003417194509",
+        "min_population": "2.0611536266869e-9",
+        "max_common_entropy_step": "4.5399929762485e-5",
+        "binary64_population": [
+          2.061153626686912e-09,
+          0.00033557520084124496,
+          6.144250104905606e-06
+        ],
+        "binary64_outer_all_finite": true,
+        "fixed_entropy_step_1e-6_preserves_population": true
+      },
+      {
+        "x": [
+          "200",
+          "80",
+          "120"
+        ],
+        "high_precision_rate": "1.0",
+        "parent_diagonal": "1.0",
+        "min_population": "1.3838965267367e-87",
+        "max_common_entropy_step": "3.7200759760208e-44",
+        "binary64_population": [
+          1.3838965267367376e-87,
+          1.8048513878454153e-35,
+          7.667648073722e-53
+        ],
+        "binary64_outer_all_finite": true,
+        "fixed_entropy_step_1e-6_preserves_population": false
+      },
+      {
+        "x": [
+          "1000",
+          "400",
+          "600"
+        ],
+        "high_precision_rate": "1.0",
+        "parent_diagonal": "1.0",
+        "min_population": "5.0759588975495e-435",
+        "max_common_entropy_step": "7.1245764067413e-218",
+        "binary64_population": [
+          0.0,
+          1.9151695967140057e-174,
+          2.6503965530043108e-261
+        ],
+        "binary64_outer_all_finite": false,
+        "fixed_entropy_step_1e-6_preserves_population": false
+      }
+    ],
+    "zero_energy": [
+      {
+        "daughter_x": "1e-2",
+        "x_times_rate": "2.0001988288866",
+        "rate": "200.01988288866"
+      },
+      {
+        "daughter_x": "1e-6",
+        "x_times_rate": "2.000000000002",
+        "rate": "2000000.000002"
+      },
+      {
+        "daughter_x": "1e-12",
+        "x_times_rate": "2.0",
+        "rate": "2000000000000.0"
+      },
+      {
+        "daughter_x": "1e-30",
+        "x_times_rate": "2.0",
+        "rate": "2.0e+30"
+      }
+    ],
+    "exact_zero_exception": "ZeroDivisionError"
+  },
+  "detuning": [
+    {
+      "detuning": "0",
+      "equilibrium_flux_over_reverse": "1.2114853628293e-101",
+      "expected_expm1_negative_detuning": "0.0",
+      "relative_symmetry_defect": "3.9967704402233e-102",
+      "minimum_symmetric_eigenvalue": "-5.00056983686e-101",
+      "minimum_over_maximum_symmetric_eigenvalue": "-1.3988696540782e-101",
+      "left_energy_residual": "2.5430747542539e-102",
+      "equilibrium_energy_drift_over_reverse": "8.6544530902308e-203",
+      "resonant_outer_relative_error": "1.8984659591061e-101"
+    },
+    {
+      "detuning": ".1",
+      "equilibrium_flux_over_reverse": "-0.09516258196404",
+      "expected_expm1_negative_detuning": "-0.09516258196404",
+      "relative_symmetry_defect": "0.11715312765718",
+      "minimum_symmetric_eigenvalue": "-0.0062409921460215",
+      "minimum_over_maximum_symmetric_eigenvalue": "-0.0017215188988561",
+      "left_energy_residual": "0.023936340033348",
+      "equilibrium_energy_drift_over_reverse": "0.009516258196404",
+      "resonant_outer_relative_error": "0.089123566224123"
+    },
+    {
+      "detuning": ".001",
+      "equilibrium_flux_over_reverse": "-0.00099950016662501",
+      "expected_expm1_negative_detuning": "-0.00099950016662501",
+      "relative_symmetry_defect": "0.001204087275793",
+      "minimum_symmetric_eigenvalue": "-6.4792693501495e-7",
+      "minimum_over_maximum_symmetric_eigenvalue": "-1.8122833665324e-7",
+      "left_energy_residual": "0.00025014634800871",
+      "equilibrium_energy_drift_over_reverse": "9.9950016662501e-7",
+      "resonant_outer_relative_error": "0.00092432192949817"
+    },
+    {
+      "detuning": ".000001",
+      "equilibrium_flux_over_reverse": "-9.9999950000017e-7",
+      "expected_expm1_negative_detuning": "-9.9999950000017e-7",
+      "relative_symmetry_defect": "1.2044049543765e-6",
+      "minimum_symmetric_eigenvalue": "-6.4818262487246e-13",
+      "minimum_over_maximum_symmetric_eigenvalue": "-1.813239117659e-13",
+      "left_energy_residual": "2.5025726481329e-7",
+      "equilibrium_energy_drift_over_reverse": "9.9999950000017e-13",
+      "resonant_outer_relative_error": "9.246557688151e-7"
+    },
+    {
+      "detuning": "-.1",
+      "equilibrium_flux_over_reverse": "0.10517091807565",
+      "expected_expm1_negative_detuning": "0.10517091807565",
+      "relative_symmetry_defect": "0.12348281022323",
+      "minimum_symmetric_eigenvalue": "-0.0067549312158126",
+      "minimum_over_maximum_symmetric_eigenvalue": "-0.0019133010355763",
+      "left_energy_residual": "0.026157070794091",
+      "equilibrium_energy_drift_over_reverse": "0.010517091807565",
+      "resonant_outer_relative_error": "0.0957939745621"
+    }
+  ],
+  "counting_and_reciprocity": {
+    "repeated": {
+      "correct_incidence": [
+        -1,
+        2
+      ],
+      "correct_jacobian": [
+        [
+          "2.9728677272689",
+          "-2.7996325694343"
+        ],
+        [
+          "-2.7996325694343",
+          "2.6364921829326"
+        ]
+      ],
+      "wrong_unit_incidence_energy_residual": "0.31012874389388",
+      "correct_daughter_diagonal_over_Q_by_d": "4.0",
+      "wrong_unit_incidence_relative_matrix_error": "0.49881410994347"
+    },
+    "reciprocal_pair": {
+      "relative_parity_commutator": "0.0",
+      "relative_energy_residual": "1.178588920357e-91",
+      "chosen_vector_dissipation": "4.62950705347",
+      "rank_exact_from_disjoint_events": 2,
+      "kernel_dimension": 4,
+      "daughter_permutation_flux_difference": "0.0",
+      "counting_both_ordered_daughter_permutations_factor": 2
+    }
+  }
+}

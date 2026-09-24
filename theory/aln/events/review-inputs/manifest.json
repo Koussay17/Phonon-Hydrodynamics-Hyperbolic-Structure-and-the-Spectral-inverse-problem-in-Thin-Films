@@ -1,0 +1,14 @@
+[
+  {
+    "path": "src/collision_events.py",
+    "sha256": "8daa09d8f851da3b7823bdd5cc1ad86f98ced5892c814a380dcb58ce50f020c6"
+  },
+  {
+    "path": "tests/test_collision_events.py",
+    "sha256": "a26a011b02b361fbcda17e9b502a43f9b3835750154970398d919db28d03f0fb"
+  },
+  {
+    "path": "notes/19_Validation_evenements_collision.tex",
+    "sha256": "13fb8125871bfb4fe01ef75ea9ef69bde1b2735b3598beed9ce545e3c7a40041"
+  }
+]

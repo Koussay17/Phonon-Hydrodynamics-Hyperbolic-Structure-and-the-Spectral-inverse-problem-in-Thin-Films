@@ -1,0 +1,92 @@
+{
+  "python": "3.14.7",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "mpmath": "1.3.0",
+  "frozen_sha256": "8daa09d8f851da3b7823bdd5cc1ad86f98ced5892c814a380dcb58ce50f020c6",
+  "scope": "Frozen implementation only; synthetic inputs; no AlN data.",
+  "lost_detuning": {
+    "x": [
+      9007199254740994.0,
+      1.0,
+      9007199254740992.0
+    ],
+    "accepted_event": [
+      0,
+      1,
+      2
+    ],
+    "reported_relative_residual": [
+      1.1102230246251565e-16
+    ],
+    "reported_thermal_detuning": [
+      0.0
+    ],
+    "exact_stored_float_detuning": "1.0",
+    "thermal_forward_reverse_ratio": 0.36787944117144233,
+    "swapped_daughters": {
+      "accepted": false,
+      "error": "events must conserve energy; broadening is not supported"
+    },
+    "factor_generator": [
+      [
+        1.5819767068693267,
+        0.0,
+        -0.5819767068693265
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.5819767068693265,
+        0.0,
+        0.21409726569788412
+      ]
+    ],
+    "nonlinear_entropy_generator_100digits": [
+      [
+        1.5819767068693265,
+        -0.0,
+        -1.5819767068693265
+      ],
+      [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.5819767068693265,
+        0.0,
+        0.5819767068693265
+      ]
+    ],
+    "relative_frobenius_error": 0.44697673367510304,
+    "reference_nonsymmetry_norm": 1.4142135623730951,
+    "parent_large_daughter_entry_model": -0.5819767068693265,
+    "parent_large_daughter_entry_reference": -1.5819767068693265
+  },
+  "exact_resonance_control": {
+    "relative_frobenius_error": 1.70423907900154e-16,
+    "thermal_detuning": [
+      0.0
+    ]
+  },
+  "duplicate_self_reciprocal": {
+    "odd_action_change_norm": 1.6025408809876856e-17,
+    "full_change_norm": 3.014871541977974,
+    "energy_residual_good": 2.685316964637414e-16,
+    "energy_residual_double": 5.370633929274828e-16,
+    "finite_k_current_good": [
+      3.5673008347861406,
+      -1.3322676295501878e-15
+    ],
+    "finite_k_current_double": [
+      3.593303644699138,
+      -6.661338147750939e-16
+    ],
+    "finite_k_relative_change": 0.00728921140023687
+  },
+  "sparse_complex_control_error": 4.710277376051325e-16
+}

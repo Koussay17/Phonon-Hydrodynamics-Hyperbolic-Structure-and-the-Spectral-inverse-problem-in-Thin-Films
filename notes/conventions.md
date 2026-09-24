@@ -379,3 +379,11 @@ Les taux d'entrée d'une relaxation projetée ne sont pas sa diagonale finale. U
 Les réponses du nouveau diagnostic utilisent exp(+i omega t). Les erreurs relatives à la réponse totale et à sa correction dynamique sont distinctes. La formule de variance évite la perte de précision aux très faibles fréquences. Une mémoire sur grille finie n'est pas automatiquement un paramètre matériau.
 
 L'export scalaire réductible phono3py inspecté est équivalent sur le secteur impair de conduction, pas un certificat du générateur physique pair requis par l'énergie et les sources visqueuses. Ne pas employer une matrice après écrasement par un solveur comme opérateur initial.
+
+## 19. Collision events
+The distinct-mode finite reference uses one reversible (parent,daughter,daughter)
+row per counted event. Reverse reaction is already included; a self-reciprocal
+unordered row is counted once. Coefficients are stipulated, not inferred from
+linewidths. Exact-resonance algebra and accepted roundoff-detuned approximations
+are different claims. Underflow can invalidate an invertible entropy-coordinate
+map even when the limiting stored action is finite. See note 19.
