@@ -1,0 +1,28 @@
+[
+  {
+    "NAC": false,
+    "actual_NAC_loaded": false,
+    "matrix_class": "DynamicalMatrix",
+    "nac_method": null,
+    "eigenpair_relative_residuals": [
+      6.254870689170628e-16,
+      8.215075228089659e-16
+    ],
+    "frequency_max_difference_THz": 1.1546319456101628e-14,
+    "gauge_aligned_matrix_relative_difference": 3.2051947088867885e-16,
+    "opposite_gauge_relative_difference": 0.4815477294374352
+  },
+  {
+    "NAC": true,
+    "actual_NAC_loaded": true,
+    "matrix_class": "DynamicalMatrixGL",
+    "nac_method": "gonze",
+    "eigenpair_relative_residuals": [
+      7.057789725089066e-16,
+      7.277224961357764e-16
+    ],
+    "frequency_max_difference_THz": 6.818098974292752e-08,
+    "gauge_aligned_matrix_relative_difference": 1.3539770654261925e-08,
+    "opposite_gauge_relative_difference": 0.481045396912441
+  }
+]

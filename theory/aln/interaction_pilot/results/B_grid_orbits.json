@@ -1,0 +1,544 @@
+{
+  "status": "PASS",
+  "method": "spglib direct rotations -> reciprocal permutations; independent integer closure and BFS; native triplet maps used only afterward",
+  "run_directory": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\runs\\gp1-m333",
+  "versions": {
+    "phono3py": "4.5.0",
+    "phonopy": "4.5.0",
+    "spglib": "2.7.0",
+    "numpy": "2.5.3",
+    "h5py": "3.16.0"
+  },
+  "symprec": 1e-05,
+  "spacegroup_number": 186,
+  "spacegroup_international": "P6_3mc",
+  "backend_for_grid_reconstruction": "C",
+  "grid": {
+    "mesh": [
+      3,
+      3,
+      3
+    ],
+    "D_diag": [
+      3,
+      3,
+      3
+    ],
+    "P": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "Q": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "PS": [
+      0,
+      0,
+      0
+    ],
+    "bz_rows": 39,
+    "regular_points": 27,
+    "fiber_size_histogram": {
+      "1": 21,
+      "3": 6
+    },
+    "max_alias_frequency_abs_error_THz": 6.818098086114333e-08,
+    "bzg2grg": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      4,
+      5,
+      6,
+      7,
+      8,
+      8,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      13,
+      13,
+      14,
+      15,
+      16,
+      17,
+      17,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      22,
+      22,
+      23,
+      24,
+      25,
+      26,
+      26,
+      26
+    ],
+    "grg2bzg": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      23,
+      26,
+      27,
+      28,
+      29,
+      30,
+      33,
+      34,
+      35,
+      36
+    ],
+    "dense_gp_map": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      23,
+      26,
+      27,
+      28,
+      29,
+      30,
+      33,
+      34,
+      35,
+      36,
+      39
+    ]
+  },
+  "anchor": {
+    "bz": 1,
+    "regular": 1,
+    "address": [
+      1,
+      0,
+      0
+    ],
+    "time_reverse_regular": 2,
+    "canonical_time_reverse_bz": 2
+  },
+  "group_counts": {
+    "direct_operations": 12,
+    "reciprocal_with_time_reversal": 24,
+    "little_group": 4,
+    "little_plus_swap": 8,
+    "little_orbits": 12,
+    "triplet_orbits": 8,
+    "burnside_fixed_counts_sorted": [
+      1,
+      3,
+      3,
+      3,
+      9,
+      9,
+      9,
+      27
+    ]
+  },
+  "rows": [
+    {
+      "row": 0,
+      "triplet_bz": [
+        1,
+        0,
+        2
+      ],
+      "second_regular": 0,
+      "orbit_regular": [
+        0,
+        2
+      ],
+      "export_weight": 2,
+      "enumerated_weight": 2,
+      "stabilizer_size": 4,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 1,
+      "triplet_bz": [
+        1,
+        1,
+        1
+      ],
+      "second_regular": 1,
+      "orbit_regular": [
+        1
+      ],
+      "export_weight": 1,
+      "enumerated_weight": 1,
+      "stabilizer_size": 8,
+      "reciprocal_G": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 2,
+      "triplet_bz": [
+        1,
+        3,
+        10
+      ],
+      "second_regular": 3,
+      "orbit_regular": [
+        3,
+        4,
+        7,
+        8
+      ],
+      "export_weight": 4,
+      "enumerated_weight": 4,
+      "stabilizer_size": 2,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 3,
+      "triplet_bz": [
+        1,
+        7,
+        8
+      ],
+      "second_regular": 5,
+      "orbit_regular": [
+        5,
+        6
+      ],
+      "export_weight": 2,
+      "enumerated_weight": 2,
+      "stabilizer_size": 4,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 4,
+      "triplet_bz": [
+        1,
+        13,
+        28
+      ],
+      "second_regular": 9,
+      "orbit_regular": [
+        9,
+        11,
+        18,
+        20
+      ],
+      "export_weight": 4,
+      "enumerated_weight": 4,
+      "stabilizer_size": 2,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 5,
+      "triplet_bz": [
+        1,
+        14,
+        27
+      ],
+      "second_regular": 10,
+      "orbit_regular": [
+        10,
+        19
+      ],
+      "export_weight": 2,
+      "enumerated_weight": 2,
+      "stabilizer_size": 4,
+      "reciprocal_G": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 6,
+      "triplet_bz": [
+        1,
+        16,
+        36
+      ],
+      "second_regular": 12,
+      "orbit_regular": [
+        12,
+        13,
+        16,
+        17,
+        21,
+        22,
+        25,
+        26
+      ],
+      "export_weight": 8,
+      "enumerated_weight": 8,
+      "stabilizer_size": 1,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 7,
+      "triplet_bz": [
+        1,
+        20,
+        34
+      ],
+      "second_regular": 14,
+      "orbit_regular": [
+        14,
+        15,
+        23,
+        24
+      ],
+      "export_weight": 4,
+      "enumerated_weight": 4,
+      "stabilizer_size": 2,
+      "reciprocal_G": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "all_27_full_rows_bijective": true,
+  "independent_map_triplets": [
+    0,
+    1,
+    0,
+    3,
+    3,
+    5,
+    5,
+    3,
+    3,
+    9,
+    10,
+    9,
+    12,
+    12,
+    14,
+    14,
+    12,
+    12,
+    9,
+    10,
+    9,
+    12,
+    12,
+    14,
+    14,
+    12,
+    12
+  ],
+  "independent_map_q": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    5,
+    3,
+    4,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    14,
+    12,
+    13,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    14,
+    12,
+    13
+  ],
+  "native_map_triplets": [
+    0,
+    1,
+    0,
+    3,
+    3,
+    5,
+    5,
+    3,
+    3,
+    9,
+    10,
+    9,
+    12,
+    12,
+    14,
+    14,
+    12,
+    12,
+    9,
+    10,
+    9,
+    12,
+    12,
+    14,
+    14,
+    12,
+    12
+  ],
+  "native_map_q": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    5,
+    3,
+    4,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    14,
+    12,
+    13,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    14,
+    12,
+    13
+  ],
+  "native_maps_match_partitions": true,
+  "negative_anchor_grid_partition_matches": true,
+  "time_reversal_fixed_points": 1,
+  "triplet_and_weights_equal_in_pp_and_gamma_detail": true,
+  "pp_shape_not_values": [
+    8,
+    12,
+    12,
+    12
+  ],
+  "exported_dataset_names": {
+    "phonon": [
+      "eigenvector",
+      "frequency",
+      "grid_address",
+      "mesh",
+      "version"
+    ],
+    "pp": [
+      "pp",
+      "triplet",
+      "triplet_all",
+      "version",
+      "weight"
+    ]
+  },
+  "file_sha256": {
+    "POSCAR": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+    "phonon-m333.hdf5": "bd7349a570327c30ca0aafe1628a84608254efde6c6f5369a46ab2c70d265550",
+    "pp-m333-g1-s0.1.hdf5": "c7b4ad2b2d058dc6236f68e4fbf35488573ed9ba21430126a7017576dcf9bd0b",
+    "gamma_detail-m333-g1-s0.1.hdf5": "11fd5fdf8dec5893a63a985817fc1994d827cd87285f642107db771967b365f2"
+  },
+  "source_sha256": {
+    "D:\\ResearchLab\\envs\\aln-phono3py-4.5.0\\Lib\\site-packages\\phonopy\\phonon\\grid.py": "308efb76fb50906d25dc5ed8c2857fec3c7eac21d864512905eb5f06432ffc93",
+    "D:\\ResearchLab\\envs\\aln-phono3py-4.5.0\\Lib\\site-packages\\phono3py\\phonon3\\triplets.py": "f2c66a9ebb66b9cddb1b9f1f333284b8b3581e54d8af5b5e213865755b70f4e1"
+  },
+  "limitations": [
+    "Q, P, PS, both grid maps and rotation lists were reconstructed, not present as dedicated export datasets.",
+    "The reproduction uses symprec=1e-5, time reversal enabled, swappable=True and the C backend; does not establish Rust equivalence.",
+    "The -q anchor interaction tensor was not exported or compared; only its grid orbit partition was derived.",
+    "No band permutation, degenerate subspace sewing matrix, eigenvector gauge, or interaction reciprocity was tested.",
+    "Momentum closure is not energy resonance or proof of a physical collision operator."
+  ]
+}

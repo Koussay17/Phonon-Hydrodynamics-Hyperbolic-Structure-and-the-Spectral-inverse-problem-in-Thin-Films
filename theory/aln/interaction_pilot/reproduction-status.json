@@ -1,0 +1,57 @@
+{
+  "status": "pilot_executed_with_unresolved_validation_failure",
+  "failed_check": "BZ_duplicate_frequencies",
+  "scope": "No grid convergence, canonical event operator, or material transport validation",
+  "commands": [
+    {
+      "script": "pilot_run.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "pilot_pair.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "inspect_pilot.py",
+      "returncode": 1,
+      "expected_failed_validation": true
+    },
+    {
+      "script": "reconstruct_gamma.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "pair_checks.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "harmonic_controls.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "matrix_control.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "cutoff_control.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "review_numerical_arrays.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    },
+    {
+      "script": "scripts/B_check_grid_orbits.py",
+      "returncode": 0,
+      "expected_failed_validation": false
+    }
+  ]
+}

@@ -5,3 +5,4 @@
 # Preserve byte-exact scientific audit inputs and their source-hash checks.
 # Historical reports/scripts retain their original trailing blank lines.
 theory/aln/events/** -text whitespace=cr-at-eol,-blank-at-eof
+theory/aln/interaction_pilot/** -text whitespace=cr-at-eol,-blank-at-eof

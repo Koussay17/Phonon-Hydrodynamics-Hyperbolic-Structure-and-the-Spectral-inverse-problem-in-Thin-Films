@@ -1,0 +1,123 @@
+{
+  "scope": "single-point coarse-mesh interaction/self-energy export; no conductivity or hydrodynamic conclusion",
+  "python": "3.14.7",
+  "packages": {
+    "phono3py": "4.5.0",
+    "phonopy": "4.5.0",
+    "phonors": "0.3.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "h5py": "3.16.0",
+    "spglib": "2.7.0"
+  },
+  "inputs": {
+    "POSCAR": {
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "settings": {
+    "mesh": [
+      3,
+      3,
+      3
+    ],
+    "grid_points": [
+      1,
+      2
+    ],
+    "temperature_K": 300,
+    "sigma_THz": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "backend": "Rust",
+    "symmetrize_fc": false,
+    "NAC": true
+  },
+  "frequency_THz": {
+    "shape": [
+      39,
+      12
+    ],
+    "min": 1.6520334448948332e-07,
+    "max": 25.368719540650563
+  },
+  "elapsed_seconds": 2.797516345977783,
+  "script_sha256": "9e6a2045d72d9bbc2f1a565e22ee2210deb853896a9a07cc5a363c2c5b7cdecc",
+  "outputs": {
+    "gamma_detail-m333-g1-s0.05.hdf5": {
+      "bytes": 81464,
+      "sha256": "0947b0d87148672cd4bb23684f2a5af9e2205a7684f954686bde07a91fb792b5"
+    },
+    "gamma_detail-m333-g1-s0.1.hdf5": {
+      "bytes": 81464,
+      "sha256": "80d4e9cac1ef83d8d130766f1a894fdd746c99664e6f9775373f66ffefec0770"
+    },
+    "gamma_detail-m333-g1-s0.2.hdf5": {
+      "bytes": 81464,
+      "sha256": "972946849a0d7f9cd050fefeee4659ef7fe7cc9511a423e1fd7a4e543c6de0d0"
+    },
+    "gamma_detail-m333-g2-s0.05.hdf5": {
+      "bytes": 81555,
+      "sha256": "740b1d38852b4d45679d3888ee1cfb5fa9f29d79563a82072f541a056e751929"
+    },
+    "gamma_detail-m333-g2-s0.1.hdf5": {
+      "bytes": 81555,
+      "sha256": "48fd32301df5fd1bb434cac28d99860b140d30456c4bac62db7f779779cab34c"
+    },
+    "gamma_detail-m333-g2-s0.2.hdf5": {
+      "bytes": 81555,
+      "sha256": "24efe1cc80418462ab1c6eeb68aeabd48d8dce3a0ae8ca3d71e36bb3f6805aa6"
+    },
+    "kappa-m333-g1-s0.05.hdf5": {
+      "bytes": 25216,
+      "sha256": "dbd22e04e2b0a2949e5e861b51d40338d46a96d53ddeec04a747c87d559a5b6a"
+    },
+    "kappa-m333-g1-s0.1.hdf5": {
+      "bytes": 25216,
+      "sha256": "497dba75f2c0799efb688d777d54d1b58439d977e80ea45b82a255345cdc5de3"
+    },
+    "kappa-m333-g1-s0.2.hdf5": {
+      "bytes": 25216,
+      "sha256": "c63f243e187c55a2e48a0405e49d1d4835b8714d39ffef867f74f0b6518c6266"
+    },
+    "kappa-m333-g2-s0.05.hdf5": {
+      "bytes": 25216,
+      "sha256": "1003caf8cc931402d79e80f6dc8caabdf9405c438c1cefabac9ff41c5fef95bf"
+    },
+    "kappa-m333-g2-s0.1.hdf5": {
+      "bytes": 25216,
+      "sha256": "2dbde6470b6a8232b51bb40f706fab2392d7687ff668ea28b1d3efb20bb0b2c2"
+    },
+    "kappa-m333-g2-s0.2.hdf5": {
+      "bytes": 25216,
+      "sha256": "9bb7e574b84b64eb789d8106b6a6052b90e51245d03e4e139f2267c9d176573f"
+    },
+    "phonon-m333.hdf5": {
+      "bytes": 86102,
+      "sha256": "bd7349a570327c30ca0aafe1628a84608254efde6c6f5369a46ab2c70d265550"
+    },
+    "pp-m333-g1-s0.2.hdf5": {
+      "bytes": 111805,
+      "sha256": "c7b4ad2b2d058dc6236f68e4fbf35488573ed9ba21430126a7017576dcf9bd0b"
+    },
+    "pp-m333-g2-s0.2.hdf5": {
+      "bytes": 111868,
+      "sha256": "b65a708dd8f5f861b309ff412eaa40a44af4af78bbe12476edd87b803b651185"
+    }
+  }
+}

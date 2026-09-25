@@ -1,0 +1,30 @@
+[
+  {
+    "backend": "Rust",
+    "NAC": false,
+    "max_duplicate_difference_THz": 6.818098086114333e-08,
+    "min_frequency_THz": 1.6520334448948332e-07,
+    "seconds": 1.2783970832824707
+  },
+  {
+    "backend": "C",
+    "NAC": false,
+    "max_duplicate_difference_THz": 6.818098086114333e-08,
+    "min_frequency_THz": -4.0762002106623577e-07,
+    "seconds": 1.4904568195343018
+  },
+  {
+    "backend": "Rust",
+    "NAC": true,
+    "max_duplicate_difference_THz": 6.818098086114333e-08,
+    "min_frequency_THz": 1.6520334448948332e-07,
+    "seconds": 1.2528321743011475
+  },
+  {
+    "backend": "C",
+    "NAC": true,
+    "max_duplicate_difference_THz": 6.818098086114333e-08,
+    "min_frequency_THz": -4.0762002106623577e-07,
+    "seconds": 1.2200934886932373
+  }
+]
