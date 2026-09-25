@@ -239,3 +239,12 @@ Event normalization, energy integration, material convergence and measurements
 remain open. Public force constants are stored locally on D with recorded hashes.
 [The manuscript plan](paper/RESEARCH_PLAN.md) separates the focused methods
 paper requirements from a quantitative AlN/FDTR study.
+
+## Real AlN export checkpoint — 25 September 2026
+
+[Note 20](notes/20_Export_microscopique_AlN.pdf) and the [reproducible pilot](theory/aln/interaction_pilot/README.md)
+document a real force-constant export and independent reconstruction of twelve selected linewidths.
+The original periodicity check fails; a fixed-parameter reciprocal-cutoff control removes the tested
+matrix discrepancy to roundoff. The original export remains unchanged and the full corrected export
+is still needed. Strong Gaussian-width sensitivity rules out a converged-material-rate claim.
+Four independent branches and four hostile reviews are archived with evidence and limitations.

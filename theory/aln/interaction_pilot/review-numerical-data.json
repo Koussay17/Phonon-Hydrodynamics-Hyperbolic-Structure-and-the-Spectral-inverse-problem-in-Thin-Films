@@ -1,0 +1,189 @@
+{
+  "scope": "Saved-array comparisons only; no force-constant or phonon recalculation",
+  "controls": [
+    {
+      "backend": "Rust",
+      "NAC": false,
+      "worst_duplicate": {
+        "indices": [
+          4,
+          6
+        ],
+        "addresses": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            -2,
+            1,
+            0
+          ]
+        ],
+        "band_zero_based": 11,
+        "frequencies_THz": [
+          21.98895934858252,
+          21.98895934858248
+        ],
+        "difference_THz": 3.907985046680551e-14
+      },
+      "negative_count": 3,
+      "negative_non_Gamma_count": 0,
+      "minimum": {
+        "index": [
+          0,
+          0
+        ],
+        "address": [
+          0,
+          0,
+          0
+        ],
+        "frequency_THz": -3.33333468109717e-07
+      }
+    },
+    {
+      "backend": "C",
+      "NAC": false,
+      "worst_duplicate": {
+        "indices": [
+          17,
+          18
+        ],
+        "addresses": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            -2,
+            1
+          ]
+        ],
+        "band_zero_based": 0,
+        "frequencies_THz": [
+          7.945091940485238,
+          7.9450919404852565
+        ],
+        "difference_THz": 1.865174681370263e-14
+      },
+      "negative_count": 3,
+      "negative_non_Gamma_count": 0,
+      "minimum": {
+        "index": [
+          0,
+          0
+        ],
+        "address": [
+          0,
+          0,
+          0
+        ],
+        "frequency_THz": -4.841004861573943e-07
+      }
+    },
+    {
+      "backend": "Rust",
+      "NAC": true,
+      "worst_duplicate": {
+        "indices": [
+          23,
+          24
+        ],
+        "addresses": [
+          [
+            -1,
+            -1,
+            1
+          ],
+          [
+            -1,
+            2,
+            1
+          ]
+        ],
+        "band_zero_based": 0,
+        "frequencies_THz": [
+          8.008505264243189,
+          8.008505196062208
+        ],
+        "difference_THz": 6.818098086114333e-08
+      },
+      "negative_count": 0,
+      "negative_non_Gamma_count": 0,
+      "minimum": {
+        "index": [
+          0,
+          0
+        ],
+        "address": [
+          0,
+          0,
+          0
+        ],
+        "frequency_THz": 1.6520334448948332e-07
+      }
+    },
+    {
+      "backend": "C",
+      "NAC": true,
+      "worst_duplicate": {
+        "indices": [
+          23,
+          24
+        ],
+        "addresses": [
+          [
+            -1,
+            -1,
+            1
+          ],
+          [
+            -1,
+            2,
+            1
+          ]
+        ],
+        "band_zero_based": 0,
+        "frequencies_THz": [
+          8.008505264243187,
+          8.008505196062206
+        ],
+        "difference_THz": 6.818098086114333e-08
+      },
+      "negative_count": 1,
+      "negative_non_Gamma_count": 0,
+      "minimum": {
+        "index": [
+          0,
+          0
+        ],
+        "address": [
+          0,
+          0,
+          0
+        ],
+        "frequency_THz": -4.0762002106623577e-07
+      }
+    }
+  ],
+  "backend_comparisons": [
+    {
+      "NAC": false,
+      "address_arrays_identical": true,
+      "max_abs_frequency_difference_THz": 1.5076701804767732e-07,
+      "max_abs_non_Gamma_difference_THz": 2.842170943040401e-14,
+      "max_abs_signed_square_difference_THz2": 1.2505552149377763e-12
+    },
+    {
+      "NAC": true,
+      "address_arrays_identical": true,
+      "max_abs_frequency_difference_THz": 5.72823365555719e-07,
+      "max_abs_non_Gamma_difference_THz": 3.4638958368304884e-14,
+      "max_abs_signed_square_difference_THz2": 1.3642420526593924e-12
+    }
+  ]
+}

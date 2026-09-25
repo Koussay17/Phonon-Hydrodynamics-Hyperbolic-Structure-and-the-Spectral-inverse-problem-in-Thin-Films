@@ -1,0 +1,150 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Premier export microscopique de l'AlN}\\[4pt]
+{\normalsize Comptage spectral, contrôles et limite de validation}\\[2pt]
+{\small Partie I --- 25 septembre 2026}
+\end{center}
+\section{Objet et statut}
+La note 19 fournit une référence finie exactement résonante. Cette note
+examine un export obtenu à partir de constantes de force publiques
+de l'AlN. Elle ne construit pas encore l'opérateur physique complet.
+Le calcul emploie phono3py et phonopy 4.5.0, une grille $3^3$, $T=300$ K,
+et des points externes sélectionnés. Les entrées et versions sont archivées
+avec leurs empreintes dans \texttt{theory/aln/interaction\_pilot/}.
+
+Les constantes harmoniques proviennent d'une supercellule $5\times5\times3$,
+les constantes cubiques d'une supercellule $3\times3\times2$.
+La correction polaire utilise le fichier BORN. Ces données partagées
+constituent une hypothèse amont : leur exactitude physique n'est pas
+prouvée par la reconstruction des sorties du même calcul.
+
+\section{Grandeurs exportées}
+La grille contient 27 points réguliers, représentés par 39 entrées de zone
+de Brillouin avec duplications de frontière, et 12 branches.
+Pour le premier point externe, huit triplets réduits portent les poids
+\[
+(2,1,4,2,4,2,8,4),\qquad \sum_t w_t=27.
+\]
+Une énumération indépendante des orbites par rotations entières et échange
+des partenaires retrouve ces huit classes. Elle vérifie le comptage des
+points pour la somme scalaire, pas les permutations complètes des branches
+dans les sous-espaces dégénérés.
+
+L'export \texttt{pp} contient les interactions au carré en eV$^2$.
+Dans la conversion par défaut inspectée, le facteur $1/N_q$ est déjà
+inclus. Le diviser encore par 27 serait incorrect.
+Les fréquences et demi-largeurs sont exprimées en THz ordinaires.
+
+\section{Reconstruction indépendante de la somme}
+Avec $g_\sigma$ la gaussienne normalisée en fréquence et
+$n_j=(\exp(hf_j/k_BT)-1)^{-1}$, la formule implémentée directement est
+\[
+\begin{split}
+\gamma_0=C_\gamma\sum_{t,b_1,b_2}w_t\,P_{t,0,1,2}
+\bigl\{&(n_1+n_2+1)g_\sigma(f_0-f_1-f_2)\\
+&+(n_1-n_2)[g_\sigma(f_0+f_1-f_2)
+-g_\sigma(f_0-f_1+f_2)]\bigr\}.
+\end{split}
+\]
+Ici $P=\texttt{pp}$ et
+\[
+ C_\gamma=\frac{18\pi}{(\hbar\,2\pi\,10^{12})^2}
+ =3\,306\,215.6970
+\]
+dans les unités mixtes eV et THz employées. Le seuil des fréquences
+filles est $10^{-4}$ THz, conformément au défaut inspecté.
+La convention de durée de vie est
+$\tau^{-1}=4\pi\,10^{12}\gamma$ en s$^{-1}$.
+
+Pour $\sigma=0.1$ THz, les douze composantes sont reconstruites avec un
+écart absolu maximal de $6.94\times10^{-18}$ THz.
+Cet écart divisé par la plus grande demi-largeur vaut $2.96\times10^{-16}$ ;
+ce n'est pas l'erreur relative maximale branche par branche.
+Le programme n'appelle pas le noyau d'accumulation du logiciel.
+Il réutilise ses interactions, phonons et constantes : l'indépendance
+porte sur la somme, pas sur toute la chaîne microscopique.
+
+\section{Contrôles positifs et échec conservé}
+Les demi-largeurs de deux points réciproques concordent à moins de
+$2\times10^{-13}$ après normalisation par la composante maximale.
+Mais les rapports à la valeur obtenue avec $\sigma=0.1$ THz couvrent
+$0.463$ à $1.663$ pour $\sigma=0.05$ THz, et $0.707$ à $2.933$ pour
+$\sigma=0.2$ THz. La grille ne fournit donc pas des taux convergés.
+Ces variations ne constituent pas un intervalle d'incertitude physique.
+
+Le contrôle des représentants équivalents de frontière échoue :
+l'écart atteint $6.8181\times10^{-8}$ THz, pour un seuil
+déclaré de $10^{-10}$ THz. Ce seuil reste inchangé.
+L'écart apparaît avec la correction polaire dans les moteurs C et
+Rust. Sans cette correction, il retombe près de l'arrondi.
+Les résidus des paires propres sont de l'ordre de $10^{-15}$ :
+une diagonalisation précise ne suffit pas à valider la périodicité.
+
+\section{Expérience discriminante sur la correction polaire}
+Pour les représentants $(-1,-1,1)/3$ et $(-1,2,1)/3$, les matrices sont
+comparées après la transformation de phase atomique appropriée.
+On augmente uniquement la coupure réciproque, en maintenant
+fixe le paramètre de séparation $\Lambda=0.2661577394$ :
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Facteur de coupure & Nombre de vecteurs & Défaut matriciel relatif\\
+\midrule
+1.00 & 311 & $1.35\times10^{-8}$\\
+1.25 & 579 & $1.55\times10^{-12}$\\
+1.50 & 1013 & $4.94\times10^{-16}$\\
+2.00 & 2381 & $4.94\times10^{-16}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Ce contrôle, vérifié indépendamment sur les matrices sauvegardées,
+soutient une explication par troncature pour cette paire.
+Il ne corrige pas rétroactivement l'export initial. Les interactions et
+demi-largeurs n'ont pas encore été recalculées avec la coupure augmentée.
+
+\section{Ce qui reste à établir}
+Quatre branches indépendantes puis quatre revues adversariales séparent
+l'accord scalaire du problème d'opérateur. Un facteur amont commun erroné
+pourrait préserver cet accord tout en changeant tous les taux absolus.
+Des expansions différentes peuvent préserver une diagonale
+sans préserver les termes hors diagonale.
+
+Il faut vérifier l'export complet avec correction polaire contrôlée,
+la normalisation microscopique indépendante, les permutations de modes,
+le comptage des canaux et une intégration conservant les invariants.
+Une contribution gaussienne désaccordée n'est pas un événement exactement
+résonant de la note 19. La trajectoire en température, les frontières et
+la comparaison expérimentale restent ouvertes.
+
+\section{Traçabilité}
+Les scripts, versions, empreintes, résultats compacts, contrôles échoués
+et rapports de revue sont conservés dans le dossier de campagne.
+Les données volumineuses restent sur D. Le programme
+\texttt{scripts/run\_aln\_interaction\_pilot.py} reproduit le calcul
+dans un répertoire neuf et enregistre explicitement l'échec initial.
+
+La formulation suit Togo, Chaput et Tanaka,
+Phys.\ Rev.\ B \textbf{91}, 094306 (2015), ainsi que la documentation
+et le code source épinglé de phono3py. Aucune nouveauté théorique,
+validation formelle ou classification hydrodynamique complète de l'AlN
+n'est revendiquée.
+\end{document}

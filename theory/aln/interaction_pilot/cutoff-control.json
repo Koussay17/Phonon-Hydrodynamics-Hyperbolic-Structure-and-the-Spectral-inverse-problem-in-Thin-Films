@@ -1,0 +1,34 @@
+[
+  {
+    "cutoff_factor": 1.0,
+    "G_cutoff": 1.1964811966806446,
+    "Lambda": 0.26615773936469767,
+    "G_count": 311,
+    "matrix_relative_defect": 1.3539770654261925e-08,
+    "frequency_max_difference_THz": 6.81809932956412e-08
+  },
+  {
+    "cutoff_factor": 1.25,
+    "G_cutoff": 1.4956014958508057,
+    "Lambda": 0.26615773936469767,
+    "G_count": 579,
+    "matrix_relative_defect": 1.5466754944850928e-12,
+    "frequency_max_difference_THz": 4.943601084050897e-12
+  },
+  {
+    "cutoff_factor": 1.5,
+    "G_cutoff": 1.7947217950209668,
+    "Lambda": 0.26615773936469767,
+    "G_count": 1013,
+    "matrix_relative_defect": 4.938132049388527e-16,
+    "frequency_max_difference_THz": 1.7763568394002505e-14
+  },
+  {
+    "cutoff_factor": 2.0,
+    "G_cutoff": 2.392962393361289,
+    "Lambda": 0.26615773936469767,
+    "G_count": 2381,
+    "matrix_relative_defect": 4.944948251593491e-16,
+    "frequency_max_difference_THz": 1.4210854715202004e-14
+  }
+]
