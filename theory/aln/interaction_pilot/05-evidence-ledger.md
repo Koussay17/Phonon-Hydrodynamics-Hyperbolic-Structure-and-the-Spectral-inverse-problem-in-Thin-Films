@@ -8,3 +8,8 @@
 - cutoff-control.json: fixed splitting parameter, reciprocal-cutoff factors 1,1.25,1.5,2; local matrix defects 1.35e-8,1.55e-12,4.94e-16,4.94e-16.
 - reproduction-status.json: fresh-directory reproduction retains the declared failed original check. Successful process execution does not mean all validation passed.
 Raw HDF5/NPZ remain on D; compact results and executable scripts are published.
+
+- export-cutoff-comparison.json: three complete selected-point exports at fixed Lambda; all 18 duplicate pairs pass for factors1.5 and2.
+- results/export-cutoff-*/: separately hashed output provenance, unmodified inspection results and direct reconstruction.
+- export-cutoff-reproduction.json: identical numerical records on a second execution with verified input hashes.
+- continuation-export-report.md: subsequent evidence and independent degeneracy-aware interpretation; original baseline failure is retained.

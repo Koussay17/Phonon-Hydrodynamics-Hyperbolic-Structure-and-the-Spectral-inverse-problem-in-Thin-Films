@@ -118,8 +118,30 @@ Facteur de coupure & Nombre de vecteurs & Défaut matriciel relatif\\
 \end{center}
 Ce contrôle, vérifié indépendamment sur les matrices sauvegardées,
 soutient une explication par troncature pour cette paire.
-Il ne corrige pas rétroactivement l'export initial. Les interactions et
-demi-largeurs n'ont pas encore été recalculées avec la coupure augmentée.
+Il ne corrige pas rétroactivement l'export initial.
+
+\subsection{Continuation : export recalculé}
+Les exports complets au point externe sélectionné ont ensuite été
+recalculés avec les facteurs de coupure 1, 1.5 et 2, à $\Lambda$ fixé.
+Les facteurs 1.5 et 2 passent le seuil initial sur les 18 paires de
+représentants dupliqués : l'écart maximal vaut $2.49\times10^{-14}$ THz.
+L'inspection initiale et la reconstruction indépendante passent sans
+modification de leurs critères.
+Les demi-largeurs changent d'au plus $4.63\times10^{-7}$ relativement
+au calcul initial, branche par branche. Entre les facteurs 1.5 et 2,
+cet écart relatif maximal est $1.39\times10^{-13}$.
+
+Cependant, les éléments individuels de \texttt{pp} diffèrent encore
+de $0.110$ après normalisation par le plus grand élément.
+La stabilité des demi-largeurs ne certifie donc pas une correspondance
+élément par élément des interactions. Le contrôle indépendant montre que les 4296 éléments modifiés au-delà
+de $10^{-10}$ du maximum impliquent au moins une branche dégénérée.
+Les sommes sur les blocs dégénérés complets concordent à
+$6.29\times10^{-15}$ après normalisation globale.
+Les projecteurs des sous-espaces restent stables alors que leurs bases
+changent : ces observations soutiennent une redistribution entre
+vecteurs propres dégénérés. Elles ne reconstruisent pas les phases
+complexes des amplitudes et ne prouvent pas l'équivalence des opérateurs.
 
 \section{Ce qui reste à établir}
 Quatre branches indépendantes puis quatre revues adversariales séparent

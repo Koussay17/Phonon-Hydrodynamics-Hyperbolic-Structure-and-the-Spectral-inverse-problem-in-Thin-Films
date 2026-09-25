@@ -6,3 +6,6 @@ Recorded objections: original failed periodicity test, width sensitivity, shared
 Fresh-directory execution addresses stale-output risk. Fixed-Lambda cutoff control addresses one mechanism behind the matrix defect; it does not retroactively change reviewed exports.
 
 Numerical follow-up: branches/review-cutoff.md independently verifies parameter handling and all four saved matrix pairs. Baseline matrices are bitwise the original failed case; fixed-q matrices stabilize between factors 1.5 and 2. This supports local truncation, not a corrected complete export.
+
+## Corrected-export follow-up
+Independent numerical review examines raw interactions, eigenspace projectors and complete degenerate block sums rather than inferring operator validity from scalar agreement. A separate provenance review checks controlled parameters and saved outputs. These extend the earlier reports; they do not retroactively change their initial scope.

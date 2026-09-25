@@ -1,0 +1,86 @@
+[
+  {
+    "factor": 1.0,
+    "G_cutoff": 1.1964811966806446,
+    "Lambda": 0.26615773936469767,
+    "duplicate_pair_count": 18,
+    "duplicate_frequency_max_THz": 6.818098086114333e-08,
+    "original_tolerance_pass": false,
+    "run": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\runs\\export-cutoff-1.0\\runs\\gp1-m333",
+    "gamma": [
+      [
+        0.0019114798217884955,
+        0.0028333065026669994,
+        0.0032953437623585804,
+        0.010062374932138903,
+        0.0105860095391322,
+        0.020767213194864645,
+        0.010057584137376322,
+        0.004889208005876254,
+        0.02342156604506997,
+        0.007854348441904795,
+        0.01045741003052589,
+        0.00839181295785589
+      ]
+    ]
+  },
+  {
+    "factor": 1.5,
+    "G_cutoff": 1.7947217950209668,
+    "Lambda": 0.26615773936469767,
+    "duplicate_pair_count": 18,
+    "duplicate_frequency_max_THz": 2.4868995751603507e-14,
+    "original_tolerance_pass": true,
+    "run": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\runs\\export-cutoff-1.5\\runs\\gp1-m333",
+    "gamma": [
+      [
+        0.0019114797044736283,
+        0.0028333066975231164,
+        0.003295343791060403,
+        0.010062376206266,
+        0.010586009513934118,
+        0.020767222805263108,
+        0.010057583621055168,
+        0.0048892074218624465,
+        0.023421566154161924,
+        0.007854348414702148,
+        0.010457406800614532,
+        0.00839181288994057
+      ]
+    ],
+    "pp_max_scaled_change_from_default": 0.34284225132749246,
+    "gamma_max_scaled_change_from_default": 4.103226250820022e-07,
+    "gamma_max_branch_relative_change_from_default": 4.62767843377323e-07
+  },
+  {
+    "factor": 2.0,
+    "G_cutoff": 2.392962393361289,
+    "Lambda": 0.26615773936469767,
+    "duplicate_pair_count": 18,
+    "duplicate_frequency_max_THz": 2.4868995751603507e-14,
+    "original_tolerance_pass": true,
+    "run": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\runs\\export-cutoff-2.0\\runs\\gp1-m333",
+    "gamma": [
+      [
+        0.0019114797044736198,
+        0.0028333066975230847,
+        0.0032953437910603215,
+        0.010062376206265653,
+        0.010586009513934406,
+        0.020767222805264583,
+        0.010057583621054952,
+        0.004889207421862675,
+        0.023421566154162188,
+        0.007854348414701421,
+        0.010457406800614175,
+        0.008391812889941732
+      ]
+    ],
+    "pp_max_scaled_change_from_default": 0.2753875644265377,
+    "gamma_max_scaled_change_from_default": 4.1032268803744044e-07,
+    "gamma_max_branch_relative_change_from_default": 4.6276791437938485e-07,
+    "pp_max_scaled_change_from_1_5": 0.1097100507683089,
+    "gamma_max_scaled_change_from_1_5": 6.29554379444549e-14,
+    "gamma_max_branch_relative_change_from_1_5": 1.384998383719554e-13
+  }
+]

@@ -7,3 +7,6 @@
 6. Which temperature-dependent N/U, isotope and defect inputs support actual AlN?
 7. Which boundary/interface model and measured sample geometry permit a quantitative FDTR comparison?
 These are not answered by a twelve-component linewidth match.
+
+## After corrected export
+The selected-point enlarged-cutoff exports pass original checks and repeated execution. Degenerate block sums stabilize while individual entries redistribute. Next: determine which event/action representation is invariant under those basis rotations; scalar linewidth agreement cannot settle it. Broader mesh and temperature convergence remain open.

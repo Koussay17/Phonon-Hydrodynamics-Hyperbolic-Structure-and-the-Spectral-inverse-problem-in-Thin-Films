@@ -18,3 +18,17 @@ The runner records each command and preserves the original failed BZ_duplicate_f
 The mesh is 3x3x3, at 300 K with selected external points. Full interaction arrays at a selected point are not a full crystal collision operator. Gaussian widths are 0.05, 0.1 and 0.2 THz. The direct accumulator shares upstream interactions, phonons and constants; its independent check covers accumulation only.
 
 First-pass reports and reviews remain historical records. The final report and later cutoff review distinguish subsequent evidence from what reviewers initially knew. No novelty is claimed.
+
+## Cutoff continuation (25 September 2026)
+
+After the base runner completes, execute export_cutoff_comparison.py from its output directory using the same isolated Python. It creates three new export subdirectories (existing directories are rejected), repeats the original inspection and direct reconstruction for cutoff factors 1.5 and 2, and compares with factor 1. Lambda stays fixed.
+
+    python -B D:/path/to/new-pilot/export_cutoff_comparison.py
+
+Read the continuation report before interpreting raw pp differences. Original records are retained; the new exports have separate hashes and paths.
+
+The independent saved-array diagnostic review_export_cutoff.py reads run paths from the locally generated export-cutoff-comparison.json and prints JSON. Run it in the same output workspace after the continuation; the archived comparison paths refer to the original D-drive runs and are provenance, not portable input locations.
+
+    python -B D:/path/to/new-pilot/review_export_cutoff.py
+
+The publication preserves each generated pilot_run.py beside its metadata because those scripts contain the effective NAC settings. The inherited metadata settings alone do not list the enlarged cutoff.

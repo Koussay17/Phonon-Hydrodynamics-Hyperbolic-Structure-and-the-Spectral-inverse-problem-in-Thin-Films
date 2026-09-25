@@ -35,3 +35,11 @@ A shared upstream convention or force-constant error can preserve scalar reconst
 
 ## Scope of completion
 This closes the bounded export/accounting checkpoint. It does not complete the scientific paper or the AlN research programme. Negative controls and original failures are preserved; no novelty or all-tests-passed claim is made.
+
+## Subsequent cutoff-export checkpoint
+
+The selected-point exports have now been recalculated at cutoff factors 1, 1.5 and 2 with fixed Lambda. Both enlarged-cutoff exports pass the unchanged inspection, including all 18 duplicate-frequency pairs (maximum 2.49e-14 THz), and independent linewidth reconstruction. The original baseline still fails.
+
+Maximum branchwise relative linewidth change from baseline is 4.63e-7; between factors 1.5 and 2 it is 1.39e-13. Raw pp entries differ by 0.110 scaled by the maximum pp entry between the enlarged cutoffs, requiring a degeneracy-aware comparison. This is a selected-point, fixed-mesh numerical result, not a converged material operator. See export-cutoff-comparison.json and continuation report for subsequent evidence.
+
+The subsequent independent degeneracy diagnostic supports basis redistribution: complete product-degenerate block sums agree to 6.29e-15 of their maximum. Complex phases and full operator equivalence remain unverified. See continuation-export-report.md and branches/review-export-cutoff.md.

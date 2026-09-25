@@ -1,0 +1,4420 @@
+{
+  "scope": "Saved-array test, not a new material calculation",
+  "input_hashes_identical": true,
+  "addresses_identical": true,
+  "triplets_identical": true,
+  "weights_identical": true,
+  "raw_pp_max_scaled_change": 0.1097100507683089,
+  "raw_pp_L1_relative_change": 0.08601756992745939,
+  "gamma_max_branch_relative_change": 1.384998383719554e-13,
+  "maximum_pp_difference": {
+    "index": [
+      4,
+      7,
+      7,
+      7
+    ],
+    "q_rows": [
+      1,
+      13,
+      28
+    ],
+    "pa": 5.803041963085531e-09,
+    "pb": 1.5997639744905493e-10,
+    "frequencies_a": [
+      19.622607487722277,
+      19.707804453791674,
+      19.747164085763618
+    ]
+  },
+  "threshold_studies": [
+    {
+      "frequency_cluster_tolerance_THz": 1e-12,
+      "block_count": 11376,
+      "block_max_change_scaled_by_max_block": 6.2879405074074316e-15,
+      "block_L1_relative_change": 6.852431723382684e-15,
+      "max_block_relative_change_above_declared_floor": 8.636051900578212e-10,
+      "relative_block_floor": 1e-12,
+      "maximum_block_change": {
+        "triplet_index": 7,
+        "bands": [
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ]
+        ],
+        "sum_a": 2.123618343702346e-09,
+        "sum_b": 2.1236183437026695e-09,
+        "absolute_change": 3.234276195082338e-22
+      },
+      "raw_entries_above_1e_10_global_scale": 4296,
+      "significant_entries_with_only_nondegenerate_legs": [],
+      "rotating_active_clusters": [
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            3,
+            4
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 1.6651774620939106e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.1811587761859016e-15
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            7,
+            8
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.09360092978851144,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.758275418089468e-14
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            9,
+            10
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.06121878866520138,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8890040430477645e-14
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.8312104411703073,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 9.977667988547902e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.025859140377132765,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.752138811385672e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.8762986416395331,
+          "minimum_overlap_singular_value": 0.9999999999999993,
+          "projector_spectral_difference": 3.696619129040392e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.006477764518402239,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 4.019828237804206e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.9999405209218104,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 3.558921779917988e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.007622698755850877,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.712792399431785e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9850561014601525,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8221385012545165e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.015936565974615416,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 6.363237100564274e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.00247460112997905,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 5.408624341485034e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.011675142344210639,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 6.0545591934760766e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9821101620924747,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.6424247777273237e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.10102684308953291,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0025092328873762e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.015619609509718463,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.4484995363375295e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.17872010180083753,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.1377444475927044e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9906572930118709,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.4287270978965747e-15
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.0009090479238840792,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.261144436816085e-14
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.6344074077082018,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 6.051794207473408e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6052042190039835,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.209779568999732e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00825427554862993,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.6237403510544465e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0010373442801383248,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 7.479585807095538e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0031625135497223055,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 9.151700780485242e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.26650937211403647,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.550898636879641e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 1.9454299133783238e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.8868523054660084e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 2.4152897172619906e-05,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.525372688811622e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 2.7533531010703882e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.1043728750782362,
+          "minimum_overlap_singular_value": 1.000000000000001,
+          "projector_spectral_difference": 8.394357439008442e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 9.769962616701378e-15,
+          "max_offdiagonal_overlap_squared": 0.0020875489840946615,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.116501611666388e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.18933831112406274,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 8.096526753370513e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.010444892547475375,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 8.460773245203147e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.39677081513046447,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.6511373272649017e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.45637602335404576,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.0420512725626067e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.4210854715202004e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.018145295578856534,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.302261783048102e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.07569383123091378,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 7.94626796572577e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.7991673476347976,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.7394995710404908e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.013110640399580492,
+          "minimum_overlap_singular_value": 1.0000000000000007,
+          "projector_spectral_difference": 2.4569867104727647e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.051835406517030995,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 4.438595298990483e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.14378152869018787,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.790500740891464e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.4831604876045404,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.96041390082979e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.7841151594726065,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.7714799831504472e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9680738366751434,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.0350189497293946e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9913036703418748,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.818893158437009e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.5309843685991292,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.9659781805109097e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.877321420017412,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.4672016414005472e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.037029689938403824,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 3.605398631084424e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9971783547720096,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 4.501493324920604e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.3061509411352856,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.847266367679808e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.08947047392515818,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.233164633997366e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.13342168335698704,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.5328192693520464e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9943163794422178,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.10620987467354e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.00874292074499367,
+          "minimum_overlap_singular_value": 0.999999999999999,
+          "projector_spectral_difference": 1.6293146520696448e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.10776702781965557,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.8861761558119325e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7645262302145919,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 3.572034279507326e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9134913160977082,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.558811598771151e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.2434497875801753e-14,
+          "frequency_span_b_THz": 2.7533531010703882e-14,
+          "max_offdiagonal_overlap_squared": 0.06467255193441952,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.911871027740847e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.14683290246022668,
+          "minimum_overlap_singular_value": 1.0000000000000009,
+          "projector_spectral_difference": 6.63124155547678e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9773848805079347,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.49361681902859e-14
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9783952472853266,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.5473849804993698e-14
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.2927243176747206,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.4860996256920996e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.09958000932404663,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.960930790912349e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9490294744493754,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.1889927765178604e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7261836969380759,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.087891361689237e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9604621276180839,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 1.5947662931106637e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7977847350625121,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.907656021483273e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.039641427101382326,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.8808253709502536e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9896229511563717,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 3.2734520113207358e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.1367636499544543,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.3653516587885908e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.4676922630335752,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.3379736269129184e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.023771175341258225,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.5378878867345394e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.001110330574059377,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.171373828038161e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.5987211554602254e-14,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.5136790173516426,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.9216447945632138e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.4589170739388314,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.487860980137794e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.03479339452461611,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.738360860642374e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9949263374283113,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 4.087995901375269e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6456471845613131,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0693617736806814e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9859496361616914,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.1805787491614026e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9724538607634938,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 4.566206693056181e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00995133460796904,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 6.1731114142919425e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.7550679173693714,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.2211606241855333e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.03914206752146949,
+          "minimum_overlap_singular_value": 0.9999999999999997,
+          "projector_spectral_difference": 2.784084172272818e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9382978542070443,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.309839822376323e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.034689710547482336,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.918549574779007e-15
+        }
+      ],
+      "max_active_cluster_projector_difference": 3.8890040430477645e-14,
+      "cluster_of_each_leg_at_maximum": [
+        [
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "frequency_cluster_tolerance_THz": 1e-10,
+      "block_count": 11376,
+      "block_max_change_scaled_by_max_block": 6.2879405074074316e-15,
+      "block_L1_relative_change": 6.852431723382684e-15,
+      "max_block_relative_change_above_declared_floor": 8.636051900578212e-10,
+      "relative_block_floor": 1e-12,
+      "maximum_block_change": {
+        "triplet_index": 7,
+        "bands": [
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ]
+        ],
+        "sum_a": 2.123618343702346e-09,
+        "sum_b": 2.1236183437026695e-09,
+        "absolute_change": 3.234276195082338e-22
+      },
+      "raw_entries_above_1e_10_global_scale": 4296,
+      "significant_entries_with_only_nondegenerate_legs": [],
+      "rotating_active_clusters": [
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            3,
+            4
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 1.6651774620939106e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.1811587761859016e-15
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            7,
+            8
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.09360092978851144,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.758275418089468e-14
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            9,
+            10
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.06121878866520138,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8890040430477645e-14
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.8312104411703073,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 9.977667988547902e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.025859140377132765,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.752138811385672e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.8762986416395331,
+          "minimum_overlap_singular_value": 0.9999999999999993,
+          "projector_spectral_difference": 3.696619129040392e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.006477764518402239,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 4.019828237804206e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.9999405209218104,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 3.558921779917988e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.007622698755850877,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.712792399431785e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9850561014601525,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8221385012545165e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.015936565974615416,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 6.363237100564274e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.00247460112997905,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 5.408624341485034e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.011675142344210639,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 6.0545591934760766e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9821101620924747,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.6424247777273237e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.10102684308953291,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0025092328873762e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.015619609509718463,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.4484995363375295e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.17872010180083753,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.1377444475927044e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9906572930118709,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.4287270978965747e-15
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.0009090479238840792,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.261144436816085e-14
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.6344074077082018,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 6.051794207473408e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6052042190039835,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.209779568999732e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00825427554862993,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.6237403510544465e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0010373442801383248,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 7.479585807095538e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0031625135497223055,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 9.151700780485242e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.26650937211403647,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.550898636879641e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 1.9454299133783238e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.8868523054660084e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 2.4152897172619906e-05,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.525372688811622e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 2.7533531010703882e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.1043728750782362,
+          "minimum_overlap_singular_value": 1.000000000000001,
+          "projector_spectral_difference": 8.394357439008442e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 9.769962616701378e-15,
+          "max_offdiagonal_overlap_squared": 0.0020875489840946615,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.116501611666388e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.18933831112406274,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 8.096526753370513e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.010444892547475375,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 8.460773245203147e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.39677081513046447,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.6511373272649017e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.45637602335404576,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.0420512725626067e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.4210854715202004e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.018145295578856534,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.302261783048102e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.07569383123091378,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 7.94626796572577e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.7991673476347976,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.7394995710404908e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.013110640399580492,
+          "minimum_overlap_singular_value": 1.0000000000000007,
+          "projector_spectral_difference": 2.4569867104727647e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.051835406517030995,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 4.438595298990483e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.14378152869018787,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.790500740891464e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.4831604876045404,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.96041390082979e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.7841151594726065,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.7714799831504472e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9680738366751434,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.0350189497293946e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9913036703418748,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.818893158437009e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.5309843685991292,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.9659781805109097e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.877321420017412,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.4672016414005472e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.037029689938403824,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 3.605398631084424e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9971783547720096,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 4.501493324920604e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.3061509411352856,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.847266367679808e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.08947047392515818,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.233164633997366e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.13342168335698704,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.5328192693520464e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9943163794422178,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.10620987467354e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.00874292074499367,
+          "minimum_overlap_singular_value": 0.999999999999999,
+          "projector_spectral_difference": 1.6293146520696448e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.10776702781965557,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.8861761558119325e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7645262302145919,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 3.572034279507326e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9134913160977082,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.558811598771151e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.2434497875801753e-14,
+          "frequency_span_b_THz": 2.7533531010703882e-14,
+          "max_offdiagonal_overlap_squared": 0.06467255193441952,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.911871027740847e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.14683290246022668,
+          "minimum_overlap_singular_value": 1.0000000000000009,
+          "projector_spectral_difference": 6.63124155547678e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9773848805079347,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.49361681902859e-14
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9783952472853266,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.5473849804993698e-14
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.2927243176747206,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.4860996256920996e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.09958000932404663,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.960930790912349e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9490294744493754,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.1889927765178604e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7261836969380759,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.087891361689237e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9604621276180839,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 1.5947662931106637e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7977847350625121,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.907656021483273e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.039641427101382326,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.8808253709502536e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9896229511563717,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 3.2734520113207358e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.1367636499544543,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.3653516587885908e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.4676922630335752,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.3379736269129184e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.023771175341258225,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.5378878867345394e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.001110330574059377,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.171373828038161e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.5987211554602254e-14,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.5136790173516426,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.9216447945632138e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.4589170739388314,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.487860980137794e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.03479339452461611,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.738360860642374e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9949263374283113,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 4.087995901375269e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6456471845613131,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0693617736806814e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9859496361616914,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.1805787491614026e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9724538607634938,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 4.566206693056181e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00995133460796904,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 6.1731114142919425e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.7550679173693714,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.2211606241855333e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.03914206752146949,
+          "minimum_overlap_singular_value": 0.9999999999999997,
+          "projector_spectral_difference": 2.784084172272818e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9382978542070443,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.309839822376323e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.034689710547482336,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.918549574779007e-15
+        }
+      ],
+      "max_active_cluster_projector_difference": 3.8890040430477645e-14,
+      "cluster_of_each_leg_at_maximum": [
+        [
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "frequency_cluster_tolerance_THz": 1e-08,
+      "block_count": 11376,
+      "block_max_change_scaled_by_max_block": 6.2879405074074316e-15,
+      "block_L1_relative_change": 6.852431723382684e-15,
+      "max_block_relative_change_above_declared_floor": 8.636051900578212e-10,
+      "relative_block_floor": 1e-12,
+      "maximum_block_change": {
+        "triplet_index": 7,
+        "bands": [
+          [
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
+          ]
+        ],
+        "sum_a": 2.123618343702346e-09,
+        "sum_b": 2.1236183437026695e-09,
+        "absolute_change": 3.234276195082338e-22
+      },
+      "raw_entries_above_1e_10_global_scale": 4296,
+      "significant_entries_with_only_nondegenerate_legs": [],
+      "rotating_active_clusters": [
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            3,
+            4
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 1.6651774620939106e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.1811587761859016e-15
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            7,
+            8
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.09360092978851144,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.758275418089468e-14
+        },
+        {
+          "q_row": 0,
+          "address": [
+            0,
+            0,
+            0
+          ],
+          "bands": [
+            9,
+            10
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.06121878866520138,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8890040430477645e-14
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.8312104411703073,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 9.977667988547902e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.025859140377132765,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.752138811385672e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.8762986416395331,
+          "minimum_overlap_singular_value": 0.9999999999999993,
+          "projector_spectral_difference": 3.696619129040392e-15
+        },
+        {
+          "q_row": 4,
+          "address": [
+            1,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.006477764518402239,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 4.019828237804206e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.9999405209218104,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 3.558921779917988e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.007622698755850877,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.712792399431785e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9850561014601525,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.8221385012545165e-15
+        },
+        {
+          "q_row": 5,
+          "address": [
+            1,
+            -2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.015936565974615416,
+          "minimum_overlap_singular_value": 0.9999999999999996,
+          "projector_spectral_difference": 6.363237100564274e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.00247460112997905,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 5.408624341485034e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.011675142344210639,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 6.0545591934760766e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9821101620924747,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.6424247777273237e-15
+        },
+        {
+          "q_row": 6,
+          "address": [
+            -2,
+            1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.10102684308953291,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0025092328873762e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.015619609509718463,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.4484995363375295e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.17872010180083753,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.1377444475927044e-14
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9906572930118709,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.4287270978965747e-15
+        },
+        {
+          "q_row": 10,
+          "address": [
+            -1,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.0009090479238840792,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.261144436816085e-14
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.6344074077082018,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 6.051794207473408e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6052042190039835,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.209779568999732e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00825427554862993,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.6237403510544465e-15
+        },
+        {
+          "q_row": 11,
+          "address": [
+            -1,
+            2,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0010373442801383248,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 7.479585807095538e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.0031625135497223055,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 9.151700780485242e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.26650937211403647,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 7.550898636879641e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 1.9454299133783238e-05,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.8868523054660084e-15
+        },
+        {
+          "q_row": 12,
+          "address": [
+            2,
+            -1,
+            0
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 2.4152897172619906e-05,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.525372688811622e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 2.7533531010703882e-14,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.1043728750782362,
+          "minimum_overlap_singular_value": 1.000000000000001,
+          "projector_spectral_difference": 8.394357439008442e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 8.881784197001252e-15,
+          "frequency_span_b_THz": 9.769962616701378e-15,
+          "max_offdiagonal_overlap_squared": 0.0020875489840946615,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.116501611666388e-14
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.18933831112406274,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 8.096526753370513e-15
+        },
+        {
+          "q_row": 13,
+          "address": [
+            0,
+            0,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.010444892547475375,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 8.460773245203147e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.39677081513046447,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.6511373272649017e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.45637602335404576,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.0420512725626067e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.4210854715202004e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.018145295578856534,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.302261783048102e-15
+        },
+        {
+          "q_row": 17,
+          "address": [
+            1,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.07569383123091378,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 7.94626796572577e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 8.881784197001252e-15,
+          "max_offdiagonal_overlap_squared": 0.7991673476347976,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.7394995710404908e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.013110640399580492,
+          "minimum_overlap_singular_value": 1.0000000000000007,
+          "projector_spectral_difference": 2.4569867104727647e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.051835406517030995,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 4.438595298990483e-15
+        },
+        {
+          "q_row": 18,
+          "address": [
+            1,
+            -2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.14378152869018787,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.790500740891464e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.4831604876045404,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 1.96041390082979e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.7841151594726065,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.7714799831504472e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9680738366751434,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.0350189497293946e-15
+        },
+        {
+          "q_row": 19,
+          "address": [
+            -2,
+            1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9913036703418748,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.818893158437009e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.5309843685991292,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.9659781805109097e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.877321420017412,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.4672016414005472e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 2.1316282072803006e-14,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.037029689938403824,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 3.605398631084424e-15
+        },
+        {
+          "q_row": 23,
+          "address": [
+            -1,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9971783547720096,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 4.501493324920604e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.3061509411352856,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.847266367679808e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.08947047392515818,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.233164633997366e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.13342168335698704,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.5328192693520464e-15
+        },
+        {
+          "q_row": 24,
+          "address": [
+            -1,
+            2,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9943163794422178,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.10620987467354e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.2434497875801753e-14,
+          "max_offdiagonal_overlap_squared": 0.00874292074499367,
+          "minimum_overlap_singular_value": 0.999999999999999,
+          "projector_spectral_difference": 1.6293146520696448e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.10776702781965557,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 2.8861761558119325e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7645262302145919,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 3.572034279507326e-15
+        },
+        {
+          "q_row": 25,
+          "address": [
+            2,
+            -1,
+            1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 1.4210854715202004e-14,
+          "max_offdiagonal_overlap_squared": 0.9134913160977082,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.558811598771151e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.2434497875801753e-14,
+          "frequency_span_b_THz": 2.7533531010703882e-14,
+          "max_offdiagonal_overlap_squared": 0.06467255193441952,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.911871027740847e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            2,
+            3
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-14,
+          "max_offdiagonal_overlap_squared": 0.14683290246022668,
+          "minimum_overlap_singular_value": 1.0000000000000009,
+          "projector_spectral_difference": 6.63124155547678e-15
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9773848805079347,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.49361681902859e-14
+        },
+        {
+          "q_row": 26,
+          "address": [
+            0,
+            0,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9783952472853266,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 1.5473849804993698e-14
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.2927243176747206,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.4860996256920996e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.09958000932404663,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.960930790912349e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9490294744493754,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 3.1889927765178604e-15
+        },
+        {
+          "q_row": 30,
+          "address": [
+            1,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7261836969380759,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 9.087891361689237e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.9604621276180839,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 1.5947662931106637e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.7977847350625121,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.907656021483273e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.039641427101382326,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.8808253709502536e-15
+        },
+        {
+          "q_row": 31,
+          "address": [
+            1,
+            -2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9896229511563717,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 3.2734520113207358e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 5.329070518200751e-15,
+          "frequency_span_b_THz": 5.329070518200751e-15,
+          "max_offdiagonal_overlap_squared": 0.1367636499544543,
+          "minimum_overlap_singular_value": 0.9999999999999998,
+          "projector_spectral_difference": 1.3653516587885908e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.4676922630335752,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.3379736269129184e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.023771175341258225,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 2.5378878867345394e-15
+        },
+        {
+          "q_row": 32,
+          "address": [
+            -2,
+            1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.001110330574059377,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 5.171373828038161e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.5987211554602254e-14,
+          "frequency_span_b_THz": 0.0,
+          "max_offdiagonal_overlap_squared": 0.5136790173516426,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.9216447945632138e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.4589170739388314,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 2.487860980137794e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.03479339452461611,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 2.738360860642374e-15
+        },
+        {
+          "q_row": 36,
+          "address": [
+            -1,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9949263374283113,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 4.087995901375269e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.6456471845613131,
+          "minimum_overlap_singular_value": 1.0,
+          "projector_spectral_difference": 1.0693617736806814e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.9859496361616914,
+          "minimum_overlap_singular_value": 0.9999999999999999,
+          "projector_spectral_difference": 1.1805787491614026e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.0658141036401503e-14,
+          "max_offdiagonal_overlap_squared": 0.9724538607634938,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 4.566206693056181e-15
+        },
+        {
+          "q_row": 37,
+          "address": [
+            -1,
+            2,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 0.0,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.00995133460796904,
+          "minimum_overlap_singular_value": 1.0000000000000002,
+          "projector_spectral_difference": 6.1731114142919425e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            0,
+            1
+          ],
+          "frequency_span_a_THz": 1.7763568394002505e-14,
+          "frequency_span_b_THz": 1.7763568394002505e-15,
+          "max_offdiagonal_overlap_squared": 0.7550679173693714,
+          "minimum_overlap_singular_value": 0.9999999999999994,
+          "projector_spectral_difference": 2.2211606241855333e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            4,
+            5
+          ],
+          "frequency_span_a_THz": 1.0658141036401503e-14,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.03914206752146949,
+          "minimum_overlap_singular_value": 0.9999999999999997,
+          "projector_spectral_difference": 2.784084172272818e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            6,
+            7
+          ],
+          "frequency_span_a_THz": 7.105427357601002e-15,
+          "frequency_span_b_THz": 7.105427357601002e-15,
+          "max_offdiagonal_overlap_squared": 0.9382978542070443,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 3.309839822376323e-15
+        },
+        {
+          "q_row": 38,
+          "address": [
+            2,
+            -1,
+            -1
+          ],
+          "bands": [
+            8,
+            9
+          ],
+          "frequency_span_a_THz": 3.552713678800501e-15,
+          "frequency_span_b_THz": 3.552713678800501e-15,
+          "max_offdiagonal_overlap_squared": 0.034689710547482336,
+          "minimum_overlap_singular_value": 1.0000000000000004,
+          "projector_spectral_difference": 6.918549574779007e-15
+        }
+      ],
+      "max_active_cluster_projector_difference": 3.8890040430477645e-14,
+      "cluster_of_each_leg_at_maximum": [
+        [
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7
+        ]
+      ]
+    }
+  ],
+  "maximum_entry_daughter_block_example": {
+    "zero_based_triplet_index": 4,
+    "first_and_third_bands": [
+      7,
+      7
+    ],
+    "second_leg_bands": [
+      6,
+      7
+    ],
+    "factor_1_5_values": [
+      2.0307162358519215e-08,
+      5.803041963085531e-09
+    ],
+    "factor_2_values": [
+      2.5950227924155688e-08,
+      1.5997639744905493e-10
+    ],
+    "factor_1_5_sum": 2.6110204321604744e-08,
+    "factor_2_sum": 2.6110204321604744e-08
+  },
+  "reproduction": {
+    "python_executable": "D:\\ResearchLab\\envs\\aln-phono3py-4.5.0\\Scripts\\python.exe",
+    "script": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\review_export_cutoff.py",
+    "script_sha256": "b74fbcbb9224d1efa9c6a2b7d1d5409f8e4e70f8905a8a98eb86f241fe8c98f2",
+    "comparison_json": "D:\\ResearchLab\\orchestration\\campaigns\\20260924-105051-aln-interaction-pilot\\export-cutoff-comparison.json",
+    "path_requirement": "Diagnostic locates comparison JSON relative to itself; HDF5 and metadata locations come from absolute run paths inside that JSON. Moving evidence requires those inputs or remapping run paths.",
+    "output_note": "Base script prints the same numerical result; this capture adds reproduction metadata and the two-entry example."
+  }
+}

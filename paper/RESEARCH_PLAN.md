@@ -48,8 +48,9 @@ reproducibility environment and failed approaches that affect interpretation.
 The exactly resonant finite reference is completed (note 19). The real AlN
 export pilot now reproduces selected scalar linewidths (note 20), with a retained
 failed original periodicity check and a local cutoff remedy.
-Next: rerun the complete selected export with controlled polar correction,
-then validate canonical event counting and a conserving full-population action.
+The selected export has subsequently passed unchanged checks with controlled polar correction.
+Next: resolve degenerate-mode interaction comparisons, then validate canonical event
+counting and a conserving full-population action.
 Neither checkpoint establishes that hydrodynamics occurs in a real sample.
 
 Do not block a focused theory paper on every optional research extension.
