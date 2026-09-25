@@ -1,0 +1,74 @@
+{
+  "scope": "single-point coarse-mesh interaction/self-energy export; no conductivity or hydrodynamic conclusion",
+  "python": "3.14.7",
+  "packages": {
+    "phono3py": "4.5.0",
+    "phonopy": "4.5.0",
+    "phonors": "0.3.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "h5py": "3.16.0",
+    "spglib": "2.7.0"
+  },
+  "inputs": {
+    "POSCAR": {
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "settings": {
+    "mesh": [
+      3,
+      3,
+      3
+    ],
+    "grid_points": [
+      1
+    ],
+    "temperature_K": 300,
+    "sigma_THz": 0.1,
+    "backend": "Rust",
+    "symmetrize_fc": false,
+    "NAC": true
+  },
+  "frequency_THz": {
+    "shape": [
+      39,
+      12
+    ],
+    "min": -4.07018001565391e-07,
+    "max": 25.36871954065058
+  },
+  "elapsed_seconds": 2.6411120891571045,
+  "script_sha256": "f3368dc3c36ebb5ff07f46a0159fe7223ea040196f15944ab072a6f792fef2db",
+  "outputs": {
+    "gamma_detail-m333-g1-s0.1.hdf5": {
+      "bytes": 48956,
+      "sha256": "dde33949ce7bffe99f6c8300148144ac014709e066f9410c52dcd5445a706cec"
+    },
+    "kappa-m333-g1-s0.1.hdf5": {
+      "bytes": 25216,
+      "sha256": "9062c25755ca240724892bf1683df73a76875dc8a954a9897b8deee524f0fb06"
+    },
+    "phonon-m333.hdf5": {
+      "bytes": 82922,
+      "sha256": "6778ae0eb25db304ac9e8b387a31084e914144c1ea5f1bd9706c96a0417fcaf5"
+    },
+    "pp-m333-g1-s0.1.hdf5": {
+      "bytes": 110565,
+      "sha256": "c13d3db13769ebe16cab1766c8d8502f029b73418ca6487d0e77f5871062f780"
+    }
+  }
+}

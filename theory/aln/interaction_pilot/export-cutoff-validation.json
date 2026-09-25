@@ -1,0 +1,22 @@
+[
+  {
+    "factor": 1.5,
+    "script": "inspect_pilot.py",
+    "returncode": 0
+  },
+  {
+    "factor": 1.5,
+    "script": "reconstruct_gamma.py",
+    "returncode": 0
+  },
+  {
+    "factor": 2.0,
+    "script": "inspect_pilot.py",
+    "returncode": 0
+  },
+  {
+    "factor": 2.0,
+    "script": "reconstruct_gamma.py",
+    "returncode": 0
+  }
+]

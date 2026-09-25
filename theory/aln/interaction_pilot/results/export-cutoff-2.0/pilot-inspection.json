@@ -1,0 +1,61 @@
+{
+  "scope": "array/serialization/accounting pilot, no material operator or continuum convergence",
+  "grid": {
+    "bz_entries": 39,
+    "unique_regular_points": 27,
+    "expected_regular_points": 27,
+    "involution": true,
+    "reversal_fixed_points": 1,
+    "reversal_frequency_max_abs_THz": 2.4868995751603507e-14,
+    "duplicate_frequency_max_abs_THz": 2.1316282072803006e-14
+  },
+  "triplets": {
+    "reduced": 8,
+    "full": 27,
+    "weight_sum": 27,
+    "all_fixed_target": true,
+    "sum_mod_mesh_max": 0,
+    "full_sum_mod_mesh_max": 0,
+    "unique_full_second_q": 27
+  },
+  "arrays": {
+    "pp_shape": [
+      8,
+      12,
+      12,
+      12
+    ],
+    "pp_min": 0.0,
+    "pp_max": 5.143617677794885e-08,
+    "pp_nonzero_count": 13392,
+    "all_pp_finite": true,
+    "phonon_eigenvector_orthogonality_max": 3.552720778338152e-15
+  },
+  "rates": {
+    "weighted_detail_max_abs_error_THz": 3.469446951953614e-18,
+    "weighted_detail_max_scaled_error": 1.4813044222224513e-16,
+    "N_plus_U_max_abs_error_THz": 0.0,
+    "gamma_min_THz": 0.0019114797044736198,
+    "gamma_max_THz": 0.023421566154162188
+  },
+  "energy_mismatch": {
+    "orientation": "f0-f1-f2 only; not all channels and not an event-weighted physical statistic",
+    "among_nonzero_pp_min_abs_THz": 0.0064022820850526685,
+    "among_nonzero_pp_max_abs_THz": 43.45773244434507,
+    "fraction_nonzero_pp_with_abs_delta_above_1e_8_THz": 1.0
+  },
+  "checks": {
+    "grid_cardinality": true,
+    "reversal_involution": true,
+    "reversal_fixed_count": true,
+    "reciprocal_frequencies": true,
+    "BZ_duplicate_frequencies": true,
+    "weights_cover_mesh": true,
+    "momentum_mod_grid": true,
+    "full_triplet_coverage": true,
+    "positive_finite_pp": true,
+    "phonon_orthonormality": true,
+    "detail_reconstructs_gamma": true,
+    "NU_reconstructs_gamma": true
+  }
+}

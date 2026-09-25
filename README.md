@@ -245,6 +245,7 @@ paper requirements from a quantitative AlN/FDTR study.
 [Note 20](notes/20_Export_microscopique_AlN.pdf) and the [reproducible pilot](theory/aln/interaction_pilot/README.md)
 document a real force-constant export and independent reconstruction of twelve selected linewidths.
 The original periodicity check fails; a fixed-parameter reciprocal-cutoff control removes the tested
-matrix discrepancy to roundoff. The original export remains unchanged and the full corrected export
-is still needed. Strong Gaussian-width sensitivity rules out a converged-material-rate claim.
+matrix discrepancy to roundoff. The original export remains unchanged. Subsequent selected-point exports with larger cutoffs
+pass the original frequency checks; their linewidths stabilize, while individual interactions
+redistribute within degenerate blocks whose sums remain stable to numerical precision. Strong Gaussian-width sensitivity rules out a converged-material-rate claim.
 Four independent branches and four hostile reviews are archived with evidence and limitations.

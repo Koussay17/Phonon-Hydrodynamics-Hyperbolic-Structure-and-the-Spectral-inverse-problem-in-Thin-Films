@@ -1,0 +1,19 @@
+{
+  "scope": "second independent execution, same implementation and inputs; not independent physics",
+  "comparison": [
+    {
+      "factor": 1.0,
+      "all_recorded_numeric_results_identical": true
+    },
+    {
+      "factor": 1.5,
+      "all_recorded_numeric_results_identical": true
+    },
+    {
+      "factor": 2.0,
+      "all_recorded_numeric_results_identical": true
+    }
+  ],
+  "continuation_script_sha256": "e21bb6fe1022c4da685058314bb6692b3ee9cd1a02369e5df0fa6e24333c325e",
+  "inputs_unchanged": true
+}
