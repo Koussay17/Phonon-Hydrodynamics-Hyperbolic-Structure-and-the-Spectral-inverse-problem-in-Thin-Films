@@ -1,0 +1,37 @@
+{
+  "scope": "one selected AlN triplet, shared real-to-reciprocal source, independent complex einsum contraction; not collision action",
+  "triplet_index": 4,
+  "triplet_grid_rows": [
+    1,
+    13,
+    28
+  ],
+  "make_r0_average": true,
+  "symmetrize_fc3q": false,
+  "unit_conversion": 0.0001327959698104446,
+  "comparisons": [
+    {
+      "factor": 1.5,
+      "pp_max_scaled_error": 7.726554968823502e-16,
+      "pp_L1_relative_error": 5.095982643615463e-16
+    },
+    {
+      "factor": 2.0,
+      "pp_max_scaled_error": 6.37513177125546e-16,
+      "pp_L1_relative_error": 4.6095686713154385e-16
+    }
+  ],
+  "block_only_transport_relative_frobenius": 2.457103956627176e-14,
+  "off_block_overlap_norms": [
+    1.85280806751562e-14,
+    1.9584119084026106e-14,
+    6.262227096318548e-14
+  ],
+  "complex_transport_relative_frobenius": 2.1478190255396188e-15,
+  "unitarity_residuals": [
+    6.482822406378181e-15,
+    5.724201947325743e-15,
+    6.1738674866734634e-15
+  ],
+  "script_sha256": "e0e0a6f7df1bb953d29d6ce7fe45fbbeeb961c5dc54f392985aed3ed7fe6b145"
+}

@@ -1,0 +1,357 @@
+{
+  "metadata": {
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0",
+    "source_sha256": "cb00737929caad1bc6fe045928f53c4d21071c6a9d269e6dd4d7a8084079c514",
+    "scope": "Declared finite reversible scalar event model; no quantum generator or material input"
+  },
+  "exact": {
+    "W": [
+      [
+        "6/25",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "6/25",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "3/4"
+      ]
+    ],
+    "B": [
+      [
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "Sigma": [
+      [
+        "12/25",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "2",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "3/4"
+      ]
+    ],
+    "H": [
+      [
+        "1/2",
+        "0",
+        "0"
+      ],
+      [
+        "1/2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "G": [
+      [
+        "5",
+        "-6/5",
+        "-16/5"
+      ],
+      [
+        "-5",
+        "6/5",
+        "16/5"
+      ],
+      [
+        "-5",
+        "6/5",
+        "16/5"
+      ]
+    ],
+    "mean_generator": [
+      [
+        "5",
+        "-3/5",
+        "-8/5"
+      ],
+      [
+        "-10",
+        "6/5",
+        "16/5"
+      ],
+      [
+        "-10",
+        "6/5",
+        "16/5"
+      ]
+    ],
+    "unequal_closure_defect": [
+      [
+        "5/2",
+        "-5/2",
+        "0",
+        "0"
+      ],
+      [
+        "-5/2",
+        "5/2",
+        "0",
+        "0"
+      ],
+      [
+        "-5/2",
+        "5/2",
+        "0",
+        "0"
+      ]
+    ],
+    "hidden_aggregate_derivative": [
+      [
+        "-5"
+      ],
+      [
+        "5"
+      ],
+      [
+        "5"
+      ]
+    ],
+    "equal_occupation_leakage": [
+      [
+        "5/4",
+        "-3/10",
+        "-4/5"
+      ],
+      [
+        "-5/4",
+        "3/10",
+        "4/5"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "second_derivative_defect": [
+      [
+        "25/4",
+        "-3/2",
+        "-4"
+      ],
+      [
+        "-25/4",
+        "3/2",
+        "4"
+      ],
+      [
+        "-25/4",
+        "3/2",
+        "4"
+      ]
+    ],
+    "nonlinear_block_derivative": [
+      [
+        "-1/20"
+      ],
+      [
+        "1/20"
+      ],
+      [
+        "1/20"
+      ]
+    ]
+  },
+  "dynamics": [
+    {
+      "model": "equal",
+      "t": 0.001,
+      "propagator_relative_error": 1.1096265916418837e-16,
+      "total_actual": [
+        0.019900468530787602,
+        9.953146921239605e-05,
+        9.953146921239605e-05
+      ],
+      "total_compressed": [
+        0.019900468530787606,
+        9.953146921239605e-05,
+        9.953146921239605e-05
+      ],
+      "selected_initial_state_relative_error": 1.7433560234433967e-16
+    },
+    {
+      "model": "equal",
+      "t": 0.01,
+      "propagator_relative_error": 1.1063485464545683e-16,
+      "total_actual": [
+        0.01904556130043369,
+        0.0009544386995663093,
+        0.0009544386995663093
+      ],
+      "total_compressed": [
+        0.01904556130043369,
+        0.0009544386995663091,
+        0.0009544386995663093
+      ],
+      "selected_initial_state_relative_error": 1.135686736097842e-17
+    },
+    {
+      "model": "equal",
+      "t": 0.1,
+      "propagator_relative_error": 2.951121897000144e-17,
+      "total_actual": [
+        0.013517317397431077,
+        0.0064826826025689245,
+        0.0064826826025689245
+      ],
+      "total_compressed": [
+        0.013517317397431077,
+        0.0064826826025689245,
+        0.0064826826025689245
+      ],
+      "selected_initial_state_relative_error": 0.0
+    },
+    {
+      "model": "equal",
+      "t": 0.5,
+      "propagator_relative_error": 1.6557252203693333e-16,
+      "total_actual": [
+        0.009458460394698895,
+        0.010541539605301109,
+        0.010541539605301109
+      ],
+      "total_compressed": [
+        0.009458460394698895,
+        0.010541539605301107,
+        0.010541539605301107
+      ],
+      "selected_initial_state_relative_error": 1.3895349564972323e-16
+    },
+    {
+      "model": "unequal",
+      "t": 0.001,
+      "propagator_relative_error": 6.500908075196463e-06,
+      "total_actual": [
+        0.01990053053700997,
+        9.94694629900304e-05,
+        9.94694629900304e-05
+      ],
+      "total_compressed": [
+        0.019900468530787606,
+        9.953146921239605e-05,
+        9.953146921239605e-05
+      ],
+      "selected_initial_state_relative_error": 5.396602078814965e-06
+    },
+    {
+      "model": "unequal",
+      "t": 0.01,
+      "propagator_relative_error": 0.0006024450775339338,
+      "total_actual": [
+        0.01905133550329912,
+        0.0009486644967008788,
+        0.0009486644967008788
+      ],
+      "total_compressed": [
+        0.01904556130043369,
+        0.0009544386995663091,
+        0.0009544386995663093
+      ],
+      "selected_initial_state_relative_error": 0.0005236643904735012
+    },
+    {
+      "model": "unequal",
+      "t": 0.1,
+      "propagator_relative_error": 0.028732928915383447,
+      "total_actual": [
+        0.013804453009255426,
+        0.006195546990744573,
+        0.006195546990744573
+      ],
+      "total_compressed": [
+        0.013517317397431077,
+        0.0064826826025689245,
+        0.0064826826025689245
+      ],
+      "selected_initial_state_relative_error": 0.030417378624691616
+    },
+    {
+      "model": "unequal",
+      "t": 0.5,
+      "propagator_relative_error": 0.04220725492119959,
+      "total_actual": [
+        0.009903149696586124,
+        0.010096850303413877,
+        0.010096850303413877
+      ],
+      "total_compressed": [
+        0.009458460394698895,
+        0.010541539605301107,
+        0.010541539605301107
+      ],
+      "selected_initial_state_relative_error": 0.0443239952789165
+    }
+  ],
+  "checks": {
+    "same_compressed_G": true,
+    "equal_exactly_lumpable": true,
+    "unequal_not_lumpable": true,
+    "hidden_same_block_totals": true,
+    "hidden_aggregate_derivative": true,
+    "equal_occupation_leakage": true,
+    "second_derivative_defect_identity": true,
+    "nonlinear_positive_state_same_derivative": true,
+    "positive_perturbed_populations": true,
+    "rotation_preserves_strengths": true,
+    "both_conserve_energy": true,
+    "numeric_equal_closure": true,
+    "numeric_unequal_failure": true
+  }
+}

@@ -1,0 +1,862 @@
+{
+  "scope": "PI/C saved arrays only; no material recalculation or D self-review",
+  "npz_shapes": {
+    "amplitude_a": [
+      12,
+      12,
+      12
+    ],
+    "amplitude_b": [
+      12,
+      12,
+      12
+    ],
+    "predicted_b": [
+      12,
+      12,
+      12
+    ],
+    "u0": [
+      12,
+      12
+    ],
+    "u1": [
+      12,
+      12
+    ],
+    "u2": [
+      12,
+      12
+    ],
+    "freq_a": [
+      3,
+      12
+    ],
+    "freq_b": [
+      3,
+      12
+    ],
+    "block_prediction": [
+      12,
+      12,
+      12
+    ],
+    "block_u0": [
+      12,
+      12
+    ],
+    "block_u1": [
+      12,
+      12
+    ],
+    "block_u2": [
+      12,
+      12
+    ]
+  },
+  "all_arrays_finite": true,
+  "minimum_frequency": 3.7005901014951834,
+  "full_transport": {
+    "absolute_max": 3.8003778263506145e-19,
+    "global_max_scaled": 2.3591534330740417e-15,
+    "relative_frobenius": 2.113186121390093e-15,
+    "max_entry_relative_above_1e-06_global_floor": 1.1114292272094133e-12,
+    "max_entry_relative_above_1e-12_global_floor": 1.1114292272094133e-12
+  },
+  "saved_full_prediction_recomputed_difference": {
+    "absolute_max": 5.463198353652111e-20,
+    "global_max_scaled": 3.391379420808601e-16,
+    "relative_frobenius": 2.740904142404731e-16,
+    "max_entry_relative_above_1e-06_global_floor": 5.651146138255183e-15,
+    "max_entry_relative_above_1e-12_global_floor": 5.651146138255183e-15
+  },
+  "hash_checks": {
+    "complex_triplet.py": true,
+    "complex-triplet.json": true,
+    "complex-triplet.npz": true
+  },
+  "native_export_checks": [
+    {
+      "factor": 1.5,
+      "triplet": [
+        1,
+        13,
+        28
+      ],
+      "squared_amplitude": {
+        "absolute_max": 1.9852334701272664e-23,
+        "global_max_scaled": 7.726554968823502e-16,
+        "relative_frobenius": 5.550071428335974e-16,
+        "max_entry_relative_above_1e-06_global_floor": 3.6763891631018486e-13,
+        "max_entry_relative_above_1e-12_global_floor": 3.6763891631018486e-13
+      },
+      "frequency_matches_npz": true,
+      "pp_file_hash_matches_provenance": true,
+      "phonon_file_hash_matches_provenance": true
+    },
+    {
+      "factor": 2.0,
+      "triplet": [
+        1,
+        13,
+        28
+      ],
+      "squared_amplitude": {
+        "absolute_max": 1.6543612251060553e-23,
+        "global_max_scaled": 6.37513177125546e-16,
+        "relative_frobenius": 4.4021032420366424e-16,
+        "max_entry_relative_above_1e-06_global_floor": 1.8902805275936218e-13,
+        "max_entry_relative_above_1e-12_global_floor": 6.231562438644929e-13
+      },
+      "frequency_matches_npz": true,
+      "pp_file_hash_matches_provenance": true,
+      "phonon_file_hash_matches_provenance": true
+    }
+  ],
+  "clustering": [
+    {
+      "tolerance": 1e-12,
+      "legs": [
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999982,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.1636973915724873,
+          "pure_offblock_frobenius": 1.833010665904054e-14,
+          "full_overlap_minus_polar_frobenius": 1.85280806751562e-14,
+          "polar_unitarity_residual": 0.0
+        },
+        {
+          "groups": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999999,
+          "max_overlap_singular_value": 1.0000000000000013,
+          "max_frequency_span_a": 2.7533531010703882e-14,
+          "max_frequency_span_b": 1.2434497875801753e-14,
+          "minimum_interblock_gap": 0.16215495810025615,
+          "pure_offblock_frobenius": 1.9361909113431287e-14,
+          "full_overlap_minus_polar_frobenius": 1.9584119084026106e-14,
+          "polar_unitarity_residual": 9.355067438917448e-16
+        },
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999991,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.07571928011952878,
+          "pure_offblock_frobenius": 6.259549633751165e-14,
+          "full_overlap_minus_polar_frobenius": 6.262227096318548e-14,
+          "polar_unitarity_residual": 0.0
+        }
+      ],
+      "transport": {
+        "absolute_max": 6.5914917668590404e-18,
+        "global_max_scaled": 4.0917880119822974e-14,
+        "relative_frobenius": 2.4571039566271762e-14,
+        "max_entry_relative_above_1e-06_global_floor": 2.2758175667209104e-11,
+        "max_entry_relative_above_1e-12_global_floor": 2.2758175667209104e-11
+      }
+    },
+    {
+      "tolerance": 1e-10,
+      "legs": [
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999982,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.1636973915724873,
+          "pure_offblock_frobenius": 1.833010665904054e-14,
+          "full_overlap_minus_polar_frobenius": 1.85280806751562e-14,
+          "polar_unitarity_residual": 0.0
+        },
+        {
+          "groups": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999999,
+          "max_overlap_singular_value": 1.0000000000000013,
+          "max_frequency_span_a": 2.7533531010703882e-14,
+          "max_frequency_span_b": 1.2434497875801753e-14,
+          "minimum_interblock_gap": 0.16215495810025615,
+          "pure_offblock_frobenius": 1.9361909113431287e-14,
+          "full_overlap_minus_polar_frobenius": 1.9584119084026106e-14,
+          "polar_unitarity_residual": 9.355067438917448e-16
+        },
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999991,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.07571928011952878,
+          "pure_offblock_frobenius": 6.259549633751165e-14,
+          "full_overlap_minus_polar_frobenius": 6.262227096318548e-14,
+          "polar_unitarity_residual": 0.0
+        }
+      ],
+      "transport": {
+        "absolute_max": 6.5914917668590404e-18,
+        "global_max_scaled": 4.0917880119822974e-14,
+        "relative_frobenius": 2.4571039566271762e-14,
+        "max_entry_relative_above_1e-06_global_floor": 2.2758175667209104e-11,
+        "max_entry_relative_above_1e-12_global_floor": 2.2758175667209104e-11
+      }
+    },
+    {
+      "tolerance": 1e-08,
+      "legs": [
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999982,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.1636973915724873,
+          "pure_offblock_frobenius": 1.833010665904054e-14,
+          "full_overlap_minus_polar_frobenius": 1.85280806751562e-14,
+          "polar_unitarity_residual": 0.0
+        },
+        {
+          "groups": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999999,
+          "max_overlap_singular_value": 1.0000000000000013,
+          "max_frequency_span_a": 2.7533531010703882e-14,
+          "max_frequency_span_b": 1.2434497875801753e-14,
+          "minimum_interblock_gap": 0.16215495810025615,
+          "pure_offblock_frobenius": 1.9361909113431287e-14,
+          "full_overlap_minus_polar_frobenius": 1.9584119084026106e-14,
+          "polar_unitarity_residual": 9.355067438917448e-16
+        },
+        {
+          "groups": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              8
+            ],
+            [
+              9
+            ],
+            [
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "coverage": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "min_overlap_singular_value": 0.9999999999999991,
+          "max_overlap_singular_value": 1.000000000000001,
+          "max_frequency_span_a": 0.0,
+          "max_frequency_span_b": 0.0,
+          "minimum_interblock_gap": 0.07571928011952878,
+          "pure_offblock_frobenius": 6.259549633751165e-14,
+          "full_overlap_minus_polar_frobenius": 6.262227096318548e-14,
+          "polar_unitarity_residual": 0.0
+        }
+      ],
+      "transport": {
+        "absolute_max": 6.5914917668590404e-18,
+        "global_max_scaled": 4.0917880119822974e-14,
+        "relative_frobenius": 2.4571039566271762e-14,
+        "max_entry_relative_above_1e-06_global_floor": 2.2758175667209104e-11,
+        "max_entry_relative_above_1e-12_global_floor": 2.2758175667209104e-11
+      }
+    }
+  ],
+  "native_overlap_recomputed_residuals": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "synthetic_clustering_counterexample": {
+    "frequencies": [
+      1.0,
+      1.000000000075,
+      1.00000000015,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0
+    ],
+    "groups": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    "coverage": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "input_unitarity_residual": 7.682120993550905e-16,
+    "output_unitarity_residual": 0.8660254037844388,
+    "output_singular_values": [
+      1.2247448713915892,
+      1.2247448713915892,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.7071067811865477
+    ],
+    "scope": "Nontransitive overlapping-group failure of source algorithm; distinct from selected AlN triplet."
+  },
+  "C_independent_checks": {
+    "equal": {
+      "nonzero_eigenvalues": [
+        5.0,
+        9.4
+      ],
+      "closure_defect_frobenius": 0.0,
+      "hidden_derivative": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "second_derivative_defect_frobenius": 0.0,
+      "propagation": [
+        {
+          "t": 0.001,
+          "independent_relative_propagator_error": 6.129832041424088e-19,
+          "difference_from_reported_error": 1.1034967596004596e-16,
+          "maximum_reported_state_difference": 3.469446951953614e-18
+        },
+        {
+          "t": 0.01,
+          "independent_relative_propagator_error": 2.4399471216464147e-18,
+          "difference_from_reported_error": 1.0819490752381042e-16,
+          "maximum_reported_state_difference": 3.2526065174565133e-19
+        },
+        {
+          "t": 0.1,
+          "independent_relative_propagator_error": 1.0558254674528726e-16,
+          "difference_from_reported_error": 7.607132777528581e-17,
+          "maximum_reported_state_difference": 1.734723475976807e-18
+        },
+        {
+          "t": 0.5,
+          "independent_relative_propagator_error": 8.062945131388495e-17,
+          "difference_from_reported_error": 8.494307072304838e-17,
+          "maximum_reported_state_difference": 5.204170427930421e-18
+        }
+      ]
+    },
+    "unequal": {
+      "nonzero_eigenvalues": [
+        3.1269176291167398,
+        11.27308237088326
+      ],
+      "closure_defect_frobenius": 6.123724356957945,
+      "hidden_derivative": [
+        -5.0,
+        5.0,
+        5.0
+      ],
+      "second_derivative_defect_frobenius": 13.112494041943352,
+      "propagation": [
+        {
+          "t": 0.001,
+          "independent_relative_propagator_error": 6.5009080751847545e-06,
+          "difference_from_reported_error": 1.1708536429896194e-17,
+          "maximum_reported_state_difference": 1.3552527156068805e-20
+        },
+        {
+          "t": 0.01,
+          "independent_relative_propagator_error": 0.0006024450775339099,
+          "difference_from_reported_error": 2.3852447794681098e-17,
+          "maximum_reported_state_difference": 2.168404344971009e-19
+        },
+        {
+          "t": 0.1,
+          "independent_relative_propagator_error": 0.028732928915383555,
+          "difference_from_reported_error": 1.0755285551056204e-16,
+          "maximum_reported_state_difference": 3.469446951953614e-18
+        },
+        {
+          "t": 0.5,
+          "independent_relative_propagator_error": 0.04220725492119965,
+          "difference_from_reported_error": 6.245004513516506e-17,
+          "maximum_reported_state_difference": 1.734723475976807e-18
+        }
+      ]
+    }
+  },
+  "second_memory_files_available": [
+    "second_memory_check.json",
+    "second_memory_check.py"
+  ],
+  "diagnostic_sha256": "1a2e70f6efda006d02e297daf2ffe2dc929c22bf50a259441462e2ffea2b1424"
+}

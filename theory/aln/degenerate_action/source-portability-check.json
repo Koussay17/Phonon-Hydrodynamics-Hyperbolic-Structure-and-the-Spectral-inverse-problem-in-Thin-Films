@@ -1,0 +1,17 @@
+{
+  "canonical_git_source_sha256": "1848dc1b248174bdabe14fc5cef10d3073be73a346f5c068753f5623eaec884f",
+  "checks": {
+    "double_schur_identity": true,
+    "population_coordinate_change": true,
+    "high_precision_identity": true,
+    "high_precision_active_formula": true,
+    "memory_equation": true,
+    "equal_rate_positive_control": true,
+    "unequal_relaxing_response_error": true,
+    "zero_modes_mask_error": true,
+    "hidden_initial_term_required": true,
+    "repository_action_matches": true,
+    "repository_source_unchanged": true
+  },
+  "status": "compared"
+}

@@ -1,0 +1,221 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Dégénérescences et fermeture cinétique}\\[4pt]
+{\normalsize Phases, populations de bloc et mémoire}\\[2pt]
+{\small Partie I --- 26 septembre 2026}
+\end{center}
+
+\section{Question et portée}
+La note 20 constate que des interactions individuelles changent avec la
+base choisie dans des sous-espaces numériquement dégénérés, tandis que
+leurs sommes restent stables. Peut-on remplacer ces interactions par
+leurs sommes et obtenir une dynamique autonome des populations de bloc ?
+
+La réponse est négative en général. Les contre-exemples ci-dessous sont
+finis et synthétiques. Ils ne démontrent pas une défaillance du modèle
+de populations pour l'AlN réel. L'opérateur physique du matériau, ses
+conventions de canaux et son régime de cohérence restent à établir.
+Les critères employés relèvent de la théorie connue de réduction exacte
+et de projection ; aucune nouveauté générale n'est revendiquée.
+
+\section{Ce que les modules au carré ne déterminent pas}
+Considérons deux espaces de dimension deux et une troisième branche
+singleton, avec les amplitudes
+\[
+ T_+=\begin{pmatrix}1&1\\1&1\end{pmatrix},\qquad
+ T_-=\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+\]
+Les matrices $|T_\pm|^2$ sont identiques, mais les spectres de
+$T_\pm^\dagger T_\pm$ sont respectivement $\{0,4\}$ et $\{2,2\}$.
+Une transformation unitaire indépendante sur les deux espaces préserve
+ces spectres. Les deux tenseurs ne sont donc pas équivalents sous cette
+action, malgré des modules au carré identiques.
+
+Avec la rotation de Hadamard
+$U=2^{-1/2}\left(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\right)$,
+\[
+ |T_+U|^2=\begin{pmatrix}2&0\\2&0\end{pmatrix},\qquad
+ |T_-U|^2=\begin{pmatrix}2&0\\0&2\end{pmatrix}.
+\]
+Les interférences nécessaires au changement de base sont absentes des
+modules au carré. Ce contre-exemple établit une non-injectivité, pas
+un théorème de généricité pour toute dimension.
+
+Une matrice d'occupation se transforme avec ses cohérences. Ne conserver
+que sa diagonale après chaque rotation perd de l'information.
+En revanche, dans une base enregistrée et sous une approximation
+incohérente déclarée, les modules au carré peuvent suffire à définir
+des taux si les incidences, facteurs statistiques et comptages sont connus.
+
+\section{Critère exact de fermeture des populations de bloc}
+Soit un système linéaire fini
+\[
+ \dot x=-Lx,\qquad N=Bx,
+\]
+où $B$ est de rang ligne plein. Une équation $\dot N=-GN$ valable pour
+\emph{tout} état initial existe si et seulement si
+\[
+                         BL=GB.
+\]
+La nécessité résulte de la dérivée à l'instant initial ; la suffisance
+s'obtient par substitution. Cette condition concerne un générateur
+spécifié, non la seule symétrie des fréquences.
+
+Dans le modèle réversible de populations, posons
+\[
+ W_{ii}=n_i^0(1+n_i^0)>0,\quad
+ M=\sum_e\lambda_e\nu_e\nu_e^T,\quad L=MW^{-1},\quad \lambda_e\ge0.
+\]
+Avec
+\[
+ \Sigma=BWB^T,\qquad H=WB^T\Sigma^{-1},\qquad P=HB,
+\]
+on a $BH=I$ et l'unique candidat réduit est
+\[
+ G=BLH=BMB^T\Sigma^{-1}.
+\]
+Il s'agit d'une compression. La fermeture exige en plus
+\[
+                         BL(I-P)=0.
+\]
+Pour un bloc dégénéré de dimension $d_A$ et de variance par mode $w_A$,
+$\Sigma_{AA}=d_Aw_A$ et $(HN)_i=N_A/d_A$.
+La variance d'une population totale n'est pas obtenue en remplaçant
+$n_i^0$ par cette population totale dans la formule de Bose.
+
+\section{Contre-exemple conservatif et positif}
+Prenons quatre modes d'énergies réduites
+\[
+ (\log6,\log6,\log2,\log3),\qquad
+ W=\operatorname{diag}(6/25,6/25,2,3/4),
+\]
+et deux événements distincts $p_1\leftrightarrow a+b$,
+$p_2\leftrightarrow a+b$. Ils sont exactement résonants.
+Le facteur de Bose commun vaut $3/5$. Comparons les préfacteurs
+$\Gamma=(2,2)$ et $\Gamma=(3,1)$ dans les unités de temps de l'exemple.
+La somme des poids et la matrice comprimée sont identiques :
+\[
+ G=\begin{pmatrix}
+ 5&-6/5&-16/5\\
+ -5&6/5&16/5\\
+ -5&6/5&16/5
+ \end{pmatrix}.
+\]
+Le premier modèle ferme, le second non. Pour $h=(1,-1,0,0)^T$,
+\[
+ Bh=0,\qquad -BLh=(-5,5,5)^T
+\]
+dans le second modèle. Deux états ayant les mêmes populations de bloc
+peuvent donc avoir des dérivées différentes.
+Une perturbation suffisamment petite conserve la positivité des
+occupations. Les deux modèles conservent l'énergie.
+
+Même une préparation uniforme dans le bloc parent ne suffit pas :
+elle développe ensuite un déséquilibre caché. Treize vérifications
+symboliques et numériques testent ce cas ; pour l'état sélectionné,
+l'erreur de compression sur les populations atteint $4.43\,\%$ à
+$t=0.5$ dans les unités de cet exemple. Ce nombre n'est pas une erreur
+de mesure ni une prédiction sur l'AlN.
+
+\section{Ce que l'élimination exacte ajoute}
+En coordonnées d'entropie, soit $C=C^\dagger\ge0$ et la décomposition
+en variables retenues $a$ et cachées $h$ :
+\[
+ C=\begin{pmatrix}A&K\\K^\dagger&D\end{pmatrix}.
+\]
+L'élimination exacte donne
+\[
+ \dot a(t)=-Aa(t)+\int_0^t
+ K e^{-D(t-s)}K^\dagger a(s)\,ds-Ke^{-Dt}h(0).
+\]
+La mémoire a un signe positif dans cette convention ; le terme
+d'état initial caché a un signe négatif.
+Pour $\Re z>0$, l'opérateur de Schur est
+\[
+ zI+A-K(zI+D)^{-1}K^\dagger.
+\]
+Si $h(0)=0$, la compression reproduit la pente initiale, mais
+$\ddot a(0)=(A^2+KK^\dagger)a(0)$. La fermeture pour tous les états
+requiert $K=0$.
+
+La positivité implique $K\ker D=0$. Elle n'élimine pas les invariants
+du système complet et n'assure pas l'existence d'un inverse statique.
+Onze contrôles supplémentaires, dont un calcul à 80 chiffres,
+vérifient la mémoire et l'action du modèle de la note 19.
+Ils montrent aussi qu'un pôle conservé dominant peut masquer une
+erreur de $25\,\%$ sur le canal relaxant dans une norme relative globale.
+
+\section{Retour au triplet réel de l'AlN}
+Pour le triplet enregistré $(1,13,28)$ de la note 20, les constantes
+de force permettent de reconstruire les amplitudes complexes avant
+la prise du module au carré. Une contraction indépendante des indices
+normaux retrouve l'export natif avec une erreur globalement normalisée
+inférieure à $8\times10^{-16}$.
+La transformation complète entre bases donne $2.15\times10^{-15}$ ;
+en ne permettant que des rotations dans les blocs numériques,
+l'erreur relative de Frobenius vaut $2.46\times10^{-14}$.
+
+La revue indépendante retrouve ces valeurs. Les erreurs relatives par
+canal peuvent néanmoins atteindre $2.28\times10^{-11}$.
+La contraction partage le tenseur réciproque, les constantes et la
+normalisation amont : elle ne vérifie pas toute la physique du matériau.
+
+La revue a aussi détecté un défaut général du regroupement fréquentiel :
+une chaîne de fréquences proches pouvait créer des groupes recouvrants
+et une transformation non unitaire. Le triplet étudié n'est pas affecté.
+Le programme portable rejette désormais les chaînes ambiguës, vérifie
+la partition et l'unitarité. Huit régressions passent ; les résultats du
+triplet restent inchangés. L'ancien algorithme et son contre-exemple
+sont conservés.
+
+Un seuil fréquentiel ne certifie pas une dégénérescence physique exacte.
+Les phases reconstruites sont celles du tenseur à trois indices entrants,
+pas encore celles de canaux de décroissance normalisés et comptés.
+
+\section{Conséquences pour la suite}
+Il faut distinguer quatre produits : événements de populations dans
+une base enregistrée ; compression invariante ; dynamique fermée
+certifiée ; action sur des matrices d'occupation.
+La covariance d'un changement de coordonnées n'est pas une symétrie
+physique du générateur fixé. Un tenseur complexe ne définit pas, à lui
+seul, une cinétique irréversible.
+
+La prochaine étape est de déclarer un canal et une approximation
+cinétique, puis de vérifier séparément orientation, conjugaison,
+comptage, conservation et fermeture. Aucun opérateur complet de l'AlN,
+aucune convergence matérielle et aucune validation expérimentale ne
+sont établis ici.
+
+\section{Sources et traçabilité}
+Le dossier \texttt{theory/aln/degenerate\_action/} conserve les quatre
+branches indépendantes, la seconde génération, les quatre revues
+adversariales, les scripts, les résultats et les échecs.
+Les identités finies ont été auditées ; aucune vérification formelle
+par assistant de preuve n'a été effectuée.
+
+Le cadre bibliographique comprend Ovchinnikov et al.,
+\emph{CLUE}, arXiv:2004.11961 ; Simoncelli, Marzari et Mauri,
+Phys.\ Rev.\ X \textbf{12}, 041011 (2022) ; Trushechkin,
+Phys.\ Rev.\ A \textbf{103}, 062226 (2021) ; et la théorie de
+projection et de mémoire, avec sources et limites d'accès précisées
+dans le registre bibliographique.
+\end{document}

@@ -249,3 +249,17 @@ matrix discrepancy to roundoff. The original export remains unchanged. Subsequen
 pass the original frequency checks; their linewidths stabilize, while individual interactions
 redistribute within degenerate blocks whose sums remain stable to numerical precision. Strong Gaussian-width sensitivity rules out a converged-material-rate claim.
 Four independent branches and four hostile reviews are archived with evidence and limitations.
+
+## Degenerate collision action — 26 September 2026
+
+[Note 21](notes/21_Degenerescences_et_fermeture.pdf) and the
+[audited research package](theory/aln/degenerate_action/README.md) separate phase information,
+invariant block sums and autonomous kinetics. Finite counterexamples show that an invariant
+compression need not be a closed model. These are established mathematical criteria, not a new AlN theory.
+
+Complex amplitudes for one selected AlN triplet reproduce the exported squared interactions.
+An independent audit found a general overlapping-cluster bug; the corrected portable script
+rejects ambiguous chains, and the selected-triplet result is unchanged.
+Four independent branches, second-generation memory checks, four hostile reviews and the fix review
+are archived. The next milestone is channel orientation/counting and a declared kinetic model;
+the full material collision action and experimental validation remain open.
