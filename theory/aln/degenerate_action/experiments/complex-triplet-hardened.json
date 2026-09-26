@@ -1,0 +1,147 @@
+{
+  "scope": "one selected AlN triplet, shared real-to-reciprocal source, independent complex einsum contraction; not collision action",
+  "frequency_block_tolerance_THz": 1e-10,
+  "frequency_blocks": [
+    [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ],
+    [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ],
+      [
+        9
+      ],
+      [
+        10
+      ],
+      [
+        11
+      ]
+    ]
+  ],
+  "triplet_index": 4,
+  "triplet_grid_rows": [
+    1,
+    13,
+    28
+  ],
+  "make_r0_average": true,
+  "symmetrize_fc3q": false,
+  "unit_conversion": 0.0001327959698104446,
+  "comparisons": [
+    {
+      "factor": 1.5,
+      "pp_max_scaled_error": 7.726554968823502e-16,
+      "pp_L1_relative_error": 5.095982643615463e-16
+    },
+    {
+      "factor": 2.0,
+      "pp_max_scaled_error": 6.37513177125546e-16,
+      "pp_L1_relative_error": 4.6095686713154385e-16
+    }
+  ],
+  "block_only_transport_relative_frobenius": 2.457103956627176e-14,
+  "off_block_overlap_norms": [
+    1.85280806751562e-14,
+    1.9584119084026106e-14,
+    6.262227096318548e-14
+  ],
+  "complex_transport_relative_frobenius": 2.1478190255396188e-15,
+  "unitarity_residuals": [
+    6.482822406378181e-15,
+    5.724201947325743e-15,
+    6.1738674866734634e-15
+  ],
+  "block_helper_sha256": "354c9a031a7cb6307f01038122d162d414feb4a65ed2fe8d89a1fb1dbfa4c70c",
+  "script_sha256": "4410e8ce51446c9512b58f08a8b869124fd3329d897b28839e00951ee2541cda"
+}

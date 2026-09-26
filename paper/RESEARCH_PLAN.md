@@ -49,8 +49,12 @@ The exactly resonant finite reference is completed (note 19). The real AlN
 export pilot now reproduces selected scalar linewidths (note 20), with a retained
 failed original periodicity check and a local cutoff remedy.
 The selected export has subsequently passed unchanged checks with controlled polar correction.
-Next: resolve degenerate-mode interaction comparisons, then validate canonical event
-counting and a conserving full-population action.
+Note 21 now records one phase-preserving triplet reconstruction and audited finite criteria
+separating invariant compression from closed dynamics. The underlying mathematics is established
+prior art; no new material theory is claimed.
+Next: map one recovered all-incoming amplitude to an oriented physical channel with validated
+counting/normalization, choose its kinetic approximation, and then test conservation, covariance
+and closure. A complete conserving material action is still missing.
 Neither checkpoint establishes that hydrodynamics occurs in a real sample.
 
 Do not block a focused theory paper on every optional research extension.

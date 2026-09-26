@@ -1,0 +1,155 @@
+{
+  "regressions": {
+    "exact_doublet": true,
+    "unsorted_partition": true,
+    "chain_rejected": true,
+    "long_chain_rejected": true,
+    "threshold_boundary_separate": true,
+    "nonfinite_rejected": true,
+    "invalid_tolerance_rejected": true,
+    "empty_partition": true
+  },
+  "original_12_mode_chain_rejected": true,
+  "rejection_reason": "ambiguous chained near-degeneracy; specify physical blocks",
+  "saved_triplet_legs": [
+    {
+      "groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      "matches_previous_partition": true,
+      "partitions_A_B_identical": true,
+      "minimum_overlap_singular_value": 0.9999999999999982,
+      "polar_unitarity_residual": 0.0,
+      "maximum_difference_from_legacy_block_rotation": 0.0
+    },
+    {
+      "groups": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      "matches_previous_partition": true,
+      "partitions_A_B_identical": true,
+      "minimum_overlap_singular_value": 0.9999999999999999,
+      "polar_unitarity_residual": 9.355067438917448e-16,
+      "maximum_difference_from_legacy_block_rotation": 0.0
+    },
+    {
+      "groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      "matches_previous_partition": true,
+      "partitions_A_B_identical": true,
+      "minimum_overlap_singular_value": 0.9999999999999991,
+      "polar_unitarity_residual": 0.0,
+      "maximum_difference_from_legacy_block_rotation": 0.0
+    }
+  ],
+  "legacy_script_hash_preserved": true,
+  "saved_hardened_replay_common_metrics_identical": {
+    "comparisons": true,
+    "block_only_transport_relative_frobenius": true,
+    "complex_transport_relative_frobenius": true,
+    "off_block_overlap_norms": true,
+    "unitarity_residuals": true
+  },
+  "saved_hardened_replay_all_npz_arrays_bitwise_identical": true,
+  "helper_hash_matches_replay": true,
+  "portable_script_hash_matches_replay": true,
+  "scope": "Helper/regression execution and saved-array comparisons only; no material calculation rerun."
+}

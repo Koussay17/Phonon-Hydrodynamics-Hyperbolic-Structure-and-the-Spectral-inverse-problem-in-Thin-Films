@@ -1,0 +1,36 @@
+{
+  "scope": "bounded finite and selected contraction checks; not material collision validation",
+  "checks": {
+    "C_checks": true,
+    "memory_checks": true,
+    "pinned_repository_action_compared": true,
+    "clustering_regressions": true,
+    "phase_family_exact_reference": true,
+    "phase_same_projected_generator": true,
+    "selected_pp_reconstruction": true,
+    "selected_block_transport": true
+  },
+  "commands": [
+    {
+      "script": "experiments/C_lumpability_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "D-phase-information.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/second_memory_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/check_frequency_blocks.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/reconstruct_complex_triplet.py",
+      "returncode": 0
+    }
+  ],
+  "material_requested": true
+}
