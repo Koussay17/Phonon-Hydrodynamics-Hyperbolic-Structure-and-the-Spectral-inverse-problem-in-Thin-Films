@@ -1,0 +1,31 @@
+{
+  "scope": "finite tensor algebra; exact frequency-preserving sewing assumed for physical channels",
+  "synthetic": {
+    "inverse_vs_forward_conjugate": 4.569960951471363e-16,
+    "wrong_conjugation_relative_error": 1.460577543016876
+  },
+  "checks": {
+    "complex_unitary_channel_identity": true,
+    "wrong_conjugation_detected": true,
+    "selected_material_channel_identity": true,
+    "frequency_intertwining": true
+  },
+  "material": {
+    "array_sha256": "f0edcc13e74e69f6b7eaf60935a766bd96a5a0825f12322827eda29ed5c848f9",
+    "inverse_vs_forward_conjugate": 1.5025791538638404e-14,
+    "frequency_intertwining_residual_THz": [
+      3.615442600776863e-14,
+      2.6243268615833993e-14,
+      1.1982181969500553e-14
+    ],
+    "physical_rows": {
+      "parent": 1,
+      "daughters": [
+        26,
+        14
+      ]
+    },
+    "scope": "one selected tensor; approximate numerical frequency blocks; no exact resonant channel admitted"
+  },
+  "script_sha256": "3104815c547cb817db6db96ab169eeb0772d30c02d1c0a0871150ae63c82c7a1"
+}

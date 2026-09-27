@@ -1,0 +1,581 @@
+{
+  "script_sha256": "bc706066c8111c3b45740ff8f3a31106da5fe68aba5bc3e965a06382082dc59d",
+  "interpreter": "C:\\Users\\Koussay\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+  "python": "3.14.7",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "tensor_amplitude": [
+    1.0,
+    2.0
+  ],
+  "hamiltonian_convention": "(1/6) sum_ordered T[l,m,n] X_l X_m X_n",
+  "distinct": {
+    "names": [
+      "p",
+      "a",
+      "b",
+      "bar_p",
+      "bar_a",
+      "bar_b"
+    ],
+    "local_dimension": 3,
+    "matrix_dimension": 729,
+    "harmonic_energies": [
+      3,
+      1,
+      2,
+      3,
+      1,
+      2
+    ],
+    "incoming_tuple": [
+      0,
+      4,
+      5
+    ],
+    "unique_ordered_tuple_count": 6,
+    "collected_coefficient": [
+      1.0,
+      2.0
+    ],
+    "raw_nonzero_entries": 3456,
+    "projected_nonzero_entries": 864,
+    "hermiticity_absolute_frobenius_error": 0.0,
+    "projected_vs_collected_absolute_frobenius_error": 2.579925170969555e-15,
+    "projected_vs_collected_relative_frobenius_error": 2.1366252070928486e-17,
+    "energy_commutator_frobenius_error": 0.0,
+    "max_sample_amplitude_error": 9.930136612989092e-16,
+    "max_reverse_conjugation_error": 9.930136612989092e-16,
+    "max_reciprocal_conjugation_error": 9.930136612989092e-16,
+    "parent_one_daughter_vacuum_squared_amplitude": 4.999999999999998,
+    "samples": [
+      {
+        "initial": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          0.9999999999999999,
+          1.9999999999999998
+        ],
+        "ladder_prediction": [
+          1.0,
+          2.0
+        ],
+        "absolute_error": 2.482534153247273e-16,
+        "reverse_conjugation_error": 2.482534153247273e-16,
+        "reciprocal_conjugation_error": 2.482534153247273e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "ladder_prediction": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "absolute_error": 0.0,
+        "reverse_conjugation_error": 0.0,
+        "reciprocal_conjugation_error": 0.0,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "ladder_prediction": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "absolute_error": 0.0,
+        "reverse_conjugation_error": 0.0,
+        "reciprocal_conjugation_error": 0.0,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          2.0000000000000004,
+          4.000000000000001
+        ],
+        "ladder_prediction": [
+          2.0,
+          4.0
+        ],
+        "absolute_error": 9.930136612989092e-16,
+        "reverse_conjugation_error": 9.930136612989092e-16,
+        "reciprocal_conjugation_error": 9.930136612989092e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "ladder_prediction": [
+          1.4142135623730951,
+          2.8284271247461903
+        ],
+        "absolute_error": 0.0,
+        "reverse_conjugation_error": 0.0,
+        "reciprocal_conjugation_error": 0.0,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          2.0000000000000004,
+          4.000000000000001
+        ],
+        "ladder_prediction": [
+          2.0,
+          4.0
+        ],
+        "absolute_error": 9.930136612989092e-16,
+        "reverse_conjugation_error": 9.930136612989092e-16,
+        "reciprocal_conjugation_error": 9.930136612989092e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          2.0000000000000004,
+          4.000000000000001
+        ],
+        "ladder_prediction": [
+          2.0,
+          4.0
+        ],
+        "absolute_error": 9.930136612989092e-16,
+        "reverse_conjugation_error": 9.930136612989092e-16,
+        "reciprocal_conjugation_error": 9.930136612989092e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          2.8284271247461907,
+          5.6568542494923815
+        ],
+        "ladder_prediction": [
+          2.8284271247461903,
+          5.656854249492381
+        ],
+        "absolute_error": 9.930136612989092e-16,
+        "reverse_conjugation_error": 9.930136612989092e-16,
+        "reciprocal_conjugation_error": 9.930136612989092e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      }
+    ]
+  },
+  "repeated": {
+    "names": [
+      "p",
+      "d",
+      "bar_p",
+      "bar_d"
+    ],
+    "local_dimension": 4,
+    "matrix_dimension": 256,
+    "harmonic_energies": [
+      2,
+      1,
+      2,
+      1
+    ],
+    "incoming_tuple": [
+      0,
+      3,
+      3
+    ],
+    "unique_ordered_tuple_count": 3,
+    "collected_coefficient": [
+      0.5,
+      1.0
+    ],
+    "raw_nonzero_entries": 1200,
+    "projected_nonzero_entries": 384,
+    "hermiticity_absolute_frobenius_error": 1.3759600911837628e-14,
+    "projected_vs_collected_absolute_frobenius_error": 9.101120538054985e-15,
+    "projected_vs_collected_relative_frobenius_error": 1.4686870114880517e-16,
+    "energy_commutator_frobenius_error": 0.0,
+    "max_sample_amplitude_error": 9.930136612989092e-16,
+    "max_reverse_conjugation_error": 9.930136612989092e-16,
+    "max_reciprocal_conjugation_error": 9.930136612989092e-16,
+    "parent_one_daughter_vacuum_squared_amplitude": 2.4999999999999996,
+    "samples": [
+      {
+        "initial": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          0.7071067811865475,
+          1.414213562373095
+        ],
+        "ladder_prediction": [
+          0.7071067811865476,
+          1.4142135623730951
+        ],
+        "absolute_error": 2.482534153247273e-16,
+        "reverse_conjugation_error": 2.482534153247273e-16,
+        "reciprocal_conjugation_error": 2.482534153247273e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "final": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.224744871391589,
+          2.449489742783178
+        ],
+        "ladder_prediction": [
+          1.224744871391589,
+          2.449489742783178
+        ],
+        "absolute_error": 0.0,
+        "reverse_conjugation_error": 0.0,
+        "reciprocal_conjugation_error": 0.0,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          2,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.0,
+          2.0
+        ],
+        "ladder_prediction": [
+          1.0,
+          2.0
+        ],
+        "absolute_error": 0.0,
+        "reverse_conjugation_error": 0.0,
+        "reciprocal_conjugation_error": 0.0,
+        "energy_change": 0,
+        "total_number_change": 1
+      },
+      {
+        "initial": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "final": [
+          1,
+          3,
+          0,
+          0
+        ],
+        "matrix_amplitude": [
+          1.7320508075688776,
+          3.4641016151377553
+        ],
+        "ladder_prediction": [
+          1.7320508075688772,
+          3.4641016151377544
+        ],
+        "absolute_error": 9.930136612989092e-16,
+        "reverse_conjugation_error": 9.930136612989092e-16,
+        "reciprocal_conjugation_error": 9.930136612989092e-16,
+        "energy_change": 0,
+        "total_number_change": 1
+      }
+    ],
+    "duplicated_permutation_negative_control": {
+      "amplitude_ratio": [
+        2.0000000000000004,
+        0.0
+      ],
+      "squared_amplitude_ratio": 4.000000000000002,
+      "matrix_vs_twice_correct_absolute_frobenius_error": 4.074987368680092e-14
+    }
+  },
+  "thermal": {
+    "geometric_partial_sums": [
+      {
+        "geometric_ratio_exact": "1/2",
+        "mean_exact": "1",
+        "annihilation_moment_exact": "2",
+        "creation_moment_exact": "8",
+        "convergence": [
+          {
+            "cutoff": 4,
+            "omitted_probability": 0.03125,
+            "annihilation_partial_moment": 1.0,
+            "creation_partial_moment": 6.1875,
+            "annihilation_relative_error": 0.5,
+            "creation_relative_error": 0.2265625
+          },
+          {
+            "cutoff": 8,
+            "omitted_probability": 0.001953125,
+            "annihilation_partial_moment": 1.8203125,
+            "creation_partial_moment": 7.73828125,
+            "annihilation_relative_error": 0.08984375,
+            "creation_relative_error": 0.03271484375
+          },
+          {
+            "cutoff": 16,
+            "omitted_probability": 7.62939453125e-06,
+            "annihilation_partial_moment": 1.997650146484375,
+            "creation_partial_moment": 7.9970855712890625,
+            "annihilation_relative_error": 0.0011749267578125,
+            "creation_relative_error": 0.0003643035888671875
+          },
+          {
+            "cutoff": 32,
+            "omitted_probability": 1.1641532182693481e-10,
+            "annihilation_partial_moment": 1.9999998691491783,
+            "creation_partial_moment": 7.999999853083864,
+            "annihilation_relative_error": 6.542541086673737e-08,
+            "creation_relative_error": 1.8364517018198967e-08
+          },
+          {
+            "cutoff": 64,
+            "omitted_probability": 2.710505431213761e-20,
+            "annihilation_partial_moment": 1.9999999999999998,
+            "creation_partial_moment": 8.0,
+            "annihilation_relative_error": 5.816744655384731e-17,
+            "creation_relative_error": 1.5443104694340404e-17
+          }
+        ]
+      },
+      {
+        "geometric_ratio_exact": "3/4",
+        "mean_exact": "3",
+        "annihilation_moment_exact": "18",
+        "creation_moment_exact": "32",
+        "convergence": [
+          {
+            "cutoff": 8,
+            "omitted_probability": 0.07508468627929688,
+            "annihilation_partial_moment": 7.18780517578125,
+            "creation_partial_moment": 17.433570861816406,
+            "annihilation_relative_error": 0.600677490234375,
+            "creation_relative_error": 0.4552009105682373
+          },
+          {
+            "cutoff": 16,
+            "omitted_probability": 0.00751694681821391,
+            "annihilation_partial_moment": 15.053356847260147,
+            "creation_partial_moment": 28.436967208166607,
+            "annihilation_relative_error": 0.16370239737443626,
+            "creation_relative_error": 0.11134477474479354
+          },
+          {
+            "cutoff": 32,
+            "omitted_probability": 7.533931929047496e-05,
+            "annihilation_partial_moment": 17.904168385862516,
+            "creation_partial_moment": 31.893168845246105,
+            "annihilation_relative_error": 0.005323978563193564,
+            "creation_relative_error": 0.003338473586059172
+          },
+          {
+            "cutoff": 64,
+            "omitted_probability": 7.568017374869511e-09,
+            "annihilation_partial_moment": 17.999965429296633,
+            "creation_partial_moment": 31.999963355659872,
+            "annihilation_relative_error": 1.9205946315779958e-06,
+            "creation_relative_error": 1.1451356290349429e-06
+          },
+          {
+            "cutoff": 128,
+            "omitted_probability": 7.636651598176907e-17,
+            "annihilation_partial_moment": 17.99999999999868,
+            "creation_partial_moment": 31.99999999999864,
+            "annihilation_relative_error": 7.341367736380733e-14,
+            "creation_relative_error": 4.2560013938089674e-14
+          }
+        ]
+      }
+    ],
+    "mean_only_negative_control": {
+      "common_mean": 1,
+      "fock_N1_annihilation_factorial_moment": 0,
+      "fock_N1_creation_factorial_moment": 6,
+      "geometric_mean1_annihilation_factorial_moment": 2,
+      "geometric_mean1_creation_factorial_moment": 8
+    },
+    "exact_detailed_balance": {
+      "distinct_forward_and_reverse": "3/5",
+      "repeated_factorial_forward_and_reverse": "8/3",
+      "residuals_exact": [
+        0,
+        0
+      ]
+    }
+  },
+  "limitations": [
+    "No material/source normalization or exported pp mapping is tested.",
+    "Energy projection is algebraic; finite matrices imply no irreversible rate.",
+    "Selected ladder paths stay below truncation boundaries.",
+    "Both tested incoming orbits are disjoint from their reciprocal orbit.",
+    "Thermal sums are unnormalized partial sums, with the omitted mass reported.",
+    "Geometric independent occupations are an extra kinetic closure assumption."
+  ],
+  "all_assertions_passed": true,
+  "vacuum_squared_amplitude_repeated_over_distinct": 0.5000000000000001
+}

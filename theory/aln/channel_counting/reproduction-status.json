@@ -1,0 +1,46 @@
+{
+  "scope": "bounded algebra and selected tensor; not converged material kinetics",
+  "checks": {
+    "fock_matrices": true,
+    "vacuum_ratio": true,
+    "closure_exact_assertions": true,
+    "complex_sewing_and_negative_control": true,
+    "pinned_source_hashes": true,
+    "pinned_versions": true,
+    "independent_oscillator_units": true,
+    "distinct_conditional_linewidth_comparison": true,
+    "repeated_conditional_linewidth_comparison": true,
+    "selected_material_permutations": true,
+    "selected_pp_reconstruction": true,
+    "selected_reverse_contraction": true,
+    "selected_material_channel_sewing": true
+  },
+  "commands": [
+    {
+      "script": "experiments/C_fock_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/C2_closure_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/channel_sewing_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "D-source-factor-check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/material_permutations.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/channel_sewing_check.py",
+      "returncode": 0
+    }
+  ],
+  "source_requested": true,
+  "material_requested": true
+}

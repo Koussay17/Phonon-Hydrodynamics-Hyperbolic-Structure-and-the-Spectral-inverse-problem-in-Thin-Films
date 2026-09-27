@@ -1,0 +1,248 @@
+{
+  "script_sha256": "14535a5311af3f07653b42d4d991794e3ee21684556088d0ccb8713acda754fd",
+  "interpreter": "C:\\Users\\Koussay\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+  "python": "3.14.7",
+  "sympy": "1.14.0",
+  "symbolic": {
+    "raw_geometric_moments": {
+      "0": "1",
+      "1": "a",
+      "2": "a*(2*a + 1)",
+      "3": "a*(6*a**2 + 6*a + 1)"
+    },
+    "flux": "2*c*(2*a*b + a - b**2)",
+    "flow_jacobian": [
+      [
+        "-2*c*(2*b + 1)",
+        "4*c*(-a + b)"
+      ],
+      [
+        "4*c*(2*b + 1)",
+        "8*c*(a - b)"
+      ]
+    ],
+    "equilibrium_parent_mean": "b**2/(2*b + 1)",
+    "equilibrium_loss": [
+      [
+        "2*c*(2*b + 1)",
+        "-4*b*c*(b + 1)/(2*b + 1)"
+      ],
+      [
+        "-4*c*(2*b + 1)",
+        "8*b*c*(b + 1)/(2*b + 1)"
+      ]
+    ],
+    "susceptibility": [
+      [
+        "b**2*(b**2 + 2*b + 1)/(2*b + 1)**2",
+        "0"
+      ],
+      [
+        "0",
+        "b*(b + 1)"
+      ]
+    ],
+    "equilibrium_bose_factor": "b**2*(b + 1)**2/(2*b + 1)",
+    "entropy_quadratic": "2*c*(2*b**2*delta_d - 4*b**2*delta_p + 2*b*delta_d - 4*b*delta_p - delta_p)**2/(b**2*(b + 1)**2*(2*b + 1))",
+    "nonzero_equilibrium_eigenvalue": "2*c*(8*b**2 + 8*b + 1)/(2*b + 1)",
+    "exact_energy_left_and_right_kernel_checks": true,
+    "D_report_comparator": {
+      "formula": [
+        [
+          "2*c*(2*b + 1)"
+        ],
+        [
+          "4*b*c*(b + 1)/(2*b + 1)"
+        ]
+      ],
+      "event_diagonal_over_comparator": [
+        "1",
+        "2"
+      ],
+      "scope": "D report formula only; source not independently imported or audited"
+    },
+    "sample_equilibrium": {
+      "means": [
+        "1/3",
+        "1"
+      ],
+      "c": "1",
+      "loss": [
+        [
+          "6",
+          "-8/3"
+        ],
+        [
+          "-12",
+          "16/3"
+        ]
+      ],
+      "symmetric_loss": [
+        [
+          "6",
+          "-4*sqrt(2)"
+        ],
+        [
+          "-4*sqrt(2)",
+          "16/3"
+        ]
+      ],
+      "symmetric_energy_kernel": [
+        [
+          "4/3"
+        ],
+        [
+          "sqrt(2)"
+        ]
+      ],
+      "eigenvalues": [
+        "0",
+        "34/3"
+      ]
+    },
+    "geometric_family_tangency": {
+      "moment_derivatives": {
+        "parent_factorial2": "-8*a*c*(2*a*b + a - b**2)",
+        "daughter_factorial2": "4*c*(6*b + 1)*(2*a*b + a - b**2)",
+        "parent_daughter": "2*c*(4*a - 3*b)*(2*a*b + a - b**2)"
+      },
+      "parent_factorial2_defect": "0",
+      "daughter_factorial2_defect": "4*c*(2*b + 1)*(2*a*b + a - b**2)",
+      "covariance_derivative": "4*c*(a - b)*(2*a*b + a - b**2)",
+      "destination_over_initial_probability": "b**2*(a + 1)/(a*(b + 1)**2)",
+      "equilibrium_edge_detailed_balance_exact": true,
+      "sample_means": [
+        "1/3",
+        "1/2"
+      ],
+      "sample_c": "1",
+      "sample_flux": "5/6",
+      "sample_daughter_factorial2_derivative": "20/3",
+      "sample_geometric_tangent_derivative": "10/3",
+      "sample_daughter_tangency_defect": "10/3",
+      "sample_covariance_derivative": "-5/18"
+    },
+    "all_symbolic_identities_exact": true
+  },
+  "mean_only_counterexamples": {
+    "daughter_fixed_one": {
+      "mean_parent": "1",
+      "mean_daughter": "1",
+      "daughter_factorial2": "0",
+      "forward": "6",
+      "reverse": "0",
+      "flux": "6"
+    },
+    "daughter_zero_or_two": {
+      "mean_parent": "1",
+      "mean_daughter": "1",
+      "daughter_factorial2": "1",
+      "forward": "7",
+      "reverse": "2",
+      "flux": "5"
+    },
+    "geometric_daughter_mean_one_reference": {
+      "mean_parent": "1",
+      "mean_daughter": "1",
+      "daughter_factorial2": "2",
+      "flux": "4",
+      "note": "independent parent with mean one; parent need not be geometric for this mean flux"
+    }
+  },
+  "rational_partial_sums": {
+    "ratios_exact": [
+      "1/4",
+      "1/3"
+    ],
+    "means_exact": [
+      "1/3",
+      "1/2"
+    ],
+    "c": "1",
+    "targets_exact": {
+      "flux": "5/6",
+      "parent_derivative": "-5/6",
+      "daughter_derivative": "5/3",
+      "parent_factorial2_derivative": "-10/9",
+      "daughter_factorial2_derivative": "20/3",
+      "parent_daughter_derivative": "-5/36"
+    },
+    "convergence": [
+      {
+        "max_parent": 8,
+        "max_daughter": 12,
+        "omitted_probability_exact": "34379/7739670528",
+        "omitted_probability": 4.441920347336005e-06,
+        "partial_generator_expectations": {
+          "flux": "806171273/967458816",
+          "parent_derivative": "-806171273/967458816",
+          "daughter_derivative": "806171273/483729408",
+          "parent_factorial2_derivative": "-100578347/90699264",
+          "daughter_factorial2_derivative": "6452715019/967458816",
+          "parent_daughter_derivative": "-1647089003/11609505792"
+        },
+        "absolute_errors": {
+          "flux": 4.590066188409203e-05,
+          "parent_derivative": 4.590066188409203e-05,
+          "daughter_derivative": 9.180132376818405e-05,
+          "parent_factorial2_derivative": 0.00218979726230193,
+          "daughter_factorial2_derivative": 0.0030901356735375494,
+          "parent_daughter_derivative": 0.0029852815116283636
+        },
+        "maximum_absolute_error_exact": "2989579/967458816",
+        "maximum_absolute_error": 0.0030901356735375494
+      },
+      {
+        "max_parent": 16,
+        "max_daughter": 24,
+        "omitted_probability_exact": "144078079771/2426051245220667850752",
+        "omitted_probability": 5.938789630055609e-11,
+        "partial_generator_expectations": {
+          "flux": "252713670373584986413/303256405652583481344",
+          "parent_derivative": "-252713670373584986413/303256405652583481344",
+          "daughter_derivative": "252713670373584986413/151628202826291740672",
+          "parent_factorial2_derivative": "-84237880671964779779/75814101413145870336",
+          "daughter_factorial2_derivative": "252713672619494968813/37907050706572935168",
+          "parent_daughter_derivative": "-84237974728676650607/606512811305166962688"
+        },
+        "absolute_errors": {
+          "flux": 3.309304918217316e-09,
+          "parent_derivative": 3.309304918217316e-09,
+          "daughter_derivative": 6.618609836434632e-09,
+          "parent_factorial2_derivative": 1.290932162333056e-07,
+          "daughter_factorial2_derivative": 3.277337710363161e-08,
+          "parent_daughter_derivative": 1.3894121296832216e-07
+        },
+        "maximum_absolute_error_exact": "84269625683567/606512811305166962688",
+        "maximum_absolute_error": 1.3894121296832216e-07
+      },
+      {
+        "max_parent": 32,
+        "max_daughter": 48,
+        "omitted_probability_exact": "13298506455939575988697/980954107406125508857570312139251157827584",
+        "omitted_probability": 1.3556706022776102e-20,
+        "partial_generator_expectations": {
+          "flux": "102182719521471406953117412553987061985609/122619263425765688607196289017406394728448",
+          "parent_derivative": "-102182719521471406953117412553987061985609/122619263425765688607196289017406394728448",
+          "daughter_derivative": "102182719521471406953117412553987061985609/61309631712882844303598144508703197364224",
+          "parent_factorial2_derivative": "-102182719521471396506206070829840535819097/91964447569324266455397216763054796046336",
+          "daughter_factorial2_derivative": "408730878085885627920836073096070215001963/61309631712882844303598144508703197364224",
+          "parent_daughter_derivative": "-51091359760735745426753707493762586248143/367857790277297065821588867052219184185344"
+        },
+        "absolute_errors": {
+          "flux": 1.790470399947389e-18,
+          "parent_derivative": 1.790470399947389e-18,
+          "daughter_derivative": 3.580940799894778e-18,
+          "parent_factorial2_derivative": 1.1598457648876525e-16,
+          "daughter_factorial2_derivative": 1.25562363061277e-17,
+          "parent_daughter_derivative": 1.1374075261220702e-16
+        },
+        "maximum_absolute_error_exact": "10666457503351331459787943/91964447569324266455397216763054796046336",
+        "maximum_absolute_error": 1.1598457648876525e-16
+      }
+    ],
+    "boundary_treatment": "unnormalized partial initial distribution; destination states not clipped"
+  },
+  "all_assertions_passed": true,
+  "scope": "assumed kinetic Fock jump model; no material, source, or finite Hamiltonian dynamics claim"
+}

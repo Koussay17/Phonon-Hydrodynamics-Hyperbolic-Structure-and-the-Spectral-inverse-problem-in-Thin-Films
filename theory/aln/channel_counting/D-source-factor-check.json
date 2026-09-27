@@ -1,0 +1,123 @@
+{
+  "scope": "Independent source/dimensional first pass; no material run, no peers",
+  "versions": {
+    "phono3py": "4.5.0",
+    "phonopy": "4.5.0",
+    "numpy": "2.5.3"
+  },
+  "interpreter": "D:\\ResearchLab\\envs\\aln-phono3py-4.5.0\\Scripts\\python.exe",
+  "constants": {
+    "hbar_eV_ps": 0.0006582118985531608,
+    "h_THz_eV_per_THz": 0.00413566733,
+    "N_q": 27
+  },
+  "unit_checks": {
+    "pp_source_conversion_N27": 0.0001327959698104446,
+    "gamma_source_conversion": 3306215.697005045,
+    "gamma_simplified_conversion": 3306215.6970050456,
+    "source_pp_example_eV_squared": 3.280864568656046e-09,
+    "oscillator_length_pp_example_eV_squared": 3.2808645686560466e-09,
+    "pp_independent_relative_difference": 2.220446049250313e-16,
+    "distinct_rate_8pi_Cgamma": 83094263.55915445,
+    "distinct_rate_36_over_hbar_ps_squared": 83094263.55915447,
+    "repeated_rate_4pi_Cgamma": 41547131.779577225,
+    "repeated_rate_18_over_hbar_ps_squared": 41547131.77957723
+  },
+  "conditional_channel_checks": {
+    "distinct": {
+      "frequencies_THz": [
+        3.0,
+        1.0,
+        2.0
+      ],
+      "temperature_K": 300.0,
+      "P_eV_squared": 1e-12,
+      "formal_spectral_density_per_THz": 1.0,
+      "equilibrium_n": [
+        1.6235042805324917,
+        5.7643154538354855,
+        2.6521120221509857
+      ],
+      "event_kappa_per_ps": 8.309426355915447e-05,
+      "equilibrium_forward_factor_Q": 40.10711109943378,
+      "stoichiometry": [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      "source_gamma_THz": [
+        6.226548066163213e-05,
+        6.801598122799949e-06,
+        2.738082979901647e-05
+      ],
+      "source_inverse_lifetime_per_ps": [
+        0.0007824511064752833,
+        8.547140278103378e-05,
+        0.00034407765498313054
+      ],
+      "scalar_geometric_closure_diagonal_per_ps": [
+        0.0007824511064752834,
+        8.547140278103375e-05,
+        0.00034407765498313054
+      ],
+      "event_diagonal_over_inverse_lifetime": [
+        1.0000000000000002,
+        0.9999999999999997,
+        1.0
+      ]
+    },
+    "repeated": {
+      "frequencies_THz": [
+        2.0,
+        1.0
+      ],
+      "temperature_K": 300.0,
+      "P_eV_squared": 1e-12,
+      "formal_spectral_density_per_THz": 1.0,
+      "equilibrium_n": [
+        2.6521120221509857,
+        5.7643154538354855
+      ],
+      "event_kappa_per_ps": 4.1547131779577234e-05,
+      "equilibrium_forward_factor_Q": 121.34994103991987,
+      "stoichiometry": [
+        -1.0,
+        2.0
+      ],
+      "source_gamma_THz": [
+        4.1422356168924334e-05,
+        2.0579231676216525e-05
+      ],
+      "source_inverse_lifetime_per_ps": [
+        0.0005205286793386901,
+        0.0002586062522020968
+      ],
+      "scalar_geometric_closure_diagonal_per_ps": [
+        0.0005205286793386903,
+        0.0005172125044041936
+      ],
+      "event_diagonal_over_inverse_lifetime": [
+        1.0000000000000002,
+        2.0
+      ],
+      "thermal_factorial_check": {
+        "cutoff_occupation": 1000,
+        "geometric_tail_probability": 2.8471532937246636e-70,
+        "falling_second_moment": 66.45466530265315,
+        "exact_falling_second_moment": 66.4546653026532,
+        "raising_second_moment": 91.51192711799509,
+        "exact_raising_second_moment": 91.51192711799514,
+        "maximum_relative_error": 6.661338147750939e-16
+      }
+    }
+  },
+  "source_hashes": {
+    "phono3py/phonon3/interaction.py": "00ddebab0b6deff1deb3753ac4200d8c3184b75bfc7ca21d3a9f594ba2a9a599",
+    "phono3py/phonon3/imag_self_energy.py": "03626d192dfcc659ab2042dd7b2904ae9b52bc5fc611ff13683d7ab233dcf3d0",
+    "phono3py/phonon3/reciprocal_to_normal.py": "26f36ab240f0bb6cf5651b43321b9d47a1791f960b0c22a2f375818a58249155",
+    "phono3py/phonon3/triplets.py": "f2c66a9ebb66b9cddb1b9f1f333284b8b3581e54d8af5b5e213865755b70f4e1",
+    "phono3py/conductivity/utils.py": "433ba95e687dc200ae02674f6d5cc2e820c3d651bfbe16a928eb7ae94fd3aacc",
+    "phonopy/physical_units.py": "28a62f4dc1c4833755215aded49a0e96b28b091c26911437278007660c7ac890"
+  },
+  "script_sha256": "da1904b18e067e2073d2bf57b3b6aa808bed11c758e7845ea755cfb3c8a6fc41"
+}

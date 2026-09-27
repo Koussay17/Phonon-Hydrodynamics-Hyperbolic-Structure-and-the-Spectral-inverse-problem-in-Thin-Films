@@ -263,3 +263,12 @@ rejects ambiguous chains, and the selected-triplet result is unchanged.
 Four independent branches, second-generation memory checks, four hostile reviews and the fix review
 are archived. The next milestone is channel orientation/counting and a declared kinetic model;
 the full material collision action and experimental validation remain open.
+
+
+## Channel-counting snapshot — 27 September 2026
+
+Note 22 and theory/aln/channel_counting preserve the channel-counting derivations,
+second-generation closure checks, scripts and saved independent reviews.
+All 13 reproduction checks passed. **Hostile review is incomplete; this is a work-in-progress checkpoint,
+not an accepted final result.** See theory/aln/channel_counting/PUBLICATION_STATUS.md.
+The material collision action and experimental validation remain open.

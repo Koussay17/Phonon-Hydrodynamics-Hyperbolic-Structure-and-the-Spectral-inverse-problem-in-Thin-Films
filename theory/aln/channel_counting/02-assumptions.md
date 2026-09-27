@@ -1,0 +1,2 @@
+# Initial assumptions
+A kinetic approximation must be named: a finite cubic Hamiltonian alone does not imply irreversible rates. Keep all-incoming tensor and oriented channel conventions separate; repeated daughters require boson factorial moments/counting. Do not double-count reverse reactions or reciprocal partners. Retain units: pp in eV^2, ordinary frequency THz, gamma half-linewidth convention. Supplied force constants and mode gauges are not assumed permutation/sewing consistent without checks.

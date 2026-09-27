@@ -1,0 +1,202 @@
+{
+  "scope": "Independent numerical attack of PI/C only; no D self-approval, no material run",
+  "hash_checks": {
+    "material_array": true,
+    "channel_array_reference": true,
+    "material_permutations.py": true,
+    "channel_sewing_check.py": true,
+    "C_fock_check.py": true,
+    "C2_closure_check.py": true
+  },
+  "permutations": [
+    {
+      "relative_frobenius": 0.0,
+      "absolute_max": 0.0,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 0.0
+    },
+    {
+      "relative_frobenius": 1.049526707614959e-15,
+      "absolute_max": 1.2046940795163536e-19,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 4.603694676109362e-13
+    },
+    {
+      "relative_frobenius": 2.157614491549505e-15,
+      "absolute_max": 2.1039179914662018e-19,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 1.2153437420156138e-12
+    },
+    {
+      "relative_frobenius": 2.3874008174531428e-15,
+      "absolute_max": 3.0438668441836797e-19,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 1.1778102981015766e-12
+    },
+    {
+      "relative_frobenius": 2.285195533565671e-15,
+      "absolute_max": 2.6566064593276936e-19,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 1.634772135506966e-12
+    },
+    {
+      "relative_frobenius": 2.3789212054243174e-15,
+      "absolute_max": 3.50070631971811e-19,
+      "entries_above_relative_power_floor": 1472,
+      "relative_power_floor": 1e-12,
+      "maximum_entry_relative_above_floor": 1.2728742363792842e-12
+    }
+  ],
+  "channel": {
+    "relative_frobenius": 1.50265475208526e-14,
+    "absolute_max": 1.5119364904681638e-17,
+    "entries_above_relative_power_floor": 1472,
+    "relative_power_floor": 1e-12,
+    "maximum_entry_relative_above_floor": 1.5767483658987444e-12
+  },
+  "full_reverse_saved_prediction": {
+    "relative_frobenius": 2.067505283392275e-15,
+    "absolute_max": 2.8703295889276875e-19,
+    "entries_above_relative_power_floor": 1472,
+    "relative_power_floor": 1e-12,
+    "maximum_entry_relative_above_floor": 3.7120249982465644e-13
+  },
+  "block_reverse_saved_prediction": {
+    "relative_frobenius": 1.5030904685231197e-14,
+    "absolute_max": 2.520152062464187e-18,
+    "entries_above_relative_power_floor": 1472,
+    "relative_power_floor": 1e-12,
+    "maximum_entry_relative_above_floor": 1.5768794636693148e-12
+  },
+  "block_sewing_singular_values": [
+    [
+      1.0,
+      1.0
+    ],
+    [
+      0.9999999999999998,
+      1.0000000000000004
+    ],
+    [
+      1.0,
+      1.0
+    ]
+  ],
+  "block_unitarity_frobenius": [
+    0.0,
+    7.122522901182137e-16,
+    0.0
+  ],
+  "address_and_input_checks": {
+    "exact_negation": true,
+    "triplet_matches_record": true,
+    "saved_frequencies_match": true,
+    "raw_sewing_recomputation_residuals": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "energy_admission": {
+    "above_floor_count": 1472,
+    "minimum_absolute_detuning_THz": 0.0064022820850526685,
+    "count_below_1e_10_THz": 0
+  },
+  "independent_gauges": [
+    {
+      "trial": 0,
+      "channel_conjugation_relative": 1.504901817403448e-14,
+      "forward_covariance_relative": 5.611409439694077e-16,
+      "wrong_adjoint_in_sewing_relative": 1.3933749830079942
+    },
+    {
+      "trial": 1,
+      "channel_conjugation_relative": 1.5033791271129956e-14,
+      "forward_covariance_relative": 4.838007510502944e-16,
+      "wrong_adjoint_in_sewing_relative": 1.4570191818700766
+    },
+    {
+      "trial": 2,
+      "channel_conjugation_relative": 1.5032622298101346e-14,
+      "forward_covariance_relative": 5.308037391203869e-16,
+      "wrong_adjoint_in_sewing_relative": 1.312796503950731
+    }
+  ],
+  "C_fock_untruncated_samples": {
+    "distinct": {
+      "maximum_difference_from_saved_sparse_sample": 0.0,
+      "maximum_reverse_conjugation_error": 0.0,
+      "sample_count": 8
+    },
+    "repeated": {
+      "maximum_difference_from_saved_sparse_sample": 0.0,
+      "maximum_reverse_conjugation_error": 0.0,
+      "sample_count": 4,
+      "duplicate_permutation_squared_ratio": 4.000000000000002
+    }
+  },
+  "C_thermal_closed_tail_check": [
+    {
+      "ratio": "1/2",
+      "maximum_difference_from_reported_error": 0.0,
+      "final_annihilation_relative_tail": 5.816744655384731e-17,
+      "final_creation_relative_tail": 1.5443104694340404e-17,
+      "final_omitted_mass": 2.710505431213761e-20
+    },
+    {
+      "ratio": "3/4",
+      "maximum_difference_from_reported_error": 0.0,
+      "final_annihilation_relative_tail": 7.341367736380733e-14,
+      "final_creation_relative_tail": 4.2560013938089674e-14,
+      "final_omitted_mass": 7.636651598176907e-17
+    }
+  ],
+  "C2_independent_polynomial_tail_check": {
+    "exact_targets_match": true,
+    "cutoffs": [
+      {
+        "cutoffs": [
+          8,
+          12
+        ],
+        "all_partial_sums_match_exactly": true,
+        "max_error_matches_exactly": true,
+        "maximum_absolute_error": 0.0030901356735375494,
+        "maximum_error_over_omitted_probability": 695.6756159283283
+      },
+      {
+        "cutoffs": [
+          16,
+          24
+        ],
+        "all_partial_sums_match_exactly": true,
+        "max_error_matches_exactly": true,
+        "maximum_absolute_error": 1.3894121296832216e-07,
+        "maximum_error_over_omitted_probability": 2339.554380999705
+      },
+      {
+        "cutoffs": [
+          32,
+          48
+        ],
+        "all_partial_sums_match_exactly": true,
+        "max_error_matches_exactly": true,
+        "maximum_absolute_error": 1.1598457648876525e-16,
+        "maximum_error_over_omitted_probability": 8555.513138213959
+      }
+    ]
+  },
+  "C2_tangency": {
+    "flux": "5/6",
+    "daughter_moment_derivative": "20/3",
+    "geometric_tangent": "10/3",
+    "defect": "10/3",
+    "claimed_2_times_2b_plus1_times_J": "10/3"
+  },
+  "script_sha256": "7460d305a6aeca1f79654f3ea15ee54c59141053cd03424370e9cafcb88c7918"
+}

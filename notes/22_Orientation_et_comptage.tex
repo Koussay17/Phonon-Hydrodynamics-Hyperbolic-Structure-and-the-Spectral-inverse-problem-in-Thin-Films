@@ -1,0 +1,181 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Orientation et comptage des canaux cubiques}\\[4pt]
+{\normalsize Du tenseur complexe à un événement de population conditionnel}\\[2pt]
+{\small Partie I --- 27 septembre 2026}\\[2pt]
+{\small Document de travail --- revue indépendante incomplète}
+\end{center}
+
+\section{Question, convention et portée}
+Les notes 20 et 21 reconstruisent des interactions et des amplitudes complexes
+pour un triplet de l'AlN. Cette note précise leur traduction en canaux.
+Elle ne construit ni l'opérateur de collision complet du matériau ni une
+trajectoire hydrodynamique en température. Les identités de comptage sont
+connues ; aucune nouveauté théorique n'est revendiquée.
+
+Pour des fréquences strictement positives, adoptons une base réciproque
+appariée, $X_\lambda=a_\lambda+a^\dagger_{\bar\lambda}$, et
+\[
+ H_3=\sum_{\lambda\mu\nu\ {\rm ordonnés}}
+ V_{\lambda\mu\nu}X_\lambda X_\mu X_\nu,\qquad
+ V_{\bar\lambda\bar\mu\bar\nu}=V_{\lambda\mu\nu}^{*}.
+\]
+Le tenseur est supposé symétrique sous permutation et contient déjà
+$1/3!$. La convention alternative $H_3=(1/6)\sum TXXX$ donne $T=6V$.
+Une base numérique arbitraire exige un raccordement des vecteurs propres
+entre $q$ et $-q$ ; le simple changement d'un indice ne suffit pas.
+
+\section{Coefficient hamiltonien et éléments de Fock}
+La désintégration $p\to a+b$ utilise le triplet entrant
+$(p,\bar a,\bar b)$ avec $q_p-q_a-q_b=G$.
+La somme des tuples ordonnés distincts donne
+\[
+ H_e=g_e a_p a_a^\dagger a_b^\dagger+{\rm h.c.},
+ \qquad
+ g_e=\begin{cases}6V_{p\bar a\bar b},&a\ne b,\\
+                   3V_{p\bar a\bar a},&a=b.\end{cases}
+\]
+L'égalité $a=b$ concerne le mode complet, pas seulement sa fréquence
+ou son bloc dégénéré. Sans symétrie du tenseur, il faut sommer les
+amplitudes complexes pertinentes avant de prendre le module au carré.
+
+Pour les occupations entières $N$, les facteurs de création sont
+\[
+ |M_{pab}|^2=|g_e|^2N_p(N_a+1)(N_b+1),\qquad
+ |M_{paa}|^2=|g_e|^2N_p(N_a+1)(N_a+2).
+\]
+Le processus inverse contient $(N_p+1)N_aN_b$, ou
+$(N_p+1)N_a(N_a-1)$. Pour un parent et des filles dans le vide,
+les probabilités relatives sont donc $36|V|^2$ et $18|V|^2$.
+L'adjoint donne la réaction inverse sur les mêmes modes ; le canal
+aux vecteurs d'onde opposés agit en général sur d'autres populations.
+Il ne doit être ni supprimé ni ajouté deux fois.
+
+\section{Hypothèse cinétique et facteur de population}
+Une règle d'or nécessite un régime de couplage faible, une approximation
+cinétique et une mesure spectrale justifiée. Un Hamiltonien fini résonant
+ne fournit pas une valeur finie de $\delta(0)$.
+La fermeture en occupations moyennes $n$ suppose en outre la
+factorisation des modes. Pour une fille répétée, nous imposons les
+moments d'une loi géométrique :
+\[
+ \langle N(N-1)\rangle=2n^2,\qquad
+ \langle(N+1)(N+2)\rangle=2(1+n)^2.
+\]
+Cette hypothèse n'est pas une conséquence de la connaissance de $n$ :
+à $n=1$, un état de Fock donne les moments $0,6$, contre $2,8$
+pour la loi géométrique.
+
+Avec $P=|V|^2$ en eV$^2$, $f$ en THz ordinaires et une densité
+$D_f$ en THz$^{-1}$, l'événement réversible non ordonné s'écrit
+\[
+ \kappa_e=\frac{36P D_f}{\hbar_{\rm ps}^{\,2}(1+\delta_{ab})},
+ \quad
+ J_e=\kappa_e[n_p(1+n_a)(1+n_b)-(1+n_p)n_an_b],
+ \quad \dot n=-rJ_e,
+\]
+où $\hbar_{\rm ps}$ est en eV\,ps, $\kappa_e$ en ps$^{-1}$ et
+$r=e_p-e_a-e_b$ (donc $e_p-2e_a$ si $a=b$).
+La densité doit être intégrée selon la mesure du problème ; elle n'est
+pas un poids arbitraire pour un tuple désaccordé.
+
+À l'équilibre résonant, $Q=\bar n_p(1+\bar n_a)(1+\bar n_b)$ et
+$W_{ii}=\bar n_i(1+\bar n_i)$ donnent
+\[
+ L_e=\kappa_e Q\,rr^{\mathsf T}W^{-1},\qquad
+ C_e=W^{-1/2}L_eW^{1/2}
+     =\kappa_e Q\,uu^{\mathsf T},\quad u=W^{-1/2}r.
+\]
+Ainsi $C_e$ est positif et $C_eW^{1/2}\varepsilon=0$ si
+$r^{\mathsf T}\varepsilon=0$. Ce sont des conséquences du modèle
+conditionnel, sans validation de sa fermeture pour l'AlN.
+
+Cette fermeture n'est même pas un sous-espace statistique invariant
+pour le modèle de sauts de Fock déclaré. En posant $c=\kappa_e/2$,
+les taux sont $cX(Y+1)(Y+2)$ et $c(X+1)Y(Y-1)$. Pour une loi
+initiale géométrique produit de moyenne $(p,a)$,
+\[
+ \left.\frac{d}{dt}
+ [\langle Y(Y-1)\rangle-2a^2]\right|_{t=0}
+ =2(2a+1)J_e.
+\]
+Ce défaut est non nul hors équilibre et apparaît déjà au premier ordre
+près de l'équilibre. La factorisation positive ci-dessus ne démontre
+donc pas l'autonomie exacte des occupations moyennes.
+
+\section{Lien précis avec la largeur de raie}
+Le code phono3py 4.5.0 inclut déjà $1/36$, les trois facteurs
+d'oscillateur et $1/N_q$ dans son export $P$. Il ne faut pas diviser
+à nouveau par le nombre de points.
+Sa demi-largeur $\gamma$ en THz donne $\tau^{-1}=4\pi\gamma$ en
+ps$^{-1}$ et son facteur de conversion est
+$C_\gamma=18\pi/(h\,10^{12})^2$.
+Pour des filles distinctes, $\kappa_e=8\pi C_\gamma P D_f$ :
+les deux ordres de filles sont présents dans la somme de raie.
+Pour une fille répétée, $\kappa_e=4\pi C_\gamma P D_f$.
+
+L'identification de chaque diagonale de population à $4\pi\gamma$
+n'est cependant pas universelle. Dans la fermeture répétée ci-dessus,
+la dérivée de la population fille compte ses deux occurrences :
+\[
+ (L_e)_{aa}=4\kappa_e(\bar n_a-\bar n_p),\qquad
+ (4\pi\gamma_a)_{\rm canal}=2\kappa_e(\bar n_a-\bar n_p).
+\]
+Le rapport est deux pour la fille et un pour le parent. Il s'agit
+d'une distinction entre les objets comparés dans ce modèle discret,
+pas d'une erreur démontrée du calcul de self-énergie.
+
+\section{Contrôles et limite matérielle}
+Quatre approches indépendantes précèdent la confrontation : expansion
+hamiltonienne, combinatoire des permutations, matrices de Fock, et
+analyse dimensionnelle du code. Les matrices de Fock reproduisent les
+coefficients avec une erreur relative inférieure à $1.5\,10^{-16}$.
+Un mauvais double comptage des tuples répétés multiplie l'amplitude
+par deux et la probabilité par quatre.
+
+Pour le seul triplet AlN de lignes $(1,13,28)$ du maillage $3^3$,
+les six permutations reconstruites concordent à $2.4\,10^{-15}$
+en norme relative. Les lignes opposées sont $(2,26,14)$.
+Le raccordement unitaire par blocs permet un contrôle de conjugaison
+du canal orienté avec un résidu de $1.6\,10^{-14}$ au plus.
+La liberté physique de rotation exige des fréquences égales ; les blocs
+numériques et leurs petits résidus ne prouvent pas une dégénérescence exacte.
+
+Parmi les 1472 entrées au-dessus de $10^{-12}$ du maximum de $P$,
+aucune n'a $|f_0-f_1-f_2|<10^{-10}$ THz. Le désaccord minimal est
+$0.0064023$ THz. Cette observation concerne cette orientation et ce seuil,
+pas tous les canaux du matériau. Une largeur gaussienne non nulle
+n'autorise donc pas leur import comme événements exactement résonants.
+
+\section{Suite et sources}
+La prochaine étape est une intégration d'énergie conservatrice,
+avec un modèle cinétique déclaré et une énumération globale vérifiée.
+Restent ensuite la convergence matérielle, la température, les frontières
+du film et la confrontation expérimentale.
+
+Sources primaires : Togo, Chaput et Tanaka, Phys.\ Rev.\ B
+\textbf{91}, 094306 (2015), doi:10.1103/\allowbreak PhysRevB.91.094306 ;
+Fugallo et al., Phys.\ Rev.\ B \textbf{88}, 045430 (2013),
+doi:10.1103/\allowbreak PhysRevB.88.045430.
+Les rapports, scripts, objections et limites sont conservés dans
+\texttt{theory/aln/channel\_counting/}.
+\end{document}

@@ -7,3 +7,4 @@
 theory/aln/events/** -text whitespace=cr-at-eol,-blank-at-eof
 theory/aln/interaction_pilot/** -text whitespace=cr-at-eol,-blank-at-eof
 theory/aln/degenerate_action/** -text whitespace=cr-at-eol,-blank-at-eof
+theory/aln/channel_counting/** -text whitespace=cr-at-eol,-blank-at-eof

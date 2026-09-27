@@ -1,0 +1,5 @@
+# Channel orientation and counting
+Question: under an explicitly stated scalar-population weak-coupling approximation, how does the pinned phono3py all-incoming cubic amplitude map to a reversible decay/absorption event, including conjugation, wavevector reversal, ordered tensor permutations, daughter exchange and repeated-mode factors?
+Begin with one channel and distinguish a Hamiltonian coefficient, Fock-state transition matrix element, spectral golden-rule density, equilibrium Bose prefactor and population-event coefficient.
+Domain: finite positive-frequency modes, exactly resonant mathematical reference, distinct momentum labels or explicit repeated modes; near-degenerate material blocks require basis metadata and are not assumed scalar-closed. No broadened finite tuple is silently admitted as exactly resonant. No complete AlN operator or novelty claim.
+Success: audited conventions and finite combinatorial checks; material application only where source/data establish assumptions. Identify unavailable phase maps or symmetries rather than invent them.

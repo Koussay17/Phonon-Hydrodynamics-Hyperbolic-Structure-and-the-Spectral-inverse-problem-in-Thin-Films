@@ -1,0 +1,217 @@
+{
+  "scope": "one all-incoming triplet, exact saved address reversals only; not Hamiltonian/channel normalization",
+  "triplet": [
+    1,
+    13,
+    28
+  ],
+  "addresses": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      -1,
+      0,
+      -1
+    ]
+  ],
+  "permutations": [
+    {
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "amplitude_relative_frobenius": 0.0,
+      "pp_global_scaled_difference": 6.37513177125546e-16
+    },
+    {
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "amplitude_relative_frobenius": 1.0495267076149592e-15,
+      "pp_global_scaled_difference": 6.37513177125546e-16
+    },
+    {
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "amplitude_relative_frobenius": 2.157614491549505e-15,
+      "pp_global_scaled_difference": 1.6575342605264195e-15
+    },
+    {
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "amplitude_relative_frobenius": 2.387400817453143e-15,
+      "pp_global_scaled_difference": 1.0200210834008736e-15
+    },
+    {
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "amplitude_relative_frobenius": 2.285195533565671e-15,
+      "pp_global_scaled_difference": 1.6575342605264195e-15
+    },
+    {
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "amplitude_relative_frobenius": 2.378921205424318e-15,
+      "pp_global_scaled_difference": 1.6575342605264195e-15
+    }
+  ],
+  "sum_vs_six_reference_relative": 1.5097482892476766e-15,
+  "exact_reverse_rows": [
+    2,
+    26,
+    14
+  ],
+  "unit_conversion": 0.0001327959698104446,
+  "make_r0_average": true,
+  "symmetrize_fc3q": false,
+  "time_reversal": {
+    "amplitude_relative_frobenius": 2.067505283392275e-15,
+    "block_only_relative_frobenius": 1.5030904685231197e-14,
+    "block_groups": [
+      [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ]
+    ],
+    "frequency_max_difference_THz": 1.9539925233402755e-14,
+    "unitarity_residuals": [
+      6.3272937411623665e-15,
+      5.241766512936479e-15,
+      6.246801528761476e-15
+    ]
+  },
+  "energy_admission": {
+    "orientation": "first leg parent, reversed other two legs; no quadrature conversion",
+    "pp_relative_floor": 1e-12,
+    "minimum_absolute_decay_detuning_THz": 0.0064022820850526685,
+    "number_above_floor": 1472,
+    "number_with_absolute_detuning_below_1e_10_THz": 0
+  },
+  "helper_sha256": "354c9a031a7cb6307f01038122d162d414feb4a65ed2fe8d89a1fb1dbfa4c70c",
+  "script_sha256": "d0b62691ab9291e69c1a0c1bef69e259a2b24c92c52d90e21c4c752571b8a863"
+}

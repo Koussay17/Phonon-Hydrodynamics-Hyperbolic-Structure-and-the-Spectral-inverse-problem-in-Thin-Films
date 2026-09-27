@@ -59,3 +59,12 @@ Neither checkpoint establishes that hydrodynamics occurs in a real sample.
 
 Do not block a focused theory paper on every optional research extension.
 Conversely, do not label the present note collection a submission-ready paper.
+
+
+## Channel-counting snapshot — 27 September 2026
+
+Note 22 and theory/aln/channel_counting preserve the channel-counting derivations,
+second-generation closure checks, scripts and saved independent reviews.
+All 13 reproduction checks passed. **Hostile review is incomplete; this is a work-in-progress checkpoint,
+not an accepted final result.** See theory/aln/channel_counting/PUBLICATION_STATUS.md.
+The material collision action and experimental validation remain open.
