@@ -1,6 +1,6 @@
 # Channel orientation and counting
 
-**WORK IN PROGRESS: hostile review incomplete. See [publication status](PUBLICATION_STATUS.md).**
+**Four hostile reviews complete; only the bounded conditional results are accepted. See [final report](13-final-report.md).**
 
 Campaign 20260926-105330, continued 27 September 2026. Working copy on D; compact review archive in this repository. Raw force constants and amplitude arrays remain outside Git.
 
@@ -13,7 +13,7 @@ From the repository root:
 ~~~powershell
 python -B scripts/reproduce_channel_counting.py --output-dir D:/ResearchLab/scratch/channel-new-finite
 ~~~
-Requirements: Python >=3.10, NumPy, SciPy and SymPy. This runs finite Fock matrices, exact symbolic/rational moment checks and complex sewing with a negative control. Choose a new output directory.
+Requirements: Python >=3.10, NumPy, SciPy and SymPy. This runs finite Fock matrices, exact symbolic/rational moment checks, complex sewing with a negative control and the 30 exact proof-audit checks. Choose a new output directory.
 
 ## Add pinned source and selected material checks
 ~~~powershell
@@ -21,7 +21,7 @@ python -B scripts/reproduce_channel_counting.py --output-dir D:/ResearchLab/scra
 ~~~
 The source interpreter needs phono3py=phonopy=4.5.0 and the recorded source hashes. The pilot-root must contain the retained corrected-cutoff run at runs/export-cutoff-2.0/runs/gp1-m333 plus pilot-run.json. Its input and output hashes are checked before material contraction. No inputs are downloaded automatically.
 
-Fresh reproduction passed all 13 top-level checks; reproduction-status.json records the scope. Source checks may be requested without the material pilot. Without optional flags, no material validation is claimed.
+The original full reproduction passed all 13 top-level checks; reproduction-status.json records its scope. After adding the proof-audit script, the changed finite workflow passed all five top-level checks (reviewed-finite-reproduction.json). Unchanged source/material calculations were not needlessly repeated. Source checks may be requested without the material pilot. Without optional flags, no material validation is claimed.
 
 ## Evidence
 - branches/A-D: genuinely different isolated first passes.

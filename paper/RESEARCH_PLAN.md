@@ -52,19 +52,26 @@ The selected export has subsequently passed unchanged checks with controlled pol
 Note 21 now records one phase-preserving triplet reconstruction and audited finite criteria
 separating invariant compression from closed dynamics. The underlying mathematics is established
 prior art; no new material theory is claimed.
-Next: map one recovered all-incoming amplitude to an oriented physical channel with validated
-counting/normalization, choose its kinetic approximation, and then test conservation, covariance
-and closure. A complete conserving material action is still missing.
+Note 22 now audits conditional channel counting and the selected orientation, and exposes
+finite geometric-closure noninvariance. Next: justify the physical kinetic approximation and
+conserving resonance measure, then build and test the full material action. A complete conserving material action is still missing.
 Neither checkpoint establishes that hydrodynamics occurs in a real sample.
 
 Do not block a focused theory paper on every optional research extension.
 Conversely, do not label the present note collection a submission-ready paper.
 
 
-## Channel-counting snapshot — 27 September 2026
+## Reviewed channel counting — 27 September 2026
 
-Note 22 and theory/aln/channel_counting preserve the channel-counting derivations,
-second-generation closure checks, scripts and saved independent reviews.
-All 13 reproduction checks passed. **Hostile review is incomplete; this is a work-in-progress checkpoint,
-not an accepted final result.** See theory/aln/channel_counting/PUBLICATION_STATUS.md.
-The material collision action and experimental validation remain open.
+[Note 22](../notes/22_Orientation_et_comptage.pdf) and the
+[reviewed campaign](../theory/aln/channel_counting/13-final-report.md) distinguish
+Hamiltonian counting, Fock factors, statistical closure and linewidth comparisons.
+Four independent hostile reviews are complete. The finite identities survive under
+their stated assumptions; the geometric mean model is not an exact invariant closure
+of the assumed Fock jump process.
+
+The full reproduction passed 13 checks; the updated finite runner additionally includes
+30 exact symbolic proof-audit checks. The note retains its layout and builds without warnings.
+These results do not establish a physical linewidth correction, a converged AlN collision
+action or experimental validity. Next: specify a conserving resonance measure and kinetic
+regime before constructing the material operator.

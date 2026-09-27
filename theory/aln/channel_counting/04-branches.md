@@ -1,4 +1,4 @@
-# Branch record
-First passes (isolated until all four complete): A Hamiltonian; B symmetric-orbit combinatorics; C sparse finite Fock calculation; D source/dimensional analysis. L primary-paper search ran independently.
-Second-generation tasks: A2 arbitrary-gauge sewing; B2 probabilistic closure; C2 exact moment/Jacobian test. Their artifacts remain separate.
-Red-team stage pending: counterexample hunter, proof auditor, numerical analyst and peer reviewer will attack, not defend.
+# Branches
+Four first passes completed in isolation before exchange: A Hamiltonian; B permutation combinatorics; C Fock matrices; D source/dimensional route. L researched primary conventions independently.
+Second generation: A2 compatible sewing/channel-operator formulation; B2 probabilistic sectors and closure; C2 independent exact moments; L2 closure prior art.
+Four red reports then attacked the frozen candidate independently: counterexamples, proof, numerics and peer review. PI synthesis began only after all four completed. Alternative A2/B2 directions were attacked before further investment. No vote substitutes for evidence.

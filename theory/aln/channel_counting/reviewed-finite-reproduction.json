@@ -1,0 +1,30 @@
+{
+  "scope": "bounded algebra and selected tensor; not converged material kinetics",
+  "checks": {
+    "proof_audit_exact_checks": true,
+    "fock_matrices": true,
+    "vacuum_ratio": true,
+    "closure_exact_assertions": true,
+    "complex_sewing_and_negative_control": true
+  },
+  "commands": [
+    {
+      "script": "experiments/C_fock_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/C2_closure_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/channel_sewing_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/red_proof_counting_checks.py",
+      "returncode": 0
+    }
+  ],
+  "source_requested": false,
+  "material_requested": false
+}

@@ -261,14 +261,21 @@ Complex amplitudes for one selected AlN triplet reproduce the exported squared i
 An independent audit found a general overlapping-cluster bug; the corrected portable script
 rejects ambiguous chains, and the selected-triplet result is unchanged.
 Four independent branches, second-generation memory checks, four hostile reviews and the fix review
-are archived. The next milestone is channel orientation/counting and a declared kinetic model;
-the full material collision action and experimental validation remain open.
+are archived. Channel counting is addressed by the reviewed note 22 below; the physical kinetic model,
+full material collision action and experimental validation remain open.
 
 
-## Channel-counting snapshot — 27 September 2026
+## Reviewed channel counting — 27 September 2026
 
-Note 22 and theory/aln/channel_counting preserve the channel-counting derivations,
-second-generation closure checks, scripts and saved independent reviews.
-All 13 reproduction checks passed. **Hostile review is incomplete; this is a work-in-progress checkpoint,
-not an accepted final result.** See theory/aln/channel_counting/PUBLICATION_STATUS.md.
-The material collision action and experimental validation remain open.
+[Note 22](notes/22_Orientation_et_comptage.pdf) and the
+[reviewed campaign](theory/aln/channel_counting/13-final-report.md) distinguish
+Hamiltonian counting, Fock factors, statistical closure and linewidth comparisons.
+Four independent hostile reviews are complete. The finite identities survive under
+their stated assumptions; the geometric mean model is not an exact invariant closure
+of the assumed Fock jump process.
+
+The full reproduction passed 13 checks; the updated finite runner additionally includes
+30 exact symbolic proof-audit checks. The note retains its layout and builds without warnings.
+These results do not establish a physical linewidth correction, a converged AlN collision
+action or experimental validity. Next: specify a conserving resonance measure and kinetic
+regime before constructing the material operator.

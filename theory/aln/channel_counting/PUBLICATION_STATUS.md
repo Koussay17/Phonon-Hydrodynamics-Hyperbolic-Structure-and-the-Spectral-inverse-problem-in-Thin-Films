@@ -1,9 +1,5 @@
-# Publication checkpoint — 27 September 2026
-
-Published at the author's request to push all saved work. This is a research snapshot, not an accepted final result.
-The independent first and second rounds are complete; 13 reproduction checks passed.
-The counterexample report is complete. Proof/numerical reports may be partial: their own status is authoritative.
-The peer review is missing following an account usage interruption. No four-review synthesis or final scientific approval has occurred.
-Note 22 is a draft under review. No full AlN collision action, submission-ready paper, novelty, or formal verification is claimed.
-
-RESUME.md records the earlier pre-publication state; its statements about untracked/unpushed files are historical. This publication checkpoint supersedes those repository-status statements. The archive contains the saved compact campaign, including unfinished review artifacts and negative results. Raw external material arrays remain on D with recorded provenance.
+# Reviewed bounded checkpoint
+All four independent hostile reviews are complete. The PI accepts only the explicitly qualified finite results in 13-final-report.md and resolves objections in 12-peer-review.md.
+Note 22 is an audited technical note under assumptions, not a submission-ready material paper.
+Historical REVIEW_CANDIDATE.md, note22-draft.tex, RESUME.md and earlier reproduction-status.json remain unchanged as records of the interrupted first snapshot; this file supersedes their current-status descriptions.
+Raw material inputs remain on D. No full AlN dynamics, novelty or experimental validation is claimed.

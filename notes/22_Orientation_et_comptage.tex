@@ -22,7 +22,7 @@
 {\Large\bfseries Orientation et comptage des canaux cubiques}\\[4pt]
 {\normalsize Du tenseur complexe à un événement de population conditionnel}\\[2pt]
 {\small Partie I --- 27 septembre 2026}\\[2pt]
-{\small Document de travail --- revue indépendante incomplète}
+{\small Audit fini sous hypothèses --- validation matérielle ouverte}
 \end{center}
 
 \section{Question, convention et portée}
@@ -65,7 +65,9 @@ Pour les occupations entières $N$, les facteurs de création sont
 \]
 Le processus inverse contient $(N_p+1)N_aN_b$, ou
 $(N_p+1)N_a(N_a-1)$. Pour un parent et des filles dans le vide,
-les probabilités relatives sont donc $36|V|^2$ et $18|V|^2$.
+les modules au carré des éléments de matrice sont donc
+$36|V|^2$ et $18|V|^2$, en unités d'énergie au carré.
+Une probabilité exige un facteur dynamique supplémentaire.
 L'adjoint donne la réaction inverse sur les mêmes modes ; le canal
 aux vecteurs d'onde opposés agit en général sur d'autres populations.
 Il ne doit être ni supprimé ni ajouté deux fois.
@@ -98,7 +100,8 @@ $r=e_p-e_a-e_b$ (donc $e_p-2e_a$ si $a=b$).
 La densité doit être intégrée selon la mesure du problème ; elle n'est
 pas un poids arbitraire pour un tuple désaccordé.
 
-À l'équilibre résonant, $Q=\bar n_p(1+\bar n_a)(1+\bar n_b)$ et
+À l'équilibre résonant de température strictement positive, avec
+un poids spectral non négatif, $Q=\bar n_p(1+\bar n_a)(1+\bar n_b)$ et
 $W_{ii}=\bar n_i(1+\bar n_i)$ donnent
 \[
  L_e=\kappa_e Q\,rr^{\mathsf T}W^{-1},\qquad
@@ -128,7 +131,8 @@ d'oscillateur et $1/N_q$ dans son export $P$. Il ne faut pas diviser
 à nouveau par le nombre de points.
 Sa demi-largeur $\gamma$ en THz donne $\tau^{-1}=4\pi\gamma$ en
 ps$^{-1}$ et son facteur de conversion est
-$C_\gamma=18\pi/(h\,10^{12})^2$.
+$C_\gamma=18\pi/(h\,10^{12})^2$, où $h$ est la constante de
+Planck en eV\,s ($h=2\pi\hbar_{\rm eV\,s}$).
 Pour des filles distinctes, $\kappa_e=8\pi C_\gamma P D_f$ :
 les deux ordres de filles sont présents dans la somme de raie.
 Pour une fille répétée, $\kappa_e=4\pi C_\gamma P D_f$.
@@ -142,12 +146,18 @@ la dérivée de la population fille compte ses deux occurrences :
 \]
 Le rapport est deux pour la fille et un pour le parent. Il s'agit
 d'une distinction entre les objets comparés dans ce modèle discret,
-pas d'une erreur démontrée du calcul de self-énergie.
+pas d'une erreur démontrée du calcul de self-énergie, ni d'une
+correction physique mesurée de la durée de vie. Une pente initiale,
+une diagonale de Jacobien, une valeur propre de relaxation et un pôle
+spectral sont des objets distincts. Le poids total des canaux à filles
+identiques dans la mesure résonante de l'AlN reste inconnu.
 
 \section{Contrôles et limite matérielle}
 Quatre approches indépendantes précèdent la confrontation : expansion
 hamiltonienne, combinatoire des permutations, matrices de Fock, et
-analyse dimensionnelle du code. Les matrices de Fock reproduisent les
+analyse dimensionnelle du code. Ces contrôles partagent des hypothèses
+physiques ; ils ne sont pas quatre validations physiques indépendantes.
+Les matrices de Fock reproduisent les
 coefficients avec une erreur relative inférieure à $1.5\,10^{-16}$.
 Un mauvais double comptage des tuples répétés multiplie l'amplitude
 par deux et la probabilité par quatre.
@@ -157,7 +167,9 @@ les six permutations reconstruites concordent à $2.4\,10^{-15}$
 en norme relative. Les lignes opposées sont $(2,26,14)$.
 Le raccordement unitaire par blocs permet un contrôle de conjugaison
 du canal orienté avec un résidu de $1.6\,10^{-14}$ au plus.
-La liberté physique de rotation exige des fréquences égales ; les blocs
+Ces résidus globaux ne sont pas des bornes d'erreur relative pour
+chaque entrée : l'audit obtient jusqu'à $1.7\,10^{-12}$ sur les canaux
+retenus. La liberté physique de rotation exige des fréquences égales ; les blocs
 numériques et leurs petits résidus ne prouvent pas une dégénérescence exacte.
 
 Parmi les 1472 entrées au-dessus de $10^{-12}$ du maximum de $P$,
@@ -166,16 +178,34 @@ $0.0064023$ THz. Cette observation concerne cette orientation et ce seuil,
 pas tous les canaux du matériau. Une largeur gaussienne non nulle
 n'autorise donc pas leur import comme événements exactement résonants.
 
+Le défaut de fermeture fini ne fournit pas une erreur quantitative
+pour la limite cinétique d'un matériau. Par exemple, dans le secteur
+$2X+Y=2$ du modèle de sauts avec $c=1$, le mélange équiprobable
+de $(1,0)$ et $(0,2)$ est stationnaire. Son flux exact vaut zéro,
+tandis que la fermeture géométrique aux mêmes moyennes
+$(p,a)=(1/2,1)$ prédit $J_e=1$. Retenir les secteurs complets
+préserve cette information ; retenir seulement leurs moyennes la perd.
+Aucun résultat sur une limite thermodynamique ne découle de cet exemple.
+
 \section{Suite et sources}
 La prochaine étape est une intégration d'énergie conservatrice,
 avec un modèle cinétique déclaré et une énumération globale vérifiée.
 Restent ensuite la convergence matérielle, la température, les frontières
 du film et la confrontation expérimentale.
 
-Sources primaires : Togo, Chaput et Tanaka, Phys.\ Rev.\ B
-\textbf{91}, 094306 (2015), doi:10.1103/\allowbreak PhysRevB.91.094306 ;
-Fugallo et al., Phys.\ Rev.\ B \textbf{88}, 045430 (2013),
-doi:10.1103/\allowbreak PhysRevB.88.045430.
-Les rapports, scripts, objections et limites sont conservés dans
+Sources primaires :
+\begin{itemize}
+\item Togo, Chaput et Tanaka, Phys.\ Rev.\ B \textbf{91}, 094306 (2015).
+\par doi:10.1103/PhysRevB.91.094306.
+\item Fugallo et al., Phys.\ Rev.\ B \textbf{88}, 045430 (2013).
+\par doi:10.1103/PhysRevB.88.045430.
+\item Gardiner et Zoller, Phys.\ Rev.\ A \textbf{55}, 2902 (1997).
+\par doi:10.1103/PhysRevA.55.2902.
+\end{itemize}
+Cette dernière source distingue équation des probabilités d'occupation
+et fermeture de leurs moyennes dans un gaz bosonique ; elle ne démontre
+pas le facteur de canal cubique de cette note.
+Les sources supplémentaires, leurs limites, les quatre revues adversariales
+et les réponses sont archivées dans
 \texttt{theory/aln/channel\_counting/}.
 \end{document}
