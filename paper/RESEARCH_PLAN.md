@@ -1,7 +1,9 @@
 # Manuscript scope and completion criteria
 
 Status: working plan, not a completed manuscript or novelty claim.
-Updated: 18 September 2026.
+Updated: 27 September 2026.
+
+The [claim-to-evidence map](CLAIM_MAP.md) separates available results from unsupported extrapolations.
 
 ## Candidate central question
 What do static thermal transport data determine about a conserving dynamic
