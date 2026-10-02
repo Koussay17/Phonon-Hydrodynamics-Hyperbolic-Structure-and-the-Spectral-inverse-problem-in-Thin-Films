@@ -90,7 +90,7 @@ Full claim-to-evidence mapping: [paper/CLAIM_MAP.md](paper/CLAIM_MAP.md).
 3. Produce the temperature and thickness map, and model film boundaries and interfaces for the actual geometry.
 4. Obtain laboratory data (sample, beams, interfaces, calibration), fit competing models and quantify uncertainty.
 
-Plan and completion criteria: [paper/RESEARCH_PLAN.md](paper/RESEARCH_PLAN.md).
+Plan and completion criteria: [paper/RESEARCH_PLAN.md](paper/RESEARCH_PLAN.md). Theory, simulation and digital-twin programme: [paper/PROGRAMME.md](paper/PROGRAMME.md).
 
 ---
 
