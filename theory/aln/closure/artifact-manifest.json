@@ -25,8 +25,8 @@
     },
     {
       "path": "theory/aln/closure/04-branches.md",
-      "bytes": 1324,
-      "sha256": "b8d186631f634c816f851b94f55419e3dffc2084ced7da0641165f30b3258a60"
+      "bytes": 1283,
+      "sha256": "53f9e07b8f0421655013ed160c78f145dd771218606407d70e1ec3874cb405f5"
     },
     {
       "path": "theory/aln/closure/05-evidence-ledger.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "theory/aln/closure/09-failed-approaches.md",
-      "bytes": 1544,
-      "sha256": "6c20ea4974ecb5ee539704822b68ec0c4192456c18b6f6ec4f44a7133e000ea2"
+      "bytes": 1487,
+      "sha256": "a06072251acfac6ea0d05081b3013b8296cb6f78c9b04ea19953e6c0eb0b9070"
     },
     {
       "path": "theory/aln/closure/10-proof-status.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": "theory/aln/closure/CAMPAIGN.md",
-      "bytes": 965,
-      "sha256": "f01ffb8b8383c4a0473c6f29e5c0d6756d4836de3a272d3973057d7234476e50"
+      "bytes": 953,
+      "sha256": "c73736b74da8a78af79135e4cd983926df5ef24554359464a3a2dace991dad8e"
     },
     {
       "path": "theory/aln/closure/checkpoint-01.md",
@@ -195,8 +195,8 @@
     },
     {
       "path": "theory/aln/closure/reports/A-projection.md",
-      "bytes": 14563,
-      "sha256": "b4ecee819344a517ee9d6222aecb852a0eab5de995fc779aeba727d8c7349bee"
+      "bytes": 14513,
+      "sha256": "f60a4dad12341841e7bd2d4c101719c4e5d8ae71fe70f6f951dc52f4caaa40f3"
     },
     {
       "path": "theory/aln/closure/reports/B-variational.md",
@@ -225,8 +225,8 @@
     },
     {
       "path": "theory/aln/closure/reports/discovery-B.md",
-      "bytes": 16452,
-      "sha256": "11144db5952f9938ed833460ead4f5f7b6d25c99d0ae6c2e8ff47fc39379e4f3"
+      "bytes": 16361,
+      "sha256": "b758539b1ef44ca81cb724f952eacbbafca236c2eda2e81f52f6af6c68c6808e"
     },
     {
       "path": "theory/aln/closure/reports/event-cone-proof-audit.md",
@@ -235,13 +235,13 @@
     },
     {
       "path": "theory/aln/closure/reports/L-literature.md",
-      "bytes": 20203,
-      "sha256": "6dd366cccf1fecdc51053e43d78962438dc4e68d877d5fca464da10be3f809b6"
+      "bytes": 19993,
+      "sha256": "2df210db33f5ea9fe44773d2e3ce80a95d2155582b46bfc53c237634d5e660c1"
     },
     {
       "path": "theory/aln/closure/reports/L2-literature.md",
-      "bytes": 21854,
-      "sha256": "c31b21531187f1d7108a8d249a7932aa4f84ba78c1e3bf07200c70a5fde54840"
+      "bytes": 21614,
+      "sha256": "b8280ec8c87ef624bbfafd96772ee0172a08b6d905bf26e431d6b29e31e6702c"
     },
     {
       "path": "theory/aln/closure/reports/operator-parity-check.md",
@@ -250,8 +250,8 @@
     },
     {
       "path": "theory/aln/closure/reports/red-counterexample.md",
-      "bytes": 13002,
-      "sha256": "c7176ec05449e284f9ca76e2b0d79c3df0a0d340bc802c2e4048e470817829d6"
+      "bytes": 12763,
+      "sha256": "fa2d01311dc5efbb0e33dde3fad4781f9cc869b16f5cd7dcde59b6603370cf84"
     },
     {
       "path": "theory/aln/closure/reports/red-numerical.md",
@@ -260,23 +260,23 @@
     },
     {
       "path": "theory/aln/closure/reports/red-peer-sources.md",
-      "bytes": 4369,
-      "sha256": "247303aee0c8e6a868108ab958f6d2d67988620b9068624b8eb9846172137ce6"
+      "bytes": 4125,
+      "sha256": "337cf3a48f343b914a4485661277ed2dcd120b28b5e5cbfa1f1fac250c9c2fb6"
     },
     {
       "path": "theory/aln/closure/reports/red-peer.md",
       "bytes": 15898,
-      "sha256": "2ee26a465f54cc5042eb606ea4bb840231f69da6cd52fa4d3c7fed843c2c4e99"
+      "sha256": "ddae51a2d46259b6021d9c22782b6d5923850e50aea6990f1fd58be354debb25"
     },
     {
       "path": "theory/aln/closure/reports/red-proof.md",
-      "bytes": 16991,
-      "sha256": "da8016d07daefba6f71e5623eb739219154199ef8df6862564655bc717caa74a"
+      "bytes": 16996,
+      "sha256": "fcbd753d6d86b363c96b3b7c8147b5f40dbfc6aea3150dea8dcca7b24e390bf3"
     },
     {
       "path": "theory/aln/closure/reports/second-generation-D.md",
-      "bytes": 15110,
-      "sha256": "ca6c3151a6544a7fdded4ff8a76695d53bc70e5d5caea80db93f0b5ae0e42535"
+      "bytes": 14711,
+      "sha256": "c076a492027fd776fcd57c140efda82e8a51c22750dfd58bed4a886e7d5ced88"
     },
     {
       "path": "theory/aln/closure/resume-environment.json",
@@ -285,8 +285,8 @@
     },
     {
       "path": "theory/aln/closure/storage.json",
-      "bytes": 420,
-      "sha256": "c28c92200d42ea99b5cc4eabb2eb962cfaa2fcd3f8edd65c5b8451644ba12bf7"
+      "bytes": 409,
+      "sha256": "999cda7af1d4c7a95d12d6e764e76d6368323221f9c11da2d565334acbf988ba"
     },
     {
       "path": "notes/17_AlN_spectral_temperature.tex",

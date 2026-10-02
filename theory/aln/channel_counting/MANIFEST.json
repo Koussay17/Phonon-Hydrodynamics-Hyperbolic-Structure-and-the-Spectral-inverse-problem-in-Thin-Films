@@ -3,7 +3,7 @@
   "01-known-results.md": "cf59d266aa6aa452a81dfd1647bbf110fd65890321ede89febb5f63888965f59",
   "02-assumptions.md": "b7c90a0b4b4d80e05e9467619f04ba1af9e8a737090fe946cb8b730f26c87714",
   "03-hypotheses.md": "cb83429e116c60546a837cfd1f471a0d9e196cd420ccc3d18b62516ef2fd2af5",
-  "04-branches.md": "3ea100c31760cf85eb4daf7641447a1c3111d61cfa956d8e0a4a70c1a7b96397",
+  "04-branches.md": "a40caa1be2b9c749ac91e22f8f0a2b19a7c2e7e9c394377458810e13cc108344",
   "05-evidence-ledger.md": "acf94025e91e482b83190c090150c931410b2ad4a97716879647cdb6bf70a832",
   "06-disagreements.md": "aa39096206f4e3a5168f0e63d5f175e10333206ece20d5b54566cd32dc8f283d",
   "07-experiments.md": "48dd3d0b294ef2ea5f2b4839836d79b744f0584bcaf8e39b671d5231867b35a3",
@@ -53,7 +53,7 @@
   "PUBLICATION_STATUS.md": "6d6e987966c7edd4f89b0c26f3b717df060904a0584096797e082b17ff1ce427",
   "README.md": "9bdc31171b43fe959288e34e2eebb868354aa0a3dc935ec74cd7f772b344b51c",
   "reproduction-status.json": "fcd3b1464c9e839000fba333730b793c0c7296b33029e4c39a8d6b77a83dd350",
-  "RESUME.md": "34d2c0f23544560c586bf0799b745c1175d181b419767d3f0b3e1901d81d49e7",
+  "RESUME.md": "81cd9c80cc4ab9a7f14cc44040a6d5b391b99aa5ad78591297efc707d58a68ff",
   "REVIEW_CANDIDATE.md": "d149e55dd3df42aa2422cb85606dfda7f13df5993e9f9bebdc0892eebe2aebab",
   "reviewed-finite-reproduction.json": "72fc41ee936f53ab2a92594767fdccd09028b1eee8a52f886578edd5b1ea8ee3"
 }

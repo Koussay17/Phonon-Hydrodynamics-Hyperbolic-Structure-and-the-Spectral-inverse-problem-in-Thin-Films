@@ -58,3 +58,12 @@ desktop.ini
 
 # Local rebuild intermediates
 .build/
+
+# Third-party publications: kept in the local reference library, never committed.
+notes/056102_1_5.0155055.pdf
+notes/155103_1_5.0257299.pdf
+notes/1708.07362v1.pdf
+notes/cheng2020aa.pdf
+notes/DOTA18247.1540825253_postprint.pdf
+notes/PhysRevB.90.035203.pdf
+notes/ThermalQuadrupoles_01.pdf

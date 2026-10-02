@@ -188,3 +188,10 @@ No core derivation was found wrong. Corrections:
 
 Validation: 241 tests passed (226 s); resonance reproduction 14/14; all 13 rebuilt notes compile without warnings;
 note 23, note 12 and figure 05 visually inspected.
+
+## Repository hygiene — 2 October 2026
+
+Third-party publication PDFs were removed from the repository and its history; they remain cited in the
+notes and README and are kept in a local reference library. Campaign documentation wording was harmonized,
+the branch-index files were renamed `04-branches.md`, and the affected campaign manifest entries were
+refreshed. Embedded file metadata was removed from historical figures and note PDFs without changing their content.

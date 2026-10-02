@@ -25,13 +25,13 @@
     },
     {
       "path": "theory/aln/events/04-branches.md",
-      "bytes": 826,
-      "sha256": "6f8110b734ea9c0108d4ba8dcff41fecc23758446d89ac20553d5c3ee91d62a8"
+      "bytes": 829,
+      "sha256": "8e2c47f9b13200f782331f838df9c72aedf15a1ea0ef5a855af4d9b1dfa1beae"
     },
     {
       "path": "theory/aln/events/05-evidence-ledger.md",
-      "bytes": 1046,
-      "sha256": "5f1a56e4205c8bb9f3050d281cb287bb8dd04951a21a136470dbcd3a9ed46a9a"
+      "bytes": 1024,
+      "sha256": "1474c8a3a1b691d784a272b4d0ebcadcb6db129a4cf772ffe7e6129bdfd7b86e"
     },
     {
       "path": "theory/aln/events/06-disagreements.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "theory/aln/events/09-failed-approaches.md",
-      "bytes": 948,
-      "sha256": "6380b5f91cb00b38ac2e8c15d9c12275e7a7a03be4fdd7520ce95d63a47f8290"
+      "bytes": 924,
+      "sha256": "152309a914cd44bdbe092ee4960bfff3e4deb2dbe81596697cc08840edf8ff7c"
     },
     {
       "path": "theory/aln/events/10-proof-status.md",
@@ -80,13 +80,13 @@
     },
     {
       "path": "theory/aln/events/branches/B-entropy-geometry.md",
-      "bytes": 16258,
-      "sha256": "5104f18f065cf59cea64a42d8044006711b777aaad9a50fe035a563d1f5ba8a7"
+      "bytes": 16126,
+      "sha256": "d264300508edd0f5ced2e4e40a01614e88cd3a58794ae055038fc13ce2462175"
     },
     {
       "path": "theory/aln/events/branches/C-parity-spectrum.md",
-      "bytes": 11894,
-      "sha256": "49c560e1a4841161398f9af1c2ce5148998b39186cad134b046b6527f7f42b00"
+      "bytes": 11835,
+      "sha256": "dddc0eaac6cbdf98668eeb6ca5b6c6cd6f30f1d98d70da2e0001df082fae6f48"
     },
     {
       "path": "theory/aln/events/branches/D-numerical-limits.md",
@@ -95,13 +95,13 @@
     },
     {
       "path": "theory/aln/events/branches/L-event-sources.md",
-      "bytes": 16801,
-      "sha256": "777ca5be6f11b6c4e8cae6d19eeb4c7f78920dc583ef42682be1683f9b802829"
+      "bytes": 16627,
+      "sha256": "7048108f1ee21374a8cb33563d49706b634071ff6e7531f97ec175d108ccbed7"
     },
     {
       "path": "theory/aln/events/branches/red-counterexamples.md",
-      "bytes": 7170,
-      "sha256": "8a73143d5295e03f28ab35e29536299620a910fadfa7bffed9368059f80bf8b2"
+      "bytes": 7141,
+      "sha256": "1003e58c8cdc438f9d624e03b0e0179348dfc6465f1f81d6c063a71e306185cc"
     },
     {
       "path": "theory/aln/events/branches/red-numerical.md",
@@ -110,18 +110,18 @@
     },
     {
       "path": "theory/aln/events/branches/red-peer.md",
-      "bytes": 10604,
-      "sha256": "33383aa49a5e5dbf820d4f2f2b74a3db0a58d6f60997c2b70f688969d3b39fbb"
+      "bytes": 10605,
+      "sha256": "34967cc45d119b001752bc1e216247dd7a70e8a56020b7d1bb24f58b7fd339d7"
     },
     {
       "path": "theory/aln/events/branches/red-proof.md",
-      "bytes": 11039,
-      "sha256": "0b18ef9429923b4e502137b7310e1fcb8b7d15c26a58295f9887487897e48776"
+      "bytes": 11028,
+      "sha256": "d800700aff907fa2a1c4633ace2de42897eccef548006e2cb1ee62bec2f7c3a0"
     },
     {
       "path": "theory/aln/events/branches/second-generation-import-check.md",
-      "bytes": 11091,
-      "sha256": "c338dea4bf8f5731881368d3adf0ab3055a6bc06eaae064072a119e6ae71734b"
+      "bytes": 11068,
+      "sha256": "3a65d4f70a0227cffef5c354bfc25ba679facb57eced3669b473828395d1064a"
     },
     {
       "path": "theory/aln/events/checkpoint-01.md",
@@ -250,8 +250,8 @@
     },
     {
       "path": "theory/aln/events/validation.json",
-      "bytes": 689,
-      "sha256": "1daa205d4230778774edbadb160c2609d80f714b8c1c625ff47a5c539e0b152b"
+      "bytes": 678,
+      "sha256": "61e8522d1789680eb918062d3027a89bf2f64e8c3cae4a52b7e3b79c13493e7d"
     },
     {
       "path": "src/collision_events.py",
