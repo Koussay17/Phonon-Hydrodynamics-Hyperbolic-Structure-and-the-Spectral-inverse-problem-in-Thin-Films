@@ -6,7 +6,7 @@
 | Eight triplet orbit multiplicities recovered | NUMERICALLY DEMONSTRATED | Independent integer enumeration |
 | Original export passes all checks | DISPROVED | Duplicate BZ frequencies exceed original tolerance |
 | Local NAC defect controlled by reciprocal cutoff | NUMERICALLY DEMONSTRATED | Fixed-Lambda sweep for one representative pair |
-| Full corrected export converges | UNKNOWN | Not rerun with corrected cutoff |
+| Full corrected export converges | UNKNOWN | Selected-point corrected exports exist (rows below, 25 Sep); full-mesh convergence untested |
 | Canonical conserving AlN operator validated | UNKNOWN | Counting and integration remain open |
 | Quantitative material rates / hydrodynamic classification | UNKNOWN | Coarse rates strongly width-sensitive |
 | New theorem or formal verification | NONE | Neither attempted nor claimed in this pilot |
@@ -17,5 +17,7 @@ The selected-point exports have now been recalculated at cutoff factors 1, 1.5 a
 
 Maximum branchwise relative linewidth change from baseline is 4.63e-7; between factors 1.5 and 2 it is 1.39e-13. Raw pp entries differ by 0.110 scaled by the maximum pp entry between the enlarged cutoffs, requiring a degeneracy-aware comparison. This is a selected-point, fixed-mesh numerical result, not a converged material operator. See export-cutoff-comparison.json and continuation report for subsequent evidence.
 
+| Claim | Status | Evidence |
+|---|---|---|
 | Corrected selected export passes original checks | NUMERICALLY DEMONSTRATED | Factors1.5/2, fixed Lambda, same grid and inputs |
 | Degenerate-block pp sums stable | NUMERICALLY DEMONSTRATED | Saved-array grouping and projector checks; not full operator equivalence |

@@ -192,6 +192,42 @@ def _check_design(sample, names, sigma, step):
             raise ValueError(f"{name} must be finite and positive")
 
 
+_DIFFUSIVITY_PROPERTIES = {"film_lam", "film_rho_c", "film_lam_back", "film_rho_c_back"}
+
+
+def _check_parametrization(sample, names):
+    """Reject parameter sets that the forward model cannot perturb.
+
+    A graded layer without `graded_xi1` is the constant-diffusivity form, and
+    `Sample` enforces a_back = a_front. Perturbing any single front or back
+    property breaks that equality, so every perturbed model is invalid. A fit
+    would then see only sentinel residuals and stop at its start, reporting
+    convergence. Fitting these properties requires the explicit
+    variable-diffusivity form with `graded_xi1`.
+    """
+    if sample.is_graded and sample.graded_xi1 is None:
+        offending = sorted(_DIFFUSIVITY_PROPERTIES & set(names))
+        if offending:
+            raise ValueError(
+                "constant-diffusivity graded layer: perturbing "
+                + ", ".join(offending)
+                + " breaks a_back = a_front; supply graded_xi1 to fit these properties")
+
+
+def _solution_is_valid(fun, jac):
+    """True when the optimum is a genuine model evaluation with a usable Jacobian."""
+    fun = np.asarray(fun)
+    jac = np.asarray(jac)
+    return bool(np.all(fun != _INVALID) and np.all(np.any(jac != 0.0, axis=0)))
+
+
+def _fit_message(out):
+    if _solution_is_valid(out.fun, out.jac):
+        return str(out.message)
+    return ("invalid model evaluations at the solution (sentinel residuals or a zero "
+            "Jacobian column); optimizer reported: " + str(out.message))
+
+
 def _check_scale_gauge(sample, names):
     if not sample.is_graded and {"film_lam", "film_rho_c", "thickness"} <= set(names):
         raise NonIdentifiableError("film conductivity, heat capacity and thickness share an exact scale gauge")
@@ -207,6 +243,7 @@ def fisher_analysis(freq, sample: fm.Sample, names,
     """
     names = list(names)
     _check_design(sample, names, sigma_rel, step)
+    _check_parametrization(sample, names)
     _check_scale_gauge(sample, names)
     log0 = np.array([np.log(getattr(sample, n)) for n in names])
 
@@ -261,11 +298,10 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
     amplitude = np.asarray(amplitude, dtype=float)
     phase_deg = np.asarray(phase_deg, dtype=float)
 
-    for n in names:
-        if getattr(initial, n) <= 0.0:
-            raise ValueError(f"{n} must be strictly positive to be fitted in log space")
-
+    # _check_design rejects None, non-finite and non-positive values with a
+    # ValueError; it must run before any numerical comparison.
     _check_design(initial, names, sigma_rel, 1e-5)
+    _check_parametrization(initial, names)
     log0 = np.array([np.log(getattr(initial, n)) for n in names])
 
     if not np.isfinite(sigma_phase) or sigma_phase <= 0:
@@ -303,8 +339,8 @@ def fit_modulated(freq, amplitude, phase_deg, initial: fm.Sample, names,
         sample=_apply(initial, names, out.x),
         chi2=float(2.0 * out.cost),
         n_data=int(2 * freq.size),
-        success=bool(out.success),
-        message=str(out.message),
+        success=bool(out.success) and _solution_is_valid(out.fun, out.jac),
+        message=_fit_message(out),
     )
 
 
@@ -431,11 +467,8 @@ def fit_pulsed(times, temperature, initial: fm.Sample, names,
     times = np.asarray(times, dtype=float)
     temperature = np.asarray(temperature, dtype=float)
 
-    for n in names:
-        if getattr(initial, n) <= 0.0:
-            raise ValueError(f"{n} must be strictly positive to be fitted in log space")
-
     _check_design(initial, names, sigma_rel, 1e-5)
+    _check_parametrization(initial, names)
     log0 = np.array([np.log(getattr(initial, n)) for n in names])
     if (times.ndim != 1 or not times.size or temperature.shape != times.shape
         or np.any(times <= 0) or np.any(temperature <= 0)
@@ -470,6 +503,6 @@ def fit_pulsed(times, temperature, initial: fm.Sample, names,
         sample=_apply(initial, names, out.x),
         chi2=float(2.0 * out.cost),
         n_data=int(times.size),
-        success=bool(out.success),
-        message=str(out.message),
+        success=bool(out.success) and _solution_is_valid(out.fun, out.jac),
+        message=_fit_message(out),
     )

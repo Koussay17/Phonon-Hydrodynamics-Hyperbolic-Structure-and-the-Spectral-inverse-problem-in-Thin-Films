@@ -4,7 +4,7 @@
 
 ## Independent method and provenance
 
-Script: ../scripts/B_check_grid_orbits.py. Detailed machine-readable results, source hashes, input hashes, and reconstructed maps: ../runs/gp1-m333/B_grid_orbits.json.
+Script: ../scripts/B_check_grid_orbits.py. Detailed machine-readable results, source hashes, input hashes, and reconstructed maps: ../runs/gp1-m333/B_grid_orbits.json (published repository copy: ../results/B_grid_orbits.json).
 
 Read the actual POSCAR, phonon grid addresses, reduced/full triplets and weights. Construct direct-cell symmetry from spglib at symprec=1e-5, convert each integer rotation R to R^(-T), add time reversal, and build permutations of Z_3^3. Group closure and orbit enumeration use independent integer permutation composition and breadth-first search. Neither exported weights nor native map_triplets are inputs to that enumeration.
 

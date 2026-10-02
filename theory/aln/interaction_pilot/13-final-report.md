@@ -3,7 +3,7 @@
 ## Main conclusion
 A real public AlN force-constant dataset now produces a reproducible small interaction export. A separately written NumPy accumulator reconstructs 12 half-linewidths at one external wavevector: maximum absolute discrepancy 6.94e-18 THz, or 2.96e-16 divided by the largest reference linewidth. This validates selected scalar accounting under the pinned conventions, not upstream microscopic normalization or a physical collision operator.
 
-The original duplicate-frequency check FAILS: 6.8181e-8 THz exceeds 1e-10. Matrix controls localize it to the polar correction. Holding Lambda fixed while increasing its reciprocal cutoff reduces the tested gauge-aligned matrix defect from 1.35e-8 to about 5e-16. This supports a reciprocal-truncation explanation at that pair. No corrected full interaction export has been performed.
+The original duplicate-frequency check FAILS: 6.8181e-8 THz exceeds 1e-10. Matrix controls localize it to the polar correction. Holding Lambda fixed while increasing its reciprocal cutoff reduces the tested gauge-aligned matrix defect from 1.35e-8 to about 5e-16. This supports a reciprocal-truncation explanation at that pair. No corrected full interaction export had been performed at this checkpoint (superseded on 25 Sep 2026: corrected selected-point exports at cutoff factors 1.5 and 2 are reported in continuation-export-report.md and below).
 
 Changing Gaussian width 0.1 to 0.05 THz changes branch linewidth ratios to 0.463--1.663; changing to 0.2 gives 0.707--2.933. These are sensitivity observations, not material error bars.
 

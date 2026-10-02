@@ -136,6 +136,10 @@ historique alpha=2, conservatrice alpha=1/3.
 La structure du solveur en tau_l ne change pas. Dans la limite collective,
 tau_l=9 tau_N/5 pour la convention historique et 4 tau_N/5 pour la
 conservatrice. Ni 1,8 ni 0,8 n'est un rapport hydrodynamique fortement séparé.
+Ces deux valeurs supposent tau_c≈tau_N. En conservant tau_c=(1/tau_N+1/tau_R)⁻¹,
+l'historique donne tau_l=9 tau_c/5, donc la droite de résonance en tau_R/tau_N=0,8,
+et la conservatrice donne tau_l=4 tau_c/5<tau_R : aucune résonance. La droite tracée
+est un repère formel dépendant de la fermeture, pas une frontière physique.
 Le temps résistif volumique ne doit pas compter à nouveau les frontières déjà
 décrites par leurs conditions de bord.
 L'API d'entropie ell_sq conserve L²=3 ell_sq : pour une longueur CE
@@ -167,7 +171,8 @@ traite directement GK en thermoréflectance ; le manuscrit accepté est comparé
 
 Dans la convention historique, avec les coefficients isotropes `a=v²τ_R/3` et `ℓ²=v²τ_Nτ_R/5`
 ([Lebon et Dauby, 1990](https://doi.org/10.1103/PhysRevA.42.4710)),
-`τ_ℓ=9τ_N/5`. Le rapport formel `τ_R/τ_N=1,8` ne satisfait pas `τ_N≪τ_R`.
+`τ_ℓ=9τ_N/5`. Le rapport formel `τ_R/τ_N=1,8` ne satisfait pas `τ_N≪τ_R`,
+et il disparaît dès que `τ_c` est conservé (§7.1 : 0,8 en historique, aucun en conservatrice).
 Il ne prouve pas l'ouverture hydrodynamique lors d'un refroidissement.
 Les sources intérieures et conditions initiales générales ne sont pas couvertes
 par une affirmation d'indiscernabilité universelle.

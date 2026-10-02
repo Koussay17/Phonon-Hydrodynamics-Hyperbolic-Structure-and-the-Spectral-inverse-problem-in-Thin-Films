@@ -147,9 +147,17 @@ def sample_posterior(freq, amplitude, phase_deg, initial: fm.Sample, names,
     amplitude = np.asarray(amplitude, dtype=float)
     phase_deg = np.asarray(phase_deg, dtype=float)
 
+    if any(getattr(initial, n) is None for n in names):
+        raise ValueError("all sampled parameters must be strictly positive")
     start = np.array([getattr(initial, n) for n in names], dtype=float)
     if not names or len(set(names)) != len(names) or np.any(~np.isfinite(start)) or np.any(start <= 0.0):
         raise ValueError("all sampled parameters must be strictly positive")
+    # Same guard as inversion._check_parametrization: a constant-diffusivity
+    # graded layer gives -inf log-probability for every perturbed walker.
+    if initial.is_graded and initial.graded_xi1 is None and (
+            {"film_lam", "film_rho_c", "film_lam_back", "film_rho_c_back"} & set(names)):
+        raise ValueError("constant-diffusivity graded layer: supply graded_xi1 to sample "
+                         "front or back film properties")
 
     if bounds is None:
         bounds = [(v / 100.0, v * 100.0) for v in start]

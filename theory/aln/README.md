@@ -64,3 +64,17 @@ See events/13-final-report.md and note 19. The sparse event action has independe
 nonlinear, geometric, parity and numerical checks. The available AlN force
 constants are only inputs for a future export pilot; no material event
 normalization, physical energy integration or converged hydrodynamic model follows.
+
+## Dataset tension at 300 K (audit, 2 October 2026)
+
+Rao's RTA conductivity (309.78 basal / 302.44 c, W/(m K)) exceeds the Phonon Olympics values,
+although Rao includes isotope scattering and the Olympics ShengBTE control disables it.
+Isotopes do not explain this: removing Rao's isotope rate raises its RTA conductivity by only
+0.1–0.2% (310.2 / 302.8; recomputed from `rao_300K_modes.npz` as (xx+yy)/2 over the full star).
+Phonon Olympics (J. Appl. Phys. 138, 135108 (2025), AlN table) reports, for one set of force constants,
+RTA 282/263 (ALAMODE), 253/232 (phono3py), 271/251 (ShengBTE), and full solutions 285/271 (phono3py)
+and 298/291 (ShengBTE). Rao lies 10–30% above that inter-code range, with smaller anisotropy
+(2.4% vs 7–9%). The difference therefore lies in the first-principles inputs, not the BTE solver.
+Treat about 15–20% as a between-dataset input uncertainty on κ. A material operator built from the
+Olympics force constants (already used by the interaction pilot) should be compared with Olympics values,
+not with Rao.

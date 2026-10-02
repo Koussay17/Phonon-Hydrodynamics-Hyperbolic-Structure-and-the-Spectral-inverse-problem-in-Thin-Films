@@ -116,8 +116,9 @@ sensibilité $S_\tau = \mathrm{d}\phi/\mathrm{d}\ln\tau$ y prend une valeur non 
 
 \textbf{Compatibilité des hypothèses.} Compatible sur le fond, plus restreinte sur la forme.
 La loi constitutive est celle du présent travail (Cattaneo, un seul temps de relaxation, pas de
-terme non local). La substitution spectrale est identique à celle codée dans
-\code{src/\allowbreak forward\_model.py} (§~2.3). Les restrictions du modèle sont plus fortes : absence de
+terme non local). Le paramètre spectral $\sigma_{cv}$ est identique à celui codé dans
+\code{src/\allowbreak forward\_model.py} (§~2.3), qui emploie en outre le coefficient de flux
+$\lambda_{\mathrm{eff}}=\lambda/(1+\tau p)$ (§~10.1). Les restrictions du modèle sont plus fortes : absence de
 conductance d'interface, absence de pertes, absence de modèle de bruit, absence de matrice de
 covariance (§~3.4).
 
@@ -193,12 +194,12 @@ En posant $p = i\omega$, cela s'écrit
 \[
 \sigma_{cv}^2 = \frac{p\,(1+\tau p)}{\alpha}
 \]
-C'est la substitution $p \mapsto p(1+\tau p)$ utilisée dans le modèle direct du présent travail.
-L'article y parvient indépendamment, par une voie différente --- fonction de Green
-tridimensionnelle axisymétrique et transformée de Hankel --- et sans en tirer la conséquence
-structurelle : puisque la substitution n'affecte que $p$, la loi de Cattaneo laisse invariante
-toute structure du modèle direct qui ne dépend de $p$ que par $\sigma$. C'est le résultat
-négatif déjà consigné dans \code{tests/}.
+Ce paramètre spectral est celui du modèle direct du présent travail. L'article y parvient
+indépendamment, par une voie différente --- fonction de Green tridimensionnelle axisymétrique et
+transformée de Hankel. La substitution $p \mapsto p(1+\tau p)$ ne suffit cependant pas : le flux
+porte le coefficient $\lambda_{\mathrm{eff}}=\lambda/(1+\tau p)$ (§~10.1 ; conventions, §~7).
+Seules les structures qui ne dépendent de $p$ que par $\sigma$ sont donc invariantes ; le
+coefficient de flux, lui, change.
 
 Le rapport des deux paramètres spectraux,
 \[
@@ -558,7 +559,7 @@ sous-espace des autres colonnes tend vers zéro. La grandeur déterminante est u
 norme.
 
 C'est exactement la distinction que Krapez \& Rigollet opposent à Guo \textit{et al.} --- voir
-\code{notes/\allowbreak krapez\_2017.md}, §~6 : une dérivée du signal grande n'établit pas qu'un paramètre
+\code{notes/\allowbreak 05\_Fiche\_de\_lecture\_Krapez\_Rigollet\_2017.tex}, §§~5--6 : une dérivée du signal grande n'établit pas qu'un paramètre
 soit identifiable, seule la structure de corrélation le fait.
 
 \subsection{L'inférence de l'article}
@@ -727,7 +728,7 @@ Trois éléments internes départagent en faveur de l'abscisse en rad\,s$^{-1}$.
 \item Le texte identifie systématiquement le seuil à la valeur $\tau^{-1}$ lue directement sur
       l'abscisse.
 \item L'étendue des abscisses, $10^4$ à $10^9$, correspond en fréquence à
-      $1{,}6$~kHz~--~$160$~MHz, soit très exactement la bande 10~kHz~--~200~MHz que l'article
+      $1{,}6$~kHz~--~$160$~MHz, proche de la bande 10~kHz~--~200~MHz que l'article
       annonce lui-même en introduction comme gamme usuelle de modulation FDTR (réf.~39 et 40).
 \end{enumerate}
 

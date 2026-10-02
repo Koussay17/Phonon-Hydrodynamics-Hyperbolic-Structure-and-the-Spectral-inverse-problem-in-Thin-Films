@@ -4,14 +4,16 @@ Source: Ma, Li and Luo (2014), Fig. 7; restricted acoustic slice of the
 angular-frequency axis marked omega (THz), 2 to 10. Readings are approximate
 (factor about two), not digitized data and not a full-spectrum average.
 Fourier resonance: Kovacs (2018), arXiv:1804.05225.
-The formal historical-GK x=1.8 line does not satisfy tau_N << tau_R.
-The conserving closure has a different conversion; see note 14.
+The formal historical-GK x=1.8 line does not satisfy tau_N << tau_R and
+assumes tau_c ~ tau_N. Keeping tau_c=(1/tau_N+1/tau_R)^-1 moves it to x=0.8
+(historical) or removes it (conserving closure); see note 14.
 """
 from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
 BLIND_X = 1.8
+BLIND_X_TAU_C = 0.8  # historical closure with tau_c retained (note 14)
 ALN_VELOCITY = 6000.
 ALN_TAU_N = (4e-10, 1e-8)
 ALN_X_RANGE = (10., 200.)
@@ -61,9 +63,14 @@ def main():
     ax.plot(xs,xs,color=".3",lw=1.3)
     ax.axhline(1,color=".3",lw=1.3)
     ax.axvline(BLIND_X,color="#b03030",lw=1.5,ls="--")
-    ax.annotate("x = 1,8 : GK historique extrapolé\nsans séparation forte",
+    ax.annotate("x = 1,8 : GK historique extrapolé\n"
+                r"($\tau_c\approx\tau_N$), sans séparation forte",
                 (BLIND_X,2e-3),xytext=(6,3),textcoords="offset points",
                 fontsize=8,color="#b03030")
+    ax.axvline(BLIND_X_TAU_C,color="#b03030",lw=1.0,ls=":")
+    ax.annotate("x = 0,8 :\nhistorique,\n" r"$\tau_c$ conservé",
+                (BLIND_X_TAU_C,2e-3),xytext=(-6,3),textcoords="offset points",
+                fontsize=7,color="#b03030",ha="right")
     ax.text(.3,2e3,"résistif",fontsize=11,color="#8a6a20",ha="center")
     ax.text(2e3,.035,"frontières\ndominantes",fontsize=10,color="#2a5a80",ha="center")
     ax.text(2e3,15,"candidat hydrodynamique\nexiger 1 ≪ y ≪ x",

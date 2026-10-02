@@ -94,3 +94,43 @@ def test_sub_crossover_relaxation_can_have_resolvable_ideal_phase():
 def test_wavenumber_branch_decays_into_the_sample():
     k=adm.wavenumber(np.array([1e6,1e8]),60/2.41e6,1e-9,2e-10)
     assert np.all(k.imag>0)
+
+
+# --- 2 October 2026 audit: graded-film parametrization and silent fit success ---
+
+def _constant_diffusivity_graded(**kw):
+    # 30/1.205e6 equals 60/2.41e6, so the default graded layer has constant diffusivity.
+    return fm.Sample(film_lam_back=30.0, film_rho_c_back=1.205e6, **kw)
+
+@pytest.mark.parametrize("name",["film_lam","film_rho_c","film_lam_back","film_rho_c_back"])
+def test_constant_diffusivity_graded_property_fit_is_rejected_explicitly(name):
+    f=np.logspace(4,8,20); a,p=fm.modulated_response(f,_constant_diffusivity_graded())
+    with pytest.raises(ValueError,match="graded_xi1"):
+        inv.fit_modulated(f,a,p,_constant_diffusivity_graded(),[name])
+    with pytest.raises(ValueError,match="graded_xi1"):
+        inv.fisher_analysis(f,_constant_diffusivity_graded(),[name])
+
+def test_constant_diffusivity_graded_thickness_still_fits():
+    f=np.logspace(4,8,40); a,p=fm.modulated_response(f,_constant_diffusivity_graded())
+    r=inv.fit_modulated(f,a,p,_constant_diffusivity_graded(thickness=450e-9),["thickness"])
+    assert r.success and r.values[0]==pytest.approx(500e-9,rel=1e-8)
+
+def test_variable_diffusivity_graded_fit_with_explicit_xi1():
+    xi1=1.1*fm.Sample().xi1
+    truth=fm.Sample(film_lam_back=30.0,film_rho_c_back=2.0e6,graded_xi1=xi1)
+    f=np.logspace(4,8,40); a,p=fm.modulated_response(f,truth)
+    r=inv.fit_modulated(f,a,p,replace(truth,film_lam=50.0),["film_lam"])
+    assert r.success and r.values[0]==pytest.approx(60.0,rel=1e-8)
+
+def test_fit_reports_failure_when_solution_is_a_sentinel():
+    fun=np.full(4,inv._INVALID); jac=np.zeros((4,1))
+    assert not inv._solution_is_valid(fun,jac)
+    assert not inv._solution_is_valid(np.zeros(4),np.zeros((4,1)))
+    assert inv._solution_is_valid(np.zeros(4),np.ones((4,1)))
+
+def test_none_parameter_raises_value_error_not_type_error():
+    f=np.logspace(4,8,10); a,p=fm.modulated_response(f,fm.Sample())
+    with pytest.raises(ValueError):
+        inv.fit_modulated(f,a,p,fm.Sample(),["film_lam_back"])
+    with pytest.raises(ValueError):
+        inv.fit_pulsed(np.logspace(-9,-6,10),np.ones(10),fm.Sample(),["film_lam_back"])
