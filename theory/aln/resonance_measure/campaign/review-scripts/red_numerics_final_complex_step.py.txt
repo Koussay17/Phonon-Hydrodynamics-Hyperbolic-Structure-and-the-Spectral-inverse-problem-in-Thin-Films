@@ -1,0 +1,153 @@
+"""Final red numerical review -- Task 2: complex-step derivative accuracy of F and
+Lambda through the CURRENT log-space reaction_data (repository C2_weak_form.py),
+using the module's own complex_jacobian (step 1e-28).
+
+References: route 1 = mpmath analytic derivatives in the identity form
+  dF_j = B dlogB_j (e^{-d}-1) - B e^{-d} dd_j ,  dL_j = B dlogB_j g(d) + B g'(d) dd_j,
+  g(d) = (1-e^{-d})/d, g'(d) = (e^{-d}(1+d)-1)/d^2  (g(0)=1, g'(0)=-1/2), d exact;
+route 2 = definitional dF = A dlogA - B dlogB and quotient rule, 220 digits.
+For comparison the direct-Bose-product complex step used by the harness
+(rhs(..., direct_products=True)) is measured on the same inputs.
+
+Usage: python -B red_numerics_final_complex_step.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+import time
+from fractions import Fraction
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_complex_step.json"
+SEED = 2026100202
+H = 1e-28
+
+
+def loguniform(rng, lo, hi, size):
+    return np.exp(rng.uniform(math.log(lo), math.log(hi), size))
+
+
+def build(rng):
+    sets = {}
+    sets["D1_independent_loguniform"] = [tuple(v) for v in loguniform(rng, 1e-12, 1e3, (2500, 3))]
+    rows = []
+    bases = [(3e-7, 5e-7), (1e-2, 2e-2), (0.3, 0.45), (1.7, 2.9), (13.0, 21.0), (150.0, 230.0)]
+    dvals = sorted(set([s * 10.0 ** k for k in np.linspace(-16, 0, 129) for s in (-1.0, 1.0)]
+                       + [s * 1e-5 * (1 + t) for t in np.linspace(-0.02, 0.02, 41) for s in (-1.0, 1.0)]))
+    for xa, xb in bases:
+        for dv in dvals:
+            xp = (xa + xb) + dv
+            if xp > 0:
+                rows.append((xp, xa, xb))
+    sets["D2_affinity_sweep_through_zero_and_series_cutoff"] = rows
+    rows = []
+    while len(rows) < 400:
+        xp = float(loguniform(rng, 2e-12, 1e3, 1)[0])
+        xa = float(rng.uniform(0.5, 1.0) * xp)
+        xb = xp - xa
+        if xb >= 1e-12 and Fraction(xp) == Fraction(xa) + Fraction(xb):
+            rows.append((xp, xa, xb))
+    sets["D3_exact_resonance"] = rows
+    rows = [(xp, 400.0, 400.0) for xp in np.arange(500.0, 761.0, 5.0)]
+    rows += [(xa + xb + 3.0, xa, xb) for xa, xb in [(s / 2, s / 2) for s in np.arange(500.0, 761.0, 10.0)]]
+    sets["D4_tiny_outputs_underflow_sweep"] = rows
+    sets["D5_xi_to_zero"] = [tuple(v) for v in loguniform(rng, 1e-12, 1e-6, (400, 3))]
+    return sets
+
+
+def relerr_vec(x, ref):
+    num = math.sqrt(sum(float(abs(mp.mpf(float(x[j])) - ref[j]))**2 for j in range(3)))
+    den = math.sqrt(sum(float(abs(ref[j]))**2 for j in range(3)))
+    return num / den if den > 0 else (0.0 if num == 0 else float("inf"))
+
+
+def componentwise(x, ref, floor=1e-6):
+    den = math.sqrt(sum(float(abs(ref[j]))**2 for j in range(3)))
+    worst = 0.0
+    for j in range(3):
+        if float(abs(ref[j])) >= floor * den and ref[j] != 0:
+            worst = max(worst, float(abs(mp.mpf(float(x[j])) - ref[j]) / abs(ref[j])))
+    return worst
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    t0 = time.time()
+    rng = np.random.default_rng(SEED)
+    module = C.load_current_c2()
+    model = C.single_event_model(module)
+    sets = build(rng)
+    flux = lambda z: model.reaction_data(z)[1]
+    mobility = lambda z: model.reaction_data(z)[2]
+    direct_flux = lambda z: -model.rhs(z, direct_products=True)[:1]   # b[0]=1 so F=-rhs[0]
+
+    results = {"meta": {"step": H, "seed": SEED, "current_C2_sha256": C.sha256(C.C2_PATH),
+                        "numpy": np.__version__, "mpmath": mp.__version__}}
+    for name, rows in sets.items():
+        recs = []
+        route_gap = 0.0
+        for xi in rows:
+            xi = tuple(float(v) for v in xi)
+            alpha = np.array(xi)
+            with np.errstate(all="ignore"):
+                JF = module.complex_jacobian(flux, alpha, step=H)[0]
+                JL = module.complex_jacobian(mobility, alpha, step=H)[0]
+                JD = module.complex_jacobian(direct_flux, alpha, step=H)[0]
+                # real parts of the complex evaluation versus the real evaluation
+                zF = flux(alpha.astype(complex) + 1j * H * np.array([1.0, 0, 0]))[0]
+                rF = flux(alpha)[0]
+            ref = C.mp_reference(*xi, dps=60, derivatives=True)
+            if name != "D1_independent_loguniform" or len(recs) < 300:
+                r2 = C.mp_definitional_derivatives(*xi)
+                with mp.workdps(60):
+                    for a, b in zip(r2["dF"], ref["dF"]):
+                        if a != 0 or b != 0:
+                            route_gap = max(route_gap, float(abs(a - b) / max(abs(a), abs(b))))
+                    if r2["dL"] is not None:
+                        for a, b in zip(r2["dL"], ref["dL"]):
+                            if a != 0 or b != 0:
+                                route_gap = max(route_gap, float(abs(a - b) / max(abs(a), abs(b))))
+            with mp.workdps(60):
+                rec = {"xi": list(xi), "d_exact": float(ref["d"]), "F_ref": float(ref["F"]),
+                       "L_ref": float(ref["L"]),
+                       "gradF_norm_ref": float(mp.sqrt(mp.fsum(v**2 for v in ref["dF"]))),
+                       "errF_norm": relerr_vec(JF, ref["dF"]), "errL_norm": relerr_vec(JL, ref["dL"]),
+                       "errF_comp": componentwise(JF, ref["dF"]), "errL_comp": componentwise(JL, ref["dL"]),
+                       "errDirect_norm": relerr_vec(JD, ref["dF"]),
+                       "finite": bool(np.all(np.isfinite(JF)) and np.all(np.isfinite(JL))),
+                       "real_part_consistency": (abs(zF.real - rF) / abs(rF)) if rF != 0 else abs(zF.real)}
+            recs.append(rec)
+        def stats(key):
+            vals = np.array([r[key] for r in recs if np.isfinite(r[key])])
+            worst = recs[int(np.nanargmax([r[key] if np.isfinite(r[key]) else -1 for r in recs]))]
+            return {"max": float(vals.max()), "median": float(np.median(vals)),
+                    "count_gt_1e-13": int((vals > 1e-13).sum()), "count_gt_1e-10": int((vals > 1e-10).sum()),
+                    "worst_xi": worst["xi"], "worst_d": worst["d_exact"], "worst_F_ref": worst["F_ref"]}
+        summary = {"count": len(recs), "nonfinite_jacobians": sum(1 for r in recs if not r["finite"]),
+                   "route1_vs_route2_max_rel_gap": route_gap,
+                   "flux_normwise": stats("errF_norm"), "flux_componentwise": stats("errF_comp"),
+                   "mobility_normwise": stats("errL_norm"), "mobility_componentwise": stats("errL_comp"),
+                   "direct_product_flux_normwise_(harness_path)": stats("errDirect_norm"),
+                   "real_part_consistency_max": float(max(r["real_part_consistency"] for r in recs))}
+        if name in ("D2_affinity_sweep_through_zero_and_series_cutoff", "D4_tiny_outputs_underflow_sweep"):
+            summary["records"] = recs
+        results[name] = summary
+        print(name, round(time.time() - t0, 1), "s", flush=True)
+    OUT_JSON.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+    print("wrote", OUT_JSON)
+
+
+if __name__ == "__main__":
+    main()

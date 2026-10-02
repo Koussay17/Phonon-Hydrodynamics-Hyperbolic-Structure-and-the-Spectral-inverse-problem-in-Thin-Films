@@ -1,0 +1,126 @@
+{
+  "status": "all counterexample assertions passed",
+  "frozen_source_sha256": "933e7ae55004274b2c33c6fcc709879bc1f49bb1bd7b3a5cf425d69e7c136e5c",
+  "implementation_range_failure": {
+    "volume_alpha": [
+      1.0,
+      2.0
+    ],
+    "parent_evaluation": [
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "daughter_evaluation": [
+      [
+        -399.5,
+        400.0
+      ]
+    ],
+    "event_energies": [
+      1.0,
+      0.5,
+      0.5
+    ],
+    "event_xi": [
+      1.0,
+      400.5,
+      400.5
+    ],
+    "energy_residual": 0.0,
+    "capacity_condition_number": 5.086161269630487,
+    "affinity": -800.0,
+    "stable_flux": "NaN",
+    "stable_mobility": "NaN",
+    "stable_rhs": [
+      "NaN",
+      "NaN"
+    ],
+    "direct_rhs": [
+      -465.58136549546117,
+      465.58136549546117
+    ],
+    "decimal_flux": "0.5819767068693264243850020051090115585468693010753961362667870596480438173916697432872047094048750578",
+    "decimal_mobility": "0.0007274708835866580304812525063862644481835866263442451703334838245600547717395871791090058867560938222",
+    "warnings": [
+      "invalid value encountered in multiply",
+      "overflow encountered in expm1"
+    ]
+  },
+  "finite_weak_form_domain_exit": {
+    "box_alpha": [
+      [
+        1,
+        1.002
+      ],
+      [
+        2,
+        2.01
+      ],
+      [
+        2.98,
+        3
+      ]
+    ],
+    "initial_alpha": [
+      1.0005,
+      2,
+      3
+    ],
+    "initial_parent_xi": 0.001,
+    "P_M_inverse_b_upper_bound": -3.342654882440203,
+    "delta_times_flux_lower_bound": 1.5728191305537922,
+    "coordinate_change_bounds_until_exit": [
+      0.00036362274995451,
+      0.0018657686739959993,
+      0.012090215994370353
+    ],
+    "exit_time_upper_bound": 1.1111111111111111e-07,
+    "method": "analytic differential inequality and bootstrap; no time integration"
+  },
+  "projected_mobility_domain_exit": {
+    "L_upper_bound": -0.27920357447622707,
+    "L_absolute_upper_bound": 0.6932164952780012,
+    "exit_time_upper_bound": 0.0008,
+    "method": "analytic differential inequality; no time integration"
+  },
+  "constrained_step_invariant_rate": -0.2876820724517809,
+  "fock_sector": {
+    "states": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "state_parent_drifts": [
+      12,
+      -8,
+      -4
+    ],
+    "retained_means_both_laws": [
+      1,
+      2
+    ],
+    "parent_mean_derivatives": [
+      "-8",
+      "4"
+    ]
+  },
+  "lorentzian_infrared": {
+    "sigma": 0.1,
+    "epsilon": 1.0,
+    "beta": 1.0,
+    "rho_at_zero": 0.03254844662599732,
+    "occupation_log_divergence_coefficient": 0.03254844662599732,
+    "method": "analytic x->0 asymptotic; no material spectral model asserted"
+  }
+}

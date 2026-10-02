@@ -1,0 +1,16 @@
+# Proof status — final (2 October 2026)
+- **PROVED** under the stated finite hypotheses (proof-audited, not formally verified):
+  - local well-posedness of the entropy weak form, with M positive definite;
+  - U̇ = Kα, Ṡ_Q = αᵀKα ≥ 0 and eᵀKe = ΣωΛΔ²;
+  - on exact roots: quadrature energy conservation and Bose stationarity;
+  - a linearized PSD generator with the energy null vector;
+  - the positive off-shell heating obstruction, for unchanged rows and a common Bose rate.
+- **DERIVED UNDER ASSUMPTIONS:**
+  - the regular coarea identity (requires Δ ∈ C¹, ∇Δ ≠ 0, a defined integrable trace, and δ as a limit of regularizations);
+  - the drift order βσ²kR(0)ρ(0) for a bounded continuous ρ;
+  - the fold order σ^{3/2}.
+- **DISPROVED** by explicit counterexample:
+  - global domain invariance;
+  - that energy conservation certifies occupation interpolation (the 5/7 example, and an example where entropy decreases);
+  - that invariant checks certify rates or measures.
+- **UNKNOWN:** global realizability; convergence of evolving solutions; a physical AlN measure; the excluded acoustic, critical and coherent sectors.

@@ -1,0 +1,192 @@
+"""Shared helpers for the final hostile numerical review (2 Oct 2026).
+
+Read-only use of the repository C:/Users/Koussay/these: modules are compiled from
+source into memory (no bytecode is written, no repository file is touched).
+Two independent references are provided for one three-phonon event p <-> a+b:
+  * arb_reference : python-flint Arb balls, DEFINITIONAL route A-B and
+                    (A-B)/(log A - log B), adaptive precision, rigorous radius;
+  * mp_reference  : mpmath (>=60 digits), IDENTITY route F=B*expm1(-d),
+                    Lambda=B*(1-exp(-d))/d with exact d, plus analytic derivatives.
+Run every script with  python -B  (bytecode off).
+"""
+from __future__ import annotations
+
+import hashlib
+import sys
+import types
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+
+import numpy as np
+import mpmath as mp
+import flint
+
+REPO = Path(r"C:/Users/Koussay/these")
+ARCHIVE = REPO / "theory/aln/resonance_measure"
+C2_PATH = ARCHIVE / "experiments/C2_weak_form.py"
+FROZEN_C2_PATH = ARCHIVE / "review-inputs/C2_weak_form.frozen-20260928.txt"
+RUNNER_PATH = REPO / "scripts/reproduce_resonance_measure.py"
+CAMPAIGN = Path(r"D:/ResearchLab/orchestration/campaigns/20260927-164023-conserving-resonance-measure")
+EXPERIMENTS = CAMPAIGN / "experiments"
+
+EPS = float(np.finfo(float).eps)          # 2.22e-16 (spacing at 1)
+UNIT_ROUNDOFF = EPS / 2                   # 1.11e-16
+TINY = float(np.finfo(float).tiny)        # 2.2250738585072014e-308 smallest normal
+SUB = 2.0 ** -1074                        # smallest subnormal
+
+
+def sha256(path) -> str:
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def load_module(path, name):
+    """Compile a repository script into an in-memory module without running main()."""
+    source = Path(path).read_text(encoding="utf-8-sig")
+    module = types.ModuleType(name)
+    module.__file__ = str(path)
+    sys.modules[name] = module            # dataclasses need the module registered
+    exec(compile(source, str(path), "exec"), module.__dict__)
+    return module
+
+
+def load_current_c2():
+    return load_module(C2_PATH, "c2_current_under_review")
+
+
+def load_frozen_c2():
+    return load_module(FROZEN_C2_PATH, "c2_frozen_20260928")
+
+
+def single_event_model(module):
+    """Phi=I3, one event with parent row e0, daughters e1,e2 (as in C2 separated_variable_checks)."""
+    identity = np.eye(3)
+    return module.EntropyWeakForm(Phi=identity, masses=np.ones(3), parent=identity[[0]],
+                                  daughter_a=identity[[1]], daughter_b=identity[[2]],
+                                  weights=np.ones(1))
+
+
+# ----------------------------------------------------------------------------------
+# Reference 1: rigorous Arb balls, definitional formulas (independent of the identity
+# A = B exp(-d) that the code relies on).
+# ----------------------------------------------------------------------------------
+def arb_reference(xp: float, xa: float, xb: float, target_rel=1e-30, start_prec=256, max_prec=8192):
+    prec = start_prec
+    while True:
+        flint.ctx.prec = prec
+        X = [flint.arb(float(v)) for v in (xp, xa, xb)]        # exact conversion
+        n = [1 / x.expm1() for x in X]
+        A = n[0] * (1 + n[1]) * (1 + n[2])
+        B = (1 + n[0]) * n[1] * n[2]
+        d = X[0] - X[1] - X[2]                                   # exact at this precision
+        exact_zero = d.is_zero()
+        if exact_zero:
+            F = flint.arb(0)
+            L = A
+        else:
+            F = A - B
+            L = F / (A.log() - B.log())
+        good = True
+        for ball in ([L] if exact_zero else [F, L]):
+            if not ball.is_finite():
+                good = False
+                break
+            if ball.rad() != 0:
+                rel = ball.rad() / abs(ball.mid())
+                if not (rel < target_rel):
+                    good = False
+        if good or prec >= max_prec:
+            return {"F": F, "L": L, "d_exact_zero": bool(exact_zero), "prec_bits": prec,
+                    "A": A, "B": B}
+        prec *= 2
+
+
+def arb_to_mpf(ball, dps=60):
+    """Convert an Arb ball midpoint to an mpmath mpf (exact binary midpoint)."""
+    with mp.workdps(dps):
+        s = ball.mid().str(dps + 5, radius=False)
+        return mp.mpf(s)
+
+
+# ----------------------------------------------------------------------------------
+# Reference 2: mpmath identity route with exact affinity and analytic derivatives.
+# ----------------------------------------------------------------------------------
+def mp_reference(xp: float, xa: float, xb: float, dps=60, derivatives=True):
+    with mp.workdps(dps):
+        X = [mp.mpf(float(v)) for v in (xp, xa, xb)]            # exact (53-bit) conversion
+        # exact affinity: dps=60 (~200 bits) holds the sum of three doubles in [1e-12,1e3]
+        # exactly; check by a second evaluation at higher precision.
+        d = X[0] - X[1] - X[2]
+    with mp.workdps(dps + 400):
+        d_check = mp.mpf(float(xp)) - mp.mpf(float(xa)) - mp.mpf(float(xb))
+    if d_check != d:
+        raise RuntimeError("affinity not exact at working precision")
+    # precision boost when |d| is tiny (needed only for derivative of g(d))
+    extra = 0
+    if d != 0:
+        extra = int(max(0, -float(mp.log10(abs(d))))) * 2 + 10
+    with mp.workdps(dps + extra):
+        n = [1 / mp.expm1(x) for x in X]
+        B = (1 + n[0]) * n[1] * n[2]
+        A = n[0] * (1 + n[1]) * (1 + n[2])
+        em1 = mp.expm1(-d)
+        F = B * em1
+        if d == 0:
+            g = mp.mpf(1)
+            gp = mp.mpf(-0.5)
+        else:
+            g = -em1 / d
+            gp = (mp.exp(-d) * (1 + d) - 1) / d**2
+        L = B * g
+        out = {"F": +F, "L": +L, "A": +A, "B": +B, "d": +d, "logA": mp.log(A), "logB": mp.log(B)}
+        if derivatives:
+            dlogB = [-n[0], -(1 + n[1]), -(1 + n[2])]
+            dd = [1, -1, -1]
+            e = mp.exp(-d)
+            dF = [B * dlogB[j] * (e - 1) - B * e * dd[j] for j in range(3)]
+            dL = [B * dlogB[j] * g + B * gp * dd[j] for j in range(3)]
+            out["dF"] = [+v for v in dF]
+            out["dL"] = [+v for v in dL]
+            out["condF_abs"] = mp.fsum(abs(X[j] * dF[j]) for j in range(3))
+            out["condL_abs"] = mp.fsum(abs(X[j] * dL[j]) for j in range(3))
+    return out
+
+
+def mp_definitional_derivatives(xp, xa, xb, dps=220):
+    """Second, definitional route for the Jacobian: dF = A dlogA - B dlogB and the
+    quotient rule for Lambda = F/(logA-logB); high precision absorbs the cancellation."""
+    with mp.workdps(dps):
+        X = [mp.mpf(float(v)) for v in (xp, xa, xb)]
+        n = [1 / mp.expm1(x) for x in X]
+        A = n[0] * (1 + n[1]) * (1 + n[2])
+        B = (1 + n[0]) * n[1] * n[2]
+        dlogA = [-(1 + n[0]), -n[1], -n[2]]
+        dlogB = [-n[0], -(1 + n[1]), -(1 + n[2])]
+        F = A - B
+        dF = [A * dlogA[j] - B * dlogB[j] for j in range(3)]
+        Lg = mp.log(A) - mp.log(B)
+        if Lg == 0:
+            return {"dF": dF, "dL": None}
+        Lam = F / Lg
+        dL = [(dF[j] - Lam * (dlogA[j] - dlogB[j])) / Lg for j in range(3)]
+        return {"dF": dF, "dL": dL}
+
+
+def classify_and_error(y: float, ref, dps=60):
+    """Error of a float result y against a high-precision reference value (mpf)."""
+    if not np.isfinite(y):
+        return {"regime": "nonfinite_output", "finite": False}
+    with mp.workdps(dps):
+        r = mp.mpf(ref)
+        ar = abs(r)
+        diff = abs(mp.mpf(float(y)) - r)
+        if r == 0:
+            return {"regime": "exact_zero", "finite": True, "abs_error": float(diff),
+                    "is_exact_zero": bool(y == 0.0)}
+        if ar >= TINY:
+            return {"regime": "normal", "finite": True, "rel_error": float(diff / ar)}
+        if ar >= SUB / 2:
+            return {"regime": "subnormal", "finite": True, "abs_error_in_subnormal_ulps": float(diff / SUB),
+                    "rel_error": float(diff / ar)}
+        return {"regime": "below_subnormal", "finite": True, "abs_error_in_subnormal_ulps": float(diff / SUB),
+                "output": float(y)}

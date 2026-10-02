@@ -1,0 +1,469 @@
+{
+  "script_sha256": "933e7ae55004274b2c33c6fcc709879bc1f49bb1bd7b3a5cf425d69e7c136e5c",
+  "interpreter": "C:\\Users\\Koussay\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+  "python": "3.14.7",
+  "numpy": "2.5.3",
+  "two_node": {
+    "number_coefficients": 2,
+    "volume_nodes": 2,
+    "events": 1,
+    "volume_mass": 2.0,
+    "reaction_mass": 1.0,
+    "minimum_xi_equilibrium": 0.6931471805599453,
+    "minimum_xi_perturbed": 0.8,
+    "capacity_eigenvalues": [
+      0.16326530612244902,
+      2.0
+    ],
+    "capacity_condition_number": 12.249999999999996,
+    "normalized_collision_eigenvalues": [
+      0.0,
+      3.541666666666666
+    ],
+    "collision_rank": 1,
+    "relative_capacity_derivative_error_equilibrium": 0.0,
+    "relative_capacity_derivative_error_perturbed": 3.684061500175633e-17,
+    "relative_collision_jacobian_error_equilibrium": 1.640164304671971e-16,
+    "relative_coefficient_jacobian_error_equilibrium": 1.5398805767157598e-16,
+    "equilibrium_rhs_norm": 0.0,
+    "normalized_energy_kernel_residual": 2.2542714519999774e-17,
+    "maximum_reaction_energy_mismatch": 0.0,
+    "off_equilibrium": {
+      "rhs_vs_K_alpha_relative_error": 8.977861372909885e-17,
+      "direct_vs_stable_rhs_relative_error": 3.835344059754182e-16,
+      "jacobian_vs_K_relative_difference": 0.6805619575451695,
+      "entropy_production_event": 0.13686908974888448,
+      "entropy_directional_derivative": 0.13686908974888437,
+      "entropy_relative_identity_error": 8.111568701611864e-16,
+      "energy_drift_event": -0.0,
+      "energy_directional_derivative": -1.1210387714598536e-16,
+      "energy_drift_from_moments": 0.0,
+      "energy_square": 0.0,
+      "energy_cauchy_schwarz_bound": 0.0
+    },
+    "capacity_centered_difference_checks": [
+      {
+        "step": 0.001,
+        "relative_error": 2.1596546394825332e-06
+      },
+      {
+        "step": 0.0001,
+        "relative_error": 2.159656192725159e-08
+      },
+      {
+        "step": 1e-05,
+        "relative_error": 2.1127410359143182e-10
+      },
+      {
+        "step": 1e-06,
+        "relative_error": 1.3526480275402487e-11
+      }
+    ],
+    "exact_references": {
+      "M": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "8/49"
+        ]
+      ],
+      "K": [
+        [
+          "3",
+          "-1"
+        ],
+        [
+          "-1",
+          "1/3"
+        ]
+      ],
+      "Lambda": "4/3",
+      "normalized_eigenvalues": [
+        "0",
+        "85/24"
+      ]
+    },
+    "occupation_interpolation_failure": {
+      "false_equilibrium_flux": 0.7142857142857142,
+      "false_equilibrium_rhs": [
+        1.0714285714285712,
+        -0.3571428571428571
+      ],
+      "false_equilibrium_energy_drift": 0.0,
+      "perturbation": "alpha=beta*(1,3)+1e-3*(-3/2,1/2)",
+      "nearby_flux": 0.7160959794197794,
+      "nearby_affinity": 0.0024999999999999467,
+      "nearby_entropy_derivative": -0.0017902399485494789,
+      "nearby_energy_drift": 0.0
+    },
+    "physical_vs_surrogate_energy": [
+      {
+        "physical_energy_coefficients": [
+          1.0,
+          2.8
+        ],
+        "surrogate_energy_coefficients": [
+          1.0,
+          3.0
+        ],
+        "physical_mismatch": [
+          -0.10000000000000009
+        ],
+        "surrogate_drift_at_physical_Bose": 0.0,
+        "physical_drift_at_physical_Bose": 0.009804359275899482,
+        "positive_square_prediction": 0.009804359275899482,
+        "surrogate_Bose_rhs_norm": 0.0,
+        "physical_occupation_error_at_surrogate_Bose": 0.024804188451316517,
+        "physical_drift_off_equilibrium": 0.03910545421396705,
+        "physical_directional_derivative_off_equilibrium": 0.039105454213966946
+      },
+      {
+        "physical_energy_coefficients": [
+          1.0,
+          3.2
+        ],
+        "surrogate_energy_coefficients": [
+          1.0,
+          3.0
+        ],
+        "physical_mismatch": [
+          0.10000000000000009
+        ],
+        "surrogate_drift_at_physical_Bose": 0.0,
+        "physical_drift_at_physical_Bose": 0.008733971807117491,
+        "positive_square_prediction": 0.008733971807117517,
+        "surrogate_Bose_rhs_norm": 0.0,
+        "physical_occupation_error_at_surrogate_Bose": 0.02075086087492553,
+        "physical_drift_off_equilibrium": -0.03910545421396694,
+        "physical_directional_derivative_off_equilibrium": -0.03910545421396717
+      }
+    ]
+  },
+  "periodic": {
+    "number_coefficients": 9,
+    "volume_nodes": 192,
+    "events": 32,
+    "volume_mass": 3.0,
+    "reaction_mass": 0.3978873577297382,
+    "minimum_xi_equilibrium": 1.3999999999999997,
+    "minimum_xi_perturbed": 1.347647607344773,
+    "capacity_eigenvalues": [
+      0.010326250475129316,
+      0.010326250475129316,
+      0.020652500950258643,
+      0.06116257735381377,
+      0.08999487008739732,
+      0.21722159470827093,
+      0.21722159470827113,
+      0.25506709757873103,
+      0.43444318941654186
+    ],
+    "capacity_condition_number": 42.07172685408847,
+    "normalized_collision_eigenvalues": [
+      -1.8014251334225145e-16,
+      -5.160724844591829e-17,
+      3.716774560900133e-17,
+      0.016829974981252178,
+      0.016829974981252306,
+      0.08267863982565082,
+      0.5728660256585152,
+      0.5728660256585157,
+      0.8052846130690581
+    ],
+    "collision_rank": 6,
+    "relative_capacity_derivative_error_equilibrium": 5.424818943844877e-16,
+    "relative_capacity_derivative_error_perturbed": 2.817008601932047e-16,
+    "relative_collision_jacobian_error_equilibrium": 3.0335559508077385e-16,
+    "relative_coefficient_jacobian_error_equilibrium": 3.1009150400061293e-16,
+    "equilibrium_rhs_norm": 0.0,
+    "normalized_energy_kernel_residual": 3.043573171807571e-17,
+    "maximum_reaction_energy_mismatch": 0.0,
+    "off_equilibrium": {
+      "rhs_vs_K_alpha_relative_error": 1.1240642524336522e-14,
+      "direct_vs_stable_rhs_relative_error": 4.549147374344888e-15,
+      "jacobian_vs_K_relative_difference": 0.03287790302580683,
+      "entropy_production_event": 3.696757658030873e-05,
+      "entropy_directional_derivative": 3.696757658030894e-05,
+      "entropy_relative_identity_error": 5.682389551901542e-15,
+      "energy_drift_event": -0.0,
+      "energy_directional_derivative": -4.379057701015053e-19,
+      "energy_drift_from_moments": 0.0,
+      "energy_square": 0.0,
+      "energy_cauchy_schwarz_bound": 0.0
+    },
+    "capacity_centered_difference_checks": [
+      {
+        "step": 0.001,
+        "relative_error": 5.341017808315403e-07
+      },
+      {
+        "step": 0.0001,
+        "relative_error": 5.342093019390922e-09
+      },
+      {
+        "step": 1e-05,
+        "relative_error": 6.187426777530833e-11
+      },
+      {
+        "step": 1e-06,
+        "relative_error": 1.959730844755165e-10
+      }
+    ],
+    "analytic_reaction_mass": 0.3978873577297384,
+    "reaction_mass_relative_error": -4.440892098500626e-16,
+    "root_residual_tests": {
+      "weights": "held fixed at nominal exact coarea weights to isolate support error",
+      "equilibrium_total_mobility": 0.011626021015800224,
+      "cases": [
+        {
+          "prescribed_residual": -0.01,
+          "maximum_actual_residual": 0.010000000000000675,
+          "energy_drift_event": 8.104850429850474e-07,
+          "energy_drift_moment_dot": 8.104850429850119e-07,
+          "energy_positive_square": 8.104850429850886e-07,
+          "thermal_identity_absolute_discrepancy": 4.1186977060240354e-20,
+          "thermal_identity_roundoff_bound": 5.259201942875018e-20,
+          "max_affinity_distributivity_residual": 3.5475095083725705e-16,
+          "energy_drift_over_quadratic_limit": 0.9959002947950809,
+          "rhs_norm": 0.00014883162624695513,
+          "rhs_norm_over_absolute_residual": 0.014883162624695512,
+          "entropy_production": 5.673395300895044e-07,
+          "energy_cauchy_schwarz_bound": 8.104850429850474e-07,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": 0.01,
+          "maximum_actual_residual": 0.009999999999999787,
+          "energy_drift_event": 8.171787809267612e-07,
+          "energy_drift_moment_dot": 8.171787809267109e-07,
+          "energy_positive_square": 8.171787809267299e-07,
+          "thermal_identity_absolute_discrepancy": 3.1234339930002325e-20,
+          "thermal_identity_roundoff_bound": 4.2799551669658086e-20,
+          "max_affinity_distributivity_residual": 2.671474153004283e-16,
+          "energy_drift_over_quadratic_limit": 1.0041253640263175,
+          "rhs_norm": 0.0001495258540114677,
+          "rhs_norm_over_absolute_residual": 0.014952585401146771,
+          "entropy_production": 5.720251466487545e-07,
+          "energy_cauchy_schwarz_bound": 8.171787809267611e-07,
+          "bound_gap": -1.0587911840678754e-22
+        },
+        {
+          "prescribed_residual": -0.001,
+          "maximum_actual_residual": 0.001000000000000334,
+          "energy_drift_event": 8.13486891514958e-09,
+          "energy_drift_moment_dot": 8.13486891514608e-09,
+          "energy_positive_square": 8.134868915150613e-09,
+          "thermal_identity_absolute_discrepancy": 1.0323214044661785e-21,
+          "thermal_identity_roundoff_bound": 1.1475250187109243e-21,
+          "max_affinity_distributivity_residual": 8.879615792656281e-17,
+          "energy_drift_over_quadratic_limit": 0.9995888783929441,
+          "rhs_norm": 1.4914125770646584e-05,
+          "rhs_norm_over_absolute_residual": 0.014914125770646583,
+          "entropy_production": 5.694408240603984e-09,
+          "energy_cauchy_schwarz_bound": 8.13486891514958e-09,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": 0.001,
+          "maximum_actual_residual": 0.0009999999999994458,
+          "energy_drift_event": 8.141562595126347e-09,
+          "energy_drift_moment_dot": 8.141562595122563e-09,
+          "energy_positive_square": 8.141562595120148e-09,
+          "thermal_identity_absolute_discrepancy": 6.1988915104723894e-21,
+          "thermal_identity_roundoff_bound": 6.314844688572202e-21,
+          "max_affinity_distributivity_residual": 5.32993787993874e-16,
+          "energy_drift_over_quadratic_limit": 1.0004113781935047,
+          "rhs_norm": 1.4921067778249349e-05,
+          "rhs_norm_over_absolute_residual": 0.014921067778249348,
+          "entropy_production": 5.699093816592781e-09,
+          "energy_cauchy_schwarz_bound": 8.141562595126347e-09,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": -0.0001,
+          "maximum_actual_residual": 0.00010000000000065512,
+          "energy_drift_event": 8.137880037585703e-11,
+          "energy_drift_moment_dot": 8.137880037562686e-11,
+          "energy_positive_square": 8.13788003763733e-11,
+          "thermal_identity_absolute_discrepancy": 5.162770245067295e-22,
+          "thermal_identity_roundoff_bound": 5.174342788440831e-22,
+          "max_affinity_distributivity_residual": 4.440892098500626e-16,
+          "energy_drift_over_quadratic_limit": 0.9999588763031775,
+          "rhs_norm": 1.4917246901856006e-06,
+          "rhs_norm_over_absolute_residual": 0.014917246901856005,
+          "entropy_production": 5.6965160262738524e-11,
+          "energy_cauchy_schwarz_bound": 8.137880037585703e-11,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": 0.0001,
+          "maximum_actual_residual": 9.999999999976694e-05,
+          "energy_drift_event": 8.138549405453864e-11,
+          "energy_drift_moment_dot": 8.138549405455133e-11,
+          "energy_positive_square": 8.13854940543321e-11,
+          "thermal_identity_absolute_discrepancy": 2.065366591968341e-22,
+          "thermal_identity_roundoff_bound": 2.0769727575288176e-22,
+          "max_affinity_distributivity_residual": 1.776465259617499e-16,
+          "energy_drift_over_quadratic_limit": 1.000041126267319,
+          "rhs_norm": 1.491794110234624e-06,
+          "rhs_norm_over_absolute_residual": 0.01491794110234624,
+          "entropy_production": 5.6969845838321617e-11,
+          "energy_cauchy_schwarz_bound": 8.138549405453864e-11,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": -1e-05,
+          "maximum_actual_residual": 1.0000000000509601e-05,
+          "energy_drift_event": 8.138181243287237e-13,
+          "energy_drift_moment_dot": 8.138181243061065e-13,
+          "energy_positive_square": 8.138181243597014e-13,
+          "thermal_identity_absolute_discrepancy": 3.09776716020408e-23,
+          "thermal_identity_roundoff_bound": 3.098930179534022e-23,
+          "max_affinity_distributivity_residual": 2.6645284828367977e-16,
+          "energy_drift_over_quadratic_limit": 0.9999958875780365,
+          "rhs_norm": 1.4917559264542557e-07,
+          "rhs_norm_over_absolute_residual": 0.014917559264542555,
+          "entropy_production": 5.696726870084221e-13,
+          "energy_cauchy_schwarz_bound": 8.138181243287237e-13,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": 1e-05,
+          "maximum_actual_residual": 9.999999999621423e-06,
+          "energy_drift_event": 8.138248179358409e-13,
+          "energy_drift_moment_dot": 8.138248179310326e-13,
+          "energy_positive_square": 8.138248178945368e-13,
+          "thermal_identity_absolute_discrepancy": 4.1304100665099034e-23,
+          "thermal_identity_roundoff_bound": 4.131571798638402e-23,
+          "max_affinity_distributivity_residual": 3.5527187609981845e-16,
+          "energy_drift_over_quadratic_limit": 1.0000041124865144,
+          "rhs_norm": 1.4917628684591319e-07,
+          "rhs_norm_over_absolute_residual": 0.014917628684591318,
+          "entropy_production": 5.696773725840016e-13,
+          "energy_cauchy_schwarz_bound": 8.13824817935841e-13,
+          "bound_gap": 1.0097419586828951e-28
+        },
+        {
+          "prescribed_residual": -1e-06,
+          "maximum_actual_residual": 1.000000000139778e-06,
+          "energy_drift_event": 8.138211367529184e-15,
+          "energy_drift_moment_dot": 8.138211371096557e-15,
+          "energy_positive_square": 8.138211366496586e-15,
+          "thermal_identity_absolute_discrepancy": 1.0325984145507687e-24,
+          "thermal_identity_roundoff_bound": 1.032713569939876e-24,
+          "max_affinity_distributivity_residual": 8.88178631458362e-17,
+          "energy_drift_over_quadratic_limit": 0.999999589156702,
+          "rhs_norm": 1.491759050707283e-08,
+          "rhs_norm_over_absolute_residual": 0.01491759050707283,
+          "entropy_production": 5.696747957993248e-15,
+          "energy_cauchy_schwarz_bound": 8.138211367529184e-15,
+          "bound_gap": 0.0
+        },
+        {
+          "prescribed_residual": 1e-06,
+          "maximum_actual_residual": 9.999999992515995e-07,
+          "energy_drift_event": 8.138218053980396e-15,
+          "energy_drift_moment_dot": 8.138218054715906e-15,
+          "energy_positive_square": 8.138218045719607e-15,
+          "thermal_identity_absolute_discrepancy": 8.26078889412796e-24,
+          "thermal_identity_roundoff_bound": 8.26090455924278e-24,
+          "max_affinity_distributivity_residual": 7.105427992875712e-16,
+          "energy_drift_over_quadratic_limit": 1.000000410768253,
+          "rhs_norm": 1.4917597449077707e-08,
+          "rhs_norm_over_absolute_residual": 0.014917597449077707,
+          "entropy_production": 5.696752643568829e-15,
+          "energy_cauchy_schwarz_bound": 8.138218053980396e-15,
+          "bound_gap": 0.0
+        }
+      ]
+    }
+  },
+  "near_zero_affinity": [
+    {
+      "affinity": "0",
+      "reference_flux_80_digits": "0.0",
+      "stable_flux": -0.0,
+      "direct_subtraction_flux": 0.0,
+      "stable_flux_relative_error": 0.0,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 0.0
+    },
+    {
+      "affinity": "1e-16",
+      "reference_flux_80_digits": "-1.49999999999999992500000000000000249999999999999993750000000000000E-16",
+      "stable_flux": -1.5e-16,
+      "direct_subtraction_flux": -2.220446049250313e-16,
+      "stable_flux_relative_error": 0.0,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 0.4802973661668754
+    },
+    {
+      "affinity": "-1e-16",
+      "reference_flux_80_digits": "1.5000000000000000750000000000000025000000000000000624999999999995E-16",
+      "stable_flux": 1.5e-16,
+      "direct_subtraction_flux": 0.0,
+      "stable_flux_relative_error": 0.0,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 1.0
+    },
+    {
+      "affinity": "1e-12",
+      "reference_flux_80_digits": "-1.499999999999250000000000249999999999937500000000012499999999997916660E-12",
+      "stable_flux": -1.49999999999925e-12,
+      "direct_subtraction_flux": -1.4999113062685865e-12,
+      "stable_flux_relative_error": 0.0,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 5.9129153775728475e-05
+    },
+    {
+      "affinity": "-1e-12",
+      "reference_flux_80_digits": "1.50000000000075000000000025000000000006250000000001250000000000208340E-12",
+      "stable_flux": 1.5000000000007501e-12,
+      "direct_subtraction_flux": 1.5001333508735115e-12,
+      "stable_flux_relative_error": 1.3463226115765204e-16,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 8.890058184103039e-05
+    },
+    {
+      "affinity": "1e-8",
+      "reference_flux_80_digits": "-1.4999999925000000249999999375000001249999997916666669642857139136904766045E-8",
+      "stable_flux": -1.4999999925000002e-08,
+      "direct_subtraction_flux": -1.500000013088254e-08,
+      "stable_flux_relative_error": 2.205814977837149e-16,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 1.3725502822763476e-08
+    },
+    {
+      "affinity": "-1e-8",
+      "reference_flux_80_digits": "1.500000007500000025000000062500000125000000208333333630952381324404762325E-8",
+      "stable_flux": 1.5000000074999998e-08,
+      "direct_subtraction_flux": 1.4999999908837935e-08,
+      "stable_flux_relative_error": 2.2058149557789988e-16,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 1.1077471020769271e-08
+    },
+    {
+      "affinity": "0.1",
+      "reference_flux_80_digits": "-0.14274387294606064025362641083034506820794195852939857191561402441633005198362746",
+      "stable_flux": -0.14274387294606064,
+      "direct_subtraction_flux": -0.1427438729460606,
+      "stable_flux_relative_error": 0.0,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 1.9444320125822183e-16
+    },
+    {
+      "affinity": "-0.1",
+      "reference_flux_80_digits": "0.15775637711347143721756173973537000233682079210627807818929493416145195012148145",
+      "stable_flux": 0.15775637711347146,
+      "direct_subtraction_flux": 0.15775637711347157,
+      "stable_flux_relative_error": 1.7593948418113588e-16,
+      "stable_lambda_relative_error": 0.0,
+      "direct_flux_relative_error": 8.796974209056794e-16
+    }
+  ],
+  "all_assertions_passed": true,
+  "scope": "Finite quadrature weak-form identities only; no time integrator, global invariance, or material validation."
+}

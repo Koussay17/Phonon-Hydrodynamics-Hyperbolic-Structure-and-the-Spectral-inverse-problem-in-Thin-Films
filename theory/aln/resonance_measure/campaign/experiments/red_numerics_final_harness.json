@@ -1,0 +1,373 @@
+{
+  "interpreter": "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "assert_census": {
+    "branches/A-coarea-check.py": {
+      "assert_statements": 7,
+      "debug_guard_line": 7,
+      "first_assert_line": 95
+    },
+    "scripts/B_weak_form_check.py": {
+      "assert_statements": 10,
+      "debug_guard_line": 7,
+      "first_assert_line": 26
+    },
+    "experiments/C_resonance_benchmark.py": {
+      "assert_statements": 17,
+      "debug_guard_line": 23,
+      "first_assert_line": 151
+    },
+    "experiments/C2_weak_form.py": {
+      "assert_statements": 30,
+      "debug_guard_line": 22,
+      "first_assert_line": 62
+    },
+    "D-limits-check.py": {
+      "assert_statements": 0,
+      "debug_guard_line": null,
+      "first_assert_line": null
+    },
+    "reproduce_resonance_measure.py": {
+      "assert_statements": 0,
+      "debug_guard_line": null,
+      "first_assert_line": null
+    }
+  },
+  "full_run": {
+    "cmd": [
+      "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Koussay\\these\\scripts\\reproduce_resonance_measure.py",
+      "--output-dir",
+      "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_harness_run"
+    ],
+    "returncode": 0,
+    "seconds": 6.88,
+    "stdout_tail": "branches/A-coarea-check.py completed\r\nscripts/B_weak_form_check.py completed\r\nexperiments/C_resonance_benchmark.py completed\r\nD-limits-check.py completed\r\nexperiments/C2_weak_form.py completed\r\n{\r\n  \"scope\": \"bounded analytic/synthetic checks; no material or general dynamic convergence claim\",\r\n  \"checks\": {\r\n    \"A_mass\": true,\r\n    \"A_energy_kernel\": true,\r\n    \"A_entropy_identity\": true,\r\n    \"B_exact_scalar_calculus\": true,\r\n    \"B_interpolation_negative_control\": true,\r\n    \"B_energy_kernel\": true,\r\n    \"C_assertions\": true,\r\n    \"D_independent_poisson_sums\": true,\r\n    \"D_positive_heating\": true,\r\n    \"D_regular_heating_order\": true,\r\n    \"D_small_drift_wrong_measure\": true,\r\n    \"C2_finite_weak_form_assertions\": true,\r\n    \"C2_separated_variables_finite_and_accurate\": true\r\n  },\r\n  \"commands\": [\r\n    {\r\n      \"script\": \"branches/A-coarea-check.py\",\r\n      \"returncode\": 0\r\n    },\r\n    {\r\n      \"script\": \"scripts/B_weak_form_check.py\",\r\n      \"returncode\": 0\r\n    },\r\n    {\r\n      \"script\": \"experiments/C_resonance_benchmark.py\",\r\n      \"returncode\": 0\r\n    },\r\n    {\r\n      \"script\": \"D-limits-check.py\",\r\n      \"returncode\": 0\r\n    },\r\n    {\r\n      \"script\": \"experiments/C2_weak_form.py\",\r\n      \"returncode\": 0\r\n    }\r\n  ]\r\n}\r\n",
+    "stderr_tail": "",
+    "status": {
+      "scope": "bounded analytic/synthetic checks; no material or general dynamic convergence claim",
+      "checks": {
+        "A_mass": true,
+        "A_energy_kernel": true,
+        "A_entropy_identity": true,
+        "B_exact_scalar_calculus": true,
+        "B_interpolation_negative_control": true,
+        "B_energy_kernel": true,
+        "C_assertions": true,
+        "D_independent_poisson_sums": true,
+        "D_positive_heating": true,
+        "D_regular_heating_order": true,
+        "D_small_drift_wrong_measure": true,
+        "C2_finite_weak_form_assertions": true,
+        "C2_separated_variables_finite_and_accurate": true
+      },
+      "commands": [
+        {
+          "script": "branches/A-coarea-check.py",
+          "returncode": 0
+        },
+        {
+          "script": "scripts/B_weak_form_check.py",
+          "returncode": 0
+        },
+        {
+          "script": "experiments/C_resonance_benchmark.py",
+          "returncode": 0
+        },
+        {
+          "script": "D-limits-check.py",
+          "returncode": 0
+        },
+        {
+          "script": "experiments/C2_weak_form.py",
+          "returncode": 0
+        }
+      ]
+    },
+    "copied_script_hashes": {
+      "branches/A-coarea-check.py": {
+        "copy_sha256": "7c496c79a335383ba4736b6f8d5f483abe8a4e7cef2759703e0275c64fcfd09d",
+        "repo_sha256": "7c496c79a335383ba4736b6f8d5f483abe8a4e7cef2759703e0275c64fcfd09d"
+      },
+      "scripts/B_weak_form_check.py": {
+        "copy_sha256": "b74cd45c373ba156b6c58b719856a9b932c1fd454bea15932a0831b7b2779046",
+        "repo_sha256": "b74cd45c373ba156b6c58b719856a9b932c1fd454bea15932a0831b7b2779046"
+      },
+      "experiments/C_resonance_benchmark.py": {
+        "copy_sha256": "f9bc49edb6dac70ba53e8b68e5327d2eeba6b6110cc483a8fd1f50fb162879b7",
+        "repo_sha256": "f9bc49edb6dac70ba53e8b68e5327d2eeba6b6110cc483a8fd1f50fb162879b7"
+      },
+      "experiments/C2_weak_form.py": {
+        "copy_sha256": "2c4fa15a6141348cb90e8c1bb6645fbd80ccd7f6f5584a7b27e3ab9bf1b252f1",
+        "repo_sha256": "2c4fa15a6141348cb90e8c1bb6645fbd80ccd7f6f5584a7b27e3ab9bf1b252f1"
+      },
+      "D-limits-check.py": {
+        "copy_sha256": "dcb2b85fdf105fa9d2e2414365dfffba252b6149820582371ccc86503bfc3dba",
+        "repo_sha256": "dcb2b85fdf105fa9d2e2414365dfffba252b6149820582371ccc86503bfc3dba"
+      }
+    }
+  },
+  "runner_refusals": {
+    "dash_O": {
+      "cmd": [
+        "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\Koussay\\these\\scripts\\reproduce_resonance_measure.py",
+        "--output-dir",
+        "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_runner_dash_O"
+      ],
+      "returncode": 1,
+      "seconds": 0.21,
+      "stdout_tail": "",
+      "stderr_tail": "reproduce_resonance_measure: do not run under python -O\r\n",
+      "output_dir_created": true,
+      "files_left_in_output_dir": [
+        "D-limits-check.py",
+        "branches/A-coarea-check.py",
+        "experiments/C2_weak_form.py",
+        "experiments/C_resonance_benchmark.py",
+        "scripts/B_weak_form_check.py"
+      ],
+      "refused": true
+    },
+    "dash_OO": {
+      "cmd": [
+        "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+        "-B",
+        "-OO",
+        "C:\\Users\\Koussay\\these\\scripts\\reproduce_resonance_measure.py",
+        "--output-dir",
+        "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_runner_dash_OO"
+      ],
+      "returncode": 1,
+      "seconds": 0.67,
+      "stdout_tail": "",
+      "stderr_tail": "reproduce_resonance_measure: do not run under python -O\r\n",
+      "output_dir_created": true,
+      "files_left_in_output_dir": [
+        "D-limits-check.py",
+        "branches/A-coarea-check.py",
+        "experiments/C2_weak_form.py",
+        "experiments/C_resonance_benchmark.py",
+        "scripts/B_weak_form_check.py"
+      ],
+      "refused": true
+    },
+    "PYTHONOPTIMIZE_1": {
+      "cmd": [
+        "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Koussay\\these\\scripts\\reproduce_resonance_measure.py",
+        "--output-dir",
+        "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_runner_PYTHONOPTIMIZE_1"
+      ],
+      "returncode": 1,
+      "seconds": 0.2,
+      "stdout_tail": "",
+      "stderr_tail": "reproduce_resonance_measure: do not run under python -O\r\n",
+      "output_dir_created": true,
+      "files_left_in_output_dir": [
+        "D-limits-check.py",
+        "branches/A-coarea-check.py",
+        "experiments/C2_weak_form.py",
+        "experiments/C_resonance_benchmark.py",
+        "scripts/B_weak_form_check.py"
+      ],
+      "refused": true
+    },
+    "PYTHONOPTIMIZE_2": {
+      "cmd": [
+        "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Koussay\\these\\scripts\\reproduce_resonance_measure.py",
+        "--output-dir",
+        "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_runner_PYTHONOPTIMIZE_2"
+      ],
+      "returncode": 1,
+      "seconds": 0.76,
+      "stdout_tail": "",
+      "stderr_tail": "reproduce_resonance_measure: do not run under python -O\r\n",
+      "output_dir_created": true,
+      "files_left_in_output_dir": [
+        "D-limits-check.py",
+        "branches/A-coarea-check.py",
+        "experiments/C2_weak_form.py",
+        "experiments/C_resonance_benchmark.py",
+        "scripts/B_weak_form_check.py"
+      ],
+      "refused": true
+    }
+  },
+  "per_script_optimize": {
+    "branches/A-coarea-check.py": {
+      "dash_O": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\branches\\A-coarea-check.py"
+        ],
+        "returncode": 1,
+        "seconds": 4.23,
+        "stdout_tail": "",
+        "stderr_tail": "A-coarea-check: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      },
+      "PYTHONOPTIMIZE_1": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\branches\\A-coarea-check.py"
+        ],
+        "returncode": 1,
+        "seconds": 3.92,
+        "stdout_tail": "",
+        "stderr_tail": "A-coarea-check: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      }
+    },
+    "scripts/B_weak_form_check.py": {
+      "dash_O": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\scripts\\B_weak_form_check.py"
+        ],
+        "returncode": 1,
+        "seconds": 5.2,
+        "stdout_tail": "",
+        "stderr_tail": "B_weak_form_check: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      },
+      "PYTHONOPTIMIZE_1": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\scripts\\B_weak_form_check.py"
+        ],
+        "returncode": 1,
+        "seconds": 4.84,
+        "stdout_tail": "",
+        "stderr_tail": "B_weak_form_check: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      }
+    },
+    "experiments/C_resonance_benchmark.py": {
+      "dash_O": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\experiments\\C_resonance_benchmark.py",
+          "--output-dir",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\out_dash_O"
+        ],
+        "returncode": 1,
+        "seconds": 4.19,
+        "stdout_tail": "",
+        "stderr_tail": "C_resonance_benchmark: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      },
+      "PYTHONOPTIMIZE_1": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\experiments\\C_resonance_benchmark.py",
+          "--output-dir",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\out_PYTHONOPTIMIZE_1"
+        ],
+        "returncode": 1,
+        "seconds": 4.04,
+        "stdout_tail": "",
+        "stderr_tail": "C_resonance_benchmark: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      }
+    },
+    "experiments/C2_weak_form.py": {
+      "dash_O": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\experiments\\C2_weak_form.py",
+          "--output-dir",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\out_dash_O"
+        ],
+        "returncode": 1,
+        "seconds": 0.87,
+        "stdout_tail": "",
+        "stderr_tail": "C2_weak_form: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      },
+      "PYTHONOPTIMIZE_1": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\experiments\\C2_weak_form.py",
+          "--output-dir",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\out_PYTHONOPTIMIZE_1"
+        ],
+        "returncode": 1,
+        "seconds": 0.87,
+        "stdout_tail": "",
+        "stderr_tail": "C2_weak_form: checks use assert; refusing to run under python -O\r\n",
+        "refused": true
+      }
+    },
+    "D-limits-check.py": {
+      "dash_O": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\D-limits-check.py"
+        ],
+        "returncode": 0,
+        "seconds": 2.76,
+        "stdout_tail": "ic_form\": 2.581674754624074e-06,\r\n        \"heat_over_beta_quadratic\": 0.999807062792316,\r\n        \"minimum_event_energy_drift\": 0.0,\r\n        \"parent_equilibrium_drift\": 1.6945218048608247e-06,\r\n        \"absolute_flux_integral\": 0.00016475725102213368,\r\n        \"observed_energy_drift_order\": 2.001723106403024\r\n      }\r\n    ]\r\n  },\r\n  \"false_certificate\": [\r\n    {\r\n      \"N\": 128,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.01087564061881193,\r\n      \"unit_weight_measure\": 3.6015390118768424,\r\n      \"energy_drift\": 5.4462728244178445e-09\r\n    },\r\n    {\r\n      \"N\": 128,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.01087564061881193,\r\n      \"unit_weight_measure\": 0.5646578110577415,\r\n      \"energy_drift\": 2.8084323170347553e-06\r\n    },\r\n    {\r\n      \"N\": 512,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.0013594550773514912,\r\n      \"unit_weight_measure\": 7.2025305292568484,\r\n      \"energy_drift\": 3.6246836329362116e-23\r\n    },\r\n    {\r\n      \"N\": 512,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.0013594550773514912,\r\n      \"unit_weight_measure\": 0.0005431044389718736,\r\n      \"energy_drift\": 1.6882567038331676e-10\r\n    },\r\n    {\r\n      \"N\": 1024,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.00048063995195686093,\r\n      \"unit_weight_measure\": 10.185916357881302,\r\n      \"energy_drift\": 3.153239264710707e-34\r\n    },\r\n    {\r\n      \"N\": 1024,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.00048063995195686093,\r\n      \"unit_weight_measure\": 2.895231697447828e-08,\r\n      \"energy_drift\": 2.2499780851816008e-15\r\n    }\r\n  ]\r\n}\r\n",
+        "stderr_tail": "",
+        "refused": false
+      },
+      "PYTHONOPTIMIZE_1": {
+        "cmd": [
+          "C:\\Users\\Koussay\\ResearchLab\\envs\\ultimate-research\\Scripts\\python.exe",
+          "-B",
+          "D:\\ResearchLab\\orchestration\\campaigns\\20260927-164023-conserving-resonance-measure\\experiments\\red_numerics_final_optimize_scripts\\D-limits-check.py"
+        ],
+        "returncode": 0,
+        "seconds": 2.68,
+        "stdout_tail": "ic_form\": 2.581674754624074e-06,\r\n        \"heat_over_beta_quadratic\": 0.999807062792316,\r\n        \"minimum_event_energy_drift\": 0.0,\r\n        \"parent_equilibrium_drift\": 1.6945218048608247e-06,\r\n        \"absolute_flux_integral\": 0.00016475725102213368,\r\n        \"observed_energy_drift_order\": 2.001723106403024\r\n      }\r\n    ]\r\n  },\r\n  \"false_certificate\": [\r\n    {\r\n      \"N\": 128,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.01087564061881193,\r\n      \"unit_weight_measure\": 3.6015390118768424,\r\n      \"energy_drift\": 5.4462728244178445e-09\r\n    },\r\n    {\r\n      \"N\": 128,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.01087564061881193,\r\n      \"unit_weight_measure\": 0.5646578110577415,\r\n      \"energy_drift\": 2.8084323170347553e-06\r\n    },\r\n    {\r\n      \"N\": 512,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.0013594550773514912,\r\n      \"unit_weight_measure\": 7.2025305292568484,\r\n      \"energy_drift\": 3.6246836329362116e-23\r\n    },\r\n    {\r\n      \"N\": 512,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.0013594550773514912,\r\n      \"unit_weight_measure\": 0.0005431044389718736,\r\n      \"energy_drift\": 1.6882567038331676e-10\r\n    },\r\n    {\r\n      \"N\": 1024,\r\n      \"shift\": 0.0,\r\n      \"sigma\": 0.00048063995195686093,\r\n      \"unit_weight_measure\": 10.185916357881302,\r\n      \"energy_drift\": 3.153239264710707e-34\r\n    },\r\n    {\r\n      \"N\": 1024,\r\n      \"shift\": 0.5,\r\n      \"sigma\": 0.00048063995195686093,\r\n      \"unit_weight_measure\": 2.895231697447828e-08,\r\n      \"energy_drift\": 2.2499780851816008e-15\r\n    }\r\n  ]\r\n}\r\n",
+        "stderr_tail": "",
+        "refused": false
+      }
+    }
+  },
+  "optimize_scripts_dir_files": [
+    "D-limits-check.json",
+    "D-limits-check.py",
+    "branches/A-coarea-check.py",
+    "experiments/C2_weak_form.py",
+    "experiments/C_resonance_benchmark.py",
+    "scripts/B_weak_form_check.py"
+  ],
+  "repository_unchanged": true,
+  "repository_hashes": {
+    "notes/23_Integration_resonante.tex": "7b21bc5677ddc2582ac7d29dcdec9554f636bbe7900f3a7803ed4f18c764effc",
+    "scripts/reproduce_resonance_measure.py": "2a646204252dd15e39c7a1ded6804a390755773358b68d38e3235eccdc061a59",
+    "theory/aln/resonance_measure/branches/A-coarea-check.py": "7c496c79a335383ba4736b6f8d5f483abe8a4e7cef2759703e0275c64fcfd09d",
+    "theory/aln/resonance_measure/D-limits-check.py": "dcb2b85fdf105fa9d2e2414365dfffba252b6149820582371ccc86503bfc3dba",
+    "theory/aln/resonance_measure/experiments/C2_weak_form.py": "2c4fa15a6141348cb90e8c1bb6645fbd80ccd7f6f5584a7b27e3ab9bf1b252f1",
+    "theory/aln/resonance_measure/experiments/C_resonance_benchmark.py": "f9bc49edb6dac70ba53e8b68e5327d2eeba6b6110cc483a8fd1f50fb162879b7",
+    "theory/aln/resonance_measure/review-inputs/A-coarea-check.frozen-20260928.txt": "c114d021efb06da8b09c6bad6f8fb5a389292e12c60eba371d85f3ab391398cb",
+    "theory/aln/resonance_measure/review-inputs/B_weak_form_check.frozen-20260928.txt": "46bd24ba611b064b6139b985e287d150de1c7fac030b44c1a06f02173a5486c5",
+    "theory/aln/resonance_measure/review-inputs/C2_weak_form.frozen-20260928.txt": "933e7ae55004274b2c33c6fcc709879bc1f49bb1bd7b3a5cf425d69e7c136e5c",
+    "theory/aln/resonance_measure/review-inputs/C_resonance_benchmark.frozen-20260928.txt": "b3edc1ada2d6e0a8c8368c2ab714b41f1eae698c3d0bd94cf300b4fb5e487949",
+    "theory/aln/resonance_measure/review-inputs/D-limits-check.frozen-20260928.txt": "dcb2b85fdf105fa9d2e2414365dfffba252b6149820582371ccc86503bfc3dba",
+    "theory/aln/resonance_measure/review-inputs/manifest.json": "560a2e0310923b5379f37e5ccfe3536f64f9a6b68c3a6d254b140a573732a76a",
+    "theory/aln/resonance_measure/review-inputs/reproduce_resonance_measure.frozen-20260928.txt": "2f02dea633aacaa2c5713565ff09a6e56d4e38f91fc92cc28c6d49b6226d5edb",
+    "theory/aln/resonance_measure/scripts/B_weak_form_check.py": "b74cd45c373ba156b6c58b719856a9b932c1fd454bea15932a0831b7b2779046"
+  }
+}

@@ -1,0 +1,82 @@
+"""D: independent Gaussian resonance sampling and equilibrium-drift checks.
+Dimensionless momentum/energies; no material data, peer files, or solvers.
+"""
+from pathlib import Path
+import hashlib,json,math,platform,sys
+import numpy as np
+import scipy
+from scipy.special import i0e
+if not __debug__:
+    raise SystemExit("D-limits-check: refusing to run under python -O")
+ROOT=Path(__file__).resolve().parent
+normal=math.sqrt(2*math.pi)
+
+def gaussian(x,sigma):return np.exp(-.5*(x/sigma)**2)/(normal*sigma)
+
+def periodic_continuum(sigma):
+    return float(math.sqrt(2*math.pi)/sigma*i0e(1/(4*sigma*sigma)))
+
+comb=[]
+for ratio in (.2,.5,1.):
+    k=np.arange(-100,101);modes=np.arange(1,101)
+    for shift in (0.,.25,.5):
+        direct=float(np.exp(-.5*((k+shift)/ratio)**2).sum()/(normal*ratio))
+        poisson=float(1+2*np.sum(np.exp(-2*np.pi**2*modes**2*ratio**2)*np.cos(2*np.pi*modes*shift)))
+        comb.append({'sigma_over_vh':ratio,'shift':shift,'sampled':direct,'poisson':poisson,'absolute_discrepancy':abs(direct-poisson)})
+regular=[]
+for n in (32,64,128,256,512,1024):
+    h=2*np.pi/n
+    for name,sigma in (('resolved_sigma_sqrt_h',h**.5),('fixed_ratio_sigma_half_h',.5*h),('underresolved_sigma_h_1_5',h**1.5)):
+        exact=periodic_continuum(sigma)
+        for shift in (0.,.5):
+            q=-np.pi+(np.arange(n)+shift)*h
+            value=float(h*gaussian(np.cos(q),sigma).sum())
+            regular.append({'N':n,'h':h,'sigma':sigma,'sigma_over_h':sigma/h,'protocol':name,'shift':shift,
+                'sampled_integral':value,'exact_mollified_integral':exact,'error_from_target_2':value-2,'sampling_error':value-exact})
+critical_constant=math.gamma(.25)/(2**1.25*math.sqrt(math.pi))
+critical=[]
+for inv_h in (8,16,32,64,128,256):
+    h=1/inv_h
+    for name,sigma in (('resolved_sigma_h_1_5',h**1.5),('fixed_ratio_sigma_quarter_h2',.25*h*h),('underresolved_sigma_h3',h**3)):
+        for shift in (0.,.5):
+            x=(np.arange(-inv_h,inv_h+1)+shift)*h
+            value=float(h*gaussian(x*x,sigma).sum());normalized=math.sqrt(sigma)*value
+            critical.append({'inverse_h':inv_h,'h':h,'sigma':sigma,'sigma_over_h2':sigma/(h*h),'protocol':name,'shift':shift,
+                'integral':value,'sqrt_sigma_times_integral':normalized,'error_from_critical_constant':normalized-critical_constant})
+# Positive energies, beta=1: eps_p=5, eps_a(q)=2-cos(q), eps_b=3.
+# Momentum p=0, daughters q and -q; the b branch is constant.
+beta=1.;n=8192;h=2*np.pi/n;q=-np.pi+(np.arange(n)+.37)*h
+delta=np.cos(q);energies_a=2-delta
+npop=1/np.expm1(5.);nb=1/np.expm1(3.);na=1/np.expm1(energies_a)
+reverse_bose=(1+npop)*na*nb
+bose_on_surface=(1+npop)*(1/np.expm1(2.))*nb;A0=2*bose_on_surface
+heating=[]
+for sigma in (.2,.1,.05,.025,.0125):
+    prefactor=gaussian(delta,sigma)*reverse_bose
+    flux=prefactor*np.expm1(-beta*delta);event_heat=-delta*flux
+    integral=float(h*event_heat.sum());energy_form=float(h*np.sum(prefactor*delta**2))
+    row={'sigma':sigma,'N':n,'sigma_over_h':sigma/h,'energy_drift':integral,
+         'drift_over_beta_sigma2_A0':integral/(beta*sigma*sigma*A0),'positive_energy_quadratic_form':energy_form,
+         'heat_over_beta_quadratic':integral/(beta*energy_form),'minimum_event_energy_drift':float(event_heat.min()),
+         'parent_equilibrium_drift':float(-h*flux.sum()),'absolute_flux_integral':float(h*np.abs(flux).sum())}
+    if heating:row['observed_energy_drift_order']=math.log(heating[-1]['energy_drift']/integral,2)
+    heating.append(row)
+false_certificate=[]
+for n in (128,512,1024):
+    h=2*np.pi/n;sigma=h**1.5
+    for shift in (0.,.5):
+        q=-np.pi+(np.arange(n)+shift)*h;d=np.cos(q);na=1/np.expm1(2-d);r=(1+npop)*na*nb
+        heat=float(h*np.sum(-d*gaussian(d,sigma)*r*np.expm1(-d)))
+        false_certificate.append({'N':n,'shift':shift,'sigma':sigma,
+            'unit_weight_measure':float(h*gaussian(d,sigma).sum()),'energy_drift':heat})
+result={'scope':'Independent finite analytic benchmarks only; no universal mesh scaling or material conclusion',
+ 'metadata':{'python':platform.python_version(),'executable':sys.executable,'numpy':np.__version__,'scipy':scipy.__version__,
+             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
+ 'linear_gaussian_comb':comb,'periodic_regular_root':regular,'critical_root_constant':critical_constant,
+ 'critical_root':critical,'equilibrium_heating':{'beta':beta,'surface_A0':float(A0),'rows':heating},
+ 'small_drift_is_not_measure_convergence':false_certificate}
+(ROOT/'D-limits-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+summary={'comb':comb,'regular_finest':[r for r in regular if r['N']==1024],
+         'critical_constant':critical_constant,'critical_finest':[r for r in critical if r['inverse_h']==256],
+         'heating':result['equilibrium_heating'],'false_certificate':false_certificate}
+print(json.dumps(summary,indent=2))

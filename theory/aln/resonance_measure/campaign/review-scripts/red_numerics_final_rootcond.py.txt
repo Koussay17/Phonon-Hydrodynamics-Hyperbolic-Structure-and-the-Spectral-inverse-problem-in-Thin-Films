@@ -1,0 +1,74 @@
+"""Final red numerical review -- regular-root conditioning approaching criticality, using the
+CURRENT C_resonance_benchmark.scan_roots/surface_metrics (compiled read-only), compared with the
+exact coarea mass at the floating-point d (mpmath 50 digits).  Prediction: root error
+~ u/|sin q| from evaluating d - cos q, so relative mass error ~ u/(1-d).
+Also: is C2's 'flux_ref == 0.0' escape in separated_variable_checks ever exercised?
+Usage: python -B red_numerics_final_rootcond.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_rootcond.json"
+RUN = HERE / "red_numerics_final_harness_run"
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    cmod = C.load_module(C.ARCHIVE / "experiments/C_resonance_benchmark.py", "c_bench_under_review")
+    rows = []
+    for d in [0.6, 0.99, 0.9999, 1 - 1e-6, 1 - 1e-8, 1 - 1e-10, 1 - 1e-12, 1 - 1e-14, float(np.nextafter(1.0, 0.0))]:
+        for N, offset in [(1024, 0.0), (1024, 0.37), (16384, 0.37)]:
+            roots = cmod.scan_roots(d, N, offset)
+            with mp.workdps(50):
+                D = mp.mpf(d)
+                exact = (mp.mpf("0.8") + mp.mpf("0.4") * D**2) / (mp.pi * mp.sqrt((1 - D) * (1 + D)))
+                q0 = mp.acos(D)
+            if roots:
+                try:
+                    mass = cmod.surface_metrics(roots, d)["mass"]
+                    err = float(abs(mp.mpf(mass) - exact) / exact)
+                except ValueError as exc:
+                    mass, err = None, f"ValueError: {exc}"
+                root_err = float(max(abs(abs(mp.mpf(q)) - q0) for q in roots) / q0)
+            else:
+                mass, err, root_err = 0.0, 1.0, None
+            rows.append({"d": d, "one_minus_d": 1 - d, "N": N, "offset": offset, "roots_found": len(roots),
+                         "relative_mass_error": err, "max_relative_root_error": root_err,
+                         "predicted_u_over_(1-d)": C.UNIT_ROUNDOFF / (1 - d)})
+    c2 = json.loads((RUN / "C2-results/C2_weak_form.json").read_text())
+    esc = [{"xi": r["xi"], "flux_reference": r["flux_reference_80_digits"],
+            "escape_used": r["flux_reference_80_digits"] == 0.0,
+            "flux_relative_error": r["flux_relative_error"], "mobility_relative_error": r["mobility_relative_error"]}
+           for r in c2["separated_entropy_variables"]]
+    module = C.load_current_c2()
+    model = C.single_event_model(module)
+    _, F, L = model.reaction_data(np.array([0.5, 400.0, 400.0]))
+    with mp.workdps(60):
+        n = lambda x: 1 / mp.expm1(mp.mpf(x))
+        Ft = n(0.5) * (1 + n(400))**2 - (1 + n(0.5)) * n(400)**2
+    out = {"regular_root_conditioning": rows, "C2_separated_flux_escape": esc,
+           "earlier_audit_case_(0.5,400,400)": {"F": float(F[0]), "Lambda": float(L[0]),
+                                                "F_rel_error": float(abs(mp.mpf(float(F[0])) - Ft) / Ft)}}
+    OUT_JSON.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    for r in rows:
+        print(r)
+    print(json.dumps(esc, indent=0))
+    print(out["earlier_audit_case_(0.5,400,400)"])
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,66 @@
+{
+  "heating_mesh_vs_continuum_fixed": [
+    {
+      "sigma": 0.2,
+      "N": 8192,
+      "sigma_over_h": 260.7594587617613,
+      "mesh_value": 0.0007413087526336226,
+      "continuum_mp": "0.00074130875263362259",
+      "rel_mesh_error": 3.879756805328563e-17,
+      "drift_over_beta_sigma2_A0": 1.1223131935858845,
+      "observed_order": null
+    },
+    {
+      "sigma": 0.1,
+      "N": 8192,
+      "sigma_over_h": 130.37972938088066,
+      "mesh_value": 0.00016949585858322785,
+      "continuum_mp": "0.000169495858583227823",
+      "rel_mesh_error": 1.3426493335330597e-16,
+      "drift_over_beta_sigma2_A0": 1.0264410755724078,
+      "observed_order": 2.1288245220260897
+    },
+    {
+      "sigma": 0.05,
+      "N": 8192,
+      "sigma_over_h": 65.18986469044033,
+      "mesh_value": 4.15473643544752e-05,
+      "continuum_mp": "0.0000415473643544751871",
+      "rel_mesh_error": 3.216636116168011e-16,
+      "drift_over_beta_sigma2_A0": 1.0064180142611743,
+      "observed_order": 2.0284211587857928
+    },
+    {
+      "sigma": 0.025,
+      "N": 8192,
+      "sigma_over_h": 32.594932345220165,
+      "mesh_value": 1.03370454632118e-05,
+      "continuum_mp": "0.000010337045463211797",
+      "rel_mesh_error": 2.371694900718961e-16,
+      "drift_over_beta_sigma2_A0": 1.0015931388237402,
+      "observed_order": 2.006933066334792
+    },
+    {
+      "sigma": 0.0125,
+      "N": 8192,
+      "sigma_over_h": 16.297466172610083,
+      "mesh_value": 2.5811766535057683e-06,
+      "continuum_mp": "2.58117665350576837e-6",
+      "rel_mesh_error": 2.2300147929863852e-17,
+      "drift_over_beta_sigma2_A0": 1.0003975837947534,
+      "observed_order": 2.001723106403024
+    }
+  ],
+  "C_near_critical_reference_mass": {
+    "d": 0.9999,
+    "C_float_exact_mass": 27.008364159661696,
+    "mp_true_mass": "27.008364159658303115",
+    "C_reference_rel_error": 1.25611651430028e-13,
+    "stable_sqrt((1-d)(1+d))_rel_error": 1.0231598425771708e-17
+  },
+  "underflow_thresholds": {
+    "Lambda_zero_for_xi=(2x,x,x)_x_above": 372.5666095509706,
+    "capacity_weight_n(1+n)_zero_for_xi_above": 709.79,
+    "capacity_weight_subnormal_for_xi_above": 708.4
+  }
+}

@@ -1,0 +1,141 @@
+"""Final red numerical review -- Task 3: accuracy of exprel_stable (CURRENT C2_weak_form.py)
+for real and complex arguments, on both sides of its series cutoff |z| = 1e-5, and of its
+complex-step derivative Im(exprel(x+ih))/h, h = 1e-28.
+
+Reference: mpmath at 60 digits, exprel(z) = expm1(z)/z (z != 0), 1 at z = 0;
+exprel'(z) = (z e^z - e^z + 1)/z^2 evaluated with precision boosted by 2*log10(1/|z|),
+-> 1/2 at z = 0.  Errors in units of the unit roundoff u = 2^-53.
+
+Usage: python -B red_numerics_final_exprel.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_exprel.json"
+U = C.UNIT_ROUNDOFF
+H = 1e-28
+
+
+def ref_exprel(z, dps=60):
+    with mp.workdps(dps):
+        z = mp.mpc(z) if isinstance(z, complex) else mp.mpf(z)
+        return mp.mpf(1) if z == 0 else mp.expm1(z) / z
+
+
+def ref_exprel_prime(x):
+    if x == 0:
+        return mp.mpf("0.5")
+    boost = int(max(0.0, -math.log10(abs(x)))) * 2 + 60
+    with mp.workdps(boost):
+        z = mp.mpf(x)
+        return (z * mp.exp(z) - mp.exp(z) + 1) / z**2
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    module = C.load_current_c2()
+    f = module.exprel_stable
+    out = {"meta": {"current_C2_sha256": C.sha256(C.C2_PATH), "cutoff": 1e-5, "step": H,
+                    "numpy": np.__version__}}
+
+    # ---------------- real arguments ----------------
+    mags = np.unique(np.concatenate([10.0 ** np.linspace(-20, 3, 2301),
+                                     1e-5 * (1 + np.linspace(-0.05, 0.05, 2001)),
+                                     [np.nextafter(1e-5, 0), 1e-5, np.nextafter(1e-5, 1)],
+                                     [5e-324, 1e-300, 1e-200, 700.0, 709.0, 709.78, 710.0]]))
+    zs = np.concatenate([-mags[::-1], [0.0], mags])
+    with np.errstate(all="ignore"):
+        vals = f(zs)
+    rows = []
+    for z, v in zip(zs, vals):
+        r = ref_exprel(float(z))
+        with mp.workdps(60):
+            if mp.isinf(r) or abs(r) > mp.mpf(np.finfo(float).max):
+                rows.append({"z": float(z), "value": float(v), "regime": "reference_overflows"})
+                continue
+            e = float(abs(mp.mpf(float(v)) - r) / abs(r)) if np.isfinite(v) else float("inf")
+        rows.append({"z": float(z), "rel_err_over_u": e / U, "side": "series" if abs(z) < 1e-5 else "expm1"})
+    good = [r for r in rows if "rel_err_over_u" in r]
+    def mx(sel):
+        sel = list(sel)
+        i = int(np.argmax([r["rel_err_over_u"] for r in sel]))
+        return {"max_rel_err_over_u": sel[i]["rel_err_over_u"], "at_z": sel[i]["z"], "count": len(sel)}
+    out["real"] = {
+        "series_side_|z|<1e-5": mx(r for r in good if r["side"] == "series"),
+        "expm1_side_|z|>=1e-5": mx(r for r in good if r["side"] == "expm1"),
+        "window_0.95e-5_to_1.05e-5": mx(r for r in good if 0.95e-5 <= abs(r["z"]) <= 1.05e-5),
+        "nonfinite_or_overflow": [r for r in rows if "regime" in r],
+        "truncation_term_z^6/7!_at_cutoff_relative": (1e-5) ** 6 / 5040,
+    }
+
+    # ---------------- complex arguments (general angles) ----------------
+    crow = []
+    for k in np.linspace(-20, 2, 221):
+        for theta in (0.1, math.pi / 4, math.pi / 2, 3 * math.pi / 4, math.pi - 0.1, -math.pi / 3, -math.pi / 2):
+            z = complex(10.0 ** k * math.cos(theta), 10.0 ** k * math.sin(theta))
+            v = complex(f(np.array([z]))[0])
+            r = ref_exprel(z)
+            with mp.workdps(60):
+                e = float(abs(mp.mpc(v) - r) / abs(r))
+            crow.append({"z": [z.real, z.imag], "abs_z": abs(z), "rel_err_over_u": e / U,
+                         "side": "series" if abs(z) < 1e-5 else "expm1"})
+    def cmx(sel):
+        sel = list(sel)
+        i = int(np.argmax([r["rel_err_over_u"] for r in sel]))
+        return {"max_rel_err_over_u": sel[i]["rel_err_over_u"], "at_z": sel[i]["z"], "count": len(sel)}
+    out["complex_general"] = {"series_side": cmx(r for r in crow if r["side"] == "series"),
+                              "expm1_side": cmx(r for r in crow if r["side"] == "expm1")}
+
+    # ---------------- complex-step value and derivative ----------------
+    xs = np.unique(np.concatenate([10.0 ** np.linspace(-14, 1.5, 621),
+                                   1e-5 * (1 + np.linspace(-0.05, 0.05, 401))]))
+    xs = np.concatenate([-xs[::-1], [0.0], xs])
+    drows = []
+    for x in xs:
+        v = complex(f(np.array([complex(x, H)]))[0])
+        dcs = v.imag / H
+        dref = ref_exprel_prime(float(x))
+        with mp.workdps(40):
+            e = float(abs(mp.mpf(dcs) - dref) / abs(dref))
+            ev = float(abs(mp.mpf(v.real) - ref_exprel(float(x))) / abs(ref_exprel(float(x))))
+        drows.append({"x": float(x), "deriv_rel_err": e, "value_rel_err_over_u": ev / U,
+                      "side": "series" if abs(x) < 1e-5 else "expm1",
+                      "predicted_cancellation_2u_over_|x|": 2 * U / abs(x) if x != 0 else 0.0})
+    series = [r for r in drows if r["side"] == "series"]
+    exps = [r for r in drows if r["side"] == "expm1"]
+    i = int(np.argmax([r["deriv_rel_err"] for r in exps]))
+    out["complex_step_derivative"] = {
+        "series_side_max_deriv_rel_err": max(r["deriv_rel_err"] for r in series),
+        "expm1_side_max_deriv_rel_err": exps[i]["deriv_rel_err"], "expm1_side_worst_x": exps[i]["x"],
+        "max_value_rel_err_over_u": max(r["value_rel_err_over_u"] for r in drows),
+        "ratio_observed_over_2u/|x|_for_1e-5<=|x|<=1e-3":
+            float(max(r["deriv_rel_err"] / r["predicted_cancellation_2u_over_|x|"]
+                      for r in exps if 1e-5 <= abs(r["x"]) <= 1e-3)),
+        "band_maxima": [
+            {"band": [lo, hi], "max_deriv_rel_err": float(max(r["deriv_rel_err"] for r in drows
+                                                              if lo <= abs(r["x"]) < hi))}
+            for lo, hi in [(0, 1e-12), (1e-12, 1e-8), (1e-8, 1e-5), (1e-5, 1.1e-5), (1.1e-5, 1e-4),
+                           (1e-4, 1e-3), (1e-3, 1e-2), (1e-2, 1e-1), (1e-1, 1.0), (1.0, 40.0)]
+            if any(lo <= abs(r["x"]) < hi for r in drows)],
+    }
+    out["complex_step_rows_near_cutoff"] = [r for r in drows if 0.9e-5 <= abs(r["x"]) <= 1.2e-5][::10]
+    OUT_JSON.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({k: v for k, v in out.items() if k != "complex_step_rows_near_cutoff"}, indent=1))
+
+
+if __name__ == "__main__":
+    main()

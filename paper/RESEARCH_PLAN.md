@@ -77,3 +77,15 @@ The full reproduction passed 13 checks; the updated finite runner additionally i
 These results do not establish a physical linewidth correction, a converged AlN collision
 action or experimental validity. Next: specify a conserving resonance measure and kinetic
 regime before constructing the material operator.
+
+## Conserving resonance measure closed — 2 October 2026
+
+[Note 23](../notes/23_Integration_resonante.pdf) and the
+[archived campaign](../theory/aln/resonance_measure/campaign/13-final-report.md) are complete after four
+independent hostile reviews. The finite entropy-variable weak form is proved locally under its hypotheses.
+Positive reweighting of unchanged off-shell events cannot restore conservation. Invariants do not constrain
+rates, and the domain can be left in finite time. A numerical defect (NaN in the log-mean flux) was found
+by review, fixed, and independently verified; the reproduction runner passes 14 checks.
+Next: declare the kinetic approximation for the AlN observable, then build a globally enumerated
+resonance-surface quadrature on the real dispersion from the Olympics force constants, refining mesh,
+surface rule and basis independently.

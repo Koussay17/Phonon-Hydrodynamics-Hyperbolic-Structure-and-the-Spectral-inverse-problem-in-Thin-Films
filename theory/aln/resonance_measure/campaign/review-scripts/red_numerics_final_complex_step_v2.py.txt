@@ -1,0 +1,214 @@
+"""Final red numerical review -- Task 2 (v2, supersedes red_numerics_final_complex_step.py).
+
+v1 defects (my own, corrected here): (i) float norms of ~1e-218 vectors underflowed when
+squared, so D4 reported a meaningless 0.0; (ii) the identity-route mpmath reference
+dF_j = B dlogB_j(e^{-d}-1) - B e^{-d} dd_j cancels catastrophically for components that are
+tiny relative to A (e.g. dF_a = -A n_a + B(1+n_a) with B << A), so v1 componentwise errors
+and the route-gap 1.0 were reference artefacts.
+
+v2 reference: rigorous Arb balls (python-flint), DEFINITIONAL formulas
+  dF_j = A dlogA_j - B dlogB_j,
+  dL_j = (F dd_j - d dF_j)/d^2      (Lambda = (A-B)/(logA-logB) = F/(-d)),
+  at d == 0 exactly: dL_j = B dlogB_j - B dd_j/2  (limit, g(0)=1, g'(0)=-1/2),
+with adaptive precision until every component has relative radius < 1e-25.
+Implementation under test: module.complex_jacobian (step 1e-28) applied to
+reaction_data()[1] (F) and [2] (Lambda) of the CURRENT repository C2_weak_form.py, and,
+for comparison, to the direct Bose product used by the harness (rhs(...,True)).
+
+Usage: python -B red_numerics_final_complex_step_v2.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+import time
+from fractions import Fraction
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+import flint
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_complex_step_v2.json"
+SEED = 2026100202
+H = 1e-28
+REL_TINY_COMPONENT = 1e-6
+
+
+def loguniform(rng, lo, hi, size):
+    return np.exp(rng.uniform(math.log(lo), math.log(hi), size))
+
+
+def build(rng):
+    sets = {}
+    sets["D1_independent_loguniform"] = [tuple(v) for v in loguniform(rng, 1e-12, 1e3, (2500, 3))]
+    rows = []
+    bases = [(3e-7, 5e-7), (1e-2, 2e-2), (0.3, 0.45), (1.7, 2.9), (13.0, 21.0), (150.0, 230.0)]
+    dvals = sorted(set([s * 10.0 ** k for k in np.linspace(-16, 0, 129) for s in (-1.0, 1.0)]
+                       + [s * 1e-5 * (1 + t) for t in np.linspace(-0.02, 0.02, 41) for s in (-1.0, 1.0)]))
+    for xa, xb in bases:
+        for dv in dvals:
+            xp = (xa + xb) + dv
+            if xp > 0:
+                rows.append((xp, xa, xb))
+    sets["D2_affinity_sweep_through_zero_and_series_cutoff"] = rows
+    rows = []
+    while len(rows) < 400:
+        xp = float(loguniform(rng, 2e-12, 1e3, 1)[0])
+        xa = float(rng.uniform(0.5, 1.0) * xp)
+        xb = xp - xa
+        if xb >= 1e-12 and Fraction(xp) == Fraction(xa) + Fraction(xb):
+            rows.append((xp, xa, xb))
+    sets["D3_exact_resonance"] = rows
+    rows = [(xp, 400.0, 400.0) for xp in np.arange(500.0, 761.0, 5.0)]
+    rows += [(s + 3.0, s / 2, s / 2) for s in np.arange(500.0, 761.0, 10.0)]
+    sets["D4_tiny_outputs_underflow_sweep"] = rows
+    sets["D5_xi_to_zero"] = [tuple(v) for v in loguniform(rng, 1e-12, 1e-6, (400, 3))]
+    return sets
+
+
+def arb_derivatives(xp, xa, xb, target=1e-25):
+    prec = 256
+    dd = [1, -1, -1]
+    while True:
+        flint.ctx.prec = prec
+        X = [flint.arb(float(v)) for v in (xp, xa, xb)]
+        n = [1 / x.expm1() for x in X]
+        A = n[0] * (1 + n[1]) * (1 + n[2])
+        B = (1 + n[0]) * n[1] * n[2]
+        dlogA = [-(1 + n[0]), -n[1], -n[2]]
+        dlogB = [-n[0], -(1 + n[1]), -(1 + n[2])]
+        d = X[0] - X[1] - X[2]
+        dF = [A * dlogA[j] - B * dlogB[j] for j in range(3)]
+        if d.is_zero():
+            dL = [B * dlogB[j] - B * dd[j] / 2 for j in range(3)]
+            F = flint.arb(0)
+        else:
+            F = A - B
+            dL = [(F * dd[j] - d * dF[j]) / (d * d) for j in range(3)]
+        ok = True
+        for v in dF + dL:
+            if not v.is_finite():
+                ok = False
+            elif v.rad() != 0 and not (v.rad() / abs(v.mid()) < target):
+                ok = False
+        if ok or prec >= 16384:
+            to = lambda v: C.arb_to_mpf(v, dps=40)
+            return {"dF": [to(v) for v in dF], "dL": [to(v) for v in dL], "prec": prec,
+                    "F": to(F), "B": to(B), "A": to(A), "d_zero": bool(d.is_zero())}
+        prec *= 2
+
+
+def errors(J, ref):
+    with mp.workdps(40):
+        Jm = [mp.mpf(float(v)) for v in J]
+        num = mp.sqrt(mp.fsum((Jm[j] - ref[j]) ** 2 for j in range(3)))
+        den = mp.sqrt(mp.fsum(ref[j] ** 2 for j in range(3)))
+        norm = float(num / den) if den != 0 else (0.0 if num == 0 else float("inf"))
+        comp, tiny_comp = 0.0, 0.0
+        for j in range(3):
+            if ref[j] == 0:
+                continue
+            e = float(abs(Jm[j] - ref[j]) / abs(ref[j]))
+            if abs(ref[j]) >= REL_TINY_COMPONENT * den:
+                comp = max(comp, e)
+            else:
+                tiny_comp = max(tiny_comp, e)
+        return norm, comp, tiny_comp, float(den)
+
+
+def stats(recs, key):
+    vals = np.array([r[key] for r in recs])
+    i = int(np.argmax(vals))
+    return {"max": float(vals.max()), "median": float(np.median(vals)),
+            "count_gt_1e-14": int((vals > 1e-14).sum()), "count_gt_1e-13": int((vals > 1e-13).sum()),
+            "count_gt_1e-11": int((vals > 1e-11).sum()), "count_gt_1e-6": int((vals > 1e-6).sum()),
+            "worst_xi": recs[i]["xi"], "worst_d": recs[i]["d_exact"], "worst_F_ref": recs[i]["F_ref"]}
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    t0 = time.time()
+    rng = np.random.default_rng(SEED)
+    module = C.load_current_c2()
+    model = C.single_event_model(module)
+    sets = build(rng)
+    flux = lambda z: model.reaction_data(z)[1]
+    mobility = lambda z: model.reaction_data(z)[2]
+    direct_flux = lambda z: -model.rhs(z, direct_products=True)[:1]
+    results = {"meta": {"step": H, "seed": SEED, "current_C2_sha256": C.sha256(C.C2_PATH),
+                        "numpy": np.__version__, "flint": flint.__version__,
+                        "reference": "Arb rigorous definitional derivatives, rel radius < 1e-25",
+                        "tiny_component_threshold_relative_to_norm": REL_TINY_COMPONENT}}
+    pooled = []
+    for name, rows in sets.items():
+        recs = []
+        for xi in rows:
+            xi = tuple(float(v) for v in xi)
+            alpha = np.array(xi)
+            with np.errstate(all="ignore"):
+                JF = module.complex_jacobian(flux, alpha, step=H)[0]
+                JL = module.complex_jacobian(mobility, alpha, step=H)[0]
+                JD = module.complex_jacobian(direct_flux, alpha, step=H)[0]
+            ref = arb_derivatives(*xi)
+            eF = errors(JF, ref["dF"])
+            eL = errors(JL, ref["dL"])
+            eD = errors(JD, ref["dF"])
+            with mp.workdps(30):
+                d_exact = float(mp.mpf(xi[0]) - mp.mpf(xi[1]) - mp.mpf(xi[2]))
+            rec = {"xi": list(xi), "d_exact": d_exact, "F_ref": float(ref["F"]), "B_ref": float(ref["B"]),
+                   "errF_norm": eF[0], "errF_comp": eF[1], "errF_tinycomp": eF[2], "gradF_norm": eF[3],
+                   "errL_norm": eL[0], "errL_comp": eL[1], "errL_tinycomp": eL[2], "gradL_norm": eL[3],
+                   "errDirect_norm": eD[0], "errDirect_comp": eD[1],
+                   "finite": bool(np.all(np.isfinite(JF)) and np.all(np.isfinite(JL))),
+                   "arb_prec": ref["prec"]}
+            recs.append(rec)
+            pooled.append(rec)
+        summary = {"count": len(recs), "nonfinite_jacobians": sum(1 for r in recs if not r["finite"]),
+                   "max_arb_prec_bits": max(r["arb_prec"] for r in recs)}
+        for key in ("errF_norm", "errF_comp", "errF_tinycomp", "errL_norm", "errL_comp", "errL_tinycomp",
+                    "errDirect_norm", "errDirect_comp"):
+            summary[key] = stats(recs, key)
+        if name.startswith("D2") or name.startswith("D4"):
+            summary["records"] = recs
+        results[name] = summary
+        print(name, round(time.time() - t0, 1), "s", flush=True)
+
+    # Mobility error versus |d| (pooled over all sets): band maxima
+    bands = [(0, 0), (1e-300, 1e-12), (1e-12, 1e-8), (1e-8, 1e-6), (1e-6, 1e-5), (1e-5, 3e-5), (3e-5, 1e-4),
+             (1e-4, 1e-3), (1e-3, 1e-2), (1e-2, 1e-1), (1e-1, 1.0), (1.0, 1e4)]
+    table = []
+    for lo, hi in bands:
+        sel = [r for r in pooled if (abs(r["d_exact"]) == 0 if hi == 0 else lo <= abs(r["d_exact"]) < hi)
+               and r["gradL_norm"] > 1e-280 * max(1.0, r["B_ref"])]
+        if sel:
+            table.append({"abs_d_band": [lo, hi], "count": len(sel),
+                          "max_mobility_normwise_error": float(max(r["errL_norm"] for r in sel)),
+                          "max_flux_normwise_error": float(max(r["errF_norm"] for r in sel)),
+                          "max_direct_product_flux_error": float(max(r["errDirect_norm"] for r in sel)),
+                          "prediction_2u_over_|d|_at_band_low": (2 * C.UNIT_ROUNDOFF / lo) if lo > 0 else None})
+    results["mobility_error_vs_affinity_band"] = table
+    # Underflow of the complex step: error versus |F| (D4 and pooled)
+    uf = sorted(pooled, key=lambda r: abs(r["F_ref"]) if r["F_ref"] != 0 else abs(r["B_ref"]))
+    rows = []
+    for decade in range(-330, -200, 10):
+        sel = [r for r in pooled if r["F_ref"] != 0 and 10.0 ** decade <= abs(r["F_ref"]) < 10.0 ** (decade + 10)]
+        if sel:
+            rows.append({"F_decade": [decade, decade + 10], "count": len(sel),
+                         "max_flux_normwise_error": float(max(r["errF_norm"] for r in sel)),
+                         "max_mobility_normwise_error": float(max(r["errL_norm"] for r in sel))})
+    results["complex_step_underflow_vs_F_magnitude"] = rows
+    OUT_JSON.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+    print("wrote", OUT_JSON)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,304 @@
+﻿"""Independent 1D resonance-measure benchmark; no material imports.
+
+BZ q in [-pi,pi), dq/(2*pi); E_p=2+d, E_a(q)=1+0.3*cos(q),
+E_b(-q)=1+0.7*cos(q), Delta=d-cos(q), beta=1.
+Even positive weight w=1+0.2*cos(2*q); affinity phi=1+0.4*sin(q).
+Requires Python >=3.10, NumPy, SciPy. Accepts --output-dir.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+import platform
+import sys
+from pathlib import Path
+
+import numpy as np
+import scipy
+from scipy.integrate import quad
+from scipy.optimize import brentq
+
+if not __debug__:
+    raise SystemExit("C_resonance_benchmark: checks use assert; refusing to run under python -O")
+
+
+BETA = 1.0
+FIELDS = ("mass", "weak_form", "energy_weak_defect",
+          "equilibrium_flux", "equilibrium_absolute_flux", "equilibrium_energy_drift")
+
+
+def occupation(energy):
+    return 1.0 / np.expm1(BETA * energy)
+
+
+def integrands(q, d, even_average=False):
+    t = np.cos(q)
+    mismatch = d - t
+    weight = 0.8 + 0.4 * t**2
+    parent = occupation(2.0 + d)
+    daughter_a = occupation(1.0 + 0.3 * t)
+    daughter_b = occupation(1.0 + 0.7 * t)
+    reverse_bose = (1.0 + parent) * daughter_a * daughter_b
+    flux = reverse_bose * np.expm1(-BETA * mismatch)
+    affinity_square = 1.0 + 0.16 * (1.0 - t**2) if even_average else (1.0 + 0.4 * np.sin(q))**2
+    return {
+        "mass": weight,
+        "weak_form": weight * affinity_square,
+        "energy_weak_defect": weight * mismatch**2,
+        "equilibrium_flux": weight * flux,
+        "equilibrium_absolute_flux": weight * np.abs(flux),
+        "equilibrium_energy_drift": -weight * mismatch * flux,
+    }
+
+
+def exact_reference(d):
+    if abs(d) > 1:
+        return {"classification": "empty", "root_count": 0, "mass": 0.0, "weak_form": 0.0}
+    if abs(d) == 1:
+        return {"classification": "critical", "root_count": 1, "finite_regular_measure": False}
+    slope = math.sqrt(1 - d*d)
+    even_weight = 0.8 + 0.4*d*d
+    mass = even_weight / (math.pi * slope)
+    return {
+        "classification": "regular", "root_count": 2,
+        "roots": [-math.acos(d), math.acos(d)],
+        "minimum_root_gradient": slope, "mass": mass,
+        "weak_form": mass * (1.0 + 0.16 * slope*slope),
+        "gaussian_mass_bias_over_sigma_squared_limit":
+            (0.8 + d*d) / (math.pi * (1 - d*d)**2.5),
+    }
+
+
+def node_metrics(q, measure_weights, d):
+    values = integrands(np.asarray(q), d)
+    return {name: float(np.dot(measure_weights, values[name])) for name in FIELDS}
+
+
+def surface_metrics(roots, d, include_jacobian=True):
+    q = np.asarray(roots, dtype=float)
+    if len(q) == 0:
+        return {name: 0.0 for name in FIELDS}
+    if include_jacobian:
+        gradient = np.abs(np.sin(q))
+        if np.any(gradient < 1e-13):
+            raise ValueError("Critical root cannot receive a finite regular coarea weight")
+        measure_weights = 1.0 / (2 * math.pi * gradient)
+    else:
+        measure_weights = np.full(len(q), 1.0 / (2 * math.pi))
+    return node_metrics(q, measure_weights, d)
+
+
+def scan_roots(d, mesh_size, offset):
+    spacing = 2 * math.pi / mesh_size
+    edges = -math.pi + offset*spacing + np.arange(mesh_size + 1)*spacing
+    values = d - np.cos(edges)
+    candidates = []
+    for j in range(mesh_size):
+        if values[j] == 0.0:
+            candidates.append(float(edges[j]))
+        if values[j] * values[j+1] < 0:
+            candidates.append(brentq(
+                lambda q: d - math.cos(q), float(edges[j]), float(edges[j+1]),
+                xtol=5e-15, rtol=1e-14
+            ))
+    roots = []
+    for candidate in candidates:
+        canonical = (candidate + math.pi) % (2 * math.pi) - math.pi
+        if all(abs((canonical - previous + math.pi) % (2 * math.pi) - math.pi) > 1e-11
+               for previous in roots):
+            roots.append(canonical)
+    return sorted(roots)
+
+
+def mesh_metrics(d, sigma, mesh_size, offset):
+    h = 2 * math.pi / mesh_size
+    q = -math.pi + (np.arange(mesh_size) + offset)*h
+    mismatch = d - np.cos(q)
+    gaussian = np.exp(-0.5 * (mismatch/sigma)**2) / (math.sqrt(2*math.pi)*sigma)
+    return node_metrics(q, gaussian / mesh_size, d)
+
+
+def adaptive_gaussian(d, sigma):
+    points = []
+    for multiple in [-10, -6, -3, -1, 0, 1, 3, 6, 10]:
+        cosine_value = d + multiple*sigma
+        if -1.0 < cosine_value < 1.0:
+            points.append(math.acos(cosine_value))
+    points = sorted(set(points))
+    result, estimates = {}, {}
+    for name in FIELDS:
+        def scalar_integrand(q):
+            mismatch = d - math.cos(q)
+            gaussian = math.exp(-0.5*(mismatch/sigma)**2) / (math.sqrt(2*math.pi)*sigma)
+            return float(integrands(q, d, even_average=True)[name]) * gaussian / math.pi
+        value, error = quad(
+            scalar_integrand, 0, math.pi, points=points,
+            epsabs=2e-13, epsrel=2e-11, limit=200
+        )
+        result[name] = float(value)
+        estimates[name] = float(error)
+    result["adaptive_absolute_error_estimates"] = estimates
+    return result
+
+
+def regular_case():
+    d = 0.6
+    exact = exact_reference(d)
+    surface = surface_metrics(exact["roots"], d)
+    missing_jacobian = surface_metrics(exact["roots"], d, include_jacobian=False)
+    assert abs(surface["mass"]/exact["mass"] - 1) < 1e-14
+    assert abs(surface["weak_form"]/exact["weak_form"] - 1) < 1e-14
+    assert surface["energy_weak_defect"] < 1e-28
+    assert surface["equilibrium_absolute_flux"] < 1e-15
+    assert abs(missing_jacobian["mass"]/exact["mass"] - 0.8) < 1e-14
+    parent = float(occupation(2+d))
+    forward_bose_on_surface = parent*(1+float(occupation(1+0.3*d)))*(1+float(occupation(1+0.7*d)))
+    continuum = []
+    meshes = []
+    for sigma in [0.2, 0.1, 0.05, 0.025, 0.0125, 0.00625]:
+        reference = adaptive_gaussian(d, sigma)
+        reference.update({
+            "sigma": sigma,
+            "relative_mass_bias": reference["mass"]/exact["mass"] - 1,
+            "mass_bias_over_sigma_squared": (reference["mass"]-exact["mass"])/sigma**2,
+            "energy_defect_over_exact_mass_sigma_squared":
+                reference["energy_weak_defect"]/(exact["mass"]*sigma**2),
+            "heating_over_leading_asymptotic":
+                reference["equilibrium_energy_drift"]/(BETA*forward_bose_on_surface*exact["mass"]*sigma**2),
+            "absolute_flux_over_leading_asymptotic":
+                reference["equilibrium_absolute_flux"]/(BETA*forward_bose_on_surface*exact["mass"]*sigma*math.sqrt(2/math.pi)),
+        })
+        continuum.append(reference)
+        for mesh_size in [32, 64, 128, 256, 512, 1024, 2048]:
+            for offset in [0.0, 0.37]:
+                measured = mesh_metrics(d, sigma, mesh_size, offset)
+                measured.update({
+                    "sigma": sigma, "mesh_size": mesh_size, "offset": offset,
+                    "sigma_over_h_root_gradient": sigma/(2*math.pi/mesh_size*exact["minimum_root_gradient"]),
+                    "relative_mass_error_vs_broadened_continuum": measured["mass"]/reference["mass"] - 1,
+                    "relative_weak_error_vs_broadened_continuum": measured["weak_form"]/reference["weak_form"] - 1,
+                    "relative_mass_error_vs_resonance": measured["mass"]/exact["mass"] - 1,
+                })
+                meshes.append(measured)
+    last = continuum[-1]
+    assert abs(last["mass_bias_over_sigma_squared"]/exact["gaussian_mass_bias_over_sigma_squared_limit"]-1) < 0.01
+    assert abs(last["heating_over_leading_asymptotic"]-1) < 0.01
+    assert abs(last["energy_defect_over_exact_mass_sigma_squared"]-1) < 0.01
+    assert all(record["equilibrium_energy_drift"] >= 0 for record in meshes)
+    resolved = [record for record in meshes if record["mesh_size"] == 2048]
+    assert max(abs(record["relative_mass_error_vs_broadened_continuum"]) for record in resolved) < 1e-10
+    return {
+        "d": d, "exact": exact, "surface": surface,
+        "missing_jacobian_negative_control": missing_jacobian,
+        "bose_factor_on_surface": forward_bose_on_surface,
+        "broadened_continuum": continuum, "mesh_sweep": meshes,
+    }
+
+
+def root_detection_case():
+    d = 1 - 1e-4
+    exact = exact_reference(d)
+    results = []
+    for mesh_size in [16, 32, 64, 128, 256, 512, 1024]:
+        roots = scan_roots(d, mesh_size, 0.37)
+        measured = surface_metrics(roots, d)
+        results.append({
+            "mesh_size": mesh_size, "offset": 0.37, "root_count": len(roots),
+            "roots": roots, "mass": measured["mass"],
+            "relative_mass_error": measured["mass"]/exact["mass"]-1,
+            "missed_regular_roots": len(roots) != exact["root_count"],
+        })
+    assert results[0]["root_count"] == 0
+    assert results[-1]["root_count"] == 2
+    return {"d": d, "exact": exact, "scans": results,
+            "warning": "A zero sign-change count alone is not a certificate of an empty resonance set."}
+
+
+def empty_case():
+    d = 1.1
+    records = []
+    gap = d - 1.0
+    for sigma in [0.2, 0.1, 0.05, 0.025, 0.0125]:
+        measured = adaptive_gaussian(d, sigma)
+        upper_bound = math.exp(-0.5*(gap/sigma)**2)/(math.sqrt(2*math.pi)*sigma)
+        measured.update({"sigma": sigma, "positive_leakage_upper_bound": upper_bound})
+        assert 0 < measured["mass"] <= upper_bound * (1 + 1e-12)
+        records.append(measured)
+    return {"d": d, "exact": exact_reference(d), "gap": gap, "gaussian_results": records}
+
+
+def critical_case():
+    d = 1.0
+    constant = 1.2*math.gamma(0.25)/(2**1.75*math.pi**1.5)
+    records = []
+    for sigma in [0.1, 0.025, 0.00625, 0.0015625]:
+        measured = adaptive_gaussian(d, sigma)
+        mesh = mesh_metrics(d, sigma, 2048, 0.37)
+        measured.update({
+            "sigma": sigma, "mass_times_sqrt_sigma": measured["mass"]*math.sqrt(sigma),
+            "scaled_mass_over_analytic_limit": measured["mass"]*math.sqrt(sigma)/constant,
+            "energy_defect_over_sigma_squared_mass": measured["energy_weak_defect"]/(sigma**2*measured["mass"]),
+            "mesh_relative_mass_error": mesh["mass"]/measured["mass"] - 1,
+        })
+        records.append(measured)
+    assert abs(records[-1]["scaled_mass_over_analytic_limit"] - 1) < 0.01
+    assert abs(records[-1]["energy_defect_over_sigma_squared_mass"] - 0.5) < 0.01
+    return {"d": d, "exact": exact_reference(d),
+            "analytic_mass_times_sqrt_sigma_limit": constant,
+            "gaussian_results": records}
+
+
+def fixed_mesh_order_of_limits():
+    d = 0.0
+    mesh_size = 64
+    records = []
+    for sigma in [0.1, 0.02, 0.005, 0.001, 0.0002]:
+        for offset in [0.0, 0.37]:
+            measured = mesh_metrics(d, sigma, mesh_size, offset)
+            records.append({
+                "sigma": sigma, "offset": offset, "mass": measured["mass"],
+                "relative_error_vs_resonance": measured["mass"]/exact_reference(d)["mass"]-1,
+            })
+    aligned = next(item for item in records if item["sigma"] == 0.0002 and item["offset"] == 0.0)
+    shifted = next(item for item in records if item["sigma"] == 0.0002 and item["offset"] == 0.37)
+    assert aligned["mass"] > 100*exact_reference(d)["mass"]
+    assert shifted["mass"] == 0.0
+    return {"d": d, "mesh_size": mesh_size, "exact": exact_reference(d), "results": records,
+            "aligned_mass_times_sigma_limit": 1.6/(mesh_size*math.sqrt(2*math.pi)),
+            "shifted_zero_note": "Floating-point underflow represents an analytically exponentially vanishing fixed-mesh sum."}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parent)
+    args = parser.parse_args()
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    results = {
+        "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "interpreter": sys.executable, "python": platform.python_version(),
+        "numpy": np.__version__, "scipy": scipy.__version__, "beta": BETA,
+        "weight": "1+0.2*cos(2q)", "affinity": "1+0.4*sin(q)",
+        "regular": regular_case(), "near_critical_root_detection": root_detection_case(),
+        "empty": empty_case(), "critical": critical_case(),
+        "fixed_mesh_order_of_limits": fixed_mesh_order_of_limits(),
+        "all_assertions_passed": True,
+        "scope": "Scalar integration benchmark with analytic energies and node occupations; no material or closed population interpolation claim.",
+    }
+    destination = args.output_dir / "C_resonance_benchmark.json"
+    destination.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({
+        "output": str(destination), "script_sha256": results["script_sha256"],
+        "all_assertions_passed": True,
+        "regular_exact_mass": results["regular"]["exact"]["mass"],
+        "wrong_measure_relative_error": results["regular"]["missing_jacobian_negative_control"]["mass"]/results["regular"]["exact"]["mass"]-1,
+        "smallest_width_regular_mass_bias": results["regular"]["broadened_continuum"][-1]["relative_mass_bias"],
+        "smallest_width_heating_ratio": results["regular"]["broadened_continuum"][-1]["heating_over_leading_asymptotic"],
+        "critical_scaled_mass_ratio": results["critical"]["gaussian_results"][-1]["scaled_mass_over_analytic_limit"],
+    }, indent=2))
+
+
+if __name__ == "__main__":
+    main()
+

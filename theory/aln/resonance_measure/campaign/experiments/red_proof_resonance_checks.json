@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "scope": "Independent exact finite algebra and saved C2 provenance inspection only; no material run or repeat of C2.",
+  "sympy": "1.14.0",
+  "zero_residual_checks": {
+    "bose_capacity_derivative": "0",
+    "dual_gradient": "0",
+    "dual_hessian": "0",
+    "forward_reverse_ratio": "0",
+    "logmean_zero_affinity": "0",
+    "equilibrium_rhs_0": "0",
+    "equilibrium_jacobian_00": "0",
+    "equilibrium_jacobian_01": "0",
+    "equilibrium_rhs_1": "0",
+    "equilibrium_jacobian_10": "0",
+    "equilibrium_jacobian_11": "0",
+    "coefficient_linearization_00": "0",
+    "coefficient_linearization_01": "0",
+    "coefficient_linearization_10": "0",
+    "coefficient_linearization_11": "0",
+    "equilibrium_zero_eigenvalue": "0",
+    "equilibrium_nonzero_eigenvalue": "0",
+    "energy_kernel_0": "0",
+    "energy_kernel_1": "0",
+    "bad_interpolation_energy": "0",
+    "bad_interpolation_at_Bose": "0"
+  },
+  "negative_entropy_counterexample": {
+    "t": "1001/1000",
+    "flux_exact": "1254006004001/1746738742248",
+    "affinity": "5*log(1001/1000)",
+    "entropy_exact": "-6270030020005*log(1001/1000)/1746738742248",
+    "entropy_decimal": "-0.0035877701352026132776"
+  },
+  "off_shell_heating_exact": [
+    {
+      "energies": [
+        1,
+        1,
+        1
+      ],
+      "mismatch": "-1",
+      "flux": "2",
+      "heating": "2"
+    },
+    {
+      "energies": [
+        3,
+        1,
+        1
+      ],
+      "mismatch": "1",
+      "flux": "-4/7",
+      "heating": "4/7"
+    }
+  ],
+  "C2_saved_provenance": {
+    "sha256_matches": "933e7ae55004274b2c33c6fcc709879bc1f49bb1bd7b3a5cf425d69e7c136e5c",
+    "first_original_predicate_failure": -0.0001,
+    "all_recorded_corrected_bounds_pass": true,
+    "historical_initial_source_snapshot_not_audited": true
+  }
+}

@@ -160,3 +160,31 @@ compensated sum, and exact stored resonances work at zero tolerance.
 The API distinguishes accepted nonzero detuning from an exact equilibrium
 Jacobian, documents entropy-scale underflow and self-reciprocal orbit counting,
 and validates matrix-valued inputs consistently. See theory/aln/events/12-peer-review.md.
+
+## Full-repository audit and resonance-measure closure — 2 October 2026
+
+Five independent readers re-read all authored notes, campaigns and code; key algebra was re-derived.
+No core derivation was found wrong. Corrections:
+
+- **Fourier-resonance line.** The x = 1.8 position assumes τ_c ≈ τ_N. Keeping τ_c = (1/τ_N+1/τ_R)⁻¹, the historical
+  closure gives x = 0.8 and the conserving closure has no resonance (SymPy-verified). Notes 07, 12, 13, 14, conventions
+  and figure 05 updated; the line is described as a closure-dependent formal marker.
+- **Wording and attribution.** Note 00: the p → p+τp² substitution concerns the field equation only; the flux carries 1/(1+τp).
+  Note 02: ∫dz/a is not the integrated resistance. Note 03: diffusivity is not a speed. Note 04: distinct dual profiles do
+  not by themselves prove injectivity. Note 08: Debye cutoff definition; unsourced Θ_D value replaced by an order of magnitude.
+  Note 18: 2.37e-16 → 2.36e-16. Camacho note: stale "substitution suffices" passages, dead reference, "very exactly" wording.
+- **AlN datasets (note 17).** Isotopes change Rao's RTA conductivity by only 0.1–0.2%; Rao lies 10–30% above the Phonon Olympics
+  inter-code range for fixed force constants (J. Appl. Phys. 138, 135108). The difference lies in first-principles inputs.
+- **Interaction pilot.** The default-cutoff export differs from the corrected exports by degenerate-basis redistribution plus a
+  perturbation of about 4e-8 of max(pp) (`theory/aln/interaction_pilot/audit-20261002/`). Stale report statements annotated.
+- **Code.** Graded constant-diffusivity fits silently reported success with unchanged parameters; such parametrizations are now
+  rejected explicitly, sentinel solutions report failure, and None parameters raise ValueError (8 regression tests).
+  `tests/conftest.py` makes bare `pytest` work; `mpmath` and Python ≥ 3.10 declared.
+- **Note 23 / resonance measure.** Four independent hostile reviews completed. A NaN in the log-mean flux was found, fixed by
+  log-space evaluation, and verified by an independent numerical review (30,021 inputs, two high-precision references).
+  Scripts refuse `python -O`. A vacuous thermal-identity assertion was replaced by discriminating checks with a negative control.
+  Note 23 gained trace hypotheses, drift-order conditions, an explicit finite-time domain exit and the coincident-label caveat.
+  The campaign record is archived in `theory/aln/resonance_measure/campaign/`.
+
+Validation: 241 tests passed (226 s); resonance reproduction 14/14; all 13 rebuilt notes compile without warnings;
+note 23, note 12 and figure 05 visually inspected.

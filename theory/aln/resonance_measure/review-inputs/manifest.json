@@ -1,0 +1,11 @@
+{
+  "purpose": "Reviewed candidate frozen before the 2 Oct 2026 fixes (log-space flux, optimize guard). Stored as .txt so harness copies are not executed.",
+  "sha256": {
+    "A-coarea-check.frozen-20260928.txt": "c114d021efb06da8b09c6bad6f8fb5a389292e12c60eba371d85f3ab391398cb",
+    "B_weak_form_check.frozen-20260928.txt": "46bd24ba611b064b6139b985e287d150de1c7fac030b44c1a06f02173a5486c5",
+    "C2_weak_form.frozen-20260928.txt": "933e7ae55004274b2c33c6fcc709879bc1f49bb1bd7b3a5cf425d69e7c136e5c",
+    "C_resonance_benchmark.frozen-20260928.txt": "b3edc1ada2d6e0a8c8368c2ab714b41f1eae698c3d0bd94cf300b4fb5e487949",
+    "D-limits-check.frozen-20260928.txt": "dcb2b85fdf105fa9d2e2414365dfffba252b6149820582371ccc86503bfc3dba",
+    "reproduce_resonance_measure.frozen-20260928.txt": "2f02dea633aacaa2c5713565ff09a6e56d4e38f91fc92cc28c6d49b6226d5edb"
+  }
+}

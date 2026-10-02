@@ -1,0 +1,141 @@
+"""Final red numerical review -- Task 5: fresh full harness run + optimize-flag refusals.
+
+1. Runs C:/Users/Koussay/these/scripts/reproduce_resonance_measure.py into a NEW directory
+   experiments/red_numerics_final_harness_run (runner refuses existing directories).
+2. Runner refusal under -O, -OO, PYTHONOPTIMIZE=1, PYTHONOPTIMIZE=2 (each into its own new dir).
+3. Each archived script, COPIED into experiments/red_numerics_final_optimize_scripts, run under
+   -O and under PYTHONOPTIMIZE=1 (copies only: unguarded scripts would otherwise write into
+   the repository).  AST count of assert statements per script.
+4. Repository hashes before/after (proof that nothing in the repository changed).
+Writes red_numerics_final_harness.json.  Usage: python -B red_numerics_final_harness.py
+"""
+from __future__ import annotations
+
+import ast
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import red_numerics_final_common as C
+
+PY = sys.executable
+OUT_JSON = HERE / "red_numerics_final_harness.json"
+RUN_DIR = HERE / "red_numerics_final_harness_run"
+OPT_DIR = HERE / "red_numerics_final_optimize_scripts"
+SCRIPTS = ["branches/A-coarea-check.py", "scripts/B_weak_form_check.py",
+           "experiments/C_resonance_benchmark.py", "experiments/C2_weak_form.py", "D-limits-check.py"]
+
+
+def repo_hashes():
+    files = sorted(list(C.ARCHIVE.rglob("*")) + [C.RUNNER_PATH, C.REPO / "notes/23_Integration_resonante.tex"])
+    return {str(p.relative_to(C.REPO)).replace("\\", "/"): C.sha256(p) for p in files if p.is_file()}
+
+
+def assert_census(path):
+    tree = ast.parse(Path(path).read_text(encoding="utf-8-sig"))
+    asserts = sum(isinstance(node, ast.Assert) for node in ast.walk(tree))
+    guard_line = None
+    first_assert_line = min((n.lineno for n in ast.walk(tree) if isinstance(n, ast.Assert)), default=None)
+    for node in tree.body:
+        if isinstance(node, ast.If) and "__debug__" in ast.unparse(node.test):
+            guard_line = node.lineno
+            break
+    return {"assert_statements": asserts, "debug_guard_line": guard_line, "first_assert_line": first_assert_line}
+
+
+def run(cmd, env=None, cwd=None, timeout=1500):
+    t = time.time()
+    res = subprocess.run(cmd, env=env, cwd=cwd, capture_output=True, timeout=timeout)
+    return {"cmd": [str(c) for c in cmd], "returncode": res.returncode, "seconds": round(time.time() - t, 2),
+            "stdout_tail": res.stdout.decode("utf-8", "replace")[-1500:],
+            "stderr_tail": res.stderr.decode("utf-8", "replace")[-1500:]}
+
+
+def base_env():
+    env = dict(os.environ)
+    env.pop("PYTHONOPTIMIZE", None)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    return env
+
+
+def main():
+    for p in (OUT_JSON, RUN_DIR, OPT_DIR):
+        if p.exists():
+            raise SystemExit(f"refusing to overwrite {p}")
+    report = {"interpreter": PY, "python": sys.version}
+    before = repo_hashes()
+    report["assert_census"] = {s: assert_census(C.ARCHIVE / s) for s in SCRIPTS}
+    report["assert_census"]["reproduce_resonance_measure.py"] = assert_census(C.RUNNER_PATH)
+
+    # 1. fresh full run
+    full = run([PY, "-B", str(C.RUNNER_PATH), "--output-dir", str(RUN_DIR)], env=base_env())
+    report["full_run"] = full
+    status_path = RUN_DIR / "reproduction-status.json"
+    report["full_run"]["status"] = json.loads(status_path.read_text()) if status_path.exists() else None
+    copies = {}
+    for s in SCRIPTS:
+        c = RUN_DIR / s
+        copies[s] = {"copy_sha256": C.sha256(c) if c.exists() else None, "repo_sha256": C.sha256(C.ARCHIVE / s)}
+    report["full_run"]["copied_script_hashes"] = copies
+
+    # 2. runner refusals
+    refusals = {}
+    variants = {
+        "dash_O": ([PY, "-B", "-O"], {}),
+        "dash_OO": ([PY, "-B", "-OO"], {}),
+        "PYTHONOPTIMIZE_1": ([PY, "-B"], {"PYTHONOPTIMIZE": "1"}),
+        "PYTHONOPTIMIZE_2": ([PY, "-B"], {"PYTHONOPTIMIZE": "2"}),
+    }
+    for label, (prefix, extra) in variants.items():
+        out = HERE / f"red_numerics_final_optimize_runner_{label}"
+        if out.exists():
+            raise SystemExit(f"refusing to overwrite {out}")
+        env = base_env()
+        env.update(extra)
+        res = run(prefix + [str(C.RUNNER_PATH), "--output-dir", str(out)], env=env, timeout=300)
+        res["output_dir_created"] = out.exists()
+        res["files_left_in_output_dir"] = sorted(str(p.relative_to(out)).replace("\\", "/")
+                                                 for p in out.rglob("*") if p.is_file()) if out.exists() else []
+        res["refused"] = res["returncode"] != 0 and "do not run under python -O" in res["stderr_tail"]
+        refusals[label] = res
+    report["runner_refusals"] = refusals
+
+    # 3. per-script refusals on copies
+    OPT_DIR.mkdir()
+    for s in SCRIPTS:
+        target = OPT_DIR / s
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(C.ARCHIVE / s, target)
+    per_script = {}
+    for s in SCRIPTS:
+        per_script[s] = {}
+        for label, (flags, extra) in {"dash_O": (["-O"], {}), "PYTHONOPTIMIZE_1": ([], {"PYTHONOPTIMIZE": "1"})}.items():
+            env = base_env()
+            env.update(extra)
+            res = run([PY, "-B", *flags, str(OPT_DIR / s), "--output-dir", str(OPT_DIR / f"out_{label}")]
+                      if "C" in Path(s).stem[:2] else [PY, "-B", *flags, str(OPT_DIR / s)],
+                      env=env, cwd=str(OPT_DIR), timeout=600)
+            res["refused"] = res["returncode"] != 0 and "refusing to run under python -O" in res["stderr_tail"]
+            per_script[s][label] = res
+    report["per_script_optimize"] = per_script
+    report["optimize_scripts_dir_files"] = sorted(str(p.relative_to(OPT_DIR)).replace("\\", "/")
+                                                  for p in OPT_DIR.rglob("*") if p.is_file())
+    after = repo_hashes()
+    report["repository_unchanged"] = before == after
+    report["repository_hashes"] = after
+    OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"full_run_rc": full["returncode"], "checks": (report["full_run"]["status"] or {}).get("checks"),
+                      "refusals": {k: (v["returncode"], v["refused"], v["output_dir_created"]) for k, v in refusals.items()},
+                      "per_script": {s: {k: (v["returncode"], v["refused"]) for k, v in d.items()} for s, d in per_script.items()},
+                      "repository_unchanged": report["repository_unchanged"]}, indent=1))
+
+
+if __name__ == "__main__":
+    main()

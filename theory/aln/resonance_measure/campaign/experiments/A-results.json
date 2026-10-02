@@ -1,0 +1,71 @@
+{
+  "scope": "finite regular geometry and algebra; no dynamics convergence or material rate",
+  "parameters": {
+    "u": 0.6,
+    "beta": 0.7,
+    "energy_unit": 1,
+    "parent_nodes": 64,
+    "mass_nodes_per_branch": 128
+  },
+  "analytic_total_resonance_mass": 0.3978873577297384,
+  "mass_relative_error": 3.3306690738754696e-16,
+  "maximum_energy_residual": 0.0,
+  "bose_forward_reverse_relative_error": 0.0,
+  "L_energy_relative_residual": 6.498589250217704e-17,
+  "L_minimum_eigenvalue_relative": -7.228352053971195e-17,
+  "C0_minimum_eigenvalue": 0.010326250475129316,
+  "nonlinear_energy_drift": 0.0,
+  "entropy_production_event": 1.0514127630978124e-05,
+  "entropy_production_mass_quadrature": 1.051412763097831e-05,
+  "entropy_identity_relative_error": 1.7763568394002505e-14,
+  "missing_inverse_gradient_relative_mass_error": 0.20000000000000007,
+  "smooth_test_convergence": [
+    {
+      "parent_nodes": 4,
+      "relative_error": 0.04453114481029572
+    },
+    {
+      "parent_nodes": 8,
+      "relative_error": 2.4302112787677857e-05
+    },
+    {
+      "parent_nodes": 16,
+      "relative_error": 4.4688866686975864e-14
+    },
+    {
+      "parent_nodes": 32,
+      "relative_error": 0.0
+    }
+  ],
+  "critical_gaussian_prefactor": 0.19357700828395394,
+  "critical_gaussian_scaling": [
+    {
+      "sigma": 0.1,
+      "mass": 0.6197647277242964,
+      "sqrt_sigma_times_mass": 0.19598681530428808,
+      "relative_asymptotic_prefactor_error": 0.012448828720398764,
+      "rescaled_quadrature_error_estimate": 1.7405118072702488e-14
+    },
+    {
+      "sigma": 0.025,
+      "mass": 1.2279823878476974,
+      "sqrt_sigma_times_mass": 0.1941610636085498,
+      "relative_asymptotic_prefactor_error": 0.0030171730091990145,
+      "rescaled_quadrature_error_estimate": 2.341696222603982e-14
+    },
+    {
+      "sigma": 0.00625,
+      "mass": 2.4504102336591873,
+      "sqrt_sigma_times_mass": 0.19372193850371067,
+      "relative_asymptotic_prefactor_error": 0.0007486954212254648,
+      "rescaled_quadrature_error_estimate": 3.955110195532249e-14
+    },
+    {
+      "sigma": 0.0015625,
+      "mass": 4.898068920549057,
+      "sqrt_sigma_times_mass": 0.19361317406771664,
+      "relative_asymptotic_prefactor_error": 0.00018682892190202693,
+      "rescaled_quadrature_error_estimate": 4.795169287928616e-14
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+﻿"""Bounded independent counterexamples; no material data or source modifications."""
+from __future__ import annotations
+from decimal import Decimal, localcontext
+from fractions import Fraction
+import hashlib
+import importlib.util
+import json
+import math
+from pathlib import Path
+import sys
+import warnings
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "experiments" / "C2_weak_form.py"
+spec = importlib.util.spec_from_file_location("red_counter_frozen_c2", SOURCE)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+# Actual frozen implementation failure, with a well-conditioned volume metric.
+model = module.EntropyWeakForm(
+    np.eye(2), np.ones(2), [[1, 0]], [[-399.5, 400]],
+    [[-399.5, 400]], [1]
+)
+alpha, energy = np.array([1., 2.]), np.array([1., 1.])
+assert model.minimum_xi(alpha) == 1.0
+assert np.array_equal(model.b @ energy, [0.])
+assert all(float((row @ energy)[0]) > 0
+           for row in (model.parent, model.daughter_a, model.daughter_b))
+with warnings.catch_warnings(record=True) as recorded:
+    warnings.simplefilter("always")
+    affinity, flux, mobility = model.reaction_data(alpha)
+    stable_rhs = model.rhs(alpha)
+messages = sorted(set(str(w.message) for w in recorded))
+direct_rhs = model.rhs(alpha, direct_products=True)
+with localcontext() as context:
+    context.prec = 100
+    one = Decimal(1)
+    np_ref = one / (one.exp() - one)
+    na_ref = one / (Decimal("400.5").exp() - one)
+    f_ref = np_ref * (one + na_ref)**2 - (one + np_ref)*na_ref**2
+    lam_ref = f_ref / Decimal(800)
+assert np.isnan(flux[0]) and np.isnan(mobility[0])
+assert np.all(np.isnan(stable_rhs))
+assert np.all(np.isfinite(direct_rhs))
+assert abs(float(f_ref) - (-direct_rhs[0]/800)) < 1e-15
+
+# Analytic bootstrap bounds for a finite-time off-grid domain exit.
+# Phi=I3, masses=1, e=(1,1,1), P=(2,-1,0), A=B=(1/2,-1,1).
+# b=(1,1,-2), xi_parent=delta, alpha0=(1+delta0/2,2,3).
+h = lambda x: math.expm1(x) + math.expm1(-x)  # inverse Bose capacity
+d0 = 1e-3
+D_upper = 2*h(1.002) - h(2.0)
+a_xi_min, a_xi_max = 1.47, 1.501
+daughter_n_min = 1/math.expm1(a_xi_max)
+daughter_n_max = 1/math.expm1(a_xi_min)
+delta_flux_lower = d0/math.expm1(d0)*(1+2*daughter_n_min) - d0*daughter_n_max**2
+coordinate_changes = [
+    d0*h(1.002)/3,
+    d0*h(2.01)/3,
+    d0*2*h(3.0)/3,
+]
+assert D_upper < -3
+assert delta_flux_lower > 1.5
+assert 1+d0/2+coordinate_changes[0] < 1.002
+assert 2+coordinate_changes[1] < 2.01
+assert 3-coordinate_changes[2] > 2.98
+exit_time_upper = d0*d0/(2*3*1.5)
+
+# Projected mobility: v=(sqrt(n1),1,-1-sqrt(n1)).
+g = lambda n: math.log1p(1/n)
+r0 = 1e-8
+L_upper = math.sqrt(r0)*g(r0) + g(1.99) - g(1.01)
+L_abs_upper = (1+math.sqrt(r0))*g(1)
+assert L_upper < -0.25 and L_abs_upper < 0.7
+projected_exit_bound = 2*math.sqrt(r0)/0.25
+assert 0.7*projected_exit_bound < 0.01
+assert 0.7*(1+math.sqrt(r0))*projected_exit_bound < 0.01
+
+# Constrained entropy step breaks the additional event invariant.
+e = np.array([2.,1.,1.])
+initial_n = np.array([1.,2.,1.])
+gradient = np.log1p(1/initial_n)
+P = np.eye(3) - np.outer(e,e)/(e@e)
+velocity = P@gradient
+D_rate = velocity[1]-velocity[2]
+assert abs(D_rate-math.log(0.75)) < 1e-15
+
+# Repeated Fock sector: same means, different exact derivatives.
+states = [(0,4),(1,2),(2,0)]
+drifts = [(m+1)*n*(n-1)-m*(n+1)*(n+2) for m,n in states]
+laws = [[Fraction(0),Fraction(1),Fraction(0)],
+        [Fraction(1,2),Fraction(0),Fraction(1,2)]]
+means = [[sum(w*x[j] for w,x in zip(law,states)) for j in (0,1)] for law in laws]
+mean_drifts = [sum(w*d for w,d in zip(law,drifts)) for law in laws]
+assert means == [[Fraction(1),Fraction(2)]]*2
+assert mean_drifts == [-8,4]
+
+# Spectral density at zero: positive for every finite Lorentzian width.
+sigma, epsilon, beta = 0.1, 1.0, 1.0
+normalization = math.pi/2 + math.atan(epsilon/sigma)
+rho_zero = sigma/((epsilon**2+sigma**2)*normalization)
+assert rho_zero > 0
+# Integral rho*n has leading infrared logarithm rho_zero/beta * log(1/cutoff).
+# This is an analytic asymptotic, not a finite-cutoff claim of convergence.
+
+results = {
+    "status": "all counterexample assertions passed",
+    "frozen_source_sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+    "implementation_range_failure": {
+        "volume_alpha": alpha.tolist(),
+        "parent_evaluation": model.parent.tolist(),
+        "daughter_evaluation": model.daughter_a.tolist(),
+        "event_energies": [1.0,0.5,0.5],
+        "event_xi": [1.0,400.5,400.5],
+        "energy_residual": float((model.b@energy)[0]),
+        "capacity_condition_number": float(np.linalg.cond(model.capacity(alpha))),
+        "affinity": float(affinity[0]),
+        "stable_flux": "NaN",
+        "stable_mobility": "NaN",
+        "stable_rhs": ["NaN","NaN"],
+        "direct_rhs": direct_rhs.tolist(),
+        "decimal_flux": str(f_ref),
+        "decimal_mobility": str(lam_ref),
+        "warnings": messages,
+    },
+    "finite_weak_form_domain_exit": {
+        "box_alpha": [[1,1.002],[2,2.01],[2.98,3]],
+        "initial_alpha": [1+d0/2,2,3],
+        "initial_parent_xi": d0,
+        "P_M_inverse_b_upper_bound": D_upper,
+        "delta_times_flux_lower_bound": delta_flux_lower,
+        "coordinate_change_bounds_until_exit": coordinate_changes,
+        "exit_time_upper_bound": exit_time_upper,
+        "method": "analytic differential inequality and bootstrap; no time integration",
+    },
+    "projected_mobility_domain_exit": {
+        "L_upper_bound": L_upper,
+        "L_absolute_upper_bound": L_abs_upper,
+        "exit_time_upper_bound": projected_exit_bound,
+        "method": "analytic differential inequality; no time integration",
+    },
+    "constrained_step_invariant_rate": D_rate,
+    "fock_sector": {
+        "states": states,
+        "state_parent_drifts": drifts,
+        "retained_means_both_laws": [1,2],
+        "parent_mean_derivatives": [str(x) for x in mean_drifts],
+    },
+    "lorentzian_infrared": {
+        "sigma": sigma, "epsilon": epsilon, "beta": beta,
+        "rho_at_zero": rho_zero,
+        "occupation_log_divergence_coefficient": rho_zero/beta,
+        "method": "analytic x->0 asymptotic; no material spectral model asserted",
+    },
+}
+output = Path(__file__).with_suffix(".json")
+output.write_text(json.dumps(results,indent=2)+"\n",encoding="utf-8")
+print(json.dumps(results,indent=2))
+

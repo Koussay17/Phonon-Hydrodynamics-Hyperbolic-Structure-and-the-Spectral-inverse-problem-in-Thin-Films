@@ -1,0 +1,34 @@
+{
+  "scope": "bounded analytic/synthetic checks; no material or general dynamic convergence claim",
+  "checks": {
+    "A_mass": true,
+    "A_energy_kernel": true,
+    "A_entropy_identity": true,
+    "B_exact_scalar_calculus": true,
+    "B_interpolation_negative_control": true,
+    "B_energy_kernel": true,
+    "C_assertions": true,
+    "D_independent_poisson_sums": true,
+    "D_positive_heating": true,
+    "D_regular_heating_order": true,
+    "D_small_drift_wrong_measure": true
+  },
+  "commands": [
+    {
+      "script": "branches/A-coarea-check.py",
+      "returncode": 0
+    },
+    {
+      "script": "scripts/B_weak_form_check.py",
+      "returncode": 0
+    },
+    {
+      "script": "experiments/C_resonance_benchmark.py",
+      "returncode": 0
+    },
+    {
+      "script": "D-limits-check.py",
+      "returncode": 0
+    }
+  ]
+}

@@ -279,3 +279,14 @@ The full reproduction passed 13 checks; the updated finite runner additionally i
 These results do not establish a physical linewidth correction, a converged AlN collision
 action or experimental validity. Next: specify a conserving resonance measure and kinetic
 regime before constructing the material operator.
+
+## Audit and conserving resonance measure — 2 October 2026
+
+A complete re-reading of the repository found no error in the core derivations; corrections are listed in
+[CORRECTIONS.md](CORRECTIONS.md). [Note 23](notes/23_Integration_resonante.pdf) and its
+[archived campaign](theory/aln/resonance_measure/campaign/13-final-report.md) are closed after four independent
+hostile reviews: the finite entropy-variable weak form is proved locally under stated hypotheses; invariants
+do not constrain rates, and the domain can be left in finite time. Reproduce with
+`python -B scripts/reproduce_resonance_measure.py --output-dir <new directory>` (14 checks). The full test suite
+now contains 241 passing tests. Next: declare the kinetic approximation and build a globally enumerated
+resonance-surface quadrature on the real AlN dispersion.

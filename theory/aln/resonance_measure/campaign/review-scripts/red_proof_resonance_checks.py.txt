@@ -1,0 +1,81 @@
+﻿"""Independent finite-algebra proof checks. No candidate module or material data imported."""
+import hashlib
+import json
+from pathlib import Path
+import sympy as s
+checks={}
+def zero(name,expression):
+    value=s.simplify(expression)
+    assert value==0,(name,value)
+    checks[name]=str(value)
+x=s.symbols('x',positive=True)
+n=1/(s.exp(x)-1)
+psi=-s.log(1-s.exp(-x))
+zero('bose_capacity_derivative',s.diff(n,x)+n*(1+n))
+zero('dual_gradient',s.diff(psi,x)+n)
+zero('dual_hessian',s.diff(psi,x,2)-n*(1+n))
+qP,qA,qB=s.symbols('qP qA qB',positive=True)
+nP,nA,nB=[1/(q-1) for q in (qP,qA,qB)]
+fwd=nP*(1+nA)*(1+nB); rev=(1+nP)*nA*nB
+zero('forward_reverse_ratio',fwd/rev-qA*qB/qP)
+z,R=s.symbols('z R',real=True,positive=True)
+zero('logmean_zero_affinity',s.limit(R*(s.exp(-z)-1)/(-z),z,0)-R)
+u,v=s.symbols('u v',positive=True)
+b=s.Matrix([s.Rational(-3,2),s.Rational(1,2)])
+e=s.Matrix([1,3])
+n1=1/(s.exp(u)-1); n2=1/(s.exp(v)-1)
+np_=1/(s.exp((u+v)/2)-1)
+F=np_*(1+2*n1)-n1*n1
+G=-b*F
+point={u:s.log(2),v:3*s.log(2)}
+M=s.diag(n1*(1+n1),n2*(1+n2))
+Meq=M.subs(point)
+K=s.Rational(4,3)*b*b.T
+Jac=G.jacobian([u,v]).subs(point)
+for i in range(2):
+    zero('equilibrium_rhs_%d'%i,G[i].subs(point))
+    for j in range(2): zero('equilibrium_jacobian_%d%d'%(i,j),Jac[i,j]-K[i,j])
+alpha_rhs=-M.inv()*G
+Jalpha=alpha_rhs.jacobian([u,v]).subs(point)
+for i in range(2):
+    for j in range(2): zero('coefficient_linearization_%d%d'%(i,j),Jalpha[i,j]+(Meq.inv()*K)[i,j])
+C=s.diag(1/s.sqrt(2),7/s.sqrt(8))*K*s.diag(1/s.sqrt(2),7/s.sqrt(8))
+zero('equilibrium_zero_eigenvalue',C.det())
+zero('equilibrium_nonzero_eigenvalue',s.trace(C)-s.Rational(85,24))
+for i in range(2): zero('energy_kernel_%d'%i,(K*e)[i])
+# Exact wrong-occupation-interpolation counterexample near Bose equilibrium.
+# alpha=log(2)*(1,3)+2*log(t)*(-3/2,1/2), t=1001/1000.
+t=s.Rational(1001,1000)
+q1=2/t**3; q2=8*t
+assert q1>1 and q2>1
+N1=1/(q1-1); N2=1/(q2-1)
+Np=(N1+N2)/2
+Fbad=s.factor(Np*(1+2*N1)-N1*N1)
+assert Fbad>0
+negative_entropy=-5*s.log(t)*Fbad
+assert negative_entropy.is_negative
+zero('bad_interpolation_energy',(-e.T*b*Fbad)[0])
+zero('bad_interpolation_at_Bose',((s.Rational(1,1)+s.Rational(1,7))/2)*3-1-s.Rational(5,7))
+# Both signs of detuning yield positive thermal heating with unchanged standard flux.
+thermal=[]
+for ep in (1,3):
+    np0=s.Rational(1,2**ep-1); na0=nb0=s.Integer(1)
+    F0=np0*(1+na0)*(1+nb0)-(1+np0)*na0*nb0
+    delta=s.Integer(ep-2)
+    heating=-delta*F0
+    assert heating>0
+    thermal.append({'energies':[ep,1,1],'mismatch':str(delta),'flux':str(F0),'heating':str(heating)})
+# Inspect saved C2 provenance; do not rerun C2.
+base=Path(__file__).resolve().parents[1]
+source=base/'experiments'/'C2_weak_form.py'
+data=json.loads((base/'experiments'/'C2_weak_form.json').read_text(encoding='utf-8-sig'))
+sha=hashlib.sha256(source.read_bytes()).hexdigest()
+assert sha==data['script_sha256']
+cases=data['periodic']['root_residual_tests']['cases']
+old_failures=[case for case in cases if not(abs(case['energy_drift_event']-case['energy_positive_square']) < 1e-12*max(case['energy_positive_square'],1e-12))]
+assert old_failures and old_failures[0]['prescribed_residual']==-0.0001
+assert all(case['thermal_identity_absolute_discrepancy']<=case['thermal_identity_roundoff_bound'] for case in cases)
+result={'status':'PASS','scope':'Independent exact finite algebra and saved C2 provenance inspection only; no material run or repeat of C2.','sympy':s.__version__,'zero_residual_checks':checks,'negative_entropy_counterexample':{'t':str(t),'flux_exact':str(Fbad),'affinity':'5*log(1001/1000)','entropy_exact':str(negative_entropy),'entropy_decimal':str(s.N(negative_entropy,20))},'off_shell_heating_exact':thermal,'C2_saved_provenance':{'sha256_matches':sha,'first_original_predicate_failure':old_failures[0]['prescribed_residual'],'all_recorded_corrected_bounds_pass':True,'historical_initial_source_snapshot_not_audited':True}}
+output=Path(__file__).with_suffix('.json')
+output.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'status':'PASS','exact_zero_checks':len(checks),'wrong_interpolation_entropy':str(s.N(negative_entropy,16)),'C2_first_original_failure':old_failures[0]['prescribed_residual'],'output':str(output)},indent=2))

@@ -1,0 +1,360 @@
+"""Final red numerical review -- Task 6 (original red-numerics checklist).
+
+(a) C2 tolerance change (C2_failure_record.md): reproduce the failing case with the FROZEN
+    and CURRENT modules, confirm the a - beta*Delta diagnosis with exact (mpmath) sums of the
+    computed float terms, bound a - beta*Delta a priori, and test the discriminating power
+    (vacuity) of the revised predicate on deliberately wrong states.
+(b) Physical vs surrogate energy (two-node) in 50-digit mpmath.
+(c) Root coverage and regular-root conditioning (C near-critical scan), closed form.
+(d) Quadrature: C adaptive_gaussian (scipy quad) vs mpmath.quad at 30 digits; D continuum.
+(e) Note 23 fold constant 0.4300 and sigma^{3/2} law, independent quadrature.
+(f) Threshold/margin audit of the fresh harness outputs.
+Reads the fresh run in experiments/red_numerics_final_harness_run (Task 5).
+Usage: python -B red_numerics_final_checklist.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_checklist.json"
+RUN = HERE / "red_numerics_final_harness_run"
+U = C.UNIT_ROUNDOFF
+
+
+# --------------------------------------------------------------------------------- (a)
+def residual_case(module, residual, beta=0.7):
+    model, e = module.periodic_model(residual, volume_nodes=32, parent_nodes=8)
+    alpha = beta * e
+    a, F, L = model.reaction_data(alpha)
+    Delta = model.b @ e
+    w = model.weights
+    E = float(-np.dot(w * F, Delta))
+    PS = float(beta * np.dot(w * L, Delta**2))
+    allowance_terms = float(np.dot(w * L, np.abs(Delta) * np.abs(a - beta * Delta)))
+    allowance = allowance_terms + 32 * np.finfo(float).eps * (abs(E) + abs(PS))
+    with mp.workdps(50):
+        T = mp.fsum(mp.mpf(float(w[r])) * mp.mpf(float(L[r])) * mp.mpf(float(Delta[r]))
+                    * (mp.mpf(float(a[r])) - mp.mpf(beta) * mp.mpf(float(Delta[r]))) for r in range(len(w)))
+        # exact sums of the float terms
+        E_exact_sum = -mp.fsum(mp.mpf(float(w[r])) * mp.mpf(float(F[r])) * mp.mpf(float(Delta[r])) for r in range(len(w)))
+        PS_exact_sum = mp.mpf(beta) * mp.fsum(mp.mpf(float(w[r])) * mp.mpf(float(L[r])) * mp.mpf(float(Delta[r]))**2
+                                             for r in range(len(w)))
+        consistency_F_vs_minus_L_a = max(float(abs(mp.mpf(float(F[r])) + mp.mpf(float(L[r])) * mp.mpf(float(a[r])))
+                                             / abs(mp.mpf(float(F[r])))) for r in range(len(w)) if F[r] != 0)
+    # a-priori rounding bound for |a - beta*Delta|: gamma_n * sum |b_i| |alpha_i| + u|beta Delta| ...
+    n = model.b.shape[1]
+    gamma = (n + 2) * U / (1 - (n + 2) * U)
+    apriori = gamma * (np.abs(model.b) @ np.abs(alpha) + beta * (np.abs(model.b) @ np.abs(e)))
+    return {"residual": residual, "E_event": E, "positive_square": PS, "abs_discrepancy": abs(E - PS),
+            "original_predicate_pass": abs(E - PS) < 1e-12 * max(PS, 1e-12),
+            "revised_allowance": allowance, "revised_predicate_pass": abs(E - PS) <= allowance,
+            "max_abs_a_minus_beta_Delta": float(np.max(np.abs(a - beta * Delta))),
+            "apriori_bound_max": float(np.max(apriori)),
+            "a_residual_within_apriori_bound": bool(np.all(np.abs(a - beta * Delta) <= apriori)),
+            "distributivity_term_T_exact": float(T),
+            "discrepancy_minus_T_over_u|E|": float(abs((mp.mpf(E) - mp.mpf(PS)) - T) / (U * abs(mp.mpf(E)))),
+            "float_E_minus_exact_sum_over_u|E|": float(abs(mp.mpf(E) - E_exact_sum) / (U * abs(E_exact_sum))),
+            "float_PS_minus_exact_sum_over_u|PS|": float(abs(mp.mpf(PS) - PS_exact_sum) / (U * abs(PS_exact_sum))),
+            "max_rel_F_plus_L_a": consistency_F_vs_minus_L_a}
+
+
+def vacuity_tests(module, beta=0.7):
+    """Revised predicate on states where the thermal identity E = beta sum w L Delta^2 is FALSE."""
+    out = []
+    rng = np.random.default_rng(7)
+    for label, residual, maker in [
+        ("wrong_beta_alpha=1.3*beta*e", 1e-4, lambda e: 1.3 * beta * e),
+        ("alpha=beta*e+random(1e-3)", 1e-4, lambda e: beta * e + 1e-3 * rng.standard_normal(len(e))),
+        ("alpha=beta*e+random(1e-1)", 1e-2, lambda e: beta * e + 1e-1 * rng.standard_normal(len(e))),
+    ]:
+        model, e = module.periodic_model(residual, volume_nodes=32, parent_nodes=8)
+        alpha = maker(e)
+        a, F, L = model.reaction_data(alpha)
+        Delta = model.b @ e
+        w = model.weights
+        E = float(-np.dot(w * F, Delta))
+        PS = float(beta * np.dot(w * L, Delta**2))
+        allowance = float(np.dot(w * L, np.abs(Delta) * np.abs(a - beta * Delta))) + \
+            32 * np.finfo(float).eps * (abs(E) + abs(PS))
+        bound_cs = math.sqrt(float(np.dot(w * L, Delta**2)) * float(np.dot(w * L, a**2)))
+        out.append({"case": label, "E_event": E, "beta_sum_wLDelta2": PS,
+                    "identity_relative_violation": abs(E - PS) / abs(PS),
+                    "revised_predicate_passes": abs(E - PS) <= allowance,
+                    "original_predicate_passes": abs(E - PS) < 1e-12 * max(PS, 1e-12),
+                    "cauchy_schwarz_assert_passes": abs(E) <= bound_cs * (1 + 1e-10),
+                    "max_abs_a_minus_beta_Delta": float(np.max(np.abs(a - beta * Delta)))})
+    # detection power for a flux/mobility inconsistency: corrupt F by relative 1e-10
+    model, e = module.periodic_model(1e-4, volume_nodes=32, parent_nodes=8)
+    alpha = beta * e
+    a, F, L = model.reaction_data(alpha)
+    Delta = model.b @ e
+    w = model.weights
+    detect = []
+    for rel in (1e-14, 1e-12, 1e-10):
+        Fc = F * (1 + rel)
+        E = float(-np.dot(w * Fc, Delta))
+        PS = float(beta * np.dot(w * L, Delta**2))
+        allowance = float(np.dot(w * L, np.abs(Delta) * np.abs(a - beta * Delta))) + \
+            32 * np.finfo(float).eps * (abs(E) + abs(PS))
+        detect.append({"flux_relative_corruption": rel, "revised_predicate_passes": abs(E - PS) <= allowance})
+    return {"wrong_states": out, "flux_corruption_detection": detect}
+
+
+# --------------------------------------------------------------------------------- (b)
+def physical_vs_surrogate(c2json):
+    rows = []
+    with mp.workdps(50):
+        beta = mp.log(2)
+        for change, rec in zip((-0.2, 0.2), c2json["two_node"]["physical_vs_surrogate_energy"]):
+            e1, e2 = mp.mpf(1), mp.mpf(3) + mp.mpf(change)
+            a1, a2 = beta * e1, beta * e2
+            xp, xa = (a1 + a2) / 2, a1
+            n = lambda x: 1 / mp.expm1(x)
+            A = n(xp) * (1 + n(xa))**2
+            B = (1 + n(xp)) * n(xa)**2
+            F = A - B
+            mism = -mp.mpf(3) / 2 * e1 + e2 / 2
+            drift_phys = -F * mism
+            d = (mp.mpf(-3) / 2) * a1 + a2 / 2
+            Lam = F / (-d)
+            ps = beta * Lam * mism**2
+            rows.append({"change": change, "physical_drift_mp": mp.nstr(drift_phys, 20),
+                         "fresh_run_value": rec["physical_drift_at_physical_Bose"],
+                         "rel_err_fresh_vs_mp": float(abs(mp.mpf(rec["physical_drift_at_physical_Bose"]) - drift_phys) / drift_phys),
+                         "positive_square_mp": mp.nstr(ps, 20),
+                         "identity_gap_mp": mp.nstr(abs(drift_phys - ps), 5),
+                         "surrogate_drift_fresh": rec["surrogate_drift_at_physical_Bose"],
+                         "asserted_abs_tolerance": 1e-14})
+    return rows
+
+
+# --------------------------------------------------------------------------------- (c)
+def root_coverage(cjson):
+    rec = cjson["near_critical_root_detection"]
+    d = rec["d"]
+    q0 = math.acos(d)
+    out = []
+    with mp.workdps(40):
+        D = mp.mpf(d)
+        exact_mass = (mp.mpf("0.8") + mp.mpf("0.4") * D**2) / (mp.pi * mp.sqrt(1 - D**2))
+    for scan in rec["scans"]:
+        N = scan["mesh_size"]
+        spacing = 2 * math.pi / N
+        edges = -math.pi + 0.37 * spacing + np.arange(N + 1) * spacing
+        inside = int(np.sum(np.abs(edges) < q0))
+        predicted = 2 if inside >= 1 else 0
+        with mp.workdps(40):
+            mass_err = float(abs(mp.mpf(scan["mass"]) - exact_mass) / exact_mass) if scan["root_count"] else None
+        out.append({"N": N, "edges_strictly_between_roots": inside, "predicted_root_count": predicted,
+                    "C_root_count": scan["root_count"], "agree": predicted == scan["root_count"],
+                    "C_relative_mass_error": scan["relative_mass_error"], "mp_relative_mass_error": mass_err})
+    cot = d / math.sqrt(1 - d * d)
+    return {"d": d, "root": q0, "root_gradient": math.sqrt(1 - d * d), "weight_condition_|cot q|": cot,
+            "root_condition_|dq/dd|": 1 / math.sqrt(1 - d * d),
+            "expected_mass_rel_error_from_brentq_xtol_5e-15": cot * 5e-15, "scans": out}
+
+
+# --------------------------------------------------------------------------------- (d)
+def c_integrand_mp(name, d, sigma, beta=1):
+    occ = lambda E: 1 / mp.expm1(beta * E)
+    parent = occ(2 + d)
+
+    def f(q):
+        t = mp.cos(q)
+        mism = d - t
+        weight = mp.mpf("0.8") + mp.mpf("0.4") * t**2
+        da, db = occ(1 + mp.mpf("0.3") * t), occ(1 + mp.mpf("0.7") * t)
+        flux = (1 + parent) * da * db * mp.expm1(-beta * mism)
+        aff = 1 + mp.mpf("0.16") * (1 - t**2)
+        g = mp.exp(-(mism / sigma)**2 / 2) / (mp.sqrt(2 * mp.pi) * sigma)
+        val = {"mass": weight, "weak_form": weight * aff, "energy_weak_defect": weight * mism**2,
+               "equilibrium_flux": weight * flux, "equilibrium_absolute_flux": weight * abs(flux),
+               "equilibrium_energy_drift": -weight * mism * flux}[name]
+        return val * g / mp.pi
+    return f
+
+
+def quad_checks(cjson):
+    rows = []
+    cases = [("regular", 0.6, [0.2, 0.00625], ["mass", "weak_form", "equilibrium_energy_drift", "equilibrium_absolute_flux"]),
+             ("critical", 1.0, [0.1, 0.0015625], ["mass", "energy_weak_defect"]),
+             ("empty", 1.1, [0.2, 0.025, 0.0125], ["mass"])]
+    for label, d, sigmas, names in cases:
+        if label == "regular":
+            recs = {r["sigma"]: r for r in cjson["regular"]["broadened_continuum"]}
+        elif label == "critical":
+            recs = {r["sigma"]: r for r in cjson["critical"]["gaussian_results"]}
+        else:
+            recs = {r["sigma"]: r for r in cjson["empty"]["gaussian_results"]}
+        for sigma in sigmas:
+            rec = recs[sigma]
+            with mp.workdps(30):
+                D, S = mp.mpf(d), mp.mpf(sigma)
+                pts = [mp.mpf(0)]
+                for k in (-12, -8, -5, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3, 5, 8, 12):
+                    c = D + k * S
+                    if -1 < c < 1:
+                        pts.append(mp.acos(c))
+                if label in ("critical", "empty"):
+                    w = mp.sqrt(S)
+                    pts += [w * k for k in (0.25, 0.5, 1, 2, 4, 8)]
+                pts.append(mp.pi)
+                pts = sorted(set(p for p in pts if 0 <= p <= mp.pi))
+                for name in names:
+                    ref = mp.quad(c_integrand_mp(name, D, S), pts, maxdegree=10)
+                    val = rec[name]
+                    est = rec["adaptive_absolute_error_estimates"][name]
+                    rows.append({"case": label, "d": d, "sigma": sigma, "field": name, "scipy_value": val,
+                                 "mp_value": mp.nstr(ref, 20),
+                                 "rel_error": float(abs(mp.mpf(val) - ref) / abs(ref)) if ref != 0 else None,
+                                 "abs_error": float(abs(mp.mpf(val) - ref)),
+                                 "scipy_error_estimate": est,
+                                 "estimate_covers_error": float(abs(mp.mpf(val) - ref)) <= est})
+    # empty case: analytic upper bound used in the assertion vs the true leakage
+    ub = []
+    for r in cjson["empty"]["gaussian_results"]:
+        ub.append({"sigma": r["sigma"], "mass": r["mass"], "asserted_upper_bound": r["positive_leakage_upper_bound"],
+                   "mass_over_bound": r["mass"] / r["positive_leakage_upper_bound"],
+                   "quad_epsabs": 2e-13, "mass_over_epsabs": r["mass"] / 2e-13})
+    return {"rows": rows, "empty_case_bound": ub}
+
+
+def d_checks(djson):
+    out = {}
+    # periodic_continuum: sqrt(2 pi)/sigma * i0e(1/(4 sigma^2)) vs mpmath besseli
+    rows = []
+    for r in djson["periodic_regular_root"]:
+        if r["N"] == 1024 and r["shift"] == 0.0:
+            with mp.workdps(40):
+                s = mp.mpf(r["sigma"])
+                ref = mp.sqrt(2 * mp.pi) / s * mp.besseli(0, 1 / (4 * s * s)) * mp.exp(-1 / (4 * s * s))
+                rows.append({"sigma": r["sigma"], "rel_error_i0e": float(abs(mp.mpf(r["exact_mollified_integral"]) - ref) / ref)})
+    out["periodic_continuum_vs_mp_besseli"] = rows
+    # heating: mesh sums (N=8192) vs continuum mp.quad, beta=1, eps_p=5, eps_a=2-cos q, eps_b=3
+    rows = []
+    with mp.workdps(30):
+        npop, nb = 1 / mp.expm1(5), 1 / mp.expm1(3)
+        for r in djson["equilibrium_heating"]["rows"]:
+            S = mp.mpf(r["sigma"])
+            def f(q):
+                dl = mp.cos(q)
+                na = 1 / mp.expm1(2 - dl)
+                pref = mp.exp(-(dl / S)**2 / 2) / (mp.sqrt(2 * mp.pi) * S) * (1 + npop) * na * nb
+                return -dl * pref * mp.expm1(-dl)
+            pts = sorted(set([-mp.pi, mp.pi] + [s * (mp.pi / 2 + k * S) for s in (-1, 1)
+                                                 for k in (-10, -5, -2, -1, 0, 1, 2, 5, 10)]))
+            ref = mp.quad(f, pts, maxdegree=10)
+            rows.append({"sigma": r["sigma"], "mesh_value": r["energy_drift"], "continuum_mp": mp.nstr(ref, 18),
+                         "rel_mesh_error": float(abs(mp.mpf(r["energy_drift"]) - ref) / ref),
+                         "drift_over_beta_sigma2_A0": r["drift_over_beta_sigma2_A0"],
+                         "observed_order": r.get("observed_energy_drift_order")})
+    out["heating_mesh_vs_continuum"] = rows
+    return out
+
+
+# --------------------------------------------------------------------------------- (e)
+def fold_constant():
+    with mp.workdps(40):
+        const = 2**mp.mpf(0.25) * mp.gamma(mp.mpf(5) / 4) / mp.sqrt(2 * mp.pi)
+        direct = mp.quad(lambda u: u**mp.mpf(1.5) * mp.exp(-u * u / 2) / mp.sqrt(2 * mp.pi), [0, 1, 4, mp.inf])
+        rows = []
+        prev = None
+        for sigma in (mp.mpf("1e-1"), mp.mpf("1e-2"), mp.mpf("1e-3"), mp.mpf("1e-4"), mp.mpf("1e-5")):
+            # E_sigma = int_R delta_sigma(x^2) x^2 (1-exp(-x^2)) dx, beta=k=R=1, Delta=x^2
+            f = lambda x: mp.exp(-(x * x / sigma)**2 / 2) / (mp.sqrt(2 * mp.pi) * sigma) * x * x * (-mp.expm1(-x * x))
+            w = mp.sqrt(sigma)
+            val = 2 * mp.quad(f, [0, w / 4, w / 2, w, 2 * w, 4 * w, 8 * w, mp.inf])
+            ratio = val / (sigma**mp.mpf(1.5) * const)
+            order = float(mp.log(prev / val) / mp.log(10)) if prev is not None else None
+            rows.append({"sigma": float(sigma), "E_sigma": mp.nstr(val, 15), "E_over_sigma^1.5_const": float(ratio),
+                         "observed_order_vs_previous": order})
+            prev = val
+    return {"closed_form_2^(1/4)Gamma(5/4)/sqrt(2pi)": mp.nstr(const, 15), "direct_quadrature": mp.nstr(direct, 15),
+            "note_value": 0.4300, "rows": rows}
+
+
+# --------------------------------------------------------------------------------- (f)
+def threshold_audit(status, a, c2, d):
+    rows = []
+    rows.append({"check": "A_mass", "value": a["mass_relative_error"], "threshold": 1e-12,
+                 "discriminating": "no: weights are built from the same analytic coarea formula (tests sin(arccos u) rounding)"})
+    rows.append({"check": "A_energy_kernel", "value": a["L_energy_relative_residual"], "threshold": 1e-12,
+                 "discriminating": "weak: analytic roots make b.e = O(u) by construction"})
+    rows.append({"check": "A_entropy_identity", "value": a["entropy_identity_relative_error"], "threshold": 1e-10,
+                 "discriminating": "weak: algebraic identity z^T C C^{-1} g = z^T g for any invertible C (tests solve accuracy)"})
+    rows.append({"check": "D_independent_poisson_sums",
+                 "value": max(r["absolute_discrepancy"] for r in d["linear_gaussian_comb"]), "threshold": 1e-12,
+                 "discriminating": "yes: two independent routes (direct sum vs Poisson series)"})
+    rows.append({"check": "D_positive_heating", "value": min(r["energy_drift"] for r in d["equilibrium_heating"]["rows"]),
+                 "threshold": 0.0, "discriminating": "weak: every summand -Delta*flux >= 0 pointwise"})
+    rows.append({"check": "D_regular_heating_order",
+                 "value": d["equilibrium_heating"]["rows"][-1]["observed_energy_drift_order"], "threshold": "|p-2|<0.02",
+                 "discriminating": "yes"})
+    rows.append({"check": "C2_separated_variables", "value": max(r["mobility_relative_error"] for r in c2["separated_entropy_variables"]),
+                 "threshold": 1e-12, "discriminating": "yes (independent Decimal reference); only 8 inputs, none at d~0"})
+    per = c2["periodic"]
+    two = c2["two_node"]
+    for key, thr in [("relative_capacity_derivative_error_equilibrium", 1e-12),
+                     ("relative_capacity_derivative_error_perturbed", 1e-12),
+                     ("relative_collision_jacobian_error_equilibrium", 1e-11),
+                     ("relative_coefficient_jacobian_error_equilibrium", 1e-11),
+                     ("normalized_energy_kernel_residual", 1e-12)]:
+        for name, block in (("two_node", two), ("periodic", per)):
+            rows.append({"check": f"C2_{name}_{key}", "value": block[key], "threshold": thr,
+                         "margin": thr / max(block[key], 1e-300), "discriminating": "yes"})
+    for name, block in (("two_node", two), ("periodic", per)):
+        rows.append({"check": f"C2_{name}_entropy_relative_identity_error",
+                     "value": block["off_equilibrium"]["entropy_relative_identity_error"], "threshold": 1e-11,
+                     "discriminating": "yes (complex-step directional derivative of S vs event sum)"})
+        rows.append({"check": f"C2_{name}_rhs_vs_K_alpha", "value": block["off_equilibrium"]["rhs_vs_K_alpha_relative_error"],
+                     "threshold": 1e-12, "discriminating": "weak: F and Lambda*d come from the same B, d (F=-Lambda d by construction)"})
+    for r in rows:
+        if isinstance(r.get("threshold"), float) and isinstance(r.get("value"), float) and r["threshold"] > 0:
+            r["margin"] = r["threshold"] / max(abs(r["value"]), 1e-300)
+    return rows
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    cur = C.load_current_c2()
+    fro = C.load_frozen_c2()
+    status = json.loads((RUN / "reproduction-status.json").read_text())
+    a = json.loads((RUN / "A-results.json").read_text())
+    cj = json.loads((RUN / "C-results/C_resonance_benchmark.json").read_text())
+    c2 = json.loads((RUN / "C2-results/C2_weak_form.json").read_text())
+    dj = json.loads((RUN / "D-limits-check.json").read_text())
+    out = {"meta": {"run_dir": str(RUN), "current_C2_sha256": C.sha256(C.C2_PATH),
+                    "frozen_C2_sha256": C.sha256(C.FROZEN_C2_PATH)}}
+    residuals = [s * m for m in (1e-2, 1e-3, 1e-4, 1e-5, 1e-6) for s in (-1, 1)]
+    out["a_tolerance_change"] = {
+        "frozen": [residual_case(fro, r) for r in residuals],
+        "current": [residual_case(cur, r) for r in residuals],
+        "recorded_failure": {"rho": -1e-4, "E": 8.1378800375857028e-11, "PS": 8.13788003763733e-11,
+                             "diff": 5.1627702450672954e-22, "a_residual": 4.4408920985006262e-16},
+        "vacuity": vacuity_tests(cur),
+    }
+    out["b_physical_vs_surrogate"] = physical_vs_surrogate(c2)
+    out["c_root_coverage"] = root_coverage(cj)
+    out["d_quadrature"] = quad_checks(cj)
+    out["d_D_checks"] = d_checks(dj)
+    out["e_fold_constant"] = fold_constant()
+    out["f_threshold_audit"] = threshold_audit(status, a, c2, dj)
+    OUT_JSON.write_text(json.dumps(out, indent=2, default=str) + "\n", encoding="utf-8")
+    print("wrote", OUT_JSON)
+
+
+if __name__ == "__main__":
+    main()

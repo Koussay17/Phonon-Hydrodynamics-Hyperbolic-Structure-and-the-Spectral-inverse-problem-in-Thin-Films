@@ -1,0 +1,102 @@
+"""Bounded independent coarea benchmark. Units E_*=time_*=1; no material data."""
+import json
+import numpy as np
+from scipy.integrate import quad
+from scipy.special import gamma, i0
+
+if not __debug__:
+    raise SystemExit("A-coarea-check: checks use assert; refusing to run under python -O")
+
+
+U = 0.6
+BETA = 0.7
+
+def features(branch, q):
+    out = np.zeros(9)
+    out[3*branch:3*branch+3] = [1, np.cos(q), np.sin(q)]
+    return out
+
+def collision_rule(np_parent):
+    rows, weights = [], []
+    for p in 2*np.pi*np.arange(np_parent)/np_parent:
+        for k in [-np.arccos(U), np.arccos(U)]:
+            rows.append([features(0,p), features(1,k), features(2,p-k)])
+            weights.append(1/(np_parent*2*np.pi*abs(np.sin(k))))
+    return np.array(rows), np.array(weights)
+
+energy = np.array([5+U,0,0, 3,1,0, 2,0,0.])
+rows, weights = collision_rule(64)
+r = rows[:,0]-rows[:,1]-rows[:,2]
+eta0 = rows @ (BETA*energy)
+n0 = 1/np.expm1(eta0)
+forward0 = n0[:,0]*(1+n0[:,1])*(1+n0[:,2])
+reverse0 = (1+n0[:,0])*n0[:,1]*n0[:,2]
+L = np.einsum('e,ei,ej->ij',weights*forward0,r,r)
+
+mass_nodes = np.array([features(s,q) for s in range(3)
+    for q in 2*np.pi*np.arange(128)/128])
+mass_weights = np.full(len(mass_nodes),1/128)
+nmass0 = 1/np.expm1(mass_nodes @ (BETA*energy))
+C0 = np.einsum('l,li,lj->ij',mass_weights*nmass0*(1+nmass0),mass_nodes,mass_nodes)
+
+rng = np.random.default_rng(927164023)
+z = BETA*energy + 0.015*rng.normal(size=9)
+eta = rows @ z
+n = 1/np.expm1(eta)
+F = n[:,0]*(1+n[:,1])*(1+n[:,2])-(1+n[:,0])*n[:,1]*n[:,2]
+Mdot = -np.einsum('e,ei->i',weights*F,r)
+nmass = 1/np.expm1(mass_nodes @ z)
+capacity = np.einsum('l,li,lj->ij',mass_weights*nmass*(1+nmass),mass_nodes,mass_nodes)
+zdot = np.linalg.solve(capacity,-Mdot)
+nmassdot = -nmass*(1+nmass)*(mass_nodes@zdot)
+Sdot_direct = np.sum(mass_weights*(mass_nodes@z)*nmassdot)
+Sdot_events = -np.sum(weights*(r@z)*F)
+
+exact_mass = 1/(np.pi*np.sqrt(1-U**2))
+exact_test = exact_mass*(1+0.1*U)*i0(2.)
+convergence = []
+for nn in [4,8,16,32]:
+    pp = 2*np.pi*np.arange(nn)/nn
+    approx = exact_mass*(1+0.1*U)*np.mean(np.exp(2*np.cos(pp)))
+    convergence.append({'parent_nodes':nn,'relative_error':float(abs(approx-exact_test)/exact_test)})
+
+critical_prefactor = 8**0.25*gamma(0.25)/(4*np.pi*np.sqrt(2*np.pi))
+critical = []
+for sigma in [0.1,0.025,0.00625,0.0015625]:
+    # Rescaled k=sqrt(sigma)*x resolves the narrowing critical peak.
+    upper = min(np.pi/np.sqrt(sigma),12.)
+    integral, error = quad(lambda x: np.exp(-0.5*(2*np.sin(np.sqrt(sigma)*x/2)**2/sigma)**2),
+        0,upper,epsabs=1e-12,epsrel=1e-12)
+    gaussian_mass = integral/(np.pi*np.sqrt(2*np.pi*sigma))
+    critical.append({'sigma':sigma,'mass':float(gaussian_mass),
+        'sqrt_sigma_times_mass':float(np.sqrt(sigma)*gaussian_mass),
+        'relative_asymptotic_prefactor_error':float(abs(np.sqrt(sigma)*gaussian_mass/critical_prefactor-1)),
+        'rescaled_quadrature_error_estimate':float(error)})
+
+out = {
+    'scope':'finite regular geometry and algebra; no dynamics convergence or material rate',
+    'parameters':{'u':U,'beta':BETA,'energy_unit':1,'parent_nodes':64,'mass_nodes_per_branch':128},
+    'analytic_total_resonance_mass':exact_mass,
+    'mass_relative_error':float(abs(weights.sum()/exact_mass-1)),
+    'maximum_energy_residual':float(np.max(abs(r@energy))),
+    'bose_forward_reverse_relative_error':float(np.max(abs(forward0-reverse0))/np.max(forward0)),
+    'L_energy_relative_residual':float(np.linalg.norm(L@energy)/(np.linalg.norm(L)*np.linalg.norm(energy))),
+    'L_minimum_eigenvalue_relative':float(np.linalg.eigvalsh(L)[0]/np.linalg.norm(L)),
+    'C0_minimum_eigenvalue':float(np.linalg.eigvalsh(C0)[0]),
+    'nonlinear_energy_drift':float(energy@Mdot),
+    'entropy_production_event':float(Sdot_events),
+    'entropy_production_mass_quadrature':float(Sdot_direct),
+    'entropy_identity_relative_error':float(abs(Sdot_direct/Sdot_events-1)),
+    'missing_inverse_gradient_relative_mass_error':float(abs((1/np.pi)/exact_mass-1)),
+    'smooth_test_convergence':convergence,
+    'critical_gaussian_prefactor':float(critical_prefactor),
+    'critical_gaussian_scaling':critical,
+}
+assert out['mass_relative_error'] < 1e-13
+assert out['L_energy_relative_residual'] < 1e-13
+assert out['L_minimum_eigenvalue_relative'] > -1e-13
+assert out['bose_forward_reverse_relative_error'] < 1e-13
+assert Sdot_events > 0
+assert out['entropy_identity_relative_error'] < 1e-11
+assert convergence[-1]['relative_error'] < 1e-13
+print(json.dumps(out,indent=2))

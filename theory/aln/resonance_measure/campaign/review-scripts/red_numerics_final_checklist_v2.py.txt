@@ -1,0 +1,102 @@
+"""Supplement to red_numerics_final_checklist.py (v1 kept for provenance).
+
+Fix of MY reference bug in v1 d_checks: for sigma = 0.2 the breakpoints pi/2 +- k*sigma
+(k up to 10) fell outside [-pi, pi], so mpmath integrated over a longer interval and v1
+reported a spurious 1e-4 mesh-vs-continuum error.  Breakpoints are now clipped.
+Also: accuracy of C's float 'exact' near-critical mass (1 - d^2 cancellation), and the
+mobility-underflow threshold for Lambda > 0 / capacity positivity in the [1e-12,1e3] domain.
+Usage: python -B red_numerics_final_checklist_v2.py
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_checklist_v2.json"
+RUN = HERE / "red_numerics_final_harness_run"
+
+
+def heating_continuum(djson):
+    rows = []
+    with mp.workdps(30):
+        npop, nb = 1 / mp.expm1(5), 1 / mp.expm1(3)
+        for r in djson["equilibrium_heating"]["rows"]:
+            S = mp.mpf(r["sigma"])
+
+            def f(q):
+                dl = mp.cos(q)
+                na = 1 / mp.expm1(2 - dl)
+                pref = mp.exp(-(dl / S)**2 / 2) / (mp.sqrt(2 * mp.pi) * S) * (1 + npop) * na * nb
+                return -dl * pref * mp.expm1(-dl)
+            raw = [s * (mp.pi / 2 + k * S) for s in (-1, 1) for k in (-10, -5, -2, -1, 0, 1, 2, 5, 10)]
+            pts = sorted(set([-mp.pi, mp.pi] + [p for p in raw if -mp.pi < p < mp.pi]))
+            ref = mp.quad(f, pts, maxdegree=10)
+            rows.append({"sigma": r["sigma"], "N": r["N"], "sigma_over_h": r["sigma_over_h"],
+                         "mesh_value": r["energy_drift"], "continuum_mp": mp.nstr(ref, 18),
+                         "rel_mesh_error": float(abs(mp.mpf(r["energy_drift"]) - ref) / ref),
+                         "drift_over_beta_sigma2_A0": r["drift_over_beta_sigma2_A0"],
+                         "observed_order": r.get("observed_energy_drift_order")})
+    return rows
+
+
+def c_reference_mass_accuracy(cjson):
+    d = cjson["near_critical_root_detection"]["d"]
+    float_exact = cjson["near_critical_root_detection"]["exact"]["mass"]
+    with mp.workdps(40):
+        D = mp.mpf(d)
+        true = (mp.mpf("0.8") + mp.mpf("0.4") * D**2) / (mp.pi * mp.sqrt(1 - D**2))
+        stable = (0.8 + 0.4 * d * d) / (math.pi * math.sqrt((1 - d) * (1 + d)))
+        return {"d": d, "C_float_exact_mass": float_exact, "mp_true_mass": mp.nstr(true, 20),
+                "C_reference_rel_error": float(abs(mp.mpf(float_exact) - true) / true),
+                "stable_sqrt((1-d)(1+d))_rel_error": float(abs(mp.mpf(stable) - true) / true)}
+
+
+def underflow_thresholds(module):
+    """Lambda underflows to 0 (violating the stated Lambda>0) and n(1+n) underflows (capacity
+    loses positive definiteness numerically) for large xi inside [1e-12,1e3]."""
+    model = C.single_event_model(module)
+    out = {}
+    lo, hi = 300.0, 1000.0
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        _, F, L = model.reaction_data(np.array([2 * mid, mid, mid]))
+        if L[0] > 0:
+            lo = mid
+        else:
+            hi = mid
+    out["Lambda_zero_for_xi=(2x,x,x)_x_above"] = hi
+    with np.errstate(all="ignore"):
+        xs = np.linspace(700, 760, 6001)
+        n = module.bose(xs)
+        c = n * (1 + n)
+    out["capacity_weight_n(1+n)_zero_for_xi_above"] = float(xs[np.argmax(c == 0)])
+    out["capacity_weight_subnormal_for_xi_above"] = float(xs[np.argmax(c < np.finfo(float).tiny)])
+    return out
+
+
+def main():
+    if OUT_JSON.exists():
+        raise SystemExit("refusing to overwrite")
+    cj = json.loads((RUN / "C-results/C_resonance_benchmark.json").read_text())
+    dj = json.loads((RUN / "D-limits-check.json").read_text())
+    module = C.load_current_c2()
+    out = {"heating_mesh_vs_continuum_fixed": heating_continuum(dj),
+           "C_near_critical_reference_mass": c_reference_mass_accuracy(cj),
+           "underflow_thresholds": underflow_thresholds(module)}
+    OUT_JSON.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(out, indent=1))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,72 @@
+{
+  "status": "conditional finite checks; not a convergence theorem",
+  "exact_scalar_residuals": {
+    "dual_first_derivative": "0",
+    "dual_hessian": "0",
+    "forward_reverse_ratio": "0"
+  },
+  "interpolation": {
+    "occupation_interpolation_equilibrium_drift": "5/7",
+    "entropy_interpolation_equilibrium_drift": "0",
+    "energy_residual": [
+      "0",
+      "0"
+    ],
+    "entropy_generator_eigenvalues": [
+      "0",
+      "85/24"
+    ]
+  },
+  "opposite_offshell_defects": [
+    {
+      "Delta": "-0.1",
+      "energy_drift": "0.00980435927589946476",
+      "identity_residual": "4.24485e-73"
+    },
+    {
+      "Delta": "0.09999999999999999999999999999999999999999999999999999999999999999999999",
+      "energy_drift": "0.00873397180711750344",
+      "identity_residual": "8.4897e-73"
+    }
+  ],
+  "coarea_benchmark": {
+    "u": "0.5",
+    "d": "0.2",
+    "root_defect": "9.05568e-72",
+    "total_mass": "27.42206883389030149289273",
+    "rows": [
+      {
+        "N_per_root": 3,
+        "mass_absolute_error": "2.89782e-70",
+        "cos2_absolute_error": "2.89782e-70",
+        "exp_cos_relative_error": "0.0350549201186"
+      },
+      {
+        "N_per_root": 4,
+        "mass_absolute_error": "0.0",
+        "cos2_absolute_error": "0.0",
+        "exp_cos_relative_error": "0.0043239769366"
+      },
+      {
+        "N_per_root": 8,
+        "mass_absolute_error": "0.0",
+        "cos2_absolute_error": "0.0",
+        "exp_cos_relative_error": "1.57347642148e-7"
+      },
+      {
+        "N_per_root": 16,
+        "mass_absolute_error": "0.0",
+        "cos2_absolute_error": "0.0",
+        "exp_cos_relative_error": "1.16911772382e-18"
+      },
+      {
+        "N_per_root": 32,
+        "mass_absolute_error": "0.0",
+        "cos2_absolute_error": "0.0",
+        "exp_cos_relative_error": "1.40841884208e-45"
+      }
+    ],
+    "critical_case": "Excluded: denominator vanishes at |d|=u.",
+    "empty_case": "|d|>u has no roots and zero exact resonance measure."
+  }
+}

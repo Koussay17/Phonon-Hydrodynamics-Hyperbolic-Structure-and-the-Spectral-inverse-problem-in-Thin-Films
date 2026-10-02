@@ -1,0 +1,236 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}[Scale=0.90]
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\titlelabel{\thetitle.\quad}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{15pt}{5pt}
+\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+% Preserve fonts/margins; permit a final line-breaking pass for long prose.
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Intégration résonante et conservation}\\[4pt]
+{\normalsize Mesure de collision et représentation entropique finie}\\[2pt]
+{\small Partie I --- 28 septembre 2026}\\[2pt]
+{\small Résultats finis sous hypothèses --- quatre revues indépendantes terminées (2 octobre 2026)}
+\end{center}
+
+\section{Question et exclusions}
+La note 22 sépare le comptage des amplitudes et les hypothèses cinétiques.
+Il faut maintenant intégrer la conservation d'énergie sans transformer
+un poids élargi en événement discrètement résonant.
+Nous étudions une approximation cinétique scalaire déclarée, à température
+strictement positive, avec des énergies positives et des surfaces
+résonantes régulières. Les zéros acoustiques, croisements, cohérences
+dégénérées et points critiques demandent une analyse distincte.
+Aucun opérateur AlN convergé n'est construit ici.
+
+Après élimination d'une impulsion modulo un vecteur réciproque, posons
+$\Delta=\varepsilon_p-\varepsilon_a-\varepsilon_b$.
+Pour une amplitude intégrable $f$ et une surface régulière,
+\[
+ \int f(q)\delta(\Delta(q))\,dq
+ =\int_{\Delta=0}\frac{f(q)}{|\nabla\Delta(q)|}\,dS.
+\]
+En coordonnées de graphe, le facteur correspondant est
+$1/|\partial_{q_j}\Delta|$. Trouver des racines ne suffit pas :
+il faut couvrir toutes les composantes et intégrer la bonne mesure.
+L'identité suppose $\Delta\in C^1$ avec $\nabla\Delta\ne0$ sur la
+surface (valeur régulière), une valeur de surface bien définie pour $f$
+(par exemple $f$ continue au voisinage de $\{\Delta=0\}$) et
+$f/|\nabla\Delta|$ intégrable sur la surface ; $\delta$ s'entend comme
+limite de régularisations.
+
+\section{Pourquoi réajuster des poids hors résonance ne suffit pas}
+Pour le flux réversible usuel
+\[
+ F=k[n_p(1+n_a)(1+n_b)-(1+n_p)n_an_b],\qquad k\ge0,
+\]
+les populations de Bose aux énergies originales donnent
+$F=kR(e^{-\beta\Delta}-1)$ avec $R=(1+n_p)n_an_b>0$.
+L'énergie produite par cet événement vaut donc
+\[
+ \dot E=-\Delta F
+       =kR\Delta(1-e^{-\beta\Delta})\ge0.
+\]
+Elle est strictement positive si $k>0$ et $\Delta\ne0$.
+Les défauts de signes opposés ne se compensent pas.
+C'est une obstruction pour ce flux, ces énergies et cette incidence ;
+ce n'est pas une impossibilité pour toutes les représentations.
+La positivité d'une matrice linéarisée ne prouve pas non plus
+la stationnarité non linéaire de Bose.
+
+\section{Une représentation faible compatible}
+Soit $V=\operatorname{span}\{\phi_i\}$ un espace réel fini contenant
+l'énergie physique : $\varepsilon=\sum_i e_i\phi_i$.
+Introduisons une variable entropique et la population reconstruite :
+\[
+ \xi_\alpha(q)=\sum_i\alpha_i\phi_i(q),\qquad
+ n_\alpha(q)=\frac{1}{e^{\xi_\alpha(q)}-1}.
+\]
+On travaille dans le domaine ouvert où $\xi_\alpha>0$ aux points
+d'évaluation. Une quadrature volumique positive $Q_v$, dont la matrice
+d'évaluation est de rang colonne plein, définit
+\[
+ U_i=Q_v(\phi_i n_\alpha),\qquad
+ M_{ij}=Q_v[n_\alpha(1+n_\alpha)\phi_i\phi_j].
+\]
+Alors $dU/d\alpha=-M$ et $M$ est définie positive.
+
+Pour chaque point de quadrature réactionnelle, posons
+$\ell_r=\phi(p_r)-\phi(a_r)-\phi(\lambda_{b,r})$, avec poids $\omega_r>0$.
+Écrivons $A_r=n_p(1+n_a)(1+n_b)$,
+$B_r=(1+n_p)n_an_b$ et leur moyenne logarithmique
+\[
+ \Lambda_r=\frac{A_r-B_r}{\log A_r-\log B_r}>0,
+ \qquad \Lambda_r=A_r\ \hbox{si }A_r=B_r.
+\]
+Comme $\log B_r-\log A_r=\ell_r^{\mathsf T}\alpha$, on obtient
+\[
+ K(\alpha)=\sum_r\omega_r\Lambda_r \ell_r\ell_r^{\mathsf T},
+ \qquad \dot U=K\alpha,\qquad M\dot\alpha=-K\alpha.
+\]
+C'est une dynamique de moments ; les coefficients ne sont pas
+automatiquement des nombres de phonons sur un maillage.
+Numériquement, $A_r-B_r$ et $\Lambda_r$ s'évaluent à partir de
+$\log A_r$ et $\log B_r$ : séparément, $B_r$ peut sous-déborder alors que
+$e^{\ell_r^{\mathsf T}\alpha}$ déborde, et leur produit naïf donne NaN
+pour des variables entropiques très séparées.
+
+Pour l'entropie et l'énergie de quadrature,
+\[
+ S_Q=Q_v[(1+n)\log(1+n)-n\log n],\qquad E_Q=e^{\mathsf T}U,
+\]
+on a
+\[
+ \dot S_Q=\alpha^{\mathsf T}K\alpha\ge0,\qquad
+ e^{\mathsf T}Ke=\sum_r\omega_r\Lambda_r\Delta_r^2.
+\]
+Sur de vraies racines $\Delta_r=0$, $Ke=0$, l'énergie $E_Q$
+est conservée et $\alpha=\beta e$ est stationnaire.
+À cet équilibre, la forme linéarisée symétrique est
+$M_*^{-1/2}K_*M_*^{-1/2}$, positive, avec vecteur nul
+$M_*^{1/2}e$.
+Des invariants supplémentaires peuvent agrandir le noyau.
+
+Ces identités établissent une structure finie et une solution locale
+sur le domaine déclaré. Elles ne prouvent ni invariance globale du
+domaine, ni convergence des trajectoires vers une équation continue,
+ni conservation exacte de l'intégrale physique si $Q_v$ est approchée.
+Si l'on utilise $\varepsilon_h$ et ses racines, l'invariant est celui
+de cette énergie approchée, sauf justification supplémentaire.
+
+La perte du domaine est effective, et non seulement non exclue.
+Avec $\Phi=I_3$, des poids unités, $e=(1,1,1)$, une ligne parent
+$(2,-1,0)$ et deux filles $(\tfrac12,-1,1)$, la résonance est exacte.
+Partant de $\alpha=(1{,}0005;\,2;\,3)$, la variable entropique du parent,
+évaluée hors des nœuds de volume, atteint zéro en un temps fini
+$T\le1{,}11\times10^{-7}$ ; l'intégration numérique donne
+$T\simeq9{,}46\times10^{-8}$. Jusque-là, $E_Q$ est conservée à
+$10^{-15}$ près, $S_Q$ croît et les occupations de volume restent
+positives, tandis que l'occupation du parent diverge. L'énergie et
+l'entropie de quadrature ne contrôlent donc pas la réalisabilité
+hors des nœuds.
+
+\section{Contre-exemples discriminants}
+L'interpolation doit porter sur la variable choisie.
+À $\beta=\log2$, les populations de Bose aux énergies $1,3$
+sont $1,1/7$. Au milieu, d'énergie $2$, interpoler les populations
+donne $4/7$ au lieu de $1/3$. Pour deux filles d'énergie $1$,
+le flux réduit à l'équilibre est alors
+$3(4/7)-1=5/7$, malgré une interpolation exacte de l'énergie.
+Interpoler $\xi$ donne la bonne valeur de Bose.
+Hors équilibre, la même interpolation peut faire décroître $S_Q$ à
+énergie conservée : un exemple exact donne $\dot E_Q=0$ et
+$\dot S_Q\simeq-3{,}59\times10^{-3}$.
+
+Dans les exemples analytiques réguliers des branches A et C,
+omettre le Jacobien de surface produit une erreur de mesure de
+$20\%$ tout en conservant les invariants testés.
+Près d'un point critique, un simple balayage des changements de signe
+peut manquer deux racines régulières : une sortie vide vérifie alors
+les invariants de façon vacue.
+
+Enfin, pour le modèle unidimensionnel $\Delta(x)=vx$, un échantillonnage
+gaussien uniforme dépend du rapport $r=\sigma/(|v|h)$ :
+\[
+ h\sum_{k\in\mathbb Z}\delta_\sigma(vh(k+\theta))
+ =\frac{1}{|v|}
+  \left[1+2\sum_{m\ge1}e^{-2\pi^2m^2r^2}\cos(2\pi m\theta)\right].
+\]
+À $r$ fini, une erreur dépendant du décalage persiste.
+La convergence uniforme en décalage dans ce modèle exige $r\to\infty$.
+Ce n'est pas une règle universelle pour toutes les grilles et surfaces.
+À maillage fixé, réduire $\sigma$ peut donner zéro ou une divergence.
+Une faible dérive d'énergie ne certifie donc pas la convergence de mesure.
+
+L'ordre de cette dérive exige lui-même une hypothèse. Près de
+l'équilibre de Bose, un élargissement gaussien donne
+\[
+ \dot E_\sigma=\int\rho(s)\,\delta_\sigma(s)\,kR(s)\,s(1-e^{-\beta s})\,ds,
+\]
+où $\rho$ est la densité image, par $\Delta$, de la mesure pondérée.
+Si $\rho$ et $R$ sont bornées et continues en $s=0$, alors
+$\dot E_\sigma=\beta\sigma^2kR(0)\rho(0)+o(\sigma^2)$.
+Pour un pli quadratique $\Delta=x^2$, $\rho(s)=s^{-1/2}$ n'est pas
+bornée et l'ordre devient $\sigma^{3/2}$, de constante
+$\beta kR(0)\int_0^\infty u^{3/2}\varphi(u)\,du\simeq0{,}4300\,\beta kR(0)$,
+où $\varphi$ est la densité normale réduite.
+Un ordre observé ne classe donc la surface qu'avec une densité bornée.
+
+\section{Portée et prochaine étape matérielle}
+Les contrôles analytiques, symboliques et numériques portent sur
+des modèles réguliers explicitement définis. Les divergences critiques
+observées ne classent pas toutes les singularités physiques.
+Les poids natifs phono3py sont des combinaisons de canaux ; ils ne
+constituent pas directement une quadrature globale d'événements positifs.
+
+Conservation, signe de l'entropie et stationnarité de Bose ne
+contraignent pas les taux : multiplier tous les poids $\omega_r$ par une
+constante, ou vider la liste des réactions, les préserve tous. Seule une
+consistance de l'action sur des fonctions non invariantes, stable par
+raffinement, validerait les temps de collision.
+
+Les filles identiques forment, sur une surface résonante régulière,
+un ensemble de mesure nulle. Avec une densité de surface localement
+bornée, la masse d'un tube de largeur $\ell$ autour de la diagonale est
+$O(\ell^d)$ en codimension $d$ ; une densité seulement intégrable, par
+exemple $|z|^{-a}$ avec $0<a<d$, ne donne que $\ell^{d-a}$. Un nœud de
+quadrature situé sur cette diagonale représente une région voisine :
+lui attribuer le facteur fini d'oscillateurs répétés de la note~22
+modifierait la quadrature continue. Les identités de comptage et la
+présente mesure ne se raccordent donc pas par les seuls labels.
+
+L'application à l'AlN exige une dispersion cohérente, une énumération
+des surfaces, leurs poids et symétries, une représentation des populations,
+une étude de convergence et un régime cinétique justifié.
+Le cadre utilise des idées établies de Galerkin entropique et de
+quadrature implicite ; aucune nouveauté générale n'est revendiquée.
+
+\section{Sources et reproduction}
+\begin{itemize}
+\item Fugallo et al., Phys.\ Rev.\ B \textbf{88}, 045430 (2013).
+\par doi:10.1103/PhysRevB.88.045430.
+\item Saye, SIAM J.\ Sci.\ Comput.\ \textbf{37}, A993--A1019 (2015).
+\par doi:10.1137/140966290.
+\item Abdelmalik et van Brummelen, J.\ Stat.\ Phys.\ \textbf{164},
+77--104 (2016).
+\par doi:10.1007/s10955-016-1529-5.
+\end{itemize}
+Les sources classiques éclairent les ingrédients mais ne prouvent
+pas la convergence de leur combinaison pour l'opérateur Bose proposé.
+Scripts, échecs, limites et quatre revues sont archivés dans
+\texttt{theory/\allowbreak aln/\allowbreak resonance\_measure} ; le NaN
+relevé par les revues est corrigé par l'évaluation logarithmique
+(quatorze contrôles reproductibles).
+\end{document}

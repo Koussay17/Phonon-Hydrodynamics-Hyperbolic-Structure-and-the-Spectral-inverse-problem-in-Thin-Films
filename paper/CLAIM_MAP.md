@@ -13,9 +13,14 @@ Working synthesis, 27 September 2026. This maps reviewed local evidence; it does
 | Tensor, Fock, spectral and population counting factors differ | [Note 22](../notes/22_Orientation_et_comptage.pdf), [reviewed counting report](../theory/aln/channel_counting/13-final-report.md) | Explicit symmetric Hamiltonian, compatible sewing, kinetic/geometric assumptions | Measured factor-two lifetime correction or phono3py defect |
 | Geometric populations are not an invariant family of the assumed finite Fock jump process | [C2 derivation](../theory/aln/channel_counting/branches/C2-closure-check.md), [proof review](../theory/aln/channel_counting/branches/red-proof.md) | Exact instantaneous moment obstruction in the declared model; equilibrium exception | Quantitative AlN closure error or disproof of a controlled continuum kinetic limit |
 | Existing spectral/FDTR calculations illustrate sensitivity | [Note 16](../notes/16_Analyse_experimentale_FDTR.pdf), [Note 17](../notes/17_AlN_spectral_temperature.pdf), [reviewed RTA limits](../theory/aln/closure/13-final-report.md) | Synthetic design and discrete bulk illustration; keep separate datasets/assumptions | Laboratory validation, converged temperature trajectory or measured hydrodynamic window |
+| A finite entropy-variable weak form integrates resonant events with proved local structure | [Note 23](../notes/23_Integration_resonante.pdf), [final report](../theory/aln/resonance_measure/campaign/13-final-report.md), [four reviews](../theory/aln/resonance_measure/campaign/12-peer-review.md) | Finite hypotheses: positive quadratures, full rank, positive entropy variables, exact energy representation, exact resonant nodes; local solution only | Global realizability (finite-time exit shown), rate or measure validation, an AlN operator, novelty |
+| Unchanged positive off-shell Bose events cannot conserve energy | Note 23 §2; campaign proof audit | Unchanged event rows and a common Bose rate | A verdict on all broadening or spectral theories |
 
-## New evidence not yet admitted
-The conserving-resonance-measure campaign started on D on 27 September. Its independent first passes are still in progress. No new integration theorem, numerical scheme or material claim is included in this map.
+## Audit admissions, 2 October 2026
+The conserving-resonance-measure campaign is closed after four independent hostile reviews; the two rows above are admitted.
+The repository audit also established that the formal Fourier-resonance line x = 1.8 depends on τ_c ≈ τ_N (x = 0.8 historical, none conservative, with τ_c kept; notes 07, 12–14),
+that isotopes do not explain the Rao/Olympics κ difference (0.1–0.2%; input uncertainty about 15–20%, note 17),
+and that the default-cutoff export differs from corrected exports by degenerate-basis redistribution plus a defect-level perturbation of about 4e-8 (interaction_pilot/audit-20261002).
 
 ## Manuscript decisions still needed
 1. Select one central contribution and check prior art for that precise statement.

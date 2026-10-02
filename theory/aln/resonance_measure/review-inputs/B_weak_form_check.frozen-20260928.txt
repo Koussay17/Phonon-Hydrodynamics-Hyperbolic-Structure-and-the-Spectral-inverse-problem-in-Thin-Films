@@ -1,0 +1,103 @@
+"""B-owned bounded checks for entropy weak forms; no material data or peer outputs."""
+from pathlib import Path
+import json
+import sympy as s
+import mpmath as mp
+
+mp.mp.dps = 70
+out = {"status": "conditional finite checks; not a convergence theorem"}
+
+# Independent scalar calculus checks.
+x = s.symbols("x", positive=True)
+n = 1 / (s.exp(x) - 1)
+psi = -s.log(1 - s.exp(-x))
+checks = {
+    "dual_first_derivative": s.simplify(s.diff(psi, x) + n),
+    "dual_hessian": s.simplify(s.diff(psi, x, 2) - n * (1 + n)),
+}
+qp, qa, qb = s.symbols("qp qa qb", positive=True)
+np_, na, nb = qp/(1-qp), qa/(1-qa), qb/(1-qb)
+Ar, Br = np_*(1+na)*(1+nb), (1+np_)*na*nb
+checks["forward_reverse_ratio"] = s.factor(Ar/Br - qp/(qa*qb))
+assert all(v == 0 for v in checks.values())
+out["exact_scalar_residuals"] = {k: str(v) for k,v in checks.items()}
+
+# The finite entropy-interpolation example.
+b = s.Matrix([s.Rational(-3,2), s.Rational(1,2)])
+energy = s.Matrix([1,3])
+M = s.diag(2,s.Rational(8,49))
+K = s.Rational(4,3)*b*b.T
+assert K*energy == s.zeros(2,1)
+assert s.det(K) == 0
+nonzero_eigenvalue = s.trace(M.inv()*K)
+assert nonzero_eigenvalue == s.Rational(85,24)
+population_interpolation_drift = 3*(s.Rational(1,1)+s.Rational(1,7))/2-1
+assert population_interpolation_drift == s.Rational(5,7)
+out["interpolation"] = {
+    "occupation_interpolation_equilibrium_drift": str(population_interpolation_drift),
+    "entropy_interpolation_equilibrium_drift": "0",
+    "energy_residual": list(map(str, K*energy)),
+    "entropy_generator_eigenvalues": ["0",str(nonzero_eigenvalue)],
+}
+
+# Opposite physical energy defects cannot cancel thermal energy drift.
+beta = mp.log(2)
+thermal_rows = []
+for ep in (mp.mpf("1.9"),mp.mpf("2.1")):
+    p = 1/mp.expm1(beta*ep)
+    a = 1/mp.expm1(beta)
+    A = p*(1+a)**2
+    B = (1+p)*a*a
+    Delta = ep-2
+    logmean = (A-B)/(mp.log(A)-mp.log(B))
+    energy_drift = -Delta*(A-B)
+    identity_residual = energy_drift-beta*logmean*Delta**2
+    assert energy_drift > 0
+    assert abs(identity_residual) < mp.mpf("1e-65")
+    thermal_rows.append({
+        "Delta": str(Delta),
+        "energy_drift": mp.nstr(energy_drift,18),
+        "identity_residual": mp.nstr(abs(identity_residual),6),
+    })
+out["opposite_offshell_defects"] = thermal_rows
+
+# Exact periodic coarea benchmark, with dimensionless momentum coordinates.
+u = mp.mpf("0.5")
+d = mp.mpf("0.2")
+denom = mp.sqrt(u*u-d*d)
+root1 = mp.asin(-d/u) % (2*mp.pi)
+roots = [root1, (mp.pi-root1) % (2*mp.pi)]
+root_defect = max(abs(d+u*mp.sin(t)) for t in roots)
+mass = 4*mp.pi/denom
+assert root_defect < mp.mpf("1e-65")
+# I0(1) follows from the constant Fourier coefficient of exp(cos x).
+i0_series = mp.fsum(1/(mp.mpf(4)**k*mp.factorial(k)**2) for k in range(100))
+exact_exp_cos = mass*i0_series
+rows = []
+for N in (3,4,8,16,32):
+    weight = 2*mp.pi/(N*denom)
+    xs = [2*mp.pi*k/N for k in range(N)]
+    numerical_mass = 2*N*weight
+    numerical_cos2 = 2*weight*mp.fsum(mp.cos(t)**2 for t in xs)
+    numerical_exp_cos = 2*weight*mp.fsum(mp.exp(mp.cos(t)) for t in xs)
+    assert abs(numerical_mass-mass) < mp.mpf("1e-65")
+    assert abs(numerical_cos2-mass/2) < mp.mpf("1e-65")
+    rows.append({
+        "N_per_root": N,
+        "mass_absolute_error": mp.nstr(abs(numerical_mass-mass),6),
+        "cos2_absolute_error": mp.nstr(abs(numerical_cos2-mass/2),6),
+        "exp_cos_relative_error": mp.nstr(abs(numerical_exp_cos/exact_exp_cos-1),12),
+    })
+out["coarea_benchmark"] = {
+    "u": str(u), "d": str(d),
+    "root_defect": mp.nstr(root_defect,6),
+    "total_mass": mp.nstr(mass,25),
+    "rows": rows,
+    "critical_case": "Excluded: denominator vanishes at |d|=u.",
+    "empty_case": "|d|>u has no roots and zero exact resonance measure.",
+}
+target = Path(__file__).resolve().parents[1]/"runs"/"B_weak_form_check.json"
+target.parent.mkdir(parents=True, exist_ok=True)
+target.write_text(json.dumps(out,indent=2)+"\n", encoding="utf-8")
+print(json.dumps(out,indent=2))
+print("Saved:", target)

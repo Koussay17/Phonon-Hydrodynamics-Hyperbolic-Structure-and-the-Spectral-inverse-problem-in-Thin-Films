@@ -1,0 +1,426 @@
+"""Final red numerical review -- Task 1 (randomized stress of F and Lambda) and
+Task 4 (can np.errstate hide a genuine overflow/NaN in the SELECTED branch?).
+
+Implementation under test: EntropyWeakForm.reaction_data of the CURRENT repository
+file C:/Users/Koussay/these/theory/aln/resonance_measure/experiments/C2_weak_form.py
+(2 Oct 2026 log-space fix), compiled read-only.  The frozen pre-fix file is run on
+the same samples for comparison.
+
+References (independent of each other):
+  R1  python-flint Arb, definitional A-B, (A-B)/(log A-log B), rigorous balls,
+      adaptive precision (relative radius < 1e-30);
+  R2  mpmath 60+ digits, identity route B*expm1(-d), exact affinity d.
+Errors are measured at the EXACT floating-point inputs.  A condition number
+kappa_y = sum_j |xi_j dy/dxi_j| / |y| (analytic, mpmath) is attached to each sample.
+
+Usage:  python -B red_numerics_final_stress.py   (writes red_numerics_final_stress.json
+and red_numerics_final_stress_raw.npz next to this script; refuses to overwrite).
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+import time
+import warnings
+from fractions import Fraction
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import numpy as np
+import mpmath as mp
+import flint
+
+import red_numerics_final_common as C
+
+OUT_JSON = HERE / "red_numerics_final_stress.json"
+OUT_RAW = HERE / "red_numerics_final_stress_raw.npz"
+SEED = 20261002
+LO, HI = 1e-12, 1e3
+SIZES = {"S1_independent_loguniform": 12000, "S2_near_resonance": 6000, "S3_exact_resonance": 3000,
+         "S4_tiny_affinity_1e-14": 3000, "S5_xi_to_zero": 3000, "S6_subnormal_outputs": 3000}
+
+
+def loguniform(rng, lo, hi, size):
+    return np.exp(rng.uniform(math.log(lo), math.log(hi), size))
+
+
+def exact_affinity_fraction(xp, xa, xb):
+    return Fraction(float(xp)) - Fraction(float(xa)) - Fraction(float(xb))
+
+
+def build_samples(rng):
+    sets = {}
+    # S1: independent log-uniform legs on [1e-12, 1e3]
+    n = SIZES["S1_independent_loguniform"]
+    sets["S1_independent_loguniform"] = loguniform(rng, LO, HI, (n, 3))
+    # S2: near resonance, relative and absolute affinity targets of both signs
+    n = SIZES["S2_near_resonance"]
+    rows = []
+    while len(rows) < n:
+        xa, xb = loguniform(rng, LO, 499.0, 2)
+        sign = rng.choice([-1.0, 1.0])
+        if rng.random() < 0.5:
+            target = sign * 10 ** rng.uniform(-17, -1) * (xa + xb)
+        else:
+            target = sign * 10 ** rng.uniform(-16, -1)
+        xp = (xa + xb) + target
+        if LO <= xp <= HI:
+            rows.append((xp, xa, xb))
+    sets["S2_near_resonance"] = np.array(rows)
+    # S3: exact resonance d == 0 at the float inputs (verified with Fractions)
+    n = SIZES["S3_exact_resonance"]
+    rows = []
+    while len(rows) < n:
+        mode = rng.integers(3)
+        if mode == 0:      # Sterbenz: xa in [xp/2, xp) -> xb = xp - xa exact
+            xp = float(loguniform(rng, 2e-12, HI, 1)[0])
+            xa = float(rng.uniform(0.5, 1.0) * xp)
+            xb = xp - xa
+        elif mode == 1:    # dyadic grid values: sums exact
+            k = int(rng.integers(-40, 9))
+            xa = float(rng.integers(1, 2**20)) * 2.0**(k - 20)
+            xb = float(rng.integers(1, 2**20)) * 2.0**(k - 20 + int(rng.integers(-5, 6)))
+            xp = xa + xb
+        else:              # generic draw, keep only when the float sum is exact
+            xa, xb = (float(v) for v in loguniform(rng, LO, 499.0, 2))
+            xp = xa + xb
+        if rng.random() < 0.5:
+            xa, xb = xb, xa
+        if LO <= min(xa, xb) and xp <= HI and xb > 0 and xa > 0 and exact_affinity_fraction(xp, xa, xb) == 0:
+            rows.append((xp, xa, xb))
+    sets["S3_exact_resonance"] = np.array(rows)
+    # S4: |d| ~ 1e-15 .. 1e-13 with O(1e-3..10) legs
+    n = SIZES["S4_tiny_affinity_1e-14"]
+    rows = []
+    while len(rows) < n:
+        xa, xb = loguniform(rng, 1e-3, 10.0, 2)
+        xp = (xa + xb) + rng.choice([-1.0, 1.0]) * 10 ** rng.uniform(-15, -13)
+        rows.append((xp, xa, xb))
+    sets["S4_tiny_affinity_1e-14"] = np.array(rows)
+    # S5: xi -> 0+ (all legs in [1e-12, 1e-6]); half generic, half near/exact resonance
+    n = SIZES["S5_xi_to_zero"]
+    rows = []
+    while len(rows) < n:
+        xa, xb = loguniform(rng, 1e-12, 5e-7, 2)
+        if rng.random() < 0.5:
+            xp = float(loguniform(rng, 1e-12, 1e-6, 1)[0])
+        else:
+            xp = (xa + xb) * (1 + rng.choice([0.0, 1.0, -1.0]) * 10 ** rng.uniform(-16, -3))
+        if LO <= xp <= 1e-6:
+            rows.append((xp, xa, xb))
+    sets["S5_xi_to_zero"] = np.array(rows)
+    # S6: outputs in or near the subnormal range (both branches, plus near resonance)
+    n = SIZES["S6_subnormal_outputs"]
+    rows = []
+    while len(rows) < n:
+        mode = rng.integers(3)
+        if mode == 0:      # d<0 branch, A ~ exp(-xp) ~ subnormal
+            xa, xb = rng.uniform(380.0, 520.0, 2)
+            xp = rng.uniform(700.0, 760.0)
+        elif mode == 1:    # d>0 branch, B ~ exp(-xa-xb) ~ subnormal
+            xa, xb = rng.uniform(350.0, 380.0, 2)
+            xp = rng.uniform(xa + xb, HI)
+        else:              # near resonance in subnormal range
+            xa, xb = rng.uniform(350.0, 380.0, 2)
+            xp = (xa + xb) + rng.choice([-1.0, 1.0]) * 10 ** rng.uniform(-13, 0)
+        if xp <= HI:
+            rows.append((xp, xa, xb))
+    sets["S6_subnormal_outputs"] = np.array(rows)
+    # S7: regression and corner cases
+    s7 = [(1.0, 400.0, 400.0), (1.0, 30.0, 30.0), (0.5, 2.0, 3.0), (5.0, 2.0, 3.0), (800.0, 1.0, 1.0),
+          (1e-3, 700.0, 705.0), (705.0, 700.0, 4.0), (3.0, 1.0, 2.0),
+          (2e-12, 1e-12, 1e-12), (1e-12, 1e-12, 1e-12), (1e3, 1e-12, 1e-12), (1e-12, 1e3, 1e3),
+          (1e3, 1e3, 1e3), (1e3, 500.0, 500.0), (744.0, 1.0, 1.0), (746.0, 1.0, 1.0), (1.0, 372.0, 372.0),
+          (1.0, 373.0, 373.0), (745.0, 372.5, 372.5), (math.log(2) * 2, math.log(2), math.log(2)),
+          (2 * 1e-12, 1e-12, 1e-12 + 2.0**-92)]
+    sets["S7_regression_and_corners"] = np.array(s7)
+    return sets
+
+
+def evaluate(model, frozen_model, xi):
+    alpha = np.array(xi, dtype=float)
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        d, F, L = model.reaction_data(alpha)
+    new_warn = len(caught)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        with np.errstate(all="ignore"):
+            fd, fF, fL = frozen_model.reaction_data(alpha)
+    return float(d[0]), float(F[0]), float(L[0]), float(fF[0]), float(fL[0]), new_warn
+
+
+def selected_branch_raises(module, xi, affinity):
+    """Re-evaluate ONLY the branch that reaction_data selects, with FP traps on.
+    Returns the name of the trapped exception or None."""
+    xp, xa, xb = xi
+    try:
+        with np.errstate(over="raise", invalid="raise", divide="raise", under="ignore"):
+            if affinity >= 0:
+                log_b = (module.log_one_plus_bose(np.float64(xp)) + module.log_bose(np.float64(xa))
+                         + module.log_bose(np.float64(xb)))
+                base = np.exp(log_b)
+                F = base * np.expm1(-affinity)
+                L = base * module.exprel_stable(np.array([-affinity]))[0]
+            else:
+                log_a = (module.log_bose(np.float64(xp)) + module.log_one_plus_bose(np.float64(xa))
+                         + module.log_one_plus_bose(np.float64(xb)))
+                base = np.exp(log_a)
+                F = -base * np.expm1(affinity)
+                L = base * module.exprel_stable(np.array([affinity]))[0]
+        return None
+    except FloatingPointError as exc:
+        return str(exc)
+
+
+def both_branch_values(module, xi, affinity):
+    """Evaluate the two algebraically equal branch formulas at the same input."""
+    xp, xa, xb = (np.float64(v) for v in xi)
+    with np.errstate(all="ignore"):
+        log_b = module.log_one_plus_bose(xp) + module.log_bose(xa) + module.log_bose(xb)
+        log_a = module.log_bose(xp) + module.log_one_plus_bose(xa) + module.log_one_plus_bose(xb)
+        FB = np.exp(log_b) * np.expm1(-affinity)
+        LB = np.exp(log_b) * module.exprel_stable(np.array([-affinity]))[0]
+        FA = -np.exp(log_a) * np.expm1(affinity)
+        LA = np.exp(log_a) * module.exprel_stable(np.array([affinity]))[0]
+    return float(FB), float(LB), float(FA), float(LA)
+
+
+def summarize(records, key_prefix):
+    out = {}
+    for quantity in ("F", "L"):
+        regimes = {}
+        for r in records:
+            e = r[f"{key_prefix}{quantity}_err"]
+            regimes.setdefault(e["regime"], []).append((r, e))
+        q = {}
+        for regime, items in regimes.items():
+            entry = {"count": len(items)}
+            if regime == "normal":
+                rel = np.array([e["rel_error"] for _, e in items])
+                kappa = np.array([r[f"kappa_{quantity}"] for r, _ in items])
+                logscale = np.array([r["log_base_abs"] for r, _ in items])
+                norm1 = rel / (C.UNIT_ROUNDOFF * np.maximum(kappa, 1.0))
+                norm2 = rel / (C.UNIT_ROUNDOFF * (np.maximum(kappa, 1.0) + logscale + 3.0))
+                worst = int(np.argmax(rel))
+                entry.update({
+                    "max_rel_error": float(rel.max()), "median_rel_error": float(np.median(rel)),
+                    "p99_rel_error": float(np.quantile(rel, 0.99)),
+                    "max_rel_error_over_u_kappa": float(norm1.max()),
+                    "max_rel_error_over_u_(kappa+|logbase|+3)": float(norm2.max()),
+                    "worst_input": items[worst][0]["xi"], "worst_kappa": float(kappa[worst]),
+                    "count_rel_error_gt_1e-12": int((rel > 1e-12).sum()),
+                    "count_rel_error_gt_1e-13": int((rel > 1e-13).sum()),
+                })
+                # worst case among well-conditioned samples
+                wc = kappa < 10
+                if wc.any():
+                    entry["max_rel_error_kappa_lt_10"] = float(rel[wc].max())
+            elif regime == "subnormal":
+                ulps = np.array([e["abs_error_in_subnormal_ulps"] for _, e in items])
+                entry.update({"max_abs_error_subnormal_ulps": float(ulps.max()),
+                              "worst_input": items[int(np.argmax(ulps))][0]["xi"]})
+            elif regime == "below_subnormal":
+                ulps = np.array([e["abs_error_in_subnormal_ulps"] for _, e in items])
+                entry.update({"max_abs_error_subnormal_ulps": float(ulps.max()),
+                              "nonzero_outputs": int(sum(1 for _, e in items if e["output"] != 0.0))})
+            elif regime == "exact_zero":
+                entry.update({"all_outputs_exactly_zero": all(e["is_exact_zero"] for _, e in items),
+                              "max_abs_output": float(max(e["abs_error"] for _, e in items))})
+            q[regime] = entry
+        out[quantity] = q
+    return out
+
+
+def main():
+    if OUT_JSON.exists() or OUT_RAW.exists():
+        raise SystemExit("refusing to overwrite existing results")
+    t0 = time.time()
+    rng = np.random.default_rng(SEED)
+    current = C.load_current_c2()
+    frozen = C.load_frozen_c2()
+    model = C.single_event_model(current)
+    frozen_model = C.single_event_model(frozen)
+    sets = build_samples(rng)
+
+    results = {"meta": {
+        "seed": SEED, "domain_per_leg": [LO, HI], "sizes": {k: int(len(v)) for k, v in sets.items()},
+        "current_C2_sha256": C.sha256(C.C2_PATH), "frozen_C2_sha256": C.sha256(C.FROZEN_C2_PATH),
+        "python": sys.version, "numpy": np.__version__, "mpmath": mp.__version__, "flint": flint.__version__,
+        "references": "R1 Arb definitional (rigorous, rel radius<1e-30); R2 mpmath 60+ digits identity route",
+        "unit_roundoff": C.UNIT_ROUNDOFF}}
+    raw = {}
+    nonfinite_cases = []
+    trap_cases = []
+    for name, xs in sets.items():
+        records = []
+        arr = {k: [] for k in ("xp", "xa", "xb", "d_code", "F", "L", "F_frozen", "L_frozen",
+                               "F_ref", "L_ref", "kappaF", "kappaL", "relF", "relL")}
+        branch_gap_F, branch_gap_L = [], []
+        warnings_emitted = 0
+        r1_r2_max = 0.0
+        frozen_nan = 0
+        for xi in xs:
+            xi = tuple(float(v) for v in xi)
+            d, F, L, fF, fL, nwarn = evaluate(model, frozen_model, xi)
+            warnings_emitted += nwarn
+            ar = C.arb_reference(*xi)
+            mr = C.mp_reference(*xi)
+            Fref = C.arb_to_mpf(ar["F"]) if not ar["d_exact_zero"] else mp.mpf(0)
+            Lref = C.arb_to_mpf(ar["L"])
+            # agreement of the two independent references
+            with mp.workdps(60):
+                for a, b in ((Fref, mr["F"]), (Lref, mr["L"])):
+                    if a != 0 or b != 0:
+                        r1_r2_max = max(r1_r2_max, float(abs(a - b) / max(abs(a), abs(b))))
+            with mp.workdps(60):
+                kF = float(mr["condF_abs"] / abs(mr["F"])) if mr["F"] != 0 else float("inf")
+                kL = float(mr["condL_abs"] / abs(mr["L"])) if mr["L"] != 0 else float("inf")
+                base = mr["logB"] if mr["d"] >= 0 else mr["logA"]
+            rec = {"xi": list(xi), "d_code": d, "d_exact": float(mr["d"]), "F": F, "L": L,
+                   "kappa_F": kF, "kappa_L": kL, "log_base_abs": float(abs(base)),
+                   "new_F_err": C.classify_and_error(F, Fref), "new_L_err": C.classify_and_error(L, Lref),
+                   "old_F_err": C.classify_and_error(fF, Fref), "old_L_err": C.classify_and_error(fL, Lref)}
+            records.append(rec)
+            if not (np.isfinite(F) and np.isfinite(L)):
+                nonfinite_cases.append({"set": name, "xi": list(xi), "F": repr(F), "L": repr(L)})
+            if not (np.isfinite(fF) and np.isfinite(fL)):
+                frozen_nan += 1
+            trap = selected_branch_raises(current, xi, d)
+            if trap is not None:
+                trap_cases.append({"set": name, "xi": list(xi), "trap": trap})
+            # branch formulas compared at the same input when both are representable
+            FB, LB, FA, LA = both_branch_values(current, xi, d)
+            if all(np.isfinite([FB, LB, FA, LA])) and min(abs(FB), abs(FA)) > C.TINY * 1e3 \
+                    and min(LB, LA) > C.TINY * 1e3:
+                branch_gap_F.append(abs(FB - FA) / max(abs(FB), abs(FA)))
+                branch_gap_L.append(abs(LB - LA) / max(LB, LA))
+            elif FB == 0 and FA == 0 and min(LB, LA) > C.TINY * 1e3:
+                branch_gap_L.append(abs(LB - LA) / max(LB, LA))
+            for k, v in (("xp", xi[0]), ("xa", xi[1]), ("xb", xi[2]), ("d_code", d), ("F", F), ("L", L),
+                         ("F_frozen", fF), ("L_frozen", fL), ("F_ref", float(Fref)), ("L_ref", float(Lref)),
+                         ("kappaF", kF), ("kappaL", kL),
+                         ("relF", rec["new_F_err"].get("rel_error", float("nan"))),
+                         ("relL", rec["new_L_err"].get("rel_error", float("nan")))):
+                arr[k].append(v)
+        summary = {
+            "count": len(records),
+            "nonfinite_outputs_new": sum(1 for r in records if not (np.isfinite(r["F"]) and np.isfinite(r["L"]))),
+            "nonfinite_outputs_frozen": frozen_nan,
+            "warnings_emitted_by_new_reaction_data": warnings_emitted,
+            "reference_R1_vs_R2_max_relative_disagreement": r1_r2_max,
+            "new": summarize(records, "new_"),
+            "frozen": summarize(records, "old_"),
+            "branch_formula_relative_gap_F_max": float(max(branch_gap_F)) if branch_gap_F else None,
+            "branch_formula_relative_gap_L_max": float(max(branch_gap_L)) if branch_gap_L else None,
+            "branch_formula_pairs_compared": len(branch_gap_L),
+            "mobility_nonpositive_new": sum(1 for r in records if not (r["L"] > 0)),
+            "affinity_code_minus_exact_max_abs": float(max(abs(r["d_code"] - r["d_exact"]) for r in records)),
+        }
+        # the original audit's question: accuracy loss when log A, log B are huge
+        big = [r for r in records if r["log_base_abs"] > 300 and r["new_L_err"].get("regime") == "normal"]
+        if big:
+            summary["new_L_rel_error_max_when_|logbase|>300"] = float(max(r["new_L_err"]["rel_error"] for r in big))
+            summary["new_L_rel_error_over_u_|logbase|_max"] = float(max(
+                r["new_L_err"]["rel_error"] / (C.UNIT_ROUNDOFF * r["log_base_abs"]) for r in big))
+        results[name] = summary
+        for k, v in arr.items():
+            raw[f"{name}__{k}"] = np.array(v)
+        print(name, "done", round(time.time() - t0, 1), "s", flush=True)
+        if name == "S7_regression_and_corners":
+            results[name]["records"] = records
+
+    results["task4_in_domain"] = {
+        "nonfinite_new_outputs_over_all_sets": nonfinite_cases,
+        "selected_branch_fp_traps_over_all_sets": trap_cases[:50],
+        "selected_branch_fp_trap_count": len(trap_cases),
+        "interpretation": "Selected branch re-evaluated with over/invalid/divide trapped (underflow ignored).",
+    }
+    results["task4_constructed"] = task4_constructed(current, frozen)
+    results["meta"]["runtime_s"] = round(time.time() - t0, 1)
+    OUT_JSON.write_text(json.dumps(results, indent=2, default=str) + "\n", encoding="utf-8")
+    np.savez_compressed(OUT_RAW, **raw)
+    print("wrote", OUT_JSON)
+
+
+def task4_constructed(current, frozen):
+    """Inputs inside the declared open domain xi>0 (or just outside it) for which the
+    selected branch itself overflows or is invalid; record outputs and emitted warnings
+    with the errstate in place, and the warnings the same arithmetic emits without it."""
+    model = C.single_event_model(current)
+    fmodel = C.single_event_model(frozen)
+    tiny = 1e-160
+    ulp = np.spacing(2 * tiny)
+    cases = {
+        "exact_resonance_xi_1e-160": (2 * tiny, tiny, tiny),                 # true F = 0, Lambda ~ 5e479
+        "near_resonance_xi_1e-160_true_F_finite": (2 * tiny + 4 * ulp, tiny, tiny),
+        "xi_1e-110_three_legs": (3e-110, 1e-110, 1e-110),
+        "boundary_xi_2e-103_all_legs": (4e-103, 2e-103, 2e-103),
+        "negative_parent_xi_domain_violation": (-0.5, 1.0, 1.0),
+        "negative_daughter_xi_domain_violation": (2.0, -0.25, 1.0),
+        "zero_xi_domain_boundary": (1.0, 0.0, 1.0),
+        "nan_input": (float("nan"), 1.0, 1.0),
+    }
+    out = {}
+    for label, xi in cases.items():
+        alpha = np.array(xi)
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            d, F, L = model.reaction_data(alpha)
+        emitted = [str(w.message) for w in caught]
+        with warnings.catch_warnings(record=True) as caught2:
+            warnings.simplefilter("always")
+            with np.errstate(all="warn"):
+                _, F2, L2 = model._log_space_reaction(alpha, model.b @ alpha)
+        unsuppressed = sorted(set(str(w.message) for w in caught2))
+        trap = None
+        if np.isfinite(d[0]):
+            trap = selected_branch_raises(current, xi, float(d[0]))
+        with warnings.catch_warnings(record=True) as caught3:
+            warnings.simplefilter("always")
+            with np.errstate(all="warn"):
+                _, fF, fL = fmodel.reaction_data(alpha)
+        frozen_msgs = sorted(set(str(w.message) for w in caught3))
+        # true values (when the inputs are positive and finite)
+        truth = None
+        if all(np.isfinite(xi)) and min(xi) > 0:
+            with mp.workdps(80):
+                X = [mp.mpf(v) for v in xi]
+                n = [1 / mp.expm1(x) for x in X]
+                B = (1 + n[0]) * n[1] * n[2]
+                dd = X[0] - X[1] - X[2]
+                Ft = B * mp.expm1(-dd)
+                Lt = B if dd == 0 else B * (-mp.expm1(-dd)) / dd
+                truth = {"F_true": mp.nstr(Ft, 17), "Lambda_true": mp.nstr(Lt, 17),
+                         "F_true_representable": bool(abs(Ft) < mp.mpf(np.finfo(float).max)),
+                         "Lambda_true_representable": bool(abs(Lt) < mp.mpf(np.finfo(float).max))}
+        out[label] = {"xi": [repr(v) for v in xi], "affinity_code": repr(float(d[0])),
+                      "F_code": repr(float(F[0])), "Lambda_code": repr(float(L[0])),
+                      "warnings_emitted_with_errstate": emitted,
+                      "warnings_same_arithmetic_without_errstate": unsuppressed,
+                      "selected_branch_trap": trap,
+                      "frozen_F": repr(float(fF[0])), "frozen_Lambda": repr(float(fL[0])),
+                      "frozen_warnings": frozen_msgs, "truth": truth}
+    # smallest common xi for which the selected branch overflows (bisection on log10 xi)
+    lo, hi = -200.0, -50.0       # overflow at 10**lo, finite at 10**hi
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        x = 10.0 ** mid
+        xi = (2 * x, x, x)
+        _, F, L = model.reaction_data(np.array(xi))
+        if np.isfinite(L[0]):
+            hi = mid
+        else:
+            lo = mid
+    out["overflow_threshold_equal_daughters_exact_resonance"] = {
+        "description": "xi=(2x,x,x): largest x (bisection) with non-finite Lambda",
+        "log10_x_threshold": hi, "x_threshold": 10.0 ** hi}
+    return out
+
+
+if __name__ == "__main__":
+    main()
