@@ -174,7 +174,7 @@ No core derivation was found wrong. Corrections:
   not by themselves prove injectivity. Note 08: Debye cutoff definition; unsourced Θ_D value replaced by an order of magnitude.
   Note 18: 2.37e-16 → 2.36e-16. Camacho note: stale "substitution suffices" passages, dead reference, "very exactly" wording.
 - **AlN datasets (note 17).** Isotopes change Rao's RTA conductivity by only 0.1–0.2%; Rao lies 10–30% above the Phonon Olympics
-  inter-code range for fixed force constants (J. Appl. Phys. 138, 135108). The difference lies in first-principles inputs.
+  range spanned by three independent first-principles workflows (J. Appl. Phys. 138, 135108). The difference lies in first-principles inputs.
 - **Interaction pilot.** The default-cutoff export differs from the corrected exports by degenerate-basis redistribution plus a
   perturbation of about 4e-8 of max(pp) (`theory/aln/interaction_pilot/audit-20261002/`). Stale report statements annotated.
 - **Code.** Graded constant-diffusivity fits silently reported success with unchanged parameters; such parametrizations are now

@@ -189,7 +189,7 @@ The boundary between inherited and new results is kept explicit.
 - **J. Ma, W. Li, X. Luo**, Phys. Rev. B **90**, 035203 (2014) — Callaway model for AlN.
 - **Z. Cheng et al.**, Phys. Rev. Materials **4**, 044602 (2020) — measured AlN conductivity.
 - **M. S. B. Hoque et al.**, Appl. Phys. Lett. **125**, 262201 (2024) — ballistic–diffusive transition in AlN films.
-- **A. J. H. McGaughey et al.**, *Phonon Olympics*, J. Appl. Phys. **138**, 135108 (2025) — AlN force constants and inter-code benchmark.
+- **A. J. H. McGaughey et al.**, *Phonon Olympics*, J. Appl. Phys. **138**, 135108 (2025) — AlN force constants and benchmark of three independent first-principles workflows.
 - **G. Fugallo et al.**, Phys. Rev. B **88**, 045430 (2013) — variational ab initio solution of the phonon BTE.
 - **G. Lebon, P. C. Dauby**, [Phys. Rev. A 42, 4710](https://doi.org/10.1103/PhysRevA.42.4710) (1990); **L. Sendra et al.**, [Phys. Rev. B 106, 155301](https://doi.org/10.1103/PhysRevB.106.155301) (2022) — kinetic GK coefficients.
 - **D. Maillet et al.**, *Thermal Quadrupoles*, Wiley (2000) — transfer-matrix formalism.
