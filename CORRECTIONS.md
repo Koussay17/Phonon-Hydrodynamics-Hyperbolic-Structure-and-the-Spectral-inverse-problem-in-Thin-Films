@@ -195,3 +195,10 @@ Third-party publication PDFs were removed from the repository and its history; t
 notes and README and are kept in a local reference library. Campaign documentation wording was harmonized,
 the branch-index files were renamed `04-branches.md`, and the affected campaign manifest entries were
 refreshed. Embedded file metadata was removed from historical figures and note PDFs without changing their content.
+
+## Attribution after the paper-1 prior-art audit — 3 October 2026
+
+The conserving closure of note 14, including its τ_c form, is published by Guo & Wang (2022, Eq. 7); note 14 now
+presents its derivation as an independent reconstruction. The Fourier resonance condition is named in Both et al. (2016),
+before Kovács (2018); notes 07, 12, 15, the conventions and the README were updated. The journal version of
+Krapez & Rigollet (J. Appl. Phys. 122, 066101) is cited. Verdicts and the central contribution: paper/PRIOR_ART.md.

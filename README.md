@@ -47,13 +47,13 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   the response depends only on `b, ξ₁, τ_R, τ_ℓ`. Independent thickness or constitutive constraints can break the gauge. (note 7)
 - **Relaxation times degrade identifiability** *(numerically demonstrated, one design)*. Freeing τ_R inflates
   the conductivity/capacity standard errors by 3.13 and 1.61. (note 7)
-- **Fourier resonance** τ_R = τ_ℓ *(prior art: Kovács 2018)*. Its position on the regime map depends on the
+- **Fourier resonance** τ_R = τ_ℓ *(prior art: Both et al. 2016; Kovács 2018)*. Its position on the regime map depends on the
   closure: x = 1.8 only when τ_c ≈ τ_N; x = 0.8 for the historical closure with τ_c kept; no resonance in the
   conserving closure. (notes 7, 12, 14)
 - **ωτ = 1 maximizes single-frequency phase sensitivity**; it is not a detection threshold. (notes 7, Camacho reading note)
 
 **Kinetic theory**
-- **Conserving grey closure** *(derived under assumptions)*: nonlocal coefficient α = 1/3, giving
+- **Conserving grey closure** *(independent re-derivation of published results: Guo & Wang 2022; Sendra et al. 2022)*: nonlocal coefficient α = 1/3, giving
   L² = 4ℓ²/3 and τ_ℓ = 4τ_N/5, against the historical α = 2 (L² = 3ℓ², τ_ℓ = 9τ_N/5). (note 14)
 - **GK is second-law admissible but has infinite propagation speed** for ℓ > 0. (note 11)
 - **A 500 nm AlN film is boundary-dominated**, not hydrodynamic. Its extracted conductivity is an apparent,
@@ -180,11 +180,13 @@ failed approaches, reviews and final report (`13-final-report.md`). The change h
 
 The boundary between inherited and new results is kept explicit.
 
-- **J.-C. Krapez, F. Rigollet**, comment on photothermal identifiability, [arXiv:1708.07362](https://arxiv.org/abs/1708.07362) (2017) — structural correlation of coating thickness, diffusivity and conductivity.
+- **J.-C. Krapez, F. Rigollet**, J. Appl. Phys. **122**, 066101 (2017), [arXiv:1708.07362](https://arxiv.org/abs/1708.07362) — structural correlation of coating thickness, diffusivity and conductivity.
 - **J.-C. Krapez**, comment on depth-profile reconstructions, J. Appl. Phys. **134**, 056101 (2023) — the graded, functional counterpart.
 - **J.-C. Krapez**, Int. J. Therm. Sci. **136**, 182–199 (2019) — Liouville transformation and solvable effusivity profiles.
 - **A. Camacho de la Rosa, R. Esquivel-Sirvent, D. Becerril**, J. Appl. Phys. **137**, 155103 (2025) — closed-form Cattaneo FDTR response, used as external validation.
-- **R. Kovács**, [arXiv:1804.05225](https://arxiv.org/abs/1804.05225) (2018) — Fourier resonance of the GK equation.
+- **T. Both et al.**, J. Non-Equilib. Thermodyn. **41**, 41 (2016), [doi](https://doi.org/10.1515/jnet-2015-0035) — the Fourier resonance condition of the GK equation.
+- **R. Kovács**, [arXiv:1804.05225](https://arxiv.org/abs/1804.05225) (2018) — analytic GK solution for laser flash and Fourier resonance.
+- **Y. Guo, M. Wang**, Int. J. Therm. Sci. **171**, 107178 (2022), [arXiv:2010.01847](https://arxiv.org/abs/2010.01847) — conserving Chapman–Enskog closure with coefficient 1/3.
 - **M. G. Hennessy, T. G. Myers**, [GK heat conduction in thermoreflectance experiments](https://doi.org/10.1007/978-3-030-64272-3_2) (2021).
 - **J. Ma, W. Li, X. Luo**, Phys. Rev. B **90**, 035203 (2014) — Callaway model for AlN.
 - **Z. Cheng et al.**, Phys. Rev. Materials **4**, 044602 (2020) — measured AlN conductivity.

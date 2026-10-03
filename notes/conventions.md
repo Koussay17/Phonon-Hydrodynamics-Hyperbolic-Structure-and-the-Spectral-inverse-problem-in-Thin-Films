@@ -163,7 +163,8 @@ La cohérence avec un profil physique intérieur reste à établir par l'utilisa
 ## 9. Résonance de Fourier
 
 `τ_R=τ_ℓ` redonne le quadripôle de Fourier sous les hypothèses de la section 7.
-C'est la **résonance de Fourier** déjà décrite par
+C'est la **résonance de Fourier**, nommée par
+[Both et al. (2016)](https://doi.org/10.1515/jnet-2015-0035) et décrite par
 [Kovács (2018)](https://arxiv.org/abs/1804.05225).
 La reproduction numérique n'établit pas une nouveauté.
 [Hennessy et Myers (2021)](https://doi.org/10.1007/978-3-030-64272-3_2)
