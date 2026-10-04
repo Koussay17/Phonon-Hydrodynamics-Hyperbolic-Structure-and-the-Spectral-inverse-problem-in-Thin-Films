@@ -1,0 +1,372 @@
+{
+  "setting": "production: phono3py 4.5.0 defaults (lang=Rust, make_r0_average=True, analytic gv), linear tetrahedron, mesh 31x31x17 (N=16337, 864 irreducible points), NAC Gonze-Lee, no isotope",
+  "conventions": {
+    "frequency": "THz (ordinary frequency f = omega/2pi)",
+    "gamma": "phono3py imaginary self-energy = half linewidth, THz; tau = 1/(4 pi gamma) ps",
+    "group_velocity": "THz*Angstrom (x100 -> m/s)",
+    "heat_capacity": "eV/K per mode (phonopy constants)",
+    "weights": "integer star size of each irreducible point; sum = 16337",
+    "assembled_matrix": "irreducible kappa-star representation, index (i,b,a): ir point i (864), band b (12), Cartesian a (3); n=31104. A = sym(P A_w P), A_w[(iba),(jcd)] = w_i w_j [sum_R Omega_{(q_i b),(R q_j c)} R_ad + delta_ij delta_bc sum_{R in stab(q_i)} Gamma_ib R_ad], w_i = sqrt(star_i/24), P = degeneracy averaging, sym = (M+M^T)/2. Units THz. Off-diagonal part is Chaput's conductivity-equivalent operator (all three triplet channels with + sign, no momentum reversal): valid for odd (current-carrying) populations only; it does NOT annihilate the energy vector (see results/physop_*.json).",
+    "kappa_from_matrix": "X_(iba) = w_i v_iba f THzToEv/(4 kB T^2 sinh(f THzToEv/2kBT)); Y = A^+ X; kappa = conv kB T^2/N sum_ib sum_R [(R x)(R y)^T + transpose], N = 16337, conv = phono3py get_unit_to_WmK()/V = 1602.17733/(2 pi V[A^3]) (phonopy e = 1.60217733e-19 C), kB = 8.617338256808316e-05 eV/K, THzToEv = 4.13566733e-3; sum over the 24 rotations",
+    "pre_assembly_matrix": "A_w before degeneracy averaging and symmetrization (kept for asymmetry studies)",
+    "gamma_N_U": "phono3py is_N_U split of the RTA gamma (Normal / Umklapp by G=0 vs G!=0 of the BZ-folded triplet), same mesh and setting, all temperatures in the file"
+  },
+  "files": {
+    "meta": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\meta.npz",
+      "bytes": 544142,
+      "sha256": "7cf63be64ec25f3e90ebd29ad8167919d06d1f09cfa900b4ecb9302bab5aa047",
+      "content": "ir grid points, star weights, w=sqrt(star/24), rotated grid points, Cartesian rotations (24), frequencies, group velocities (ir points), temperatures, mesh, volume",
+      "arrays": {
+        "gps": [
+          864
+        ],
+        "ir_weights": [
+          864
+        ],
+        "w": [
+          864
+        ],
+        "rot_gps": [
+          864,
+          24
+        ],
+        "rcart": [
+          24,
+          3,
+          3
+        ],
+        "freqs": [
+          864,
+          12
+        ],
+        "gv": [
+          864,
+          12,
+          3
+        ],
+        "temps": [
+          5
+        ],
+        "mesh": [
+          3
+        ],
+        "qpoints": [
+          864,
+          3
+        ],
+        "volume": [],
+        "cutoff_frequency": [],
+        "sigma": []
+      }
+    },
+    "gamma_rows_stage": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\gamma.npy",
+      "bytes": 414848,
+      "sha256": "baf89c9c81a8eb260248729e06da854336c047c8c7f7717c35f0dec564e2597d",
+      "content": "gamma (T, ir, band) from the collision-row computation, THz",
+      "shape": [
+        5,
+        864,
+        12
+      ],
+      "dtype": "float64"
+    },
+    "assembled_matrix_T100": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T0.npy",
+      "bytes": 7739670656,
+      "sha256": "7f2499986582da17eb5dbd4683e04e8bce71f7981335ef07ebe16c4bffecaab8",
+      "content": "assembled symmetrized collision matrix at 100 K",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solution_T100": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\Y_T0.npy",
+      "bytes": 248960,
+      "sha256": "d3b33dea27537a3b71bd4d9a8f6c770c671bd7d9f8c3510f02c2feef7b833639",
+      "content": "LBTE solution Y = A^+ X (ir, band, 3)",
+      "shape": [
+        864,
+        12,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T100": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T0.json",
+      "bytes": 1408,
+      "sha256": "4fb527d9819fc97f76ec1de71a77e4df981c7d6146ea95b93f02a5eff1386842",
+      "content": "PCG record, kappa, residuals"
+    },
+    "assembled_matrix_T200": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T1.npy",
+      "bytes": 7739670656,
+      "sha256": "8dbe20048988ad03b8a8bb5e7270efc6efd419b195dddc945b65cda1426d88b5",
+      "content": "assembled symmetrized collision matrix at 200 K",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solution_T200": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\Y_T1.npy",
+      "bytes": 248960,
+      "sha256": "f6d713421450b750342eb5c634698226df99e3df308c56a4638eccb0d3ad0bf9",
+      "content": "LBTE solution Y = A^+ X (ir, band, 3)",
+      "shape": [
+        864,
+        12,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T200": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T1.json",
+      "bytes": 1321,
+      "sha256": "ed05c55eb930c9514862780a6c23e8108d0a8e1e885f47c365111fed64b20960",
+      "content": "PCG record, kappa, residuals"
+    },
+    "assembled_matrix_T300": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T2.npy",
+      "bytes": 7739670656,
+      "sha256": "1c43a6982268ef804ff40f3e420e485c8a2a2462a584128b9b59d357cfe14d84",
+      "content": "assembled symmetrized collision matrix at 300 K",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solution_T300": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\Y_T2.npy",
+      "bytes": 248960,
+      "sha256": "6aa25a0737e5093d1849f2e9352d9c59db38d6a555bb581bcf4ead29e890bf60",
+      "content": "LBTE solution Y = A^+ X (ir, band, 3)",
+      "shape": [
+        864,
+        12,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T300": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T2.json",
+      "bytes": 1290,
+      "sha256": "4cf576838c6611426200f7e750cdb20c05b3c35174630f0d343c9d47b7443d0a",
+      "content": "PCG record, kappa, residuals"
+    },
+    "assembled_matrix_T500": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T3.npy",
+      "bytes": 7739670656,
+      "sha256": "7b10f25817dd37f1cbfee1b7d7f35291ca020bf8d9da10a247b541f0f2770900",
+      "content": "assembled symmetrized collision matrix at 500 K",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solution_T500": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\Y_T3.npy",
+      "bytes": 248960,
+      "sha256": "87d49d93e184fe883d93e978c4726b34da796817b437458d276e178a11d5330b",
+      "content": "LBTE solution Y = A^+ X (ir, band, 3)",
+      "shape": [
+        864,
+        12,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T500": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T3.json",
+      "bytes": 1298,
+      "sha256": "cee9ec0631b32b40f1c0ad3ea9ab95e3c17b9dc5cc6273aafbb669d2a38e6476",
+      "content": "PCG record, kappa, residuals"
+    },
+    "assembled_matrix_T1000": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T4.npy",
+      "bytes": 7739670656,
+      "sha256": "688140811ac074220a85913f6e2047e7f7b744d83f748ac5bd81ad1b0833ef59",
+      "content": "assembled symmetrized collision matrix at 1000 K",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solution_T1000": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\Y_T4.npy",
+      "bytes": 248960,
+      "sha256": "4720c5eb27ab008467e6303ebbd73db51de640226542b6a5be30854bae2d99bb",
+      "content": "LBTE solution Y = A^+ X (ir, band, 3)",
+      "shape": [
+        864,
+        12,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T1000": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T4.json",
+      "bytes": 1297,
+      "sha256": "830f4946d2f31662b8705660c8fb9ddbe5125528be4153ff1e9d2b0838b58bd3",
+      "content": "PCG record, kappa, residuals"
+    },
+    "pre_assembly_matrix_T300": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\A_T2_prephono3pyavg_presym.npy",
+      "bytes": 7739670656,
+      "sha256": "9c0d80939b7d6eb8a3e9f5063cc7ffa68cb949fe70b9c79deaa879a21df57b1c",
+      "content": "A_w at 300 K before degeneracy averaging/symmetrization",
+      "shape": [
+        31104,
+        31104
+      ],
+      "dtype": "float64"
+    },
+    "solve_record_T300_isotope": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\ooc-m313117-prod\\solve_T2_iso.json",
+      "bytes": 1298,
+      "sha256": "0e240975184c38080afe1e65432f91fbbe01aa62fe56501a3627225659c62f39",
+      "content": "PCG record with isotope diagonal"
+    },
+    "rta_NU_all_T": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\prod-rta-m313117-NU\\kappa-m313117.hdf5",
+      "bytes": 10382978,
+      "sha256": "6e1694f9afb023f89c45147ad22365ec987a3895f9a3bb6ae318564bb11efdc3",
+      "content": "phono3py RTA output: frequency, group_velocity, gv_by_gv, heat_capacity, gamma, gamma_N, gamma_U, mode_kappa, kappa, weight, qpoint, grid_point, temperature",
+      "datasets": {
+        "frequency": [
+          864,
+          12
+        ],
+        "gamma": [
+          16,
+          864,
+          12
+        ],
+        "gamma_N": [
+          16,
+          864,
+          12
+        ],
+        "gamma_U": [
+          16,
+          864,
+          12
+        ],
+        "grid_point": [
+          864
+        ],
+        "group_velocity": [
+          864,
+          12,
+          3
+        ],
+        "gv_by_gv": [
+          864,
+          12,
+          6
+        ],
+        "heat_capacity": [
+          16,
+          864,
+          12
+        ],
+        "kappa": [
+          16,
+          6
+        ],
+        "kappa_unit_conversion": [],
+        "mesh": [
+          3
+        ],
+        "mode_kappa": [
+          16,
+          864,
+          12,
+          6
+        ],
+        "qpoint": [
+          864,
+          3
+        ],
+        "temperature": [
+          16
+        ],
+        "version": [],
+        "weight": [
+          864
+        ]
+      }
+    },
+    "rta_isotope_all_T": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\runs\\prod-rta-m313117-iso\\kappa-m313117.hdf5",
+      "bytes": 7958874,
+      "sha256": "eb051e367f1b44bf10a51e4bcf35c63d6c387a17a56b9bdecf92c37c6c3a26cc",
+      "content": "phono3py RTA output with natural-abundance isotope scattering (gamma_isotope)",
+      "datasets": {
+        "frequency": [
+          864,
+          12
+        ],
+        "gamma": [
+          16,
+          864,
+          12
+        ],
+        "gamma_isotope": [
+          864,
+          12
+        ],
+        "grid_point": [
+          864
+        ],
+        "group_velocity": [
+          864,
+          12,
+          3
+        ],
+        "gv_by_gv": [
+          864,
+          12,
+          6
+        ],
+        "heat_capacity": [
+          16,
+          864,
+          12
+        ],
+        "kappa": [
+          16,
+          6
+        ],
+        "kappa_unit_conversion": [],
+        "mesh": [
+          3
+        ],
+        "mode_kappa": [
+          16,
+          864,
+          12,
+          6
+        ],
+        "qpoint": [
+          864,
+          3
+        ],
+        "temperature": [
+          16
+        ],
+        "version": [],
+        "weight": [
+          864
+        ]
+      }
+    }
+  }
+}

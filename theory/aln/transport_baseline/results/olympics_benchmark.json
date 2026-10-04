@@ -1,0 +1,568 @@
+{
+  "source_commit": "0640f07735059be9717a7565c2a0f22dc0da7a17",
+  "units": "W/(m K)",
+  "files": {
+    "AlN_kappa_withT_qgrid_313117.xlsx": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\sources\\olympics_phono3py\\AlN_kappa_withT_qgrid_313117.xlsx",
+      "sha256": "4b560ead1a95d19b4602cae5469d4acdf4a58f282fd79f90e2d0612960e61a86"
+    },
+    "AlN_Kappa_qgrid_convergence_check.xlsx": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\sources\\olympics_phono3py\\AlN_Kappa_qgrid_convergence_check.xlsx",
+      "sha256": "df6228d2bfec3cf7b43df446109bbb456f1cf215d971d3be583dd15f6dfa906f"
+    },
+    "ShengBTE__Thermal_conductivity_vs_Temperature.xlsx": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\sources\\olympics_phono3py\\ShengBTE__Thermal_conductivity_vs_Temperature.xlsx",
+      "sha256": "b7c07d2170e9047250f9fcd1da4a188f4086a452012746364e042dff1309cf67"
+    },
+    "Kappa_timing_info.xlsx": {
+      "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\sources\\olympics_phono3py\\Kappa_timing_info.xlsx",
+      "sha256": "e1de9401af4b0bc7d699588c135318ef6998da55e6739cd64c1e17d4b107ef74"
+    }
+  },
+  "phono3py_kappa_T_31x31x17": [
+    {
+      "T": 20.0,
+      "lbte_xx": null,
+      "lbte_zz": null,
+      "rta_xx": 42088.557,
+      "rta_zz": 26264.132
+    },
+    {
+      "T": 30.0,
+      "lbte_xx": null,
+      "lbte_zz": null,
+      "rta_xx": 26030.118,
+      "rta_zz": 16185.634
+    },
+    {
+      "T": 40.0,
+      "lbte_xx": 131202.036,
+      "lbte_zz": 68642.0,
+      "rta_xx": 16032.52,
+      "rta_zz": 11069.155
+    },
+    {
+      "T": 50.0,
+      "lbte_xx": 30261.137,
+      "lbte_zz": 21900.22,
+      "rta_xx": 10273.051,
+      "rta_zz": 7869.706
+    },
+    {
+      "T": 75.0,
+      "lbte_xx": 7312.614,
+      "lbte_zz": 6244.188,
+      "rta_xx": 4342.176,
+      "rta_zz": 3744.816
+    },
+    {
+      "T": 100.0,
+      "lbte_xx": 3118.001,
+      "lbte_zz": 2843.15,
+      "rta_xx": 2290.412,
+      "rta_zz": 2037.062
+    },
+    {
+      "T": 125.0,
+      "lbte_xx": 1712.159,
+      "lbte_zz": 1589.5,
+      "rta_xx": 1376.865,
+      "rta_zz": 1238.048
+    },
+    {
+      "T": 150.0,
+      "lbte_xx": 1090.774,
+      "lbte_zz": 1020.855,
+      "rta_xx": 916.009,
+      "rta_zz": 828.272
+    },
+    {
+      "T": 175.0,
+      "lbte_xx": 768.604,
+      "lbte_zz": 723.04,
+      "rta_xx": 660.369,
+      "rta_zz": 599.312
+    },
+    {
+      "T": 200.0,
+      "lbte_xx": 581.662,
+      "lbte_zz": 549.217,
+      "rta_xx": 506.336,
+      "rta_zz": 460.814
+    },
+    {
+      "T": 225.0,
+      "lbte_xx": 463.564,
+      "lbte_zz": 438.931,
+      "rta_xx": 406.79,
+      "rta_zz": 371.074
+    },
+    {
+      "T": 250.0,
+      "lbte_xx": 383.851,
+      "lbte_zz": 364.228,
+      "rta_xx": 338.607,
+      "rta_zz": 309.482
+    },
+    {
+      "T": 275.0,
+      "lbte_xx": 327.141,
+      "lbte_zz": 310.925,
+      "rta_xx": 289.615,
+      "rta_zz": 265.145
+    },
+    {
+      "T": 300.0,
+      "lbte_xx": 285.048,
+      "lbte_zz": 271.262,
+      "rta_xx": 252.992,
+      "rta_zz": 231.947
+    },
+    {
+      "T": 400.0,
+      "lbte_xx": 189.322,
+      "lbte_zz": 180.692,
+      "rta_xx": 168.918,
+      "rta_zz": 155.478
+    },
+    {
+      "T": 500.0,
+      "lbte_xx": 142.935,
+      "lbte_zz": 136.596,
+      "rta_xx": 127.807,
+      "rta_zz": 117.902
+    },
+    {
+      "T": 600.0,
+      "lbte_xx": 115.403,
+      "lbte_zz": 110.359,
+      "rta_xx": 103.305,
+      "rta_zz": 95.427
+    },
+    {
+      "T": 700.0,
+      "lbte_xx": 97.05,
+      "lbte_zz": 92.844,
+      "rta_xx": 86.932,
+      "rta_zz": 80.372
+    },
+    {
+      "T": 800.0,
+      "lbte_xx": 83.877,
+      "lbte_zz": 80.261,
+      "rta_xx": 75.164,
+      "rta_zz": 69.533
+    },
+    {
+      "T": 900.0,
+      "lbte_xx": 73.93,
+      "lbte_zz": 70.755,
+      "rta_xx": 66.269,
+      "rta_zz": 61.33
+    },
+    {
+      "T": 1000.0,
+      "lbte_xx": 66.138,
+      "lbte_zz": 63.304,
+      "rta_xx": 59.296,
+      "rta_zz": 54.893
+    }
+  ],
+  "phono3py_mesh_series_300K": [
+    {
+      "mesh": [
+        9,
+        9,
+        5
+      ],
+      "lbte_xx": 255.558,
+      "lbte_zz": 243.287,
+      "rta_xx": 224.932,
+      "rta_zz": 206.227
+    },
+    {
+      "mesh": [
+        11,
+        11,
+        7
+      ],
+      "lbte_xx": 266.412,
+      "lbte_zz": 261.195,
+      "rta_xx": 235.685,
+      "rta_zz": 222.526
+    },
+    {
+      "mesh": [
+        15,
+        15,
+        9
+      ],
+      "lbte_xx": 275.638,
+      "lbte_zz": 264.698,
+      "rta_xx": 244.249,
+      "rta_zz": 227.031
+    },
+    {
+      "mesh": [
+        19,
+        19,
+        11
+      ],
+      "lbte_xx": 285.019,
+      "lbte_zz": 266.578,
+      "rta_xx": 253.24,
+      "rta_zz": 228.162
+    },
+    {
+      "mesh": [
+        19,
+        19,
+        15
+      ],
+      "lbte_xx": 284.257,
+      "lbte_zz": 270.875,
+      "rta_xx": 252.296,
+      "rta_zz": 231.728
+    },
+    {
+      "mesh": [
+        23,
+        23,
+        13
+      ],
+      "lbte_xx": 282.998,
+      "lbte_zz": 268.195,
+      "rta_xx": 251.052,
+      "rta_zz": 229.67
+    },
+    {
+      "mesh": [
+        27,
+        27,
+        15
+      ],
+      "lbte_xx": 283.146,
+      "lbte_zz": 269.548,
+      "rta_xx": 251.3,
+      "rta_zz": 230.664
+    },
+    {
+      "mesh": [
+        31,
+        31,
+        17
+      ],
+      "lbte_xx": 285.048,
+      "lbte_zz": 271.262,
+      "rta_xx": 252.992,
+      "rta_zz": 231.947
+    },
+    {
+      "mesh": [
+        35,
+        35,
+        19
+      ],
+      "lbte_xx": 286.435,
+      "lbte_zz": 271.944,
+      "rta_xx": 254.258,
+      "rta_zz": 232.704
+    },
+    {
+      "mesh": [
+        31,
+        31,
+        19
+      ],
+      "lbte_xx": 284.913,
+      "lbte_zz": 271.758,
+      "rta_xx": 252.837,
+      "rta_zz": 232.502
+    }
+  ],
+  "phono3py_lbte_timing_hours_128cores": [
+    {
+      "mesh": [
+        9,
+        9,
+        5
+      ],
+      "hours": 0.00310277777777778
+    },
+    {
+      "mesh": [
+        11,
+        11,
+        7
+      ],
+      "hours": 0.00821027777777778
+    },
+    {
+      "mesh": [
+        15,
+        15,
+        9
+      ],
+      "hours": 0.0635136111111111
+    },
+    {
+      "mesh": [
+        19,
+        19,
+        11
+      ],
+      "hours": 0.310929444444444
+    },
+    {
+      "mesh": [
+        19,
+        19,
+        15
+      ],
+      "hours": 0.764925555555555
+    },
+    {
+      "mesh": [
+        23,
+        23,
+        13
+      ],
+      "hours": 1.19665277777778
+    },
+    {
+      "mesh": [
+        27,
+        27,
+        15
+      ],
+      "hours": 3.11804527777778
+    },
+    {
+      "mesh": [
+        31,
+        31,
+        17
+      ],
+      "hours": 7.66373666666667
+    },
+    {
+      "mesh": [
+        35,
+        35,
+        19
+      ],
+      "hours": 19.9942797222222
+    }
+  ],
+  "shengbte_kappa_T": [
+    {
+      "T": 30.0,
+      "rta_a": 23936.68953,
+      "rta_b": 23936.68953,
+      "rta_c": 23308.48306,
+      "iter_a": 752191.3496,
+      "iter_b": 752191.3496,
+      "iter_c": 251909.9055
+    },
+    {
+      "T": 40.0,
+      "rta_a": 17377.41683,
+      "rta_b": 17377.41683,
+      "rta_c": 15260.3064,
+      "iter_a": 103854.8905,
+      "iter_b": 103854.8905,
+      "iter_c": 62101.23578
+    },
+    {
+      "T": 50.0,
+      "rta_a": 11985.93794,
+      "rta_b": 11985.93794,
+      "rta_c": 10440.47541,
+      "iter_a": 35141.74469,
+      "iter_b": 35141.74469,
+      "iter_c": 26568.84434
+    },
+    {
+      "T": 75.0,
+      "rta_a": 5192.07476,
+      "rta_b": 5192.07476,
+      "rta_c": 4679.45747,
+      "iter_a": 8173.51321,
+      "iter_b": 8173.51321,
+      "iter_c": 7533.48264
+    },
+    {
+      "T": 100.0,
+      "rta_a": 2690.62749,
+      "rta_b": 2690.62749,
+      "rta_c": 2459.80539,
+      "iter_a": 3481.10296,
+      "iter_b": 3481.10296,
+      "iter_c": 3329.53388
+    },
+    {
+      "T": 125.0,
+      "rta_a": 1582.6231,
+      "rta_b": 1582.6231,
+      "rta_c": 1451.95082,
+      "iter_a": 1888.96606,
+      "iter_b": 1888.96606,
+      "iter_c": 1819.78112
+    },
+    {
+      "T": 150.0,
+      "rta_a": 1032.86517,
+      "rta_b": 1032.86517,
+      "rta_c": 949.0409,
+      "iter_a": 1188.13194,
+      "iter_b": 1188.13194,
+      "iter_c": 1147.98333
+    },
+    {
+      "T": 175.0,
+      "rta_a": 733.33907,
+      "rta_b": 733.33907,
+      "rta_c": 674.85868,
+      "iter_a": 828.18138,
+      "iter_b": 828.18138,
+      "iter_c": 802.09321
+    },
+    {
+      "T": 200.0,
+      "rta_a": 555.77748,
+      "rta_b": 555.77748,
+      "rta_c": 512.27708,
+      "iter_a": 621.47245,
+      "iter_b": 621.47245,
+      "iter_c": 603.12766
+    },
+    {
+      "T": 225.0,
+      "rta_a": 442.59443,
+      "rta_b": 442.59443,
+      "rta_c": 408.58659,
+      "iter_a": 492.12055,
+      "iter_b": 492.12055,
+      "iter_c": 478.3904
+    },
+    {
+      "T": 250.0,
+      "rta_a": 365.94603,
+      "rta_b": 365.94603,
+      "rta_c": 338.31054,
+      "iter_a": 405.51616,
+      "iter_b": 405.51616,
+      "iter_c": 394.733
+    },
+    {
+      "T": 275.0,
+      "rta_a": 311.38113,
+      "rta_b": 311.38113,
+      "rta_c": 288.23351,
+      "iter_a": 344.31772,
+      "iter_b": 344.31772,
+      "iter_c": 335.5166
+    },
+    {
+      "T": 300.0,
+      "rta_a": 270.90497,
+      "rta_b": 270.90497,
+      "rta_c": 251.04703,
+      "iter_a": 298.36533,
+      "iter_b": 298.36533,
+      "iter_c": 290.96636
+    },
+    {
+      "T": 400.0,
+      "rta_a": 178.86568,
+      "rta_b": 178.86568,
+      "rta_c": 166.11184,
+      "iter_a": 197.15072,
+      "iter_b": 197.15072,
+      "iter_c": 192.53976
+    },
+    {
+      "T": 500.0,
+      "rta_a": 134.68307,
+      "rta_b": 134.68307,
+      "rta_c": 125.33774,
+      "iter_a": 148.34308,
+      "iter_b": 148.34308,
+      "iter_c": 145.02488
+    },
+    {
+      "T": 600.0,
+      "rta_a": 108.57141,
+      "rta_b": 108.57141,
+      "rta_c": 101.16473,
+      "iter_a": 119.54857,
+      "iter_b": 119.54857,
+      "iter_c": 116.93908
+    },
+    {
+      "T": 700.0,
+      "rta_a": 91.21502,
+      "rta_b": 91.21502,
+      "rta_c": 85.06088,
+      "iter_a": 100.42343,
+      "iter_b": 100.42343,
+      "iter_c": 98.26319
+    },
+    {
+      "T": 800.0,
+      "rta_a": 78.783,
+      "rta_b": 78.783,
+      "rta_c": 73.50758,
+      "iter_a": 86.72975,
+      "iter_b": 86.72975,
+      "iter_c": 84.88145
+    },
+    {
+      "T": 900.0,
+      "rta_a": 69.40938,
+      "rta_b": 69.40938,
+      "rta_c": 64.78639,
+      "iter_a": 76.40709,
+      "iter_b": 76.40709,
+      "iter_c": 74.78907
+    },
+    {
+      "T": 1000.0,
+      "rta_a": 62.073,
+      "rta_b": 62.073,
+      "rta_c": 57.95478,
+      "iter_a": 68.32901,
+      "iter_b": 68.32901,
+      "iter_c": 66.88853
+    }
+  ],
+  "paper_table_300K": {
+    "reference": "McGaughey et al., J. Appl. Phys. 138, 135108 (2025), AlN table, 300 K (in-plane/cross-plane)",
+    "phono3py": {
+      "rta": [
+        253,
+        232
+      ],
+      "lbte": [
+        285,
+        271
+      ]
+    },
+    "ShengBTE": {
+      "rta": [
+        271,
+        251
+      ],
+      "lbte": [
+        298,
+        291
+      ]
+    },
+    "ALAMODE": {
+      "rta": [
+        282,
+        263
+      ]
+    }
+  }
+}
