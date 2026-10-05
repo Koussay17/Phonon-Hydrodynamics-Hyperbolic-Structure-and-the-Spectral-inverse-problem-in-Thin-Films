@@ -1,0 +1,25 @@
+{
+ "task": {
+  "events": "../results/aln/events_m553_s0.1.npz",
+  "tie": "full",
+  "col": 2,
+  "sign": 1,
+  "start": "logn1.0",
+  "seed": 2021,
+  "maxit": 3000,
+  "outdir": "D:\\ResearchLab\\orchestration\\campaigns\\20261004-memory-gap\\results\\aln\\scan_m553_s0.1",
+  "name": "full_c2_max_02_logn1.0"
+ },
+ "time": 647.1329867839813,
+ "result": {
+  "tau_thz_units": 329985.10249512567,
+  "tau_ps": 26259.38010439249,
+  "feas": 3.261269090746567e-13,
+  "iters": 2999,
+  "K": {
+   "00": 2390132916.746282,
+   "22": 2252580600.1513906
+  },
+  "kappa_obj_WmK": 201.96695921345452
+ }
+}

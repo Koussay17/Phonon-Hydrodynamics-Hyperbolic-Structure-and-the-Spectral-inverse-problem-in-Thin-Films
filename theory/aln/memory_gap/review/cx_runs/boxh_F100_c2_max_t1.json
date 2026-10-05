@@ -1,0 +1,33 @@
+{
+ "job": {
+  "id": "boxh_F100_c2_max_t1",
+  "col": 2,
+  "sign": 1,
+  "lo": -4.605170185988092,
+  "hi": 4.605170185988092,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.5",
+  "seed": 1,
+  "maxit": 1500,
+  "time_limit": 2400,
+  "homotopy": true
+ },
+ "seconds": 716.0024554729462,
+ "result": {
+  "tau_ps": 1420.9834941578688,
+  "c_max": 5.546230141817432e-12,
+  "iters": 1499,
+  "nfev": 10030,
+  "tau_x_ps": 36.681960993706014,
+  "tau_z_ps": 1420.9834941578688,
+  "frac_at_lo": 0.28892272554244386,
+  "frac_at_hi": 0.01598781880472021,
+  "homotopy_fraction": 1.0,
+  "hist_tail": [
+   1420.9792294373146,
+   1420.9794449603871,
+   1420.982382367407,
+   1420.9828327878786,
+   1420.98349415787
+  ]
+ }
+}

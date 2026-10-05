@@ -1,0 +1,44 @@
+[
+ {
+  "sign": 1,
+  "lo": -60,
+  "hi": 60,
+  "maxit": 3000,
+  "time_limit": 1200,
+  "forbid_zero": true,
+  "temps": [
+   300.0,
+   100.0,
+   200.0,
+   500.0,
+   800.0
+  ],
+  "seed": 1,
+  "rcond": 1e-08,
+  "tol": 1e-06,
+  "id": "mT5tol6_c2_ref",
+  "col": 2,
+  "start": "ref"
+ },
+ {
+  "sign": 1,
+  "lo": -60,
+  "hi": 60,
+  "maxit": 3000,
+  "time_limit": 1200,
+  "forbid_zero": true,
+  "temps": [
+   300.0,
+   100.0,
+   200.0,
+   500.0,
+   800.0
+  ],
+  "seed": 1,
+  "rcond": 1e-08,
+  "tol": 1e-06,
+  "id": "mT5tol6_c0_ref",
+  "col": 0,
+  "start": "ref"
+ }
+]

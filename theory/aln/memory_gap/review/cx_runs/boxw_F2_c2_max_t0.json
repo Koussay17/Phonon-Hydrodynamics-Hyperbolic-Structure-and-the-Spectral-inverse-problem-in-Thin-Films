@@ -1,0 +1,15 @@
+{
+ "job": {
+  "id": "boxw_F2_c2_max_t0",
+  "col": 2,
+  "sign": 1,
+  "lo": -0.6931471805599453,
+  "hi": 0.6931471805599453,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.5",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ "seconds": 5.756150007247925,
+ "result": null
+}

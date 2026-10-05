@@ -1,0 +1,76 @@
+{
+ "per_geometry": [
+  {
+   "geometry": "d=1 N=9",
+   "M_lower": 16284.006723525456,
+   "K0": 17541.29148139275,
+   "tau_ref": 169.09536202091147,
+   "sqrt_tau_ref_over_K0": 0.0981827213391722,
+   "M2K0_over_tau_ref_certified_lower": 27507581947.152996,
+   "claim_ge_1e8_supported": true
+  },
+  {
+   "geometry": "d=1 N=15",
+   "M_lower": 239.88567424819215,
+   "K0": 61612.657084964165,
+   "tau_ref": 449.88707366625806,
+   "sqrt_tau_ref_over_K0": 0.08545092893759398,
+   "M2K0_over_tau_ref_certified_lower": 7880886.076803776,
+   "claim_ge_1e8_supported": false
+  },
+  {
+   "geometry": "d=1 N=21",
+   "M_lower": 411.5118648638456,
+   "K0": 135036.5953028824,
+   "tau_ref": 725.681640178872,
+   "sqrt_tau_ref_over_K0": 0.07330731752582935,
+   "M2K0_over_tau_ref_certified_lower": 31511571.839398466,
+   "claim_ge_1e8_supported": false
+  },
+  {
+   "geometry": "d=1 N=27",
+   "M_lower": 36358.60932441467,
+   "K0": 262772.9981556553,
+   "tau_ref": 1029.035043200605,
+   "sqrt_tau_ref_over_K0": 0.0625784373579794,
+   "M2K0_over_tau_ref_certified_lower": 337570975538.1298,
+   "claim_ge_1e8_supported": true
+  },
+  {
+   "geometry": "d=2 N=3",
+   "M_lower": 23919.316232058423,
+   "K0": 2985.9040630178706,
+   "tau_ref": 24.19040088993907,
+   "sqrt_tau_ref_over_K0": 0.09000851735871856,
+   "M2K0_over_tau_ref_certified_lower": 70620421479.35303,
+   "claim_ge_1e8_supported": true
+  },
+  {
+   "geometry": "d=2 N=5",
+   "M_lower": 264836.99034555117,
+   "K0": 23103.813530616128,
+   "tau_ref": 89.79189203204889,
+   "sqrt_tau_ref_over_K0": 0.062341425125910586,
+   "M2K0_over_tau_ref_certified_lower": 18046950852279.984,
+   "claim_ge_1e8_supported": true
+  },
+  {
+   "geometry": "d=3 N=3",
+   "M_lower": 205467.58388549965,
+   "K0": 11267.772692528073,
+   "tau_ref": 35.30991495816144,
+   "sqrt_tau_ref_over_K0": 0.05597953635684552,
+   "M2K0_over_tau_ref_certified_lower": 13471874666282.547,
+   "claim_ge_1e8_supported": true
+  }
+ ],
+ "claim_holds_for_all": false,
+ "min_ratio": 7880886.076803776,
+ "P6_1D_N9": {
+  "M": 16284.006724417613,
+  "b2": 275.64090689416764,
+  "M2_b2": 73091389185.3482,
+  "claimed": 73000000000.0,
+  "tau_CS": 63.63820116194774
+ }
+}

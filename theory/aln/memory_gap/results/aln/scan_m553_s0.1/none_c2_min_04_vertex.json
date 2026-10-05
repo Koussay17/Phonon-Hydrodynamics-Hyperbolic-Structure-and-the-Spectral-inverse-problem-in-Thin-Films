@@ -1,0 +1,29 @@
+{
+ "task": {
+  "events": "../results/aln/events_m553_s0.1.npz",
+  "tie": "none",
+  "col": 2,
+  "sign": -1,
+  "start": "vertex",
+  "seed": 2040,
+  "maxit": 3000,
+  "outdir": "D:\\ResearchLab\\orchestration\\campaigns\\20261004-memory-gap\\results\\aln\\scan_m553_s0.1",
+  "name": "none_c2_min_04_vertex"
+ },
+ "time": 1365.1775879859924,
+ "result": {
+  "tau_thz_units": 194.99331644793946,
+  "tau_ps": 15.517075091285873,
+  "feas": 4.009530256383637e-13,
+  "iters": 1525,
+  "K": {
+   "00": 2390132916.746298,
+   "11": 2390132908.8420486,
+   "22": 2252580600.1517043,
+   "01": -6.845295946695842,
+   "02": 2.260785549879074e-07,
+   "12": -1.0121148079633713e-06
+  },
+  "kappa_obj_WmK": 201.9669592134823
+ }
+}

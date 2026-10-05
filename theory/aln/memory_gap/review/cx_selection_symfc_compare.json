@@ -1,0 +1,26 @@
+{
+ "n_events": 44406,
+ "n_forbidden_unsym": 3275,
+ "forbidden_unsym_log10rel_quantiles": [
+  -35.424582178581126,
+  -31.32789464064302,
+  -30.107892631888575,
+  -27.71877014983413,
+  -14.361449155223434
+ ],
+ "forbidden_sym_log10rel_quantiles": [
+  -35.424582178581126,
+  -31.32789464064302,
+  -30.107892631888575,
+  -27.71877014983413,
+  -14.361449155223434
+ ],
+ "n_forbidden_sym_above_1e-12": 0,
+ "n_allowed_unsym_becoming_forbidden_sym": 0,
+ "allowed_rel_change_median": 0.0,
+ "allowed_rel_change_max": 0.0,
+ "cluster_1e-25_to_1e-15: n": 814,
+ "cluster_1e-25_to_1e-15: sym log10rel median": -17.87363900196093,
+ "cluster_<1e-27: n": 2461,
+ "cluster_<1e-27: sym log10rel median": -30.691002527549916
+}

@@ -1,0 +1,112 @@
+[
+ {
+  "id": "boxw_F2_c0_max_t0",
+  "col": 0,
+  "sign": 1,
+  "lo": -0.6931471805599453,
+  "hi": 0.6931471805599453,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c0_max_s0_u.npy:0.5",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F2_c2_max_t0",
+  "col": 2,
+  "sign": 1,
+  "lo": -0.6931471805599453,
+  "hi": 0.6931471805599453,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.5",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F10_c0_max_t0",
+  "col": 0,
+  "sign": 1,
+  "lo": -2.302585092994046,
+  "hi": 2.302585092994046,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c0_max_s0_u.npy:0.2",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F10_c0_max_t1",
+  "col": 0,
+  "sign": 1,
+  "lo": -2.302585092994046,
+  "hi": 2.302585092994046,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c0_max_s0_u.npy:0.5",
+  "seed": 1,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F10_c2_max_t0",
+  "col": 2,
+  "sign": 1,
+  "lo": -2.302585092994046,
+  "hi": 2.302585092994046,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.2",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F10_c2_max_t1",
+  "col": 2,
+  "sign": 1,
+  "lo": -2.302585092994046,
+  "hi": 2.302585092994046,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.5",
+  "seed": 1,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F100_c0_max_t0",
+  "col": 0,
+  "sign": 1,
+  "lo": -4.605170185988092,
+  "hi": 4.605170185988092,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c0_max_s0_u.npy:0.02",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F100_c0_max_t1",
+  "col": 0,
+  "sign": 1,
+  "lo": -4.605170185988092,
+  "hi": 4.605170185988092,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c0_max_s0_u.npy:0.5",
+  "seed": 1,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F100_c2_max_t0",
+  "col": 2,
+  "sign": 1,
+  "lo": -4.605170185988092,
+  "hi": 4.605170185988092,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.02",
+  "seed": 0,
+  "maxit": 1500,
+  "time_limit": 2400
+ },
+ {
+  "id": "boxw_F100_c2_max_t1",
+  "col": 2,
+  "sign": 1,
+  "lo": -4.605170185988092,
+  "hi": 4.605170185988092,
+  "start": "filemix:D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/review/cx_runs/nofor_c2_max_s0_u.npy:0.5",
+  "seed": 1,
+  "maxit": 1500,
+  "time_limit": 2400
+ }
+]

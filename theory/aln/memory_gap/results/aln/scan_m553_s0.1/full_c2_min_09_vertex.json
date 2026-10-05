@@ -1,0 +1,25 @@
+{
+ "task": {
+  "events": "../results/aln/events_m553_s0.1.npz",
+  "tie": "full",
+  "col": 2,
+  "sign": -1,
+  "start": "vertex",
+  "seed": 2090,
+  "maxit": 3000,
+  "outdir": "D:\\ResearchLab\\orchestration\\campaigns\\20261004-memory-gap\\results\\aln\\scan_m553_s0.1",
+  "name": "full_c2_min_09_vertex"
+ },
+ "time": 330.6940188407898,
+ "result": {
+  "tau_thz_units": 194.9922195810831,
+  "tau_ps": 15.516987805394821,
+  "feas": 3.187951281401283e-13,
+  "iters": 772,
+  "K": {
+   "00": 2390132916.7462797,
+   "22": 2252580600.1517124
+  },
+  "kappa_obj_WmK": 201.9669592134829
+ }
+}

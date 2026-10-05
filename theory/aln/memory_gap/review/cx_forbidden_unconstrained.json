@@ -1,0 +1,32 @@
+{
+ "none_c0_max_00_ref": {
+  "tau_x_ps": 114019.24476092587,
+  "tau_y_ps": 513.9792847192005,
+  "tau_z_ps": 35.3154663929535,
+  "diag_res": 1.4432899320127035e-15,
+  "lifetime_share_forbidden_max": 0.8157926989134653,
+  "n_modes_share_gt_10pct": 12,
+  "symmetry_breaking_rel": 0.4963329934531041,
+  "frac_events_below_1e-6_ref": 0.2285276764401207
+ },
+ "none_c2_max_00_ref": {
+  "tau_x_ps": 67.00559617341601,
+  "tau_y_ps": 70.71848570231197,
+  "tau_z_ps": 120194.50731994426,
+  "diag_res": 2.1316282072803006e-13,
+  "lifetime_share_forbidden_max": 0.535536278750369,
+  "n_modes_share_gt_10pct": 3,
+  "symmetry_breaking_rel": 0.32063767063819504,
+  "frac_events_below_1e-6_ref": 0.3677881367382786
+ },
+ "none_c0_min_00_ref": {
+  "tau_x_ps": 19.19050304313083,
+  "tau_y_ps": 37.49581594381949,
+  "tau_z_ps": 31.293991049559494,
+  "diag_res": 6.039613253960852e-14,
+  "lifetime_share_forbidden_max": 3.6143390607395966e-13,
+  "n_modes_share_gt_10pct": 0,
+  "symmetry_breaking_rel": 0.5487426582305405,
+  "frac_events_below_1e-6_ref": 0.09453677430977796
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "r_diag": [
+  4,
+  5,
+  5,
+  5,
+  1
+ ],
+ "r_selfenergy": [
+  2,
+  3,
+  3,
+  3,
+  1
+ ],
+ "b": [
+  "-56863/85250",
+  "34099/34100",
+  "-17051/17050",
+  "8524/8525",
+  "-113633/341000"
+ ],
+ "K": "2067384753/4651240000",
+ "K_RTA_diag": "19122114037/23256200000",
+ "K_RTA_selfenergy": "155053845541/116281000000",
+ "K_over_KRTA_diag": "10336923765/19122114037",
+ "K_over_KRTA_diag_float": 0.5405743185611565,
+ "K_over_KRTA_selfenergy": "7383516975/22150549363",
+ "K_over_KRTA_selfenergy_float": 0.3333333568391461,
+ "s_max": 2,
+ "min_generalised_eig_float_selfenergy": 0.3333333333333333,
+ "L3_holds_with_diag": true,
+ "selfenergy_reading_violated": true
+}

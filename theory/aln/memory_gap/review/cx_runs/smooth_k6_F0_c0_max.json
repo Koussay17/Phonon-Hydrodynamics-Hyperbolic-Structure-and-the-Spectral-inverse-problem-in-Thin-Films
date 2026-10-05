@@ -1,0 +1,20 @@
+{
+ "degree": 6,
+ "n_coef": 49,
+ "F": 0.0,
+ "col": 0,
+ "sign": 1,
+ "message": "More equality constraints than independent variables",
+ "nit": 1,
+ "tau_ps": 34.252990795285086,
+ "tau_x_ps": 34.252990795285086,
+ "tau_z_ps": 27.44647110301098,
+ "c_max": 0.0,
+ "u_min": 0.0,
+ "u_max": 0.0,
+ "frac_orbits_suppressed_below_1e-2": 0.0,
+ "seconds": 0.23450255393981934,
+ "hist_tail": [
+  34.25299079528507
+ ]
+}

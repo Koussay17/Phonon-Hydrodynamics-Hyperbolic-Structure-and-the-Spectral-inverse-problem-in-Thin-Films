@@ -1,0 +1,17 @@
+{
+ "n_unitary": 12,
+ "forbidden_common_unitary_stabilizer_hist": {
+  "1": 144,
+  "2": 3069,
+  "12": 62
+ },
+ "allowed_common_unitary_stabilizer_hist": {
+  "1": 34056,
+  "2": 7023,
+  "12": 52
+ },
+ "frac_forbidden_with_nontrivial_common_unitary_stabilizer": 0.956030534351145,
+ "frac_allowed_with_nontrivial_common_unitary_stabilizer": 0.17201137827915683,
+ "frac_forbidden_among_nontrivial_stabilizer_events": 0.3067803252988438,
+ "n_events_nontrivial_stabilizer": 10206
+}
