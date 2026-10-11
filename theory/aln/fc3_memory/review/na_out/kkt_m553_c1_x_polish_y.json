@@ -1,0 +1,31 @@
+{
+ "run": "c1_x_polish_y",
+ "tag": "orb",
+ "eps": 0.1,
+ "col": 0,
+ "objective_mesh": "m553",
+ "m553_tau_ratio": [
+  1.3976147940830792,
+  1.0802501097609458
+ ],
+ "m553_max_abs_s": 0.09986071341547209,
+ "m553_kappa_dev": [
+  0.00996680396309002,
+  -0.009770844696634584
+ ],
+ "m553_n_active_lifetimes": 45,
+ "n_active_orbit_bounds": 377,
+ "n_var": 7752,
+ "n_active_total": 424,
+ "kkt_residual_nnls_rel": 0.0017398271623104242,
+ "kkt_residual_unsigned_lsq_rel": 0.0017197701397885768,
+ "multiplier_mass_by_kind": {
+  "m553_kappax": 0.30188497262214486,
+  "m553_kappaz": 0.023471205014883485,
+  "m553_life": 0.40049414338676453,
+  "orbit": 0.27414967897620696
+ },
+ "projected_ascent_rate": 0.005069708589159199,
+ "grad_f_norm": 2.913915072464192,
+ "t_total": 7.762572200008435
+}

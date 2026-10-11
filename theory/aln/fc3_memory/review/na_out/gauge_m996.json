@@ -1,0 +1,134 @@
+{
+ "mesh": [
+  9,
+  9,
+  6
+ ],
+ "n_degenerate_modes": 1090,
+ "n_degenerate_groups": 543,
+ "n_modes_on_qz_half_plane": 972,
+ "exchange_asymmetry_PCP_minus_C_rel": 0.3150940769259272,
+ "exchange_asymmetry_degenerate_rows_rel": 0.3150940769259272,
+ "variants": {
+  "stored": {
+   "x": {
+    "tau_ps": 61.396861903142906,
+    "kappa": 265.7613202221402,
+    "b_dot_ehat_rel": 6.8793977982574046e-12,
+    "e_part_of_K_rel_at_gamma": 9.69989732941094e-24,
+    "e_part_of_N_rel_at_gamma": 7.258601322256108e-25
+   },
+   "z": {
+    "tau_ps": 59.15275715063289,
+    "kappa": 256.89982411968896,
+    "b_dot_ehat_rel": 4.728936180032762e-09,
+    "e_part_of_K_rel_at_gamma": 5.615386999208437e-18,
+    "e_part_of_N_rel_at_gamma": 4.361508068675857e-19
+   }
+  },
+  "permuted": {
+   "x": {
+    "tau_ps": 61.39686190345512,
+    "kappa": 265.7613201932078,
+    "b_dot_ehat_rel": 4.905102506563117e-12,
+    "e_part_of_K_rel_at_gamma": 4.9313118389157874e-24,
+    "e_part_of_N_rel_at_gamma": 3.6901861348261364e-25
+   },
+   "z": {
+    "tau_ps": 59.15275716270865,
+    "kappa": 256.8998240584239,
+    "b_dot_ehat_rel": 4.828719964997131e-09,
+    "e_part_of_K_rel_at_gamma": 5.854864195016552e-18,
+    "e_part_of_N_rel_at_gamma": 4.547511583075689e-19
+   }
+  },
+  "rotated0": {
+   "x": {
+    "tau_ps": 61.959165170327836,
+    "kappa": 259.5942849887782,
+    "b_dot_ehat_rel": 0.0004738010955259101,
+    "e_part_of_K_rel_at_gamma": 4.710370384500203e-08,
+    "e_part_of_N_rel_at_gamma": 3.492862427761504e-09
+   },
+   "z": {
+    "tau_ps": 62.2046760105854,
+    "kappa": 253.36678718867972,
+    "b_dot_ehat_rel": 0.10334165201779831,
+    "e_part_of_K_rel_at_gamma": 0.0027190532226746993,
+    "e_part_of_N_rel_at_gamma": 0.00020082910664523677
+   }
+  },
+  "rotated1": {
+   "x": {
+    "tau_ps": 61.89283449713015,
+    "kappa": 259.77807490314507,
+    "b_dot_ehat_rel": 0.0064698201331668675,
+    "e_part_of_K_rel_at_gamma": 8.776876427490264e-06,
+    "e_part_of_N_rel_at_gamma": 6.51525760175647e-07
+   },
+   "z": {
+    "tau_ps": 67.68027694507319,
+    "kappa": 258.07626308433044,
+    "b_dot_ehat_rel": 0.10893226137337608,
+    "e_part_of_K_rel_at_gamma": 0.002966071189795963,
+    "e_part_of_N_rel_at_gamma": 0.00020134990247929846
+   }
+  },
+  "rotated2": {
+   "x": {
+    "tau_ps": 61.84799344224855,
+    "kappa": 259.59406147878934,
+    "b_dot_ehat_rel": 0.0011460635009081855,
+    "e_part_of_K_rel_at_gamma": 2.756009268795997e-07,
+    "e_part_of_N_rel_at_gamma": 2.047326179556812e-08
+   },
+   "z": {
+    "tau_ps": 63.831124210113884,
+    "kappa": 255.5230167536128,
+    "b_dot_ehat_rel": 0.09936895061431246,
+    "e_part_of_K_rel_at_gamma": 0.002492803087687713,
+    "e_part_of_N_rel_at_gamma": 0.0001794268615780113
+   }
+  },
+  "rotated3": {
+   "x": {
+    "tau_ps": 61.933333866753316,
+    "kappa": 259.65355467870535,
+    "b_dot_ehat_rel": 0.0033019343373461227,
+    "e_part_of_K_rel_at_gamma": 2.2871816418935894e-06,
+    "e_part_of_N_rel_at_gamma": 1.6967121823650008e-07
+   },
+   "z": {
+    "tau_ps": 65.68807961018122,
+    "kappa": 256.33819914931786,
+    "b_dot_ehat_rel": 0.10307180322284754,
+    "e_part_of_K_rel_at_gamma": 0.002673517383339403,
+    "e_part_of_N_rel_at_gamma": 0.000186994325219672
+   }
+  },
+  "rotated4": {
+   "x": {
+    "tau_ps": 61.83826031818327,
+    "kappa": 260.0397922826589,
+    "b_dot_ehat_rel": 0.0010496170280494851,
+    "e_part_of_K_rel_at_gamma": 2.307703393849986e-07,
+    "e_part_of_N_rel_at_gamma": 1.7145679679506146e-08
+   },
+   "z": {
+    "tau_ps": 67.06568075982241,
+    "kappa": 259.29420876926264,
+    "b_dot_ehat_rel": 0.09722426295188155,
+    "e_part_of_K_rel_at_gamma": 0.0023516522179594947,
+    "e_part_of_N_rel_at_gamma": 0.00016110341184511967
+   }
+  }
+ },
+ "spread_rel_tau_x": 0.00915850175000794,
+ "spread_rel_kappa_x": 0.023206005818287995,
+ "spread_rel_tau_z": 0.14416098598286664,
+ "spread_rel_kappa_z": 0.023072890769365983,
+ "permuted_minus_stored_rel": {
+  "x": 5.085043497388142e-12,
+  "z": 2.041453672774196e-10
+ }
+}

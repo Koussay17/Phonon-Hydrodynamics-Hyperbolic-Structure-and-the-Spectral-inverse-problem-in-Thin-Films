@@ -78,3 +78,10 @@ and 298/291 (ShengBTE). Rao lies 10–30% above that inter-workflow range, with 
 Treat about 15–20% as a between-dataset input uncertainty on κ. A material operator built from the
 Olympics force constants (already used by the interaction pilot) should be compared with Olympics values,
 not with Rao.
+
+## Memory-time campaigns
+
+- `memory_gap/`: identifiability of the closure memory time from static data with free rates (5×5×3 operator).
+- `fc3_memory/`: the same question with fc3-generated rates; finds that the bulk memory time is controlled by
+  long-wavelength acoustic phonons and is not mesh-converged, so the question must be posed for a regularised memory
+  time. Start with `fc3_memory/13-final-report.md`.

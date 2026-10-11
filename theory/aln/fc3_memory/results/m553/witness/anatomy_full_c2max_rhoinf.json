@@ -1,0 +1,97 @@
+{
+ "name": "full_c2max_rhoinf",
+ "eps_rel_frob": 0.09559110700796851,
+ "max_abs_change_over_max_abs_ref": 0.026688574980928755,
+ "anatomy": [
+  {
+   "shell_A": [
+    0,
+    0.01
+   ],
+   "n_triplets": 4,
+   "ref_norm2_frac": 0.30740997835945855,
+   "delta_norm2_frac": 0.01646379885583967,
+   "rel_change_in_shell": 0.022121956633900514
+  },
+  {
+   "shell_A": [
+    0.01,
+    2.0
+   ],
+   "n_triplets": 48,
+   "ref_norm2_frac": 0.6838802528820974,
+   "delta_norm2_frac": 0.017991919853718518,
+   "rel_change_in_shell": 0.015504801592958778
+  },
+  {
+   "shell_A": [
+    2.0,
+    3.2
+   ],
+   "n_triplets": 588,
+   "ref_norm2_frac": 0.006790933183214803,
+   "delta_norm2_frac": 0.09228080234483926,
+   "rel_change_in_shell": 0.35237772168735676
+  },
+  {
+   "shell_A": [
+    3.2,
+    3.5
+   ],
+   "n_triplets": 0,
+   "ref_norm2_frac": 0.0,
+   "delta_norm2_frac": 0.0,
+   "rel_change_in_shell": 0.0
+  },
+  {
+   "shell_A": [
+    3.5,
+    4.0
+   ],
+   "n_triplets": 972,
+   "ref_norm2_frac": 0.0006358231294536906,
+   "delta_norm2_frac": 0.08451844757050844,
+   "rel_change_in_shell": 1.1021103619098045
+  },
+  {
+   "shell_A": [
+    4.0,
+    4.5
+   ],
+   "n_triplets": 1944,
+   "ref_norm2_frac": 0.000318474174095041,
+   "delta_norm2_frac": 0.14508510635459926,
+   "rel_change_in_shell": 2.0402895127008054
+  },
+  {
+   "shell_A": [
+    4.5,
+    5.0
+   ],
+   "n_triplets": 2196,
+   "ref_norm2_frac": 0.0005002709623035038,
+   "delta_norm2_frac": 0.1422312478665417,
+   "rel_change_in_shell": 1.6118044612172946
+  },
+  {
+   "shell_A": [
+    5.0,
+    6.0
+   ],
+   "n_triplets": 9524,
+   "ref_norm2_frac": 0.00040257151765128187,
+   "delta_norm2_frac": 0.35617097766111616,
+   "rel_change_in_shell": 2.8433166801994076
+  },
+  {
+   "shell_A": [
+    6.0,
+    20.0
+   ],
+   "n_triplets": 5460,
+   "ref_norm2_frac": 6.16957917255867e-05,
+   "delta_norm2_frac": 0.1452576994928369,
+   "rel_change_in_shell": 4.6383049786372945
+  }
+ ]
+}

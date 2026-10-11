@@ -1,0 +1,309 @@
+{
+ "axial_bond_dz_A": {
+  "alamode_min_max": [
+   1.9035227291436794,
+   1.90352272914383
+  ],
+  "phono3py_min_max": [
+   -1.903196045996724,
+   -1.9031960459967232
+  ]
+ },
+ "n_entries": 128016,
+ "alamode_cluster_diameter_max_A": 5.678226128076417,
+ "alamode_pair_distance_max_A": 5.678226128076416,
+ "alamode_diameter_quantiles_nonzero": [
+  4.983115959101832,
+  5.392811366315995,
+  5.678226128076416,
+  5.678226128076417
+ ],
+ "image_multiplicity_counts": {
+  "1": 128016
+ },
+ "multi_image_groups_equal_values": [
+  0,
+  0
+ ],
+ "alamode_prim_to_phono3py_prim": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "match_err_max_frac": 8.504128224284813e-06,
+ "species_check_first5000": true,
+ "independent_vs_campaign_raw_maxabs_rel": 2.0857099025492055e-16,
+ "asr_rel_independent": 7.432750074667253e-13,
+ "spot_values_onsite": [
+  {
+   "index": [
+    0,
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "alamode": -67.71731718126871,
+   "reference": -68.23975904263669
+  },
+  {
+   "index": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "alamode": 32.305381628282376,
+   "reference": 32.38301918731519
+  },
+  {
+   "index": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "alamode": -0.19790107967230378,
+   "reference": -0.23454493572199697
+  }
+ ],
+ "orbits_consistent_diameter_exceeds_shell_label": 60,
+ "aliased_orbits": [
+  {
+   "orbit": 107,
+   "dmax_label": 4.747625009602969,
+   "indep_check": 4.747625009602959,
+   "consistent_diameter": 5.85282374493873,
+   "delta": 0.9999999999998108,
+   "alamode_zero": true,
+   "ref_norm": 3.3246154542502495
+  },
+  {
+   "orbit": 111,
+   "dmax_label": 4.747625009602969,
+   "indep_check": 4.747625009602959,
+   "consistent_diameter": 5.85282374493873,
+   "delta": 0.9999999999999425,
+   "alamode_zero": true,
+   "ref_norm": 7.3810300029557165
+  },
+  {
+   "orbit": 182,
+   "dmax_label": 3.1130335240650675,
+   "indep_check": 3.113033524065069,
+   "consistent_diameter": 6.226067048130137,
+   "delta": 0.9999999999989092,
+   "alamode_zero": true,
+   "ref_norm": 2.5104501905240566
+  },
+  {
+   "orbit": 188,
+   "dmax_label": 4.378462537261923,
+   "indep_check": 4.378462537261923,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 1.0000000000014826,
+   "alamode_zero": true,
+   "ref_norm": 1.935321109020577
+  },
+  {
+   "orbit": 191,
+   "dmax_label": 3.6487166115568006,
+   "indep_check": 3.648716611556801,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 1.0000000000007871,
+   "alamode_zero": true,
+   "ref_norm": 2.3363793754766857
+  },
+  {
+   "orbit": 195,
+   "dmax_label": 3.642376312247636,
+   "indep_check": 3.642376312247649,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 0.9999999999996411,
+   "alamode_zero": true,
+   "ref_norm": 2.255317495735996
+  },
+  {
+   "orbit": 201,
+   "dmax_label": 4.378462537261923,
+   "indep_check": 4.378462537261923,
+   "consistent_diameter": 6.226067048130137,
+   "delta": 0.9999999999999513,
+   "alamode_zero": true,
+   "ref_norm": 1.7953521959673604
+  },
+  {
+   "orbit": 202,
+   "dmax_label": 3.6487166115568006,
+   "indep_check": 3.648716611556801,
+   "consistent_diameter": 6.226067048130137,
+   "delta": 0.9999999999999438,
+   "alamode_zero": true,
+   "ref_norm": 4.756845675894944
+  },
+  {
+   "orbit": 208,
+   "dmax_label": 3.1130335240650675,
+   "indep_check": 3.113033524065069,
+   "consistent_diameter": 6.226067048130137,
+   "delta": 0.9999999999999978,
+   "alamode_zero": true,
+   "ref_norm": 3.5148076542526656
+  },
+  {
+   "orbit": 311,
+   "dmax_label": 4.7476250096029675,
+   "indep_check": 4.747625009602973,
+   "consistent_diameter": 5.852823744938742,
+   "delta": 0.999999999999986,
+   "alamode_zero": true,
+   "ref_norm": 5.06050546602677
+  },
+  {
+   "orbit": 326,
+   "dmax_label": 4.378462537261921,
+   "indep_check": 4.378462537261923,
+   "consistent_diameter": 6.506906973814925,
+   "delta": 1.000000000000152,
+   "alamode_zero": true,
+   "ref_norm": 1.4491331105174108
+  },
+  {
+   "orbit": 333,
+   "dmax_label": 4.3734148999830795,
+   "indep_check": 4.37341489998307,
+   "consistent_diameter": 6.506906973814926,
+   "delta": 0.9999999999999801,
+   "alamode_zero": true,
+   "ref_norm": 2.590088261647918
+  },
+  {
+   "orbit": 334,
+   "dmax_label": 4.7476250096029675,
+   "indep_check": 4.747625009602959,
+   "consistent_diameter": 5.85282374493873,
+   "delta": 0.9999999999998539,
+   "alamode_zero": true,
+   "ref_norm": 1.2479505282056265
+  },
+  {
+   "orbit": 348,
+   "dmax_label": 4.378462537261921,
+   "indep_check": 4.378462537261922,
+   "consistent_diameter": 6.506906973814926,
+   "delta": 1.0000000000001756,
+   "alamode_zero": true,
+   "ref_norm": 0.9729852957386211
+  },
+  {
+   "orbit": 352,
+   "dmax_label": 4.747625009602968,
+   "indep_check": 4.747625009602959,
+   "consistent_diameter": 5.85282374493873,
+   "delta": 0.999999999999979,
+   "alamode_zero": true,
+   "ref_norm": 3.3522826926976204
+  },
+  {
+   "orbit": 355,
+   "dmax_label": 4.7476250096029675,
+   "indep_check": 4.747625009602973,
+   "consistent_diameter": 5.852823744938741,
+   "delta": 1.0000000000000155,
+   "alamode_zero": true,
+   "ref_norm": 1.2850279528824167
+  },
+  {
+   "orbit": 367,
+   "dmax_label": 4.3734148999830795,
+   "indep_check": 4.373414899983069,
+   "consistent_diameter": 6.506906973814926,
+   "delta": 0.9999999999998562,
+   "alamode_zero": true,
+   "ref_norm": 0.7948168425059059
+  },
+  {
+   "orbit": 428,
+   "dmax_label": 4.37341489998309,
+   "indep_check": 4.373414899983102,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 1.0000000000009968,
+   "alamode_zero": true,
+   "ref_norm": 1.5176353069375064
+  },
+  {
+   "orbit": 430,
+   "dmax_label": 4.37341489998309,
+   "indep_check": 4.373414899983101,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 0.9999999999978639,
+   "alamode_zero": true,
+   "ref_norm": 1.3182948066788636
+  },
+  {
+   "orbit": 445,
+   "dmax_label": 3.6423763122476354,
+   "indep_check": 3.642376312247649,
+   "consistent_diameter": 6.226067048130138,
+   "delta": 1.000000000000031,
+   "alamode_zero": true,
+   "ref_norm": 5.101579958269114
+  },
+  {
+   "orbit": 448,
+   "dmax_label": 4.37341489998309,
+   "indep_check": 4.373414899983102,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 0.9999999999999662,
+   "alamode_zero": true,
+   "ref_norm": 1.263974844268137
+  },
+  {
+   "orbit": 450,
+   "dmax_label": 4.37341489998309,
+   "indep_check": 4.373414899983101,
+   "consistent_diameter": 6.226067048130139,
+   "delta": 0.9999999999999224,
+   "alamode_zero": true,
+   "ref_norm": 1.2811141092313303
+  }
+ ],
+ "aliased_by_label_shell": {
+  "0-0.01": [
+   0,
+   2
+  ],
+  "0.01-2.0": [
+   0,
+   4
+  ],
+  "2.0-3.2": [
+   2,
+   24
+  ],
+  "3.2-4.0": [
+   4,
+   20
+  ],
+  "4.0-5.0": [
+   16,
+   82
+  ],
+  "5.0-6.0": [
+   22,
+   184
+  ],
+  "6.0-20.0": [
+   16,
+   140
+  ]
+ },
+ "zero_orbits_consistent_diameter_min": 5.717961905727991,
+ "nonzero_orbits_consistent_diameter_max": 5.6772282809273
+}

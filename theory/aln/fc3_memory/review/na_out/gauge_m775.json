@@ -1,0 +1,134 @@
+{
+ "mesh": [
+  7,
+  7,
+  5
+ ],
+ "n_degenerate_modes": 38,
+ "n_degenerate_groups": 19,
+ "n_modes_on_qz_half_plane": 0,
+ "exchange_asymmetry_PCP_minus_C_rel": 0.31340485418851943,
+ "exchange_asymmetry_degenerate_rows_rel": 0.31340485418851943,
+ "variants": {
+  "stored": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 50.62262492726218,
+    "kappa": 272.33365133947564,
+    "b_dot_ehat_rel": 2.866288173560958e-17,
+    "e_part_of_K_rel_at_gamma": 1.9144873576997069e-34,
+    "e_part_of_N_rel_at_gamma": 1.7640149351439314e-35
+   }
+  },
+  "permuted": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 50.62262492726217,
+    "kappa": 272.33365133947564,
+    "b_dot_ehat_rel": 1.5087122763701988e-17,
+    "e_part_of_K_rel_at_gamma": 5.304270306952011e-35,
+    "e_part_of_N_rel_at_gamma": 4.8873720705819764e-36
+   }
+  },
+  "rotated0": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 53.685128870292274,
+    "kappa": 276.46324585406944,
+    "b_dot_ehat_rel": 0.009480760484933771,
+    "e_part_of_K_rel_at_gamma": 2.0633032187305725e-05,
+    "e_part_of_N_rel_at_gamma": 1.7926828819024965e-06
+   }
+  },
+  "rotated1": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 55.799903475843074,
+    "kappa": 278.5771937130193,
+    "b_dot_ehat_rel": 0.003446933231679983,
+    "e_part_of_K_rel_at_gamma": 2.7066636545168925e-06,
+    "e_part_of_N_rel_at_gamma": 2.2625347556932863e-07
+   }
+  },
+  "rotated2": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 57.38619964293193,
+    "kappa": 280.7044299638702,
+    "b_dot_ehat_rel": 0.0009874903302961417,
+    "e_part_of_K_rel_at_gamma": 2.2046037659317311e-07,
+    "e_part_of_N_rel_at_gamma": 1.7919153750766762e-08
+   }
+  },
+  "rotated3": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 57.36113851592037,
+    "kappa": 280.61867106882295,
+    "b_dot_ehat_rel": 0.0019887586450505566,
+    "e_part_of_K_rel_at_gamma": 8.944616103377096e-07,
+    "e_part_of_N_rel_at_gamma": 7.273414847330085e-08
+   }
+  },
+  "rotated4": {
+   "x": {
+    "tau_ps": 52.608721685935535,
+    "kappa": 243.02706782165137,
+    "b_dot_ehat_rel": 4.853386865105587e-17,
+    "e_part_of_K_rel_at_gamma": 5.2063331049589866e-34,
+    "e_part_of_N_rel_at_gamma": 4.6160299470696567e-35
+   },
+   "z": {
+    "tau_ps": 58.637935320803024,
+    "kappa": 282.28275715350867,
+    "b_dot_ehat_rel": 0.0032116672671615547,
+    "e_part_of_K_rel_at_gamma": 2.3189471369505326e-06,
+    "e_part_of_N_rel_at_gamma": 1.844618645383388e-07
+   }
+  }
+ },
+ "spread_rel_tau_x": 0.0,
+ "spread_rel_kappa_x": 0.0,
+ "spread_rel_tau_z": 0.15833454715273576,
+ "spread_rel_kappa_z": 0.03653278162686933,
+ "permuted_minus_stored_rel": {
+  "x": 0.0,
+  "z": -1.1102230246251565e-16
+ }
+}

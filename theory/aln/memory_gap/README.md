@@ -13,3 +13,8 @@ time-reversal symmetric, selection-rule zeros kept), no microscopic amplitude mo
 - Lemma: K ≥ K_RTA/s_max for any event operator with r = diag C (proved, sharp).
 Conclusion: the information that pins τ_mem is the microscopic amplitude structure, not static transport data.
 Large arrays (event sets, operators) are kept outside the repository.
+
+Later finding (fc3_memory campaign, 11 October 2026): the reference memory time is not mesh-converged and is carried
+by the Γ-adjacent acoustic modes (34.25 ps on 5×5×3, 73.6 ps on 12×12×8; possibly infrared-divergent), and the fc3
+class does not close the gap by itself (Frobenius class 14× / 624× on 5×5×3). The statements above are statements
+about the stated 5×5×3 operator; the concluding sentence is qualified accordingly in `../fc3_memory/13-final-report.md`.

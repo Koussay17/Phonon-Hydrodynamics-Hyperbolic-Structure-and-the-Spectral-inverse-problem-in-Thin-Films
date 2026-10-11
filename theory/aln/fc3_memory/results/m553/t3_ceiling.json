@@ -1,0 +1,86 @@
+{
+ "fragility_orbit_quantiles(0,0.01,0.05,0.1,0.25,0.5)": [
+  6.552153992431344e-06,
+  7.502519274819752e-05,
+  0.0003264295517742458,
+  0.0006292980863243546,
+  0.00139721977319879,
+  0.002745637615354793
+ ],
+ "rho": {
+  "0": {
+   "lam_min_H_low": 0.0009765058427884042,
+   "tau_ceiling_ps": 81.49205878657611,
+   "n_orbits_silenceable": 0,
+   "max_orbit_suppression_factor": 1.0000000000000002
+  },
+  "0.001": {
+   "lam_min_H_low": 0.00016559449841435452,
+   "tau_ceiling_ps": 480.55625221815654,
+   "n_orbits_silenceable": 393,
+   "max_orbit_suppression_factor": 1.2241105522312705e+296
+  },
+  "0.002": {
+   "lam_min_H_low": 2.4211142801102458e-05,
+   "tau_ceiling_ps": 3286.8118700420905,
+   "n_orbits_silenceable": 850,
+   "max_orbit_suppression_factor": 1.652479181474612e+296
+  },
+  "0.005": {
+   "lam_min_H_low": -5.0893304794034605e-18,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 1798,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.01": {
+   "lam_min_H_low": -9.047148394531972e-18,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2216,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.02": {
+   "lam_min_H_low": -1.5683320471244255e-20,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2291,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.05": {
+   "lam_min_H_low": 0.0,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2292,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.1": {
+   "lam_min_H_low": 0.0,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2292,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.2": {
+   "lam_min_H_low": 0.0,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2292,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "0.5": {
+   "lam_min_H_low": 0.0,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2292,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  },
+  "1": {
+   "lam_min_H_low": 0.0,
+   "tau_ceiling_ps": Infinity,
+   "n_orbits_silenceable": 2292,
+   "max_orbit_suppression_factor": 1.5631881273715238e+297
+  }
+ },
+ "base": {
+  "tau_x": 34.25299083690926,
+  "tau_z": 27.440992026388738,
+  "lam_min_H": 0.0009765058427884047,
+  "ceiling_F1_ps": 81.49205878657605,
+  "tauCS_x": 19.19026473725494,
+  "tauCS_z": 15.511976223949986
+ }
+}

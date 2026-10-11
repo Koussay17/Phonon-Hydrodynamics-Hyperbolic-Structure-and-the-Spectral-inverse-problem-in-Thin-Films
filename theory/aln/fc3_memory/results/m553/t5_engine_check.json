@@ -1,0 +1,20 @@
+{
+ "gamma_context": {
+  "freq_maxdiff": 0.0,
+  "eigv_maxdiff": 0.0
+ },
+ "REF_r0avg1": {
+  "seconds": 3.3995989998802543,
+  "n_compared_rel": 41131,
+  "rel_max": 6.523357639792168e-12,
+  "rel_median": 7.444352306278012e-15,
+  "abs_max_over_ppmax_all": 2.5225739157183533e-15
+ },
+ "REF_r0avg0": {
+  "seconds": 1.324229700025171,
+  "n_compared_rel": 41129,
+  "rel_max": 2.484051016048817e-11,
+  "rel_median": 7.41543754638736e-15,
+  "abs_max_over_ppmax_all": 3.855762484638551e-15
+ }
+}

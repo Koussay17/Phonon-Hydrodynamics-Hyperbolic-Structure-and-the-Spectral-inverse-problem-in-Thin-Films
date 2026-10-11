@@ -1,0 +1,947 @@
+{
+ "alamode": {
+  "share_change2_beyond_alamode_cutoff": 0.4579292605837275,
+  "share_change2_aliased_orbits": 0.09128904970836559,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0033898386093595273,
+    "share_of_change2": 0.00634542403242523
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.0036334378634949854,
+    "share_of_change2": 0.016218107836487444
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.07595472073211824,
+    "share_of_change2": 0.07037584864532147
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.2690430885353193,
+    "share_of_change2": 0.08267318078200363
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.41534115791852866,
+    "share_of_change2": 0.2537133482901218
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.797431755298824,
+    "share_of_change2": 0.4598484660297455
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 0.9999999999999922,
+    "share_of_change2": 0.11082562438389493
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0033898386093595273,
+    "share_of_change2": 0.00634542403242523
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.0036334378634949854,
+    "share_of_change2": 0.016218107836487444
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.07235991946354368,
+    "share_of_change2": 0.06383772795992775
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.234995473328074,
+    "share_of_change2": 0.061926813680015146
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.38211086401294164,
+    "share_of_change2": 0.20807618055674645
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.8056973876329193,
+    "share_of_change2": 0.4871601622313813
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 0.9999999999999912,
+    "share_of_change2": 0.1564355837030167
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 0.09290290364162272
+ },
+ "cal1_c0_max": {
+  "share_change2_beyond_alamode_cutoff": 0.4321436459496457,
+  "share_change2_aliased_orbits": 0.08279291538688374,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.002894205151883431,
+    "share_of_change2": 0.0053231671971374775
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004819753184033064,
+    "share_of_change2": 0.032841515049750546
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.07124975839686856,
+    "share_of_change2": 0.07126721241001288
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.26552713608256784,
+    "share_of_change2": 0.0926718146579444
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.4011023543431768,
+    "share_of_change2": 0.27230315790712084
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.7261062271253191,
+    "share_of_change2": 0.43876996358826353
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 0.8250747282516582,
+    "share_of_change2": 0.08682316918977019
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.002894205151883431,
+    "share_of_change2": 0.0053231671971374775
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004819753184033064,
+    "share_of_change2": 0.032841515049750546
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.07015918332117466,
+    "share_of_change2": 0.06906518819836396
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.2310714992055368,
+    "share_of_change2": 0.06890668913198102
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.37317770072140893,
+    "share_of_change2": 0.2283935541125595
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.7387906673531534,
+    "share_of_change2": 0.47138909794603806
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 0.8301948976124756,
+    "share_of_change2": 0.12408078836416946
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 0.030898138669719008
+ },
+ "cal1_c2_max": {
+  "share_change2_beyond_alamode_cutoff": 0.42395284639667685,
+  "share_change2_aliased_orbits": 0.08417944479501789,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.004989765005367835,
+    "share_of_change2": 0.016260994596532283
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004819167418360342,
+    "share_of_change2": 0.03374372717338873
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.07194463431853983,
+    "share_of_change2": 0.07467843977120728
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.25956933527455256,
+    "share_of_change2": 0.0910148068088182
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.3987537646334775,
+    "share_of_change2": 0.276584147707761
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.7100469341953147,
+    "share_of_change2": 0.43120731286291947
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 0.7640089940265739,
+    "share_of_change2": 0.07651057107937283
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.004989765005367835,
+    "share_of_change2": 0.016260994596532283
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004819167418360342,
+    "share_of_change2": 0.03374372717338873
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.07054292930421151,
+    "share_of_change2": 0.07175837017996699
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.22802724290985785,
+    "share_of_change2": 0.06896321956589078
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.3684241220580501,
+    "share_of_change2": 0.22878314473758132
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.7261268661635294,
+    "share_of_change2": 0.4679906551180523
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 0.7797692691076381,
+    "share_of_change2": 0.11249988862858733
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 0.039101909469272646
+ },
+ "cal2_c0_max": {
+  "share_change2_beyond_alamode_cutoff": 0.4375721687184006,
+  "share_change2_aliased_orbits": 0.0836579604009521,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0070378500989872386,
+    "share_of_change2": 0.007913536467238781
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.006780261123988582,
+    "share_of_change2": 0.016339754465976748
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.14214536648804216,
+    "share_of_change2": 0.07131280107525288
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.53222329720161,
+    "share_of_change2": 0.09360449560144604
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.8077008305505108,
+    "share_of_change2": 0.2776018876080116
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 1.4574101151885621,
+    "share_of_change2": 0.4444052967016341
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 1.6643580054664686,
+    "share_of_change2": 0.08882222808043981
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0070378500989872386,
+    "share_of_change2": 0.007913536467238781
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.006780261123988582,
+    "share_of_change2": 0.016339754465976748
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.14081804634741457,
+    "share_of_change2": 0.06994970374075912
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.46531982264960264,
+    "share_of_change2": 0.0702507276820382
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.7497584575875852,
+    "share_of_change2": 0.23177912608565424
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 1.4838155898348169,
+    "share_of_change2": 0.47805260892743023
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 1.6665985416026377,
+    "share_of_change2": 0.12571454263090265
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 0.019114342922182465
+ },
+ "orb01_c0_max": {
+  "share_change2_beyond_alamode_cutoff": 0.00012640791206932736,
+  "share_change2_aliased_orbits": 2.0174832730592354e-05,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.08917060484013105,
+    "share_of_change2": 0.3132961822939144
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.08784216478144195,
+    "share_of_change2": 0.6763629989449449
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.09873352483985551,
+    "share_of_change2": 0.008485011955882953
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.09740013479623853,
+    "share_of_change2": 0.0007731240006951189
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.0857112852855482,
+    "share_of_change2": 0.0007709362480846772
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.07578101753127028,
+    "share_of_change2": 0.00029631772254879514
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 0.044171477122278924,
+    "share_of_change2": 1.54288339292927e-05
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.08917060484013105,
+    "share_of_change2": 0.3132961822939144
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.08784216478144195,
+    "share_of_change2": 0.6763629989449449
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.09875661218859111,
+    "share_of_change2": 0.008484430782869567
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.0976989190650292,
+    "share_of_change2": 0.0007637449147581837
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.08658723394969842,
+    "share_of_change2": 0.0007623605264013853
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.07516236195961064,
+    "share_of_change2": 0.0003025086283819155
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 0.04988226810220847,
+    "share_of_change2": 2.777390872978633e-05
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 6.8494071240973e-05
+ },
+ "c1_x_cont02": {
+  "share_change2_beyond_alamode_cutoff": 0.0002699471150099077,
+  "share_change2_aliased_orbits": 5.6015910780253596e-05,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.09900049744610401,
+    "share_of_change2": 0.34611120886663177
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.09053608712052251,
+    "share_of_change2": 0.643941560143531
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.09985726214217233,
+    "share_of_change2": 0.0077787840804315585
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.09989999606211664,
+    "share_of_change2": 0.0007289373687351607
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.09973734065565702,
+    "share_of_change2": 0.0009355936206504007
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.09808981855871837,
+    "share_of_change2": 0.0004449527113654631
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 0.09121185925003748,
+    "share_of_change2": 5.896320865460724e-05
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.09900049744610401,
+    "share_of_change2": 0.34611120886663177
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.09053608712052251,
+    "share_of_change2": 0.643941560143531
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.09985723921978291,
+    "share_of_change2": 0.007774611332028335
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.09989999605272865,
+    "share_of_change2": 0.0007156966576192594
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.09974064964002323,
+    "share_of_change2": 0.0009066220695902284
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.09826683981023411,
+    "share_of_change2": 0.0004634257271857859
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 0.09318821459239271,
+    "share_of_change2": 8.687520341358105e-05
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 0.0005364268194202946
+ },
+ "c2_nz_x_max": {
+  "share_change2_beyond_alamode_cutoff": 4.812195164091365e-09,
+  "share_change2_aliased_orbits": 6.418355804755398e-10,
+  "by_label": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0027650043210618314,
+    "share_of_change2": 0.008305143293846424
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004919369784493915,
+    "share_of_change2": 0.058483929267107784
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 24,
+    "rel_change_shell": 0.07025363914654455,
+    "share_of_change2": 0.11844170477123456
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 20,
+    "rel_change_shell": 0.22901008523852998,
+    "share_of_change2": 0.11783738060010127
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 82,
+    "rel_change_shell": 0.3688828767915259,
+    "share_of_change2": 0.3936980524368974
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 184,
+    "rel_change_shell": 0.4616879116477229,
+    "share_of_change2": 0.30323378928024025
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 140,
+    "rel_change_shell": 4.009980837166059e-05,
+    "share_of_change2": 3.5057236400190614e-10
+   }
+  ],
+  "by_consistent": [
+   {
+    "shell": [
+     0,
+     0.01
+    ],
+    "n": 2,
+    "rel_change_shell": 0.0027650043210618314,
+    "share_of_change2": 0.008305143293846424
+   },
+   {
+    "shell": [
+     0.01,
+     2.0
+    ],
+    "n": 4,
+    "rel_change_shell": 0.004919369784493915,
+    "share_of_change2": 0.058483929267107784
+   },
+   {
+    "shell": [
+     2.0,
+     3.2
+    ],
+    "n": 22,
+    "rel_change_shell": 0.07027247356512781,
+    "share_of_change2": 0.11844170476229057
+   },
+   {
+    "shell": [
+     3.2,
+     4.0
+    ],
+    "n": 16,
+    "rel_change_shell": 0.23111877179083845,
+    "share_of_change2": 0.11783738043154186
+   },
+   {
+    "shell": [
+     4.0,
+     5.0
+    ],
+    "n": 66,
+    "rel_change_shell": 0.3747428771541696,
+    "share_of_change2": 0.3936980520181105
+   },
+   {
+    "shell": [
+     5.0,
+     6.0
+    ],
+    "n": 170,
+    "rel_change_shell": 0.4532088908446791,
+    "share_of_change2": 0.3032337896539981
+   },
+   {
+    "shell": [
+     6.0,
+     20.0
+    ],
+    "n": 176,
+    "rel_change_shell": 4.31541643615148e-05,
+    "share_of_change2": 5.731045621668481e-10
+   }
+  ],
+  "label_2_3.2_shell_change2_share_from_aliased": 7.5513879736137e-11
+ }
+}

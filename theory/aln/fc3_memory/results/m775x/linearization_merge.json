@@ -1,0 +1,16 @@
+{
+ "n_rows": 23313,
+ "Phi0_from_G_relmax": 1.6106743062014896e-10,
+ "tags": {
+  "orb": {
+   "Mmh": "C:\\Users\\Koussay\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results\\m553\\scaled_Mmh.npy"
+  },
+  "cal1nz": {
+   "Mmh": "C:\\Users\\Koussay\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results\\m553\\scaled_cal1nz_Mmh.npy"
+  },
+  "cal1": {
+   "Mmh": "C:\\Users\\Koussay\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results\\m553\\scaled_cal1_Mmh.npy"
+  }
+ },
+ "seconds": 280.3198332999891
+}

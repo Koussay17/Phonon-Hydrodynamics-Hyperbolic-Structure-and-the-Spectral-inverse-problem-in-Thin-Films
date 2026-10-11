@@ -1,0 +1,8 @@
+{
+ "name": "c2_nz_x_max",
+ "frob_rel": 0.016822139477244823,
+ "orbit_rel_max_from_tensor": 4.461854416483423,
+ "reproj_resid": 1.1729757322846816e-15,
+ "asr_rel": 7.353045711741521e-16,
+ "orbit_rel_over_eps_max_from_tensor": 0.9990000041929276
+}

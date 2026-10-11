@@ -1,0 +1,241 @@
+{
+ "mesh": [
+  5,
+  5,
+  3
+ ],
+ "n_rows": 2712,
+ "n_orbits": 2627,
+ "orbit_partition_agrees": true,
+ "model_base_block_avg": {
+  "tau": [
+   34.25299083690926,
+   27.440992026388745
+  ],
+  "kappa": [
+   214.29993544857737,
+   201.9038790854862
+  ]
+ },
+ "p3_base_orbit_avg": {
+  "tau": [
+   34.25299079528507,
+   27.446471103010975
+  ],
+  "kappa": [
+   214.29993549566584,
+   201.96695921348262
+  ]
+ },
+ "tags": {
+  "cal1nz": {
+   "solve_residual": 3.936623987351312e-15,
+   "Gs_u0_vs_Phi0_relmax_rowwise": 1.3508747907128667e-11,
+   "Gs_u0_vs_Phi0_rel_to_maxPhi0": 3.090358693256417e-14,
+   "Gs_u0_vs_Phi0_rowwise_q999": 6.405598756605528e-12,
+   "witnesses": {
+    "cal1nz_J_c0_max": {
+     "rows_nondegenerate": 1948,
+     "rep_triplet_and_bands_match": 1.0,
+     "pp_rel_max_all_nondeg": 4.090056196646183e-12,
+     "pp_rel_max_nondeg_above_1e-6max": 1.2507075291180323e-12,
+     "pp_rel_median": 7.170750451722434e-15,
+     "pp_abs_max_over_maxpp": 3.2588622310621364e-15,
+     "model_tau_ratio_block": [
+      1.0556009398926691,
+      1.0472721550967166
+     ],
+     "model_kappa_ratio_block": [
+      0.9901990937645035,
+      0.990198634075721
+     ],
+     "p3_tau_ratio_orbit": [
+      1.0556009396816437,
+      1.0472955241224526
+     ],
+     "p3_kappa_ratio_orbit": [
+      0.9901990938696431,
+      0.9901867035855769
+     ],
+     "model_minus_p3_tau_ratio": [
+      2.110254193610217e-10,
+      -2.3369025736075244e-05
+     ],
+     "model_minus_p3_kappa_ratio": [
+      -1.0513956372193434e-10,
+      1.1930490144029804e-05
+     ],
+     "model_minus_p3_tau_ratio_rel": [
+      1.999102231044474e-10,
+      -2.231368815946823e-05
+     ],
+     "history_best_model_tau_ratio": [
+      1.055600939892669,
+      1.0472721550967174
+     ],
+     "history_best_model_kappa_ratio": [
+      0.9901990937645035,
+      0.9901986340757207
+     ],
+     "own_model_minus_history": [
+      2.220446049250313e-16,
+      -8.881784197001252e-16
+     ]
+    },
+    "cal1nz_J_c2_max": {
+     "rows_nondegenerate": 1948,
+     "rep_triplet_and_bands_match": 1.0,
+     "pp_rel_max_all_nondeg": 3.5566756441471617e-12,
+     "pp_rel_max_nondeg_above_1e-6max": 3.5566756441471617e-12,
+     "pp_rel_median": 7.471705701810858e-15,
+     "pp_abs_max_over_maxpp": 6.406058046383801e-15,
+     "model_tau_ratio_block": [
+      1.022846679478369,
+      1.0700667431322752
+     ],
+     "model_kappa_ratio_block": [
+      1.0067159117645386,
+      0.9901998667226423
+     ],
+     "p3_tau_ratio_orbit": [
+      1.0228466772215676,
+      1.0702097998247213
+     ],
+     "p3_kappa_ratio_orbit": [
+      1.0067159102280188,
+      0.9903791825623065
+     ],
+     "model_minus_p3_tau_ratio": [
+      2.2568014124146885e-09,
+      -0.00014305669244607522
+     ],
+     "model_minus_p3_kappa_ratio": [
+      1.5365198002825764e-09,
+      -0.00017931583966424025
+     ],
+     "model_minus_p3_tau_ratio_rel": [
+      2.2063926712310404e-09,
+      -0.00013367163379507925
+     ],
+     "history_best_model_tau_ratio": [
+      1.0228466794783693,
+      1.0700667431322757
+     ],
+     "history_best_model_kappa_ratio": [
+      1.0067159117645386,
+      0.9901998667226422
+     ],
+     "own_model_minus_history": [
+      -2.220446049250313e-16,
+      -4.440892098500626e-16
+     ]
+    }
+   }
+  },
+  "orb": {
+   "solve_residual": 1.4564527704200005e-15,
+   "Gs_u0_vs_Phi0_relmax_rowwise": 1.1901527940823837e-11,
+   "Gs_u0_vs_Phi0_rel_to_maxPhi0": 3.6246499003131275e-14,
+   "Gs_u0_vs_Phi0_rowwise_q999": 6.782332288600373e-12,
+   "witnesses": {
+    "orb0.1_J_c0_max": {
+     "rows_nondegenerate": 1948,
+     "rep_triplet_and_bands_match": 1.0,
+     "pp_rel_max_all_nondeg": 2.2024852131197034e-11,
+     "pp_rel_max_nondeg_above_1e-6max": 5.282527174092113e-13,
+     "pp_rel_median": 7.793436102888257e-15,
+     "pp_abs_max_over_maxpp": 6.173162912878791e-15,
+     "model_tau_ratio_block": [
+      1.0572402382909132,
+      1.0545184074397864
+     ],
+     "model_kappa_ratio_block": [
+      0.9904249180168583,
+      0.9911106567065896
+     ],
+     "p3_tau_ratio_orbit": [
+      1.0572402383933128,
+      1.0545376401801714
+     ],
+     "p3_kappa_ratio_orbit": [
+      0.9904249181215008,
+      0.9910626692545383
+     ],
+     "model_minus_p3_tau_ratio": [
+      -1.0239964431946191e-10,
+      -1.9232740384955704e-05
+     ],
+     "model_minus_p3_kappa_ratio": [
+      -1.0464251687380965e-10,
+      4.7987452051256874e-05
+     ],
+     "model_minus_p3_tau_ratio_rel": [
+      -9.685560632376097e-11,
+      -1.8238078615828e-05
+     ],
+     "history_best_model_tau_ratio": [
+      1.0572402382909132,
+      1.0545184074397869
+     ],
+     "history_best_model_kappa_ratio": [
+      0.9904249180168583,
+      0.9911106567065895
+     ],
+     "own_model_minus_history": [
+      0.0,
+      -4.440892098500626e-16
+     ]
+    },
+    "orb0.1_J_c2_max": {
+     "rows_nondegenerate": 1948,
+     "rep_triplet_and_bands_match": 1.0,
+     "pp_rel_max_all_nondeg": 2.5011637355726574e-12,
+     "pp_rel_max_nondeg_above_1e-6max": 2.5011637355726574e-12,
+     "pp_rel_median": 8.290426516090226e-15,
+     "pp_abs_max_over_maxpp": 3.4901499234323734e-15,
+     "model_tau_ratio_block": [
+      1.0089417307351176,
+      1.184081745582953
+     ],
+     "model_kappa_ratio_block": [
+      0.9938076059215619,
+      0.9901948371171788
+     ],
+     "p3_tau_ratio_orbit": [
+      1.0089417300339119,
+      1.1841145571690381
+     ],
+     "p3_kappa_ratio_orbit": [
+      0.9938076051691596,
+      0.9902236093894969
+     ],
+     "model_minus_p3_tau_ratio": [
+      7.012057601230026e-10,
+      -3.2811586085035316e-05
+     ],
+     "model_minus_p3_kappa_ratio": [
+      7.524023626359622e-10,
+      -2.8772272318122738e-05
+     ],
+     "model_minus_p3_tau_ratio_rel": [
+      6.949913352274904e-10,
+      -2.7709807202675326e-05
+     ],
+     "history_best_model_tau_ratio": [
+      1.0089417307351176,
+      1.1840817455829529
+     ],
+     "history_best_model_kappa_ratio": [
+      0.9938076059215619,
+      0.9901948371171787
+     ],
+     "own_model_minus_history": [
+      0.0,
+      2.220446049250313e-16
+     ]
+    }
+   }
+  }
+ },
+ "t_total": 10.019834900012938
+}

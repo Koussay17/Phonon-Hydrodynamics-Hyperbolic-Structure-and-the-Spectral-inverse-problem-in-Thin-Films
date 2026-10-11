@@ -1,0 +1,390 @@
+{
+  "inputs": {
+    "POSCAR": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\POSCAR",
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\BORN",
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc2.hdf5",
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc3.hdf5",
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "software": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "D:\\ResearchLab\\envs\\aln-phono3py-4.5.0\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "packages": {
+      "phono3py": "4.5.0",
+      "phonopy": "4.5.0",
+      "phonors": "0.3.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "h5py": "3.16.0",
+      "spglib": "2.7.0",
+      "symfc": "1.7.3"
+    },
+    "env_threads": {
+      "OMP_NUM_THREADS": "4",
+      "RAYON_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "args": {
+    "mesh": [
+      5,
+      5,
+      3
+    ],
+    "events": "D:/ResearchLab/orchestration/campaigns/20261004-memory-gap/results/aln/events_m553_s0.1.npz",
+    "outdir": "D:/ResearchLab/orchestration/campaigns/20261005-fc3-memory/results/m553",
+    "sigma": 0.1,
+    "T": 300.0,
+    "cutoffs": [
+      2.0,
+      3.2,
+      3.5,
+      4.0,
+      4.5,
+      5.0
+    ],
+    "eps": [
+      0.01,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "seeds": 5,
+    "save_fc3": [
+      "iso_0.10_s0",
+      "mul_0.20_s0",
+      "cut_sym_3.50"
+    ],
+    "no_basis_save": false,
+    "families": [
+      "cut",
+      "iso",
+      "mul",
+      "scale"
+    ]
+  },
+  "fc3_compact_norm": 533.6316526875707,
+  "proj_resid_rel": 4.464067186051925e-15,
+  "basis_shape": [
+    8098,
+    7752
+  ],
+  "ccm_shape": [
+    559872,
+    8098
+  ],
+  "c0_norm": 2264.0073616269956,
+  "c0_norm_over_sqrt18_fnorm": 1.0000000000000004,
+  "variants": {
+    "cut_zero_2.00": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.09332614188127525,
+      "seconds": 1.0795516998041421
+    },
+    "_cut_basis_sizes": {
+      "2.00": [
+        34,
+        9
+      ],
+      "3.20": [
+        306,
+        218
+      ],
+      "3.50": [
+        306,
+        218
+      ],
+      "4.00": [
+        698,
+        569
+      ],
+      "4.50": [
+        1466,
+        1282
+      ],
+      "5.00": [
+        2318,
+        2098
+      ]
+    },
+    "cut_sym_2.00": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.09725097815340106,
+      "seconds": 1.0817335001192987
+    },
+    "cut_zero_3.20": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.04380451546620628,
+      "seconds": 1.0922737999353558
+    },
+    "cut_sym_3.20": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.04441935087096498,
+      "seconds": 1.0978425000794232
+    },
+    "cut_zero_3.50": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.04380451546620628,
+      "seconds": 1.0788204001728445
+    },
+    "cut_sym_3.50": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.04441935087096498,
+      "seconds": 1.0751960000488907
+    },
+    "cut_zero_4.00": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.035819163108249945,
+      "seconds": 1.0823337000329047
+    },
+    "cut_sym_4.00": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.036486496194954775,
+      "seconds": 1.0804864999372512
+    },
+    "cut_zero_4.50": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.031057016464566784,
+      "seconds": 1.0838437001220882
+    },
+    "cut_sym_4.50": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.03145513569499892,
+      "seconds": 1.0757083999924362
+    },
+    "cut_zero_5.00": {
+      "family": "cut_zero",
+      "eps_rel_frob": 0.0215468630982997,
+      "seconds": 1.0810508001595736
+    },
+    "cut_sym_5.00": {
+      "family": "cut_sym",
+      "eps_rel_frob": 0.021818896963476466,
+      "seconds": 1.0803443000186235
+    },
+    "iso_0.01_s0": {
+      "family": "iso",
+      "eps_rel_frob": 0.009999999999999997,
+      "seconds": 1.083163200179115
+    },
+    "iso_0.01_s1": {
+      "family": "iso",
+      "eps_rel_frob": 0.010000000000000014,
+      "seconds": 1.0758740999735892
+    },
+    "iso_0.01_s2": {
+      "family": "iso",
+      "eps_rel_frob": 0.010000000000000005,
+      "seconds": 1.0822614000644535
+    },
+    "iso_0.01_s3": {
+      "family": "iso",
+      "eps_rel_frob": 0.010000000000000002,
+      "seconds": 1.0757569000124931
+    },
+    "iso_0.01_s4": {
+      "family": "iso",
+      "eps_rel_frob": 0.01000000000000001,
+      "seconds": 1.0758750000968575
+    },
+    "iso_0.05_s0": {
+      "family": "iso",
+      "eps_rel_frob": 0.05000000000000004,
+      "seconds": 1.068351099966094
+    },
+    "iso_0.05_s1": {
+      "family": "iso",
+      "eps_rel_frob": 0.04999999999999998,
+      "seconds": 1.0770500998478383
+    },
+    "iso_0.05_s2": {
+      "family": "iso",
+      "eps_rel_frob": 0.050000000000000065,
+      "seconds": 1.0736308000050485
+    },
+    "iso_0.05_s3": {
+      "family": "iso",
+      "eps_rel_frob": 0.05000000000000002,
+      "seconds": 1.0873446001205593
+    },
+    "iso_0.05_s4": {
+      "family": "iso",
+      "eps_rel_frob": 0.050000000000000044,
+      "seconds": 1.0773523000534624
+    },
+    "iso_0.10_s0": {
+      "family": "iso",
+      "eps_rel_frob": 0.10000000000000006,
+      "seconds": 1.0772581999190152
+    },
+    "iso_0.10_s1": {
+      "family": "iso",
+      "eps_rel_frob": 0.10000000000000016,
+      "seconds": 1.082823900040239
+    },
+    "iso_0.10_s2": {
+      "family": "iso",
+      "eps_rel_frob": 0.10000000000000005,
+      "seconds": 1.127515200059861
+    },
+    "iso_0.10_s3": {
+      "family": "iso",
+      "eps_rel_frob": 0.10000000000000003,
+      "seconds": 1.07471469999291
+    },
+    "iso_0.10_s4": {
+      "family": "iso",
+      "eps_rel_frob": 0.10000000000000003,
+      "seconds": 1.0718171999324113
+    },
+    "iso_0.20_s0": {
+      "family": "iso",
+      "eps_rel_frob": 0.20000000000000023,
+      "seconds": 1.0758328000083566
+    },
+    "iso_0.20_s1": {
+      "family": "iso",
+      "eps_rel_frob": 0.20000000000000015,
+      "seconds": 1.152720300015062
+    },
+    "iso_0.20_s2": {
+      "family": "iso",
+      "eps_rel_frob": 0.2000000000000002,
+      "seconds": 1.0852691000327468
+    },
+    "iso_0.20_s3": {
+      "family": "iso",
+      "eps_rel_frob": 0.20000000000000026,
+      "seconds": 1.0797670998144895
+    },
+    "iso_0.20_s4": {
+      "family": "iso",
+      "eps_rel_frob": 0.20000000000000015,
+      "seconds": 1.0692815999500453
+    },
+    "mul_0.01_s0": {
+      "family": "mul",
+      "eps_rel_frob": 0.010000000000000002,
+      "seconds": 1.0693463999778032
+    },
+    "mul_0.01_s1": {
+      "family": "mul",
+      "eps_rel_frob": 0.00999999999999999,
+      "seconds": 1.0879844001028687
+    },
+    "mul_0.01_s2": {
+      "family": "mul",
+      "eps_rel_frob": 0.009999999999999997,
+      "seconds": 1.0702474999707192
+    },
+    "mul_0.01_s3": {
+      "family": "mul",
+      "eps_rel_frob": 0.009999999999999997,
+      "seconds": 1.2250465000979602
+    },
+    "mul_0.01_s4": {
+      "family": "mul",
+      "eps_rel_frob": 0.010000000000000007,
+      "seconds": 1.1016518000978976
+    },
+    "mul_0.05_s0": {
+      "family": "mul",
+      "eps_rel_frob": 0.04999999999999999,
+      "seconds": 1.0846430000383407
+    },
+    "mul_0.05_s1": {
+      "family": "mul",
+      "eps_rel_frob": 0.05000000000000003,
+      "seconds": 1.1579760999884456
+    },
+    "mul_0.05_s2": {
+      "family": "mul",
+      "eps_rel_frob": 0.04999999999999999,
+      "seconds": 1.1065740999765694
+    },
+    "mul_0.05_s3": {
+      "family": "mul",
+      "eps_rel_frob": 0.05000000000000004,
+      "seconds": 1.1046068998984993
+    },
+    "mul_0.05_s4": {
+      "family": "mul",
+      "eps_rel_frob": 0.05000000000000002,
+      "seconds": 1.1728236998897046
+    },
+    "mul_0.10_s0": {
+      "family": "mul",
+      "eps_rel_frob": 0.10000000000000012,
+      "seconds": 1.1460202999878675
+    },
+    "mul_0.10_s1": {
+      "family": "mul",
+      "eps_rel_frob": 0.10000000000000003,
+      "seconds": 1.295418000081554
+    },
+    "mul_0.10_s2": {
+      "family": "mul",
+      "eps_rel_frob": 0.10000000000000007,
+      "seconds": 1.2680617000441998
+    },
+    "mul_0.10_s3": {
+      "family": "mul",
+      "eps_rel_frob": 0.10000000000000002,
+      "seconds": 1.1273654999677092
+    },
+    "mul_0.10_s4": {
+      "family": "mul",
+      "eps_rel_frob": 0.10000000000000034,
+      "seconds": 1.118684200104326
+    },
+    "mul_0.20_s0": {
+      "family": "mul",
+      "eps_rel_frob": 0.19999999999999987,
+      "seconds": 1.2506408002227545
+    },
+    "mul_0.20_s1": {
+      "family": "mul",
+      "eps_rel_frob": 0.20000000000000015,
+      "seconds": 1.104093899950385
+    },
+    "mul_0.20_s2": {
+      "family": "mul",
+      "eps_rel_frob": 0.20000000000000007,
+      "seconds": 1.2441686000674963
+    },
+    "mul_0.20_s3": {
+      "family": "mul",
+      "eps_rel_frob": 0.19999999999999968,
+      "seconds": 1.5544598000124097
+    },
+    "mul_0.20_s4": {
+      "family": "mul",
+      "eps_rel_frob": 0.19999999999999987,
+      "seconds": 1.196904799900949
+    },
+    "scale_0.05": {
+      "family": "scale",
+      "eps_rel_frob": 0.05000000000000006,
+      "seconds": 1.1497070000041276
+    }
+  },
+  "seconds_total": 90.2193995998241
+}

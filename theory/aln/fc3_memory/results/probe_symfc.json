@@ -1,0 +1,207 @@
+{
+  "inputs": {
+    "POSCAR": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\POSCAR",
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\BORN",
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc2.hdf5",
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc3.hdf5",
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "fc3_shape": [
+    72,
+    72,
+    72,
+    3,
+    3,
+    3
+  ],
+  "fc3_norm": 2264.0073616270074,
+  "fc3_absmax": 68.29814806914952,
+  "n_satom": 72,
+  "p2s": [
+    0,
+    18,
+    36,
+    54
+  ],
+  "s2p_first20": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    18,
+    18
+  ],
+  "masses": [
+    26.9815386,
+    26.9815386,
+    14.0067,
+    14.0067
+  ],
+  "prim_scaled_positions": [
+    [
+      0.3333333333333357,
+      0.6666666666666643,
+      0.0010014860003256998
+    ],
+    [
+      0.6666666666666643,
+      0.3333333333333357,
+      0.5010014860003256
+    ],
+    [
+      0.3333333333333357,
+      0.6666666666666643,
+      0.6189985139996717
+    ],
+    [
+      0.6666666666666643,
+      0.3333333333333357,
+      0.11899851399967168
+    ]
+  ],
+  "prim_cell": [
+    [
+      3.113033524065069,
+      0.0,
+      0.0
+    ],
+    [
+      -1.5565167620325344,
+      2.695966114672944,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      4.982149840429685
+    ]
+  ],
+  "svecs_shape": [
+    452,
+    3
+  ],
+  "multi_shape": [
+    72,
+    4,
+    2
+  ],
+  "multi_gt1_count": 108,
+  "fc3_zero_fraction": 5.656054717268709e-06,
+  "drift_fc3_error": "TypeError(\"float() argument must be a string or a real number, not 'list'\")",
+  "bz_n_addresses": 93,
+  "gr_n": 75,
+  "all_shortest_count": 3748,
+  "unit_conversion_interaction": 4.780654913176005e-05,
+  "symfc": [
+    {
+      "cutoff": null,
+      "seconds": 5.95660138130188,
+      "n_a_compr_shape": [
+        559872,
+        8098
+      ],
+      "n_a_compr_nnz": 2052524,
+      "basis_shape": [
+        8098,
+        7752
+      ],
+      "p2s_symfc": [
+        0,
+        18,
+        36,
+        54
+      ],
+      "CnTCn_dev_from_I": 5.773159728050814e-15,
+      "BTB_dev_from_I": 3.552713678800501e-15,
+      "ccm_colnorm2_minmax": [
+        0.05555555555555524,
+        0.05555555555555599
+      ],
+      "rel_resid_sym_noASR": 8.044315424898263e-16,
+      "rel_resid_sym_ASR": 4.454324460402199e-15
+    },
+    {
+      "cutoff": 3.5,
+      "seconds": 0.43829965591430664,
+      "n_a_compr_shape": [
+        559872,
+        306
+      ],
+      "n_a_compr_nnz": 41860,
+      "basis_shape": [
+        306,
+        218
+      ],
+      "p2s_symfc": [
+        0,
+        18,
+        36,
+        54
+      ],
+      "CnTCn_dev_from_I": 2.4424906541753444e-15,
+      "BTB_dev_from_I": 2.220446049250313e-15,
+      "ccm_colnorm2_minmax": [
+        0.055555555555555323,
+        0.055555555555555684
+      ],
+      "rel_resid_sym_noASR": 0.04380451546620628,
+      "rel_resid_sym_ASR": 0.04441935087096498
+    },
+    {
+      "cutoff": 5.0,
+      "seconds": 1.7776343822479248,
+      "n_a_compr_shape": [
+        559872,
+        2318
+      ],
+      "n_a_compr_nnz": 583717,
+      "basis_shape": [
+        2318,
+        2098
+      ],
+      "p2s_symfc": [
+        0,
+        18,
+        36,
+        54
+      ],
+      "CnTCn_dev_from_I": 5.551115123125783e-15,
+      "BTB_dev_from_I": 3.1086244689504383e-15,
+      "ccm_colnorm2_minmax": [
+        0.055555555555555323,
+        0.05555555555555597
+      ],
+      "rel_resid_sym_noASR": 0.0215468630982997,
+      "rel_resid_sym_ASR": 0.021818896963476466
+    }
+  ]
+}

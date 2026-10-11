@@ -1,0 +1,22 @@
+{
+ "3.50": {
+  "n_r": 218,
+  "containment_resid_rel": 7.444810764755509e-15,
+  "isometry_dev": 3.1086244689504383e-15
+ },
+ "4.00": {
+  "n_r": 569,
+  "containment_resid_rel": 7.727476622114148e-15,
+  "isometry_dev": 3.552713678800501e-15
+ },
+ "4.50": {
+  "n_r": 1282,
+  "containment_resid_rel": 7.837709418518294e-15,
+  "isometry_dev": 4.218847493575595e-15
+ },
+ "5.00": {
+  "n_r": 2098,
+  "containment_resid_rel": 9.831601829342033e-15,
+  "isometry_dev": 5.551115123125783e-15
+ }
+}
