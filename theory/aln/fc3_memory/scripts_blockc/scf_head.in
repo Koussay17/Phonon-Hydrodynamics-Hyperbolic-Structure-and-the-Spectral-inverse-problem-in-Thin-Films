@@ -1,0 +1,23 @@
+ &control
+    calculation     = 'scf'
+    prefix          = 'sc'
+    pseudo_dir      = '/home/koussay/blockc/pseudo'
+    outdir          = './tmp'
+    tprnfor         = .true.
+    disk_io         = 'none'
+/
+ &system
+    ibrav           = 0
+    nat             = @NAT@
+    ntyp            = 2
+    ecutwfc         = @ECUTW@
+    ecutrho         = @ECUTR@
+    occupations     = 'fixed'
+ /
+ &electrons
+    conv_thr        = 1.0d-11
+    mixing_beta     = 0.7
+ /
+ATOMIC_SPECIES
+  Al   26.98100  Al.@FUNC@-n-kjpaw_psl.1.0.0.UPF
+  N    14.00650   N.@FUNC@-n-kjpaw_psl.1.0.0.UPF
