@@ -8,8 +8,19 @@ PW="mpirun --use-hwthread-cpus -np 4 pw.x -nk 1"
 PY=$B/venv/bin/python
 log() { echo "$(date -u +%FT%TZ) $*" >> $B/progress.log; }
 done_ok() { [ -f "$1" ] && grep -q "JOB DONE" "$1"; }
-runpw() {  # dir input output
-  ( cd $1 && mkdir -p tmp && /usr/bin/time -v $PW -in $2 > $3.part 2> $3.time && mv $3.part $3; rm -rf tmp )
+runpw() {  # dir input output; returns the pw.x exit status
+  ( cd $1 && mkdir -p tmp && /usr/bin/time -v $PW -in $2 > $3.part 2> $3.time; rc=$?; [ $rc = 0 ] && mv $3.part $3; rm -rf tmp; exit $rc )
+}
+# SCF with fallback mixing (same conv_thr, so the converged state is unchanged): beta 0.7 -> 0.3 -> 0.1 local-TF.
+# Added 2026-11-11 after 11 PBEsol cells diverged at beta 0.7 (charge sloshing, residual up to 2.5e5 Ry).
+runscf() {  # dir input output
+  local d=$1 f=$2 o=$3 rc
+  [ -f $d/$o.part ] && grep -q "convergence NOT achieved" $d/$o.part && mv $d/$o.part $d/$o.diverged_b07
+  if [ ! -f $d/$o.diverged_b07 ]; then runpw $d $f $o; rc=$?; [ $rc = 0 ] && return 0; mv $d/$o.part $d/$o.diverged_b07 2>/dev/null; fi
+  sed "s/mixing_beta .*/mixing_beta     = 0.3\n    electron_maxstep = 200/" $d/$f > $d/${f%.in}.b03.in
+  runpw $d ${f%.in}.b03.in $o; rc=$?; [ $rc = 0 ] && { log "$d $f fallback beta=0.3 ok"; return 0; }
+  sed "s/mixing_beta .*/mixing_beta     = 0.1\n    mixing_mode     = 'local-TF'\n    electron_maxstep = 300/" $d/$f > $d/${f%.in}.b01.in
+  runpw $d ${f%.in}.b01.in $o; rc=$?; [ $rc = 0 ] && log "$d $f fallback beta=0.1 local-TF ok" || log "$d $f FAILED all mixing fallbacks"; return $rc
 }
 # 1. PBE relaxation of the primitive cell
 mkdir -p relax
@@ -42,10 +53,10 @@ if [ ! -f kcheck.ok ]; then
 fi
 # 3. supercell SCFs: PBE branch first (a complete PBE fc3 as early as possible), then the PBEsol control
 for d in pbe pbesol; do
-  for i in $d/disp-*.in; do
+  for i in $d/disp-?????.in; do
     f=$(basename $i); o=${f%.in}.out
     done_ok $d/$o && continue
-    t0=$(date +%s); runpw $d $f $o; log "$d $f rc=$? $(( $(date +%s)-t0 )) s"
+    t0=$(date +%s); runscf $d $f $o; log "$d $f rc=$? $(( $(date +%s)-t0 )) s"
   done
   log "$d branch complete"
 done

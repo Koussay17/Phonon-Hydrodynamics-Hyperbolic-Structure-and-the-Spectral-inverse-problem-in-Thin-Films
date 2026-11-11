@@ -1,0 +1,20 @@
+{
+ "n_rows": 171022,
+ "dtype": "float32",
+ "tags": {
+  "orb": {
+   "Mmh": "D:\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results_c\\m553\\scaled_Mmh.npy"
+  },
+  "cal1nz": {
+   "Mmh": "D:\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results_c\\m553\\scaled_cal1nz_Mmh.npy"
+  },
+  "cal3w": {
+   "Mmh": "D:\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results_c\\m553\\scaled_cal3w_Mmh.npy"
+  },
+  "cal3wnz": {
+   "Mmh": "D:\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results_c\\m553\\scaled_cal3wnz_Mmh.npy"
+  }
+ },
+ "Phi0_from_G_relmax": 3.0091616424643044e-06,
+ "seconds": 2910.528661599965
+}

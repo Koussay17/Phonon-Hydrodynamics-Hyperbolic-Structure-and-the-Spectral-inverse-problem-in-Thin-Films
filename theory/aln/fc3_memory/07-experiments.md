@@ -1131,3 +1131,118 @@ converged, E36). The min partner is running (started 17 October, 07:54).
 NUMERICAL OBSERVATION: in the per-cluster class the three-mesh extremal tensors are mesh-stable at both 30 and 100 nm. The
 admissible half-width is about 2.8 % at 30 nm and about 3.5 % at 100 nm. Remaining: the cal1nz min, cal3wnz, cal3w and
 300 nm runs (queued), an independent multistart, and the numerical audit.
+
+### Interruption (18 October, 01:34): Windows Update restart
+
+The machine was restarted by Windows Update at 01:34 (System event 1074, TrustedInstaller). The shutdown was clean, so D: was not affected. Two jobs were lost:
+the Block C PBE supercell in progress after disp-00540 (outputs are written as `.part` and renamed only after JOB DONE, so no partial file
+counts as finished; 209 of 467 PBE cells are complete), and the E33 run `m3_cal3wnz_z_L100_max` (started 17 October, 22:52, no output yet;
+it restarts from scratch). `m3_cal1nz_z_L100_min` and its held-out validation had finished before the restart (`film3/cal1nz_m3L100min.ok`).
+Relaunched at 03:56: the Block C pipeline (WSL), `film_opt3.sh` and `m3_validate2.sh`. About 3.5 h of compute were lost.
+
+**cal3wnz, 100 nm, max** (outer 5, 11.3 h, finished 18 October 15:22, violation 2.4e-5). Robust ratio **1.0647**, binding mesh 9x9x6.
+Per-mesh film tau_z(100 nm): 5x5x3 1.1302, 7x7x5 1.0712, 9x9x6 1.0647. Kappa ratio 1.0098 on all meshes. Held-out 12x12x8 check running (E37).
+Held-out 12x12x8 (film_event, 18 October 16:36): film tau_z(100 nm) **1.0487** (11.773 / 11.226 ps; 75 % of the excursion kept), film tau_z(30 nm)
+1.0314, bulk tau_z 0.920. The same 75 % retention as cal1nz max (1.0472). Lifetime-transfer statistics pending.
+Lifetime transfer on 12x12x8: kappa 1.0041 / 1.0066, lifetimes -15.0 % / +20.6 %, 2.0 % of the modes outside ±10 %, abs. dev. q50/q90/q99
+3.6 / 7.2 / 10.9 %. Close to cal1nz max (-14.5 % / +27.1 %, 1.9 %, q99 11.1 %): both calibrated classes keep about 75 % of the excursion on the held-out mesh,
+and both violate their data there more than orb 0.1 does (0.41 % outside, q99 9.5 %).
+
+**cal3wnz, 100 nm, min** (outer 8, 16.0 h, finished 19 October 07:31, violation 1.6e-5). Robust ratio **0.9333**, binding mesh 9x9x6.
+Per-mesh film tau_z(100 nm): 5x5x3 0.8779, 7x7x5 0.9148, 9x9x6 0.9333. Kappa ratio 0.990 on all meshes. The violation stalled near 3e-4 at
+outers 3–4 and became feasible at outer 5. Three-mesh admissible film tau_z ratio at 100 nm for cal3wnz: **[0.933, 1.065]** (cal1nz: [0.937, 1.063]).
+Held-out 12x12x8 check queued (E37). The next run, m3_cal3w_z_L100_max, started at 07:31.
+
+**cal1nz, 100 nm, min** (written up 19 October; run finished 17 October 22:52, outer 7, 14.8 h, violation 2.1e-5). Robust ratio **0.9371**, binding mesh
+9x9x6. Per-mesh film tau_z(100 nm): 5x5x3 0.8911, 7x7x5 0.9083, 9x9x6 0.9371. Held-out 12x12x8: film **0.9458** (10.618 / 11.226 ps, 86 % of the
+excursion kept), film tau_z(30 nm) 0.966, bulk tau_z 1.109, kappa 1.0016 / 0.9792, lifetimes -11.9 % / +15.1 %, 1.6 % of the modes outside ±10 %,
+q99 10.9 %.
+
+NUMERICAL OBSERVATION (calibrated classes, 100 nm, three data meshes): cal1nz [0.937, 1.063] and cal3wnz [0.933, 1.065], half-width about 6.5 %,
+about twice the per-cluster orb 0.1 value (3.5 %). Held out on 12x12x8, cal1nz gives [0.946, 1.047]. The calibrated optima shrink by 14–25 % on the
+held-out mesh, while the orb 0.1 optima keep their size. The cal3wnz min held-out check is pending.
+cal3wnz min, held-out 12x12x8 (19 October 09:10): film tau_z(100 nm) **0.9444** (10.602 / 11.226 ps, 83 % of the excursion kept), film tau_z(30 nm) 0.964,
+bulk tau_z 1.125, kappa 0.9954 / 0.9852, lifetimes -14.7 % / +18.2 %, 1.3 % of the modes outside ±10 %, q99 10.7 %. Held-out ranges at 100 nm:
+cal1nz [0.946, 1.047], cal3wnz [0.944, 1.049]. The two calibrated classes agree to within 0.002 on both ends.
+
+### E33/E37 completion (runs finished 20–21 October, written up 11 November): cal3w 100 nm and orb 0.1 300 nm
+
+All twelve three-mesh optima of `film_opt3.sh` are finished (`film_opt/film_opt3.done`), and all twelve held-out checks of
+`m3_validate2.sh` are finished (`film3/e37.ok`). Table produced by `scripts_c/summarize_e33_e37.py`
+(`results_c/film3/e33_e37_summary.json`). "kept" = (held-out ratio - 1) / (robust ratio - 1). The quantile columns of the two
+earliest checks were not recorded (field added to mesh_transfer_check.py later).
+
+| run | outer / h | viol | robust ratio (9x9x6 binding) | held-out 12x12x8 | kept | kappa 12x12x8 (xx, zz) | lifetimes min/max | outside ±10 % | q99 |
+|---|---|---|---|---|---|---|---|---|---|
+| orb 0.1, 30 nm, max | 5 / 17.9 | 1.0e-5 | 1.0281 | 1.0276 | 98 % | 0.9992 / 1.0014 | -11.4 % / +15.4 % | 0.89 % | 10.0 % |
+| orb 0.1, 30 nm, min | 5 / 17.5 | 2.7e-5 | 0.9727 | 0.9730 | 99 % | 0.9990 / 0.9924 | -12.6 % / +12.3 % | 0.41 % | 9.5 % |
+| orb 0.1, 100 nm, max | 13 / 30.6 | 6.6e-9 | 1.0379 | 1.0327 | 86 % | 1.0058 / 1.0108 | -11.6 % / +11.9 % | — | — |
+| orb 0.1, 100 nm, min | 4 / 10.5 | 2.3e-5 | 0.9632 | 0.9658 | 93 % | 0.9949 / 0.9884 | -15.6 % / +12.3 % | 0.34 % | 9.0 % |
+| orb 0.1, 300 nm, max | 5 / 13.9 | 2.5e-5 | 1.0537 | 1.0409 | 76 % | 1.0077 / 1.0020 | -12.8 % / +11.2 % | 0.80 % | 9.9 % |
+| orb 0.1, 300 nm, min | 5 / 14.1 | 2.5e-5 | 0.9491 | 0.9536 | 91 % | 0.9892 / 0.9999 | -21.3 % / +14.6 % | 0.87 % | 9.7 % |
+| cal1nz, 100 nm, max | 7 / 17.3 | 2.8e-5 | 1.0630 | 1.0472 | 75 % | 1.0056 / 1.0091 | -14.5 % / +27.1 % | 1.90 % | 11.1 % |
+| cal1nz, 100 nm, min | 6 / 14.8 | 2.1e-5 | 0.9371 | 0.9458 | 86 % | 1.0016 / 0.9792 | -11.9 % / +15.1 % | 1.60 % | 10.9 % |
+| cal3wnz, 100 nm, max | 4 / 11.3 | 2.4e-5 | 1.0647 | 1.0486 | 75 % | 1.0041 / 1.0066 | -15.0 % / +20.6 % | 2.03 % | 10.9 % |
+| cal3wnz, 100 nm, min | 7 / 16.0 | 1.6e-5 | 0.9333 | 0.9444 | 83 % | 0.9954 / 0.9852 | -14.7 % / +18.2 % | 1.32 % | 10.7 % |
+| cal3w, 100 nm, max | 8 / 19.1 | 6.5e-6 | 1.0801 | 1.0594 | 74 % | 1.0031 / 1.0048 | -15.8 % / +43.9 % | 3.52 % | 12.1 % |
+| cal3w, 100 nm, min | 6 / 14.4 | 7.4e-6 | 0.9213 | 0.9341 | 84 % | 0.9964 / 0.9731 | -23.4 % / +26.9 % | 2.12 % | 11.4 % |
+
+**orb 0.1, 300 nm.** Per-mesh film tau_z(300 nm), max: 5x5x3 1.0982, 7x7x5 1.0573, 9x9x6 1.0537; min: 0.9142, 0.9322, 0.9491.
+The max tensor changes film tau_z(30 nm) by only +0.4 % and film tau_z(100 nm) by +1.9 % on 12x12x8, so the 300 nm optimum is a
+different tensor from the 30 and 100 nm optima. Bulk tau_z on 12x12x8: 1.011 (max), 1.060 (min): the bulk ratio is again
+unrelated in sign to the film ratio.
+
+**cal3w, 100 nm** (the widest calibrated class, without the zero-mode restriction of cal3wnz). Per-mesh film tau_z(100 nm), max:
+1.1698, 1.0900, 1.0801; min: 0.8476, 0.8992, 0.9213. Held out on 12x12x8 it keeps 74 % / 84 % of the excursion, but it violates its
+data there more than any other class: lifetimes up to +43.9 %, 3.5 % of the modes outside ±10 %, kappa_zz -2.7 % for the min.
+
+**Reproduction check (optimiser linear model against the phono3py route on the fitted 9x9x6 mesh).** Differences in film
+tau_z: orb 0.1 300 nm max 1.0537 / 1.0520, min 0.9491 / 0.9512; cal3w max 1.0801 / 1.0776, min 0.9213 / 0.9263. The cal3w
+difference (0.5 points) is the largest seen so far (E37 orb 0.1 100 nm: 0.12 points). It is a first-order-model error at large
+excursion; the robust ratios in the table are optimiser values, and the phono3py values are the ones to quote.
+
+Admissible film tau_z ratio, three data meshes, held-out 12x12x8 values in brackets:
+
+| class | 30 nm | 100 nm | 300 nm |
+|---|---|---|---|
+| orb 0.1 (per cluster) | [0.973, 1.028] ([0.973, 1.028]) | [0.963, 1.038] ([0.966, 1.033]) | [0.949, 1.054] ([0.954, 1.041]) |
+| cal1nz | — | [0.937, 1.063] ([0.946, 1.047]) | — |
+| cal3wnz | — | [0.933, 1.065] ([0.944, 1.049]) | — |
+| cal3w | — | [0.921, 1.080] ([0.934, 1.059]) | — |
+
+NUMERICAL OBSERVATION (orb 0.1, three data meshes, inner bounds of a local optimiser): the admissible half-width of the film
+memory time grows with thickness, about 2.8 % at 30 nm, 3.7 % at 100 nm and 5.2 % at 300 nm (held out: 2.8 %, 3.4 %, 4.4 %).
+This is consistent with the bulk statement (the infrared modes that make bulk tau_mem undetermined are cut off less at larger L),
+but three lengths do not establish a law. Across classes at 100 nm the half-width ranges from 3.7 % (orb 0.1) to 8.0 % (cal3w);
+on the held-out mesh the calibrated classes shrink by 14–26 %, and the shrinkage comes with data violations on that mesh.
+Status: SUPPORTED BY EVIDENCE as inner bounds. Remaining: the multistart (E39) and the numerical audit of E33/E37.
+
+### E38 third correction (11 November): 11 diverged PBEsol cells, a logging defect and the relaunch
+
+The machine was found rebooted on 11 November (Block C stopped 23 October, 10:51 UTC, during PBEsol disp-00304). State: **PBE
+branch complete, 467/467 cells converged** (each output contains "convergence has been achieved"; finished 20 October).
+PBEsol: 107 cells converged, 11 failed. The log line "disp-00303" had been read as a count; it is a file number (118 of the 467
+PBEsol cells had been attempted).
+
+1. **Divergence.** disp-00000, 00002, 00003, 00005, 00006, 00008, 00010, 00014, 00020, 00034 and 00058 (PBEsol only; the same
+   displacements converge in PBE) ran the full 100 SCF steps in 3.1–4.9 h and stopped with "convergence NOT achieved", exit
+   status 2, no forces. Trace of disp-00002: estimated accuracy 21.6, 13.6, 0.38, 620.8 Ry, ..., then 2–2.6e5 Ry. Charge sloshing
+   with Broyden mixing at beta 0.7. Converging PBEsol cells need about 23 steps.
+2. **Logging defect.** `runpw` logged the status of `rm -rf tmp`, so the failed cells appeared as `rc=0`. No failed output was
+   ever counted as finished: outputs are renamed from `.part` only after a zero exit. Fixed: `runpw` now returns the pw.x status.
+3. **Fallback.** New `runscf`: on divergence the cell is rerun with mixing_beta 0.3 (electron_maxstep 200), then 0.1 with
+   local-TF mixing (300 steps). conv_thr stays 1e-11, so a converged cell has the same ground state whatever the mixing path.
+   The diverged outputs are kept as `*.out.diverged_b07`. The first patch wrote a literal newline inside the sed command (empty
+   inputs, failures in 1 s, logged); corrected and dry-tested on disp-00034 before the relaunch. The loop glob is now
+   `disp-?????.in` so the fallback inputs are not treated as cells.
+4. Relaunched 11 November, 17:49 UTC. Remaining: 360 PBEsol cells (about 13.5 min each with 4 ranks: about 3.4 days), then the
+   PBEsol vc-relax, then fc3 extraction for both functionals and the comparison (E38 analysis, not yet written).
+
+## E39 — Independent multistart of the three-mesh film optima (orb 0.1, 100 nm), launched 11 November  [queue/e39_multistart.sh]
+
+E33's optima are local (zero or warm starts). E39 reruns orb 0.1, 100 nm, max and min from two random points in the box
+(robust_mesh.py --start rand:1, rand:2), same constraints and stopping rule, and checks each optimum on 7x7x5, 9x9x6 and the
+held-out 12x12x8 as in E37. Outputs `film_opt/m3_orb0.1rs<seed>_z_L100_<sense>.*`, `film3/orb0.1rs<seed>_m3L100<sense>_*`;
+end marker `film3/e39.ok`. Expected about 2–4 days (four runs of 10–30 h, one at a time). Decision rule fixed now: if a random
+start exceeds the E33 optimum by more than 0.5 points of film ratio, the E33 range is reported as a lower bound on the width
+and the table above is revised.

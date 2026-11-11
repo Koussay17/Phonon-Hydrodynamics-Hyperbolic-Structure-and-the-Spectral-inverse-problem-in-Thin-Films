@@ -1,14 +1,23 @@
-"""phono3py-route evaluation of |Phi_alpha|^2 on a FIXED three-phonon event list (C: mirror copy; identical
-logic to the D: original). Run with a phono3py 4.5.0 environment.
+"""phono3py-route evaluation of |Phi_alpha|^2 on a FIXED three-phonon event list, for several fc3 tensors.
 
-For every event of the memory-gap list (p -> a + b, a = (-q1, j1), b = (-q2, l), canonical a <= b) the parent's
-CollisionMatrix machinery is re-run (as aln_events.py) and the script records
-    tp (BZ indices of phono3py's representative triplet), bands (in that triplet's order),
-    pp (interaction strength |Phi|^2 * Interaction.unit_conversion), g0w (Gaussian weight, 1/THz),
-so that g = conv * pp * g0w / (4 s_p s_a s_b) (distinct daughters) or / (8 s_p s_a^2) (repeated daughter).
---static also writes phonons on the BZ grid, smallest vectors, all_shortest, supercell.
+Run with the phono3py environment (D:\\ResearchLab\\envs\\aln-phono3py-4.5.0).
+
+The event list is the memory-gap export (aln_events.py: p -> a + b, a = (-q1, j1), b = (-q2, l), canonical
+a <= b, |w0 - w1 - w2| <= 4 sigma). For every event this script re-runs phono3py's CollisionMatrix machinery
+for the parent q0 (exactly as aln_events.py) and records
+    tp      : BZ-grid indices of phono3py's representative triplet (q0, q1', q2') used for the event,
+    bands   : band indices of the event in the order of that triplet (swap handled as in aln_events.py),
+    pp      : phono3py interaction strength |Phi|^2 (includes Interaction.unit_conversion),
+    g0w     : Gaussian integration weight delta_sigma(w0 - w1 - w2) (1/THz),
+so that the event rate is g = conv * pp * g0w / (4 s_p s_a s_b) (distinct daughters) or
+conv * pp * g0w / (8 s_p s_a^2) (repeated daughter), s = sinh(x/2): g = W * pp with W independent of fc3.
+
+fc3 variants: --fc3 NAME=path.npy (compact (n_patom, N, N, 3, 3, 3) or full array), or the reference (REF).
+--r0avg 0/1 selects phono3py's make_r0_average (True = 4.5.0 default, used by the memory-gap reference).
+--static also writes the static kernel (phonons on the BZ grid, smallest vectors, all_shortest, ...).
+
 usage: python -B p3_events.py --mesh 5 5 3 --events EVENTS.npz --outdir DIR [--r0avg 1] [--static]
-                              [--fc3 REF | --fc3 name=path.npy ...] [--tag TAG]
+                              [--fc3 REF] [--fc3 name=path.npy ...] [--tag TAG]
 """
 from __future__ import annotations
 
@@ -41,6 +50,7 @@ def load_ph3(r0avg: bool, mesh, sigma, lang="Rust"):
 
 
 def event_rows(ph3, EV, sigma, T, lang="Rust", want_static=False):
+    """Loop over parents as aln_events.py; return per-event tp, bands, pp, g0w (+ static data)."""
     from phono3py.phonon3.collision_matrix import CollisionMatrix
     ph3.init_phph_interaction()
     ph3.run_phonon_solver()
@@ -48,14 +58,17 @@ def event_rows(ph3, EV, sigma, T, lang="Rust", want_static=False):
     bz = itr.bz_grid
     D = bz.D_diag
     N = int(np.prod(D))
-    freqs_bz, _, _ = itr.get_phonons()
+    freqs_bz, eigv_bz, _ = itr.get_phonons()
     nb = freqs_bz.shape[1]
     grg2bzg = bz.grg2bzg
     Jmap = EV["Jmap"]
     ev_p, ev_a, ev_b = EV["ev_p"], EV["ev_a"], EV["ev_b"]
     m = len(ev_p)
-    g0_of, j0_of = ev_p // nb, ev_p % nb
-    g1_of, j1_of = Jmap[ev_a // nb], ev_a % nb
+    g0_of = ev_p // nb
+    j0_of = ev_p % nb
+    g1_of = Jmap[ev_a // nb]
+    j1_of = ev_a % nb
+    g2_of = Jmap[ev_b // nb]
     l_of = ev_b % nb
     tp = -np.ones((m, 3), dtype=np.int64)
     bands = -np.ones((m, 3), dtype=np.int64)
@@ -65,14 +78,19 @@ def event_rows(ph3, EV, sigma, T, lang="Rust", want_static=False):
     bounds = np.searchsorted(g0_of[order], np.arange(N + 1))
     col = CollisionMatrix(itr, rot_grid_points=None, lang=lang)
     conv = None
+    gamma_ctx = {}
     for g0 in range(N):
         idx = order[bounds[g0]:bounds[g0 + 1]]
-        col.set_grid_point(int(grg2bzg[g0]))
+        gp0 = int(grg2bzg[g0])
+        col.set_grid_point(gp0)
         col.set_sigma(sigma, sigma_cutoff=None)
         col.run_integration_weights()
         col.run_interaction(is_full_pp=False)
         col.temperature = T
         conv = col._unit_conversion
+        if want_static and (g0 == 0 or g0 == 1):
+            f_, e_, _ = itr.get_phonons()
+            gamma_ctx[g0] = (f_[bz.gp_Gamma].copy(), e_[bz.gp_Gamma].copy())
         if len(idx) == 0:
             continue
         pp = col._pp_strength
@@ -87,7 +105,9 @@ def event_rows(ph3, EV, sigma, T, lang="Rust", want_static=False):
         b1 = np.where(sw, l_of[idx], j1_of[idx])
         b2 = np.where(sw, j1_of[idx], l_of[idx])
         tp[idx] = trip[ti]
-        bands[idx, 0], bands[idx, 1], bands[idx, 2] = j0, b1, b2
+        bands[idx, 0] = j0
+        bands[idx, 1] = b1
+        bands[idx, 2] = b2
         pp_out[idx] = pp[ti, j0, b1, b2]
         g0w[idx] = ch0[ti, j0, b1, b2]
     out = {"tp": tp, "bands": bands, "pp": pp_out, "g0w": g0w, "conv": float(conv),
@@ -97,13 +117,16 @@ def event_rows(ph3, EV, sigma, T, lang="Rust", want_static=False):
         svecs, multi = prim.get_smallest_vectors()
         fz, ez, _ = itr.get_phonons()
         out["static"] = dict(freqs_bz=np.array(fz), eigv_bz=np.array(ez), bz_addresses=np.array(bz.addresses),
-                             D_diag=np.array(D), grg2bzg=np.array(grg2bzg), bzg2grg=np.array(bz.bzg2grg),
-                             gp_Gamma=int(bz.gp_Gamma), svecs=np.array(svecs), multi=np.array(multi),
-                             p2s=np.array(prim.p2s_map), s2p=np.array(prim.s2p_map), masses=np.array(prim.masses),
-                             prim_scaled=np.array(prim.scaled_positions), prim_cell=np.array(prim.cell),
-                             all_shortest=np.array(itr.all_shortest), cutoff_frequency=float(itr.cutoff_frequency),
+                             D_diag=np.array(D), Q=np.array(bz.Q), grg2bzg=np.array(grg2bzg),
+                             bzg2grg=np.array(bz.bzg2grg), gp_Gamma=int(bz.gp_Gamma), svecs=np.array(svecs),
+                             multi=np.array(multi), p2s=np.array(prim.p2s_map), s2p=np.array(prim.s2p_map),
+                             masses=np.array(prim.masses), prim_scaled=np.array(prim.scaled_positions),
+                             prim_cell=np.array(prim.cell), all_shortest=np.array(itr.all_shortest),
+                             cutoff_frequency=float(itr.cutoff_frequency),
                              sc_cell=np.array(ph3.supercell.cell), sc_scaled=np.array(ph3.supercell.scaled_positions),
-                             sc_numbers=np.array(ph3.supercell.numbers))
+                             sc_numbers=np.array(ph3.supercell.numbers),
+                             gamma_f_parentGamma=gamma_ctx[0][0], gamma_e_parentGamma=gamma_ctx[0][1],
+                             gamma_f_parent1=gamma_ctx[1][0], gamma_e_parent1=gamma_ctx[1][1])
     return out
 
 
@@ -123,11 +146,13 @@ def main():
     outdir.mkdir(parents=True, exist_ok=True)
     inputs = common.verify_inputs()
     EV = np.load(a.events)
+    assert list(EV["mesh"]) == list(a.mesh)
     ph3 = load_ph3(a.r0avg, a.mesh, a.sigma)
     fc3_ref = np.array(ph3.fc3)
+    p2s = ph3.primitive.p2s_map
+    specs = a.fc3 or ["REF"]
     log = {"inputs": inputs, "software": common.software_versions(), "args": vars(a), "runs": []}
-    tag = f"{a.tag}_" if a.tag else ""
-    for k, spec in enumerate(a.fc3 or ["REF"]):
+    for k, spec in enumerate(specs):
         t0 = time.perf_counter()
         if spec == "REF":
             name, fc3 = "REF", fc3_ref
@@ -136,14 +161,18 @@ def main():
             fc3 = np.load(path)
         ph3.fc3 = np.ascontiguousarray(fc3, dtype="double")
         res = event_rows(ph3, EV, a.sigma, a.T, want_static=(a.static and k == 0))
-        static = res.pop("static", None)
+        tag = f"{a.tag}_" if a.tag else ""
         fn = outdir / f"pp_{tag}r0{a.r0avg}_{name}.npz"
+        static = res.pop("static", None)
         np.savez_compressed(fn, **res)
         if static is not None:
             np.savez_compressed(outdir / f"static_{tag}r0{a.r0avg}.npz", **static)
-        rec = {"name": name, "file": str(fn), "seconds": time.perf_counter() - t0}
+        rec = {"name": name, "file": str(fn), "seconds": time.perf_counter() - t0,
+               "fc3_shape": list(fc3.shape), "pp_nan": int(np.isnan(res["pp"]).sum()),
+               "pp_min": float(np.nanmin(res["pp"])), "pp_max": float(np.nanmax(res["pp"]))}
         log["runs"].append(rec)
         print(json.dumps(rec), flush=True)
+    tag = f"{a.tag}_" if a.tag else ""
     common.write_json(outdir / f"p3_events_{tag}r0{a.r0avg}.json", log)
 
 

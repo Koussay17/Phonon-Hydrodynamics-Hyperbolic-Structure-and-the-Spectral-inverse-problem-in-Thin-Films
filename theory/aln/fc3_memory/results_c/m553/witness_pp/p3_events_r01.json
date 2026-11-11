@@ -1,0 +1,160 @@
+{
+  "inputs": {
+    "POSCAR": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\POSCAR",
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\BORN",
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc2.hdf5",
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc3.hdf5",
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "software": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Koussay\\ResearchLab\\envs\\aln-phono3py-4.5.0-replica\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "packages": {
+      "phono3py": "4.5.0",
+      "phonopy": "4.5.0",
+      "phonors": "0.3.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "h5py": "3.16.0",
+      "spglib": "2.7.0",
+      "symfc": "1.7.3"
+    },
+    "env_threads": {
+      "OMP_NUM_THREADS": "2",
+      "RAYON_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "args": {
+    "mesh": [
+      5,
+      5,
+      3
+    ],
+    "events": "results_c/m553/events_m553_s0.1.npz",
+    "outdir": "results_c/m553/witness_pp",
+    "sigma": 0.1,
+    "T": 300.0,
+    "r0avg": 1,
+    "static": false,
+    "fc3": [
+      "orb0.1_c0_max=results_c/m553/witness/fc3_orb0.1_c0_max.npy",
+      "orb0.1_c2_max=results_c/m553/witness/fc3_orb0.1_c2_max.npy",
+      "orb0.2_c0_max=results_c/m553/witness/fc3_orb0.2_c0_max.npy",
+      "orb0.2_c2_max=results_c/m553/witness/fc3_orb0.2_c2_max.npy",
+      "cal1_c0_max=results_c/m553/witness/fc3_cal1_c0_max.npy",
+      "cal1_c2_max=results_c/m553/witness/fc3_cal1_c2_max.npy",
+      "cal1_c0_min=results_c/m553/witness/fc3_cal1_c0_min.npy",
+      "cal1_c2_min=results_c/m553/witness/fc3_cal1_c2_min.npy",
+      "cal2_c0_max=results_c/m553/witness/fc3_cal2_c0_max.npy",
+      "cal2_c2_max=results_c/m553/witness/fc3_cal2_c2_max.npy",
+      "orb0.1_J_c0_max=results_c/m553/witness/fc3_orb0.1_J_c0_max.npy",
+      "orb0.1_J_c2_max=results_c/m553/witness/fc3_orb0.1_J_c2_max.npy",
+      "cal1nz_J_c0_max=results_c/m553/witness/fc3_cal1nz_J_c0_max.npy",
+      "cal1nz_J_c2_max=results_c/m553/witness/fc3_cal1nz_J_c2_max.npy",
+      "c1_x_cont02=review/work/fc3_c1_x_cont02.npy",
+      "c1_z_cont02=review/work/fc3_c1_z_cont02.npy"
+    ],
+    "tag": ""
+  },
+  "runs": [
+    {
+      "name": "orb0.1_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.1_c0_max.npz",
+      "seconds": 9.460631499998271
+    },
+    {
+      "name": "orb0.1_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.1_c2_max.npz",
+      "seconds": 7.453945799992653
+    },
+    {
+      "name": "orb0.2_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.2_c0_max.npz",
+      "seconds": 7.599987299996428
+    },
+    {
+      "name": "orb0.2_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.2_c2_max.npz",
+      "seconds": 7.729972900007851
+    },
+    {
+      "name": "cal1_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1_c0_max.npz",
+      "seconds": 7.445157599984668
+    },
+    {
+      "name": "cal1_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1_c2_max.npz",
+      "seconds": 7.5181138000043575
+    },
+    {
+      "name": "cal1_c0_min",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1_c0_min.npz",
+      "seconds": 7.164515199983725
+    },
+    {
+      "name": "cal1_c2_min",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1_c2_min.npz",
+      "seconds": 8.219200100022135
+    },
+    {
+      "name": "cal2_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal2_c0_max.npz",
+      "seconds": 7.038661200000206
+    },
+    {
+      "name": "cal2_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal2_c2_max.npz",
+      "seconds": 8.409097199997632
+    },
+    {
+      "name": "orb0.1_J_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.1_J_c0_max.npz",
+      "seconds": 7.861633699998492
+    },
+    {
+      "name": "orb0.1_J_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_orb0.1_J_c2_max.npz",
+      "seconds": 7.797393099986948
+    },
+    {
+      "name": "cal1nz_J_c0_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1nz_J_c0_max.npz",
+      "seconds": 7.745045099989511
+    },
+    {
+      "name": "cal1nz_J_c2_max",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_cal1nz_J_c2_max.npz",
+      "seconds": 7.2982324000040535
+    },
+    {
+      "name": "c1_x_cont02",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_c1_x_cont02.npz",
+      "seconds": 7.271876999991946
+    },
+    {
+      "name": "c1_z_cont02",
+      "file": "results_c\\m553\\witness_pp\\pp_r01_c1_z_cont02.npz",
+      "seconds": 6.947083500010194
+    }
+  ]
+}

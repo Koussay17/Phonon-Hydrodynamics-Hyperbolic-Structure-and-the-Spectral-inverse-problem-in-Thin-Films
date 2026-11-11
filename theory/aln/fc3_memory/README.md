@@ -18,6 +18,11 @@ Result (status labels as in the report):
   witness violates the data on a mesh not used in its construction.
 - Identifiability of bulk τ_mem from static data: unresolved, possibly ill-posed. Paper 1 should use a regularised
   memory time (frequency cutoff or film thickness) rather than a bulk first-principles τ_mem.
+- Film-regularised memory time (E33/E37, three data meshes, held-out 12×12×8 check; inner bounds, multistart E39 and numerical
+  audit pending): admissible film τ_z ratio in the per-cluster ε = 0.1 class [0.973, 1.028] at 30 nm, [0.963, 1.038] at 100 nm,
+  [0.949, 1.054] at 300 nm; calibrated classes at 100 nm up to [0.921, 1.080]. The film quantity is mesh-stable where the bulk
+  one is not.
+- Second functional (E38, Block C): PBE supercells complete (467/467); PBEsol in progress.
 
 Layout: `scripts/` working scripts (`scripts/d_originals/` the first versions), `results/` and `results_c/` small
 JSON and log outputs, `review/` review scripts and outputs. Large arrays (event sets, linearisations, interaction

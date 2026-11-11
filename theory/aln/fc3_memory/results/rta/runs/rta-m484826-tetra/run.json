@@ -1,0 +1,232 @@
+{
+  "run_id": "rta-m484826-tetra",
+  "argv": [
+    "run_kappa.py",
+    "--run-id",
+    "rta-m484826-tetra",
+    "--mesh",
+    "48",
+    "48",
+    "26",
+    "--method",
+    "rta",
+    "--temps",
+    "300",
+    "--note",
+    "E27: tau_mem(RTA) mesh sequence beyond 31x31x17"
+  ],
+  "note": "E27: tau_mem(RTA) mesh sequence beyond 31x31x17",
+  "campaign_dir": "D:\\ResearchLab\\orchestration\\campaigns\\20261005-fc3-memory\\results\\rta",
+  "dataset_dir": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py",
+  "script": {
+    "path": "D:\\ResearchLab\\orchestration\\campaigns\\20261002-aln-transport-baseline\\scripts\\run_kappa.py",
+    "sha256": "c60632389526a4191c72fbf5e6186b3ce9da1e37c6a0cc930607246d3c3e5c72",
+    "common_sha256": "849f2103e7e2d2130be943d222c8701f2a3daba1ee2aa513d084185b889ed52d"
+  },
+  "started": "2026-10-11T13:58:49",
+  "software": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Koussay\\ResearchLab\\envs\\aln-phono3py-4.5.0-replica\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "packages": {
+      "phono3py": "4.5.0",
+      "phonopy": "4.5.0",
+      "phonors": "0.3.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "h5py": "3.16.0",
+      "spglib": "2.7.0",
+      "symfc": "1.7.3"
+    },
+    "env_threads": {
+      "OMP_NUM_THREADS": "12",
+      "RAYON_NUM_THREADS": "12",
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "inputs": {
+    "POSCAR": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\POSCAR",
+      "sha256": "f4ffc5437f2d7c00457744c62bb88e9de91f21b0cda12cdb0db6e25407e909e4",
+      "bytes": 744
+    },
+    "BORN": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\BORN",
+      "sha256": "e3783b344d87c80cd1615bd83e42531a28b849aeebb21ddc2054c63b3ca63003",
+      "bytes": 411
+    },
+    "fc2.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc2.hdf5",
+      "sha256": "3fee31949075f3facf6f8510e4529bbf275a427f447c4c6ba29eec57e780763b",
+      "bytes": 40530
+    },
+    "fc3.hdf5": {
+      "path": "D:\\ResearchLab\\datasets\\phonon-olympics\\0640f07735059be9717a7565c2a0f22dc0da7a17\\AlN_phono3py\\fc3.hdf5",
+      "sha256": "d0237fe50df7e61d0db28976835bc86bc1f1bdedaf71a96bc6f6bf55e72be900",
+      "bytes": 25581870
+    }
+  },
+  "settings": {
+    "run_id": "rta-m484826-tetra",
+    "mesh": [
+      48,
+      48,
+      26
+    ],
+    "method": "rta",
+    "sigmas": [
+      "tetra"
+    ],
+    "sigma_cutoff": null,
+    "temps": [
+      300.0
+    ],
+    "isotope": false,
+    "gv_delta_q": null,
+    "lang": "Rust",
+    "is_N_U": false,
+    "write_gamma": false,
+    "write_collision": false,
+    "dump_assembled": false,
+    "reducible": false,
+    "pinv_solver": 0,
+    "pinv_cutoff": null,
+    "is_full_pp": false,
+    "symmetrize_fc": false,
+    "nac_gcutoff_factor": null,
+    "no_nac": false,
+    "no_r0_average": false,
+    "log_level": 1,
+    "note": "E27: tau_mem(RTA) mesh sequence beyond 31x31x17"
+  },
+  "status": "running",
+  "nac_params": {
+    "born": [
+      [
+        [
+          2.51393809,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.51393809,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.67812324
+        ]
+      ],
+      [
+        [
+          2.51393809,
+          -1.1096897835537514e-17,
+          0.0
+        ],
+        [
+          1.9665852222387067e-17,
+          2.51393809,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.67812324
+        ]
+      ],
+      [
+        [
+          -2.51393809,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -2.51393809,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -2.67812324
+        ]
+      ],
+      [
+        [
+          -2.51393809,
+          1.1096897835537514e-17,
+          0.0
+        ],
+        [
+          -1.9665852222387067e-17,
+          -2.51393809,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -2.67812324
+        ]
+      ]
+    ],
+    "dielectric": [
+      [
+        4.48046987,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.48046987,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        4.71204652
+      ]
+    ],
+    "factor": 14.39965172592227,
+    "method": null,
+    "G_cutoff": null,
+    "Lambda": null
+  },
+  "masses": [
+    26.9815386,
+    26.9815386,
+    14.0067,
+    14.0067
+  ],
+  "primitive_volume_A3": 41.81335463721578,
+  "nac_effective": {
+    "G_cutoff": 1.1964811966806446,
+    "Lambda": 0.26615773936469767,
+    "G_count": 311,
+    "class": "DynamicalMatrixGL"
+  },
+  "grid": {
+    "mesh": [
+      48,
+      48,
+      26
+    ],
+    "num_mesh": 59904,
+    "num_ir_grid_points": 3038,
+    "num_bz_grid_points": 63531,
+    "num_rotations": 24
+  },
+  "frequency_THz": {
+    "min": 1.6520334448948332e-07,
+    "max": 26.867152958968017
+  },
+  "memory_after_setup": {
+    "working_set_GB": 0.2935371398925781,
+    "peak_working_set_GB": 0.5857200622558594,
+    "private_GB": 0.6491050720214844,
+    "peak_private_GB": 0.9478874206542969
+  }
+}

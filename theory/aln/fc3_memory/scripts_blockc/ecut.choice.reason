@@ -1,0 +1,4 @@
+60 480 chosen on 16 October after the folding test (fold_check/): supercell Gamma 60/480 = 18 x primitive(3x3x2 k) to 3.5e-7 Ry;
+80/480 and 120/600 supercell runs lie 3.83 and 0.35 Ry below the variational minimum (QE 6.7 Gamma-point failure).
+Primitive-cell ladder (ecut_ladder/): forces at 60/480, 80/480, 80/320 agree to 1e-5 Ry/bohr. The ecut_check.py rule had used the
+invalid 120/600 runs as reference, so its outcome is void.

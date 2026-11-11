@@ -1,0 +1,130 @@
+{
+ "mode": "mirror",
+ "shengbte_lattice_A": [
+  [
+   3.115847502085868,
+   0.0,
+   0.0
+  ],
+  [
+   -1.557923751042934,
+   2.6984030911248396,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   4.987416596650034
+  ]
+ ],
+ "n_blocks": 1444,
+ "cluster_diameter_max_A": 3.6519937694455207,
+ "pair_distance_max_A": 3.6519937694455207,
+ "basis_match_err": [
+  0.0005911851003257418,
+  0.0005911851003257418,
+  0.0005246383996717618,
+  0.0005246383996717618
+ ],
+ "shengbte_to_phono3py_prim": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "match_err_max_frac": 6.654689112695067e-05,
+ "asr_rel_shengbte_folded": 7.099969934688653e-07,
+ "perm_jk_rel": 0.0,
+ "sym_resid_rel_noASR": 7.040555055618213e-12,
+ "sym_ASR_resid_rel": 2.0564977568716445e-07,
+ "frobenius_rel_vs_phono3py": 0.04105041512868982,
+ "norm_ratio_over_phono3py": 0.9955456138905215,
+ "frobenius_rel_vs_alamode": 0.037934369203452056,
+ "n_orbits_zero_in_shengbte": 0,
+ "shells": [
+  {
+   "shell_A": [
+    0,
+    0.01
+   ],
+   "n_orbits": 2,
+   "ref_norm2_frac": 0.3074099783594585,
+   "rel_vs_phono3py": 0.012961552242980741,
+   "rel_vs_alamode": 0.013383222606185049,
+   "alamode_vs_phono3py": 0.0033898386093595832,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    0.01,
+    2.0
+   ],
+   "n_orbits": 4,
+   "ref_norm2_frac": 0.6838802528820974,
+   "rel_vs_phono3py": 0.016086184112886197,
+   "rel_vs_alamode": 0.014896854661127126,
+   "alamode_vs_phono3py": 0.0036334378634948882,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    2.0,
+    3.2
+   ],
+   "n_orbits": 24,
+   "ref_norm2_frac": 0.006790933183214803,
+   "rel_vs_phono3py": 0.12423559730344241,
+   "rel_vs_alamode": 0.11609744173860355,
+   "alamode_vs_phono3py": 0.07595472073211759,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    3.2,
+    4.0
+   ],
+   "n_orbits": 20,
+   "ref_norm2_frac": 0.0006358231294536915,
+   "rel_vs_phono3py": 0.3287072543632062,
+   "rel_vs_alamode": 0.2745748723472499,
+   "alamode_vs_phono3py": 0.2690430885353231,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    4.0,
+    5.0
+   ],
+   "n_orbits": 82,
+   "ref_norm2_frac": 0.0008187451363985446,
+   "rel_vs_phono3py": 0.9999999388706823,
+   "rel_vs_alamode": 0.9771693946662632,
+   "alamode_vs_phono3py": 0.41534115791852944,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    5.0,
+    6.0
+   ],
+   "n_orbits": 184,
+   "ref_norm2_frac": 0.00040257151765128165,
+   "rel_vs_phono3py": 0.9999999784794096,
+   "rel_vs_alamode": 0.8788496345976791,
+   "alamode_vs_phono3py": 0.7974317552988206,
+   "n_zero_shengbte": 0
+  },
+  {
+   "shell_A": [
+    6.0,
+    20.0
+   ],
+   "n_orbits": 140,
+   "ref_norm2_frac": 6.169579172558659e-05,
+   "rel_vs_phono3py": 1.0000005224309767,
+   "rel_vs_alamode": 1.088477746228474e-05,
+   "alamode_vs_phono3py": 0.9999999999999915,
+   "n_zero_shengbte": 0
+  }
+ ]
+}
