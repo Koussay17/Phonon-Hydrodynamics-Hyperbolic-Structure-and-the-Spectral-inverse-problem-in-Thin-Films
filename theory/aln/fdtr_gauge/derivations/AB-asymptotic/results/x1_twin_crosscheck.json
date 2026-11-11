@@ -1,0 +1,19 @@
+{
+ "Cattaneo 27.5 ps": {
+  "max_rel_err": 1.1102230246251565e-15,
+  "max_phase_diff_deg": 4.1270651041258915e-14,
+  "tau_l": 0.0
+ },
+ "GK tau_l = tau_R/2": {
+  "max_rel_err": 8.990472811914458e-16,
+  "max_phase_diff_deg": 3.8665078691404174e-14,
+  "tau_l": 1.375e-11
+ },
+ "Fourier": {
+  "max_rel_err": 8.910880450837802e-16,
+  "max_phase_diff_deg": 3.6107741422409613e-14,
+  "tau_l": 0.0
+ },
+ "dphi_dlntau_max_abs_diff_deg": 2.075996835287139e-11,
+ "dphi_dlntau_max_deg": 0.02199966366215328
+}
