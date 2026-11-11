@@ -1,0 +1,60 @@
+﻿# 01 — Known results: the frontier for workstreams A and B
+
+Literature status as of 11 November 2026. Full trail, access levels and exact quotations: `08-literature.md` (item numbers in
+brackets). Status labels: ESTABLISHED (published proof or robust, uncontested observation) · PARTIAL (published for a narrower setting,
+or suggested without proof) · CONJECTURED · NUMERICAL (published computation only) · DISPUTED (published contrary claims) · OPEN (not
+found in the literature searched). "Not found" always means within the scope stated in `08-literature.md` §3.7 and §4.5.
+
+## Workstream B — identifiability of the 1D front-face response of a film on a substrate
+
+| # | Statement | Status | Key sources | Assumptions / remarks |
+|---|---|---|---|---|
+| B-K1 | Fourier film on substrate: response depends on the film only through ξ₁ = e/√a and b (or the effusivity ratio); (e, a, λ) are structurally non-identifiable for any frequency set, noise level or algorithm | ESTABLISHED | Krapez–Rigollet 2017, doi:10.1063/1.4997733 [7]; antecedents Bennett–Patty 1982 [2], Yun–Seo 1983 [3]; quadrupole form Maillet et al. 2000 [11] | 1D, constant coefficients, front-face flux and detection, no interior source |
+| B-K2 | Fourier: ξ₁ is lost when the effusivities match (Γ = 0) | ESTABLISHED | Krapez–Rigollet 2017 [7] | Structural degeneracy of the Fourier case |
+| B-K3 | Graded Fourier film: functional gauge (only the effusivity profile in the Liouville coordinate is observed); 1D parabolic coefficients not unique from point data, normal-form coefficient unique | ESTABLISHED | Krapez 2023, doi:10.1063/5.0151465 [8]; Pierce 1979, doi:10.1137/0317035 [9] | Pierce predates the thermal statement by 38 years |
+| B-K4 | Fourier, finite beams: a known spot radius separates bulk κ and C (isotropic media) | ESTABLISHED (experimental practice) | Schmidt et al. 2009, doi:10.1063/1.3212673; Liu et al. 2013, doi:10.1063/1.4797479; Wei et al. 2013 [12] | Isotropy or known in-plane properties |
+| B-K5 | Fourier multilayer with radial spreading: a film enters only through k_r/C, Ch, Ch²/k_z; substrate through √(k_zk_r), √(k_zC) | PARTIAL (derived as statistical "natural coordinates", exact invariance not stated) | Chen–Wang–Jiang 2026, doi:10.1016/j.ijheatmasstransfer.2026.129653 [16]; Chen–Jiang 2024 (SVD null space), doi:10.7498/aps.73.20241369 [15] | OUR INTERPRETATION: implies the anisotropic gauge (h, k_z, k_r, C) → (μh, μk_z, k_r/μ, C/μ); a lateral wavenumber breaks the gauge only if k_r is known or tied to k_z |
+| B-K6 | 1D GK ≡ DPL with τ_q = τ_R, τ_T = τ_ℓ (historical τ_T = 9τ_N/5) | PARTIAL (relation quoted secondarily; the 1D identity is elementary) | Tzou 1995, doi:10.1115/1.2822329; Tzou 1997/2014 monograph (via arXiv:2307.00665) [23]; Kovács–Ván 2018, doi:10.1007/s00161-017-0610-x [24] | OUR INTERPRETATION: exact for the flux law and flux boundary/interface conditions when there is no interior source; an interior source adds L²∂_z s to the GK flux and breaks the equivalence |
+| B-K7 | Fourier resonance τ_R = τ_ℓ (τ_q = τ_T): non-Fourier law reduces to Fourier | ESTABLISHED | Both et al. 2016, doi:10.1515/jnet-2015-0035; Kovács 2018 [27] | Already attributed in PRIOR_ART.md |
+| B-K8 | Non-Fourier forward models for film/substrate under modulated front-face heating (hyperbolic, DPL, GK, BTE) | ESTABLISHED (forward problem) | Ordóñez-Miranda & Alvarado-Gil 2009–2012 [18]; Ordóñez-Miranda et al. 2015, doi:10.1063/1.4928770 [19]; Hennessy–Myers 2021 [20]; Camacho 2025 [21] | No identifiability (rank) analysis in any of them |
+| B-K9 | DPL finite layer on semi-infinite substrate: explicit formulas determine both lags and further layer properties from oscillation features at strong effusivity contrast | PARTIAL (constructive, regime-limited; full text not read) | Ordóñez-Miranda & Alvarado-Gil 2010, *J. Heat Transfer* 132, 061302, doi:10.1115/1.4000748 [18] | **Main residual prior-art risk for B2**; thickness assumption unknown |
+| B-K10 | Scale gauge e→μe, a→μ²a, λ→μλ, ρc→ρc/μ, ℓ→μℓ survives Cattaneo and GK; only (ξ₁, b, τ_R, τ_ℓ) enter | OPEN in the literature (project result, note 7) | Fourier analogues B-K1, B-K5; telegraph-line analogue Jaulent 1982, doi:10.1063/1.525307 [32] | Potentially novel within the literature searched |
+| B-K11 | Generic Jacobian rank 4 of (ξ₁, b, τ_R, τ_ℓ) ↦ Z, with explicit degenerate set Σ | OPEN | none found | Candidates for Σ: τ_R = τ_ℓ (B-K7); boundary strata τ = 0. OUR INTERPRETATION: b = b_s degenerates only jointly with τ_R = τ_ℓ under non-Fourier laws |
+| B-K12 | Injectivity of the map off Σ (or description of fibres) | OPEN | none found; neighbouring uniqueness theorems for memory kernels assume a known domain: Gentili 1991, doi:10.1088/0266-5611/7/1/008; Janno–von Wolfersdorf 1999/2000; Avdonin–Ivanov–Wang 2019, doi:10.3934/ipi.2019002 [30] | See B-K9 |
+| B-K13 | Gauge breaking by known thickness, or by known λ or ρc | ESTABLISHED | Krapez–Rigollet 2017 [7]; Parker et al. 1961, doi:10.1063/1.1728417 [11] | Trivial algebra |
+| B-K14 | Gauge breaking by interior sources | PARTIAL (suggested, not proved) | Krapez–Rigollet 2017 [7]; Krapez 2023 [8]; quadrupoles with sources: Pailhès et al. 2012, Krapez–Dohou 2014 [3.6] | OUR INTERPRETATION: requires a source profile known in absolute length; an unknown absorption coefficient rescales with the gauge |
+| B-K15 | Two-sided (rear-face) detection of a homogeneous layer does not break the gauge | ESTABLISHED (Fourier; same algebra under non-Fourier laws) | Maillet et al. 2000 [11]; Parker 1961; note 06 for the graded case | Quadrupole entries depend on (ξ₁, b) only |
+| B-K16 | Gauge breaking by an independent wave speed (Debye/kinetic relation) | PARTIAL (project argument) | note 7; analogues Chaderjian 1994, doi:10.1137/S0036139992241157 [33]; Jaulent 1982 [32] | — |
+| B-K17 | Film/substrate interface resistance as a fifth parameter: generic rank 5? | OPEN | Fourier separation needs thickness series: Lee–Cahill 1997, doi:10.1063/1.363923 | — |
+| B-K18 | Finitely many frequencies sufficing generically | OPEN | Fourier: the Krapez–Rigollet degeneracy is frequency-set independent [7] | CONJECTURED (analytic-map argument): two complex frequencies may suffice generically |
+| B-K19 | Sensitivity magnitude does not establish identifiability; numerical SVD screening flags GK/TTM parameters as unidentifiable in Au/Si FDTR | ESTABLISHED (principle) / NUMERICAL (screening) | Krapez–Rigollet 2017 [7]; PRISM, arXiv:2611.02475 [22]; Chen–Jiang 2024 [15] | PRISM holds τ = 42 ps fixed |
+
+## Workstream A — FDTR sensitivity to 10–100 ps relaxation times at MHz
+
+| # | Statement | Status | Key sources | Assumptions / remarks |
+|---|---|---|---|---|
+| A-K1 | FDTR bandwidth ≈ 100 Hz–20 MHz (conventional lock-in), 200 kHz–200 MHz (heterodyne BB-FDTR), 1 Hz–75 MHz (wide-band) | ESTABLISHED | Regner–Majumdar–Malen 2013, doi:10.1063/1.4808055 [35]; Kirsch et al. 2024, doi:10.1063/5.0213738 [36]; Ziade 2020, doi:10.1063/5.0021917 [14] | Signal-to-noise falls above ≈10–20 MHz without heterodyning |
+| A-K2 | Random phase uncertainty ≈0.1–0.2°; systematic phase errors of the same order or larger (cables 1–2°, reference-path phase match ±0.1° at 30 MHz ≈ 9 ps delay) | ESTABLISHED (instrument papers) | Kirsch et al. 2024 presentation [36]; Regner et al. 2013 (±0.2 DC phase) [35]; PRISM 0.1° noise floor [22] | The 0.01° level of the campaign scenario is optimistic; the "few millidegrees" figure quoted by Camacho 2025 was not verified |
+| A-K3 | Metal transducer + interface time constant hC/G ≈ 2 ns (80 nm, G = 100 MW m⁻²K⁻¹); FDTR/TDTR spatial resolution in AlN limited to L ≳ 500 nm | ESTABLISHED | Angeles et al. 2023, doi:10.1063/5.0149651 [40] | The A scenario (Au 80 nm, R = 10⁻⁸ m²K/W) sits exactly at this limit |
+| A-K4 | Frequency-dependent apparent conductivity at MHz in alloys, Si, GaN, AlGaN, AlN (AlN: 50 % of bulk k from MFP > 2.5 ± 0.8 µm) | ESTABLISHED (observation) | Koh–Cahill 2007, doi:10.1103/PhysRevB.76.075207 [41]; Regner et al. 2013, doi:10.1038/ncomms2630 [42]; Freedman et al. 2013, doi:10.1038/srep02963 [43]; Koh et al. 2016 [48] | — |
+| A-K5 | Origin of the MHz frequency dependence: MFP vs penetration depth, mean free time vs heater frequency, or interface non-equilibrium | DISPUTED | Koh–Cahill 2007 [41]; Yang–Dames 2015, doi:10.1103/PhysRevB.91.165311 [46]; Koh–Cahill–Sun 2014 [45]; Wilson–Cahill 2014, doi:10.1038/ncomms6075 [44]; Ramu–Bowers 2015 [47]; Liu et al. 2025, doi:10.1063/5.0254248 [49] | Si: dependence present or absent depending on the interface (Liu 2025) |
+| A-K6 | At room temperature and ≤200 MHz, ωτ ≪ 1 for ps–tens-of-ps relaxation times; the Cattaneo/resistive contribution to the FDTR phase is reported negligible; Si deviations above 5 MHz are nonlocal (ℓ = 185 nm), not resistive (τ = 42 ps) | ESTABLISHED (model statements) / NUMERICAL | Beardo et al. 2020, doi:10.1103/PhysRevB.101.075303 [50]; Saurav–Mazumder 2020/2021, doi:10.1115/HT2020-8920 [51]; Camacho 2025 [52] | OUR INTERPRETATION: in note-7 variables τ_ℓ ≈ 0.5 ns ≈ 12 τ_R for Si at 311 K; the FDTR-visible time is τ_ℓ |
+| A-K7 | A 500 ps hyperbolic relaxation time fitted from bare-surface FDTR on Ge; wave-like effects masked by a metal transducer | DISPUTED | Beardo et al. 2021, doi:10.1126/sciadv.abg4677 [53] vs Huberman–Zhang–Abou Haibeh 2025, doi:10.1088/1361-648X/ae0dd6 | Critique: phase lag alone not a suitable observable |
+| A-K8 | Published Fisher / Cramér–Rao estimate of the FDTR resolution of a 10–100 ps Cattaneo (memory) time with instrument, interface, transducer and beam nuisances free | OPEN | none found (closest: PRISM SVD screening [22]; Camacho sensitivity only [21]) | Project note 7: 2.78 % at 0.01°, τ = 10 ps, half-space, all else known — no published counterpart |
+| A-K9 | First-order collinearity of Cattaneo/GK phase slope (τ_R − τ_ℓ)/2 with an instrument delay −t_d; with delay and τ_ℓ free, τ_R information moves to O((ωτ)²) | CONJECTURED (OUR INTERPRETATION, not in the literature) | derived from the half-space phase of Hennessy–Myers 2021 [20] and the instrument model of note 16 | For AB-A (closed form) and A-C (twin) to confirm or refute |
+| A-K10 | First-moment (Cattaneo) description valid only when ωτ_i ≪ 1 for all heat-carrying modes; at MHz the response probes the long-τ tail | PARTIAL | Yang–Dames 2015 (mean free time as natural variable) [46]; Ezzahri–Joulain 2012, doi:10.1063/1.4759366 [55]; Vermeersch et al. 2015 (prior trail) | Connects A to the infrared growth of the bulk τ_mem; the film regulariser (A1) cuts the tail |
+| A-K11 | Instrumental-phase removal by differential FDTR (spot size or beam offset) | ESTABLISHED (method) | Shahzadeh et al. 2018, doi:10.1063/1.5037117 [38] | Possible remedy for nuisance set N1 |
+| A-K12 | AlN thin-film conductivity: 100/400/1000 nm films Λ = 200 ± 80, 165 ± 35, 300 ± 70 W m⁻¹K⁻¹; 3–22 µm films ≈320 ± 42 W m⁻¹K⁻¹ | ESTABLISHED (measurements, large error bars below 1 µm) | Angeles et al. 2023 [40]; Koh et al. 2020, doi:10.1021/acsami.0c03978; Hoque et al. 2024, doi:10.1063/5.0239769 [4.4] | Even λ_z of a 500 nm film carries ≳20 % uncertainty in published practice |
+
+## Contrary results and failed approaches (for the record)
+
+Guo et al. 2017 identifiability maps — refuted (B-K1). Macroscopic Cattaneo/DPL "validations" (Mitra et al. 1995 and successors) —
+contradicted by Herwig–Beckert 2000 (doi:10.1115/1.521471), re-evaluated by Kovács–Ván 2018, judged biased by Maillet 2019
+(doi:10.1016/j.ijthermalsci.2019.02.021). Fourier with frequency-dependent k cannot fit phase and amplitude together in Si FDTR (Beardo
+2020). Second sound in Ge from phase lag alone — disputed (A-K7).
+
+## Priority reading before any novelty statement
+
+1. Ordóñez-Miranda & Alvarado-Gil, *J. Heat Transfer* **132**, 061302 (2010), and companions (B-K9).
+2. Maillet, *Int. J. Therm. Sci.* **139**, 424–432 (2019) (estimation biases for τ).
+3. Kirsch et al., *Rev. Sci. Instrum.* **95**, 103006 (2024) (phase-noise and calibration figures, A-K2).
