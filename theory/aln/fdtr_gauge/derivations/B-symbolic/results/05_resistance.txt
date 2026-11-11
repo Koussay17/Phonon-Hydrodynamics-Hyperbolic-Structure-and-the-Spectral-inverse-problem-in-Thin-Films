@@ -1,0 +1,68 @@
+(R1) theta = (xi1, b, tau_R, tau_l, R); singular values s_i/s_1 of the equilibrated Jacobians, 50 digits
+  [00] tau_l=pos: N=1: real 2 (min 0.82), complex 1 (min 1.0); N=2: real 4 (min 0.011), complex 2 (min 0.14); N=3: real 5 (min 7.6e-5), complex 3 (min 0.012); N=4: real 5 (min 0.0071), complex 4 (min 0.00096); N=5: real 5 (min 0.0077), complex 5 (min 4.1e-6); N=8: real 5 (min 0.0074), complex 5 (min 0.0022)
+  [01] tau_l=pos: N=1: real 2 (min 0.38), complex 1 (min 1.0); N=2: real 4 (min 0.078), complex 2 (min 0.25); N=3: real 5 (min 0.03), complex 3 (min 0.062); N=4: real 5 (min 0.04), complex 4 (min 0.029); N=5: real 5 (min 0.045), complex 5 (min 0.0038); N=8: real 5 (min 0.046), complex 5 (min 0.01)
+  [02] tau_l=pos: N=1: real 2 (min 0.72), complex 1 (min 1.0); N=2: real 4 (min 0.39), complex 2 (min 0.77); N=3: real 5 (min 0.072), complex 3 (min 0.35); N=4: real 5 (min 0.032), complex 4 (min 0.096); N=5: real 5 (min 0.067), complex 5 (min 0.018); N=8: real 5 (min 0.059), complex 5 (min 0.022)
+  [03] tau_l=pos: N=1: real 2 (min 0.61), complex 1 (min 1.0); N=2: real 4 (min 0.19), complex 2 (min 0.74); N=3: real 5 (min 0.056), complex 3 (min 0.19); N=4: real 5 (min 0.063), complex 4 (min 0.065); N=5: real 5 (min 0.07), complex 5 (min 0.0065); N=8: real 5 (min 0.075), complex 5 (min 0.02)
+  [04] tau_l=pos: N=1: real 2 (min 0.69), complex 1 (min 1.0); N=2: real 4 (min 0.031), complex 2 (min 0.71); N=3: real 5 (min 0.00033), complex 3 (min 0.024); N=4: real 5 (min 0.0031), complex 4 (min 0.0034); N=5: real 5 (min 0.005), complex 5 (min 0.0013); N=8: real 5 (min 0.0046), complex 5 (min 0.0027)
+  [05] tau_l=pos: N=1: real 2 (min 0.45), complex 1 (min 1.0); N=2: real 4 (min 0.057), complex 2 (min 0.81); N=3: real 5 (min 0.0024), complex 3 (min 0.12); N=4: real 5 (min 0.002), complex 4 (min 0.036); N=5: real 5 (min 0.0033), complex 5 (min 0.0012); N=8: real 5 (min 0.0036), complex 5 (min 0.0014)
+  [06] tau_l=pos: N=1: real 2 (min 0.26), complex 1 (min 1.0); N=2: real 4 (min 0.00016), complex 2 (min 0.33); N=3: real 5 (min 0.00015), complex 3 (min 0.00083); N=4: real 5 (min 0.00074), complex 4 (min 7.2e-5); N=5: real 5 (min 0.0013), complex 5 (min 8.0e-6); N=8: real 5 (min 0.00098), complex 5 (min 0.00015)
+  [07] tau_l=pos: N=1: real 2 (min 0.59), complex 1 (min 1.0); N=2: real 4 (min 0.012), complex 2 (min 0.21); N=3: real 5 (min 0.009), complex 3 (min 0.068); N=4: real 5 (min 0.011), complex 4 (min 0.0028); N=5: real 5 (min 0.014), complex 5 (min 0.00064); N=8: real 5 (min 0.015), complex 5 (min 0.0012)
+  [08] tau_l=pos: N=1: real 2 (min 0.69), complex 1 (min 1.0); N=2: real 4 (min 0.015), complex 2 (min 0.27); N=3: real 5 (min 0.047), complex 3 (min 0.062); N=4: real 5 (min 0.026), complex 4 (min 0.0038); N=5: real 5 (min 0.065), complex 5 (min 0.0014); N=8: real 5 (min 0.059), complex 5 (min 0.027)
+  [09] tau_l=pos: N=1: real 2 (min 0.69), complex 1 (min 1.0); N=2: real 4 (min 0.11), complex 2 (min 0.58); N=3: real 5 (min 0.0037), complex 3 (min 0.056); N=4: real 5 (min 0.0076), complex 4 (min 0.0041); N=5: real 5 (min 0.007), complex 5 (min 0.00061); N=8: real 5 (min 0.0062), complex 5 (min 0.0022)
+  [10] tau_l=pos: N=1: real 2 (min 0.34), complex 1 (min 1.0); N=2: real 4 (min 0.051), complex 2 (min 0.74); N=3: real 5 (min 6.6e-5), complex 3 (min 0.16); N=4: real 5 (min 0.0011), complex 4 (min 0.00016); N=5: real 5 (min 0.0012), complex 5 (min 6.6e-7); N=8: real 5 (min 0.0013), complex 5 (min 0.00014)
+  [11] tau_l=pos: N=1: real 2 (min 0.67), complex 1 (min 1.0); N=2: real 4 (min 0.062), complex 2 (min 0.23); N=3: real 5 (min 0.0039), complex 3 (min 0.082); N=4: real 5 (min 0.0087), complex 4 (min 0.017); N=5: real 5 (min 0.0088), complex 5 (min 0.0016); N=8: real 5 (min 0.0095), complex 5 (min 0.0016)
+  [12] tau_l=0: N=1: real 2 (min 0.82), complex 1 (min 1.0); N=2: real 4 (min 0.25), complex 2 (min 0.71); N=3: real 5 (min 0.0042), complex 3 (min 0.14); N=4: real 5 (min 0.017), complex 4 (min 0.097); N=5: real 5 (min 0.017), complex 5 (min 0.008); N=8: real 5 (min 0.016), complex 5 (min 0.0089)
+  [13] tau_l=0: N=1: real 2 (min 0.38), complex 1 (min 1.0); N=2: real 4 (min 0.034), complex 2 (min 0.62); N=3: real 5 (min 0.0016), complex 3 (min 0.066); N=4: real 5 (min 0.0081), complex 4 (min 0.0025); N=5: real 5 (min 0.0085), complex 5 (min 3.6e-5); N=8: real 5 (min 0.014), complex 5 (min 0.00022)
+  [14] tau_l=0: N=1: real 2 (min 0.87), complex 1 (min 1.0); N=2: real 4 (min 0.022), complex 2 (min 0.099); N=3: real 5 (min 0.0001), complex 3 (min 0.033); N=4: real 5 (min 0.0001), complex 4 (min 0.00012); N=5: real 5 (min 0.00012), complex 5 (min 2.8e-6); N=8: real 5 (min 0.00022), complex 5 (min 3.8e-5)
+  [15] tau_l=0: N=1: real 2 (min 0.33), complex 1 (min 1.0); N=2: real 4 (min 0.067), complex 2 (min 0.69); N=3: real 5 (min 0.0025), complex 3 (min 0.044); N=4: real 5 (min 0.022), complex 4 (min 0.0037); N=5: real 5 (min 0.023), complex 5 (min 0.00022); N=8: real 5 (min 0.045), complex 5 (min 0.0024)
+  max rel. difference symbolic vs numerical derivatives: 1.52e-48
+  N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.257, complex 1.0
+  N=2: real ranks [4], complex ranks [2], min s_min/s1 real 0.000157, complex 0.0994
+  N=3: real ranks [5], complex ranks [3], min s_min/s1 real 6.65e-5, complex 0.000829
+  N=4: real ranks [5], complex ranks [4], min s_min/s1 real 0.000102, complex 7.21e-5
+  N=5: real ranks [5], complex ranks [5], min s_min/s1 real 0.00012, complex 6.61e-7
+  N=8: real ranks [5], complex ranks [5], min s_min/s1 real 0.000224, complex 3.84e-5
+
+(R2) Arb certificates (forward-mode AD in ball arithmetic)
+  [00] real N=2 4x4 minor 4.8600e+5 +/- 3.3e-86; real N=3 5x5 minor 8464.8 +/- 2.2e-85; complex N=5 |det| 131.95  ok
+  [01] real N=2 4x4 minor 0.91349 +/- 1.4e-92; real N=3 5x5 minor 0.050353 +/- 1.2e-93; complex N=5 |det| 0.026398  ok
+  [02] real N=2 4x4 minor 612.10 +/- 4.5e-90; real N=3 5x5 minor -221.98 +/- 1.3e-88; complex N=5 |det| 99.477  ok
+  [03] real N=2 4x4 minor 8.2427 +/- 4.7e-92; real N=3 5x5 minor 2.9108 +/- 5.4e-92; complex N=5 |det| 0.27701  ok
+  [04] real N=2 4x4 minor 0.00011134 +/- 8.1e-96; real N=3 5x5 minor -4.6032e-8 +/- 8.3e-98; complex N=5 |det| 6.0701e-8  ok
+  [05] real N=2 4x4 minor -28.678 +/- 4.6e-91; real N=3 5x5 minor -0.28220 +/- 2.5e-92; complex N=5 |det| 0.23166  ok
+  [06] real N=2 4x4 minor 2.7317e-10 +/- 8.9e-100; real N=3 5x5 minor 5.3881e-14 +/- 3.1e-102; complex N=5 |det| 4.1633e-15  ok
+  [07] real N=2 4x4 minor 0.0028164 +/- 1.9e-94; real N=3 5x5 minor -0.00011103 +/- 3.3e-95; complex N=5 |det| 3.0330e-5  ok
+  [08] real N=2 4x4 minor -4.6677 +/- 5.2e-92; real N=3 5x5 minor 1.0923 +/- 7.9e-93; complex N=5 |det| 0.081972  ok
+  [09] real N=2 4x4 minor -0.0013322 +/- 6.1e-95; real N=3 5x5 minor -5.7323e-7 +/- 6.7e-97; complex N=5 |det| 7.5142e-9  ok
+  [10] real N=2 4x4 minor -2.7767e-6 +/- 1.3e-97; real N=3 5x5 minor -6.6702e-9 +/- 1.8e-98; complex N=5 |det| 5.2007e-11  ok
+  [11] real N=2 4x4 minor -0.011271 +/- 3.7e-94; real N=3 5x5 minor 3.0647e-5 +/- 4.6e-96; complex N=5 |det| 1.3342e-5  ok
+  [12] real N=2 4x4 minor -1.0833e+5 +/- 9.3e-86; real N=3 5x5 minor -4696.0 +/- 8.3e-87; complex N=5 |det| 5.0519e+4  ok
+  [13] real N=2 4x4 minor -0.0010995 +/- 1.2e-94; real N=3 5x5 minor -6.5703e-6 +/- 9.0e-96; complex N=5 |det| 3.2604e-5  ok
+  [14] real N=2 4x4 minor 3.6534 +/- 1.8e-91; real N=3 5x5 minor 53.778 +/- 1.9e-87; complex N=5 |det| 33.739  ok
+  [15] real N=2 4x4 minor -0.00030160 +/- 1.1e-95; real N=3 5x5 minor 5.1665e-5 +/- 1.6e-94; complex N=5 |det| 9.9690e-6  ok
+  all certificates valid: True
+
+(R3) strata with R (50-digit SVD of the real Jacobian at 8 frequencies, natural scaling; Arb lower bounds)
+  tau_R = tau_l, R > 0 (rank 4): s/s1 = [1.0, 0.234, 0.0387, 0.0127, 4.91e-53]; certified 4x4 minor 0.01288 +/- 8.1e-94 ok; null-vector residuals ['0.0']
+  tau_R = tau_l, R = 0, b != bs (rank 3): s/s1 = [1.0, 0.266, 0.0245, 4.16e-52, 9.75e-53]; certified 3x3 minor 0.1579 +/- 3.4e-93 ok; null-vector residuals ['2.58e-53', '6.82e-52']
+  tau_R = tau_l, R = 0, b = bs (rank 3): s/s1 = [1.0, 0.284, 0.02, 1.18e-51, 1.92e-52]; certified 3x3 minor -0.09299 +/- 1.3e-93 ok; null-vector residuals ['3.25e-53', '1.64e-51']
+  tau_R = tau_l = 0 (Fourier), R = 0 (rank 3): s/s1 = [1.0, 0.296, 0.0381, 2.41e-52, 2.33e-52]; certified 3x3 minor 1.089 +/- 2.3e-93 ok; null-vector residuals ['0.0', '4.1e-52']
+  tau_R = tau_l, R > 0, b = bs (rank 4): s/s1 = [1.0, 0.246, 0.0847, 0.0109, 2.0e-52]; certified 4x4 minor 0.01414 +/- 2.6e-93 ok; null-vector residuals ['5.84e-53']
+  R = 0, tau_R != tau_l (rank 5): s/s1 = [1.0, 0.514, 0.18, 0.0293, 0.015]; certified 5x5 minor -0.03041 +/- 8.5e-93 ok; null-vector residuals []
+  b = bs, R > 0, tau_R != tau_l (rank 5): s/s1 = [1.0, 0.494, 0.133, 0.0341, 0.00234]; certified 5x5 minor -0.003302 +/- 3.8e-93 ok; null-vector residuals []
+  tau_R = tau_l, R > 0 (rank 4): s/s1 = [1.0, 0.365, 0.0546, 0.0161, 1.43e-52]; certified 4x4 minor -5.379e-5 +/- 7.0e-96 ok; null-vector residuals ['1.46e-52']
+  tau_R = tau_l, R = 0, b != bs (rank 3): s/s1 = [1.0, 0.394, 0.0327, 1.91e-51, 4.21e-53]; certified 3x3 minor 0.001658 +/- 4.8e-95 ok; null-vector residuals ['0.0', '7.92e-51']
+  tau_R = tau_l, R = 0, b = bs (rank 3): s/s1 = [1.0, 0.432, 0.0633, 1.27e-51, 2.25e-52]; certified 3x3 minor 0.004043 +/- 4.1e-95 ok; null-vector residuals ['1.31e-52', '1.17e-51']
+  tau_R = tau_l = 0 (Fourier), R = 0 (rank 3): s/s1 = [1.0, 0.0915, 0.0188, 4.37e-52, 1.86e-53]; certified 3x3 minor 0.03612 +/- 7.3e-95 ok; null-vector residuals ['0.0', '8.41e-52']
+  tau_R = tau_l, R > 0, b = bs (rank 4): s/s1 = [1.0, 0.468, 0.0819, 0.0404, 1.45e-52]; certified 4x4 minor 0.0001054 +/- 1.9e-95 ok; null-vector residuals ['1.32e-52']
+  R = 0, tau_R != tau_l (rank 5): s/s1 = [1.0, 0.764, 0.247, 0.0332, 0.013]; certified 5x5 minor -3.781e-5 +/- 2.7e-95 ok; null-vector residuals []
+  b = bs, R > 0, tau_R != tau_l (rank 5): s/s1 = [1.0, 0.736, 0.234, 0.0746, 0.00491]; certified 5x5 minor -3.722e-5 +/- 3.7e-95 ok; null-vector residuals []
+  all stratum certificates valid: True
+
+(R4) grid search: beta in 10^[-2,2] (9), T_R, T_l in {0} U 10^[-3,3] (13), Rhat = R bs/xi1 in {0} U 10^[-3,2] (7);
+     65 frequencies P in [1e-4, 1e4]; real Jacobian 130 x 5, equilibrated columns (zero columns cannot occur here
+     except dZ/dxi1 on {T_R = T_l, R = 0, beta = 1}, which is excluded from the statistics below and covered by the certified strata of R3)
+  off the diagonal, R > 0: min s5/s1 = 1.666e-08 at beta=0.01, T_R=1e+03, T_l=0, Rhat=0.001
+  off the diagonal, R = 0: min s5/s1 = 1.706e-11 at beta=100, T_R=0, T_l=0.001, Rhat=0
+  on the diagonal, R > 0: max s5/s1 = 3.62e-16; min s4/s1 = 1.212e-08
+  on the diagonal, R = 0, beta != 1: max s4/s1 = 3.98e-16; min s3/s1 = 1.226e-04

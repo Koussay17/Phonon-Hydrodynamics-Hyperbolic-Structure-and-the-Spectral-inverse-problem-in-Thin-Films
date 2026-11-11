@@ -1,0 +1,69 @@
+Certified lower bounds on the strata (320-bit Arb balls).
+tau_R = tau_l > 0, b != bs: xi1=7/5, b=77/100, tau=7/100, bs=41/10; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (1, 2)) -0.62699 +/- 3.1e-94 ok
+   real N=2: best 3x3 minor (cols (0, 1, 2)) -0.026354 +/- 3.3e-95 ok;  largest 4x4 minor 0 +/- 1.7e-94 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 2)) -0.032562 +/- 4.6e-95 ok;  largest 4x4 minor 0 +/- 1.7e-94 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 2)) |.|=0.01206 rad(2.6e-94,2.6e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 5.07e-94
+tau_R = tau_l > 0, b != bs: xi1=39/20, b=21/50, tau=73/100, bs=69/20; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (1, 2)) -1.6493 +/- 1.9e-93 ok
+   real N=2: best 3x3 minor (cols (0, 1, 2)) -0.080188 +/- 7.2e-94 ok;  largest 4x4 minor 0 +/- 3.6e-94 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 2)) -0.080188 +/- 7.2e-94 ok;  largest 4x4 minor 0 +/- 3.6e-94 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 3)) |.|=0.01506 rad(5.2e-94,5.2e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 4.33e-94
+tau_R = tau_l > 0, b != bs: xi1=157/100, b=69/50, tau=29/50, bs=123/25; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (1, 2)) -0.0067853 +/- 1.8e-95 ok
+   real N=2: best 3x3 minor (cols (0, 1, 2)) -0.011808 +/- 4.5e-95 ok;  largest 4x4 minor 0 +/- 7.0e-96 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 2)) -0.015792 +/- 9.5e-95 ok;  largest 4x4 minor 0 +/- 7.0e-96 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 2)) |.|=0.001962 rad(1.4e-94,1.4e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 3.08e-94
+tau_R = tau_l > 0, b != bs: xi1=57/100, b=9/25, tau=18/25, bs=479/100; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (0, 1)) 0.048663 +/- 5.1e-95 ok
+   real N=2: best 3x3 minor (cols (0, 1, 3)) 0.010902 +/- 2.5e-94 ok;  largest 4x4 minor 0 +/- 1.2e-95 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 3)) 0.010902 +/- 2.5e-94 ok;  largest 4x4 minor 0 +/- 1.2e-95 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 2)) |.|=0.002605 rad(6.2e-94,6.2e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 1.84e-94
+Fourier tau_R = tau_l = 0, b != bs: xi1=7/20, b=89/100, tau=0, bs=369/100; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (1, 2)) -0.70331 +/- 1.0e-94 ok
+   real N=2: best 3x3 minor (cols (0, 1, 2)) -0.90639 +/- 3.9e-94 ok;  largest 4x4 minor 0 +/- 2.2e-93 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 2)) -1.0260 +/- 4.5e-94 ok;  largest 4x4 minor 0 +/- 2.2e-93 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 2)) |.|=0.6171 rad(8.7e-94,8.7e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 7.02e-94
+Fourier tau_R = tau_l = 0, b != bs: xi1=157/100, b=249/100, tau=0, bs=111/25; expected function-level rank 3
+   real N=1: best 2x2 minor (cols (1, 2)) -0.032343 +/- 7.9e-96 ok
+   real N=2: best 3x3 minor (cols (0, 1, 2)) 3.2579e-5 +/- 8.9e-98 ok;  largest 4x4 minor 0 +/- 9.5e-98 (contains 0: True)
+   real N=4: best 3x3 minor (cols (0, 1, 2)) -0.00023268 +/- 3.2e-97 ok;  largest 4x4 minor 0 +/- 9.5e-98 (contains 0: True)
+   complex N=3: best 3x3 minor (cols (0, 1, 2)) |.|=9.399e-5 rad(1.0e-96,1.0e-96) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 8.78e-95
+tau_R = tau_l > 0, b = bs: xi1=171/100, b=31/25, tau=53/25, bs=31/25; expected function-level rank 2
+   real N=1: best 2x2 minor (cols (1, 2)) -0.0015646 +/- 1.6e-95 ok
+   real N=2: best 2x2 minor (cols (1, 2)) -0.0015646 +/- 1.6e-95 ok;  largest 3x3 minor 5.5450e-100 +/- 2.4e-96 (contains 0: True)
+   real N=4: best 2x2 minor (cols (1, 2)) -0.0077939 +/- 5.2e-95 ok;  largest 3x3 minor 2.4910e-99 +/- 1.2e-95 (contains 0: True)
+   complex N=2: best 2x2 minor (cols (1, 2)) |.|=0.0004923 rad(2.4e-95,2.4e-95) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 9.30e-95;  max |col1|: 2.87e-95
+tau_R = tau_l > 0, b = bs: xi1=1/4, b=4/5, tau=12/25, bs=4/5; expected function-level rank 2
+   real N=1: best 2x2 minor (cols (1, 3)) 8.9173e-5 +/- 7.5e-96 ok
+   real N=2: best 2x2 minor (cols (1, 3)) 8.9173e-5 +/- 7.5e-96 ok;  largest 3x3 minor 2.7159e-100 +/- 1.0e-96 (contains 0: True)
+   real N=4: best 2x2 minor (cols (1, 2)) -0.00020611 +/- 1.4e-95 ok;  largest 3x3 minor -5.2673e-100 +/- 2.0e-96 (contains 0: True)
+   complex N=2: best 2x2 minor (cols (1, 3)) |.|=3.105e-5 rad(1.0e-95,1.0e-95) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 7.00e-95;  max |col1|: 3.21e-95
+tau_R = tau_l > 0, b = bs: xi1=7/10, b=97/50, tau=207/100, bs=97/50; expected function-level rank 2
+   real N=1: best 2x2 minor (cols (1, 2)) -0.0013861 +/- 1.4e-95 ok
+   real N=2: best 2x2 minor (cols (1, 2)) -0.0013861 +/- 1.4e-95 ok;  largest 3x3 minor -1.2369e-100 +/- 8.1e-97 (contains 0: True)
+   real N=4: best 2x2 minor (cols (1, 2)) -0.0013861 +/- 1.4e-95 ok;  largest 3x3 minor -1.2369e-100 +/- 8.1e-97 (contains 0: True)
+   complex N=2: best 2x2 minor (cols (1, 2)) |.|=0.0004461 rad(8.6e-96,8.6e-96) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 6.65e-95;  max |col1|: 7.33e-95
+Fourier tau = 0, b = bs: xi1=26/25, b=5/4, tau=0, bs=5/4; expected function-level rank 2
+   real N=1: best 2x2 minor (cols (1, 2)) -0.25464 +/- 7.4e-95 ok
+   real N=2: best 2x2 minor (cols (1, 2)) 0.26456 +/- 7.2e-95 ok;  largest 3x3 minor -1.4015e-97 +/- 3.5e-94 (contains 0: True)
+   real N=4: best 2x2 minor (cols (1, 2)) 0.26456 +/- 7.2e-95 ok;  largest 3x3 minor -3.0411e-97 +/- 3.2e-94 (contains 0: True)
+   complex N=2: best 2x2 minor (cols (1, 2)) |.|=0.1382 rad(1.4e-94,1.4e-94) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 2.66e-94;  max |col1|: 4.30e-96
+Fourier tau = 0, b = bs: xi1=113/100, b=11/5, tau=0, bs=11/5; expected function-level rank 2
+   real N=1: best 2x2 minor (cols (1, 2)) -0.046923 +/- 1.5e-95 ok
+   real N=2: best 2x2 minor (cols (1, 2)) -0.046924 +/- 1.5e-95 ok;  largest 3x3 minor -3.8688e-98 +/- 4.6e-95 (contains 0: True)
+   real N=4: best 2x2 minor (cols (1, 2)) -0.055143 +/- 1.9e-95 ok;  largest 3x3 minor -3.8688e-98 +/- 4.6e-95 (contains 0: True)
+   complex N=2: best 2x2 minor (cols (1, 2)) |.|=0.0002820 rad(3.0e-95,3.0e-95) ok
+   max |col3 + col4| over the 4 frequencies (midpoint): 1.79e-94;  max |col1|: 5.81e-96
+
+all lower-bound certificates valid and all next-size minors contain 0: True

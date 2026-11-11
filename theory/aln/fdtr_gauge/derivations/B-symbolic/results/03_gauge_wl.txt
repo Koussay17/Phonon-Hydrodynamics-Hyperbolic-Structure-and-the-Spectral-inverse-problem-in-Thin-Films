@@ -1,0 +1,10 @@
+Wolfram Language 15.0.1 kernel, input 03_gauge.wl
+
+(N::meprec message issued while evaluating Abs[] of the exactly-zero Euler residual at the spot point.)
+
+{"Euler D Z" -> 0, "Euler without ell term is zero?" -> False,
+ "spot |DZ|/|e dZ/de|" -> 0``86.9518565715939,
+ "spot without ell" -> 3.90481066941107162377726834269306442174`20.,
+ "finite mu" -> 0, "rank dphi" -> 4, "kernel dphi" -> {{e/ell, (2*a)/ell, lam/ell, 1, 0}},
+ "unit group preserving (omega, bs, Z)" -> {{0, 1, 0, 1}, {1, 0, 0, 0}},
+ "its action on ln(e,a,lambda,rhoc,ell,tauR)" -> {{0, 0, 0, 0, 0, 0}, {1, 2, 1, -1, 1, 0}}}

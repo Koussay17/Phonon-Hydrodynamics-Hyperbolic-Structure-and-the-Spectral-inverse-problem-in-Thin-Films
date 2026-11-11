@@ -1,0 +1,274 @@
+Rank of the front-face Jacobian, theta = (xi1, b, tau_R, tau_l); 50-digit arithmetic.
+Singular values of the column-equilibrated Jacobians, normalised by the largest (s_i/s_1).
+Numerical rank: number of s_i/s_1 > 1e-30 (an exact zero shows up below 1e-45 at this precision).
+
+[00] random: xi1=2.925 b=0.678 bs=0.114 tau_R=1.66 tau_l=0.9839
+     N=1: real rank 2  s/s1 = [1.0, 0.492] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.957, 0.0781, 0.0261] | complex rank 2  s/s1 = [1.0, 0.933] | (a)-(b) singular values 1.0e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.989, 0.125, 0.0338] | complex rank 3  s/s1 = [1.0, 0.968, 0.00753] | (a)-(b) singular values 3.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.98, 0.126, 0.0385] | complex rank 4  s/s1 = [1.0, 0.959, 0.0977, 0.0039] | (a)-(b) singular values 1.9e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.978, 0.129, 0.0409] | complex rank 4  s/s1 = [1.0, 0.956, 0.0793, 0.0122] | (a)-(b) singular values 7.5e-51
+[01] random: xi1=0.174 b=0.472 bs=0.22 tau_R=0.001847 tau_l=0.05668
+     N=1: real rank 2  s/s1 = [1.0, 0.905] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.4e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.859, 0.333, 0.034] | complex rank 2  s/s1 = [1.0, 0.485] | (a)-(b) singular values 5.5e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.871, 0.462, 0.0367] | complex rank 3  s/s1 = [1.0, 0.51, 0.277] | (a)-(b) singular values 3.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.858, 0.407, 0.039] | complex rank 4  s/s1 = [1.0, 0.52, 0.25, 0.0068] | (a)-(b) singular values 1.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.871, 0.396, 0.0363] | complex rank 4  s/s1 = [1.0, 0.446, 0.23, 0.00598] | (a)-(b) singular values 7.4e-51
+[02] random: xi1=0.402 b=0.615 bs=0.438 tau_R=0.01665 tau_l=0.005818
+     N=1: real rank 2  s/s1 = [1.0, 0.616] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 6.3e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.754, 0.337, 0.0458] | complex rank 2  s/s1 = [1.0, 0.529] | (a)-(b) singular values 1.7e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.99, 0.239, 0.14] | complex rank 3  s/s1 = [1.0, 0.84, 0.116] | (a)-(b) singular values 7.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.986, 0.289, 0.185] | complex rank 4  s/s1 = [1.0, 0.844, 0.182, 0.038] | (a)-(b) singular values 7.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.948, 0.326, 0.191] | complex rank 4  s/s1 = [1.0, 0.77, 0.19, 0.055] | (a)-(b) singular values 3.8e-51
+[03] random: xi1=3.534 b=0.914 bs=6.898 tau_R=102.5 tau_l=31.39
+     N=1: real rank 2  s/s1 = [1.0, 0.551] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.6e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.614, 0.229, 0.0496] | complex rank 2  s/s1 = [1.0, 0.453] | (a)-(b) singular values 3.2e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.527, 0.212, 0.0663] | complex rank 3  s/s1 = [1.0, 0.234, 0.0465] | (a)-(b) singular values 1.5e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.431, 0.149, 0.0479] | complex rank 4  s/s1 = [1.0, 0.182, 0.0888, 0.00266] | (a)-(b) singular values 1.5e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.476, 0.191, 0.0709] | complex rank 4  s/s1 = [1.0, 0.229, 0.12, 0.0236] | (a)-(b) singular values 1.5e-51
+[04] random: xi1=0.238 b=0.314 bs=2.681 tau_R=0.03149 tau_l=0.001076
+     N=1: real rank 2  s/s1 = [1.0, 0.955] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.7e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.735, 0.248, 0.00232] | complex rank 2  s/s1 = [1.0, 0.315] | (a)-(b) singular values 8.5e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.797, 0.601, 0.0317] | complex rank 3  s/s1 = [1.0, 0.5, 0.0521] | (a)-(b) singular values 9.4e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.728, 0.534, 0.305] | complex rank 4  s/s1 = [1.0, 0.508, 0.352, 0.0024] | (a)-(b) singular values 5.5e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.762, 0.544, 0.41] | complex rank 4  s/s1 = [1.0, 0.49, 0.399, 0.157] | (a)-(b) singular values 4.8e-51
+[05] random: xi1=0.958 b=3.859 bs=0.32 tau_R=4.544 tau_l=0.3699
+     N=1: real rank 2  s/s1 = [1.0, 0.484] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 0.0
+     N=2: real rank 4  s/s1 = [1.0, 0.87, 0.123, 0.0221] | complex rank 2  s/s1 = [1.0, 0.838] | (a)-(b) singular values 3.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.925, 0.512, 0.0367] | complex rank 3  s/s1 = [1.0, 0.895, 0.132] | (a)-(b) singular values 1.9e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.829, 0.435, 0.0489] | complex rank 4  s/s1 = [1.0, 0.819, 0.358, 0.000634] | (a)-(b) singular values 3.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.903, 0.485, 0.048] | complex rank 4  s/s1 = [1.0, 0.904, 0.228, 0.0104] | (a)-(b) singular values 7.7e-51
+[06] random: xi1=0.441 b=0.167 bs=0.931 tau_R=2.781 tau_l=0.0105
+     N=1: real rank 2  s/s1 = [1.0, 0.696] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 6.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.607, 0.226, 0.135] | complex rank 2  s/s1 = [1.0, 0.594] | (a)-(b) singular values 6.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.715, 0.106, 0.0118] | complex rank 3  s/s1 = [1.0, 0.227, 0.0418] | (a)-(b) singular values 3.3e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.608, 0.204, 0.059] | complex rank 4  s/s1 = [1.0, 0.559, 0.0484, 0.0115] | (a)-(b) singular values 6.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.843, 0.475, 0.0414] | complex rank 4  s/s1 = [1.0, 0.47, 0.28, 0.0119] | (a)-(b) singular values 9.3e-51
+[07] random: xi1=0.121 b=0.852 bs=0.26 tau_R=0.001698 tau_l=0.06827
+     N=1: real rank 2  s/s1 = [1.0, 0.531] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.821, 0.404, 0.000692] | complex rank 2  s/s1 = [1.0, 0.406] | (a)-(b) singular values 5.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.802, 0.496, 0.0158] | complex rank 3  s/s1 = [1.0, 0.489, 0.165] | (a)-(b) singular values 5.5e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.8, 0.405, 0.0149] | complex rank 4  s/s1 = [1.0, 0.423, 0.211, 9.79e-5] | (a)-(b) singular values 7.2e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.771, 0.436, 0.015] | complex rank 4  s/s1 = [1.0, 0.441, 0.193, 0.0011] | (a)-(b) singular values 1.8e-51
+[08] random: xi1=4.415 b=0.155 bs=2.17 tau_R=32.67 tau_l=15.79
+     N=1: real rank 2  s/s1 = [1.0, 0.957] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.768, 0.0747, 0.00333] | complex rank 2  s/s1 = [1.0, 0.353] | (a)-(b) singular values 3.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.851, 0.0723, 0.0213] | complex rank 3  s/s1 = [1.0, 0.766, 0.0196] | (a)-(b) singular values 3.5e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.792, 0.129, 0.0096] | complex rank 4  s/s1 = [1.0, 0.465, 0.0873, 0.000288] | (a)-(b) singular values 4.3e-52
+     N=8: real rank 4  s/s1 = [1.0, 0.817, 0.16, 0.0164] | complex rank 4  s/s1 = [1.0, 0.532, 0.116, 0.00573] | (a)-(b) singular values 1.7e-51
+[09] random: xi1=0.219 b=1.29 bs=0.219 tau_R=0.271 tau_l=0.02878
+     N=1: real rank 2  s/s1 = [1.0, 0.629] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.7e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.945, 0.122, 0.00568] | complex rank 2  s/s1 = [1.0, 0.856] | (a)-(b) singular values 3.9e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.85, 0.448, 0.0312] | complex rank 3  s/s1 = [1.0, 0.833, 0.289] | (a)-(b) singular values 1.9e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.876, 0.256, 0.0248] | complex rank 4  s/s1 = [1.0, 0.787, 0.187, 0.000452] | (a)-(b) singular values 3.6e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.917, 0.431, 0.034] | complex rank 4  s/s1 = [1.0, 0.925, 0.163, 0.0104] | (a)-(b) singular values 1.9e-51
+[10] random: xi1=1.573 b=0.132 bs=0.411 tau_R=0.4775 tau_l=31.93
+     N=1: real rank 2  s/s1 = [1.0, 0.859] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.3e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.778, 0.403, 0.0158] | complex rank 2  s/s1 = [1.0, 0.418] | (a)-(b) singular values 3.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.776, 0.571, 0.0293] | complex rank 3  s/s1 = [1.0, 0.569, 0.129] | (a)-(b) singular values 5.6e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.758, 0.417, 0.0295] | complex rank 4  s/s1 = [1.0, 0.472, 0.248, 0.00464] | (a)-(b) singular values 3.5e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.748, 0.455, 0.0336] | complex rank 4  s/s1 = [1.0, 0.486, 0.232, 0.0171] | (a)-(b) singular values 5.3e-51
+[11] random: xi1=3.86 b=1.307 bs=0.214 tau_R=0.4023 tau_l=0.447
+     N=1: real rank 2  s/s1 = [1.0, 0.35] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 2.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.996, 0.0542, 0.0254] | complex rank 2  s/s1 = [1.0, 0.978] | (a)-(b) singular values 1.9e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.97, 0.0748, 0.0201] | complex rank 3  s/s1 = [1.0, 0.956, 0.0453] | (a)-(b) singular values 1.9e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.991, 0.0648, 0.0237] | complex rank 4  s/s1 = [1.0, 0.974, 0.0153, 0.00763] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.983, 0.0737, 0.0249] | complex rank 4  s/s1 = [1.0, 0.965, 0.0386, 0.0112] | (a)-(b) singular values 3.8e-51
+[12] random: xi1=2.641 b=0.3 bs=6.039 tau_R=18.99 tau_l=12.62
+     N=1: real rank 2  s/s1 = [1.0, 0.891] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.6e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.821, 0.0614, 0.0365] | complex rank 2  s/s1 = [1.0, 0.749] | (a)-(b) singular values 1.7e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.849, 0.101, 0.0344] | complex rank 3  s/s1 = [1.0, 0.606, 0.0451] | (a)-(b) singular values 1.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.843, 0.0589, 0.0342] | complex rank 4  s/s1 = [1.0, 0.737, 0.0215, 0.00695] | (a)-(b) singular values 7.7e-52
+     N=8: real rank 4  s/s1 = [1.0, 0.62, 0.156, 0.0362] | complex rank 4  s/s1 = [1.0, 0.511, 0.106, 0.0066] | (a)-(b) singular values 3.2e-51
+[13] random: xi1=0.164 b=0.164 bs=0.283 tau_R=0.02924 tau_l=0.000269
+     N=1: real rank 2  s/s1 = [1.0, 0.616] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.7e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.631, 0.351, 0.114] | complex rank 2  s/s1 = [1.0, 0.395] | (a)-(b) singular values 6.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.639, 0.47, 0.167] | complex rank 3  s/s1 = [1.0, 0.532, 0.343] | (a)-(b) singular values 6.0e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.656, 0.44, 0.188] | complex rank 4  s/s1 = [1.0, 0.524, 0.219, 0.129] | (a)-(b) singular values 1.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.735, 0.472, 0.175] | complex rank 4  s/s1 = [1.0, 0.463, 0.334, 0.0894] | (a)-(b) singular values 1.4e-50
+[14] random: xi1=0.28 b=0.13 bs=0.774 tau_R=0.03748 tau_l=0.6432
+     N=1: real rank 2  s/s1 = [1.0, 0.686] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.9e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.768, 0.456, 0.000721] | complex rank 2  s/s1 = [1.0, 0.483] | (a)-(b) singular values 4.5e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.758, 0.378, 0.0048] | complex rank 3  s/s1 = [1.0, 0.48, 0.251] | (a)-(b) singular values 1.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.781, 0.429, 0.0057] | complex rank 4  s/s1 = [1.0, 0.482, 0.217, 0.00284] | (a)-(b) singular values 1.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.747, 0.4, 0.00508] | complex rank 4  s/s1 = [1.0, 0.456, 0.199, 0.00335] | (a)-(b) singular values 2.6e-51
+[15] random: xi1=0.255 b=0.744 bs=0.175 tau_R=0.02321 tau_l=0.1947
+     N=1: real rank 2  s/s1 = [1.0, 0.85] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.881, 0.276, 0.0152] | complex rank 2  s/s1 = [1.0, 0.293] | (a)-(b) singular values 4.5e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.91, 0.288, 0.0203] | complex rank 3  s/s1 = [1.0, 0.347, 0.0572] | (a)-(b) singular values 2.3e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.902, 0.352, 0.0198] | complex rank 4  s/s1 = [1.0, 0.383, 0.141, 0.00185] | (a)-(b) singular values 3.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.885, 0.284, 0.0179] | complex rank 4  s/s1 = [1.0, 0.311, 0.109, 0.00177] | (a)-(b) singular values 7.3e-51
+[16] random: xi1=0.38 b=0.189 bs=6.09 tau_R=0.002888 tau_l=0.1773
+     N=1: real rank 2  s/s1 = [1.0, 0.609] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.6e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.788, 0.581, 0.00116] | complex rank 2  s/s1 = [1.0, 0.542] | (a)-(b) singular values 1.9e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.776, 0.566, 0.00224] | complex rank 3  s/s1 = [1.0, 0.791, 0.298] | (a)-(b) singular values 7.4e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.777, 0.465, 0.00637] | complex rank 4  s/s1 = [1.0, 0.589, 0.362, 0.000796] | (a)-(b) singular values 3.6e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.767, 0.512, 0.00607] | complex rank 4  s/s1 = [1.0, 0.597, 0.35, 0.00242] | (a)-(b) singular values 1.6e-50
+[17] random: xi1=0.159 b=0.349 bs=1.118 tau_R=0.01909 tau_l=0.0008596
+     N=1: real rank 2  s/s1 = [1.0, 0.829] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 6.9e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.777, 0.358, 0.0145] | complex rank 2  s/s1 = [1.0, 0.743] | (a)-(b) singular values 4.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.633, 0.598, 0.224] | complex rank 3  s/s1 = [1.0, 0.586, 0.466] | (a)-(b) singular values 7.2e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.708, 0.486, 0.176] | complex rank 4  s/s1 = [1.0, 0.56, 0.267, 0.0351] | (a)-(b) singular values 1.2e-50
+     N=8: real rank 4  s/s1 = [1.0, 0.729, 0.51, 0.374] | complex rank 4  s/s1 = [1.0, 0.529, 0.465, 0.242] | (a)-(b) singular values 2.8e-51
+[18] random: xi1=0.151 b=5.648 bs=1.184 tau_R=0.001368 tau_l=0.008003
+     N=1: real rank 2  s/s1 = [1.0, 0.609] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.7e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.817, 0.329, 0.126] | complex rank 2  s/s1 = [1.0, 0.67] | (a)-(b) singular values 3.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.921, 0.373, 0.0393] | complex rank 3  s/s1 = [1.0, 0.897, 0.321] | (a)-(b) singular values 7.5e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.921, 0.371, 0.0443] | complex rank 4  s/s1 = [1.0, 0.905, 0.257, 0.018] | (a)-(b) singular values 1.9e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.91, 0.354, 0.0637] | complex rank 4  s/s1 = [1.0, 0.854, 0.271, 0.0255] | (a)-(b) singular values 3.7e-51
+[19] random: xi1=4.757 b=0.826 bs=6.6 tau_R=0.7241 tau_l=3.44
+     N=1: real rank 2  s/s1 = [1.0, 0.943] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.923, 0.164, 0.0194] | complex rank 2  s/s1 = [1.0, 0.524] | (a)-(b) singular values 3.7e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.943, 0.31, 0.0706] | complex rank 3  s/s1 = [1.0, 0.638, 0.114] | (a)-(b) singular values 9.4e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.952, 0.288, 0.0666] | complex rank 4  s/s1 = [1.0, 0.613, 0.209, 0.00864] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.944, 0.278, 0.0746] | complex rank 4  s/s1 = [1.0, 0.565, 0.163, 0.0229] | (a)-(b) singular values 5.6e-51
+[20] random: xi1=0.342 b=5.371 bs=1.22 tau_R=0.03556 tau_l=0.03591
+     N=1: real rank 2  s/s1 = [1.0, 0.45] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.998, 0.0208, 0.00069] | complex rank 2  s/s1 = [1.0, 0.972] | (a)-(b) singular values 3.8e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.947, 0.0356, 0.00157] | complex rank 3  s/s1 = [1.0, 0.902, 0.0246] | (a)-(b) singular values 3.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.981, 0.0319, 0.000713] | complex rank 4  s/s1 = [1.0, 0.942, 0.0183, 0.000198] | (a)-(b) singular values 3.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.946, 0.0398, 0.0014] | complex rank 4  s/s1 = [1.0, 0.897, 0.0268, 0.000407] | (a)-(b) singular values 3.5e-52
+[21] random: xi1=2.493 b=5.708 bs=9.423 tau_R=1.56 tau_l=0.3667
+     N=1: real rank 2  s/s1 = [1.0, 0.883] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.87, 0.265, 0.084] | complex rank 2  s/s1 = [1.0, 0.801] | (a)-(b) singular values 1.8e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.912, 0.306, 0.0877] | complex rank 3  s/s1 = [1.0, 0.75, 0.196] | (a)-(b) singular values 5.6e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.88, 0.229, 0.0747] | complex rank 4  s/s1 = [1.0, 0.839, 0.0747, 0.0295] | (a)-(b) singular values 1.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.875, 0.27, 0.0894] | complex rank 4  s/s1 = [1.0, 0.785, 0.126, 0.0256] | (a)-(b) singular values 3.6e-51
+[22] random: xi1=2.473 b=8.672 bs=0.81 tau_R=18.22 tau_l=11.37
+     N=1: real rank 2  s/s1 = [1.0, 0.545] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 2.6e-49
+     N=2: real rank 4  s/s1 = [1.0, 0.157, 0.0316, 9.96e-6] | complex rank 2  s/s1 = [1.0, 0.129] | (a)-(b) singular values 5.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.601, 0.0827, 7.74e-5] | complex rank 3  s/s1 = [1.0, 0.252, 0.000364] | (a)-(b) singular values 6.3e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.727, 0.111, 0.000903] | complex rank 4  s/s1 = [1.0, 0.455, 0.00297, 3.21e-5] | (a)-(b) singular values 5.0e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.834, 0.115, 0.00145] | complex rank 4  s/s1 = [1.0, 0.587, 0.00494, 0.000194] | (a)-(b) singular values 2.8e-51
+[23] random: xi1=0.727 b=9.049 bs=8.807 tau_R=2.462 tau_l=0.07928
+     N=1: real rank 2  s/s1 = [1.0, 0.846] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.661, 0.441, 0.187] | complex rank 2  s/s1 = [1.0, 0.713] | (a)-(b) singular values 1.0e-50
+     N=3: real rank 4  s/s1 = [1.0, 0.851, 0.348, 0.133] | complex rank 3  s/s1 = [1.0, 0.355, 0.183] | (a)-(b) singular values 3.6e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.628, 0.238, 0.196] | complex rank 4  s/s1 = [1.0, 0.506, 0.204, 0.0153] | (a)-(b) singular values 3.3e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.767, 0.405, 0.166] | complex rank 4  s/s1 = [1.0, 0.468, 0.295, 0.0693] | (a)-(b) singular values 3.6e-51
+[24] cattaneo tau_l=0: xi1=1.039 b=0.157 bs=2.46 tau_R=0.01403 tau_l=0
+     N=1: real rank 2  s/s1 = [1.0, 0.813] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.2e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.985, 0.181, 0.0739] | complex rank 2  s/s1 = [1.0, 0.788] | (a)-(b) singular values 1.9e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.975, 0.387, 0.263] | complex rank 3  s/s1 = [1.0, 0.815, 0.189] | (a)-(b) singular values 3.9e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.968, 0.377, 0.251] | complex rank 4  s/s1 = [1.0, 0.813, 0.176, 0.102] | (a)-(b) singular values 5.9e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.985, 0.398, 0.305] | complex rank 4  s/s1 = [1.0, 0.788, 0.22, 0.0816] | (a)-(b) singular values 6.0e-51
+[25] cattaneo tau_l=0: xi1=1.881 b=0.77 bs=2.299 tau_R=43.47 tau_l=0
+     N=1: real rank 2  s/s1 = [1.0, 0.577] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.1e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.609, 0.277, 0.0014] | complex rank 2  s/s1 = [1.0, 0.253] | (a)-(b) singular values 1.1e-50
+     N=3: real rank 4  s/s1 = [1.0, 0.624, 0.399, 0.00181] | complex rank 3  s/s1 = [1.0, 0.344, 0.0153] | (a)-(b) singular values 1.7e-50
+     N=4: real rank 4  s/s1 = [1.0, 0.773, 0.62, 0.00262] | complex rank 4  s/s1 = [1.0, 0.552, 0.0618, 9.66e-5] | (a)-(b) singular values 2.9e-50
+     N=8: real rank 4  s/s1 = [1.0, 0.688, 0.645, 0.0029] | complex rank 4  s/s1 = [1.0, 0.539, 0.141, 0.00173] | (a)-(b) singular values 1.1e-50
+[26] cattaneo tau_l=0: xi1=0.244 b=3.943 bs=0.702 tau_R=1.113 tau_l=0
+     N=1: real rank 2  s/s1 = [1.0, 0.481] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 4.4e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.723, 0.646, 0.0131] | complex rank 2  s/s1 = [1.0, 0.618] | (a)-(b) singular values 5.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.728, 0.466, 0.00507] | complex rank 3  s/s1 = [1.0, 0.419, 0.0104] | (a)-(b) singular values 1.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.725, 0.69, 0.00535] | complex rank 4  s/s1 = [1.0, 0.58, 0.0604, 0.00185] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.698, 0.675, 0.0156] | complex rank 4  s/s1 = [1.0, 0.582, 0.218, 0.00289] | (a)-(b) singular values 3.7e-51
+[27] cattaneo tau_l=0: xi1=0.714 b=0.13 bs=2.517 tau_R=0.0158 tau_l=0
+     N=1: real rank 2  s/s1 = [1.0, 0.991] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.986, 0.0139, 0.00144] | complex rank 2  s/s1 = [1.0, 0.359] | (a)-(b) singular values 3.8e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.945, 0.346, 0.0577] | complex rank 3  s/s1 = [1.0, 0.871, 0.0445] | (a)-(b) singular values 3.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.9, 0.454, 0.0866] | complex rank 4  s/s1 = [1.0, 0.865, 0.0774, 0.00112] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.916, 0.419, 0.0836] | complex rank 4  s/s1 = [1.0, 0.852, 0.0951, 0.038] | (a)-(b) singular values 3.8e-51
+[28] tau_R=0: xi1=0.373 b=0.111 bs=7.222 tau_R=0 tau_l=0.032
+     N=1: real rank 2  s/s1 = [1.0, 0.99] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.9e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.887, 0.434, 0.00397] | complex rank 2  s/s1 = [1.0, 0.814] | (a)-(b) singular values 1.9e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.877, 0.47, 0.0104] | complex rank 3  s/s1 = [1.0, 0.825, 0.0338] | (a)-(b) singular values 5.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.851, 0.516, 0.0235] | complex rank 4  s/s1 = [1.0, 0.846, 0.205, 0.00165] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.879, 0.471, 0.0345] | complex rank 4  s/s1 = [1.0, 0.733, 0.215, 0.0157] | (a)-(b) singular values 3.8e-51
+[29] tau_R=0: xi1=1.126 b=0.14 bs=1.953 tau_R=0 tau_l=0.04691
+     N=1: real rank 2  s/s1 = [1.0, 0.975] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.9e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.97, 0.252, 0.00914] | complex rank 2  s/s1 = [1.0, 0.874] | (a)-(b) singular values 7.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.952, 0.329, 0.0962] | complex rank 3  s/s1 = [1.0, 0.813, 0.0786] | (a)-(b) singular values 5.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.93, 0.377, 0.0729] | complex rank 4  s/s1 = [1.0, 0.901, 0.149, 0.00329] | (a)-(b) singular values 7.6e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.96, 0.356, 0.163] | complex rank 4  s/s1 = [1.0, 0.805, 0.182, 0.0702] | (a)-(b) singular values 3.9e-51
+[30] tau_R=0: xi1=1.257 b=4.185 bs=8.581 tau_R=0 tau_l=9.894
+     N=1: real rank 2  s/s1 = [1.0, 0.9] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.6e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.808, 0.337, 0.0371] | complex rank 2  s/s1 = [1.0, 0.355] | (a)-(b) singular values 3.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.822, 0.507, 0.0612] | complex rank 3  s/s1 = [1.0, 0.502, 0.16] | (a)-(b) singular values 1.3e-50
+     N=4: real rank 4  s/s1 = [1.0, 0.822, 0.404, 0.0397] | complex rank 4  s/s1 = [1.0, 0.406, 0.183, 0.0118] | (a)-(b) singular values 1.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.809, 0.417, 0.0643] | complex rank 4  s/s1 = [1.0, 0.419, 0.17, 0.0292] | (a)-(b) singular values 1.8e-51
+[31] tau_R=0: xi1=1.268 b=0.53 bs=1.016 tau_R=0 tau_l=2.756
+     N=1: real rank 2  s/s1 = [1.0, 0.968] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.6e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.899, 0.386, 0.028] | complex rank 2  s/s1 = [1.0, 0.617] | (a)-(b) singular values 3.7e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.842, 0.556, 0.0311] | complex rank 3  s/s1 = [1.0, 0.635, 0.215] | (a)-(b) singular values 5.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.867, 0.484, 0.032] | complex rank 4  s/s1 = [1.0, 0.7, 0.283, 0.00961] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.871, 0.495, 0.0386] | complex rank 4  s/s1 = [1.0, 0.605, 0.26, 0.0226] | (a)-(b) singular values 1.1e-50
+[32] b=bs: xi1=0.251 b=2.9 bs=2.9 tau_R=0.001386 tau_l=0.7043
+     N=1: real rank 2  s/s1 = [1.0, 0.527] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 2.3e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.538, 0.23, 0.0573] | complex rank 2  s/s1 = [1.0, 0.274] | (a)-(b) singular values 5.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.631, 0.52, 0.199] | complex rank 3  s/s1 = [1.0, 0.533, 0.221] | (a)-(b) singular values 2.6e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.626, 0.491, 0.236] | complex rank 4  s/s1 = [1.0, 0.503, 0.284, 0.0287] | (a)-(b) singular values 4.3e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.586, 0.379, 0.205] | complex rank 4  s/s1 = [1.0, 0.407, 0.261, 0.102] | (a)-(b) singular values 5.0e-51
+[33] b=bs: xi1=1.154 b=5.265 bs=5.265 tau_R=2.02 tau_l=6.386
+     N=1: real rank 2  s/s1 = [1.0, 0.485] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.0e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.55, 0.288, 0.0966] | complex rank 2  s/s1 = [1.0, 0.48] | (a)-(b) singular values 1.8e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.531, 0.255, 0.108] | complex rank 3  s/s1 = [1.0, 0.404, 0.171] | (a)-(b) singular values 7.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.571, 0.346, 0.12] | complex rank 4  s/s1 = [1.0, 0.503, 0.125, 0.043] | (a)-(b) singular values 3.2e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.531, 0.272, 0.117] | complex rank 4  s/s1 = [1.0, 0.403, 0.173, 0.0318] | (a)-(b) singular values 2.0e-51
+[34] b=bs: xi1=0.195 b=0.774 bs=0.774 tau_R=0.003498 tau_l=0.0005704
+     N=1: real rank 2  s/s1 = [1.0, 0.748] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 8.3e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.631, 0.43, 0.177] | complex rank 2  s/s1 = [1.0, 0.609] | (a)-(b) singular values 1.9e-50
+     N=3: real rank 4  s/s1 = [1.0, 0.796, 0.657, 0.311] | complex rank 3  s/s1 = [1.0, 0.632, 0.461] | (a)-(b) singular values 2.8e-50
+     N=4: real rank 4  s/s1 = [1.0, 0.717, 0.63, 0.314] | complex rank 4  s/s1 = [1.0, 0.605, 0.518, 0.163] | (a)-(b) singular values 1.6e-50
+     N=8: real rank 4  s/s1 = [1.0, 0.743, 0.681, 0.39] | complex rank 4  s/s1 = [1.0, 0.714, 0.579, 0.229] | (a)-(b) singular values 1.4e-50
+[35] b=bs: xi1=0.153 b=3.495 bs=3.495 tau_R=0.003184 tau_l=0.02076
+     N=1: real rank 2  s/s1 = [1.0, 0.515] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 2.3e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.564, 0.271, 0.0419] | complex rank 2  s/s1 = [1.0, 0.346] | (a)-(b) singular values 3.2e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.6, 0.406, 0.0267] | complex rank 3  s/s1 = [1.0, 0.484, 0.306] | (a)-(b) singular values 1.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.586, 0.339, 0.0493] | complex rank 4  s/s1 = [1.0, 0.433, 0.217, 0.0382] | (a)-(b) singular values 6.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.574, 0.318, 0.0402] | complex rank 4  s/s1 = [1.0, 0.374, 0.209, 0.032] | (a)-(b) singular values 3.2e-51
+[36] AlN/sapphire lam=321 tauR=1.0ns taul=0.0ns: xi1=4.332e-05 b=2.781e+04 bs=1.03e+04 tau_R=1e-09 tau_l=0
+     N=1: real rank 2  s/s1 = [1.0, 0.864] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 3.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.857, 0.0499, 0.00296] | complex rank 2  s/s1 = [1.0, 0.716] | (a)-(b) singular values 5.3e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.921, 0.148, 0.015] | complex rank 3  s/s1 = [1.0, 0.883, 0.012] | (a)-(b) singular values 9.1e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.904, 0.441, 0.0333] | complex rank 4  s/s1 = [1.0, 0.975, 0.0381, 0.00314] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.904, 0.432, 0.0389] | complex rank 4  s/s1 = [1.0, 0.965, 0.073, 0.0172] | (a)-(b) singular values 1.9e-51
+[37] AlN/sapphire lam=321 tauR=1.0ns taul=0.5ns: xi1=4.332e-05 b=2.781e+04 bs=1.03e+04 tau_R=1e-09 tau_l=5e-10
+     N=1: real rank 2  s/s1 = [1.0, 0.867] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.6e-50
+     N=2: real rank 4  s/s1 = [1.0, 0.87, 0.0399, 0.00186] | complex rank 2  s/s1 = [1.0, 0.716] | (a)-(b) singular values 1.3e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.938, 0.079, 0.0136] | complex rank 3  s/s1 = [1.0, 0.881, 0.0117] | (a)-(b) singular values 3.7e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.985, 0.171, 0.0312] | complex rank 4  s/s1 = [1.0, 0.949, 0.0343, 0.00284] | (a)-(b) singular values 5.7e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.975, 0.167, 0.0353] | complex rank 4  s/s1 = [1.0, 0.934, 0.0558, 0.016] | (a)-(b) singular values 3.8e-51
+[38] AlN/sapphire lam=60 tauR=0.1ns taul=2.0ns: xi1=0.0001002 b=1.202e+04 bs=1.03e+04 tau_R=1e-10 tau_l=2e-09
+     N=1: real rank 2  s/s1 = [1.0, 0.925] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 5.5e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.98, 0.108, 0.00929] | complex rank 2  s/s1 = [1.0, 0.684] | (a)-(b) singular values 5.6e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.965, 0.257, 0.0479] | complex rank 3  s/s1 = [1.0, 0.851, 0.0374] | (a)-(b) singular values 3.8e-51
+     N=4: real rank 4  s/s1 = [1.0, 0.886, 0.47, 0.0695] | complex rank 4  s/s1 = [1.0, 0.84, 0.263, 0.0151] | (a)-(b) singular values 3.8e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.92, 0.4, 0.0738] | complex rank 4  s/s1 = [1.0, 0.821, 0.238, 0.0427] | (a)-(b) singular values 2.0e-51
+[39] AlN/sapphire lam=60 tauR=10.0ns taul=3.0ns: xi1=0.0001002 b=1.202e+04 bs=1.03e+04 tau_R=1e-08 tau_l=3e-09
+     N=1: real rank 2  s/s1 = [1.0, 0.873] | complex rank 1  s/s1 = [1.0] | (a)-(b) singular values 1.8e-51
+     N=2: real rank 4  s/s1 = [1.0, 0.829, 0.336, 0.00828] | complex rank 2  s/s1 = [1.0, 0.735] | (a)-(b) singular values 5.4e-51
+     N=3: real rank 4  s/s1 = [1.0, 0.774, 0.236, 0.0678] | complex rank 3  s/s1 = [1.0, 0.752, 0.0577] | (a)-(b) singular values 1.0e-50
+     N=4: real rank 4  s/s1 = [1.0, 0.951, 0.36, 0.107] | complex rank 4  s/s1 = [1.0, 0.87, 0.283, 0.0121] | (a)-(b) singular values 1.9e-51
+     N=8: real rank 4  s/s1 = [1.0, 0.923, 0.332, 0.133] | complex rank 4  s/s1 = [1.0, 0.837, 0.245, 0.0579] | (a)-(b) singular values 3.8e-51
+
+max relative difference of Jacobian entries, symbolic (a) vs numerical differentiation (b): 2.28e-49
+elapsed 8.0 s
+
+Summary by family and N: (real ranks found, complex ranks found, min s_min/s_1 real, min s_min/s_1 complex)
+  AlN/sapphire N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.864, complex 1.0
+  AlN/sapphire N=2: real ranks [4], complex ranks [2], min s_min/s1 real 0.00186, complex 0.684
+  AlN/sapphire N=3: real ranks [4], complex ranks [3], min s_min/s1 real 0.0136, complex 0.0117
+  AlN/sapphire N=4: real ranks [4], complex ranks [4], min s_min/s1 real 0.0312, complex 0.00284
+  AlN/sapphire N=8: real ranks [4], complex ranks [4], min s_min/s1 real 0.0353, complex 0.016
+  b=bs         N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.485, complex 1.0
+  b=bs         N=2: real ranks [4], complex ranks [2], min s_min/s1 real 0.0419, complex 0.274
+  b=bs         N=3: real ranks [4], complex ranks [3], min s_min/s1 real 0.0267, complex 0.171
+  b=bs         N=4: real ranks [4], complex ranks [4], min s_min/s1 real 0.0493, complex 0.0287
+  b=bs         N=8: real ranks [4], complex ranks [4], min s_min/s1 real 0.0402, complex 0.0318
+  cattaneo     N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.481, complex 1.0
+  cattaneo     N=2: real ranks [4], complex ranks [2], min s_min/s1 real 0.0014, complex 0.253
+  cattaneo     N=3: real ranks [4], complex ranks [3], min s_min/s1 real 0.00181, complex 0.0104
+  cattaneo     N=4: real ranks [4], complex ranks [4], min s_min/s1 real 0.00262, complex 9.66e-5
+  cattaneo     N=8: real ranks [4], complex ranks [4], min s_min/s1 real 0.0029, complex 0.00173
+  random       N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.35, complex 1.0
+  random       N=2: real ranks [4], complex ranks [2], min s_min/s1 real 9.96e-6, complex 0.129
+  random       N=3: real ranks [4], complex ranks [3], min s_min/s1 real 7.74e-5, complex 0.000364
+  random       N=4: real ranks [4], complex ranks [4], min s_min/s1 real 0.000713, complex 3.21e-5
+  random       N=8: real ranks [4], complex ranks [4], min s_min/s1 real 0.0014, complex 0.000194
+  tau_R=0      N=1: real ranks [2], complex ranks [1], min s_min/s1 real 0.9, complex 1.0
+  tau_R=0      N=2: real ranks [4], complex ranks [2], min s_min/s1 real 0.00397, complex 0.355
+  tau_R=0      N=3: real ranks [4], complex ranks [3], min s_min/s1 real 0.0104, complex 0.0338
+  tau_R=0      N=4: real ranks [4], complex ranks [4], min s_min/s1 real 0.0235, complex 0.00165
+  tau_R=0      N=8: real ranks [4], complex ranks [4], min s_min/s1 real 0.0345, complex 0.0157

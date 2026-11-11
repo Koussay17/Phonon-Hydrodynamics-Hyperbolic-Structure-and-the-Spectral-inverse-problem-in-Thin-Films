@@ -1,0 +1,3 @@
+compared 8 points x 8 matrices; max |s_mpmath - s_wolfram| (normalised) = 2.17e-19
+(Wolfram values printed with ~19 significant digits; agreement at that level means the two
+ independent symbolic differentiations and SVDs agree.)

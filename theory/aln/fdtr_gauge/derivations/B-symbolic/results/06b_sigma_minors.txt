@@ -1,0 +1,4 @@
+Sigma: det d(z_0, z_1, z_2)/d(xi1, b, tau_R) at tau_l = tau_R = 2*xi1**3*(b - b_s)*(b + b_s)/(b**3*b_s**3)
+Sigma': det d(z_0, z_2)/d(b, tau_R) at tau_l = tau_R, b = bs = -2*xi1**2/b_s**3
+all 4x4 minors of d(z_0..z_4)/d theta on tau_l = tau_R: [0, 0, 0, 0, 0]
+all 3x3 minors of d(z_0..z_4)/d theta on tau_l = tau_R, b = bs vanish: True

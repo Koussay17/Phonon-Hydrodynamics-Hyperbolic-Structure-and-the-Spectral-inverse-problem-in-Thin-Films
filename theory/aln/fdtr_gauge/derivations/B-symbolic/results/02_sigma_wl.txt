@@ -1,0 +1,29 @@
+Wolfram Language 15.0.1 kernel, input 02_sigma.wl
+
+(N::meprec messages were issued while evaluating Abs[] of residuals that are exactly zero; the
+ reported max numeric residual is 0 to ~196 digits.)
+
+{"i1 (tauR column)" -> 0, "i2 (taul column)" -> 0, "i3 (diag sum)" -> 0, "i4 (dZ/dxi1 at b=bs, diag)" -> 0,
+ "max numeric residuals" -> 0``196.63958176114983,
+ "det factorisation" -> 0,
+ "strata" -> {
+   "generic" -> {1.`5., 0.6933301314582086335`5., 0.189845235478965906`5., 0.0758879487766795322`5.},
+   "tau_R = tau_l, b != bs" -> {1.`5., 0.371684745485646825`5., 0.1011827216509999214`5., 8.791436194190572384`5.*^-78},
+   "tau_R = tau_l, b = bs" -> {1.`5., 0.580855657376223849`5., 5.6159674382137336019`5.*^-116, 0},
+   "Fourier tau = 0, b != bs" -> {1.`5., 0.554124054581728313`5., 0.0819168937086111318`5., 5.69494181966647436`5.*^-78},
+   "Fourier tau = 0, b = bs" -> {1.`5., 0.1495609348177817911`5., 0, 0},
+   "b = bs, tau_R != tau_l" -> {1.`5., 0.3943585467291922823`5., 0.179804951567156195`5., 0.055232846461314103`5.},
+   "Cattaneo tau_l = 0" -> {1.`5., 0.0761277446275154954`5., 0.0154476497636837788`5., 0.0034215095691483332`5.},
+   "tau_R = 0" -> {1.`5., 0.3498747429961684883`5., 0.1560023670293465523`5., 0.0714664545727161459`5.}},
+ "nulls" -> {"null diag" -> True, "null diag b=bs" -> True}}
+
+Identities (symbolic, Simplify under p > 0, extended to p = i omega by analytic continuation and
+checked there numerically):
+ i1: dZ/dtau_R - gR (xi1 dZ/dxi1 - b dZ/db) = 0
+ i2: dZ/dtau_l + gl (xi1 dZ/dxi1 - b dZ/db) = 0
+ i3: (dZ/dtau_R + dZ/dtau_l)|_{tau_l = tau_R} = 0
+ i4: dZ/dxi1 |_{tau_l = tau_R, b = bs} = 0
+ det factorisation: Together[det[col_k(p_m)] + (tau_R - tau_l)/(xi1 b) prod W_m det[1, V/W, gR, kappa]] = 0
+Strata: singular values of the real Jacobian at 6 frequencies (1/10 ... 40), x1 = 1, b = 3, no
+equilibration, normalised by the largest; null vectors (0,0,1,1) on the diagonal and (1,0,0,0)
+on the diagonal with b = bs confirmed to 40 digits.

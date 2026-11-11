@@ -1,0 +1,28 @@
+Wolfram Language 15.0.1 kernel, input 04_expansions.wl
+Test point pt = {x1 -> 7/10, b -> 23/10, bs -> 11/10, tR -> 3/10, tl -> 1/8, r -> 1/5}
+
+small p, R = 0, coefficients z_{-1} .. z_5 (factored):
+{bs^(-1), -(((b - bs)*(b + bs)*x1)/(b*bs^2)), -(((-b + bs)*(b + bs)*x1^2)/bs^3),
+ -1/3*(x1*(3*bs^4*tl - 3*bs^4*tR + 3*b^4*x1^2 - 4*b^2*bs^2*x1^2 + bs^4*x1^2))/(b*bs^4),
+ (x1^2*(3*bs^4*tl - 3*bs^4*tR + 3*b^4*x1^2 - 5*b^2*bs^2*x1^2 + 2*bs^4*x1^2))/(3*bs^5),
+ -1/15*(x1*(-15*bs^6*tl^2 + 15*bs^6*tl*tR + 20*b^2*bs^4*tl*x1^2 - 10*bs^6*tl*x1^2 - 20*b^2*bs^4*tR*x1^2 + 10*bs^6*tR*x1^2 + 15*b^6*x1^4 - 30*b^4*bs^2*x1^4 + 17*b^2*bs^4*x1^4 - 2*bs^6*x1^4))/(b*bs^6),
+ -1/45*(x1^2*(45*bs^6*tl^2 - 45*bs^6*tl*tR - 75*b^2*bs^4*tl*x1^2 + 60*bs^6*tl*x1^2 + 75*b^2*bs^4*tR*x1^2 - 60*bs^6*tR*x1^2 - 45*b^6*x1^4 + 105*b^4*bs^2*x1^4 - 77*b^2*bs^4*x1^4 + 17*bs^6*x1^4))/bs^7}
+values at pt: {10/11, -2856/2783, 9996/6655, -133184891/67348600, 34130901/12884080, -86473015525463/24447541800000, 183545921959029/38974342000000}
+
+small p, with R, values at pt:
+{10/11, -11497/13915, 30499/33275, -1438913301/1683715000, 19470795673/24157650000, -456989146819289/611188545000000, 664403087684609/974358550000000}
+
+large p, 1/B coefficients of p^(-1/2-k), k = 0..3:
+{Sqrt[tR/tl]/b, (tl - tR)/(2*b*Sqrt[tl^3*tR]),
+ -1/8*((Sqrt[tl] - Sqrt[tR])*(Sqrt[tl] + Sqrt[tR])*(tl + 3*tR))/(b*tl^(5/2)*tR^(3/2)),
+ ((Sqrt[tl] - Sqrt[tR])*(Sqrt[tl] + Sqrt[tR])*(tl^2 + 2*tl*tR + 5*tR^2))/(16*b*tl^(7/2)*tR^(5/2))}
+
+Cattaneo (tau_l = 0) coefficients of p^(-k/2), k = 0..3, at fixed t = tanh A:
+{(t*Sqrt[tR])/b, -(((-1 + t)*(1 + t))/bs), (t*(-2*b^2 + bs^2 + 2*b^2*t^2))/(2*b*bs^2*Sqrt[tR]), -((b^2*(-1 + t)*t^2*(1 + t))/(bs^3*tR))}
+
+tau_R = 0 < tau_l, coefficients of p^(-k/2), k = 2..5:
+{Coth[x1/Sqrt[tl]]/(b*Sqrt[tl]), -((bs*Csch[x1/Sqrt[tl]]^2)/(b^2*tl)),
+ (-((b^2 + 2*bs^2)*Sqrt[tl]*Coth[x1/Sqrt[tl]]) + 2*bs^2*Sqrt[tl]*Coth[x1/Sqrt[tl]]^3 + b^2*x1*Csch[x1/Sqrt[tl]]^2)/(2*b^3*tl^2),
+ -1/2*(bs*Csch[x1/Sqrt[tl]]^4*((b^2 + bs^2)*Sqrt[tl] - (b^2 - bs^2)*Sqrt[tl]*Cosh[(2*x1)/Sqrt[tl]] + b^2*x1*Sinh[(2*x1)/Sqrt[tl]]))/(b^4*tl^(5/2))}
+values at pt (30 digits): {1.27755769170825977337981950167881818950, -0.13185295315430055849709208082329289643,
+ -4.15299692935073592154135972082225511917, -1.37520639061853173738441604842824718841}

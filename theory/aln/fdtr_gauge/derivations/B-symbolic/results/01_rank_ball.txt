@@ -1,0 +1,286 @@
+Certified minors (Arb, 320-bit balls).  'ok' = enclosing ball excludes 0.
+[00] random
+     real N=1 2x2 minor 44.1516 +/- 5.0e-91 ok
+     real N=2 det       -0.890301 +/- 4.6e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-31.9202 + 37.6395j) +/- (2.2e-92, 2.2e-92) ok
+     complex N=2 2x2 minor (32.9575 + -52.8607j) +/- (1.4e-91, 1.4e-91) ok
+     complex N=3 3x3 minor (-15.1513 + 1.76994j) +/- (3.2e-90, 3.2e-90) ok
+     complex N=4 4x4 minor (-0.848273 + -0.179964j) +/- (2.6e-90, 2.6e-90) ok
+[01] random
+     real N=1 2x2 minor -2.93613 +/- 7.9e-93 ok
+     real N=2 det       1.39733 +/- 6.1e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-1.47483 + 1.55279j) +/- (1.0e-93, 1.0e-93) ok
+     complex N=2 2x2 minor (-6.28278 + 1.26032j) +/- (2.0e-92, 2.0e-92) ok
+     complex N=3 3x3 minor (-9.02018 + -0.0745165j) +/- (1.3e-91, 1.3e-91) ok
+     complex N=4 4x4 minor (-0.354130 + -0.688734j) +/- (3.3e-91, 3.3e-91) ok
+[02] random
+     real N=1 2x2 minor -1.89230 +/- 2.6e-93 ok
+     real N=2 det       -0.636046 +/- 3.4e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.736786 + -1.51437j) +/- (1.1e-93, 1.1e-93) ok
+     complex N=2 2x2 minor (3.92649 + 1.46730j) +/- (9.4e-93, 9.4e-93) ok
+     complex N=3 3x3 minor (-5.56534 + 6.11702j) +/- (1.2e-91, 1.2e-91) ok
+     complex N=4 4x4 minor (-1.17977 + -6.39102j) +/- (1.8e-90, 1.8e-90) ok
+[03] random
+     real N=1 2x2 minor -26.8526 +/- 2.1e-92 ok
+     real N=2 det       -0.000737915 +/- 3.6e-96 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-10.1890 + 3.90925j) +/- (1.9e-93, 1.8e-93) ok
+     complex N=2 2x2 minor (-3.69351 + 2.41132j) +/- (1.2e-93, 1.2e-93) ok
+     complex N=3 3x3 minor (0.259535 + 0.272922j) +/- (1.1e-93, 1.1e-93) ok
+     complex N=4 4x4 minor (0.000260945 + -0.000646933j) +/- (2.8e-95, 2.8e-95) ok
+[04] random
+     real N=1 2x2 minor -6.65280 +/- 1.7e-93 ok
+     real N=2 det       52.7134 +/- 2.3e-90 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (2.93727 + -0.421525j) +/- (2.7e-94, 2.7e-94) ok
+     complex N=2 2x2 minor (-80.3356 + -39.5244j) +/- (5.5e-92, 5.5e-92) ok
+     complex N=3 3x3 minor (-59.8084 + -86.8496j) +/- (4.6e-91, 4.6e-91) ok
+     complex N=4 4x4 minor (189.874 + 431.958j) +/- (2.7e-88, 2.7e-88) ok
+[05] random
+     real N=1 2x2 minor -0.585353 +/- 2.8e-93 ok
+     real N=2 det       -7.97437e-5 +/- 7.5e-96 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (0.875958 + -0.00959389j) +/- (1.6e-93, 1.6e-93) ok
+     complex N=2 2x2 minor (-0.158544 + -0.515733j) +/- (7.3e-94, 7.3e-94) ok
+     complex N=3 3x3 minor (0.108499 + 0.144011j) +/- (1.3e-93, 1.3e-93) ok
+     complex N=4 4x4 minor (4.72402e-7 + -2.72045e-5j) +/- (1.2e-94, 1.2e-94) ok
+[06] random
+     real N=1 2x2 minor -3.53054e+5 +/- 1.0e-87 ok
+     real N=2 det       -1.36258e+5 +/- 4.7e-88 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (111.409 + 696.829j) +/- (9.7e-91, 9.7e-91) ok
+     complex N=2 2x2 minor (4957.32 + 11554.9j) +/- (6.2e-90, 6.2e-90) ok
+     complex N=3 3x3 minor (2.68951e+6 + 2.99091e+5j) +/- (5.5e-87, 5.5e-87) ok
+     complex N=4 4x4 minor (-1.58235e+5 + 2.57931e+5j) +/- (2.8e-87, 2.7e-87) ok
+[07] random
+     real N=1 2x2 minor -0.731806 +/- 5.4e-93 ok
+     real N=2 det       0.000825793 +/- 7.3e-95 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.379842 + 0.853813j) +/- (5.8e-94, 5.8e-94) ok
+     complex N=2 2x2 minor (-1.26398 + 1.79637j) +/- (6.3e-93, 6.3e-93) ok
+     complex N=3 3x3 minor (0.456403 + 0.455073j) +/- (1.1e-92, 1.1e-92) ok
+     complex N=4 4x4 minor (-0.000282209 + -2.36485e-5j) +/- (1.3e-93, 1.3e-93) ok
+[08] random
+     real N=1 2x2 minor -49.2432 +/- 2.1e-91 ok
+     real N=2 det       0.665870 +/- 4.4e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-184.958 + -3.45320j) +/- (2.4e-92, 2.4e-92) ok
+     complex N=2 2x2 minor (-11.9648 + -313.621j) +/- (6.3e-91, 6.3e-91) ok
+     complex N=3 3x3 minor (6.33850 + 5.88408j) +/- (2.1e-91, 2.1e-91) ok
+     complex N=4 4x4 minor (0.0443663 + 0.109416j) +/- (7.1e-91, 7.1e-91) ok
+[09] random
+     real N=1 2x2 minor -1.19082 +/- 9.2e-93 ok
+     real N=2 det       -0.0111149 +/- 2.5e-93 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (0.191635 + 1.68662j) +/- (1.9e-93, 1.9e-93) ok
+     complex N=2 2x2 minor (1.00930 + -13.6047j) +/- (1.5e-92, 1.5e-92) ok
+     complex N=3 3x3 minor (5.17772 + -4.48537j) +/- (4.9e-92, 4.9e-92) ok
+     complex N=4 4x4 minor (0.00252699 + -0.00208258j) +/- (3.6e-92, 3.6e-92) ok
+[10] random
+     real N=1 2x2 minor -13.8185 +/- 1.2e-92 ok
+     real N=2 det       0.415872 +/- 8.4e-93 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-9.15710 + 14.8381j) +/- (6.4e-93, 6.6e-93) ok
+     complex N=2 2x2 minor (-10.6508 + 34.9491j) +/- (3.8e-92, 3.8e-92) ok
+     complex N=3 3x3 minor (-9.29783 + 6.38423j) +/- (1.6e-91, 1.6e-91) ok
+     complex N=4 4x4 minor (-0.00315123 + -0.290780j) +/- (3.3e-92, 3.3e-92) ok
+[11] random
+     real N=1 2x2 minor 0.935551 +/- 1.6e-93 ok
+     real N=2 det       0.0569681 +/- 2.1e-93 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-1.28436 + 2.09576j) +/- (9.7e-94, 9.8e-94) ok
+     complex N=2 2x2 minor (-3.12775 + 5.17108j) +/- (7.9e-93, 7.9e-93) ok
+     complex N=3 3x3 minor (-0.00398299 + -2.16950j) +/- (1.6e-92, 1.6e-92) ok
+     complex N=4 4x4 minor (-0.00465805 + -0.0108758j) +/- (4.9e-93, 4.9e-93) ok
+[12] random
+     real N=1 2x2 minor -4.80104 +/- 1.7e-92 ok
+     real N=2 det       -0.0163675 +/- 2.4e-94 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-29.5765 + -0.844098j) +/- (3.4e-93, 3.4e-93) ok
+     complex N=2 2x2 minor (-30.4302 + 36.9732j) +/- (7.9e-93, 7.9e-93) ok
+     complex N=3 3x3 minor (1.51436 + 0.789588j) +/- (9.2e-93, 9.2e-93) ok
+     complex N=4 4x4 minor (-0.00161320 + 0.00281998j) +/- (5.7e-94, 5.7e-94) ok
+[13] random
+     real N=1 2x2 minor -12257.1 +/- 3.1e-89 ok
+     real N=2 det       1.38812e+5 +/- 5.8e-87 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (128.408 + -186.598j) +/- (2.0e-91, 2.0e-91) ok
+     complex N=2 2x2 minor (4713.20 + -5133.60j) +/- (1.9e-89, 1.9e-89) ok
+     complex N=3 3x3 minor (-77427.5 + 2.37439e+5j) +/- (5.7e-88, 5.7e-88) ok
+     complex N=4 4x4 minor (1.44829e+5 + 7.58767e+5j) +/- (9.6e-86, 9.6e-86) ok
+[14] random
+     real N=1 2x2 minor -25.7239 +/- 1.8e-92 ok
+     real N=2 det       0.407203 +/- 7.6e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-9.08697 + 7.90018j) +/- (2.6e-93, 2.7e-93) ok
+     complex N=2 2x2 minor (-40.1542 + 14.2683j) +/- (3.9e-92, 3.9e-92) ok
+     complex N=3 3x3 minor (-41.3689 + 26.2353j) +/- (1.2e-91, 1.2e-91) ok
+     complex N=4 4x4 minor (-2.82463 + -0.528689j) +/- (8.5e-91, 8.5e-91) ok
+[15] random
+     real N=1 2x2 minor -1.09388 +/- 4.8e-93 ok
+     real N=2 det       0.0305485 +/- 3.5e-93 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.876754 + 2.03938j) +/- (9.3e-94, 9.4e-94) ok
+     complex N=2 2x2 minor (-0.950260 + 1.10799j) +/- (1.3e-92, 1.3e-92) ok
+     complex N=3 3x3 minor (-0.184269 + 0.128275j) +/- (2.7e-92, 2.7e-92) ok
+     complex N=4 4x4 minor (-0.00597592 + 0.00522569j) +/- (1.5e-92, 1.5e-92) ok
+[16] random
+     real N=1 2x2 minor -20.0212 +/- 7.3e-93 ok
+     real N=2 det       -1.30776 +/- 3.7e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (6.81179 + 1.31087j) +/- (1.4e-93, 1.3e-93) ok
+     complex N=2 2x2 minor (-66.1123 + 23.2105j) +/- (3.1e-92, 3.1e-92) ok
+     complex N=3 3x3 minor (-47.6342 + 138.200j) +/- (1.5e-91, 1.6e-91) ok
+     complex N=4 4x4 minor (-2.81574 + -3.44081j) +/- (2.4e-91, 2.4e-91) ok
+[17] random
+     real N=1 2x2 minor -788.423 +/- 1.0e-90 ok
+     real N=2 det       103.514 +/- 1.4e-90 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (33.4226 + -38.0660j) +/- (2.3e-92, 2.3e-92) ok
+     complex N=2 2x2 minor (-307.525 + -88.2425j) +/- (1.2e-91, 1.2e-91) ok
+     complex N=3 3x3 minor (-2306.23 + -4746.58j) +/- (6.4e-90, 6.4e-90) ok
+     complex N=4 4x4 minor (2045.89 + 1734.84j) +/- (4.5e-88, 4.5e-88) ok
+[18] random
+     real N=1 2x2 minor 0.0647139 +/- 6.4e-94 ok
+     real N=2 det       0.000164027 +/- 1.9e-96 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (0.288629 + 0.357051j) +/- (5.0e-94, 5.0e-94) ok
+     complex N=2 2x2 minor (-0.108654 + 0.158027j) +/- (3.2e-94, 3.2e-94) ok
+     complex N=3 3x3 minor (-0.329017 + 0.133413j) +/- (2.6e-93, 2.6e-93) ok
+     complex N=4 4x4 minor (-0.000359811 + -0.000624894j) +/- (4.1e-95, 4.1e-95) ok
+[19] random
+     real N=1 2x2 minor -2.85199 +/- 2.1e-93 ok
+     real N=2 det       -0.00725401 +/- 2.0e-94 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-6.52061 + 1.75843j) +/- (8.2e-94, 8.2e-94) ok
+     complex N=2 2x2 minor (-3.77800 + 2.02847j) +/- (2.5e-93, 2.5e-93) ok
+     complex N=3 3x3 minor (-0.392398 + -0.577606j) +/- (3.2e-93, 3.2e-93) ok
+     complex N=4 4x4 minor (-0.00769857 + -0.00910351j) +/- (7.6e-94, 7.6e-94) ok
+[20] random
+     real N=1 2x2 minor 0.0141549 +/- 6.4e-95 ok
+     real N=2 det       4.26871e-7 +/- 7.7e-97 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.130825 + 0.353717j) +/- (1.5e-94, 1.5e-94) ok
+     complex N=2 2x2 minor (-0.124873 + 0.294432j) +/- (3.4e-94, 3.4e-94) ok
+     complex N=3 3x3 minor (0.000641238 + -0.00196559j) +/- (3.7e-95, 3.7e-95) ok
+     complex N=4 4x4 minor (-2.02623e-7 + 1.98178e-9j) +/- (8.9e-96, 8.9e-96) ok
+[21] random
+     real N=1 2x2 minor 0.00305644 +/- 3.1e-96 ok
+     real N=2 det       7.62659e-6 +/- 7.1e-98 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.0771952 + 0.0223765j) +/- (2.4e-95, 2.4e-95) ok
+     complex N=2 2x2 minor (0.0172912 + 0.00102573j) +/- (1.4e-95, 1.4e-95) ok
+     complex N=3 3x3 minor (0.000704302 + 0.000132754j) +/- (3.8e-96, 3.8e-96) ok
+     complex N=4 4x4 minor (1.99314e-6 + -2.69263e-6j) +/- (3.9e-97, 3.9e-97) ok
+[22] random
+     real N=1 2x2 minor 7.21390e-7 +/- 2.9e-99 ok
+     real N=2 det       -6.88643e-15 +/- 2.2e-103 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.00598601 + 0.00593767j) +/- (3.0e-96, 3.0e-96) ok
+     complex N=2 2x2 minor (8.52223e-6 + 6.56916e-5j) +/- (1.6e-97, 1.6e-97) ok
+     complex N=3 3x3 minor (-3.13663e-9 + -4.34695e-8j) +/- (1.1e-98, 1.1e-98) ok
+     complex N=4 4x4 minor (-5.25922e-13 + -3.55483e-13j) +/- (2.2e-101, 2.2e-101) ok
+[23] random
+     real N=1 2x2 minor -0.304366 +/- 2.3e-93 ok
+     real N=2 det       -1.40639e-6 +/- 8.9e-99 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.509412 + -0.470552j) +/- (1.5e-93, 1.5e-93) ok
+     complex N=2 2x2 minor (0.0101829 + -0.00160654j) +/- (9.5e-96, 9.5e-96) ok
+     complex N=3 3x3 minor (0.00625774 + 0.00298699j) +/- (2.8e-95, 2.8e-95) ok
+     complex N=4 4x4 minor (9.82223e-6 + 7.23570e-6j) +/- (9.5e-97, 9.5e-97) ok
+[24] cattaneo tau_l=0
+     real N=1 2x2 minor 205.881 +/- 5.5e-92 ok
+     real N=2 det       2743.67 +/- 1.1e-89 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-34.2568 + 14.6359j) +/- (2.9e-93, 2.8e-93) ok
+     complex N=2 2x2 minor (395.767 + 437.683j) +/- (1.5e-91, 1.5e-91) ok
+     complex N=3 3x3 minor (7.69177 + 5008.83j) +/- (4.8e-90, 4.8e-90) ok
+     complex N=4 4x4 minor (-35912.3 + -4703.73j) +/- (2.8e-88, 2.8e-88) ok
+[25] cattaneo tau_l=0
+     real N=1 2x2 minor -17969.5 +/- 5.0e-89 ok
+     real N=2 det       1204.00 +/- 2.6e-87 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (145.474 + -44.3374j) +/- (1.7e-91, 1.7e-91) ok
+     complex N=2 2x2 minor (-934.588 + 13.9907j) +/- (2.8e-90, 2.8e-90) ok
+     complex N=3 3x3 minor (-2.21660e+5 + 1.22603e+6j) +/- (1.9e-86, 1.9e-86) ok
+     complex N=4 4x4 minor (6434.48 + -1455.41j) +/- (3.3e-85, 3.3e-85) ok
+[26] cattaneo tau_l=0
+     real N=1 2x2 minor -0.0745490 +/- 5.6e-94 ok
+     real N=2 det       -0.0597398 +/- 2.1e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.445962 + 1.13188j) +/- (6.8e-94, 6.8e-94) ok
+     complex N=2 2x2 minor (-16.4576 + 6.53065j) +/- (4.4e-92, 4.4e-92) ok
+     complex N=3 3x3 minor (4.53478 + 6.93876j) +/- (9.7e-92, 9.7e-92) ok
+     complex N=4 4x4 minor (0.187741 + 2.60055j) +/- (5.9e-90, 5.9e-90) ok
+[27] cattaneo tau_l=0
+     real N=1 2x2 minor 104.634 +/- 2.1e-92 ok
+     real N=2 det       1.06564 +/- 6.3e-91 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-42.0818 + 3.05297j) +/- (3.8e-93, 3.8e-93) ok
+     complex N=2 2x2 minor (-58.7213 + -160.542j) +/- (4.4e-92, 4.5e-92) ok
+     complex N=3 3x3 minor (-1633.85 + -402.884j) +/- (2.5e-90, 2.4e-90) ok
+     complex N=4 4x4 minor (-265.189 + -270.611j) +/- (1.6e-88, 1.6e-88) ok
+[28] tau_R=0
+     real N=1 2x2 minor -65.2760 +/- 1.2e-92 ok
+     real N=2 det       -705.059 +/- 1.4e-89 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-30.1975 + 1.53111j) +/- (2.5e-93, 2.5e-93) ok
+     complex N=2 2x2 minor (-733.208 + -172.374j) +/- (2.4e-91, 2.3e-91) ok
+     complex N=3 3x3 minor (696.721 + -862.484j) +/- (1.2e-90, 1.2e-90) ok
+     complex N=4 4x4 minor (25.7772 + -524.157j) +/- (8.0e-89, 8.0e-89) ok
+[29] tau_R=0
+     real N=1 2x2 minor -135.025 +/- 3.4e-92 ok
+     real N=2 det       -361.356 +/- 6.0e-90 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-56.1976 + 8.54147j) +/- (5.5e-93, 5.5e-93) ok
+     complex N=2 2x2 minor (-504.872 + -314.575j) +/- (2.1e-91, 2.1e-91) ok
+     complex N=3 3x3 minor (-3.64731 + -1475.94j) +/- (4.3e-90, 4.2e-90) ok
+     complex N=4 4x4 minor (329.620 + -234.820j) +/- (8.1e-89, 8.1e-89) ok
+[30] tau_R=0
+     real N=1 2x2 minor -0.00136425 +/- 1.1e-96 ok
+     real N=2 det       1.11496e-7 +/- 1.5e-99 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.0319090 + -0.0336193j) +/- (1.3e-95, 1.3e-95) ok
+     complex N=2 2x2 minor (0.000775661 + -0.00169880j) +/- (7.3e-96, 7.3e-96) ok
+     complex N=3 3x3 minor (-3.34186e-5 + 2.44027e-5j) +/- (7.6e-97, 7.6e-97) ok
+     complex N=4 4x4 minor (2.28754e-8 + -7.01550e-8j) +/- (5.6e-99, 5.6e-99) ok
+[31] tau_R=0
+     real N=1 2x2 minor -1.70545 +/- 3.8e-93 ok
+     real N=2 det       -0.0374122 +/- 7.3e-94 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-5.22235 + 1.20122j) +/- (1.6e-93, 1.6e-93) ok
+     complex N=2 2x2 minor (-2.55744 + 1.30205j) +/- (4.1e-93, 4.1e-93) ok
+     complex N=3 3x3 minor (-0.405301 + -0.352852j) +/- (9.3e-93, 9.2e-93) ok
+     complex N=4 4x4 minor (-0.0264298 + 0.00779961j) +/- (2.3e-93, 2.3e-93) ok
+[32] b=bs
+     real N=1 2x2 minor -0.00405186 +/- 3.2e-95 ok
+     real N=2 det       1.59909e-6 +/- 4.3e-98 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.141856 + 0.0405149j) +/- (5.6e-95, 5.6e-95) ok
+     complex N=2 2x2 minor (-0.00567871 + -0.00325609j) +/- (8.9e-95, 8.9e-95) ok
+     complex N=3 3x3 minor (-0.000294215 + 0.000160609j) +/- (6.3e-96, 6.3e-96) ok
+     complex N=4 4x4 minor (-9.73067e-7 + -7.95983e-7j) +/- (7.0e-98, 7.0e-98) ok
+[33] b=bs
+     real N=1 2x2 minor -0.00197759 +/- 5.7e-96 ok
+     real N=2 det       3.91667e-8 +/- 9.0e-100 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.0559007 + 0.0247757j) +/- (3.1e-95, 3.1e-95) ok
+     complex N=2 2x2 minor (-0.000853673 + 0.00199999j) +/- (5.6e-96, 5.6e-96) ok
+     complex N=3 3x3 minor (-1.89371e-5 + -1.61957e-5j) +/- (4.1e-97, 4.1e-97) ok
+     complex N=4 4x4 minor (1.84052e-8 + 1.46921e-8j) +/- (6.1e-99, 6.1e-99) ok
+[34] b=bs
+     real N=1 2x2 minor -117.138 +/- 3.7e-91 ok
+     real N=2 det       -0.644699 +/- 4.0e-92 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-10.5001 + -13.4869j) +/- (1.4e-92, 1.4e-92) ok
+     complex N=2 2x2 minor (9.75440 + -4.72718j) +/- (3.3e-92, 3.3e-92) ok
+     complex N=3 3x3 minor (121.108 + 40.5136j) +/- (6.0e-91, 6.0e-91) ok
+     complex N=4 4x4 minor (-0.498932 + -5.01576j) +/- (5.1e-91, 5.1e-91) ok
+[35] b=bs
+     real N=1 2x2 minor 0.133025 +/- 6.6e-94 ok
+     real N=2 det       -1.56093e-5 +/- 1.1e-96 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (0.476641 + 0.347589j) +/- (4.7e-94, 4.7e-94) ok
+     complex N=2 2x2 minor (-0.0472992 + 0.0609370j) +/- (5.1e-94, 5.1e-94) ok
+     complex N=3 3x3 minor (-0.00489563 + 0.00209670j) +/- (2.4e-95, 2.4e-95) ok
+     complex N=4 4x4 minor (-2.85525e-6 + 2.47980e-5j) +/- (5.2e-96, 5.2e-96) ok
+[36] AlN/sapphire lam=321 tauR=1.0ns taul=0.0ns
+     real N=1 2x2 minor -9.14229e-7 +/- 3.4e-99 ok
+     real N=2 det       -2.98287e-22 +/- 3.8e-112 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.000747883 + -0.00571571j) +/- (1.6e-95, 1.6e-95) ok
+     complex N=2 2x2 minor (4.00018e-6 + 1.32723e-5j) +/- (2.1e-98, 2.1e-98) ok
+     complex N=3 3x3 minor (-4.08380e-8 + -6.93131e-8j) +/- (2.6e-99, 2.6e-99) ok
+     complex N=4 4x4 minor (7.56158e-20 + 1.06659e-19j) +/- (1.8e-108, 1.8e-108) ok
+[37] AlN/sapphire lam=321 tauR=1.0ns taul=0.5ns
+     real N=1 2x2 minor -9.14589e-7 +/- 4.3e-99 ok
+     real N=2 det       -1.47644e-22 +/- 4.9e-112 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.000772891 + -0.00571230j) +/- (2.1e-95, 2.1e-95) ok
+     complex N=2 2x2 minor (4.94969e-6 + 1.29006e-5j) +/- (2.7e-98, 2.7e-98) ok
+     complex N=3 3x3 minor (-2.84423e-8 + -2.59261e-8j) +/- (3.5e-99, 3.5e-99) ok
+     complex N=4 4x4 minor (3.26885e-20 + 1.18215e-21j) +/- (1.3e-108, 1.3e-108) ok
+[38] AlN/sapphire lam=60 tauR=0.1ns taul=2.0ns
+     real N=1 2x2 minor 7.86124e-6 +/- 1.7e-96 ok
+     real N=2 det       1.94118e-20 +/- 1.0e-110 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (0.00498934 + 0.0303283j) +/- (2.3e-95, 2.3e-95) ok
+     complex N=2 2x2 minor (-6.29066e-5 + -6.29398e-5j) +/- (4.0e-96, 4.0e-96) ok
+     complex N=3 3x3 minor (2.70518e-7 + -5.32089e-8j) +/- (2.0e-99, 2.0e-99) ok
+     complex N=4 4x4 minor (-2.35361e-19 + 5.73380e-19j) +/- (2.2e-109, 2.2e-109) ok
+[39] AlN/sapphire lam=60 tauR=10.0ns taul=3.0ns
+     real N=1 2x2 minor -2.90118e-5 +/- 1.7e-96 ok
+     real N=2 det       -9.15380e-20 +/- 1.1e-110 ok;  det_real + det_complex(+-i w)/4 contains 0: True
+     complex N=1 1x1 minor (-0.00420405 + -0.0305021j) +/- (2.5e-95, 2.5e-95) ok
+     complex N=2 2x2 minor (0.000311146 + 0.000177322j) +/- (5.0e-96, 5.0e-96) ok
+     complex N=3 3x3 minor (-1.11109e-7 + 4.11269e-7j) +/- (2.3e-99, 2.3e-99) ok
+     complex N=4 4x4 minor (-2.63365e-19 + -3.56282e-19j) +/- (2.7e-109, 2.7e-109) ok
+
+all certificates valid: True
+Consequence: at every listed point the real Jacobian has rank 2 (N=1) and 4 (N=2, hence N>=2),
+the complex Jacobian has rank N for N<=4 and 4 for N>=4.  By real-analyticity in (theta, omega)
+these ranks are the generic ones, and the exceptional set is a proper analytic subset.

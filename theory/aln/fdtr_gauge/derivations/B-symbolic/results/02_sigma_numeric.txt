@@ -1,0 +1,44 @@
+Function-level Jacobian on the grid (xi1 = bs = 1), real 130 x 4, equilibrated columns.
+grid points: 11492;  diagonal points: 442
+
+1. Off the diagonal
+   |log10(T_R/T_l)| >= 0.25: min s4/s1 = 1.186e-07 at beta=31.6, T_R=1e+03, T_l=0
+   |log10(T_R/T_l)| >= 0.5: min s4/s1 = 1.186e-07 at beta=31.6, T_R=1e+03, T_l=0
+   |log10(T_R/T_l)| >= 1.0: min s4/s1 = 1.186e-07 at beta=31.6, T_R=1e+03, T_l=0
+   |log10(T_R/T_l)| >= 2.0: min s4/s1 = 1.186e-07 at beta=31.6, T_R=1e+03, T_l=0
+   T_l = 0 < T_R (Cattaneo): min s4/s1 = 1.186e-07 at beta=31.6, T_R=1e+03, T_l=0
+   T_R = 0 < T_l: min s4/s1 = 8.514e-05 at beta=0.01, T_R=0, T_l=1e+03
+   beta = 1 (b = bs), |log10(T_R/T_l)| >= 0.25: min s4/s1 = 6.766e-07 at T_R=1e+03, T_l=0
+
+2. On the diagonal T_R = T_l (rank <= 3 by the identity col3 + col4 = 0)
+   max s4/s1 on the diagonal: 4.80e-16
+   beta != 1: min s3/s1 = 1.261e-04 at beta=100, T=1e+03
+   beta = 1, equilibrated columns: max s3/s1 = 5.34e-01  <- artefact: the xi1 column is
+      identically zero there (U = 0), and equilibration rescales its round-off (~1e-16) to unit norm.
+   beta = 1, natural scaling (no equilibration): max s3/s1 = 2.90e-16, min s2/s1 = 3.282e-04  (rank 2)
+
+3. Scaling of s4/s1 with the distance to the diagonal, T_l = T (1 + eps), T_R = T
+   beta=  0.1 T=   0.01: s4/s1 = 2.27e-02, 2.38e-03, 2.39e-04, 2.39e-05, 2.39e-06, 2.39e-07  (eps = 1e-1..1e-6), slope 0.997
+   beta=  0.1 T=      1: s4/s1 = 1.38e-02, 1.39e-03, 1.39e-04, 1.39e-05, 1.39e-06, 1.39e-07  (eps = 1e-1..1e-6), slope 1.000
+   beta=  0.1 T=    100: s4/s1 = 1.09e-02, 1.11e-03, 1.11e-04, 1.11e-05, 1.11e-06, 1.11e-07  (eps = 1e-1..1e-6), slope 0.999
+   beta=    1 T=   0.01: s4/s1 = 2.38e-02, 2.48e-03, 2.50e-04, 2.50e-05, 2.50e-06, 2.50e-07  (eps = 1e-1..1e-6), slope 0.997
+   beta=    1 T=      1: s4/s1 = 3.24e-03, 3.32e-04, 3.34e-05, 3.35e-06, 3.35e-07, 3.35e-08  (eps = 1e-1..1e-6), slope 0.998
+   beta=    1 T=    100: s4/s1 = 1.12e-02, 1.12e-03, 1.13e-04, 1.13e-05, 1.13e-06, 1.13e-07  (eps = 1e-1..1e-6), slope 1.000
+   beta=   10 T=   0.01: s4/s1 = 6.94e-03, 2.48e-03, 2.49e-04, 2.49e-05, 2.49e-06, 2.49e-07  (eps = 1e-1..1e-6), slope 0.920
+   beta=   10 T=      1: s4/s1 = 5.57e-03, 2.01e-03, 2.03e-04, 2.03e-05, 2.03e-06, 2.03e-07  (eps = 1e-1..1e-6), slope 0.919
+   beta=   10 T=    100: s4/s1 = 1.52e-03, 1.41e-03, 1.64e-04, 1.64e-05, 1.64e-06, 1.64e-07  (eps = 1e-1..1e-6), slope 0.847
+
+4. N = 2 frequencies: Hadamard ratio |det J_real| / prod ||col||, best of 8 random pairs P1, P2 in 10^[-2, 2]
+   |log10(T_R/T_l)| >= 0.25: min over grid of best ratio = 8.075e-09 at beta=100, T_R=562, T_l=1e+03
+   |log10(T_R/T_l)| >= 1.0: min over grid of best ratio = 8.607e-08 at beta=100, T_R=100, T_l=1e+03
+   T_l = 0 < T_R: min best ratio = 7.445e-04 at beta=3.16, T_R=562, T_l=0
+   T_R = 0 < T_l: min best ratio = 2.429e-07 at beta=100, T_R=0, T_l=1e+03
+   on the diagonal: max best ratio = 8.86e-17
+
+5. 50-digit recomputation (mpmath, SymPy derivatives) at the 6 lowest off-diagonal grid points (|log10 ratio| >= 0.5)
+   beta=31.6 T_R=1e+03 T_l=0: double s4/s1 = 1.1865e-07; 50-digit s4/s1 = 1.1865e-7
+   beta=56.2 T_R=1e+03 T_l=0: double s4/s1 = 1.2758e-07; 50-digit s4/s1 = 1.2758e-7
+   beta=17.8 T_R=1e+03 T_l=0: double s4/s1 = 1.4819e-07; 50-digit s4/s1 = 1.4819e-7
+   beta=10 T_R=1e+03 T_l=0: double s4/s1 = 1.9983e-07; 50-digit s4/s1 = 1.9983e-7
+   beta=100 T_R=1e+03 T_l=0: double s4/s1 = 2.2453e-07; 50-digit s4/s1 = 2.2453e-7
+   beta=5.62 T_R=1e+03 T_l=0: double s4/s1 = 2.8989e-07; 50-digit s4/s1 = 2.8989e-7

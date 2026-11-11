@@ -1,0 +1,8 @@
+(E1) Q at the point = 0
+(E1) on Q = 0: theta=('1', '1', '3/2', '1/2', '3'), bs=1; best 5x5 minor of the real Jacobian at 3 frequencies: -0.0121294 +/- 8.2e-118  ok
+(E1) second point: R = 2167535450473/753093814460 (rational approximation of the root), Q = 8.124e-16
+(E1) on Q ~ 0: theta=('7/10', '2', '2/5', '1/10', '2167535450473/753093814460'), bs=1; best 5x5 minor of the real Jacobian at 3 frequencies: -0.00954079 +/- 1.7e-118  ok
+(E2) R = 0, beta = 100, T_R = 1, T_l = 3/10: theta=('1', '100', '1', '3/10', '0'), bs=1; best 5x5 minor of the real Jacobian at 4 frequencies: 4.89412e-18 +/- 1.6e-128  ok
+(E3) b = bs, tau_R != tau_l, R = 0 (4-parameter model): theta=('1', '2', '1', '3/10'), bs=2; best 4x4 minor of the real Jacobian at 2 frequencies: -0.000615946 +/- 9.9e-120  ok
+(E3) b = bs, tau_R != tau_l, R = 0 (4-parameter model): theta=('1/3', '5', '1/50', '1/7'), bs=5; best 4x4 minor of the real Jacobian at 2 frequencies: 3.87575e-7 +/- 1.5e-122  ok
+all certificates valid: True

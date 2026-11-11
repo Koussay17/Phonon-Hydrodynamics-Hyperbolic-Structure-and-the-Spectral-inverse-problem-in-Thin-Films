@@ -1,0 +1,9 @@
+Wolfram Language 15.0.1 kernel, input 00_closure.wl
+
+{"quad-closed" -> 0, "brief*closed*B^2-1" -> 0, "with R" -> 0,
+ "thin film {closed, brief}" -> {s^(-1), s/bb^2},
+ "spot |quad-closed|/|Z|" -> 0``49.69897000433602,
+ "spot |brief-closed|/|Z|" -> 3.01848024573139874502433060987627300165`10.}
+
+(spot point: xi1=23/10, b=579/100, tau_R=9639/1000, tau_l=6889/100000, bs=166/1000, omega=2663/10000;
+ mpmath value at the same point in 00_closure.txt, second row of N1: 3.01)

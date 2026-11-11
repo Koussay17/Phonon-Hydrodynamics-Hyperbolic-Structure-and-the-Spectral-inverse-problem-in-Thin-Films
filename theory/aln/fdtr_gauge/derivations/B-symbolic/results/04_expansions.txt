@@ -1,0 +1,83 @@
+SMALL p (q = sqrt p).  Z = sum_n z_n q^n
+  R = 0:
+    z_-1 = 1/b_s
+    z_0 = -xi1*(b - b_s)*(b + b_s)/(b*b_s**2)
+    z_1 = xi1**2*(b - b_s)*(b + b_s)/b_s**3
+    z_2 = -xi1*(3*b**4*xi1**2 - 4*b**2*b_s**2*xi1**2 - 3*b_s**4*tau_R + 3*b_s**4*tau_l + b_s**4*xi1**2)/(3*b*b_s**4)
+    z_3 = xi1**2*(3*b**4*xi1**2 - 5*b**2*b_s**2*xi1**2 - 3*b_s**4*tau_R + 3*b_s**4*tau_l + 2*b_s**4*xi1**2)/(3*b_s**5)
+    z_4 = -xi1*(15*b**6*xi1**4 - 30*b**4*b_s**2*xi1**4 - 20*b**2*b_s**4*tau_R*xi1**2 + 20*b**2*b_s**4*tau_l*xi1**2 + 17*b**2*b_s**4*xi1**4 + 15*b_s**6*tau_R*tau_l + 10*b_s**6*tau_R*xi1**2 - 15*b_s**6*tau_l**2 - 10*b_s**6*tau_l*xi1**2 - 2*b_s**6*xi1**4)/(15*b*b_s**6)
+    z_5 = xi1**2*(45*b**6*xi1**4 - 105*b**4*b_s**2*xi1**4 - 75*b**2*b_s**4*tau_R*xi1**2 + 75*b**2*b_s**4*tau_l*xi1**2 + 77*b**2*b_s**4*xi1**4 + 45*b_s**6*tau_R*tau_l + 60*b_s**6*tau_R*xi1**2 - 45*b_s**6*tau_l**2 - 60*b_s**6*tau_l*xi1**2 - 17*b_s**6*xi1**4)/(45*b_s**7)
+  with interface resistance R:
+    z_-1 = 1/b_s
+    z_0 = -(-R*b*b_s**2 + b**2*xi1 - b_s**2*xi1)/(b*b_s**2)
+    z_1 = xi1*(-2*R*b*b_s**2 + b**2*xi1 - b_s**2*xi1)/b_s**3
+    z_2 = -xi1*(3*R**2*b**2*b_s**4 - 9*R*b**3*b_s**2*xi1 + 3*R*b*b_s**4*xi1 + 3*b**4*xi1**2 - 4*b**2*b_s**2*xi1**2 - 3*b_s**4*tau_R + 3*b_s**4*tau_l + b_s**4*xi1**2)/(3*b*b_s**4)
+    z_3 = xi1**2*(9*R**2*b**2*b_s**4 - 12*R*b**3*b_s**2*xi1 + 8*R*b*b_s**4*xi1 + 3*b**4*xi1**2 - 5*b**2*b_s**2*xi1**2 - 3*b_s**4*tau_R + 3*b_s**4*tau_l + 2*b_s**4*xi1**2)/(3*b_s**5)
+    z_4 = -xi1*(-15*R**3*b**3*b_s**6*xi1 + 90*R**2*b**4*b_s**4*xi1**2 - 20*R**2*b**2*b_s**6*xi1**2 - 75*R*b**5*b_s**2*xi1**3 + 75*R*b**3*b_s**4*xi1**3 + 15*R*b*b_s**6*tau_R*xi1 - 15*R*b*b_s**6*tau_l*xi1 - 10*R*b*b_s**6*xi1**3 + 15*b**6*xi1**4 - 30*b**4*b_s**2*xi1**4 - 20*b**2*b_s**4*tau_R*xi1**2 + 20*b**2*b_s**4*tau_l*xi1**2 + 17*b**2*b_s**4*xi1**4 + 15*b_s**6*tau_R*tau_l + 10*b_s**6*tau_R*xi1**2 - 15*b_s**6*tau_l**2 - 10*b_s**6*tau_l*xi1**2 - 2*b_s**6*xi1**4)/(15*b*b_s**6)
+    z_5 = xi1**2*(-180*R**3*b**3*b_s**6*xi1 + 450*R**2*b**4*b_s**4*xi1**2 - 225*R**2*b**2*b_s**6*xi1**2 - 270*R*b**5*b_s**2*xi1**3 + 360*R*b**3*b_s**4*xi1**3 + 120*R*b*b_s**6*tau_R*xi1 - 120*R*b*b_s**6*tau_l*xi1 - 102*R*b*b_s**6*xi1**3 + 45*b**6*xi1**4 - 105*b**4*b_s**2*xi1**4 - 75*b**2*b_s**4*tau_R*xi1**2 + 75*b**2*b_s**4*tau_l*xi1**2 + 77*b**2*b_s**4*xi1**4 + 45*b_s**6*tau_R*tau_l + 60*b_s**6*tau_R*xi1**2 - 45*b_s**6*tau_l**2 - 60*b_s**6*tau_l*xi1**2 - 17*b_s**6*xi1**4)/(45*b_s**7)
+  R = 0 in terms of R_f = xi1/b = e/lambda and C_f = xi1 b = rho c e:
+    z_0 = -(C_f - R_f*b_s**2)/b_s**2
+    z_1 = C_f*(C_f - R_f*b_s**2)/b_s**3
+    z_2 = -(3*C_f**3 - 4*C_f**2*R_f*b_s**2 + C_f*R_f**2*b_s**4 - 3*R_f*b_s**4*tau_R + 3*R_f*b_s**4*tau_l)/(3*b_s**4)
+    z_3 = C_f*(3*C_f**3 - 5*C_f**2*R_f*b_s**2 + 2*C_f*R_f**2*b_s**4 - 3*R_f*b_s**4*tau_R + 3*R_f*b_s**4*tau_l)/(3*b_s**5)
+  identity z_1 = -(C_f/b_s) z_0 : 0
+  z_0: (d_tauR + d_taul) z_n = 0 ;  (d_tauR - d_taul) z_n = 0
+  z_1: (d_tauR + d_taul) z_n = 0 ;  (d_tauR - d_taul) z_n = 0
+  z_2: (d_tauR + d_taul) z_n = 0 ;  (d_tauR - d_taul) z_n = 2*xi1/b
+  z_3: (d_tauR + d_taul) z_n = 0 ;  (d_tauR - d_taul) z_n = -2*xi1**2/b_s
+  z_4: (d_tauR + d_taul) z_n = -xi1*(tau_R - tau_l)/b ;  (d_tauR - d_taul) z_n = xi1*(8*b**2*xi1**2 + 3*b_s**2*tau_R - 9*b_s**2*tau_l - 4*b_s**2*xi1**2)/(3*b*b_s**2)
+  z_5: (d_tauR + d_taul) z_n = xi1**2*(tau_R - tau_l)/b_s ;  (d_tauR - d_taul) z_n = -xi1**2*(10*b**2*xi1**2 + 3*b_s**2*tau_R - 9*b_s**2*tau_l - 8*b_s**2*xi1**2)/(3*b_s**3)
+  det d(z_0, z_1, z_2, z_3)/d(xi1, b, tau_R, tau_l) = 0
+  det d(z_0, z_1, z_2, z_4)/d(xi1, b, tau_R, tau_l) = -2*xi1**4*(b - b_s)*(b + b_s)*(tau_R - tau_l)/(b**4*b_s**3)
+  det d(z_0, z_1, z_2, z_5)/d(xi1, b, tau_R, tau_l) = 2*xi1**5*(b - b_s)*(b + b_s)*(tau_R - tau_l)/(b**3*b_s**4)
+  with R: det d(z_(0, 1, 2, 3, 4))/d(xi1, b, tau_R, tau_l, R) = -2*xi1**5*(tau_R - tau_l)*(-R**2*b**2*b_s**2 + 2*R*b**3*xi1 + 3*b_s**2*tau_R - 3*b_s**2*tau_l)/(3*b**3*b_s**4)
+  with R: det d(z_(0, 1, 2, 3, 5))/d(xi1, b, tau_R, tau_l, R) = 2*xi1**6*(tau_R - tau_l)*(-R**2*b**2*b_s**2 + 2*R*b**3*xi1 + 3*b_s**2*tau_R - 3*b_s**2*tau_l)/(3*b**2*b_s**5)
+
+LARGE p, generic tau_R, tau_l > 0:  Z = 1/B + exponentially small;  1/B = sum_k y_k p^(-1/2 - k)
+  y_0 (coefficient of p^(-1/2)) = sqrt(tau_R)/(b*sqrt(tau_l))
+  y_1 (coefficient of p^(-3/2)) = -(tau_R - tau_l)/(2*b*sqrt(tau_R)*tau_l**(3/2))
+  y_2 (coefficient of p^(-5/2)) = (tau_R - tau_l)*(3*tau_R + tau_l)/(8*b*tau_R**(3/2)*tau_l**(5/2))
+  y_3 (coefficient of p^(-7/2)) = -(tau_R - tau_l)*(5*tau_R**2 + 2*tau_R*tau_l + tau_l**2)/(16*b*tau_R**(5/2)*tau_l**(7/2))
+  in terms of K = sqrt(tau_R/tau_l)/b, a_R = 1/tau_R, a_l = 1/tau_l:
+    y_0 / K = 1
+    y_1 / K = (a_R - a_l)/2
+    y_2 / K = -(a_R - a_l)*(a_R + 3*a_l)/8
+    y_3 / K = (a_R - a_l)*(a_R**2 + 2*a_R*a_l + 5*a_l**2)/16
+  leading exponential term: Z - 1/B ~ (2 G_inf / B) exp(-2A),  A = xi1 sqrt(tau_R/tau_l) [sqrt p + (a_R - a_l)/(2 sqrt p) + ...],
+  G_inf = (b sqrt(tau_l/tau_R) - b_s)/(b sqrt(tau_l/tau_R) + b_s)   (R = 0); with R > 0, G -> 1.
+  A sqrt(p)^-1 expansion: A = (sqrt(tau_R)*xi1/sqrt(tau_l)) p^(1/2) + (-xi1*(tau_R - tau_l)/(2*sqrt(tau_R)*tau_l**(3/2))) p^(-1/2) + (xi1*(tau_R - tau_l)*(3*tau_R + tau_l)/(8*tau_R**(3/2)*tau_l**(5/2))) p^(-3/2)
+
+LARGE p, Cattaneo tau_l = 0 < tau_R: expansion in u = p^(-1/2) at fixed t = tanh A (|t|, |sech A| bounded on i omega)
+  coefficient of p^(-0/2): t*sqrt(tau_R)/b
+  coefficient of p^(-1/2): -(t - 1)*(t + 1)/b_s
+  coefficient of p^(-2/2): t*(2*b**2*t**2 - 2*b**2 + b_s**2)/(2*b*b_s**2*sqrt(tau_R))
+  coefficient of p^(-3/2): -b**2*t**2*(t - 1)*(t + 1)/(b_s**3*tau_R)
+  A = xi1 sqrt(tau_R) p + xi1/(2 sqrt(tau_R)) + O(1/p); exact series of A u^2: sqrt(tau_R)*xi1 + u**2*xi1/(2*sqrt(tau_R)) - u**4*xi1/(8*tau_R**(3/2))
+
+LARGE p, tau_R = 0 < tau_l: A -> xi1/sqrt(tau_l); power series in u = p^(-1/2)
+  c_2 (p^-1)   = coth(A_inf)/(b sqrt(tau_l)),          A_inf = xi1/sqrt(tau_l)
+  c_3 (p^-3/2) = -b_s csch(A_inf)^2/(b^2 tau_l)
+  c_4, c_5: see 04_expansions.wl / results/04_expansions_wl.txt
+  check at the test point: series c_2 = 1.2775576917082597734 vs formula 1.2775576917082597734; c_3 = -0.13185295315430055850 vs formula -0.13185295315430055850
+
+NUMERICAL CHECKS on p = i omega (50 digits): error of the truncation / |first omitted order|
+  small p, R = 0: n-term truncation up to z_4; ratio |Z - sum_{k<=4} z_k q^k| / |q|^5
+    omega=0.01: ratio = 4.28812   (|z_5| = 4.709403996070774)
+    omega=0.001: ratio = 4.5712667   (|z_5| = 4.709403996070774)
+    omega=0.0001: ratio = 4.6652532   (|z_5| = 4.709403996070774)
+  small p, R = 1/5: n-term truncation up to z_4; ratio |Z - sum_{k<=4} z_k q^k| / |q|^5
+    omega=0.01: ratio = 0.63954294   (|z_5| = 0.6818876764458104)
+    omega=0.001: ratio = 0.6681725   (|z_5| = 0.6818876764458104)
+    omega=0.0001: ratio = 0.67751893   (|z_5| = 0.6818876764458104)
+  large p, generic: ratio |Z - sum_{k<=3} y_k p^(-1/2-k)| / |p|^(-9/2)
+    omega=1.0e+3: ratio = 542.82136  (|y_4| = 542.836140044721);  |Z - 1/B| = 6.16e-24
+    omega=1.0e+4: ratio = 543.67047  (|y_4| = 542.836140044721);  |Z - 1/B| = 0.0
+    omega=1.0e+5: ratio = 8887.6174  (|y_4| = 542.836140044721);  |Z - 1/B| = 2.61e-54
+  large p, Cattaneo (tau_l = 0): ratio |Z - [t/B + (1-t^2)/S]| / |p|^(-1), t = tanh A exact
+    omega=1.0e+3: ratio = 1.3087424;  |t| = 0.57802
+    omega=1.0e+4: ratio = 10.067778;  |t| = 1.6253
+    omega=1.0e+5: ratio = 2.3995488;  |t| = 0.81284
+  large p, tau_R = 0: ratio |Z - sum_{k=2..5} c_k p^(-k/2)| / |p|^(-3)
+    omega=1.0e+3: ratio = 30.650845
+    omega=1.0e+4: ratio = 30.614017
+    omega=1.0e+5: ratio = 30.60203

@@ -1,0 +1,33 @@
+(G1) D[xi1] = 0
+(G1) D[b] = 0
+(G1) D[tau_R] = 0
+(G1) D[tau_l] = 0
+(G1) |D Z| / |e dZ/de| on p = i omega, 25 random points, 50 digits: max 1.43e-41
+     operator without the ell term: min |residual| / |e dZ/de| = 0.0263 (nonzero)
+(G1) finite transformation (e, a, lambda, ell) -> (mu e, mu^2 a, mu lambda, mu ell): changes of (xi1, b, tau_l) = [0, 0, 0]
+(G1) max |Z(mu-transformed) - Z| at 20 random points (50 digits): 0
+(G2) rank of d phi / d(e, a, lambda, ell, tau_R): 4
+     kernel: [Matrix([[1/ell, 2/ell, 1/ell, 1/ell, 0]])] (rescaled by 1/q: must be proportional to (1,2,1,1,0))
+     kernel vector, raw: [[e/ell, 2*a/ell, lambda/ell, 1, 0]]
+(G2) with (e, lambda, rho c, ell, tau_R): rank 4 , kernel [[e/ell, lambda/ell, -rho_c/ell, 1, 0]]
+(G3) normalised singular values of the composite Jacobian d Z(i omega_j)/d ln(e, a, lambda, ell, tau_R), 8 frequencies, 50 digits
+   off Sigma: [1.0, 0.213, 0.0363, 0.0164, 6.03e-52]
+   off Sigma: [1.0, 0.498, 0.104, 0.00473, 6.21e-52]
+   off Sigma: [1.0, 0.498, 0.0726, 0.0303, 4.94e-52]
+   on tau_R = tau_l: [1.0, 0.159, 0.0333, 5.9e-52, 2.54e-52]
+   on tau_R = tau_l, b = bs: [1.0, 0.11, 1.09e-51, 8.07e-52, 2.69e-52]
+   on tau_R = tau_l: [1.0, 0.451, 0.0465, 1.29e-51, 3.94e-52]
+   on tau_R = tau_l, b = bs: [1.0, 0.381, 1.65e-51, 5.33e-52, 2.75e-52]
+(G4) e      exponents (m, kg, s, K): [1, 0, 0, 0]
+(G4) a      exponents (m, kg, s, K): [2, 0, -1, 0]
+(G4) lambda exponents (m, kg, s, K): [1, 1, -3, -1]
+(G4) rho_c  exponents (m, kg, s, K): [-1, 1, -2, -1]
+(G4) ell    exponents (m, kg, s, K): [1, 0, 0, 0]
+(G4) tau_R  exponents (m, kg, s, K): [0, 0, 1, 0]
+(G4) b_s    exponents (m, kg, s, K): [0, 1, -5/2, -1]
+(G4) omega  exponents (m, kg, s, K): [0, 0, -1, 0]
+(G4) Z      exponents (m, kg, s, K): [0, -1, 3, 1]
+(G4) unit rescalings (ln L, ln M, ln T, ln Theta) leaving omega, b_s, Z unchanged: basis [[1, 0, 0, 0], [0, 1, 0, 1]]
+     action on ln(e, a, lambda, rho_c, ell, tau_R): [1, 2, 1, -1, 1, 0]
+     action on ln(e, a, lambda, rho_c, ell, tau_R): [0, 0, 0, 0, 0, 0]
+     -> one direction acts as (1, 2, 1, -1, 1, 0) = the gauge; the other acts trivially.
