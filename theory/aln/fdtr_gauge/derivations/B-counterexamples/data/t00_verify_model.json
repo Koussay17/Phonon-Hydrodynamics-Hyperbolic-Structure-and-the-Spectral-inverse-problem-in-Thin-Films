@@ -1,0 +1,11 @@
+{
+ "max_rel_diff_vs_forward_model": 8.589669630431412e-14,
+ "jacobian_vs_mpdiff_maxrel": {
+  "code": 1.205733374324379e-30,
+  "brief": 1.0892570951835466e-30
+ },
+ "jac_double_vs_mp_maxrel": 2.4589973835071592e-12,
+ "thin_limit_code": 1.5817710113226295e-08,
+ "thin_limit_brief": 0.7499999966582831,
+ "resonance_vs_fourier": 2.220446049250313e-16
+}

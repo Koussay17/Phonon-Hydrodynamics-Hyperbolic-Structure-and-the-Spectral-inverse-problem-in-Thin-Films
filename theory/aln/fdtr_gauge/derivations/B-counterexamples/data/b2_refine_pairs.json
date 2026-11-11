@@ -1,0 +1,245 @@
+[
+ {
+  "target": "T1_gk",
+  "theta": [
+   1.0,
+   2.0,
+   0.5,
+   0.1
+  ],
+  "band": "fdtr_thin",
+  "band_limits": [
+   5.000000000000002e-07,
+   0.010000000000000004
+  ],
+  "theta_p": [
+   1.0000194701036929,
+   1.9999769995325816,
+   0.39963514689436264,
+   0.0
+  ],
+  "dist": Infinity,
+  "misfit_band_initial": 1.1944768029959675e-08,
+  "misfit_band_refined": 1.1944768029959675e-08,
+  "misfit_band_40digits": 1.194476804168717e-08,
+  "misfit_full_band": 0.6473645063591856,
+  "misfit_band_widened_1dec": 6.716989158890725e-06,
+  "misfit_band_widened_2dec": 0.001892609526601583
+ },
+ {
+  "target": "T1_gk",
+  "theta": [
+   1.0,
+   2.0,
+   0.5,
+   0.1
+  ],
+  "band": "fdtr_mid",
+  "band_limits": [
+   0.00010000000000000009,
+   2.0
+  ],
+  "theta_p": [
+   1.0731920432674058,
+   1.9374356341999557,
+   0.3446910634626399,
+   0.0
+  ],
+  "dist": Infinity,
+  "misfit_band_initial": 0.006702005917043992,
+  "misfit_band_refined": 0.006702005917043992,
+  "misfit_band_40digits": 0.00670200591704405,
+  "misfit_full_band": 0.5888144865815372,
+  "misfit_band_widened_1dec": 0.13182565584179637,
+  "misfit_band_widened_2dec": 0.6078648486965185
+ },
+ {
+  "target": "T2_gk_tl>tR",
+  "theta": [
+   1.0,
+   0.5,
+   0.1,
+   0.5
+  ],
+  "band": "fdtr_mid",
+  "band_limits": [
+   0.00010000000000000009,
+   2.0
+  ],
+  "theta_p": [
+   1.1278010346911427,
+   0.5299308160173314,
+   0.0,
+   0.3163124439570509
+  ],
+  "dist": Infinity,
+  "misfit_band_initial": 0.006039501257095191,
+  "misfit_band_refined": 0.00603950125709519,
+  "misfit_band_40digits": 0.006039501257095248,
+  "misfit_full_band": 0.31842178937981785,
+  "misfit_band_widened_1dec": 0.10833936390859468,
+  "misfit_band_widened_2dec": 0.2582449658099203
+ },
+ {
+  "target": "T4_beta1",
+  "theta": [
+   1.0,
+   1.0,
+   0.5,
+   0.1
+  ],
+  "band": "fdtr_mid",
+  "band_limits": [
+   0.00010000000000000009,
+   2.0
+  ],
+  "theta_p": [
+   0.2092789169131159,
+   0.97263307753266,
+   1.7712185171689228,
+   0.5357153312633995
+  ],
+  "dist": 1.6784327356108264,
+  "misfit_band_initial": 0.002254885319913548,
+  "misfit_band_refined": 0.002254885319913548,
+  "misfit_band_40digits": 0.002254885319913602,
+  "misfit_full_band": 0.08362362193829936,
+  "misfit_band_widened_1dec": 0.03715819555823482,
+  "misfit_band_widened_2dec": 0.06408984436182152
+ },
+ {
+  "target": "T4_beta1",
+  "theta": [
+   1.0,
+   1.0,
+   0.5,
+   0.1
+  ],
+  "band": "full",
+  "band_limits": [
+   0.019999999999999993,
+   100.00000000000004
+  ],
+  "theta_p": [
+   0.11175719647421815,
+   0.9881825326515612,
+   3.2135992518426177,
+   0.7199867855392728
+  ],
+  "dist": 2.191426649582339,
+  "misfit_band_initial": 0.020473497577147618,
+  "misfit_band_refined": 0.020473497577147618,
+  "misfit_band_40digits": 0.020489987200664615,
+  "misfit_full_band": 0.020473497577147618,
+  "misfit_band_widened_1dec": 0.02543279247807479,
+  "misfit_band_widened_2dec": 0.027003415843642204
+ },
+ {
+  "target": "T5_near_res",
+  "theta": [
+   1.0,
+   2.0,
+   0.5256355481880121,
+   0.475614712250357
+  ],
+  "band": "fdtr_mid",
+  "band_limits": [
+   0.00010000000000000009,
+   2.0
+  ],
+  "theta_p": [
+   1.0318618541127746,
+   1.971753559433716,
+   0.02424904738555881,
+   0.0
+  ],
+  "dist": Infinity,
+  "misfit_band_initial": 0.00200247254378631,
+  "misfit_band_refined": 0.0020024725437863106,
+  "misfit_band_40digits": 0.0020024725437863605,
+  "misfit_full_band": 0.06272770754712821,
+  "misfit_band_widened_1dec": 0.04062325339535708,
+  "misfit_band_widened_2dec": 0.2812982498231893
+ },
+ {
+  "target": "T5_near_res",
+  "theta": [
+   1.0,
+   2.0,
+   0.5256355481880121,
+   0.475614712250357
+  ],
+  "band": "full",
+  "band_limits": [
+   0.02499999999999999,
+   21.025421927520483
+  ],
+  "theta_p": [
+   1.2211200986653281,
+   1.806429441055016,
+   7.037073844267432,
+   8.075788224671282
+  ],
+  "dist": 2.832017657867218,
+  "misfit_band_initial": 0.011761301910845684,
+  "misfit_band_refined": 0.011761301910845682,
+  "misfit_band_40digits": 0.01176130191084569,
+  "misfit_full_band": 0.011761301910845682,
+  "misfit_band_widened_1dec": 0.011878244937678282,
+  "misfit_band_widened_2dec": 0.011902174895806906
+ },
+ {
+  "target": "T1_gk",
+  "theta": [
+   1.0,
+   2.0,
+   0.5,
+   0.1
+  ],
+  "band": "full",
+  "band_limits": [
+   0.019999999999999993,
+   100.00000000000004
+  ],
+  "theta_p": [
+   25.564404355554085,
+   1.6967870729189212,
+   0.2790422225962718,
+   0.07387461286151203
+  ],
+  "dist": 3.241200929044967,
+  "misfit_band_initial": 0.20349601802333547,
+  "misfit_band_refined": 0.20349601802333547,
+  "misfit_band_40digits": 0.2035153875183764,
+  "misfit_full_band": 0.20349601802333547,
+  "misfit_band_widened_1dec": 0.22690692900465445,
+  "misfit_band_widened_2dec": 0.2289292466358112
+ },
+ {
+  "target": "T8_gk0",
+  "theta": [
+   1.0,
+   2.0,
+   0.0,
+   0.3
+  ],
+  "band": "fdtr_thin",
+  "band_limits": [
+   5.000000000000002e-07,
+   0.010000000000000004
+  ],
+  "theta_p": [
+   0.9725919033812513,
+   2.0334531243254745,
+   297.6463798221626,
+   296.58968435547126
+  ],
+  "dist": Infinity,
+  "misfit_band_initial": 4.057126880462303e-06,
+  "misfit_band_refined": 4.057126880462303e-06,
+  "misfit_band_40digits": 4.057126880491381e-06,
+  "misfit_full_band": 0.7532340188735995,
+  "misfit_band_widened_1dec": 0.0004713424713260731,
+  "misfit_band_widened_2dec": 0.014534761751774641
+ }
+]
