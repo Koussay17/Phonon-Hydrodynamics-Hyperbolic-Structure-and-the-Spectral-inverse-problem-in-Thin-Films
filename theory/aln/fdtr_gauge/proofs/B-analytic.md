@@ -573,3 +573,36 @@ information rank, transfer-function identifiability.
 **Formalisation candidates.** Step 5 of Theorem 1 (rational identity); the $2\times3$ kernel lemma of Step 3;
 the polynomial minor identities of Proof C / Theorem N2. Lemma LW is formalisable in a differential
 field setting; Lemma T requires more infrastructure.
+
+---
+
+## Addendum after the proof audit (11 November; audit in `branches/B-proof-audit.md`)
+
+Status after audit: Theorems 1, 2, 1′, 2′, Corollary 2.1, Theorem G and Proposition TW **PROVED**; Theorem N2 and Proposition NR
+**PROVED WITH REPAIRS** (below); Proposition L, structural part: **GAP** (D7). All results remain conditional on Assumption M and
+exact, noise-free data. Repairs, in the order of the argument:
+
+- **D1 (Lemma 1: Z has no zeros or poles on {Re p ≥ 0} \ {0}).** By Lemma 0, arg B − arg S = −½ arg g ∈ (−π/4, π/4), so
+  Re(B/S) > 0, and Re(RB) ≥ 0; hence Re(BL) > 0, |r| < 1, |E| = |e^{−2A}| < 1 and |rE| < 1. Since
+  BL sinh A + cosh A = ½ e^{A}(BL + 1)(1 − rE), it is nonzero; the same holds for the numerator. This is used for the real
+  analyticity of θ ↦ Z into C([ω_a, ω_b]) (Theorem 2), for the genericity conclusions of N2 and NR on all of (0, ∞)^N
+  (Lemma F requires a connected domain of analyticity), and for Z ≠ 0 in the log-sensitivities of Definition 4.
+- **D2 (N2, step 2).** The Cauchy–Binet expansion over infinitely many index sets is justified by absolute convergence for
+  μσ < ρ′; the bounds of step 4 give it and are moved before step 2.
+- **D3 (Lemma 3(iv), N2 step 1).** The Laurent series in s converges on a disc that does not shrink as θ varies:
+  F − 1/(b_s s) = R + (X − YL²)/(YL + C) with YL + C → 1 locally uniformly in θ. Term-by-term θ-differentiation is therefore
+  legitimate.
+- **D4.** Off Δ the rank has three proofs (A, B, C); on Δ (ranks 3 and 2) two proofs (A, B). Wording corrected accordingly.
+- **D5 (TW).** The certified box (radius 10⁻⁴⁰) is centred on an 85-digit value stored in `derivations/B-analytic/`; the printed
+  20 digits lie within 5·10⁻²¹ of the root (independent re-certification, radius 10⁻¹⁵, det J₂(θ′) = 3.148·10⁻³, so the root is
+  regular). "Inverse function theorem" reads "implicit function theorem".
+- **D6 (§8, Check).** The quoted ratios 0.918, 0.9915, 0.99915 are replaced by the computed values: 0.958, 0.9958, 0.99958
+  (b = b_s) and 0.891, 0.9886, 0.99886 (AlN-like point). The conclusion (error ∝ σ) is unchanged.
+- **D7 (Proposition L) — open.** "The gauge is not a symmetry of H" requires that the beam-averaged response actually depends on a;
+  this is not shown. Proposition L is downgraded to a structural remark (CONJECTURE) until the k² term is computed or a
+  certified evaluation is given.
+- **D8 (Lemma T).** The identification of germs of h and y with meromorphic functions on a compact Riemann surface is stated via
+  a primitive element of the algebraic function field and a base point not over a branch point; the algebraic version of the
+  argument is given first.
+- **D9 (Theorem G(v)).** "Injective" means injective off Φ⁻¹(Δ).
+- **CAS caveat.** In Theorem 1, step 5, SymPy's `solve` omits the δ = 0 branch; the hand case split of the proof covers it.
