@@ -1,7 +1,7 @@
 # 02 — Assumptions
 
 ## Workstream A
-- A1. The film memory time of E30/E33 uses a **heuristic Matthiessen regulator** d_α = |v_z,α|/(4L) added to the
+- A1. The film memory time of E30/E33 uses a **heuristic Matthiessen regulator** d_α = |v_z,α|/(4πL) in the THz-linewidth units of the operator (physical rate |v_z|/L) added to the
   conserving event operator. It is not a film solution of the BTE. Every A result is conditional on this regulator.
 - A2. τ_mem(L) (z, cross-plane) is identified with the Cattaneo τ_R of the AlN layer of the twin. τ_ℓ (nonlocal time)
   is not fixed by τ_mem and is treated as a separate parameter (nuisance, or zero for the Cattaneo variant).

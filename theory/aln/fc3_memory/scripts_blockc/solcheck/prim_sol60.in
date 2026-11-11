@@ -1,0 +1,23 @@
+ &control
+    calculation='scf', prefix='sol60', pseudo_dir='/home/koussay/blockc/pseudo', outdir='./tmp_sol60', tprnfor=.true., disk_io='none'
+ /
+ &system
+    ibrav=0, celldm(1)=5.888098425987400, nat=4, ntyp=2, ecutwfc=60, ecutrho=480, occupations='fixed', nosym=.true., noinv=.true.
+ /
+ &electrons
+    conv_thr=1.0d-12
+ /
+ATOMIC_SPECIES
+  Al 26.98100 Al.pbesol-n-kjpaw_psl.1.0.0.UPF
+  N  14.00650  N.pbesol-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS alat
+   1.000000000   0.000000000   0.000000000
+  -0.500000000   0.866025404   0.000000000
+   0.000000000   0.000000000   1.600661069
+ATOMIC_POSITIONS crystal
+Al            0.3333333333        0.6666666667        0.9995896991
+Al            0.6666666667        0.3333333333        0.4995896991
+N             0.3333333333        0.6666666667        0.3815261244
+N             0.6666666667        0.3333333333        0.8815261244
+K_POINTS automatic
+3 3 2 0 0 0

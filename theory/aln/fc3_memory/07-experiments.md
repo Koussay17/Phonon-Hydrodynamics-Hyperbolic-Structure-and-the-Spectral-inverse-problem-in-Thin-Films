@@ -1246,3 +1246,17 @@ held-out 12x12x8 as in E37. Outputs `film_opt/m3_orb0.1rs<seed>_z_L100_<sense>.*
 end marker `film3/e39.ok`. Expected about 2–4 days (four runs of 10–30 h, one at a time). Decision rule fixed now: if a random
 start exceeds the E33 optimum by more than 0.5 points of film ratio, the E33 range is reported as a lower bound on the width
 and the table above is revised.
+
+### E38 fourth correction (11 November, evening): the PBEsol failures are a Gamma-path pathology; complex-path fallback
+
+The beta 0.3 fallback did not cure the perfect PBEsol supercell (disp-00000): after 64 steps the residual oscillated between 3e-8
+and 4e-6 Ry. Production was paused and three checks fixed in advance were run (`solcheck.sh`, results `solcheck/result.json`):
+1. Primitive PBEsol cell (reference structure), 60/480 Ry, Gamma-centred 3x3x2 k: 18 E_prim = -2394.94202964 Ry (19 steps).
+2. Perfect 3x3x2 supercell on the complex path (K_POINTS automatic 1 1 1), default mixing: -2394.94202948 Ry in 19 steps.
+   Folding difference 1.6e-7 Ry (PBE at 60/480: 3.5e-7). The same cell on the Gamma-trick path diverges (beta 0.7) or stalls (0.3).
+3. disp-00001, Gamma path against complex path: dE = 0 (all printed digits), max |dF| = 1.9e-7 Ry/bohr (limits 1e-6 Ry, 1e-5 Ry/bohr).
+   PASS.
+Conclusion: where the Gamma-trick path converges its results are correct (the 107 converged PBEsol cells stand); for some PBEsol
+cells it does not converge. The cause in QE 6.7 is not identified (FFT grids are identical to PBE). Fallback changed to the complex
+k path at default mixing, then complex path at beta 0.3 (`runscf`). The complex-path perfect cell is used as disp-00000.
+Cost of a complex-path cell about 44 min (Gamma 13.5 min); 10 known failures add about 7 h. Relaunched 11 November, 20:13 UTC.

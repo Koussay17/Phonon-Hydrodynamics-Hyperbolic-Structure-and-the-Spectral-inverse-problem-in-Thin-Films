@@ -11,16 +11,17 @@ done_ok() { [ -f "$1" ] && grep -q "JOB DONE" "$1"; }
 runpw() {  # dir input output; returns the pw.x exit status
   ( cd $1 && mkdir -p tmp && /usr/bin/time -v $PW -in $2 > $3.part 2> $3.time; rc=$?; [ $rc = 0 ] && mv $3.part $3; rm -rf tmp; exit $rc )
 }
-# SCF with fallback mixing (same conv_thr, so the converged state is unchanged): beta 0.7 -> 0.3 -> 0.1 local-TF.
-# Added 2026-11-11 after 11 PBEsol cells diverged at beta 0.7 (charge sloshing, residual up to 2.5e5 Ry).
+# SCF with fallback (11 Nov 2026): the Gamma-trick path of QE 6.7 diverges for some PBEsol cells (charge sloshing at
+# beta 0.7, stalls near 1e-7 Ry at beta 0.3). The complex k path (K_POINTS automatic 1 1 1) converges in ~20 steps and
+# agrees with the Gamma path where both converge (solcheck/result.json: dE 0, max dF 1.9e-7 Ry/bohr, folding 1.6e-7 Ry).
 runscf() {  # dir input output
   local d=$1 f=$2 o=$3 rc
   [ -f $d/$o.part ] && grep -q "convergence NOT achieved" $d/$o.part && mv $d/$o.part $d/$o.diverged_b07
   if [ ! -f $d/$o.diverged_b07 ]; then runpw $d $f $o; rc=$?; [ $rc = 0 ] && return 0; mv $d/$o.part $d/$o.diverged_b07 2>/dev/null; fi
-  sed "s/mixing_beta .*/mixing_beta     = 0.3\n    electron_maxstep = 200/" $d/$f > $d/${f%.in}.b03.in
-  runpw $d ${f%.in}.b03.in $o; rc=$?; [ $rc = 0 ] && { log "$d $f fallback beta=0.3 ok"; return 0; }
-  sed "s/mixing_beta .*/mixing_beta     = 0.1\n    mixing_mode     = 'local-TF'\n    electron_maxstep = 300/" $d/$f > $d/${f%.in}.b01.in
-  runpw $d ${f%.in}.b01.in $o; rc=$?; [ $rc = 0 ] && log "$d $f fallback beta=0.1 local-TF ok" || log "$d $f FAILED all mixing fallbacks"; return $rc
+  sed "s/^K_POINTS gamma/K_POINTS automatic\n1 1 1 0 0 0/" $d/$f > $d/${f%.in}.cplx.in
+  runpw $d ${f%.in}.cplx.in $o; rc=$?; [ $rc = 0 ] && { log "$d $f fallback complex k path ok"; return 0; }
+  sed "s/mixing_beta .*/mixing_beta     = 0.3\n    electron_maxstep = 200/" $d/${f%.in}.cplx.in > $d/${f%.in}.cplxb03.in
+  runpw $d ${f%.in}.cplxb03.in $o; rc=$?; [ $rc = 0 ] && log "$d $f fallback complex k path beta 0.3 ok" || log "$d $f FAILED all fallbacks"; return $rc
 }
 # 1. PBE relaxation of the primitive cell
 mkdir -p relax
