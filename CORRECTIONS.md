@@ -202,3 +202,23 @@ The conserving closure of note 14, including its τ_c form, is published by Guo 
 presents its derivation as an independent reconstruction. The Fourier resonance condition is named in Both et al. (2016),
 before Kovács (2018); notes 07, 12, 15, the conventions and the README were updated. The journal version of
 Krapez & Rigollet (J. Appl. Phys. 122, 066101) is cited. Verdicts and the central contribution: paper/PRIOR_ART.md.
+
+## Second functional, film memory time and front-face identifiability — 11–12 November 2026
+
+- **Block C logging defect (fc3_memory E38).** The supercell runner logged the status of a cleanup command, so 11 PBEsol
+  cells that had diverged were recorded as `rc=0`. No failed output was ever counted as finished (outputs are renamed
+  only after a zero exit). The runner now records the pw.x status. The progress log's "disp-00303" had been read as a
+  count; it is a file number (118 of 467 PBEsol cells attempted, not 303).
+- **QE 6.7 Γ-point path.** Besides the October finding (energies below the variational minimum at 80/480 and 120/600 Ry),
+  the Γ-trick path does not converge for some PBEsol cells at 60/480 Ry. Folding and Γ-versus-complex-path checks pass
+  where it converges (ΔE = 0, max |ΔF| = 1.9·10⁻⁷ Ry/bohr), so the converged cells stand; the others are computed on the
+  complex k path.
+- **Film regulator normalisation.** fdtr_gauge `02-assumptions.md` wrote the boundary rate as |v_z|/(4L); in the
+  operator's THz-linewidth units it is |v_z|/(4πL) (physical rate |v_z|/L), as implemented in `film_event.py`.
+- **In-plane film quantities.** With the |v_z|/L regulator the q_z = 0 plane of a uniform mesh is never suppressed and
+  carries 944/N_z W/mK of κ_x(L); in-plane film values of the event operator are biased. Cross-plane quantities, which
+  carry the film results, are unaffected. Earlier in-plane film statements are to be rechecked.
+- **Interface-resistance stratum.** A counterexample-search verdict (rank 4 on τ_R = τ_ℓ unless b = b_s and R = 0) was
+  wrong on τ_R = τ_ℓ, R = 0, b ≠ b_s, where the rank is 3 (Theorem 2′, proof audit, 50-digit SVD). Corrected in the ledger.
+- **Over-broad gauge statement.** "Lateral diffusion breaks the depth-scaling gauge" holds only if the in-plane
+  conductivity is tied to the cross-plane one; a free anisotropic in-plane conductivity keeps an extended gauge.

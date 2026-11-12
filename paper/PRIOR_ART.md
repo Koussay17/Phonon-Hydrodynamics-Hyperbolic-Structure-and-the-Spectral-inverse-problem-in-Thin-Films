@@ -31,14 +31,14 @@ For linear, energy-conserving phonon kinetics in entropy coordinates:
 
 C1 and C3 become attributed background; C4 moves to the quantitative AlN paper.
 
-## Results still needed before submission
-1. The identifiability gap in a real event geometry: certified M and the feasible range of τ_mem at fixed lifetimes
+## Results still needed before submission (status 12 November 2026)
+1. *[Largely done: memory_gap (event-cone class, 5×5×3), fc3_memory (fc3 class, bulk not mesh-converged; film-regularised ranges ±2.8–5.2 %, inner bounds); multistart and second functional running.]* The identifiability gap in a real event geometry: certified M and the feasible range of τ_mem at fixed lifetimes
    and K(0), first for a Debye event set, then for the AlN event set, with mesh and temperature dependence.
-2. The continuum statement: memory diverges when the infrared rate exponent satisfies 2α ≥ d, so M diverges under refinement.
-3. The FDTR consequence: translate that range into phase differences for the 500 nm AlN scenario
+2. *[Partly done: memory_gap T7 — RTA statement proved, event-operator statement derived under H4; AlN infrared exponent open.]* The continuum statement: memory diverges when the infrared rate exponent satisfies 2α ≥ d, so M diverges under refinement.
+3. *[Done, numerical audit pending: fdtr_gauge workstream A — not resolvable by FDTR, margins 34×–4.5·10⁴× with nuisances at 0.1°.]* The FDTR consequence: translate that range into phase differences for the 500 nm AlN scenario
    (10 kHz–200 MHz) against 0.01–0.1° noise, using the twin (`src/twin_fdtr.py`).
-4. A written proof that the 1D Cattaneo/GK response has generic rank four in (ξ₁, b, τ_R, τ_ℓ), and of what breaks the gauge.
-5. An attribution rewrite of the background sections, then proof audit, numerical audit and hostile review.
+4. *[Done and audited: fdtr_gauge workstream B — rank four and injectivity off τ_R = τ_ℓ; rank five with interface resistance; two frequencies not globally identifying. Prior art to check: Ordóñez-Miranda & Alvarado-Gil, J. Heat Transfer 132, 061302 (2010).]* A written proof that the 1D Cattaneo/GK response has generic rank four in (ξ₁, b, τ_R, τ_ℓ), and of what breaks the gauge.
+5. *[Open; manuscript drafting started.]* An attribution rewrite of the background sections, then proof audit, numerical audit and hostile review.
 
 Target journals: Physical Review B, if results 1 and 3 show a quantitative gap; Journal of Statistical Physics,
 for the operator-theoretic framing; Journal of Applied Physics, if the measurement side leads.

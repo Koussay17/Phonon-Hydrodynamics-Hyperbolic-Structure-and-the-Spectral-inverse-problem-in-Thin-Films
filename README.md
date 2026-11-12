@@ -31,8 +31,8 @@ Notes are written in French (LaTeX); code, documentation and reports are in Engl
 | I | Kinetic closure (Boltzmann → GK) | Grey conserving closure derived (note 14). Quantitative AlN closure open. |
 | II | Admissibility | Entropy production and propagation speeds established for Fourier/Cattaneo/GK (note 11). |
 | III | AlN transport regimes | Regime map and spectral RTA analysis (notes 12, 17); no validated N/U hydrodynamic classification. |
-| IV | Inverse problem | Scale invariance, conditional sensitivities, Fourier resonance (note 7); synthetic FDTR design (note 16). |
-| Microscopic | AlN collision operator | Audited building blocks (notes 18–23); a complete conserving material operator is still missing. |
+| IV | Inverse problem | Scale invariance, conditional sensitivities, Fourier resonance (note 7); synthetic FDTR design (note 16); generic rank four and identifiability of the 1D Cattaneo/GK front-face response proved (audited); FDTR digital twin with Fisher analysis. |
+| Microscopic | AlN collision operator | Audited building blocks (notes 18–23); validated phono3py baseline (exact Phonon Olympics reproduction); memory-time identifiability in the event-cone and fc3 classes. A complete conserving material operator is still missing. |
 | Laboratory | Real measurements | Not yet available: sample, beams, interfaces, calibration and data are required. |
 
 ---
@@ -51,6 +51,18 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   closure: x = 1.8 only when τ_c ≈ τ_N; x = 0.8 for the historical closure with τ_c kept; no resonance in the
   conserving closure. (notes 7, 12, 14)
 - **ωτ = 1 maximizes single-frequency phase sensitivity**; it is not a detection threshold. (notes 7, Camacho reading note)
+- **Rank four and identifiability of the 1D non-Fourier front-face response** *(proved, audited; conditional on the 1D
+  model of note 7)*. For a Cattaneo/GK film on a Fourier substrate, the response determines (ξ₁, b, τ_R, τ_ℓ) injectively
+  with Jacobian rank four, except on the Fourier resonance τ_R = τ_ℓ (rank 3; rank 2 if also b = b_s). With an interface
+  resistance the rank is five. Two generic frequencies give full local rank but never global uniqueness (certified
+  two-frequency counterexample). The depth-scaling gauge is the only non-identifiable direction off the resonance; known
+  thickness, conductivity, capacity or a velocity relation break it, lateral diffusion only if the in-plane conductivity is
+  tied to the cross-plane one. Four independent routes (analytic, asymptotic, computer algebra, counterexample search).
+  ([fdtr_gauge](theory/aln/fdtr_gauge/proofs/B-analytic.md))
+- **FDTR cannot resolve the static-data range of the film memory time** *(numerically demonstrated in the twin; numerical
+  audit in progress)*. In the Au/AlN/sapphire scenario (30–500 nm, 10 kHz–200 MHz) the largest admissible phase change is
+  1.6·10⁻³°; with instrument and interface nuisances the detection threshold exceeds the admissible width by 34× (500 nm)
+  to 4.5·10⁴× (30 nm) at 0.1° phase noise. In this band only τ_R − τ_ℓ is accessible. ([fdtr_gauge](theory/aln/fdtr_gauge/07-experiments.md))
 
 **Kinetic theory**
 - **Conserving grey closure** *(independent re-derivation of published results: Guo & Wang 2022; Sendra et al. 2022)*: nonlocal coefficient α = 1/3, giving
@@ -72,6 +84,24 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   form conserves quadrature energy and produces entropy. Positive reweighting of off-shell events cannot restore
   conservation, invariants do not constrain rates, and the domain can be left in finite time. (note 23)
 
+**First-principles AlN transport and the closure memory time** (October–November 2026)
+- **Validated baseline** *(numerically demonstrated)*: exact reproduction of the Phonon Olympics phono3py results at
+  31×31×17 (RTA 252.99 / 231.95, LBTE 285.05 / 271.26 W/mK, difference below 5·10⁻⁴ %); the fc3 phase convention alone
+  shifts κ by about 6 %. ([transport_baseline](theory/aln/transport_baseline/README.md))
+- **Static data do not fix the memory time** *(proved bounds, certified witnesses; 5×5×3 operator)*: τ_mem ≥ K/|b|²
+  (proved, nearly attained); in the event-cone class the upper end is unidentified by factors 10²–10⁵; a factor-F
+  amplitude prior closes the gap. ([memory_gap](theory/aln/memory_gap/README.md))
+- **The bulk memory time of AlN is an infrared quantity** *(numerically demonstrated)*: not mesh-converged (RTA
+  152.8 → 162.4 ps from 48×48×26 to 64×64×35 while κ changes by 0.2 %); the part above 3 THz is converged. A bulk limit may
+  not exist. Paper 1 therefore quotes only regularised memory times. ([fc3_memory](theory/aln/fc3_memory/README.md))
+- **Film-regularised memory time** *(numerically supported, inner bounds; heuristic boundary regulator)*: converged to
+  < 0.15 %; with fc3 varied within first-principles precision and static data on three meshes, its admissible range is
+  about ±2.8 % (30 nm), ±3.7 % (100 nm), ±5.2 % (300 nm), up to ±8 % in calibrated classes, confirmed on a held-out mesh.
+  Multistart check in progress. ([fc3_memory](theory/aln/fc3_memory/07-experiments.md))
+- **Second functional (PBE vs PBEsol)**: PBE fc3 supercells complete; PBEsol in progress. A silent Γ-point defect of
+  Quantum ESPRESSO 6.7 (energies below the variational minimum at high cutoff; non-convergence for some PBEsol cells) was
+  found, diagnosed with folding and code-path tests, and avoided.
+
 Full claim-to-evidence mapping: [paper/CLAIM_MAP.md](paper/CLAIM_MAP.md).
 
 ---
@@ -79,9 +109,12 @@ Full claim-to-evidence mapping: [paper/CLAIM_MAP.md](paper/CLAIM_MAP.md).
 ## What remains
 
 **Theory/methods paper** — can proceed without new measurements:
-1. Choose one central contribution and run a targeted prior-art assessment for that exact statement.
-2. Write the integrated manuscript with unified notation; move audits and failed approaches to a supplement.
-3. Trace every theorem to its proof and every number to its script; make final figures; run an independent final review.
+1. ~~Choose one central contribution and run a targeted prior-art assessment~~ — done ([paper/PRIOR_ART.md](paper/PRIOR_ART.md)).
+2. Finish the open checks: multistart of the film ranges, second functional, numerical audit and hostile review of the
+   FDTR result, formal check of the key identities, and the full text of one prior-art paper (dual-phase-lag films, 2010).
+3. Write the integrated manuscript with unified notation (draft in progress); move audits and
+   failed approaches to a supplement.
+4. Trace every theorem to its proof and every number to its script; make final figures; run an independent final review.
 
 **Quantitative AlN/FDTR paper** — needs further physics and data:
 1. Declare and justify the kinetic approximation, including the treatment of degenerate-mode coherences.
@@ -120,7 +153,7 @@ uncertainty on λ grows from 0.58 % with two free thermal parameters to 7.33 % w
 | [`tests/`](tests) | 241 tests: analytical benchmarks, independent ODE and high-precision checks, regressions |
 | [`notebooks/`](notebooks) | Figure scripts (energy trajectory, ωτ threshold, design map, GK blindness, regime map) |
 | [`scripts/`](scripts) | Analyses, data preparation, PDF/figure rebuild, campaign reproduction runners |
-| [`theory/`](theory) | Synthetic results, AlN data and the archived research campaigns (`theory/aln/*/`) |
+| [`theory/`](theory) | Synthetic results, AlN data and the archived research campaigns (`theory/aln/*/`: closure, events, interaction_pilot, degenerate_action, channel_counting, resonance_measure, transport_baseline, memory_gap, fc3_memory, fdtr_gauge) |
 | [`paper/`](paper) | Manuscript plan and claim-to-evidence map |
 | [`figures/`](figures) | Generated figures |
 
