@@ -1,13 +1,29 @@
-% Supplemental Material of paper 1 --- skeleton (section headings only).
+% Supplemental Material of paper 1 --- Secs. S2 (sharpness of Lemma 2) and S4 (lattice sums) written;
+% the other sections are headings only.
 % Build (from this directory): pdflatex -output-directory=.build supplement (twice).
 \documentclass[aps,prb,10pt,onecolumn,amsmath,amssymb,superscriptaddress,nofootinbib]{revtex4-2}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+\usepackage{amsthm}
+\usepackage{bm}
 \usepackage{xcolor}
 \newcommand{\PENDING}[1]{{\color{red}\textbf{[PENDING:}~#1\textbf{]}}}
 \renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+% statements and notation as in the main text
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\thelemma}{S\arabic{lemma}}
+\newcommand{\tr}{^{\mathsf T}}
+\newcommand{\Cop}{\mathcal C}
+\newcommand{\Hsp}{\mathcal H}
+\newcommand{\ee}{\mathbf e}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\yy}{\mathbf y}
+\newcommand{\tmem}{\tau_{\rm mem}}
 
 \begin{document}
 
@@ -19,12 +35,290 @@
 \date{\today}
 \maketitle
 
-\PENDING{content of every section below}
+\PENDING{content of Secs.~S1, S3 and S5--S11, and of the self-energy part of Sec.~S2}
+
+Numbers of equations, statements and hypotheses without the prefix S refer to the main text.
 
 \section{Event decomposition of the three-phonon operator and energy-conserving stoichiometry}
+
 \section{Lifetimes and dc response: sharpness of the bound $K_0\ge K_{\rm RTA}/\varsigma_{\max}$ and self-energy linewidths}
+
+\paragraph*{Equality networks.}
+By Lemma~2, the currents that attain $K_0=K_{\rm RTA}/\varsigma_{\max}$ are the vectors $\jj=\Cop\yy$ with
+$\yy\ne0$ and $\Cop\yy=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy$; this requires that every active
+event touch exactly $\varsigma_{\max}$ modes and that the numbers $\zeta_{\gamma\nu}y_\nu$ be equal on the
+support of each active event. Conversely, if both conditions hold for some $\yy\ne0$, with common value
+$c_\gamma$ on $\mathrm{supp}\,\bm\zeta_\gamma$, then $\bm\zeta_\gamma\tr\yy=\varsigma_{\max}c_\gamma$ and
+$\zeta_{\gamma\nu}^2y_\nu=\zeta_{\gamma\nu}c_\gamma$, so that
+\begin{equation}
+\Cop\yy=\sum_\gamma g_\gamma\,\bm\zeta_\gamma\,(\bm\zeta_\gamma\tr\yy)
+=\varsigma_{\max}\sum_\gamma g_\gamma c_\gamma\,\bm\zeta_\gamma
+=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy ,
+\label{eq:Seq}
+\end{equation}
+because $r_\nu y_\nu=\sum_\gamma g_\gamma\zeta_{\gamma\nu}^2y_\nu$. Then $\jj=\Cop\yy\in\Hsp\setminus\{0\}$,
+$K_0=\yy\tr\Cop\yy=\varsigma_{\max}\,\yy\tr\mathrm{diag}(\mathbf r)\,\yy$ and
+$K_{\rm RTA}=\varsigma_{\max}^2\,\yy\tr\mathrm{diag}(\mathbf r)\,\yy$, so that $K_0/K_{\rm RTA}=1/\varsigma_{\max}$
+exactly.
+
+For event vectors $\bm\zeta_\gamma=\mathsf W^{-1}\mathbf s_\gamma$ [Eq.~(15)] and $\yy=\mathsf W\bm\psi$, one
+has $\zeta_{\gamma\nu}y_\nu=s_{\gamma\nu}\psi_\nu$, so the conditions involve the stoichiometry only. If
+every event of a network touches $\varsigma_{\max}$ modes and $s_{\gamma\nu}\psi_\nu$ takes a single value on
+$\mathrm{supp}\,\mathbf s_\gamma$ for every $\gamma$, then Eq.~\eqref{eq:Seq} holds for all positive weights
+$w_\nu$ and all positive rates $g_\gamma$, and the current $\jj=\Cop\,\mathsf W\bm\psi$ attains
+$K_0/K_{\rm RTA}=1/\varsigma_{\max}$. Table~\ref{tab:sharp} lists three such networks. In each, the events
+conserve energy ($\mathbf s_\gamma\tr\bm\varepsilon=0$) and the stoichiometric vectors have rank $n-1$; since
+$\mathsf W$ is invertible, the $\bm\zeta_\gamma$ then span $\Hsp$, and every positive rate vector is
+admissible. In the chain, $\psi_{\nu+1}=-2\psi_\nu$ gives $s_{\gamma\mu}\psi_\mu=2\psi_\nu$ on both modes
+$\mu=\nu,\nu+1$ of the event $(\nu+1)\to\nu+\nu$. In the other two networks no mode is both a parent and a
+daughter, and $\psi=+1$ on parents and $-1$ on daughters gives $s_{\gamma\nu}\psi_\nu=-1$ on every support;
+the events of the network with $\varsigma_{\max}=4$ are $1\leftrightarrow3$ four-phonon processes. A
+network of $2\leftrightarrow2$ events alone conserves the phonon number ($\mathbf s_\gamma\tr\mathbf 1=0$),
+an invariant other than the energy unless all modes have the same energy, and is then not admissible.
+
+\begin{table}[htbp]
+\caption{Networks that attain $K_0=K_{\rm RTA}/\varsigma_{\max}$ for all positive weights and rates. Modes
+are numbered $1,\dots,n$; $\mathsf p\to\mathsf a+\mathsf b$ denotes the event with stoichiometric vector
+$-\bm\delta_{\mathsf p}+\bm\delta_{\mathsf a}+\bm\delta_{\mathsf b}$ ($-\bm\delta_{\mathsf p}+2\bm\delta_{\mathsf a}$
+if $\mathsf a=\mathsf b$), and similarly for three daughters. The current is $\jj=\Cop\,\mathsf W\bm\psi$.}
+\label{tab:sharp}
+\begin{ruledtabular}
+\begin{tabular}{c l p{0.40\textwidth} l c}
+$\varsigma_{\max}$ & $n$; energies $\varepsilon_\nu$ & events & $\bm\psi$ & $K_0/K_{\rm RTA}$\\ \hline
+$2$ & $5$; $(1,2,4,8,16)$ & $2\to1+1$, $3\to2+2$, $4\to3+3$, $5\to4+4$ & $(1,-2,4,-8,16)$ & $1/2$\\
+$3$ & $8$; $(6,6,6,3,3,3,3,3)$ & $1\to4+5$, $1\to4+6$, $1\to4+7$, $1\to4+8$, $1\to5+6$, $2\to4+5$, $3\to4+5$
+& $(1,1,1,-1,\dots,-1)$ & $1/3$\\
+$4$ & $9$; $(6,6,6,2,2,2,2,2,2)$ & $1\to4+5+6$, $1\to4+5+7$, $1\to4+5+8$, $1\to4+5+9$, $1\to4+6+7$,
+$1\to5+6+7$, $2\to4+5+6$, $3\to4+5+6$ & $(1,1,1,-1,\dots,-1)$ & $1/4$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Verification.}
+For each network of Table~\ref{tab:sharp}, the script \texttt{checks/\allowbreak verify\_manuscript\_algebra.py} of the
+manuscript sources (block ``Lemma~2 sharpness'') checks in exact arithmetic the energy conservation, the
+rank $n-1$, the identity $\Cop\yy=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy$ for symbolic weights and
+rates, and the ratio $K_0/K_{\rm RTA}=1/\varsigma_{\max}$ for rational weights and unequal rates, with
+$K_0=\jj\tr(\Cop+\ee\ee\tr/|\ee|^2)^{-1}\jj$ computed without using Eq.~\eqref{eq:Seq}. The script
+\texttt{checks/\allowbreak audit/\allowbreak audit\_lemma2.py} checks the same networks with other weights and rates.
+
+\paragraph*{Networks with events of different sizes.}
+By Lemma~2 the inequality is strict when an active event touches fewer than $\varsigma_{\max}$ modes; the
+constant can nevertheless not be improved. Writing $\jj=\mathrm{diag}(\mathbf r)^{1/2}\mathbf u$, where
+$\mathbf u$ lies in the range of $G=\mathrm{diag}(\mathbf r)^{-1/2}\,\Cop\,\mathrm{diag}(\mathbf r)^{-1/2}$
+exactly when $\jj\in\Hsp$, gives $K_0=\mathbf u\tr G^+\mathbf u$ and $K_{\rm RTA}=|\mathbf u|^2$. Hence
+$\min_{\jj\in\Hsp\setminus\{0\}}K_0/K_{\rm RTA}=1/\lambda_{\max}(G)$, and $\lambda_{\max}(G)$ is at least
+$\yy\tr\Cop\yy/\yy\tr\mathrm{diag}(\mathbf r)\,\yy$ for every $\yy\ne0$. Take six modes with energies
+$(1,2,3,4,5,6)$ and unit weights, the $2\leftrightarrow2$ event $2+5\to3+4$ with rate $1$, and the six
+three-phonon events $3\to1+2$, $4\to1+3$, $5\to1+4$, $5\to2+3$, $6\to1+5$ and $6\to2+4$ with rate $\delta>0$.
+Then $\varsigma_{\max}=4$, the stoichiometric rank is $5$, so that the rates are admissible, and
+$\yy=(0,1,-1,-1,1,0)\tr$ gives $\yy\tr\Cop\yy=16+10\delta$ and $\yy\tr\mathrm{diag}(\mathbf r)\,\yy=4+12\delta$.
+Therefore
+\begin{equation}
+1<\min_{\jj\in\Hsp\setminus\{0\}}\frac{4K_0}{K_{\rm RTA}}\le\frac{16+48\delta}{16+10\delta}\to1
+\qquad(\delta\to0).
+\label{eq:mixed}
+\end{equation}
+The minima $4/\lambda_{\max}(G)$ are $1.2198$, $1.0234$, $1.00236$ and $1.000024$ for $\delta=10^{-1}$,
+$10^{-2}$, $10^{-3}$ and $10^{-5}$ (script \texttt{checks/\allowbreak audit/\allowbreak audit\_lemma2.py}).
+
+\paragraph*{Self-energy linewidths.}
+\PENDING{exact counterexample for a linewidth that counts the self-coupling of a repeated daughter with
+half weight (chain with energies $1,2,4,8,16$)}
+
 \section{Lifetime-constrained sharpness of the cone bound: an exact seven-mode example}
+
 \section{Infrared criterion: lattice sums and mesh laws}
+
+This section proves the mesh laws of Theorem~3(i) and the lower bound used for Theorem~3(ii); the
+integral criterion is proved in the main text. The meshes are $\mathbf k=\mathsf B\mathbf n/N_1$ with
+$\mathbf n\in\mathbb Z^d$, where the columns of $\mathsf B$ are primitive reciprocal-lattice vectors, so that
+$|\det\mathsf B|\,V_{\rm cell}=(2\pi)^d$ and $\mathcal V=N_1^dV_{\rm cell}$. The radius $k_0$ is taken so
+small that the ball $k<k_0$ lies inside the Brillouin zone and the $o(1)$ of (H1) is at most $1/2$ there.
+As in (H2) and (H5), $\Phi_m=\sum_{\rm ac}J_0^2r_0^{-m}$ and $A_m=\int_{S^{d-1}}\Phi_m\,d\Omega$; the mesh
+moments are $\mathcal M_m(N_1)=\mathcal V^{-1}\sum_\nu J(\mathbf k_\nu,s_\nu)^2r_\nu^{-m}$.
+
+\begin{lemma}[Lattice sums]\label{lem:lattice}
+Let $\mathsf B\in\mathbb R^{d\times d}$ be invertible, $m\ge0$ and $\alpha>0$, and let
+$\Phi\colon S^{d-1}\to[0,\infty)$ be bounded and continuous outside a closed set of zero measure, with
+$A=\int_{S^{d-1}}\Phi\,d\Omega>0$. For $\mathbf n\in\mathbb Z^d\setminus\{0\}$ put
+$\varphi(\mathbf n)=\Phi(\mathsf B\mathbf n/|\mathsf B\mathbf n|)\,|\mathsf B\mathbf n|^{-m\alpha}$. Let $k_0>0$,
+let $\vartheta$ be a bounded function on $(0,k_0)$ with $\vartheta(t)\to0$ as $t\to0$, and for
+$N\in\mathbb N$ let $\epsilon_N(\mathbf n)$ be real numbers with
+$|\epsilon_N(\mathbf n)|\le\vartheta(|\mathsf B\mathbf n|/N)$. Put
+\begin{equation}
+S_N=\sum_{0<|\mathsf B\mathbf n|<k_0N}\big[\varphi(\mathbf n)+\epsilon_N(\mathbf n)\,|\mathsf B\mathbf n|^{-m\alpha}\big],
+\qquad\bar\vartheta=\sup_{0<t<k_0}\vartheta(t).
+\label{eq:SN}
+\end{equation}
+\begin{enumerate}
+\item[(a)] If $m\alpha<d$, there is $C$, depending only on $\mathsf B$, $d$ and $m\alpha$, such that
+$N^{m\alpha-d}\sum_{0<|\mathsf B\mathbf n|<\delta N}|\mathsf B\mathbf n|^{-m\alpha}\le C\delta^{d-m\alpha}$ for
+all $N$ and all $\delta>0$, and
+\begin{equation}
+\limsup_{N\to\infty}\,\Big|N^{m\alpha-d}S_N-\frac{A\,k_0^{d-m\alpha}}{(d-m\alpha)\,|\det\mathsf B|}\Big|
+\le\frac{\bar\vartheta\,|S^{d-1}|\,k_0^{d-m\alpha}}{(d-m\alpha)\,|\det\mathsf B|}.
+\label{eq:Sa}
+\end{equation}
+\item[(b)] If $m\alpha=d$, then $S_N=|\det\mathsf B|^{-1}A\log N+o(\log N)$.
+\item[(c)] If $m\alpha>d$, then $S_N\to S_\Phi:=\sum_{\mathbf n\ne0}\varphi(\mathbf n)$, and $0<S_\Phi<\infty$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\emph{Counting.} Let $\rho_0=\min_{\mathbf n\ne0}|\mathsf B\mathbf n|>0$. The balls of radius $\rho_0/2$
+centred at the points $\mathsf B\mathbf n$ are disjoint, so for $R\ge\rho_0$ at most $(3R/\rho_0)^d$ of these
+points satisfy $0<|\mathsf B\mathbf n|<R$. The dyadic shell
+$\Sigma_l=\{\mathbf n:2^l\le|\mathsf B\mathbf n|<2^{l+1}\}$ ($l\in\mathbb Z$) is empty unless
+$2^{l+1}>\rho_0$, and then
+\begin{equation}
+\sum_{\mathbf n\in\Sigma_l}|\mathsf B\mathbf n|^{-m\alpha}\le C_1\,2^{l(d-m\alpha)},\qquad C_1=(6/\rho_0)^d .
+\label{eq:shellbound}
+\end{equation}
+
+\emph{Shell Riemann sums.} Let $D=\{\mathbf u\in\mathbb R^d:1\le|\mathsf B\mathbf u|<2\}$ and
+$\tilde\varphi(\mathbf u)=\Phi(\mathsf B\mathbf u/|\mathsf B\mathbf u|)\,|\mathsf B\mathbf u|^{-m\alpha}$. On
+$D$, $\tilde\varphi$ is bounded and continuous outside a set of zero measure (a cone over the
+discontinuity set of $\Phi$), and the boundary of $D$, two ellipsoids, has zero measure. By Lebesgue's
+criterion $\tilde\varphi$ is Riemann integrable on $D$, so the lattice sums
+$h^d\sum_{\mathbf u\in h\mathbb Z^d\cap D}\tilde\varphi(\mathbf u)$, which are Riemann sums for the
+partition of space into the cubes $\mathbf u+[0,h)^d$, converge as $h\to0$ to
+$c_\ast=\int_D\tilde\varphi\,d\mathbf u=|\det\mathsf B|^{-1}A\int_1^2\rho^{d-1-m\alpha}d\rho>0$; the last form
+follows from the substitution $\mathbf v=\mathsf B\mathbf u$ and polar coordinates. Since
+$\varphi(\mathbf n)=2^{-lm\alpha}\tilde\varphi(2^{-l}\mathbf n)$, and $\mathbf n\in\Sigma_l$ if and only if
+$2^{-l}\mathbf n\in D$,
+\begin{equation}
+a_l:=\sum_{\mathbf n\in\Sigma_l}\varphi(\mathbf n)
+=2^{l(d-m\alpha)}\Big[2^{-ld}\!\!\sum_{\mathbf u\in2^{-l}\mathbb Z^d\cap D}\!\!\tilde\varphi(\mathbf u)\Big]
+=2^{l(d-m\alpha)}\,[c_\ast+o(1)]\qquad(l\to\infty).
+\label{eq:shellsum}
+\end{equation}
+
+\emph{Part (a).} Summing Eq.~\eqref{eq:shellbound} over the shells with $2^l<R$ gives
+$\sum_{0<|\mathsf B\mathbf n|<R}|\mathsf B\mathbf n|^{-m\alpha}\le C_1R^{d-m\alpha}/(1-2^{m\alpha-d})$ for every
+$R>0$, which is the first claim with $R=\delta N$. For $0<\delta<k_0$,
+$N^{m\alpha-d}\sum_{\delta N\le|\mathsf B\mathbf n|<k_0N}\varphi(\mathbf n)
+=N^{-d}\sum_{\mathbf u\in N^{-1}\mathbb Z^d,\,\delta\le|\mathsf B\mathbf u|<k_0}\tilde\varphi(\mathbf u)$ is a Riemann
+sum of $\tilde\varphi$ over $\{\delta\le|\mathsf B\mathbf u|<k_0\}$, on which $\tilde\varphi$ is Riemann
+integrable as above; it converges to
+$|\det\mathsf B|^{-1}A\,(k_0^{d-m\alpha}-\delta^{d-m\alpha})/(d-m\alpha)$. The points with
+$0<|\mathsf B\mathbf n|<\delta N$ contribute at most $C\delta^{d-m\alpha}\sup\Phi$. Letting $N\to\infty$ and
+then $\delta\to0$ gives the limit of $N^{m\alpha-d}\sum_{0<|\mathsf B\mathbf n|<k_0N}\varphi(\mathbf n)$
+displayed in Eq.~\eqref{eq:Sa}. The same argument with $\Phi\equiv1$ gives the limit of
+$N^{m\alpha-d}\sum_{0<|\mathsf B\mathbf n|<k_0N}|\mathsf B\mathbf n|^{-m\alpha}$, and the error terms are at
+most $\bar\vartheta$ times this sum.
+
+\emph{Part (b).} Now $2^{l(d-m\alpha)}=1$ and $a_l\to c_\ast=|\det\mathsf B|^{-1}A\log2$. Let $L_N$ be the
+integer with $2^{L_N}\le k_0N<2^{L_N+1}$. The points with $0<|\mathsf B\mathbf n|<2^{L_N}$ contribute
+$\sum_{l<L_N}a_l=c_\ast L_N+o(L_N)$, by Eq.~\eqref{eq:shellsum} and because only finitely many shells with
+$l<0$ are nonempty; the remaining points lie in $\Sigma_{L_N}$ and contribute at most $C_1\sup\Phi$. Since
+$L_N\log2=\log N+O(1)$, the sum of $\varphi$ is $|\det\mathsf B|^{-1}A\log N+o(\log N)$. For the error
+terms, given $\epsilon'>0$ choose $\delta\in(0,k_0)$ with $\vartheta(t)\le\epsilon'$ for $t<\delta$. By
+Eq.~\eqref{eq:shellbound}, the points with $|\mathsf B\mathbf n|<\delta N$ contribute at most $\epsilon'C_1$
+times the number of nonempty shells below $\delta N$, which is $\log_2N+O(1)$, and the points with
+$\delta N\le|\mathsf B\mathbf n|<k_0N$ at most $\bar\vartheta C_1[\log_2(k_0/\delta)+2]$, which does not depend
+on $N$. Since $\epsilon'$ is arbitrary, the error terms are $o(\log N)$.
+
+\emph{Part (c).} By Eq.~\eqref{eq:shellbound}, $\sum_{\mathbf n\ne0}|\mathsf B\mathbf n|^{-m\alpha}\le
+C_1\sum_{l:\,2^{l+1}>\rho_0}2^{l(d-m\alpha)}<\infty$, so $S_\Phi$ converges and the truncated sums of
+$\varphi$ converge to it. The error terms are dominated by $\bar\vartheta\,|\mathsf B\mathbf n|^{-m\alpha}$ and
+tend to zero for every fixed $\mathbf n$ as $N\to\infty$, because $|\mathsf B\mathbf n|/N\to0$; by dominated
+convergence their sum tends to zero. Finally, $\{\Phi>0\}$ has positive measure and the discontinuity set
+of $\Phi$ has zero measure, so $\Phi$ is continuous and positive at some direction and positive on a
+neighbourhood $U$ of it. The directions $\mathsf B\mathbf n/|\mathsf B\mathbf n|$ are dense in $S^{d-1}$,
+being the image of the rational directions under a homeomorphism of the sphere; some $\mathbf n$ has
+$\mathsf B\mathbf n/|\mathsf B\mathbf n|\in U$, and then $\varphi(\mathbf n)>0$.
+\end{proof}
+
+\paragraph*{Regularity is necessary.}
+If $\Phi=0$ on the countable set of directions $\mathsf B\mathbf n/|\mathsf B\mathbf n|$ and $\Phi=1$
+elsewhere, then $A=|S^{d-1}|>0$ but $\varphi\equiv0$, and $S_N$ consists of the error terms alone. Taking
+$J=J_0(\hat{\mathbf k})$ with such a $J_0^2$ and $r=k^\alpha$ near $\Gamma$ satisfies (H1)--(H3), but every
+mesh point near $\Gamma$ then has $J=0$ and the mesh laws fail. Likewise, setting $J=0$ at the mesh points
+with $k\ge k_0$ of all meshes, a countable set, changes neither (H1)--(H3) nor any $\mathcal M_m$, but
+removes the part $k\ge k_0$ of every mesh sum. Hypothesis (H5) excludes both constructions and admits the
+discontinuities of frequency-sorted acoustic branches, which lie on a closed set of directions of zero
+measure (acoustic axes, where branches touch conically and the group velocity of a sorted branch depends
+on the direction of approach, and curves where branches cross).
+
+\paragraph*{Mesh laws.}
+Assume (H1)--(H3) and (H5). For $k<k_0$, (H1)--(H2) give
+$\sum_{\rm ac}J^2r^{-m}=[\Phi_m(\hat{\mathbf k})+\epsilon_{\rm ac}(\mathbf k)]\,k^{-m\alpha}$ with
+$\sup_{\hat{\mathbf k}}|\epsilon_{\rm ac}(\mathbf k)|\to0$ as $k\to0$; the error is additive because $J_0$
+may vanish on a plane. At $\mathbf k=\mathsf B\mathbf n/N_1$ the acoustic part $k_\nu<k_0$ of
+$\mathcal M_m(N_1)$ is therefore $N_1^{m\alpha-d}V_{\rm cell}^{-1}S_{N_1}$, with $S_N$ of Eq.~\eqref{eq:SN}
+for $\Phi=\Phi_m$ and $\epsilon_N(\mathbf n)=\epsilon_{\rm ac}(\mathsf B\mathbf n/N)$, while the optical branches
+and the part $k\ge k_0$ contribute a bounded amount, by (H3) and the boundedness of $J$.
+Lemma~\ref{lem:lattice} and $|\det\mathsf B|\,V_{\rm cell}=(2\pi)^d$ give:
+\begin{itemize}
+\item $m\alpha>d$: $\mathcal M_m(N_1)=N_1^{m\alpha-d}S_m/V_{\rm cell}\,[1+o(1)]$, with $S_m=S_{\Phi_m}\in(0,\infty)$;
+\item $m\alpha=d$: $\mathcal M_m(N_1)=(2\pi)^{-d}A_m\log N_1+o(\log N_1)$;
+\item $m\alpha<d$: for $0<\delta<k_0$ the part $k<\delta$ of $\mathcal M_m(N_1)$ is at most
+$C'\delta^{d-m\alpha}$ for all $N_1$, by Lemma~\ref{lem:lattice}(a), and so is the part $k<\delta$ of
+$\mathcal M_m$. On $k\ge\delta$ the integrands are bounded, by (H1) and (H3), and Riemann integrable, by
+(H5), so the remaining mesh sums converge to the remaining part of $\mathcal M_m$. Hence
+$\limsup_{N_1\to\infty}|\mathcal M_m(N_1)-\mathcal M_m|\le2C'\delta^{d-m\alpha}$ for every $\delta$, that is,
+$\mathcal M_m(N_1)\to\mathcal M_m$.
+\end{itemize}
+For $\tmem^{\rm RTA}=\mathcal M_2(N_1)/\mathcal M_1(N_1)$ on the meshes this gives:
+\begin{itemize}
+\item $2\alpha<d$: $\tmem^{\rm RTA}\to\mathcal M_2/\mathcal M_1$;
+\item $2\alpha=d$: $\tmem^{\rm RTA}=(2\pi)^{-d}A_2\log N_1/\mathcal M_1\,[1+o(1)]$;
+\item $d/2<\alpha<d$: $\tmem^{\rm RTA}=N_1^{2\alpha-d}S_2/(V_{\rm cell}\mathcal M_1)\,[1+o(1)]$;
+\item $\alpha=d$: $\tmem^{\rm RTA}=(2\pi)^dS_2N_1^d/(V_{\rm cell}A_1\log N_1)\,[1+o(1)]$.
+\end{itemize}
+
+\paragraph*{Event operator.}
+Under the uniform (H1) of Theorem~3(ii) there is $\delta_1(k)\to0$, independent of $N_1$, with
+$r_\nu\le r_0(\hat{\mathbf k}_\nu)k_\nu^\alpha[1+\delta_1(k_\nu)]$ for all $N_1$ and all acoustic modes with
+$k_\nu<k_0$. Hence
+\begin{equation}
+\sum_{{\rm ac},\,k_\nu<k_0}j_\nu^2r_\nu^{-2}\ \ge\ \frac{N_1^{2\alpha-d}}{V_{\rm cell}}
+\sum_{0<|\mathsf B\mathbf n|<k_0N_1}\big[\varphi(\mathbf n)+\epsilon'(\mathsf B\mathbf n/N_1)\,|\mathsf B\mathbf n|^{-2\alpha}\big],
+\end{equation}
+where $\varphi$ is built from $\Phi_2$ and
+$\epsilon'(\mathbf k)=\sum_{\rm ac}J^2r_0^{-2}[1+\delta_1(k)]^{-2}-\Phi_2(\hat{\mathbf k})$ depends on $\mathbf k$
+only and tends to zero uniformly in $\hat{\mathbf k}$. By Lemma~\ref{lem:lattice}(b) and (c) the right
+side equals $(2\pi)^{-d}A_2\log N_1\,[1+o(1)]$ for $2\alpha=d$ and
+$N_1^{2\alpha-d}S_2/V_{\rm cell}\,[1+o(1)]$ for $2\alpha>d$. Only the continuity of $\Phi_2$ outside a
+closed set of zero measure enters, not the Riemann integrability of $J^2r^{-2}$ away from $\Gamma$, which
+for $\mathbf r=\mathrm{diag}\,\Cop_{N_1}$ would depend on $N_1$. With (H4) and Proposition~2 this proves
+Theorem~3(ii).
+
+\paragraph*{Numerical check.}
+The script \texttt{checks/\allowbreak audit/\allowbreak audit\_ir\_lattice.py} of the manuscript sources
+compares the constants with exact lattice sums (double precision; continuum moments and $A_m$ by adaptive
+quadrature; $S_2$ by a lattice sum over $|\mathbf n|\le1500$ with a continuum tail).
+The test uses $d=2$, $\mathsf B=2\pi I$ ($V_{\rm cell}=1$), odd $N_1$ from $101$ to $3201$,
+$J^2=(\hat k_x^2+0.3k)\,e^{-k^2/8}$ and $r=(1+2.4\hat k_x^2\hat k_y^2)\,k^\alpha(1+0.5k^2)$. Here
+$J_0^2=\hat k_x^2$ vanishes on the line $\hat k_x=0$, so the correction to $J^2$ is additive.
+Table~\ref{tab:ir} gives the results at $N_1=3201$. The laws are approached slowly. Through
+$\mathcal M_1(N_1)$, which converges like $N_1^{-(d-\alpha)}$ for $\alpha<d$, the ratio of
+$\tmem^{\rm RTA}$ to $N_1^{2\alpha-d}S_2/(V_{\rm cell}\mathcal M_1)$ is still $1.026$ at $N_1=3201$ for
+$\alpha=1.5$, and at $\alpha=d$ the relative correction decays like $1/\log N_1$. Exponents fitted on
+coarse meshes are therefore biased.
+
+\begin{table}[htbp]
+\caption{Mesh laws of Theorem~3(i) against exact lattice sums ($d=2$; model in the text).}
+\label{tab:ir}
+\begin{ruledtabular}
+\begin{tabular}{l p{0.36\textwidth} p{0.40\textwidth}}
+$\alpha$ & prediction & result at $N_1=3201$\\ \hline
+$0.6$ ($2\alpha<d$) & $\tmem^{\rm RTA}\to\mathcal M_2/\mathcal M_1=0.6291354$
+& relative error $2.6\times10^{-3}$, decreasing like $N_1^{-0.79}$ (\mbox{$d-2\alpha=0.8$})\\
+$1$ ($2\alpha=d$) & slope $(2\pi)^{-2}A_2/\mathcal M_1=0.3885388$ of $\tmem^{\rm RTA}$ against $\log N_1$
+& local slope $0.99657$ times the prediction, increasing with $N_1$\\
+$1.5$ ($d/2<\alpha<d$) & $\mathcal M_2(N_1)/N_1^{2\alpha-d}\to S_2$
+& relative deviation $2.5\times10^{-3}$; $\mathcal M_1(N_1)\to\mathcal M_1$ like $N_1^{-0.500}$
+(\mbox{$d-\alpha=0.5$}); $\tmem^{\rm RTA}/[N_1^{2\alpha-d}S_2/\mathcal M_1]$ extrapolated in $N_1$:
+$0.99785$\\
+$2$ ($\alpha=d$) & slope $(2\pi)^{-2}A_1$ of $\mathcal M_1(N_1)$ against $\log N_1$, and
+$\mathcal M_2(N_1)/N_1^d\to S_2$
+& ratios $1.00087$ and $1.00158$; $\tmem^{\rm RTA}\log N_1/N_1^d$ is still $1.057$ times its limit\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \section{Event geometries: Debye-type meshes and AlN}
 \section{Feasible ranges of the memory moment: optimization, certified witnesses and implicit-function transfer}
 \section{Front-face quadrupole: derivation, numerical stability and independent checks}

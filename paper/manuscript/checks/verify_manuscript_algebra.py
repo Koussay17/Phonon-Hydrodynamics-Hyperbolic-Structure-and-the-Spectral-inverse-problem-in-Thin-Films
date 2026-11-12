@@ -1,4 +1,4 @@
-"""Exact checks of the equations stated in Secs. II-IV of the manuscript.
+"""Exact checks of the equations stated in Secs. II-IV of the manuscript and in Supplemental Sec. S2.
 
 Each block prints PASS/FAIL with the quantity tested. Exact rational or symbolic arithmetic is used
 throughout, except where a floating-point check is stated explicitly.
@@ -84,6 +84,11 @@ check("Callaway: diag C = 1/tau_N + 1/tau_R - O(1/n) (deviation is negative)",
       sp.N(diag_dev.subs({tauN: 1, tauR: 10, v: 1, hbar: 1, w1: sp.Rational(3, 2), w2: sp.Rational(1, 2)})) < 0)
 check("Callaway: |j_x|^2 tau_R = K(0) (single pole, tau_mem = tau_stat = tau_R)",
       sp.simplify((sp.eye(n) * p + Ccal) * (jx / (p + 1 / tauR)) - jx).is_zero_matrix)
+# Prop. 1 proof, (K3): C_Cal has the rates 1/tau_R on span{P} and 1/tau_N + 1/tau_R on span{e,P}-perp
+cal_sub = {tauN: 1, tauR: 10, v: 1, hbar: 1, w1: sp.Rational(3, 2), w2: sp.Rational(1, 2)}
+cal_eigs = Ccal.subs(cal_sub).eigenvals()
+check("Callaway: spectrum {0 (x1), 1/tau_R (x3), 1/tau_N + 1/tau_R (x n-4)}, so ker C = span{e} (K3)",
+      cal_eigs == {0: 1, sp.Rational(1, 10): 3, sp.Rational(11, 10): n - 4})
 
 # ---------------------------------------------------------------------------------------------
 # Sec. III: four-mode example (same diagonal, same K(0), different memory)
@@ -296,6 +301,95 @@ check("Prop. 3: tau/(M^2 K0) increases monotonically to 1 under weight concentra
       all(ratios[k_] < ratios[k_ + 1] for k_ in range(len(ratios) - 1)) and abs(ratios[-1] - 1) < 1e-4)
 
 # ---------------------------------------------------------------------------------------------
+# Sec. III: Lemma 2 sharpness, equality networks and a mixed family (Supplemental Sec. S2)
+# ---------------------------------------------------------------------------------------------
+
+
+def stoich(nmodes, parent, daughters):
+    """Stoichiometric vector of parent -> daughters (modes numbered from 1; repeated daughters allowed)."""
+    s = [0] * nmodes
+    s[parent - 1] -= 1
+    for dgh in daughters:
+        s[dgh - 1] += 1
+    return s
+
+
+sharp_nets = {
+    2: ([1, 2, 4, 8, 16], [(k + 1, [k, k]) for k in range(1, 5)], [1, -2, 4, -8, 16]),
+    3: ([6, 6, 6, 3, 3, 3, 3, 3],
+        [(1, [4, 5]), (1, [4, 6]), (1, [4, 7]), (1, [4, 8]), (1, [5, 6]), (2, [4, 5]), (3, [4, 5])],
+        [1, 1, 1, -1, -1, -1, -1, -1]),
+    4: ([6, 6, 6, 2, 2, 2, 2, 2, 2],
+        [(1, [4, 5, 6]), (1, [4, 5, 7]), (1, [4, 5, 8]), (1, [4, 5, 9]), (1, [4, 6, 7]), (1, [5, 6, 7]),
+         (2, [4, 5, 6]), (3, [4, 5, 6])],
+        [1, 1, 1, -1, -1, -1, -1, -1, -1]),
+}
+for vs, (en_l2, evdef, psi_l2) in sharp_nets.items():
+    nm_l2 = len(en_l2)
+    S_l2 = [stoich(nm_l2, p_, ds_) for p_, ds_ in evdef]
+    cons_l2 = all(sum(s[i_] * en_l2[i_] for i_ in range(nm_l2)) == 0 for s in S_l2)
+    sizes_l2 = {sum(1 for c_ in s if c_ != 0) for s in S_l2}
+    # symbolic positive weights and rates: C W psi = varsigma diag(C) W psi identically
+    w_l2 = sp.symbols(f"w_1:{nm_l2 + 1}", positive=True)
+    g_l2 = sp.symbols(f"g_1:{len(S_l2) + 1}", positive=True)
+    W_l2 = sp.diag(*w_l2)
+    C_l2 = sp.zeros(nm_l2, nm_l2)
+    for gg, s in zip(g_l2, S_l2):
+        z_l2 = W_l2.inv() * sp.Matrix(s)
+        C_l2 += gg * z_l2 * z_l2.T
+    R_l2 = sp.diag(*[C_l2[k_, k_] for k_ in range(nm_l2)])
+    y_l2 = W_l2 * sp.Matrix(psi_l2)
+    ident_l2 = sp.simplify(C_l2 * y_l2 - vs * R_l2 * y_l2).is_zero_matrix
+    # rational instance (non-Bose weights, unequal rates); K0 = j^T (C + e e^T/|e|^2)^{-1} j, not using the identity
+    sub_l2 = {**{w_l2[k_]: sp.Rational(k_ + 3, k_ + 2) for k_ in range(nm_l2)},
+              **{g_l2[k_]: sp.Rational(2 * k_ + 1, k_ + 3) for k_ in range(len(S_l2))}}
+    Cn_l2 = C_l2.subs(sub_l2)
+    e_l2 = sp.Matrix([sub_l2[w_l2[k_]] * en_l2[k_] for k_ in range(nm_l2)])
+    j_l2 = Cn_l2 * y_l2.subs(sub_l2)
+    x_l2 = (Cn_l2 + e_l2 * e_l2.T / (e_l2.T * e_l2)[0]).LUsolve(j_l2)
+    K0_l2 = (j_l2.T * x_l2)[0]
+    KR_l2 = sum(j_l2[k_] ** 2 / Cn_l2[k_, k_] for k_ in range(nm_l2))
+    print(f"      varsigma_max = {vs}: K0 = {sp.simplify(K0_l2)}, K_RTA = {sp.simplify(KR_l2)}")
+    check(f"Lemma 2 sharpness, varsigma_max = {vs}: {nm_l2} modes, {len(S_l2)} events of {vs} modes, energy-conserving, "
+          f"rank n-1; C W psi = {vs} diag(C) W psi for symbolic weights and rates; j in H; K0/K_RTA = 1/{vs} exactly",
+          cons_l2 and sizes_l2 == {vs} and sp.Matrix(S_l2).rank() == nm_l2 - 1 and Cn_l2.rank() == nm_l2 - 1
+          and ident_l2 and (e_l2.T * j_l2)[0] == 0 and sp.simplify(K0_l2 / KR_l2 - sp.Rational(1, vs)) == 0)
+# mixed network: 2<->2 event 2+5 -> 3+4 (rate 1) and six three-phonon events (rate delta), unit weights
+en_mx = [1, 2, 3, 4, 5, 6]
+S22_mx = [[0, -1, 1, 1, -1, 0]]
+S3_mx = [stoich(6, 3, [1, 2]), stoich(6, 4, [1, 3]), stoich(6, 5, [1, 4]), stoich(6, 5, [2, 3]),
+         stoich(6, 6, [1, 5]), stoich(6, 6, [2, 4])]
+dlt = sp.symbols("delta", positive=True)
+C_mx = sp.zeros(6, 6)
+for s in S22_mx:
+    C_mx += sp.Matrix(s) * sp.Matrix(s).T
+for s in S3_mx:
+    C_mx += dlt * sp.Matrix(s) * sp.Matrix(s).T
+y_mx = sp.Matrix([0, 1, -1, -1, 1, 0])
+R_mx = sp.diag(*[C_mx[k_, k_] for k_ in range(6)])
+check("Lemma 2, mixed network: energy-conserving, stoichiometric rank 5 = n-1, varsigma_max = 4, "
+      "y^T C y = 16 + 10 delta and y^T diag(C) y = 4 + 12 delta",
+      all(sum(s[i_] * en_mx[i_] for i_ in range(6)) == 0 for s in S22_mx + S3_mx)
+      and sp.Matrix(S22_mx + S3_mx).rank() == 5
+      and sp.expand((y_mx.T * C_mx * y_mx)[0] - (16 + 10 * dlt)) == 0
+      and sp.expand((y_mx.T * R_mx * y_mx)[0] - (4 + 12 * dlt)) == 0)
+# minima 4/lambda_max(G), G = diag(C)^{-1/2} C diag(C)^{-1/2} (50-digit symmetric eigensolver)
+mins_mx = []
+for dv in (sp.Rational(1, 10), sp.Rational(1, 100), sp.Rational(1, 1000), sp.Rational(1, 10 ** 5)):
+    Cd_mx = C_mx.subs(dlt, dv)
+    G_mx = mpm.matrix(6, 6)
+    for a_ in range(6):
+        for b_ in range(6):
+            G_mx[a_, b_] = mpm.mpf(str(sp.N(Cd_mx[a_, b_] / sp.sqrt(Cd_mx[a_, a_] * Cd_mx[b_, b_]), 60)))
+    lmax_mx = max(mpm.eigsy(G_mx)[0])
+    mins_mx.append((4 / lmax_mx, mpm.mpf(str(sp.N((16 + 48 * dv) / (16 + 10 * dv), 60)))))
+print("      mixed network, min_j 4 K0/K_RTA for delta = 1e-1, 1e-2, 1e-3, 1e-5:",
+      ", ".join(mpm.nstr(m_, 8) for m_, _ in mins_mx))
+check("Lemma 2, mixed network: 1 < min_j 4 K0/K_RTA <= (16 + 48 delta)/(16 + 10 delta), decreasing to 1",
+      all(1 < m_ <= b_ for m_, b_ in mins_mx) and all(mins_mx[k_][0] > mins_mx[k_ + 1][0] for k_ in range(3))
+      and abs(mins_mx[0][0] - mpm.mpf("1.2198")) < 1e-4 and abs(mins_mx[3][0] - mpm.mpf("1.000024")) < 1e-6)
+
+# ---------------------------------------------------------------------------------------------
 # Sec. III: infrared criterion, radial integral
 # ---------------------------------------------------------------------------------------------
 q, q0, qmin, alpha, dd, m = sp.symbols("q q_0 q_min alpha d m", positive=True)
@@ -304,6 +398,17 @@ check("radial moment: int_{qmin}^{q0} q^{d-1-m alpha} dq = (q0^s - qmin^s)/s, s 
       sp.simplify(I1 - (q0 ** (dd - m * alpha) - qmin ** (dd - m * alpha)) / (dd - m * alpha)) == 0)
 check("radial moment: logarithmic at m alpha = d",
       sp.simplify(sp.integrate(q ** (-1), (q, qmin, q0)) - sp.log(q0 / qmin)) == 0)
+# Theorem 3(i), alpha >= d: ratio of the moments cut off at k_min ~ k_min^-alpha (alpha > d), k_min^-d/log(1/k_min) (alpha = d)
+ok_cut = True
+for dv_, av_ in ((3, 4), (2, 3), (3, sp.Rational(7, 2))):
+    I2c = sp.integrate(q ** (dv_ - 1 - 2 * av_), (q, qmin, 1))
+    I1c = sp.integrate(q ** (dv_ - 1 - av_), (q, qmin, 1))
+    ok_cut = ok_cut and sp.limit(I2c / I1c * qmin ** av_, qmin, 0) == sp.Rational(av_ - dv_) / (2 * av_ - dv_)
+for dv_ in (2, 3):
+    I2c = sp.integrate(q ** (-dv_ - 1), (q, qmin, 1))
+    I1c = sp.integrate(q ** (-1), (q, qmin, 1))
+    ok_cut = ok_cut and sp.limit(I2c / I1c * qmin ** dv_ * sp.log(1 / qmin), qmin, 0) == sp.Rational(1, dv_)
+check("cut-off moments, alpha >= d: M2/M1 ~ k_min^-alpha (alpha > d) and ~ k_min^-d/log(1/k_min) (alpha = d)", ok_cut)
 
 # ---------------------------------------------------------------------------------------------
 # Sec. IV: film model

@@ -8,6 +8,7 @@ PASS  Callaway: C j = j / tau_R
 PASS  Callaway: C symmetric
 PASS  Callaway: diag C = 1/tau_N + 1/tau_R - O(1/n) (deviation is negative)
 PASS  Callaway: |j_x|^2 tau_R = K(0) (single pole, tau_mem = tau_stat = tau_R)
+PASS  Callaway: spectrum {0 (x1), 1/tau_R (x3), 1/tau_N + 1/tau_R (x n-4)}, so ker C = span{e} (K3)
 PASS  four-mode A: diag = 1, C e = 0, rank 3
 PASS  four-mode A: K(p) as stated
       K_A(0) = 3/2, tau_A = 3/4
@@ -45,8 +46,18 @@ PASS  Prop. 5: g >= g_ref/F implies tau <= F/Gamma_min(C_ref)
 PASS  Prop. 4: y_I = Pi_H W phi_I / (j^T W phi_I) for every basis
       tau/(M^2 K0) along weight concentration: ['0.000042', '0.002613', '0.711484', '0.996300', '0.999963', '1.000000']
 PASS  Prop. 3: tau/(M^2 K0) increases monotonically to 1 under weight concentration (eps = 1e-1 ... 1e-11)
+      varsigma_max = 2: K0 = 1504, K_RTA = 3008
+PASS  Lemma 2 sharpness, varsigma_max = 2: 5 modes, 4 events of 2 modes, energy-conserving, rank n-1; C W psi = 2 diag(C) W psi for symbolic weights and rates; j in H; K0/K_RTA = 1/2 exactly
+      varsigma_max = 3: K0 = 3707/56, K_RTA = 11121/56
+PASS  Lemma 2 sharpness, varsigma_max = 3: 8 modes, 7 events of 3 modes, energy-conserving, rank n-1; C W psi = 3 diag(C) W psi for symbolic weights and rates; j in H; K0/K_RTA = 1/3 exactly
+      varsigma_max = 4: K0 = 8926/63, K_RTA = 35704/63
+PASS  Lemma 2 sharpness, varsigma_max = 4: 9 modes, 8 events of 4 modes, energy-conserving, rank n-1; C W psi = 4 diag(C) W psi for symbolic weights and rates; j in H; K0/K_RTA = 1/4 exactly
+PASS  Lemma 2, mixed network: energy-conserving, stoichiometric rank 5 = n-1, varsigma_max = 4, y^T C y = 16 + 10 delta and y^T diag(C) y = 4 + 12 delta
+      mixed network, min_j 4 K0/K_RTA for delta = 1e-1, 1e-2, 1e-3, 1e-5: 1.2198291, 1.0234091, 1.0023557, 1.0000236
+PASS  Lemma 2, mixed network: 1 < min_j 4 K0/K_RTA <= (16 + 48 delta)/(16 + 10 delta), decreasing to 1
 PASS  radial moment: int_{qmin}^{q0} q^{d-1-m alpha} dq = (q0^s - qmin^s)/s, s = d - m alpha
 PASS  radial moment: logarithmic at m alpha = d
+PASS  cut-off moments, alpha >= d: M2/M1 ~ k_min^-alpha (alpha > d) and ~ k_min^-d/log(1/k_min) (alpha = d)
 PASS  GK 1D: (1+tau_R p) q = -lambda theta' + L^2 q'' with q = -lambda_eff theta'
 PASS  lambda_eff = lambda (1 + tau_l p)/(1 + tau_R p), tau_l = L^2/a
 PASS  sigma e = xi_1 sqrt(p (1+tau_R p)/(1+tau_l p))
@@ -71,4 +82,4 @@ PASS  [|e|^2/(k_B T^2)] = J m^-3 K^-1
 PASS  [N/K0] = s
 PASS  [K0/|e|^2] = m^2 s^-1 (diffusivity)
 
-67 of 67 checks passed
+74 of 74 checks passed

@@ -67,7 +67,9 @@ of the equilibrium to a temperature change $\delta T$.
 \subsection{Dynamic conductivity and memory kernel}\label{sec:response}
 
 Consider the response to a spatially uniform temperature gradient $\nabla T(t)$ switched on at $t=0$
-(the zero-wave-vector limit). Write the occupations as the local equilibrium $f^0_\nu(T(\mathbf r,t))$,
+and maintained by an external heat source (equivalently, the zero-wave-vector limit, at fixed gradient
+amplitude, of the plane-wave problem, whose energy component decouples). Write the occupations as the
+local equilibrium $f^0_\nu(T(\mathbf r,t))$,
 with the local temperature fixed by the energy density, plus a deviation whose entropy coordinates
 $\yy$ lie in $\Hsp$. The streaming of the local equilibrium,
 $\mathbf v_\nu\cdot\nabla f^0_\nu=w_\nu^2\varepsilon_\nu\,\mathbf v_\nu\cdot\nabla T/(k_BT^2)$, acts as a
@@ -182,17 +184,23 @@ mutually orthogonal.
 \begin{proposition}[Grey conserving closure; \status{derived under assumptions}]\label{prop:callaway}
 Under the assumptions just stated, $\jj^{(i)}=v^2\mathbf P_i$ and $\Cop_{\rm Cal}\jj^{(i)}=\jj^{(i)}/\tau_R$.
 Hence $\lambda(p)=\lambda/(1+p\tau_R)$ exactly, with $\lambda=\rho c\,v^2\tau_R/3$, and
-$\tmem=\tstat=\tau_R$. The mode relaxation rates are
+$\tmem=\tstat=\tau_R$. Under refinement of the mesh at fixed $T$, the mode relaxation rates are
 $(\Cop_{\rm Cal})_{\nu\nu}=\tau_N^{-1}+\tau_R^{-1}-O(n^{-1})$.
 \end{proposition}
 
 \begin{proof}
+On $\Hsp$, $\Cop_{\rm Cal}$ acts as $\tau_R^{-1}$ on $\mathrm{span}\{\mathbf P_x,\mathbf P_y,\mathbf P_z\}$ and
+as $\tau_N^{-1}+\tau_R^{-1}$ on the orthogonal complement of $\mathrm{span}\{\ee,\mathbf P_x,\mathbf P_y,\mathbf P_z\}$,
+so $\ker\Cop_{\rm Cal}=\mathrm{span}\{\ee\}$: (K3) holds and Definition~\ref{def:moments} applies.
 For $\varepsilon=\hbar v|\mathbf k|$, $\varepsilon_\nu v_{\nu,i}=\hbar v^2k_{\nu,i}$, so
 $\jj^{(i)}=v^2\mathbf P_i\in\mathrm{range}\,\Pi_{\rm N}\cap\Hsp$, and Eq.~\eqref{eq:callaway} gives
 $\Cop_{\rm Cal}\jj^{(i)}=\jj^{(i)}/\tau_R$. Then $K(p)=|\jj|^2/(p+\tau_R^{-1})$, and
 $\lambda=|\jj|^2\tau_R/(k_BT^2)=\Lambda_i\tau_R=\rho c\,v^2\tau_R/3$ by Eq.~\eqref{eq:harmonic} and cubic
 symmetry. The diagonal elements of the projectors are $e_\nu^2/|\ee|^2+\sum_iP_{i,\nu}^2/|\mathbf P_i|^2$
-and $e_\nu^2/|\ee|^2$, both $O(n^{-1})$.
+and $e_\nu^2/|\ee|^2$, with $e_\nu^2/|\ee|^2=c_\nu/\sum_\mu c_\mu$ and
+$P_{i,\nu}^2/|\mathbf P_i|^2=w_\nu^2k_{\nu,i}^2/\sum_\mu w_\mu^2k_{\mu,i}^2$. Under refinement at fixed $T$,
+$c_\nu\le k_B$ and $w_\nu^2k_{\nu,i}^2$ stay bounded, while $\sum_\mu c_\mu=\mathcal V\rho c$ and
+$\sum_\mu w_\mu^2k_{\mu,i}^2$ grow like $n$; both diagonals are therefore $O(n^{-1})$.
 \end{proof}
 
 Eliminating the deviatoric second moment of the same model under $|p|\tau_N\ll1$ and

@@ -148,8 +148,13 @@ below by the RTA response built from the same diagonal.
 \begin{lemma}[Consistency of lifetimes and dc response; \status{proved}]\label{lem:rta}
 Let $g$ be admissible, $\mathbf r=\mathrm{diag}\,\Cop(g)$ and $K_{\rm RTA}=\sum_\nu j_\nu^2/r_\nu$, and let
 $\varsigma_{\max}$ be the largest number of distinct modes touched by an active event ($3$ for
-$\mathsf p\to\mathsf a+\mathsf b$ with $\mathsf a\ne\mathsf b$, $2$ for $\mathsf p\to2\mathsf a$, $4$ for
-four-phonon events). Then $K_0\ge K_{\rm RTA}/\varsigma_{\max}$, and the constant is sharp.
+$\mathsf p\to\mathsf a+\mathsf b$ with $\mathsf a\ne\mathsf b$, $2$ for $\mathsf p\to2\mathsf a$, up to $4$ for
+four-phonon events). Then $K_0\ge K_{\rm RTA}/\varsigma_{\max}$. Equality holds for some
+$\jj\in\Hsp\setminus\{0\}$ if and only if $\Cop(g)\yy=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy$ for some
+$\yy\ne0$, and the currents attaining it are $\jj=\Cop(g)\yy$ with such $\yy$; this requires every active
+event to touch exactly $\varsigma_{\max}$ modes. The constant is attained for $\varsigma_{\max}=2$, $3$ and $4$.
+When some active event touches fewer than $\varsigma_{\max}$ modes, as for three-phonon events together with
+four-phonon events on four modes, the inequality is strict, but the constant cannot be improved.
 \end{lemma}
 
 \begin{proof}
@@ -158,9 +163,20 @@ the linearized Boltzmann equation~\cite{Ziman2001}. For a vector $\bm\zeta$ with
 the Cauchy--Schwarz inequality gives $(\bm\zeta\tr\yy)^2\le s\sum_\nu\zeta_\nu^2y_\nu^2$, that is
 $\bm\zeta\bm\zeta\tr\preceq s\,\mathrm{diag}(\bm\zeta\circ\bm\zeta)$; summing with the rates,
 $\Cop\preceq\varsigma_{\max}\,\mathrm{diag}\,\Cop$. With $\yy=\mathrm{diag}(\mathbf r)^{-1}\jj/\varsigma_{\max}$,
-$K_0\ge2K_{\rm RTA}/\varsigma_{\max}-K_{\rm RTA}/\varsigma_{\max}$. Exact networks attain the ratio
-$1/3$ (eleven modes, distinct daughters) and $1/2$ (a chain of repeated-daughter events); see the
-Supplemental Material, Sec.~S2.
+$K_0\ge2K_{\rm RTA}/\varsigma_{\max}-K_{\rm RTA}/\varsigma_{\max}$. Equality forces
+$\yy\tr(\varsigma_{\max}\,\mathrm{diag}\,\Cop-\Cop)\yy=0$ for this $\yy$, hence
+$\Cop\yy=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy=\jj$, because the matrix is positive semidefinite.
+Conversely, if $\Cop\yy=\varsigma_{\max}\,\mathrm{diag}(\mathbf r)\,\yy$ with $\yy\ne0$, then
+$\jj=\Cop\yy\in\Hsp$ is nonzero because all $r_\nu>0$, and
+$K_0=\yy\tr\Cop\yy=\varsigma_{\max}\,\yy\tr\mathrm{diag}(\mathbf r)\,\yy=K_{\rm RTA}/\varsigma_{\max}$. Each active event contributes to
+$\yy\tr(\varsigma_{\max}\,\mathrm{diag}\,\Cop-\Cop)\yy$ a nonnegative term, which vanishes if and only if the
+numbers $\zeta_{\gamma\nu}y_\nu$, $\nu\in\mathrm{supp}\,\bm\zeta_\gamma$, are equal, and equal to zero when
+$|\mathrm{supp}\,\bm\zeta_\gamma|<\varsigma_{\max}$. A zero of $\yy$ on one mode of an active event therefore
+spreads to all its modes. The active events of an admissible network connect all modes, since a set of
+modes not connected to the others would carry an energy invariant of its own; so one active event with
+fewer than $\varsigma_{\max}$ modes forces $\yy=0$. Exact networks attain the ratio $1/\varsigma_{\max}$ for
+$\varsigma_{\max}=2$, $3$ and $4$, and a family of mixed networks approaches it (Supplemental Material,
+Sec.~S2).
 \end{proof}
 
 The lemma refers to $\mathrm{diag}\,\Cop$, in which the self-coupling of a repeated daughter is counted
@@ -186,7 +202,7 @@ $M^2|\jj|^2$ do not depend on the normalization of $\jj$.
 
 \begin{theorem}[Cone bound; \status{proved}]\label{thm:cone}
 Let $Z$ span $\Hsp$, $\jj\in\Hsp\setminus\{0\}$ and $g$ admissible. Fix an orthonormal basis of $\Hsp$;
-for $I\in\mathfrak B$ define $\bm\psi_I\in\Hsp$ by $\bm\psi_I\tr\yy=\det[\bm\zeta_I,\yy]$ for all
+for every $I\subset\mathcal E$ with $|I|=n_{\Hsp}-1$ define $\bm\psi_I\in\Hsp$ by $\bm\psi_I\tr\yy=\det[\bm\zeta_I,\yy]$ for all
 $\yy\in\Hsp$, the determinant having the columns $\bm\zeta_\gamma$ ($\gamma\in I$, in a fixed order)
 followed by $\yy$, and put $g_I=\prod_{\gamma\in I}g_\gamma$. Then
 \begin{equation}
@@ -267,8 +283,9 @@ $|I\setminus I^\ast|\ge1$ for $I\ne I^\ast$, so $\varpi_{I^\ast}\to1$ in Eq.~\eq
 $|\xx|/K_0\to M$ as $\epsilon\to0$. Since $\Cop(sg)=s\Cop(g)$, the ratio $|\xx|/K_0$ is invariant under
 $g\mapsto sg$ while $K_0$ scales as $1/s$; rescaling $g^\epsilon$ to $K_0=K^\star$ gives
 $\tmem=(|\xx|/K_0)^2K^\star\to M^2K^\star$, and Theorem~\ref{thm:cone} gives the reverse inequality.
-Every $n_{\Hsp}$-element subset of events contains an event outside $I^\ast$, and at least one such subset
-is a basis of $\Hsp$, so $\det A=\Theta(\epsilon)$ while
+Every $n_{\Hsp}$-element subset of events contains an event outside $I^\ast$, and some $I^\ast\cup\{\gamma\}$
+with $\gamma\notin I^\ast$ is a basis of $\Hsp$, because the $\bm\zeta_\gamma$ ($\gamma\in I^\ast$) are
+independent and $Z$ spans $\Hsp$; so $\det A=\Theta(\epsilon)$ while
 $\sum_Ig^\epsilon_I(\bm\psi_I\tr\jj)^2\to(\bm\psi_{I^\ast}\tr\jj)^2>0$; thus $K_0(g^\epsilon)\sim c/\epsilon$
 and the rescaling factor $K_0(g^\epsilon)/K^\star$ diverges.
 \end{proof}
@@ -280,10 +297,12 @@ event vector, no subset containing $\beta$ is a basis, $M$ is attained by some $
 every $g$ supported on the basis $J^\ast\cup\{\beta\}$ of $\Hsp$ gives $\xx/K_0=\yy_{J^\ast}$ exactly; with
 $\mathbf r^\star=\mathrm{diag}\,\Cop(g)$ and $K^\star=K_0(g)$ the lifetime-constrained supremum is then
 attained (an exact example with seven modes and ten events is given in the Supplemental Material,
-Sec.~S3). Physical currents~\eqref{eq:current} have full support and are never parallel to a
-three-mode event vector; for them it is \status{open} whether $\sup_{\mathcal F}\tmem<M^2K^\star$. For
-rates tied by a symmetry group, Proposition~\ref{prop:sharp} transfers only if $I^\ast$ is a union of
-orbits.
+Sec.~S3). Physical currents~\eqref{eq:current} vanish where $v_{\nu,i}=0$; they are odd under time
+reversal, so their support consists of pairs $\{\nu,\bar\nu\}$ of modes of equal energy, and they are never
+parallel to a three-phonon event vector, whose support has three modes or two modes of different energies.
+For them it is \status{open} whether $\sup_{\mathcal F}\tmem<M^2K^\star$. For rates tied by a symmetry
+group, the proof of Proposition~\ref{prop:sharp} transfers when some maximizing $I^\ast$ is a union of
+orbits; otherwise the supremum over symmetric rates is not known.
 \end{remark}
 
 For three-phonon events, $M$ has a reading in terms of sub-networks.
@@ -311,10 +330,13 @@ $b=1/(\jj\tr\mathsf W\bm\phi_I)$; the denominator is nonzero because $I\in\mathf
 
 The vector $\bm\phi_I$ is a conserved quantity of the events in $I$ other than energy,
 $\mathbf s_\gamma\tr\bm\phi_I=0$ for $\gamma\in I$. $M$ is large when some $(n-2)$-event sub-network
-has such a hidden invariant with a small overlap with the current. By
-Proposition~\ref{prop:sharp}, large memory requires rates concentrated on such a sub-network, which turns
-its invariant into a slow, weakly current-coupled relaxation mode, the mechanism of
-Theorem~\ref{thm:psd}.
+has such a hidden invariant with a small overlap with the current. By Eq.~\eqref{eq:hull},
+$|\xx|/K_0\le\sum_I\varpi_I|\yy_I|$, so a large ratio $\tmem/K_0$ requires convex weight on bases with
+large $|\yy_I|$: for $0<\epsilon\le1/2$, $\tmem\ge(1-\epsilon)^2M^2K_0$ puts at least half of the weight on
+bases with $|\yy_I|\ge(1-2\epsilon)M$. The weight resides in the products $g_I(\bm\psi_I\tr\jj)^2$, not
+necessarily in individual rates. Proposition~\ref{prop:sharp} shows that concentrating the rates on one
+such basis attains the bound, which turns the invariant of the sub-network into a slow, weakly
+current-coupled relaxation mode, the mechanism of Theorem~\ref{thm:psd}.
 
 \begin{corollary}[Width of the feasible range; \status{proved}]\label{cor:gap}
 If $\mathcal F(\mathbf r^\star,K^\star)$ is nonempty, then
@@ -351,15 +373,17 @@ $\gamma\in\mathcal E$ is admissible and satisfies
 \label{eq:prior}
 \end{equation}
 where $\Gamma_{\min}$ is the smallest eigenvalue on $\Hsp$. No lifetime or dc data enter, and the bound
-holds with or without symmetry constraints on the rates. Conversely, $\tmem(g)>\tau$ requires
-$\min_\gamma g_\gamma/g^{\rm ref}_\gamma<[\tau\,\Gamma_{\min}(\Cop(g^{\rm ref}))]^{-1}$.
+holds with or without symmetry constraints on the rates. Conversely, for $\tau>0$, $\tmem(g)>\tau$ requires
+$\min\{g_\gamma/g^{\rm ref}_\gamma:g^{\rm ref}_\gamma>0\}<[\tau\,\Gamma_{\min}(\Cop(g^{\rm ref}))]^{-1}$.
 \end{proposition}
 
 \begin{proof}
 $\Cop(g)-F^{-1}\Cop(g^{\rm ref})=\sum_\gamma(g_\gamma-g^{\rm ref}_\gamma/F)\bm\zeta_\gamma\bm\zeta_\gamma\tr\succeq0$,
 so $\Gamma_{\min}(\Cop(g))\ge\Gamma_{\min}(\Cop(g^{\rm ref}))/F>0$, which implies admissibility, and
-Lemma~\ref{lem:forms} gives $\tmem(g)\le1/\Gamma_{\min}(\Cop(g))$. The converse follows by applying
-the bound with $F=\max_\gamma g^{\rm ref}_\gamma/g_\gamma$.
+Lemma~\ref{lem:forms} gives $\tmem(g)\le1/\Gamma_{\min}(\Cop(g))$. For the converse, if $g_\gamma=0$ for
+some $\gamma$ with $g^{\rm ref}_\gamma>0$, the minimum is $0$ and there is nothing to prove; otherwise
+$g\ge g^{\rm ref}/F$ with $F=\max\{g^{\rm ref}_\gamma/g_\gamma:g^{\rm ref}_\gamma>0\}$, and the bound gives
+the converse.
 \end{proof}
 
 The information that confines $\tmem$ is therefore microscopic: a statement about every event rate
@@ -368,22 +392,26 @@ not. The quantitative consequences for AlN are reported in Sec.~\ref{sec:aln}.
 
 \subsection{Infrared criterion}\label{sec:ir}
 
-We now let the mesh be refined. Consider uniform $\Gamma$-centered meshes with $N_1$ points per
-reciprocal-lattice direction in spatial dimension $d$ ($N_{\mathbf k}=N_1^d$), the $\Gamma$ point
-excluded. With the normalization~\eqref{eq:current}, mode sums $\sum_\nu F(\mathbf k_\nu,s_\nu)/\mathcal V$
+We now let the mesh be refined. Consider uniform $\Gamma$-centered meshes $\mathbf k=\mathsf B\mathbf n/N_1$
+($\mathbf n\in\mathbb Z^d$, $\mathsf B$ the matrix of primitive reciprocal-lattice vectors, so that
+$|\det\mathsf B|\,V_{\rm cell}=(2\pi)^d$) with $N_1$ points per reciprocal-lattice direction in spatial
+dimension $d$ ($N_{\mathbf k}=N_1^d$), the $\Gamma$ point excluded. With the normalization~\eqref{eq:current}, mode sums $\sum_\nu F(\mathbf k_\nu,s_\nu)/\mathcal V$
 are Riemann sums for $(2\pi)^{-d}\sum_s\int_{\rm BZ}F\,d^d\mathbf k$. Write $j_\nu=\mathcal V^{-1/2}J(\mathbf k_\nu,s_\nu)$
 with $J=w\varepsilon v_i$, and define the RTA moments
 \begin{equation}
-\mathcal M_m=\sum_s\int_{\rm BZ}J(\mathbf k,s)^2\,r(\mathbf k,s)^{-m}\,\frac{d^d\mathbf k}{(2\pi)^d},\qquad m=0,1,2,
+\mathcal M_m=\sum_s\int_{\rm BZ}J(\mathbf k,s)^2\,r(\mathbf k,s)^{-m}\,\frac{d^d\mathbf k}{(2\pi)^d},\qquad m=0,1,2.
 \label{eq:Mm}
 \end{equation}
-so that $|\jj|^2\to\mathcal M_0$, $K_{\rm RTA}\to\mathcal M_1$ and $\tmem^{\rm RTA}=\mathcal M_2/\mathcal M_1$.
+On the meshes, $|\jj|^2$, $K_{\rm RTA}$ and $\tmem^{\rm RTA}$ are $\mathcal M_0(N_1)$, $\mathcal M_1(N_1)$
+and $\mathcal M_2(N_1)/\mathcal M_1(N_1)$, with the mesh moments
+$\mathcal M_m(N_1)=\mathcal V^{-1}\sum_\nu J(\mathbf k_\nu,s_\nu)^2r_\nu^{-m}$; their continuum counterparts are
+$\mathcal M_0$, $\mathcal M_1$ and $\mathcal M_2/\mathcal M_1$.
 On each acoustic branch, with $k=|\mathbf k|$ and $\hat{\mathbf k}=\mathbf k/k$, the hypotheses are:
 \begin{enumerate}
 \item[(H1)] $r(\mathbf k)=r_0(\hat{\mathbf k})\,k^\alpha[1+o(1)]$ as $k\to0$, uniformly in $\hat{\mathbf k}$, with
 $0<r_-\le r_0(\hat{\mathbf k})\le r_+<\infty$;
 \item[(H2)] $J(\mathbf k)\to J_0(\hat{\mathbf k})$ as $k\to0$, uniformly in $\hat{\mathbf k}$; $J$ is bounded on the
-Brillouin zone; and $0<\sum_{\rm ac}\int_{S^{d-1}}J_0^2\,r_0^{-m}\,d\Omega<\infty$ for the orders $m$ considered;
+Brillouin zone; and $0<A_m=\sum_{\rm ac}\int_{S^{d-1}}J_0^2\,r_0^{-m}\,d\Omega<\infty$ for the orders $m$ considered;
 \item[(H3)] away from $\mathbf k=0$, and on optical branches, $r$ is bounded below by a positive constant.
 \end{enumerate}
 For a branch with linear dispersion and sound velocity $v_s$, $w\varepsilon\to k_BT$ and
@@ -394,25 +422,42 @@ angular integral be positive. For the event operator one more hypothesis is need
 $c>0$ and $k_0>0$, independent of $N_1$, such that $|x_\nu|\ge c\,|j_\nu|/r_\nu$ for every mode with
 $k_\nu<k_0$.
 \end{enumerate}
+Limits on the meshes require, in addition, some regularity:
+\begin{enumerate}
+\item[(H5)] for the orders $m$ considered, $\Phi_m=\sum_{\rm ac}J_0^2r_0^{-m}$ is bounded on $S^{d-1}$ and
+continuous outside a closed set of directions of zero measure, and on every branch $J^2r^{-m}$ is Riemann
+integrable on the part $k\ge\delta$ of the Brillouin zone for every $\delta>0$.
+\end{enumerate}
+Hypothesis (H5) admits the discontinuities of frequency-sorted acoustic branches at the acoustic axes,
+where they touch, and where they cross; some regularity of this kind is necessary (Supplemental Material,
+Sec.~S4).
 
 \begin{theorem}[Infrared criterion]\label{thm:ir}
-Let the meshes, the moments $\mathcal M_m$ and hypotheses (H1)--(H4) be as above.
+Let the meshes, the moments $\mathcal M_m$ and hypotheses (H1)--(H5) be as above.
 \begin{enumerate}
 \item[(i)] \emph{RTA moments} (\status{proved}). Assume (H1)--(H3). Then $\mathcal M_m<\infty$ if and
 only if $m\alpha<d$; for $m\alpha=d$ the moment restricted to $k>k_{\min}$ diverges like $\log(1/k_{\min})$.
 In the RTA the conductivity is therefore finite if and only if $\alpha<d$, and the memory moment if and
-only if $2\alpha<d$. If, in addition, $J_0$ and $r_0$ are continuous, then on the meshes $\tmem^{\rm RTA}$
-converges for $2\alpha<d$ and grows like $\log N_1$ for $2\alpha=d$, like $N_1^{2\alpha-d}$ for
-$d/2<\alpha<d$, and like $N_1^d/\log N_1$ for $\alpha=d$.
-\item[(ii)] \emph{Event operator} (\status{derived under assumptions}, namely (H4)). Suppose that
-$\mathbf r=\mathrm{diag}\,\Cop_{N_1}$ satisfies (H1)--(H3) uniformly in $N_1$, with $J_0$ and $r_0$
-continuous, and that (H4) holds. If
+only if $2\alpha<d$; for $\alpha\ge d$, where $\mathcal M_1$ and $\mathcal M_2$ both diverge, the ratio of
+the moments restricted to $k>k_{\min}$ diverges like $k_{\min}^{-\alpha}$ for $\alpha>d$ and like
+$k_{\min}^{-d}/\log(1/k_{\min})$ for $\alpha=d$. If, in addition, (H5) holds, then
+$\mathcal M_m(N_1)\to\mathcal M_m$ for $m\alpha<d$,
+$\mathcal M_m(N_1)=(2\pi)^{-d}A_m\log N_1+o(\log N_1)$ for $m\alpha=d$, and
+$\mathcal M_m(N_1)=N_1^{m\alpha-d}S_m/V_{\rm cell}\,[1+o(1)]$ for $m\alpha>d$, where
+$S_m=\sum_{\mathbf n\ne0}\Phi_m(\mathsf B\mathbf n/|\mathsf B\mathbf n|)\,|\mathsf B\mathbf n|^{-m\alpha}\in(0,\infty)$.
+Hence on the meshes $\tmem^{\rm RTA}$ converges to $\mathcal M_2/\mathcal M_1$ for $2\alpha<d$ and grows
+like $\log N_1$ for $2\alpha=d$, like $N_1^{2\alpha-d}$ for $d/2<\alpha<d$, and like $N_1^d/\log N_1$ for
+$\alpha=d$.
+\item[(ii)] \emph{Event operator} (\status{derived under assumptions}, namely (H4) and the uniform form of
+(H1)). Suppose that (H2) holds, that $\Phi_2$ is continuous outside a closed set of directions of zero
+measure, that $\mathbf r=\mathrm{diag}\,\Cop_{N_1}$ satisfies (H1) uniformly in $N_1$, that is, with $r_0$
+independent of $N_1$ and the $o(1)$ uniform in $\hat{\mathbf k}$ and in $N_1$, and that (H4) holds. If
 $2\alpha\ge d$, then $N=|\Cop_{N_1}^+\jj|^2\to\infty$ and $\tmem\ge N^{1/2}/|\jj|\to\infty$ as
 $N_1\to\infty$, with no condition on $K_0$; for $2\alpha>d$, $\tmem\gtrsim N_1^{\alpha-d/2}$, and for
 $2\alpha=d$, $\tmem\gtrsim(\log N_1)^{1/2}$. These are lower bounds; two-sided mesh exponents for the
 event operator do not follow.
-\item[(iii)] \emph{Cone constant} (\status{derived under assumptions}, namely (H4)). Under the
-hypotheses of (ii), $M_{N_1}^2K_{0,N_1}\to\infty$, where $M_{N_1}$ is the constant of
+\item[(iii)] \emph{Cone constant} (\status{derived under assumptions}, namely (H4) and the uniform form
+of (H1)). Under the hypotheses of (ii), $M_{N_1}^2K_{0,N_1}\to\infty$, where $M_{N_1}$ is the constant of
 Theorem~\ref{thm:cone} for the event family on the mesh; if, in addition, $K_{0,N_1}$ stays bounded,
 $M_{N_1}\to\infty$.
 \end{enumerate}
@@ -424,24 +469,32 @@ $k<k_0$. Inside it, (H1)--(H2) give
 $J^2r^{-m}=[J_0(\hat{\mathbf k})^2r_0(\hat{\mathbf k})^{-m}+\epsilon(\mathbf k)]\,k^{-m\alpha}$ with
 $\sup_{\hat{\mathbf k}}|\epsilon|\to0$ as $k\to0$; the error is additive because $J_0$ may vanish on a
 plane. In polar coordinates $d^d\mathbf k=k^{d-1}dk\,d\Omega$ the ball contributes
-$\int_{k_{\min}}^{k_0}k^{d-1-m\alpha}[A+\bar\epsilon(k)]\,dk$, where $A>0$ is the angular integral of
-(H2) and $\bar\epsilon(k)\to0$. Choosing $k_0$ with $|\bar\epsilon|\le A/2$ bounds this between $A/2$ and
-$3A/2$ times $\int_{k_{\min}}^{k_0}k^{d-1-m\alpha}dk$, which stays bounded as $k_{\min}\to0$ if and only if
-$m\alpha<d$ and equals $\log(k_0/k_{\min})$ for $m\alpha=d$. For the mesh laws, write
-$\mathbf k=\mathsf B\mathbf n/N_1$ with $\mathbf n\in\mathbb Z^d$ and $\mathsf B$ the reciprocal-lattice
-matrix. Up to a constant factor, the small-$k$ part of the mesh sum is
-$N_1^{m\alpha-d}\sum[\varphi(\mathbf n)+o(1)\,|\mathsf B\mathbf n|^{-m\alpha}]$
-over $0<|\mathsf B\mathbf n|\lesssim N_1$, where $\varphi(\mathbf n)=(J_0^2r_0^{-m})(\mathsf B\mathbf n/|\mathsf B\mathbf n|)\,|\mathsf B\mathbf n|^{-m\alpha}$
-is continuous, nonnegative, homogeneous of degree $-m\alpha$ and has a positive integral over the shell
-$1\le|\mathsf B\mathbf u|<2$. On each dyadic shell $2^l\le|\mathsf B\mathbf n|<2^{l+1}$ the sum of $\varphi$ is
-a Riemann sum, $2^{l(d-m\alpha)}[c_\ast+o(1)]$ with $c_\ast>0$, and the $o(1)$ term is handled as in the
-integral. Summing over $l\le\log_2N_1$ gives a sum of order $1$, $\log N_1$ or $N_1^{m\alpha-d}$ for
-$m\alpha<d$, $=d$ or $>d$; for $m\alpha<d$ the shells near the origin contribute uniformly little, so
-that the Riemann sums converge to $\mathcal M_m$. Taking the ratio $\mathcal M_2/\mathcal M_1$ gives the
-four cases.
-(ii) By (H4), $N\ge\sum_{k_\nu<k_0}x_\nu^2\ge c^2\sum_{k_\nu<k_0}j_\nu^2r_\nu^{-2}$, the small-$k$ part of
-the RTA second moment on the mesh, which diverges for $2\alpha\ge d$ at the rates of part~(i). Since
-$|\jj|^2\to\mathcal M_0<\infty$, Proposition~\ref{prop:lower} gives $\tmem\ge N^{1/2}/|\jj|\to\infty$.
+$\int_{k_{\min}}^{k_0}k^{d-1-m\alpha}[A+\bar\epsilon(k)]\,dk$, where $A=A_m>0$ and $\bar\epsilon(k)\to0$.
+Choosing $k_0$ with $|\bar\epsilon|\le A/2$ bounds this between $A/2$ and $3A/2$ times
+$\int_{k_{\min}}^{k_0}k^{d-1-m\alpha}dk$, which stays bounded as $k_{\min}\to0$ if and only if $m\alpha<d$,
+equals $\log(k_0/k_{\min})$ for $m\alpha=d$ and is of order $k_{\min}^{d-m\alpha}$ for $m\alpha>d$; the
+statement for $\alpha\ge d$ follows. For the mesh laws, the optical branches and the part $k\ge k_0$ of
+the acoustic branches contribute a bounded amount to $\mathcal M_m(N_1)$, by (H3) and the boundedness of
+$J$. On the acoustic
+branches the part $k_\nu<k_0$ equals
+$N_1^{m\alpha-d}V_{\rm cell}^{-1}\sum_{0<|\mathsf B\mathbf n|<k_0N_1}[\varphi(\mathbf n)+\epsilon_{\rm ac}(\mathsf B\mathbf n/N_1)\,|\mathsf B\mathbf n|^{-m\alpha}]$,
+where $\varphi(\mathbf n)=\Phi_m(\mathsf B\mathbf n/|\mathsf B\mathbf n|)\,|\mathsf B\mathbf n|^{-m\alpha}$ and
+$\epsilon_{\rm ac}$ is the sum of $\epsilon$ over the acoustic branches. Lemma~S1 of the Supplemental
+Material (Sec.~S4) evaluates such sums. On each dyadic shell $2^l\le|\mathsf B\mathbf n|<2^{l+1}$ the sum
+of $\varphi$ is $2^{l(d-m\alpha)}$ times a Riemann sum of the homogeneous extension of $\varphi$ over the
+shell $1\le|\mathsf B\mathbf u|<2$, which converges to a positive limit by (H5); the $\epsilon_{\rm ac}$
+terms are bounded shell by shell. Summing over the shells, with $|\det\mathsf B|\,V_{\rm cell}=(2\pi)^d$, gives
+the stated laws for $m\alpha\ge d$. For $m\alpha<d$ the part $k<\delta$ of $\mathcal M_m(N_1)$ and of
+$\mathcal M_m$ is $O(\delta^{d-m\alpha})$ uniformly in $N_1$, and the remaining sums are Riemann sums that
+converge by (H5), so that $\mathcal M_m(N_1)\to\mathcal M_m$. Taking the ratio $\mathcal M_2(N_1)/\mathcal M_1(N_1)$ gives the four
+cases.
+(ii) By (H4), $N\ge\sum_{k_\nu<k_0}x_\nu^2\ge c^2\sum_{k_\nu<k_0}j_\nu^2r_\nu^{-2}$. Only the upper side
+of the uniform (H1) is used: $r_\nu\le r_0(\hat{\mathbf k}_\nu)k_\nu^\alpha[1+o(1)]$ with an $o(1)$
+independent of $N_1$, so the last sum is bounded below by a mesh sum of the form treated in part~(i),
+with angular function $\Phi_2$ and an error independent of $N_1$; by Lemma~S1 it grows like
+$N_1^{2\alpha-d}$ for $2\alpha>d$ and like $\log N_1$ for $2\alpha=d$. Since $|\jj|^2$ is at most the
+number of branches times $\sup J^2/V_{\rm cell}$, Proposition~\ref{prop:lower} gives
+$\tmem\ge N^{1/2}/|\jj|\to\infty$ at the stated rates.
 (iii) Theorem~\ref{thm:cone} gives $\tmem\le M_{N_1}^2K_{0,N_1}$ on every mesh.
 \end{proof}
 
@@ -458,8 +511,11 @@ long-wavelength part of the solution $\xx$ is RTA-like, and it holds with $c=1$ 
 dimensions a finite conductivity requires $\alpha<3$, whereas a finite memory moment requires
 $\alpha<3/2$. The low-frequency three-phonon rates of acoustic phonons follow power laws whose exponents
 depend on the branch and on the crystal symmetry~\cite{Herring1954}; whether the operators of a given
-material satisfy (H1)--(H4), and with which $\alpha$, is a separate question \PENDING{AlN: infrared law
-of the acoustic rates and status of (H1)--(H4) for the AlN operators, Sec.~\ref{sec:aln}}. When the
+material satisfy (H1)--(H5), and with which $\alpha$, is a separate question \PENDING{AlN: infrared law
+of the acoustic rates and status of (H1)--(H5) for the AlN operators, Sec.~\ref{sec:aln}}. The mesh laws
+are approached slowly: in the lattice test of Supplemental Sec.~S4, $\mathcal M_1(N_1)$ converges like
+$N_1^{-(d-\alpha)}$ for $d/2<\alpha<d$, and at $\alpha=d$ the relative correction decays like
+$1/\log N_1$, so that exponents fitted on coarse meshes are biased. When the
 memory moment diverges, a Cattaneo time exists only for a regularized problem: a finite sample, whose
 boundaries scatter long-wavelength phonons, or a finite frequency band. This motivates the
 film-regularized memory time of Sec.~\ref{sec:aln}.
