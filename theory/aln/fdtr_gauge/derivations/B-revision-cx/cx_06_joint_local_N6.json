@@ -1,0 +1,16 @@
+{
+ "conv": "local",
+ "eps": 0.0,
+ "omega": [
+  0.5,
+  4.0,
+  1.7,
+  0.2,
+  9.0,
+  0.05
+ ],
+ "nfixed": 0,
+ "n_pairs_double": 0,
+ "n_continuum": 0,
+ "pairs": []
+}

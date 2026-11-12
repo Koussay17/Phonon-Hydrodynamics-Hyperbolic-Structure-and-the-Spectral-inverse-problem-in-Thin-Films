@@ -63,3 +63,16 @@ R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kern
 - SURVIVES in every model tested: the first-order FDTR-visible time of a 300–500 nm film is negative and several times |τ_mem|;
   the Cattaneo projection is not a conservative stand-in and τ_ℓ = 0 is not justified.
 - Open item that decides it: slab solution with the full collision operator and realistic interface transmission.
+
+## Counterexample attack on R-B (12 November) — `branches/B-revision-counterexamples.md`
+- SURVIVES: rank tables T3, C2, C5, corrected C4 (132/132 points; 517 random stack points at 50 digits; blind exact search
+  990 solutions all on claimed strata), T2/C1, T4 (i)–(iv), Conjecture T4′ (rank 6 on {G′ = 0} at 16 points), TW3 (re-certified).
+- BROKEN: the non-existence statements for twins. Certified three-frequency twins exist for the entropic convention
+  (501/6000 random targets; 5 certified), for ε = 0.084 (Beardo-type), and for the AlN note-16 target (11 certified; one
+  physically plausible: τ_R′ = 55 ps, τ_ℓ′ = 19 ps, ξ₁, b off by ~2.5 %, misfit 6e-6 off the data frequencies). Certified
+  four- and five-frequency pairs exist; "four frequencies suffice globally" is false as worded — only the generic form
+  (exceptional targets locally codimension 2) survives (24 random targets, no twin; none found at 6–7 frequencies).
+- PHYSICALLY VOID: every statement for ε < 0 (Lemma S: real pole p₀ > 0, growing interface mode; AlN stack growth rates
+  1.8e14–1.8e18 s⁻¹). Only ε ≥ 0 is admissible in the 1D model; non-passive for ε ≥ 5.
+- PRACTICAL: in the Au/AlN/sapphire band, three frequencies need ~1e-6 relative accuracy; with 80 frequencies two directions
+  are ≤ 8e-5 (essentially τ_ℓ); the entropic lifting of the resonance scales ~linearly in ε (weak for ε ≲ 0.1).
