@@ -59,10 +59,13 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   thickness, conductivity, capacity or a velocity relation break it, lateral diffusion only if the in-plane conductivity is
   tied to the cross-plane one. Four independent routes (analytic, asymptotic, computer algebra, counterexample search).
   ([fdtr_gauge](theory/aln/fdtr_gauge/proofs/B-analytic.md))
-- **FDTR cannot resolve the static-data range of the film memory time** *(numerically demonstrated in the twin; numerical
-  audit in progress)*. In the Au/AlN/sapphire scenario (30–500 nm, 10 kHz–200 MHz) the largest admissible phase change is
-  1.6·10⁻³°; with instrument and interface nuisances the detection threshold exceeds the admissible width by 34× (500 nm)
-  to 4.5·10⁴× (30 nm) at 0.1° phase noise. In this band only τ_R − τ_ℓ is accessible. ([fdtr_gauge](theory/aln/fdtr_gauge/07-experiments.md))
+- **FDTR cannot resolve the static-data range of the film memory time once interface resistances are unknown**
+  *(numerically demonstrated in the twin; independent numerical audit: reproduced to 7·10⁻⁶)*. In the illustrative
+  Au/AlN/sapphire scenario (30–500 nm, 10 kHz–200 MHz) the largest admissible phase change is 1.6·10⁻³°. With instrument
+  and interface nuisances free, the detection threshold exceeds the admissible half-width by ≥ 4.2× at 0.01° and ≥ 34× at
+  0.1° phase noise (margins halve for the full width). With only instrument nuisances, a 500 nm film at 0.01° with an
+  optimised frequency allocation is marginal; smaller interface resistances move the verdict towards detectability. In this
+  band only τ_R − τ_ℓ is accessible. ([fdtr_gauge](theory/aln/fdtr_gauge/07-experiments.md))
 
 **Kinetic theory**
 - **Conserving grey closure** *(independent re-derivation of published results: Guo & Wang 2022; Sendra et al. 2022)*: nonlocal coefficient α = 1/3, giving

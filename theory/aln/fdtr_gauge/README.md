@@ -5,4 +5,4 @@ memory time (`../fc3_memory`, E33/E37) is visible in an FDTR measurement of the 
 (`src/twin_fdtr.py`). Workstream B proves (or refutes) that the 1D Cattaneo/Guyer–Krumhansl front-face response has
 generic rank four in (ξ₁, b, τ_R, τ_ℓ), and identifies the degenerate set and what breaks the depth-scaling gauge.
 
-Status (12 November): workstream B proved and audited (`proofs/B-analytic.md`, `branches/B-proof-audit.md`); workstream A numerically demonstrated, numerical audit and hostile review pending (`07-experiments.md`). Ledger: `05-evidence-ledger.md`; settled disagreements: `06-disagreements.md`.
+Status (12 November): workstream B proved and audited (`proofs/B-analytic.md`, `branches/B-proof-audit.md`); workstream A numerically demonstrated and independently reproduced (audit: reliable with caveats; claim narrowed to unknown interface resistances), hostile review pending (`07-experiments.md`). Ledger: `05-evidence-ledger.md`; settled disagreements: `06-disagreements.md`.
