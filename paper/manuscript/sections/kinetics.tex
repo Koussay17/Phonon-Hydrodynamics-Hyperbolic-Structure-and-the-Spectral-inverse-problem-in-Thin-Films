@@ -1,0 +1,272 @@
+% Section II — Linearized kinetics in entropy coordinates
+\section{Linearized kinetics in entropy coordinates}\label{sec:kinetics}
+
+\subsection{Modes, entropy coordinates and the collision operator}\label{sec:modes}
+
+We work with a finite, discretized description of the phonon gas; continuum limits are taken explicitly
+in Sec.~\ref{sec:ir}.
+\begin{enumerate}
+\item[(K1)] A crystal at uniform temperature $T>0$ is described on a finite $\Gamma$-centered mesh of
+$N_{\mathbf k}$ wave vectors, invariant under $\mathbf k\mapsto-\mathbf k$; the crystal volume is
+$\mathcal V=N_{\mathbf k}V_{\rm cell}$. The modes $\nu=(\mathbf k,s)$, $\nu=1,\dots,n$, have energies
+$\varepsilon_\nu=\hbar\omega_\nu>0$ (zero-frequency modes at $\Gamma$ are excluded), group velocities
+$\mathbf v_\nu$ and Bose occupations $f^0_\nu=[\exp(\varepsilon_\nu/k_BT)-1]^{-1}$.
+\item[(K2)] The occupations obey the linearized Boltzmann equation
+$\partial_t\delta f_\nu+\mathbf v_\nu\cdot\nabla\delta f_\nu=-(\Omega\,\delta f)_\nu$, and the collision
+operator satisfies detailed balance and the $H$ theorem: with $\mathsf W=\mathrm{diag}(w_\nu)$ and
+$w_\nu=[f^0_\nu(1+f^0_\nu)]^{1/2}$, the matrix $\Omega\mathsf W^2$ is symmetric and positive semidefinite.
+\end{enumerate}
+In the entropy coordinates
+\begin{equation}
+y_\nu=\frac{\delta f_\nu}{\mathcal V^{1/2}w_\nu}
+\label{eq:entropycoords}
+\end{equation}
+the kinetic equation reads
+\begin{equation}
+\partial_t\yy+\mathsf V\cdot\nabla\yy=-\Cop\,\yy,\qquad \Cop=\mathsf W^{-1}\Omega\,\mathsf W=\Cop\tr\succeq0,
+\label{eq:kinetic}
+\end{equation}
+with $\mathsf V=\mathrm{diag}(\mathbf v_\nu)$. Full linearized collision operators of this kind are
+computed from first principles~\cite{Chaput2013,Fugallo2013,CepellottiMarzari2016}. The name of the
+coordinates refers to the entropy density: expanding the
+Bose entropy $s_B(f)=k_B[(1+f)\ln(1+f)-f\ln f]$ of each mode to second order gives
+\begin{equation}
+\delta s=\frac{\delta E}{T}-\frac{k_B}{2}\,|\yy|^2+O(|\yy|^3),\qquad \delta E=\ee\tr\yy,
+\label{eq:entropy}
+\end{equation}
+where $e_\nu=\mathcal V^{-1/2}w_\nu\varepsilon_\nu$, because $s_B'(f^0_\nu)=\varepsilon_\nu/T$ and
+$s_B''(f^0_\nu)=-k_B/w_\nu^2$. At fixed energy the Euclidean norm of $\yy$ measures the entropy deficit,
+and collisions produce entropy at the rate $k_B\,\yy\tr\Cop\yy\ge0$. Energy conservation in collisions
+gives $\Cop\ee=0$.
+\begin{enumerate}
+\item[(K3)] The energy is the only collision invariant: $\ker\Cop=\mathrm{span}\{\ee\}$.
+\end{enumerate}
+Hypothesis (K3) excludes exact conservation of crystal momentum (umklapp and other resistive processes
+are present). If further invariants exist, everything below holds with $\Hsp$ replaced by the
+orthogonal complement of all invariants. We write $\Hsp=\ee^\perp$, $n_{\Hsp}=\dim\Hsp=n-1$ and
+$\Pi_{\Hsp}$ for the orthogonal projector onto $\Hsp$; $\Cop$ maps $\Hsp$ into itself and is positive
+definite there.
+
+The heat-flux density along the Cartesian direction $i$ is $q_i=\jj^{(i)\mathsf T}\yy$ (a flux per unit
+area, in $\mathrm{W\,m^{-2}}$), with the current vector
+\begin{equation}
+j^{(i)}_\nu=\mathcal V^{-1/2}\,w_\nu\,\varepsilon_\nu\,v_{\nu,i}.
+\label{eq:current}
+\end{equation}
+Time reversal $\nu=(\mathbf k,s)\mapsto\bar\nu=(-\mathbf k,s)$ leaves $\ee$ invariant and reverses
+$\jj^{(i)}$, so $\jj^{(i)}\in\Hsp$. The harmonic quantities
+\begin{equation}
+\rho c=\frac{|\ee|^2}{k_BT^2},\qquad
+\Lambda_i=\frac{|\jj^{(i)}|^2}{k_BT^2}=\frac1{\mathcal V}\sum_\nu c_\nu v_{\nu,i}^2,
+\label{eq:harmonic}
+\end{equation}
+are the volumetric heat capacity and a ballistic weight; $c_\nu=\varepsilon_\nu^2w_\nu^2/(k_BT^2)$ is the
+heat capacity of mode $\nu$. The first identity follows from the response $\yy=\ee\,\delta T/(k_BT^2)$
+of the equilibrium to a temperature change $\delta T$.
+
+\subsection{Dynamic conductivity and memory kernel}\label{sec:response}
+
+Consider the response to a spatially uniform temperature gradient $\nabla T(t)$ switched on at $t=0$
+(the zero-wave-vector limit). Write the occupations as the local equilibrium $f^0_\nu(T(\mathbf r,t))$,
+with the local temperature fixed by the energy density, plus a deviation whose entropy coordinates
+$\yy$ lie in $\Hsp$. The streaming of the local equilibrium,
+$\mathbf v_\nu\cdot\nabla f^0_\nu=w_\nu^2\varepsilon_\nu\,\mathbf v_\nu\cdot\nabla T/(k_BT^2)$, acts as a
+source with entropy coordinates $\sum_k\jj^{(k)}\partial_kT/(k_BT^2)\in\Hsp$; the time derivative of the
+local equilibrium is proportional to $\ee$ and drops out on projection onto $\Hsp$ (its projection onto
+$\ee$ is the energy balance). For a spatially uniform deviation,
+\begin{equation}
+\partial_t\yy=-\Cop\yy-\frac{1}{k_BT^2}\sum_k\jj^{(k)}\,\partial_kT(t),\qquad \yy(0)=0.
+\label{eq:drive}
+\end{equation}
+Its solution gives the heat flux in the form of a constitutive law with memory~\cite{GurtinPipkin1968},
+\begin{equation}
+q_i(t)=-\int_0^t\kappa_{ik}(t-t')\,\partial_kT(t')\,dt',\qquad
+\kappa_{ik}(t)=\frac{\Phi_{ik}(t)}{k_BT^2},
+\label{eq:memorylaw}
+\end{equation}
+with the current autocorrelation function $\Phi_{ik}(t)=\jj^{(i)\mathsf T}e^{-\Cop t}\jj^{(k)}$. Under the
+time convention $e^{+i\omega t}$ of this paper, the Laplace variable is $p$ and the harmonic regime is
+$p=i\omega$. The transform of Eq.~\eqref{eq:memorylaw} defines the dynamic conductivity
+\begin{equation}
+\lambda_{ik}(p)=\frac{K_{ik}(p)}{k_BT^2},\qquad K_{ik}(p)=\jj^{(i)\mathsf T}(p+\Cop)^{-1}\jj^{(k)}.
+\label{eq:dynamicK}
+\end{equation}
+Because the currents lie in $\Hsp$, where $\Cop$ is invertible, $K_{ik}$ is analytic at $p=0$ and the
+dc conductivity is $\lambda_{ik}=K_{ik}(0)/(k_BT^2)$ with $K_{ik}(0)=\jj^{(i)\mathsf T}\Cop^+\jj^{(k)}$;
+$\Cop^+$ is the Moore--Penrose pseudoinverse. A current with a component along an invariant would add a
+term proportional to $1/p$, and the pseudoinverse must not be used to hide it. From now on we fix one
+direction and drop the index $i$: $\jj$, $K(p)$, $\Phi(t)$, $\lambda(p)$ and $\lambda=\lambda(0)$.
+
+With the eigenpairs $(\Gamma_k,\mathbf u_k)$ of $\Cop$ restricted to $\Hsp$ ($\Gamma_k>0$; the relaxons
+of Ref.~\cite{CepellottiMarzari2016}),
+\begin{equation}
+K(p)=\sum_{k=1}^{n-1}\frac{(\mathbf u_k\tr\jj)^2}{p+\Gamma_k}.
+\label{eq:stieltjes}
+\end{equation}
+$K$ is the Stieltjes transform of the spectral measure of $\Cop|_{\Hsp}$ in the state $\jj$; its total
+mass is $|\jj|^2=\Phi(0)$.
+
+\subsection{The memory moment}\label{sec:memory}
+
+\begin{definition}[Moments]\label{def:moments}
+Under (K1)--(K3) and for $\jj\in\Hsp\setminus\{0\}$, let $\xx=\Cop^+\jj$ (the unique solution in $\Hsp$
+of $\Cop\xx=\jj$), and define
+\begin{equation}
+\begin{gathered}
+K_0=K(0)=\jj\tr\xx,\qquad N=|\xx|^2,\\
+\tmem=-\frac{K'(0)}{K(0)},\qquad \tstat=\frac{K_0}{|\jj|^2}.
+\end{gathered}
+\label{eq:moments}
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Equivalent forms of the memory moment; \status{proved}]\label{lem:forms}
+Under the hypotheses of Definition~\ref{def:moments},
+\begin{equation}
+\tmem=\frac{N}{K_0}=\frac{|\Cop^+\jj|^2}{\jj\tr\Cop^+\jj}
+=\frac{\int_0^\infty t\,\Phi(t)\,dt}{\int_0^\infty\Phi(t)\,dt}
+=\frac{\sum_k\lambda_k\Gamma_k^{-1}}{\sum_k\lambda_k},
+\label{eq:forms}
+\end{equation}
+where $\lambda_k=(\mathbf u_k\tr\jj)^2/(k_BT^2\,\Gamma_k)$ is the contribution of relaxon $k$ to
+$\lambda$. In particular $\Gamma_{\max}^{-1}\le\tmem\le\Gamma_{\min}^{-1}$, where $\Gamma_{\min}$ and
+$\Gamma_{\max}$ are the extreme eigenvalues of $\Cop|_{\Hsp}$.
+\end{lemma}
+
+\begin{proof}
+On $\Hsp$, $(p+\Cop)^{-1}$ is analytic at $p=0$ with derivative $-(p+\Cop)^{-2}$; hence
+$-K'(0)=\jj\tr(\Cop^+)^2\jj=|\Cop^+\jj|^2$ because $\Cop^+$ is symmetric. In time,
+$\int_0^\infty e^{-\Cop t}dt=\Cop^{+}$ and $\int_0^\infty t\,e^{-\Cop t}dt=(\Cop^{+})^2$ on $\Hsp$. The
+last form follows from Eq.~\eqref{eq:stieltjes}: $K_0=\sum_k(\mathbf u_k\tr\jj)^2\Gamma_k^{-1}$ and
+$N=\sum_k(\mathbf u_k\tr\jj)^2\Gamma_k^{-2}$. A weighted mean of the $\Gamma_k^{-1}$ lies between their
+extremes.
+\end{proof}
+
+Thus $\tmem$ is the first moment of the normalized memory kernel $\kappa(t)/\lambda$ and the
+conductivity-weighted mean relaxon lifetime. In the RTA, where $\Cop$ is replaced by
+$\mathrm{diag}(r_\nu)$ (an operator that does not conserve energy),
+$\tmem^{\rm RTA}=\sum_\nu j_\nu^2r_\nu^{-2}/\sum_\nu j_\nu^2r_\nu^{-1}$ and
+$\tstat^{\rm RTA}=\sum_\nu j_\nu^2r_\nu^{-1}/\sum_\nu j_\nu^2$.
+
+\subsection{The Cattaneo time of a conserving closure}\label{sec:cattaneo}
+
+For spatially uniform fields, Cattaneo's law $\tau_R\partial_tq+q=-\lambda\,\partial_iT$ is
+Eq.~\eqref{eq:memorylaw} with the exponential kernel $\kappa_C(t)=(\lambda/\tau_R)e^{-t/\tau_R}$, that
+is, with the single pole $\lambda_C(p)=\lambda/(1+p\tau_R)$~\cite{JosephPreziosi1989,GurtinPipkin1968}.
+
+\begin{definition}[Cattaneo time]\label{def:cattaneo}
+The Cattaneo time of a conserving operator $\Cop$ (for a given direction) is the relaxation time of the
+single pole that matches $\lambda(p)$ and $\lambda'(p)$ at $p=0$. Since $\lambda_C(0)=\lambda$ and
+$\lambda_C'(0)=-\lambda\tau_R$, it equals $\tmem$.
+\end{definition}
+
+The match is exact for all $p$ if and only if $\Phi$ is a single exponential, that is, if and only if
+$\jj$ is an eigenvector of $\Cop$. The matched pole reproduces the slope of $\lambda(p)$ at $p=0$, not
+the response in a finite frequency band; Theorem~\ref{thm:psd}(v) below shows that the two can be
+unrelated.
+
+The grey conserving closure illustrates Definition~\ref{def:cattaneo}. In the Callaway
+model~\cite{Callaway1959} with a common linear isotropic dispersion $\varepsilon=\hbar v|\mathbf k|$
+and constant times $\tau_N,\tau_R>0$, the linearized operator in entropy coordinates is
+\begin{equation}
+\Cop_{\rm Cal}=\tau_N^{-1}(I-\Pi_{\rm N})+\tau_R^{-1}\,\Pi_{\Hsp},
+\label{eq:callaway}
+\end{equation}
+where $\Pi_{\rm N}$ is the orthogonal projector onto the span of $\ee$ and of the three vectors
+$\mathbf P_x$, $\mathbf P_y$, $\mathbf P_z$, with $P_{i,\nu}=\mathcal V^{-1/2}w_\nu\hbar k_{\nu,i}$,
+which represent crystal momentum: the displaced
+equilibrium that matches the energy and momentum of a state $\yy$ is its orthogonal projection onto that
+span. We take the mesh symmetric under the cubic point group, so that $\ee,\mathbf P_x,\mathbf P_y,\mathbf P_z$ are
+mutually orthogonal.
+
+\begin{proposition}[Grey conserving closure; \status{derived under assumptions}]\label{prop:callaway}
+Under the assumptions just stated, $\jj^{(i)}=v^2\mathbf P_i$ and $\Cop_{\rm Cal}\jj^{(i)}=\jj^{(i)}/\tau_R$.
+Hence $\lambda(p)=\lambda/(1+p\tau_R)$ exactly, with $\lambda=\rho c\,v^2\tau_R/3$, and
+$\tmem=\tstat=\tau_R$. The mode relaxation rates are
+$(\Cop_{\rm Cal})_{\nu\nu}=\tau_N^{-1}+\tau_R^{-1}-O(n^{-1})$.
+\end{proposition}
+
+\begin{proof}
+For $\varepsilon=\hbar v|\mathbf k|$, $\varepsilon_\nu v_{\nu,i}=\hbar v^2k_{\nu,i}$, so
+$\jj^{(i)}=v^2\mathbf P_i\in\mathrm{range}\,\Pi_{\rm N}\cap\Hsp$, and Eq.~\eqref{eq:callaway} gives
+$\Cop_{\rm Cal}\jj^{(i)}=\jj^{(i)}/\tau_R$. Then $K(p)=|\jj|^2/(p+\tau_R^{-1})$, and
+$\lambda=|\jj|^2\tau_R/(k_BT^2)=\Lambda_i\tau_R=\rho c\,v^2\tau_R/3$ by Eq.~\eqref{eq:harmonic} and cubic
+symmetry. The diagonal elements of the projectors are $e_\nu^2/|\ee|^2+\sum_iP_{i,\nu}^2/|\mathbf P_i|^2$
+and $e_\nu^2/|\ee|^2$, both $O(n^{-1})$.
+\end{proof}
+
+Eliminating the deviatoric second moment of the same model under $|p|\tau_N\ll1$ and
+$v\tau_N/L_{\rm v}\ll1$, with $L_{\rm v}$ the scale of spatial variation, gives the conserving GK
+closure~\cite{GuoWang2022,Sendra2021,Sendra2022}
+\begin{equation}
+\tau_R\partial_t\mathbf q+\mathbf q=-\lambda\nabla T+\ell^2\big[\nabla^2\mathbf q+\beta\,\nabla(\nabla\cdot\mathbf q)\big],
+\label{eq:gk}
+\end{equation}
+with $\beta=1/3$, $\ell^2=v^2\tau_c\tau_R/5$ and $\tau_c=(\tau_N^{-1}+\tau_R^{-1})^{-1}$; the original
+GK equation has $\beta=2$ and $\tau_N$ in place of $\tau_c$~\cite{GuyerKrumhansl1966b}. Its relaxation
+time is the $\tau_R$ of Proposition~\ref{prop:callaway}, i.e., $\tmem$. The mode lifetimes, however, are
+close to $\tau_c$, not to $\tau_R$: lifetimes alone do not give the Cattaneo time even in the grey
+model, whereas within this two-parameter family the pair $(\tau_c,\lambda)$ fixes $(\tau_N,\tau_R)$.
+Section~\ref{sec:identifiability} asks what remains of this when the operator is not restricted to a
+two-parameter family.
+
+\subsection{Static data and operator classes}\label{sec:classes}
+
+\begin{definition}[Static data]\label{def:data}
+For $\Cop$ satisfying (K2)--(K3), the static data are $\mathcal D(\Cop)=(\mathbf r,\ker\Cop,K_0)$, where
+$\mathbf r=\mathrm{diag}\,\Cop$ are the mode relaxation rates (lifetimes $\tau_\nu=1/r_\nu$). The
+harmonic vectors $\ee$ and $\jj$ are fixed. For several directions, $K_0$ is replaced by the dc tensor.
+\end{definition}
+
+Under (K3) all $r_\nu>0$: a vanishing diagonal element of a positive-semidefinite matrix forces the
+corresponding row to vanish, which would put a unit vector in $\ker\Cop=\mathrm{span}\{\ee\}$, whereas
+$\ee$ has no zero component. The rates $r_\nu$ include the self-coupling of repeated slots in an event;
+they are not, in general, the self-energy linewidths of RTA codes (see Lemma~\ref{lem:rta}).
+
+\begin{definition}[Operator classes]\label{def:classes}
+(P)~The positive-semidefinite class is
+$\mathfrak P(\ee)=\{\Cop\in\mathbb R^{n\times n}:\Cop=\Cop\tr\succeq0,\ \ker\Cop=\mathrm{span}\{\ee\}\}$.
+(E)~Let $Z=(\bm\zeta_\gamma)_{\gamma\in\mathcal E}$ be a fixed finite family of vectors in $\Hsp$ that
+spans $\Hsp$. For rates $g\in[0,\infty)^{\mathcal E}$ put
+\begin{equation}
+\Cop(g)=\sum_{\gamma\in\mathcal E}g_\gamma\,\bm\zeta_\gamma\bm\zeta_\gamma\tr .
+\label{eq:cone}
+\end{equation}
+The rates are admissible if $\ker\Cop(g)=\mathrm{span}\{\ee\}$, equivalently if
+$\{\bm\zeta_\gamma:g_\gamma>0\}$ spans $\Hsp$. The fixed event cone is
+$\mathfrak E(Z)=\{\Cop(g):g\ \text{admissible}\}\subset\mathfrak P(\ee)$.
+\end{definition}
+
+Three-phonon kinetics has the form~\eqref{eq:cone}~\cite{Fugallo2013}. For an event
+$\gamma:\ \mathsf p\to\mathsf a+\mathsf b$ allowed by crystal-momentum conservation (normal or umklapp)
+and by energy conservation on the mesh, let $\mathbf s_\gamma=-\bm\delta_{\mathsf p}+\bm\delta_{\mathsf a}+\bm\delta_{\mathsf b}$
+be its stoichiometric vector ($-\bm\delta_{\mathsf p}+2\bm\delta_{\mathsf a}$ for a repeated daughter).
+Linearizing the net rate $G_\gamma[f_{\mathsf p}(1+f_{\mathsf a})(1+f_{\mathsf b})-(1+f_{\mathsf p})f_{\mathsf a}f_{\mathsf b}]$
+about $f^0$ and using detailed balance gives $-G_\gamma P_\gamma\,\mathbf s_\gamma\tr\mathsf W^{-2}\delta\mathbf f$,
+with $P_\gamma=f^0_{\mathsf p}(1+f^0_{\mathsf a})(1+f^0_{\mathsf b})$, so that Eq.~\eqref{eq:kinetic} holds
+with
+\begin{equation}
+\bm\zeta_\gamma=\mathsf W^{-1}\mathbf s_\gamma,\qquad g_\gamma=G_\gamma P_\gamma\ge0 .
+\label{eq:events}
+\end{equation}
+Energy conservation $\mathbf s_\gamma\tr\bm\varepsilon=0$ gives $\bm\zeta_\gamma\in\Hsp$. The event set,
+hence $Z$, is fixed by the harmonic spectrum; the rates $g_\gamma$ are fixed by the anharmonic
+amplitudes, which are the unknowns of the inverse problem considered here. On a finite mesh, exact
+resonance is exceptional; with a broadened resonance condition the accepted events must be given an
+energy-conserving stoichiometry, which is a declared approximation (Supplemental Material, Sec.~S1).
+The class statements below concern any fixed finite $Z$.
+For given data $(\mathbf r^\star,K^\star)$ the feasible set is
+\begin{equation}
+\begin{split}
+\mathcal F(\mathbf r^\star,K^\star)=\{g\ \text{admissible}:\ &\mathrm{diag}\,\Cop(g)=\mathbf r^\star,\\
+&K_0(g)=K^\star\}.
+\end{split}
+\label{eq:feasible}
+\end{equation}
+
+Compressing the kinetics onto fewer variables is a separate question. Block observables
+$\mathbf N=\mathsf B\yy$ (for instance the populations of degenerate blocks) obey a closed equation
+$\dot{\mathbf N}=-\mathsf G\mathbf N$ for every initial state if and only if $\mathsf B\Cop=\mathsf G\mathsf B$,
+the exact-lumpability condition~\cite{WeiKuo1969,Aoki1968,LiRabitz1989,Buchholz1994}; otherwise the reduced
+dynamics contains memory terms of projection type~\cite{Zwanzig1961,Mori1965}. We use this known
+criterion only as background.

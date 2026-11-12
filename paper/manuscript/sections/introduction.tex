@@ -1,0 +1,103 @@
+% Section I — Introduction
+\section{Introduction}\label{sec:intro}
+
+Thermoreflectance in the time domain (TDTR) and in the frequency domain (FDTR) is a standard probe of
+heat transport in thin films and across interfaces~\cite{Cahill2004,Schmidt2009}. When the heated volume or the
+modulation period approaches phonon mean free paths or lifetimes, the data depart from the predictions
+of Fourier's law: apparent conductivities depend on the modulation frequency~\cite{KohCahill2007,Regner2013}
+and on the size and anisotropy of the heating~\cite{WilsonCahill2014}, and such departures have been
+inverted for mean-free-path or relaxation-time spectra~\cite{Minnich2012,Forghani2016,Chen2025}. A second line
+of analysis replaces Fourier's law by a constitutive law with a heat-flux relaxation
+time~$\tau_R$---the Cattaneo law~\cite{JosephPreziosi1989}---or, in addition, a nonlocal
+length~$\ell$---the Guyer--Krumhansl (GK) equation~\cite{GuyerKrumhansl1966a,GuyerKrumhansl1966b,GuoWang2015}---and
+interprets thermoreflectance signals through these
+parameters~\cite{Beardo2020,HennessyMyers2021,CamachoDeLaRosa2025}. Their values are then read
+kinetically: $\tau_R$ as a resistive (momentum-relaxing) time and $\ell$ as a length set by normal
+processes.
+
+Aluminum nitride is a natural test case for this inference. Its thermal conductivity is high---about
+$321~\mathrm{W\,m^{-1}K^{-1}}$ at room temperature was measured by TDTR on films grown to $18$ and
+$22.5~\mu\mathrm{m}$~\cite{Cheng2020}, a value that cannot be transferred to a submicrometer film without
+a measurement---and first-principles transport workflows for it have been benchmarked against one
+another~\cite{McGaughey2025}; Callaway-type descriptions of its phonon transport have been examined
+against first-principles rates~\cite{MaLiLuo2014}. A first-principles route from AlN to a
+thin-film thermoreflectance prediction has three steps: (i)~static transport data---mode lifetimes
+and the bulk conductivity tensor---are computed from harmonic and anharmonic force constants;
+(ii)~an energy-conserving closure of the linearized Boltzmann equation is constructed from them;
+(iii)~the closure enters a model of the film response. The closure coefficients that govern the
+dynamics, above all the Cattaneo time, are not static quantities. This paper addresses the question:
+\emph{what do static transport data determine about a conserving dynamic closure, and what further
+operator or measurement information is needed?}
+
+Several ingredients are established and are used here as attributed background. For the grey Callaway
+model~\cite{Callaway1959}, the conserving closure has grad-div coefficient $1/3$ instead of the
+coefficient $2$ of the original GK equation; Guo and Wang give it, including the combined time
+$\tau_c$, in Eq.~(7) of Ref.~\cite{GuoWang2022}, Sendra \emph{et~al.} derive and discuss it~\cite{Sendra2021,Sendra2022},
+and the coefficient $2$ has been attributed to an approximate inverse of the normal-process collision
+matrix~\cite{HardyAlbers1974,GuoWang2022}; see also Ref.~\cite{Struchtrup2025}. The eigenvectors of the symmetrized collision operator
+(relaxons) express the conductivity as a sum over relaxation modes~\cite{CepellottiMarzari2016}, and
+conductivity and thermal viscosity are carried by relaxons of opposite parity~\cite{Simoncelli2020}.
+Reductions of collision dynamics to a few collective variables are exact only under lumpability
+conditions~\cite{WeiKuo1969,Aoki1968,LiRabitz1989,Buchholz1994} and otherwise generate memory terms of
+projection type~\cite{Zwanzig1961,Mori1965}, on which a recent statistical theory of heat conduction with
+spatiotemporal memory kernels is built~\cite{ZengDong2026}; descriptions built on diagonal rates alone can fail for
+hydrodynamic transport~\cite{MalviyaRavichandran2023}. For Fourier films, Krapez and Rigollet showed that
+thickness, diffusivity and conductivity of a coating are not separately identifiable from front-face
+data, whatever the frequencies and noise level~\cite{KrapezRigollet2017}.
+
+Within this background the paper makes the following contributions. Each is stated with its
+hypotheses and one of the status labels defined below.
+\begin{enumerate}
+\item In entropy coordinates the Cattaneo time of a conserving closure, defined by matching a single-pole
+law to the dynamic conductivity at zero frequency, is the first memory moment
+$\tmem=-K'(0)/K(0)=|\Cop^+\jj|^2/\jj\tr\Cop^+\jj$ of the current response (Sec.~\ref{sec:kinetics});
+in the grey Callaway model it equals $\tau_R$ exactly. This is a definition and an elementary check, not a new result.
+\item Static data (lifetimes, invariants and the dc response) bound $\tmem$ from below by
+$\tstat=K(0)/|\jj|^2$ (Proposition~\ref{prop:lower}) but, in the class of positive-semidefinite
+operators, not from above (Theorem~\ref{thm:psd}). The mathematics is elementary: it is an instance of the
+indeterminacy of a Stieltjes function from finitely many of its moments~\cite{Akhiezer2020,Schmudgen2017}.
+We have not found an explicit identifiability statement of this kind for phonon kinetics in the
+literature searched.
+\item If the events are fixed by the harmonic spectrum and only their nonnegative rates are unknown,
+$\tmem\le M^2K(0)$ with a sharp, rate-independent constant~$M$ (Theorem~\ref{thm:cone} and
+Proposition~\ref{prop:sharp}). The inequality is a known consequence of the convex-hull theorem of Ben-Tal and
+Teboulle for weighted least squares~\cite{BenTalTeboulle1990}; its application to the memory of kinetic
+operators is potentially novel within the literature searched. A per-event lower bound on the rates bounds
+$\tmem$ without any data (Proposition~\ref{prop:prior}).
+\item In the relaxation-time approximation (RTA) the memory moment diverges in the continuum when the
+infrared exponent of the acoustic rates satisfies $2\alpha\ge d$, while the conductivity is finite for
+$\alpha<d$; for event operators the divergence follows under an explicit hypothesis on the infrared
+solution (Theorem~\ref{thm:ir}), and then $M^2K(0)$ diverges under mesh refinement. No novelty is claimed
+for this criterion; an analogous coexistence of a finite conductivity with divergent higher moments, of
+the free-path distribution, underlies the superdiffusive description of quasiballistic transport in
+alloys~\cite{Vermeersch2015a,Vermeersch2015b}.
+\item For a one-dimensional front-face measurement on a Cattaneo or GK film on a substrate, the
+depth-scaling gauge of the Fourier problem persists: the film enters only through
+$(\xi_1,b,\tau_R,\tau_\ell)$, so neither $\ell$ nor the closure coefficient is separately identifiable
+(Proposition~\ref{prop:gauge} and Corollary~\ref{cor:beta}). The Fourier gauge is
+known~\cite{KrapezRigollet2017}; its extension to non-Fourier laws is elementary dimensional analysis and is
+potentially novel within the literature searched. Whether the four combinations are themselves identifiable is
+the subject of a theorem stated in Sec.~\ref{sec:frontface}: \PENDING{Theorem: generic rank four and degenerate set}.
+\item \PENDING{AlN first-principles results: film-regularized memory-time ranges (Sec.~\ref{sec:aln})}
+\PENDING{FDTR detectability of those ranges (Sec.~\ref{sec:fdtr})}
+\end{enumerate}
+
+The paper does not claim a value of the bulk memory time of AlN, an experimental validation, or any
+part of the conserving closure itself. The Fourier resonance $\tau_R=\tau_\ell$ used in
+Sec.~\ref{sec:frontface} was named by Both \emph{et~al.}~\cite{Both2016} and analyzed by
+Kov\'acs~\cite{Kovacs2018}.
+
+\emph{Status labels.} \status{proved}: a complete proof is given. \status{derived under assumptions}:
+the derivation is complete given hypotheses that are stated but not proved (for instance a property of a
+specific operator, or a model of the experiment). \status{open}: neither proved nor refuted. Numerical
+results in Secs.~\ref{sec:aln} and \ref{sec:fdtr} will carry the label
+\status{numerically demonstrated} together with their error estimates. Statements of novelty are
+restricted to the literature we searched in October 2026: Crossref and OpenAlex (about fifty queries
+each), arXiv full text, publisher and repository pages, and the forward citations of
+Refs.~\cite{BenTalTeboulle1990,Stewart1989}.
+
+Section~\ref{sec:kinetics} sets up the kinetic framework, the memory moment and the two operator
+classes. Section~\ref{sec:identifiability} states and proves what static data do and do not determine.
+Section~\ref{sec:frontface} formulates the front-face measurement model and its gauge.
+Sections~\ref{sec:aln}--\ref{sec:conclusions} are reserved for the AlN results, the detectability
+analysis and the conclusions. The notation is collected in Appendix~\ref{app:notation}.

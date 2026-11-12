@@ -1,0 +1,100 @@
+% Paper 1 --- main file.
+% Build (from this directory): pdflatex -output-directory=.build main; in .build: BIBINPUTS="..;." bibtex main;
+% then pdflatex -output-directory=.build main twice more. .build/ is ignored by git.
+\documentclass[aps,prb,reprint,amsmath,amssymb,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+% ------------------------------------------------------------------ markers and labels
+% Items whose content is not yet established print in red.
+\newcommand{\PENDING}[1]{{\color{red}\textbf{[PENDING:}~#1\textbf{]}}}
+% Status labels of statements (proved / derived under assumptions / open / numerically demonstrated).
+\newcommand{\status}[1]{\textup{\textsc{#1}}}
+
+\hyphenation{thermo-re-flec-tance semi-def-i-nite Krum-hansl Cat-ta-neo ad-mis-si-ble}
+
+% ------------------------------------------------------------------ statements
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ------------------------------------------------------------------ notation
+\newcommand{\tr}{^{\mathsf T}}
+\newcommand{\Cop}{\mathcal C}
+\newcommand{\Hsp}{\mathcal H}
+\newcommand{\ee}{\mathbf e}
+\newcommand{\jj}{\mathbf j}
+\newcommand{\xx}{\mathbf x}
+\newcommand{\yy}{\mathbf y}
+\newcommand{\tmem}{\tau_{\rm mem}}
+\newcommand{\tstat}{\tau_{\rm stat}}
+
+\begin{document}
+
+\title{What static transport data determine about a conserving phonon closure}
+
+\author{Koussay Mansouri}
+\affiliation{\PENDING{affiliation; author list and order to be agreed}}
+
+\date{\today}
+
+\begin{abstract}
+Non-Fourier interpretations of thermoreflectance experiments on thin films attach kinetic meaning to
+the relaxation time and the nonlocal length of hydrodynamic heat-flux laws. We ask what static
+transport data---mode lifetimes, collision invariants and the dc thermal conductivity---determine
+about the dynamic part of an energy-conserving closure of the linearized phonon Boltzmann equation,
+and which further operator or measurement information is required. In entropy coordinates the
+Cattaneo time of the closure is the first memory moment $\tmem=-K'(0)/K(0)$ of the current response.
+Static data bound $\tmem$ from below by $K(0)/|\jj|^2$, but in the class of positive-semidefinite
+collision operators they do not bound it from above: an explicit family keeps all lifetimes, the
+invariant and $K(0)$ fixed while $\tmem\to\infty$. If the collision events are fixed by the harmonic
+spectrum and only their nonnegative rates are unknown, a convex-hull theorem of Ben-Tal and Teboulle
+gives $\tmem\le M^2K(0)$ with a sharp, rate-independent constant $M$, and a per-event lower bound on
+the rates bounds $\tmem$ without any data. In the relaxation-time approximation the memory moment
+diverges in the continuum when the infrared exponent $\alpha$ of the acoustic rates satisfies
+$2\alpha\ge d$, while the conductivity stays finite for $\alpha<d$; for event operators the same
+divergence follows under an explicit infrared hypothesis, and then $M^2K(0)$ diverges under
+Brillouin-zone refinement. For a one-dimensional front-face measurement on a Cattaneo or
+Guyer--Krumhansl film on a substrate, the depth-scaling gauge of the Fourier problem persists: the film
+enters only through $(\xi_1,b,\tau_R,\tau_\ell)$, so neither the nonlocal length nor the closure
+coefficient is separately identifiable. \PENDING{abstract sentences on the AlN film-regularized
+memory-time ranges, FDTR detectability and the rank theorem}
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/kinetics}
+\input{sections/identifiability}
+\input{sections/frontface}
+\input{sections/aln}
+\input{sections/fdtr}
+\input{sections/conclusions}
+
+\begin{acknowledgments}
+\PENDING{acknowledgments and funding}
+\end{acknowledgments}
+
+\section*{Data availability}
+\PENDING{data and code availability statement: repository, archived version and identifiers}
+
+\appendix
+\input{sections/notation}
+
+\bibliography{refs}
+
+\end{document}

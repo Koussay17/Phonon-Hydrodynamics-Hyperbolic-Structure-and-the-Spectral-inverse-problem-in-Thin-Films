@@ -1,0 +1,203 @@
+% Section IV — Model of the front-face measurement
+\section{Model of the front-face measurement}\label{sec:frontface}
+
+A closure enters a thermoreflectance experiment through a model of the film response. This section
+treats the one-dimensional idealization---plane heating and detection at the front face, no metal
+transducer, perfect contact---in which the constitutive law of the film enters through two combinations
+of its parameters. It fixes the model, its depth-scaling gauge and the place of the closure coefficient;
+the identifiability of the remaining parameters is the subject of a theorem stated in
+Sec.~\ref{sec:rank}. The transducer, interface resistances and finite beams of an actual FDTR
+experiment are treated in Sec.~\ref{sec:fdtr}.
+
+\subsection{Assumptions}\label{sec:ff-assumptions}
+
+\begin{enumerate}
+\item[(F1)] Heat flows in one dimension across a homogeneous film $0<z<e$ on a semi-infinite substrate
+$z>e$; the response is linear and the coefficients are constant.
+\item[(F2)] The initial state is at rest and there is no interior source. The absorbed flux density
+$\wp(t)$ enters at $z=0$, where the temperature rise $\theta(0,t)$ is detected; the front face has no
+other losses.
+\item[(F3)] In the film, the energy balance $\rho c\,\partial_t\theta+\partial_zq=0$ holds together with the
+one-dimensional form of Eq.~\eqref{eq:gk},
+\begin{equation}
+\tau_R\partial_tq+q=-\lambda\,\partial_z\theta+L^2\partial_z^2q,\qquad L^2=(1+\beta)\,\ell^2 ,
+\label{eq:gk1d}
+\end{equation}
+obtained for $\mathbf q=q(z,t)\,\mathbf e_z$, for which
+$\nabla^2\mathbf q+\beta\nabla(\nabla\cdot\mathbf q)=(1+\beta)\,\partial_z^2q\,\mathbf e_z$. The closure
+coefficient is $\beta=2$ for the original GK equation and $\beta=1/3$ for the conserving closure;
+$L=0$ is Cattaneo's law and $\tau_R=L=0$ Fourier's law.
+\item[(F4)] Temperature and normal flux are continuous at $z=e$ (perfect contact, with the
+temperature defined by the local energy density on both sides).
+\item[(F5)] The substrate obeys Fourier's law with a known effusivity $b_s>0$.
+\item[(F6)] The observable is the front-face temperature for all $p=i\omega$, $\omega>0$, unless a finite
+set of frequencies is stated.
+\end{enumerate}
+We write $\theta=T-T_0$, $a=\lambda/\rho c$, $b=(\lambda\rho c)^{1/2}$, $\xi_1=e/\sqrt a$ and
+\begin{equation}
+\tau_\ell=\frac{L^2}{a}=\frac{(1+\beta)\,\ell^2}{a}.
+\label{eq:taul}
+\end{equation}
+Three-dimensional models of non-Fourier thermoreflectance impose additional slip and temperature-jump
+conditions at boundaries~\cite{Beardo2020,HennessyMyers2021}; the one-dimensional problem needs none,
+because after elimination the flux in each layer satisfies a second-order equation (below).
+
+\subsection{Film law and the two combinations}\label{sec:combinations}
+
+Laplace transformation of the energy balance from the rest state gives $\rho c\,p\,\theta+q'=0$, hence
+$q''=-\rho c\,p\,\theta'$ (primes denote $\partial_z$). Substituting in Eq.~\eqref{eq:gk1d},
+$(1+\tau_Rp)\,q=-(\lambda+L^2\rho c\,p)\,\theta'$, that is $q=-\lambda_{\rm eff}(p)\,\theta'$ with
+\begin{equation}
+\lambda_{\rm eff}(p)=\lambda\,\frac{1+\tau_\ell p}{1+\tau_Rp}.
+\label{eq:lameff}
+\end{equation}
+Then $\theta''=-q'/\lambda_{\rm eff}=\sigma^2\theta$ with $\sigma^2=\rho c\,p/\lambda_{\rm eff}$, and the
+flux obeys $[\lambda/(\rho c\,p)+L^2]\,q''=(1+\tau_Rp)\,q$, a second-order equation. The film enters
+the solution only through
+\begin{equation}
+\sigma e=\xi_1\Big[\frac{p(1+\tau_Rp)}{1+\tau_\ell p}\Big]^{1/2},\qquad
+\lambda_{\rm eff}\,\sigma=b\,\Big[\frac{p(1+\tau_\ell p)}{1+\tau_Rp}\Big]^{1/2};
+\label{eq:combinations}
+\end{equation}
+the two times exchange their roles between the two combinations.
+
+\subsection{Quadrupole and front-face impedance}\label{sec:quadrupole}
+
+With the flux counted positive toward $z>0$, the state at the front face is related to the state at the
+interface by the thermal quadrupole~\PENDING{ref: Maillet \emph{et~al.}, \emph{Thermal Quadrupoles}
+(Wiley, 2000); no registered DOI found}~\cite{Krapez2019}
+\begin{equation}
+\begin{pmatrix}\theta(0)\\ q(0)\end{pmatrix}=
+\begin{pmatrix}A&B\\ C&D\end{pmatrix}
+\begin{pmatrix}\theta(e)\\ q(e)\end{pmatrix},
+\label{eq:quadrupole}
+\end{equation}
+with $A=D=\cosh\sigma e$, $B=\sinh(\sigma e)/(\lambda_{\rm eff}\sigma)$,
+$C=\lambda_{\rm eff}\sigma\sinh\sigma e$ and $AD-BC=1$. These entries are even functions of $\sigma$,
+so the branch of the square root is immaterial in the film. The semi-infinite substrate has the
+impedance $Z_s=\theta(e)/q(e)=1/(b_s\sqrt p)$ with $\mathrm{Re}\sqrt p>0$, the decaying solution. The
+front-face impedance $Z=\theta(0)/q(0)$ is
+\begin{equation}
+Z(p)=\frac{AZ_s+B}{CZ_s+D}=\frac{1}{\lambda_{\rm eff}\sigma}\,
+\frac{\varrho(p)+\tanh\sigma e}{1+\varrho(p)\tanh\sigma e},
+\label{eq:impedance}
+\end{equation}
+where
+\begin{equation}
+\varrho(p)=\lambda_{\rm eff}\sigma\,Z_s=\frac{b}{b_s}\Big[\frac{1+\tau_\ell p}{1+\tau_Rp}\Big]^{1/2}
+\label{eq:rho}
+\end{equation}
+is a frequency-dependent effusivity ratio; the second form of Eq.~\eqref{eq:impedance} is independent of
+the branch chosen for $\sigma$ and remains bounded for thick layers, where $\tanh\sigma e$ saturates.
+The front-face temperature is $\hat\theta(0,p)=Z(p)\,\hat\wp(p)$, and in the harmonic regime the
+measured amplitude and phase are $|Z(i\omega)|$ and $\arg Z(i\omega)$. The characteristic frequency
+$f_c=1/(2\pi\xi_1^2)=a/(2\pi e^2)$ separates the substrate-dominated regime, $f\ll f_c$, from the
+film-dominated one.
+
+\subsection{Four combinations and the depth-scaling gauge}\label{sec:gauge}
+
+\begin{proposition}[Dependence and gauge; \status{derived under assumptions}]\label{prop:gauge}
+Assume (F1)--(F6); the following statements are exact within this model.
+\begin{enumerate}
+\item[(i)] $Z(p)$ depends on the film only through $\bm\chi=(\xi_1,b,\tau_R,\tau_\ell)$ and on the
+substrate only through $b_s$.
+\item[(ii)] For every $\mu>0$ the transformation
+\begin{equation}
+\begin{aligned}
+\mathcal G_\mu:\quad &e\to\mu e,\quad a\to\mu^2a,\quad \lambda\to\mu\lambda,\\
+&\rho c\to\rho c/\mu,\quad \ell\to\mu\ell,
+\end{aligned}
+\label{eq:gaugegroup}
+\end{equation}
+with $\tau_R$ and $\beta$ fixed, leaves $\bm\chi$, and hence $Z(p)$ for all $p$, invariant.
+Infinitesimally, in the variables $(e,a,\lambda,\ell,\tau_R,\beta)$,
+\begin{equation}
+\big(e\,\partial_e+2a\,\partial_a+\lambda\,\partial_\lambda+\ell\,\partial_\ell\big)\,Z=0 .
+\label{eq:euler}
+\end{equation}
+\item[(iii)] The orbits of $\mathcal G_\mu$ are one-dimensional, and fixing any one of $e$, $a$,
+$\lambda$, $\rho c$, or $\ell$ when $\ell>0$, selects a single point on each orbit.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) follows from Eqs.~\eqref{eq:combinations}--\eqref{eq:rho}. (ii) Under $\mathcal G_\mu$,
+$\xi_1=e/\sqrt a\to\mu e/(\mu\sqrt a)$, $b=(\lambda\rho c)^{1/2}\to(\mu\lambda\,\rho c/\mu)^{1/2}$ and
+$\tau_\ell=(1+\beta)\ell^2/a\to(1+\beta)\mu^2\ell^2/(\mu^2a)$; differentiation at $\mu=1$ gives
+Eq.~\eqref{eq:euler}. (iii) $e$, $a$, $\lambda$, $\rho c$ and $\ell$ scale as $\mu$, $\mu^2$, $\mu$,
+$\mu^{-1}$ and $\mu$.
+\end{proof}
+
+For Fourier films ($\tau_R=\tau_\ell=0$) this is the non-identifiability of thickness, diffusivity and
+conductivity shown by Krapez and Rigollet, which holds whatever the frequencies and the noise
+level~\cite{KrapezRigollet2017}. Proposition~\ref{prop:gauge} states that neither a relaxation time nor a
+nonlocal term removes it, since both enter only through times invariant under depth scaling. The
+extension is elementary dimensional analysis; we did not find it stated for non-Fourier laws in the
+literature searched. Independent information that fixes a length scale---a measured thickness,
+conductivity or heat capacity---selects the point on the orbit; so does an independent velocity $v$
+together with the grey kinetic relation $a=v^2\tau_R/3$, conditionally on that relation. Finite beams
+with known radii and in-plane properties introduce a lateral length; whether this restores the
+identifiability of $(e,a,\lambda)$ is part of the pending analysis of Sec.~\ref{sec:rank}.
+
+\begin{corollary}[Closure coefficient and nonlocal length; \status{derived under assumptions} (F1)--(F6)]\label{cor:beta}
+The closure coefficient $\beta$ and the nonlocal length $\ell$ enter $Z$ only through
+$\tau_\ell=(1+\beta)\ell^2/a$. Even with $e$ and $a$ known, all pairs $(\beta,\ell)$ on the curve
+$(1+\beta)\ell^2=a\tau_\ell$ give the same response. In particular, one-dimensional front-face data do
+not distinguish the original ($\beta=2$) from the conserving ($\beta=1/3$) closure when $\ell$ is free,
+and the lengths inferred from one fitted $\tau_\ell$ differ by $\ell_{\beta=1/3}/\ell_{\beta=2}=3/2$.
+\end{corollary}
+
+Distinguishing the closures therefore requires a multidimensional geometry or independent constitutive
+information. Thermodynamics does not fix $\beta$ either: with the entropy density
+$s_{\rm eq}-\tau_Rq^2/(2\lambda T_0^2)$ and the entropy flux $q/T+L^2q\,\partial_zq/(\lambda T_0^2)$, the
+entropy production to second order in the perturbation is $(q^2+L^2(\partial_zq)^2)/(\lambda T_0^2)\ge0$
+for every $L^2\ge0$, within extended irreversible thermodynamics~\cite{JouCasasLebon2010}, and
+nonequilibrium-thermodynamic derivations treat the Laplacian and grad-div coefficients as independent
+parameters~\cite{Kovacs2024}.
+
+\subsection{Fourier resonance}\label{sec:resonance}
+
+If $\tau_R=\tau_\ell$, then $\lambda_{\rm eff}=\lambda$, $\sigma e=\xi_1\sqrt p$ and
+$\lambda_{\rm eff}\sigma=b\sqrt p$, and $Z$ coincides for all $p$ with the response of a Fourier film with
+the same $(\xi_1,b)$. This is the Fourier resonance, named by Both \emph{et~al.}~\cite{Both2016} and
+analyzed by Kov\'acs~\cite{Kovacs2018}; the equivalence concerns the boundary-value problem
+(F1)--(F6) and does not extend to interior sources or arbitrary initial states. Its position in terms of
+kinetic times depends on the closure. With the grey coefficients of Sec.~\ref{sec:cattaneo},
+$a=v^2\tau_R/3$ and $\ell^2=v^2\tau_c\tau_R/5$, the conserving closure gives $\tau_\ell=4\tau_c/5$ and
+\begin{equation}
+\frac{\tau_\ell}{\tau_R}=\frac{4\,\tau_N}{5\,(\tau_N+\tau_R)}<\frac45 ,
+\label{eq:noresonance}
+\end{equation}
+so it has no Fourier resonance at positive times, an elementary consequence of the published
+closure~\cite{GuoWang2022}. The original closure gives $\tau_\ell=9\tau_c/5$ and a resonance at
+$\tau_R/\tau_N=4/5$; with $\tau_c$ replaced by $\tau_N$ it gives $\tau_R/\tau_N=9/5$. Neither ratio
+satisfies $\tau_N\ll\tau_R$, which the closure itself assumes, so the resonance line is a
+closure-dependent formal marker, not a physical boundary between transport regimes.
+
+\subsection{Limits and checks}\label{sec:ff-limits}
+
+For $\tau_R=\tau_\ell=0$, Eq.~\eqref{eq:impedance} is the classical quadrupole response of a coating
+on a substrate, with $\varrho=b/b_s$. For a thick film, $\mathrm{Re}\,\sigma e\to\infty$ and
+$Z\to1/(\lambda_{\rm eff}\sigma)$, the impedance of a half-space, with phase
+\begin{equation}
+\arg Z(i\omega)=-\frac\pi4+\frac12\big[\arctan(\omega\tau_R)-\arctan(\omega\tau_\ell)\big].
+\label{eq:halfphase}
+\end{equation}
+For Cattaneo's law ($\tau_\ell=0$) the phase rises from $-45^\circ$ to $0^\circ$, the closed form of
+Camacho de la Rosa \emph{et~al.}~\cite{CamachoDeLaRosa2025}; Eq.~\eqref{eq:halfphase} also agrees with
+the one-dimensional limit of the GK model of Hennessy and Myers~\cite{HennessyMyers2021} after
+conversion to the time convention $e^{+i\omega t}$. Replacing $p$ by $p(1+\tau_Rp)$ throughout the
+Fourier quadrupole gives the correct argument $\sigma e$ for Cattaneo's law but a flux coefficient that
+is wrong by the factor $1+\tau_Rp$; the half-space phase then runs from $-45^\circ$ toward $-90^\circ$.
+A Cattaneo film propagates disturbances at the finite speed $(a/\tau_R)^{1/2}$~\cite{JosephPreziosi1989};
+for $\ell>0$ the term $L^2\partial_z^2q$ makes the principal part parabolic and the propagation speed
+unbounded.
+
+\subsection{Identifiability of the four combinations}\label{sec:rank}
+
+Proposition~\ref{prop:gauge} bounds what the measurement can identify: at most $\bm\chi$. Whether the
+map $\bm\chi\mapsto Z(\cdot\,;\bm\chi)$ is locally and globally injective---structural identifiability in
+the sense of Ref.~\cite{Raue2009}---and on which exceptional set it degenerates, is the following
+statement.
+
+\PENDING{Theorem: generic rank four and degenerate set}

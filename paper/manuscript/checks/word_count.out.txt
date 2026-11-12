@@ -1,0 +1,10 @@
+abstract (main.tex)                 262 words     0 displayed equations
+sections/introduction.tex          1061 words     0 displayed equations
+sections/kinetics.tex              1382 words    16 displayed equations
+sections/identifiability.tex       2826 words    13 displayed equations
+sections/frontface.tex             1184 words    11 displayed equations
+sections/aln.tex                    110 words     0 displayed equations
+sections/fdtr.tex                    75 words     0 displayed equations
+sections/conclusions.tex             40 words     0 displayed equations
+sections/notation.tex               456 words     0 displayed equations
+total                              7396 words

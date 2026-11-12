@@ -1,0 +1,74 @@
+PASS  C e = 0 and rank C = n-1
+PASS  K(0) = j^T C^+ j
+PASS  -K'(0)/K(0) = |C^+ j|^2 / j^T C^+ j
+PASS  int_0^oo t e^{-lam t} dt / int_0^oo e^{-lam t} dt = 1/lam
+PASS  j_x = v^2 P_x for linear isotropic dispersion
+PASS  Callaway: C e = 0
+PASS  Callaway: C j = j / tau_R
+PASS  Callaway: C symmetric
+PASS  Callaway: diag C = 1/tau_N + 1/tau_R - O(1/n) (deviation is negative)
+PASS  Callaway: |j_x|^2 tau_R = K(0) (single pole, tau_mem = tau_stat = tau_R)
+PASS  four-mode A: diag = 1, C e = 0, rank 3
+PASS  four-mode A: K(p) as stated
+      K_A(0) = 3/2, tau_A = 3/4
+PASS  four-mode B: diag = 1, C e = 0, rank 3
+PASS  four-mode B: K(p) as stated
+      K_B(0) = 3/2, tau_B = 5/6
+PASS  four-mode: K_A(0) = K_B(0) = 3/2, tau_A = 3/4, tau_B = 5/6
+PASS  Walsh matrix orthogonal and symmetric
+PASS  Thm 1: diag C_eta = 1 for all eta
+PASS  Thm 1: C_eta e = 0
+PASS  Thm 1: blocks positive definite for 0<eta<1 (det eta^2, 1-eta^2; entry 2-eta^2)
+PASS  Thm 1: C_eta (-h_1/eta + h_2) = j exactly
+PASS  Thm 1: (p + C_eta) X = j for the block candidate X
+PASS  Thm 1: K_eta(p) = (p+eta^2)/(p^2+(2+eta^2)p+eta^2)
+PASS  Thm 1: K_eta(0) = 1 and tau = 1 + eta^-2
+PASS  Thm 1: XOR-3 involution has no fixed point
+PASS  Thm 1: XOR-3 commutes with C_eta, fixes e, reverses j
+PASS  Thm 1: K_eta(p)(p+2) - 1 = eta^2 / D(p)
+PASS  Thm 1: Im D(i omega) = (2+eta^2) omega >= 2 omega
+PASS  Thm 1 remark: slow root = -eta^2/2 + O(eta^4)
+PASS  Thm 1 remark: residue = eta^2/4 + O(eta^4)
+PASS  Thm 1 remark: slow pole carries 1/2 of K(0) and a fraction 1 - O(eta^2) of N
+PASS  Thm 1 remark: h_1^T C h_2 = eta and h_1^T C h_1 = eta^2
+PASS  events conserve energy: zeta^T e = 0
+PASS  event operator admissible on H (positive definite)
+PASS  Cauchy-Binet: x/K0 = sum_I varpi_I y_I exactly
+PASS  Cauchy-Binet: adj A = sum_I g_I psi_I psi_I^T
+PASS  Thm 2: tau_mem <= M^2 K0
+      tau = 0.36453884, M^2 K0 = 4737.0929
+PASS  Prop. 2: tau >= |x|/|j| >= K0/|j|^2
+PASS  Lemma 2: K0 >= K_RTA / varsigma_max
+      K0/K_RTA = 0.78294273, varsigma_max = 3
+PASS  Lemma 1 corollary: tau <= 1/Gamma_min
+PASS  Prop. 5: g >= g_ref/F implies tau <= F/Gamma_min(C_ref)
+PASS  Prop. 4: y_I = Pi_H W phi_I / (j^T W phi_I) for every basis
+      tau/(M^2 K0) along weight concentration: ['0.000042', '0.002613', '0.711484', '0.996300', '0.999963', '1.000000']
+PASS  Prop. 3: tau/(M^2 K0) increases monotonically to 1 under weight concentration (eps = 1e-1 ... 1e-11)
+PASS  radial moment: int_{qmin}^{q0} q^{d-1-m alpha} dq = (q0^s - qmin^s)/s, s = d - m alpha
+PASS  radial moment: logarithmic at m alpha = d
+PASS  GK 1D: (1+tau_R p) q = -lambda theta' + L^2 q'' with q = -lambda_eff theta'
+PASS  lambda_eff = lambda (1 + tau_l p)/(1 + tau_R p), tau_l = L^2/a
+PASS  sigma e = xi_1 sqrt(p (1+tau_R p)/(1+tau_l p))
+PASS  lambda_eff sigma = b sqrt(p (1+tau_l p)/(1+tau_R p))
+PASS  quadrupole maps rear state to front state
+PASS  det M = 1
+PASS  Z = (AZs+B)/(CZs+D) = (1/Lambda)(varrho + tanh)/(1 + varrho tanh)
+PASS  gauge e->mu e, a->mu^2 a, lambda->mu lambda, rho c->rho c/mu, ell->mu ell leaves (xi_1,b,tau_R,tau_l) invariant
+PASS  a -> mu^2 a under the gauge
+PASS  Euler identity e d_e + 2a d_a + lambda d_lambda + ell d_ell annihilates both combinations
+PASS  Fourier resonance: tau_R = tau_l gives sigma e = xi_1 sqrt p and lambda_eff sigma = b sqrt p
+PASS  conserving closure: tau_l = 4 tau_c/5 and tau_l/tau_R = 4 tau_N /(5 (tau_N + tau_R)) < 4/5
+PASS  historical closure with tau_c kept: resonance at tau_R/tau_N = 4/5
+PASS  historical closure with tau_c ~ tau_N: tau_l = 9 tau_N / 5 (resonance at 9/5)
+PASS  Cattaneo half-space: arg Z = -pi/4 + arctan(omega tau_R)/2 (numerical, 9 points)
+PASS  naive substitution p -> p(1+tau_R p) is off by the factor (1+tau_R p)
+PASS  GK half-space: arg Z = -pi/4 + [arctan(omega tau_R) - arctan(omega tau_l)]/2 (numerical, 8 points)
+PASS  [e^T y] = energy density
+PASS  [j^T y] = W m^-2 (flux per unit area)
+PASS  [K(0)/(k_B T^2)] = W m^-1 K^-1
+PASS  [|e|^2/(k_B T^2)] = J m^-3 K^-1
+PASS  [N/K0] = s
+PASS  [K0/|e|^2] = m^2 s^-1 (diffusivity)
+
+67 of 67 checks passed

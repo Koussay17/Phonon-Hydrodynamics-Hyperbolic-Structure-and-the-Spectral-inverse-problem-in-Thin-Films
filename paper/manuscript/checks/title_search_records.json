@@ -1,0 +1,1183 @@
+{
+ "krapez2019": [
+  {
+   "DOI": "10.1016/j.ijthermalsci.2018.10.018",
+   "type": "journal-article",
+   "title": [
+    "Linear, trigonometric and hyperbolic profiles of thermal effusivity in the Liouville space and related quadrupoles: Simple analytical tools for modeling graded layers and multilayers"
+   ],
+   "container-title": [
+    "International Journal of Thermal Sciences"
+   ],
+   "author": [
+    {
+     "family": "Krapez",
+     "given": "J.-C."
+    }
+   ],
+   "volume": "136",
+   "page": "182-199",
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      2
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2019,
+      2
+     ]
+    ]
+   },
+   "publisher": "Elsevier BV"
+  },
+  {
+   "DOI": "10.7153/jmi-07-53",
+   "type": "journal-article",
+   "title": [
+    "Inequality chains related to trigonometric and hyperbolic functions and inverse trigonometric and hyperbolic functions"
+   ],
+   "container-title": [
+    "Journal of Mathematical Inequalities"
+   ],
+   "author": [
+    {
+     "family": "Chen",
+     "given": "Chao-Ping"
+    },
+    {
+     "family": "Sándor",
+     "given": "József"
+    }
+   ],
+   "issue": "4",
+   "page": "569-575",
+   "issued": {
+    "date-parts": [
+     [
+      2013
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2013
+     ]
+    ]
+   },
+   "publisher": "Element d.o.o."
+  },
+  {
+   "DOI": "10.1201/9780429446238-1",
+   "type": "book-chapter",
+   "title": [
+    "Trigonometric and Hyperbolic Sine and Cosine Functions"
+   ],
+   "container-title": [
+    "Generalized Trigonometric and Hyperbolic Functions"
+   ],
+   "author": [
+    {
+     "family": "Mickens",
+     "given": "Ronald E."
+    }
+   ],
+   "page": "1-22",
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      1,
+      15
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2019,
+      1,
+      15
+     ]
+    ]
+   },
+   "publisher": "CRC Press",
+   "ISBN": [
+    "9780429446238"
+   ]
+  },
+  {
+   "DOI": "10.1201/9780429446238-8",
+   "type": "book-chapter",
+   "title": [
+    "Generalized Trigonometric Hyperbolic Functions: |y| p −|x| q = 1"
+   ],
+   "container-title": [
+    "Generalized Trigonometric and Hyperbolic Functions"
+   ],
+   "author": [
+    {
+     "family": "Mickens",
+     "given": "Ronald E."
+    }
+   ],
+   "page": "119-126",
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      1,
+      15
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2019,
+      1,
+      15
+     ]
+    ]
+   },
+   "publisher": "CRC Press",
+   "ISBN": [
+    "9780429446238"
+   ]
+  }
+ ],
+ "krapez2023": [
+  {
+   "DOI": "10.1063/5.0151465",
+   "type": "journal-article",
+   "title": [
+    "Comment on “Simultaneous density and thermal conductivity depth profile reconstructions from noised thermal-wave amplitude and phase data using a combined integral-equation and imperialist competitive algorithm method” [J. Appl. Phys. 133, 055102 (2023)]"
+   ],
+   "container-title": [
+    "Journal of Applied Physics"
+   ],
+   "author": [
+    {
+     "family": "Krapez",
+     "given": "Jean-Claude"
+    }
+   ],
+   "volume": "134",
+   "issue": "5",
+   "article-number": "056101",
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      2
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      7
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      2
+     ]
+    ]
+   },
+   "publisher": "AIP Publishing"
+  },
+  {
+   "DOI": "10.1063/5.0155055",
+   "type": "journal-article",
+   "title": [
+    "Response to “Comment on ‘Simultaneous density and thermal conductivity depth profile reconstructions from noised thermal-wave amplitude and phase data using a combined integral equation and imperialist competitive algorithm method’” [J. Appl. Phys. 134, 056101 (2023)]"
+   ],
+   "container-title": [
+    "Journal of Applied Physics"
+   ],
+   "author": [
+    {
+     "family": "Mandelis",
+     "given": "A."
+    },
+    {
+     "family": "Kooshki",
+     "given": "S."
+    },
+    {
+     "family": "Melnikov",
+     "given": "A."
+    }
+   ],
+   "volume": "134",
+   "issue": "5",
+   "article-number": "056102",
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      2
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      7
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      2
+     ]
+    ]
+   },
+   "publisher": "AIP Publishing"
+  },
+  {
+   "DOI": "10.1063/5.0129536",
+   "type": "journal-article",
+   "title": [
+    "Simultaneous density and thermal conductivity depth profile reconstructions from noised thermal-wave amplitude and phase data using a combined integral-equation and imperialist competitive algorithm method"
+   ],
+   "container-title": [
+    "Journal of Applied Physics"
+   ],
+   "author": [
+    {
+     "family": "Mandelis",
+     "given": "A."
+    },
+    {
+     "family": "Kooshki",
+     "given": "S."
+    },
+    {
+     "family": "Melnikov",
+     "given": "A."
+    }
+   ],
+   "volume": "133",
+   "issue": "5",
+   "article-number": "055102",
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      3
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      7
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      3
+     ]
+    ]
+   },
+   "publisher": "AIP Publishing"
+  },
+  {
+   "DOI": "10.62721/diffusion-fundamentals.32.1126",
+   "type": "journal-article",
+   "title": [
+    "Diffusion-wave inverse problem thermal conductivity depth-profile reconstructions using an integral equation approach"
+   ],
+   "container-title": [
+    "Diffusion Fundamentals"
+   ],
+   "author": [
+    {
+     "family": "Mandelis",
+     "given": "A."
+    },
+    {
+     "family": "Zheng",
+     "given": "D."
+    },
+    {
+     "family": "Melnikov",
+     "given": "A."
+    },
+    {
+     "family": "Kooshki",
+     "given": "S."
+    }
+   ],
+   "volume": "32",
+   "issued": {
+    "date-parts": [
+     [
+      2019,
+      10,
+      1
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2019,
+      10,
+      1
+     ]
+    ]
+   },
+   "publisher": "Leipzig University Library"
+  }
+ ],
+ "maillet2000": [
+  {
+   "DOI": "10.1080/10652469.2013.811578",
+   "type": "journal-article",
+   "title": [
+    "Generalized heat equation and applications"
+   ],
+   "container-title": [
+    "Integral Transforms and Special Functions"
+   ],
+   "author": [
+    {
+     "family": "Mejjaoli",
+     "given": "Hatem"
+    }
+   ],
+   "volume": "25",
+   "issue": "1",
+   "page": "15-33",
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      7,
+      22
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2014,
+      1,
+      2
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2013,
+      7,
+      22
+     ]
+    ]
+   },
+   "publisher": "Informa UK Limited"
+  },
+  {
+   "DOI": "10.2298/tsci17s1079y",
+   "type": "journal-article",
+   "title": [
+    "New integral transforms for solving a steady heat transfer problem"
+   ],
+   "container-title": [
+    "Thermal Science"
+   ],
+   "author": [
+    {
+     "family": "Yang",
+     "given": "Xiao-Jun"
+    }
+   ],
+   "volume": "21",
+   "issue": "suppl. 1",
+   "page": "79-87",
+   "issued": {
+    "date-parts": [
+     [
+      2017
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2017
+     ]
+    ]
+   },
+   "publisher": "National Library of Serbia"
+  },
+  {
+   "DOI": "10.1615/ihtc17.70-40",
+   "type": "proceedings-article",
+   "title": [
+    "A SEMI-ANALYTICAL MODEL OF THERMAL CONDUCTION OF A MOSFET TRANSISTOR USING THE THERMAL QUADRUPOLES METHOD"
+   ],
+   "container-title": [
+    "Proceeding of International Heat Transfer Conference 17"
+   ],
+   "author": [
+    {
+     "family": "El Arabi",
+     "given": "Ali"
+    },
+    {
+     "family": "Blet",
+     "given": "Nicolas"
+    },
+    {
+     "family": "Remy",
+     "given": "Benjamin"
+    },
+    {
+     "family": "Maillet",
+     "given": "Denis"
+    }
+   ],
+   "page": "10",
+   "issued": {
+    "date-parts": [
+     [
+      2023
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2023
+     ]
+    ]
+   },
+   "publisher": "Begellhouse"
+  },
+  {
+   "DOI": "10.1080/10652469708819125",
+   "type": "journal-article",
+   "title": [
+    "Operationl method for solving generalized abel integral equation of second kind"
+   ],
+   "container-title": [
+    "Integral Transforms and Special Functions"
+   ],
+   "author": [
+    {
+     "family": "Gorenflo",
+     "given": "Rudolf"
+    },
+    {
+     "family": "Luchko",
+     "given": "Yuri"
+    }
+   ],
+   "volume": "5",
+   "issue": "1-2",
+   "page": "47-58",
+   "issued": {
+    "date-parts": [
+     [
+      1997,
+      5
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      1997,
+      5
+     ]
+    ]
+   },
+   "publisher": "Informa UK Limited"
+  }
+ ],
+ "kovacs2024": [
+  {
+   "DOI": "10.52843/cassyni.j4rmf8",
+   "type": "posted-content",
+   "title": [
+    "Heat equations beyond Fourier: from heat waves to thermal metamaterials"
+   ],
+   "author": [
+    {
+     "family": "Kovács",
+     "given": "Róbert"
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2023,
+      12,
+      11
+     ]
+    ]
+   },
+   "publisher": "Cassyni"
+  },
+  {
+   "DOI": "10.1016/j.physrep.2023.11.001",
+   "type": "journal-article",
+   "title": [
+    "Heat equations beyond Fourier: From heat waves to thermal metamaterials"
+   ],
+   "container-title": [
+    "Physics Reports"
+   ],
+   "author": [
+    {
+     "family": "Kovács",
+     "given": "R."
+    }
+   ],
+   "volume": "1048",
+   "page": "1-75",
+   "issued": {
+    "date-parts": [
+     [
+      2024,
+      1
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2024,
+      1
+     ]
+    ]
+   },
+   "publisher": "Elsevier BV"
+  },
+  {
+   "DOI": "10.2139/ssrn.5414058",
+   "type": "posted-content",
+   "title": [
+    "Time scales in nonlinear heat equations beyond Fourier"
+   ],
+   "author": [
+    {
+     "family": "Kovács",
+     "given": "Robert"
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2025
+     ]
+    ]
+   },
+   "publisher": "Elsevier BV"
+  },
+  {
+   "DOI": "10.1038/s44455-025-00008-3",
+   "type": "journal-article",
+   "title": [
+    "Thermal metamaterials for enhanced non-Fourier heat transport"
+   ],
+   "container-title": [
+    "npj Metamaterials"
+   ],
+   "author": [
+    {
+     "family": "Mclean",
+     "given": "Harry"
+    },
+    {
+     "family": "Davies",
+     "given": "Francis Huw"
+    },
+    {
+     "family": "Taylor",
+     "given": "Ned Thaddeus"
+    },
+    {
+     "family": "Hepplestone",
+     "given": "Steven Paul"
+    }
+   ],
+   "volume": "1",
+   "issue": "1",
+   "article-number": "7",
+   "issued": {
+    "date-parts": [
+     [
+      2025,
+      11,
+      18
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2025,
+      11,
+      18
+     ]
+    ]
+   },
+   "publisher": "Springer Science and Business Media LLC"
+  }
+ ],
+ "cattaneo1958": [
+  {
+   "DOI": "10.1017/cbo9780511693229.006",
+   "type": "book-chapter",
+   "title": [
+    "De la Propagation de la Chaleur Dans Une Sphère Solide"
+   ],
+   "container-title": [
+    "Théorie Analytique de la Chaleur"
+   ],
+   "page": "340-368",
+   "issued": {
+    "date-parts": [
+     [
+      2009,
+      7,
+      20
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2009,
+      7,
+      20
+     ]
+    ]
+   },
+   "publisher": "Cambridge University Press",
+   "ISBN": [
+    "9781108001809",
+    "9780511693229"
+   ]
+  },
+  {
+   "DOI": "10.70675/0415e1d8z8a85z470cz80c0zd4c066adc55e",
+   "type": "dissertation",
+   "title": [
+    "Impact de la végétalisation sur l’îlot de chaleur urbain et la pollution d’ozone : quantification par une approche de modélisation à l’échelle d’un quartier"
+   ],
+   "author": [
+    {
+     "family": "Le Mentec",
+     "given": "Sonia"
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      null
+     ]
+    ]
+   },
+   "publisher": "Agence Bibliographique de l'Enseignement Supérieur"
+  },
+  {
+   "DOI": "10.70675/e8bdff5bz844ez4473zbf9ez36d0232b71ac",
+   "type": "dissertation",
+   "title": [
+    "Optimisation de la gestion des ressources sur une plate-forme informatique du type Big Data basée sur le logiciel Hadoop"
+   ],
+   "author": [
+    {
+     "family": "Jlassi",
+     "given": "Aymen"
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      null
+     ]
+    ]
+   },
+   "publisher": "Agence Bibliographique de l'Enseignement Supérieur"
+  },
+  {
+   "DOI": "10.2307/3320765",
+   "type": "journal-article",
+   "title": [
+    "Une nouvelle forme d'organisation du travail: Aide à la décision technique et incertitude sur le climat social",
+    "Une nouvelle forme d'organisation du travail: Aide a la decision technique et incertitude sur le climat social"
+   ],
+   "container-title": [
+    "Revue Française de Sociologie"
+   ],
+   "author": [
+    {
+     "family": "Lanson",
+     "given": "Didier"
+    }
+   ],
+   "volume": "20",
+   "issue": "3",
+   "page": "605",
+   "issued": {
+    "date-parts": [
+     [
+      1979,
+      7
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      1979,
+      7
+     ]
+    ]
+   },
+   "publisher": "JSTOR"
+  }
+ ],
+ "vernotte1958": [
+  {
+   "DOI": "10.37053/lameteorologie-2025-0028",
+   "type": "journal-article",
+   "title": [
+    "La chaleur record de 2023-2024 continue d’interroger les scientifiques"
+   ],
+   "container-title": [
+    "La Météorologie"
+   ],
+   "author": [
+    {
+     "family": "Altendorf",
+     "given": "Damien"
+    }
+   ],
+   "issue": "129",
+   "page": "016",
+   "issued": {
+    "date-parts": [
+     [
+      2025
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2025
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2025,
+      5
+     ]
+    ]
+   },
+   "publisher": "Meteo et Climat, Societe Francaise de la Meteorologie et du Climat"
+  },
+  {
+   "indexed": {
+    "date-parts": [
+     [
+      2026,
+      7,
+      30
+     ]
+    ],
+    "date-time": "2026-07-30T10:14:03Z",
+    "timestamp": 1785406443502,
+    "version": "3.56.0"
+   },
+   "publisher": "Fonds de recherche du Québec",
+   "award-start": {
+    "date-parts": [
+     [
+      2021,
+      5,
+      15
+     ]
+    ]
+   },
+   "award": "303880",
+   "DOI": "10.69777/303880",
+   "type": "grant",
+   "created": {
+    "date-parts": [
+     [
+      2025,
+      3,
+      31
+     ]
+    ],
+    "date-time": "2025-03-31T15:15:19Z",
+    "timestamp": 1743434119000
+   },
+   "source": "Crossref",
+   "prefix": "10.69777",
+   "member": "50067",
+   "project": [
+    {
+     "project-title": [
+      {
+       "title": "Analyse des stratégies atténuant les effets des vagues de chaleur extrême sur la perception de confort et les risques sanitaires dans les îlots de chaleur de la RLS de Québec-Sud (ville de Québec) et de Chicoutimi (Ville Saguenay).",
+       "language": "fr"
+      }
+     ],
+     "lead-investigator": [
+      {
+       "given": "Simon",
+       "family": "Turcotte",
+       "affiliation": [
+        {
+         "id": [
+          {
+           "id": "https://ror.org/04td37d32",
+           "id-type": "ROR",
+           "asserted-by": "publisher"
+          }
+         ],
+         "name": "Institut national de la recherche scientifique [INRS]"
+        }
+       ],
+       "role-start": {
+        "date-parts": [
+         [
+          2021,
+          5,
+          15
+         ]
+        ]
+       }
+      }
+     ],
+     "award-start": {
+      "date-parts": [
+       [
+        2021,
+        5,
+        15
+       ]
+      ]
+     },
+     "award-end": {
+      "date-parts": [
+       [
+        2025,
+        5,
+        14
+       ]
+      ]
+     },
+     "funding": [
+      {
+       "type": "award",
+       "award-amount": {
+        "amount": 70000.0,
+        "currency": "CAD",
+        "percentage": 100
+       },
+       "funder": {
+        "id": [
+         {
+          "id": "https://ror.org/00w3qhf76",
+          "id-type": "ROR",
+          "asserted-by": "publisher"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "deposited": {
+    "date-parts": [
+     [
+      2025,
+      5,
+      23
+     ]
+    ],
+    "date-time": "2025-05-23T17:22:50Z",
+    "timestamp": 1748020970000
+   },
+   "score": 47.763054,
+   "resource": {
+    "primary": {
+     "URL": "https://repertoire.frq.gouv.qc.ca/offres/detailOffres.do?methode=consulter&demId=303880"
+    }
+   },
+   "issued": {
+    "date-parts": [
+     [
+      2021,
+      5,
+      15
+     ]
+    ]
+   },
+   "URL": "https://doi.org/10.69777/303880"
+  },
+  {
+   "DOI": "10.1017/cbo9780511693229.010",
+   "type": "book-chapter",
+   "title": [
+    "De la Diffusion de la Chaleur"
+   ],
+   "container-title": [
+    "Théorie Analytique de la Chaleur"
+   ],
+   "page": "425-601",
+   "issued": {
+    "date-parts": [
+     [
+      2009,
+      7,
+      20
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2009,
+      7,
+      20
+     ]
+    ]
+   },
+   "publisher": "Cambridge University Press",
+   "ISBN": [
+    "9781108001809",
+    "9780511693229"
+   ]
+  },
+  {
+   "DOI": "10.1017/cbo9781139568081.012",
+   "type": "book-chapter",
+   "title": [
+    "DE LA DIFFUSION DE LA CHALEUR"
+   ],
+   "container-title": [
+    "Oeuvres de Fourier"
+   ],
+   "page": "387-542",
+   "issued": {
+    "date-parts": [
+     [
+      2013,
+      4,
+      18
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      2013,
+      4,
+      18
+     ]
+    ]
+   },
+   "publisher": "Cambridge University Press",
+   "ISBN": [
+    "9781108059381",
+    "9781139568081"
+   ]
+  }
+ ],
+ "golden1983": [
+  {
+   "DOI": "10.1007/bf01216179",
+   "type": "journal-article",
+   "title": [
+    "Bounds for effective parameters of heterogeneous media by analytic continuation"
+   ],
+   "container-title": [
+    "Communications in Mathematical Physics"
+   ],
+   "author": [
+    {
+     "family": "Golden",
+     "given": "K."
+    },
+    {
+     "family": "Papanicolaou",
+     "given": "G."
+    }
+   ],
+   "volume": "90",
+   "issue": "4",
+   "page": "473-491",
+   "issued": {
+    "date-parts": [
+     [
+      1983,
+      12
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      1983,
+      12
+     ]
+    ]
+   },
+   "publisher": "Springer Science and Business Media LLC"
+  },
+  {
+   "DOI": "10.1007/bf01009895",
+   "type": "journal-article",
+   "title": [
+    "Bounds for effective parameters of multicomponent media by analytic continuation"
+   ],
+   "container-title": [
+    "Journal of Statistical Physics"
+   ],
+   "author": [
+    {
+     "family": "Golden",
+     "given": "K."
+    },
+    {
+     "family": "Papanicolaou",
+     "given": "G."
+    }
+   ],
+   "volume": "40",
+   "issue": "5-6",
+   "page": "655-667",
+   "issued": {
+    "date-parts": [
+     [
+      1985,
+      9
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      1985,
+      9
+     ]
+    ]
+   },
+   "publisher": "Springer Science and Business Media LLC"
+  },
+  {
+   "DOI": "10.1007/3-540-11202-2_9",
+   "type": "book-chapter",
+   "title": [
+    "Bounds for the effective conductivity of random media"
+   ],
+   "container-title": [
+    "Lecture Notes in Physics",
+    "Macroscopic Properties of Disordered Media"
+   ],
+   "author": [
+    {
+     "family": "Kohler",
+     "given": "W."
+    },
+    {
+     "family": "Papanicolaou",
+     "given": "G. C."
+    }
+   ],
+   "page": "111-130",
+   "issued": {
+    "date-parts": [
+     [
+      null
+     ]
+    ]
+   },
+   "publisher": "Springer Berlin Heidelberg",
+   "ISBN": [
+    "9783540112020",
+    "9783540390312"
+   ]
+  },
+  {
+   "DOI": "10.1088/0959-7174/8/4/004",
+   "type": "journal-article",
+   "title": [
+    "Inverse bounds for microstructural parameters of composite media derived from complex permittivity measurements"
+   ],
+   "container-title": [
+    "Waves in Random Media"
+   ],
+   "author": [
+    {
+     "family": "Cherkaeva",
+     "given": "Elena"
+    },
+    {
+     "family": "Golden",
+     "given": "Kenneth M"
+    }
+   ],
+   "volume": "8",
+   "issue": "4",
+   "page": "437-450",
+   "issued": {
+    "date-parts": [
+     [
+      1998,
+      9
+     ]
+    ]
+   },
+   "published-print": {
+    "date-parts": [
+     [
+      1998,
+      9
+     ]
+    ]
+   },
+   "publisher": "Informa UK Limited"
+  }
+ ]
+}

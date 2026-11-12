@@ -1,0 +1,74 @@
+% Appendix A — Notation
+\section{Notation}\label{app:notation}
+
+Tables~\ref{tab:notation-kinetic} and \ref{tab:notation-film} list the symbols used in the main text.
+Vectors in mode space and Cartesian vectors are bold; ${}^{\mathsf T}$ denotes transposition, ${}^+$ the
+Moore--Penrose pseudoinverse and $\succeq0$ positive semidefiniteness. The time convention is
+$e^{+i\omega t}$, with Laplace variable $p$ and $p=i\omega$ in the harmonic regime; fluxes are densities
+per unit area.
+
+\begin{table*}[tbp]
+\caption{Kinetic symbols (Secs.~\ref{sec:kinetics} and \ref{sec:identifiability}).}
+\label{tab:notation-kinetic}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{p{0.22\textwidth}p{0.58\textwidth}p{0.12\textwidth}}
+Symbol & Meaning & Where\\ \hline
+$\nu=(\mathbf k,s)$, $n$ & mode index, number of modes & (K1)\\
+$N_{\mathbf k}$, $N_1$, $\mathcal V$, $d$ & number of wave vectors, points per direction, crystal volume, spatial dimension & (K1), \ref{sec:ir}\\
+$\varepsilon_\nu$, $\mathbf v_\nu$, $f^0_\nu$ & energy, group velocity, Bose occupation & (K1)\\
+$w_\nu$, $\mathsf W$ & $[f^0_\nu(1+f^0_\nu)]^{1/2}$, $\mathrm{diag}(w_\nu)$ & (K2)\\
+$c_\nu$ & mode heat capacity $\varepsilon_\nu^2w_\nu^2/(k_BT^2)$ & \eqref{eq:harmonic}\\
+$\yy$ & entropy coordinates & \eqref{eq:entropycoords}\\
+$\Omega$, $\Cop$ & collision operator acting on $\delta f$; the same in entropy coordinates & \eqref{eq:kinetic}\\
+$\ee$, $\Hsp$, $n_{\Hsp}$, $\Pi_{\Hsp}$ & energy invariant, its orthogonal complement, $\dim\Hsp=n-1$, orthogonal projector & \eqref{eq:entropy}, (K3)\\
+$\jj=\jj^{(i)}$, $q_i$ & current vector, heat-flux density & \eqref{eq:current}\\
+$\rho c$, $\Lambda_i$ & volumetric heat capacity, ballistic weight & \eqref{eq:harmonic}\\
+$\Phi(t)$, $\kappa(t)$ & current autocorrelation function, memory kernel & \eqref{eq:memorylaw}\\
+$K(p)$, $\lambda(p)$, $\lambda$ & response function, dynamic conductivity, dc conductivity & \eqref{eq:dynamicK}\\
+$\Gamma_k$, $\mathbf u_k$, $\lambda_k$ & relaxon rates, relaxons, relaxon contributions to $\lambda$ & \eqref{eq:stieltjes}, \eqref{eq:forms}\\
+$\xx$, $K_0$, $N$ & $\Cop^+\jj$, $K(0)$, $|\xx|^2$ & \eqref{eq:moments}\\
+$\tmem$, $\tstat$ & memory moment $-K'(0)/K(0)$, static time $K_0/|\jj|^2$ & \eqref{eq:moments}\\
+$\tau_N$, $\tau_R$, $\tau_c$ & normal, resistive and combined times of the Callaway model & \eqref{eq:callaway}, \eqref{eq:gk}\\
+$\mathbf P_i$, $\Pi_{\rm N}$ & crystal momentum, projector onto $\mathrm{span}\{\ee,\mathbf P_x,\mathbf P_y,\mathbf P_z\}$ & \eqref{eq:callaway}\\
+$\beta$, $\ell$, $L_{\rm v}$ & closure coefficient, nonlocal length, scale of spatial variation & \eqref{eq:gk}\\
+$\mathbf r$, $\tau_\nu$ & mode relaxation rates $\mathrm{diag}\,\Cop$, lifetimes $1/r_\nu$ & Def.~\ref{def:data}\\
+$\mathfrak P(\ee)$, $\mathfrak E(Z)$ & positive-semidefinite class, fixed event cone & Def.~\ref{def:classes}\\
+$Z=(\bm\zeta_\gamma)_{\gamma\in\mathcal E}$ & event vectors, event set & \eqref{eq:cone}\\
+$\mathbf s_\gamma$, $g_\gamma$ & stoichiometric vector, event rate & \eqref{eq:events}\\
+$\mathcal F(\mathbf r^\star,K^\star)$ & feasible rates for given static data & \eqref{eq:feasible}\\
+$\mathfrak B$, $\yy_I$, $M$ & bases, basic solutions, cone constant & Def.~\ref{def:M}\\
+$\bm\psi_I$, $g_I$, $\varpi_I$ & cofactor vector, product of rates, convex weight & \eqref{eq:hull}\\
+$\mathsf S_I$, $\bm\phi_I$ & stoichiometric matrix of the events in $I$, hidden invariant & \eqref{eq:subnetwork}\\
+$K_{\rm RTA}$, $\varsigma_{\max}$ & RTA dc response, largest number of distinct modes per event & Lemma~\ref{lem:rta}\\
+$\Gamma_{\min}$, $g^{\rm ref}$, $F$ & smallest eigenvalue on $\Hsp$, reference rates, prior factor & \eqref{eq:prior}\\
+$\alpha$, $r_0$, $J$, $J_0$ & infrared exponent, angular rate coefficient, current density and its long-wavelength limit & (H1)--(H2)\\
+$\mathcal M_m$, $k_0$, $k_{\min}$ & RTA moments, infrared radius, cutoff & \eqref{eq:Mm}\\
+$\mathsf H$, $\mathbf h_k$, $\mathsf T(\eta)$, $\eta$ & Walsh matrix, its columns, block matrix, family parameter & \eqref{eq:walsh}\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[tbp]
+\caption{Symbols of the front-face model (Sec.~\ref{sec:frontface}).}
+\label{tab:notation-film}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{p{0.22\textwidth}p{0.58\textwidth}p{0.12\textwidth}}
+Symbol & Meaning & Where\\ \hline
+$z$, $e$ & depth, film thickness & (F1)\\
+$\theta$, $q$, $\wp$ & temperature rise, flux density (positive toward $z>0$), absorbed flux density & (F2)\\
+$\lambda$, $\rho c$, $a$, $b$ & conductivity, volumetric heat capacity, diffusivity, effusivity of the film & \ref{sec:ff-assumptions}\\
+$b_s$ & effusivity of the substrate & (F5)\\
+$\xi_1$ & $e/\sqrt a$ & \ref{sec:ff-assumptions}\\
+$\tau_R$, $\ell$, $\beta$, $L^2$ & relaxation time, nonlocal length, closure coefficient, $(1+\beta)\ell^2$ & \eqref{eq:gk1d}\\
+$\tau_\ell$ & nonlocal time $L^2/a$ & \eqref{eq:taul}\\
+$\lambda_{\rm eff}$, $\sigma$ & effective conductivity, propagation constant & \eqref{eq:lameff}\\
+$A,B,C,D$ & quadrupole entries & \eqref{eq:quadrupole}\\
+$Z$, $Z_s$, $\varrho$ & front-face and substrate impedances, frequency-dependent effusivity ratio & \eqref{eq:impedance}, \eqref{eq:rho}\\
+$f_c$ & characteristic frequency $1/(2\pi\xi_1^2)$ & \ref{sec:quadrupole}\\
+$\bm\chi$ & film combinations $(\xi_1,b,\tau_R,\tau_\ell)$ & Prop.~\ref{prop:gauge}\\
+$\mu$, $\mathcal G_\mu$ & gauge parameter, depth-scaling transformation & \eqref{eq:gaugegroup}\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
