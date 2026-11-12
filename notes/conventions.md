@@ -171,7 +171,8 @@ La reproduction numérique n'établit pas une nouveauté.
 traite directement GK en thermoréflectance ; le manuscrit accepté est comparé dans la note 15.
 
 Dans la convention historique, avec les coefficients isotropes `a=v²τ_R/3` et `ℓ²=v²τ_Nτ_R/5`
-([Lebon et Dauby, 1990](https://doi.org/10.1103/PhysRevA.42.4710)),
+(Guyer et Krumhansl, 1966 ; repris dans la formulation macroscopique de
+[Lebon et Dauby, 1990](https://doi.org/10.1103/PhysRevA.42.4710)),
 `τ_ℓ=9τ_N/5`. Le rapport formel `τ_R/τ_N=1,8` ne satisfait pas `τ_N≪τ_R`,
 et il disparaît dès que `τ_c` est conservé (§7.1 : 0,8 en historique, aucun en conservatrice).
 Il ne prouve pas l'ouverture hydrodynamique lors d'un refroidissement.

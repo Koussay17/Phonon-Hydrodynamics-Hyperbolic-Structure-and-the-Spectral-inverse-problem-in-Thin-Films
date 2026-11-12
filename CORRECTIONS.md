@@ -222,3 +222,7 @@ Krapez & Rigollet (J. Appl. Phys. 122, 066101) is cited. Verdicts and the centra
   wrong on τ_R = τ_ℓ, R = 0, b ≠ b_s, where the rank is 3 (Theorem 2′, proof audit, 50-digit SVD). Corrected in the ledger.
 - **Over-broad gauge statement.** "Lateral diffusion breaks the depth-scaling gauge" holds only if the in-plane
   conductivity is tied to the cross-plane one; a free anisotropic in-plane conductivity keeps an extended gauge.
+- **Attribution of the kinetic GK coefficients.** a = v²τ_R/3 and ℓ² = v²τ_Nτ_R/5 are Guyer & Krumhansl's (1966). Lebon & Dauby
+  (1990) derive the GK equations macroscopically (extended irreversible thermodynamics) and give a variational principle
+  (checked against their abstract, which cites Guyer & Krumhansl for the equations). conventions.md, note 7 (PDF rebuilt,
+  layout unchanged) and the README now say so; note 12 already read "cités par".
