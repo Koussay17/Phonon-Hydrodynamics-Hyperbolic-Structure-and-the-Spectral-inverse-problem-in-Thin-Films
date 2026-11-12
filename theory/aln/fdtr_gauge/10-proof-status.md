@@ -33,7 +33,7 @@ of the kernel argument, Lemmas T/LW, Theorems 1′/2′, NR, TW, G). Status of T
 core FORMALLY VERIFIED. Remark for the write-up: step 4 uses g(0) = 1 with p = 0 outside D; harmless for rational functions.
 
 ## Revision R-B (12 November) — `proofs/B-revision.md` (not yet audited)
-DERIVED (audit pending): interface-convention classification (local κ = 0: Σ = Δ; any tied ε ≠ 0 incl. entropic and
+PROVED after audit (one kernel error D-1 at ε = 1, Π ∩ {b = b_s, R = 0}, corrected; see addendum): interface-convention classification (local κ = 0: Σ = Δ; any tied ε ≠ 0 incl. entropic and
 Beardo-kinetic: no degeneracy on Δ, only Π ∩ {R = 0}; free c_n: τ_n = c_nC identifiable, resonance degeneracy returns);
 twin observable is T(0), Cattaneo layers convention-free (Proposition O, from the code). B-4: known transducer with unknown
 R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kernel; Theorems T1–T3, T4(i)–(iv) and TW3

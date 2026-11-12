@@ -636,3 +636,31 @@ closure implies; finite beams ($k>0$) under the non-local conventions (the S fam
 | `b4_06_twin_search.py/.json/.log` | roots of the 3- and 4-frequency stack equations, 18 cases | local: twins in 3 of 6 triple cases; entropic: none; quadruples: none |
 | `b4_08_practical.py/.json` | Fisher conditioning, Au/AlN/sapphire, both conventions | §6 |
 | `b4_09_three_frequency_scan.py/.json` | best three-frequency conditioning on random points of every stratum | §5.4 |
+
+---
+
+## Addendum after the proof audit (12 November; `branches/B-revision-audit.md`, scripts a01–a10)
+
+Status after audit: Lemma K, C2, C5, T1, T3, T4 (i)–(iv), TW3 and Proposition O **PROVED** (T2 proved given the audited
+Lemma LW); Lemma K replaces Lemma LW in every rank statement. One error and several repairs:
+
+- **D-1 (error, C4).** At ε = 1 on Π ∩ {b = b_s, R = 0} the kernel is span{e_ξ, (0,0,−1,1[,0])}: rank 2 of 4 (R known) and
+  3 of 5 (R unknown), not ℝe_ξ with ranks 3 and 4. The step "c(1−ε) = 0 ⇒ c = 0" fails at ε = 1, and at t = 0, b = b_s the
+  remaining p¹ condition ξ₁c(b² − b_s²) = 0 is vacuous. Confirmed by hand, by 60-digit Jacobians (both vectors annihilated to
+  8e-40) and by exact elimination on the record's matrices. The degenerate sets are unchanged. This configuration (read-out
+  θ_e with the entropic convention) is the twin's optional observable, not its T(0) default, and does not affect the
+  transducer results. Tables §0.4 and §8 corrected accordingly; consistent with C5 at ε = 1.
+- **D-2.** The interface term is nonnegative for 0 ≤ ε ≤ 1, and for ε ≤ 0 the identity in T is sign-definite: poles on iℝ₊
+  are excluded for every ε ≤ 1 (bare film) and 0 ≤ ε ≤ 1 (both-face stack), covering the Beardo values 0.03–0.23.
+- **D-3.** The statement that only the entropic convention has a sign-definite 1D dissipation identity is withdrawn: at
+  k = 0 the local convention satisfies Re Z_T > 0 (minimum Re Z_T/|Z_T| = 1.0e-5 over 4·10⁵ samples).
+- **D-4.** Real analyticity in T1/T4(ii) requires the stack to be pole-free on iℝ₊; supplied by a layered energy identity.
+- **D-5.** Off Δ, {b = b_s}, {R₁ = 0}, {R₂ = 0} have two components (τ_R ≷ τ_ℓ); only τ_R > τ_ℓ was certified for (ii); the other
+  components are covered by (iv).
+- **D-6.** Sign typo in T2(b): 2ρ/B̃′ = 1/B̃′² + ρ² − 1/B̃²; conclusion unchanged.
+- **D-7.** The substitution (A, B, r, E) → (−A, −B, 1/r, 1/E) in Lemma K needs r ≢ 0 (holds on {τ_R = 0 < τ_ℓ}); the two forms of
+  (K.1) differ by the factor r²E².
+- **D-9, D-10.** The elimination record omits the t = 0 branch of C4; the piecewise eliminations decide the degenerate sets
+  {rank < n} but not kernel dimensions (rank ≤ n − 2) — weakest step (3) amended. Exact scans at ε ∈ {0, ½, 1, −1, 2, ⅓} found
+  no other anomaly.
+- **D-11.** TW3 printed digits carry "±1e-40" for the stored 40-digit values.

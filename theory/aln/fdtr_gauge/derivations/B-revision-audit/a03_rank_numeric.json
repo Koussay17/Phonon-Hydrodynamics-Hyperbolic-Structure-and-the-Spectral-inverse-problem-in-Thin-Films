@@ -1,0 +1,306 @@
+[
+ {
+  "case": "C4 eps=1 corner b=bs R=0, R known",
+  "rank": 2,
+  "n": 4,
+  "normalized_singular_values": [
+   "1.0",
+   "0.70711",
+   "6.7476e-40",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   8.20965601972454e-40,
+   6.519307252291631e-40
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "text: rank 3, kernel e_xi; audit: rank 2"
+ },
+ {
+  "case": "C4 eps=1 corner b=bs R=0, R unknown",
+  "rank": 3,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.9733",
+   "0.18381",
+   "6.5546e-40",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   8.056046062824313e-40,
+   6.3973252223944196e-40
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "text: rank 4, kernel e_xi; audit: rank 3"
+ },
+ {
+  "case": "C4 eps=0.5 corner b=bs R=0, R unknown (control)",
+  "rank": 4,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.98303",
+   "0.18515",
+   "0.018102",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   8.063449145851613e-40
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "text and audit: rank 4"
+ },
+ {
+  "case": "C4 eps=1 corner b=2 R=0, R unknown (thin slab)",
+  "rank": 4,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.81812",
+   "0.11975",
+   "0.03335",
+   "2.1878e-39"
+  ],
+  "kernel_residuals": [
+   1.3003186877441864e-39
+  ],
+  "zero_columns": [],
+  "claim": "rank 4, kernel (1,0,0,0,(b^2-1)/b)"
+ },
+ {
+  "case": "C4 E_0 (eps=0)",
+  "rank": 4,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.63161",
+   "0.52762",
+   "0.01465",
+   "2.3641e-39"
+  ],
+  "kernel_residuals": [
+   4.4326458260381855e-40
+  ],
+  "zero_columns": [],
+  "claim": "rank 4"
+ },
+ {
+  "case": "C4 E_eps (eps=-1)",
+  "rank": 4,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.58763",
+   "0.56162",
+   "0.020128",
+   "1.6553e-39"
+  ],
+  "kernel_residuals": [
+   1.0297487986244474e-39
+  ],
+  "zero_columns": [],
+  "claim": "rank 4"
+ },
+ {
+  "case": "C4 Delta R>0 off E_0 (eps=0, control)",
+  "rank": 5,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.63604",
+   "0.52174",
+   "0.015089",
+   "0.00075798"
+  ],
+  "kernel_residuals": [],
+  "zero_columns": [],
+  "claim": "rank 5"
+ },
+ {
+  "case": "C5 eps=0.3 corner b=bs R=0, R unknown",
+  "rank": 3,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.9733",
+   "0.18381",
+   "9.9388e-40",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   1.0064345856700846e-39,
+   6.223240024336723e-40
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "rank 3"
+ },
+ {
+  "case": "C5 eps=0.5 tl=0 tR>0 R=0, R unknown",
+  "rank": 5,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.8936",
+   "0.74078",
+   "0.3141",
+   "0.020547"
+  ],
+  "kernel_residuals": [],
+  "zero_columns": [],
+  "claim": "rank 5"
+ },
+ {
+  "case": "C5 eps=1 Delta t>0 R=0, R unknown",
+  "rank": 5,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.8316",
+   "0.19942",
+   "0.085406",
+   "0.048856"
+  ],
+  "kernel_residuals": [],
+  "zero_columns": [],
+  "claim": "rank 5"
+ },
+ {
+  "case": "C2 tied eps=0.084 Delta t>0 R=0, R unknown",
+  "rank": 5,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.82905",
+   "0.074712",
+   "0.0071897",
+   "0.0031581"
+  ],
+  "kernel_residuals": [],
+  "zero_columns": [],
+  "claim": "rank 5"
+ },
+ {
+  "case": "C2 free Delta tn=0 b=bs R=0, R known",
+  "rank": 3,
+  "n": 5,
+  "normalized_singular_values": [
+   "1.0",
+   "0.70114",
+   "0.33489",
+   "2.6267e-39",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   2.162374511025186e-39,
+   1.3989744974542254e-39
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "rank 3"
+ },
+ {
+  "case": "C2 free Delta tn=-0.3 R=0, R unknown",
+  "rank": 5,
+  "n": 6,
+  "normalized_singular_values": [
+   "1.0",
+   "0.77384",
+   "0.30427",
+   "0.032871",
+   "0.009689",
+   "6.0881e-39"
+  ],
+  "kernel_residuals": [
+   1.912380257407003e-39
+  ],
+  "zero_columns": [],
+  "claim": "rank 5"
+ },
+ {
+  "case": "T3 entropic Pi R2=0 b=bs",
+  "rank": 4,
+  "n": 6,
+  "normalized_singular_values": [
+   "1.0",
+   "0.83452",
+   "0.12117",
+   "0.0029709",
+   "7.471e-39",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   2.0065035217522166e-39,
+   1.4519131186480982e-39
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "rank 4"
+ },
+ {
+  "case": "T3 entropic Delta R2=0 t>0 b=bs",
+  "rank": 6,
+  "n": 6,
+  "normalized_singular_values": [
+   "1.0",
+   "0.87256",
+   "0.2547",
+   "0.13417",
+   "0.053326",
+   "0.00031652"
+  ],
+  "kernel_residuals": [],
+  "zero_columns": [],
+  "claim": "rank 6"
+ },
+ {
+  "case": "T3 local Delta R2=0 b=2",
+  "rank": 4,
+  "n": 6,
+  "normalized_singular_values": [
+   "1.0",
+   "0.75393",
+   "0.1545",
+   "0.0078203",
+   "1.5176e-38",
+   "2.0174e-39"
+  ],
+  "kernel_residuals": [
+   1.7297022652867365e-39,
+   1.8805411188868604e-39
+  ],
+  "zero_columns": [],
+  "claim": "rank 4"
+ },
+ {
+  "case": "T3 eps=-0.5 Pi R2=0 b=bs",
+  "rank": 4,
+  "n": 6,
+  "normalized_singular_values": [
+   "1.0",
+   "0.83452",
+   "0.12117",
+   "0.0029709",
+   "7.3377e-39",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   1.9716791516333144e-39,
+   1.7600512169967808e-39
+  ],
+  "zero_columns": [
+   "xi"
+  ],
+  "claim": "rank 4"
+ }
+]

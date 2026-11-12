@@ -1,0 +1,44 @@
+[
+ {
+  "case": "B4/local generic tR>tl, N=3",
+  "det": "[1.584589472e-6 +/- 2.75e-16]",
+  "nonzero": true,
+  "record": "[1.584589472e-6 +/- 2.75e-16]"
+ },
+ {
+  "case": "B4/local R2=0, N=3",
+  "det": "[-3.792198679e-6 +/- 2.23e-16]",
+  "nonzero": true,
+  "record": "[-3.792198679e-6 +/- 2.23e-16]"
+ },
+ {
+  "case": "B4/entropic Delta R2=0, N=3",
+  "det": "[4.323603453e-7 +/- 1.52e-17]",
+  "nonzero": true,
+  "record": "[4.323603453e-7 +/- 1.52e-17]"
+ },
+ {
+  "case": "B4/entropic Delta R2=0 b=bs, N=3",
+  "det": "[3.477819722e-7 +/- 5.91e-19]",
+  "nonzero": true,
+  "record": "[3.477819722e-7 +/- 5.91e-19]"
+ },
+ {
+  "case": "B4/entropic Fourier corner R2>0, N=3",
+  "det": "[-2.086057355e-8 +/- 2.34e-18]",
+  "nonzero": true,
+  "record": "[-2.086057355e-8 +/- 2.34e-18]"
+ },
+ {
+  "case": "B4/local Au/AlN/sapphire Cattaneo (tl=0), N=3",
+  "det": "[5.071334408e-10 +/- 1.29e-21]",
+  "nonzero": true,
+  "record": "[5.071334408e-10 +/- 1.29e-21]"
+ },
+ {
+  "case": "B4/entropic Au/AlN/sapphire GK (tl=10 ps), N=3",
+  "det": "[5.769660682e-10 +/- 3.13e-20]",
+  "nonzero": true,
+  "record": "[5.769660682e-10 +/- 3.13e-20]"
+ }
+]

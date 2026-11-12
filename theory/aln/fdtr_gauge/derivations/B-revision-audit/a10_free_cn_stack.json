@@ -1,0 +1,84 @@
+[
+ {
+  "case": "free stack generic off Delta",
+  "rank": 7,
+  "predicted": 7,
+  "sv_tail": [
+   "0.08355",
+   "0.015457",
+   "0.0040426"
+  ],
+  "kernel_residuals": []
+ },
+ {
+  "case": "free stack tn = tl off Delta, R2 = 0",
+  "rank": 7,
+  "predicted": 7,
+  "sv_tail": [
+   "0.087825",
+   "0.0066165",
+   "0.0024472"
+  ],
+  "kernel_residuals": []
+ },
+ {
+  "case": "free stack tn = tR off Delta, R2 = 0",
+  "rank": 7,
+  "predicted": 7,
+  "sv_tail": [
+   "0.082477",
+   "0.019401",
+   "0.0069753"
+  ],
+  "kernel_residuals": []
+ },
+ {
+  "case": "free stack tn = tR, tl = 0, R2 = 0",
+  "rank": 7,
+  "predicted": 7,
+  "sv_tail": [
+   "0.19073",
+   "0.049121",
+   "0.032344"
+  ],
+  "kernel_residuals": []
+ },
+ {
+  "case": "free stack tn < 0 off Delta, R2 = 0",
+  "rank": 7,
+  "predicted": 7,
+  "sv_tail": [
+   "0.12889",
+   "0.071508",
+   "0.0013206"
+  ],
+  "kernel_residuals": []
+ },
+ {
+  "case": "free stack Delta tn = t, R2 = 0",
+  "rank": 6,
+  "predicted": 6,
+  "sv_tail": [
+   "0.015634",
+   "0.00041639",
+   "1.2041e-38"
+  ],
+  "kernel_residuals": [
+   2.0565968845503153e-39
+  ]
+ },
+ {
+  "case": "free stack Delta tn = 0, R2 = 0, b = 2",
+  "rank": 5,
+  "predicted": 5,
+  "sv_tail": [
+   "0.0014722",
+   "1.5149e-38",
+   "2.0137e-39"
+  ],
+  "kernel_residuals": [
+   1.700375035830842e-39,
+   1.8486564055453437e-39
+  ]
+ }
+]

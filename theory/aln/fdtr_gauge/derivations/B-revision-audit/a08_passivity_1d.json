@@ -1,0 +1,54 @@
+{
+ "eps=0.0": {
+  "min Re Z_T/|Z_T|": 1.0375379502407911e-05,
+  "fraction Re Z_T < 0": 0.0,
+  "min Re theta_e/|theta_e|": 0.008682286539099592,
+  "fraction Re theta_e < 0": 0.0
+ },
+ "eps=1.0": {
+  "min Re Z_T/|Z_T|": -0.6959589780843729,
+  "fraction Re Z_T < 0": 0.0891275,
+  "min Re theta_e/|theta_e|": 0.007965974168549557,
+  "fraction Re theta_e < 0": 0.0
+ },
+ "eps=0.3": {
+  "min Re Z_T/|Z_T|": -0.6973916505082756,
+  "fraction Re Z_T < 0": 0.0798525,
+  "min Re theta_e/|theta_e|": 0.008682286539099592,
+  "fraction Re theta_e < 0": 0.0
+ },
+ "eps=-0.5": {
+  "min Re Z_T/|Z_T|": 9.92617171370559e-05,
+  "fraction Re Z_T < 0": 0.0,
+  "min Re theta_e/|theta_e|": -0.9999890832669355,
+  "fraction Re theta_e < 0": 0.071895
+ },
+ "eps=2.0": {
+  "min Re Z_T/|Z_T|": -0.6949797913616633,
+  "fraction Re Z_T < 0": 0.0908025,
+  "min Re theta_e/|theta_e|": 0.007201887332474401,
+  "fraction Re theta_e < 0": 0.0
+ },
+ "stack": {
+  "eps=0.0": {
+   "min Re Z_tot/|Z_tot|": 0.0020611945883306625,
+   "fraction Re Z_tot < 0": 0.0
+  },
+  "eps=1.0": {
+   "min Re Z_tot/|Z_tot|": 0.0017780571653715582,
+   "fraction Re Z_tot < 0": 0.0
+  },
+  "eps=0.3": {
+   "min Re Z_tot/|Z_tot|": 0.0020611945883306625,
+   "fraction Re Z_tot < 0": 0.0
+  },
+  "eps=-0.5": {
+   "min Re Z_tot/|Z_tot|": -0.993443630904232,
+   "fraction Re Z_tot < 0": 0.0360975
+  },
+  "eps=2.0": {
+   "min Re Z_tot/|Z_tot|": -0.9932717707466434,
+   "fraction Re Z_tot < 0": 0.0005825
+  }
+ }
+}
