@@ -1,0 +1,130 @@
+{
+ "300|note16|regularised|0.01": {
+  "halfrange_ps": 15.88117984144446,
+  "sigma_N2_ps": 10.84423097898176,
+  "sigma_free_lam_ps": 23.589957769871493,
+  "s_star_rel": 0.010673841067709007,
+  "m_at_s_1pct": 0.9617476015526805,
+  "m_at_s_5pct": 1.4247597259738696
+ },
+ "300|note16|regularised|0.1": {
+  "halfrange_ps": 15.88117984144446,
+  "sigma_N2_ps": 89.28616383964369,
+  "sigma_free_lam_ps": 157.75813413004613,
+  "s_star_rel": null,
+  "m_at_s_1pct": 5.656488809189603,
+  "m_at_s_5pct": 6.331884504515573
+ },
+ "300|note16|slab|0.01": {
+  "halfrange_ps": 4.459708377889828,
+  "sigma_N2_ps": 11.195435168331848,
+  "sigma_free_lam_ps": 23.185786192852184,
+  "s_star_rel": null,
+  "m_at_s_1pct": 3.437575630388552,
+  "m_at_s_5pct": 4.995079277958591
+ },
+ "300|note16|slab|0.1": {
+  "halfrange_ps": 4.459708377889828,
+  "sigma_N2_ps": 91.6455167807649,
+  "sigma_free_lam_ps": 153.36434905737102,
+  "s_star_rel": null,
+  "m_at_s_1pct": 20.657972676365215,
+  "m_at_s_5pct": 22.799896754714176
+ },
+ "300|favourable|regularised|0.01": {
+  "halfrange_ps": 15.88117984144446,
+  "sigma_N2_ps": 5.182833286902818,
+  "sigma_free_lam_ps": 25.26948872835544,
+  "s_star_rel": 0.018202406779627762,
+  "m_at_s_1pct": 0.6590389172903034,
+  "m_at_s_5pct": 1.4261121423058263
+ },
+ "300|favourable|regularised|0.1": {
+  "halfrange_ps": 15.88117984144446,
+  "sigma_N2_ps": 42.66979332899486,
+  "sigma_free_lam_ps": 165.97429356355065,
+  "s_star_rel": null,
+  "m_at_s_1pct": 2.7436778513328606,
+  "m_at_s_5pct": 3.7940359313607432
+ },
+ "300|favourable|slab|0.01": {
+  "halfrange_ps": 4.459708377889828,
+  "sigma_N2_ps": 5.512375050270671,
+  "sigma_free_lam_ps": 24.730530006724454,
+  "s_star_rel": null,
+  "m_at_s_1pct": 2.3554947785442235,
+  "m_at_s_5pct": 4.984647113491565
+ },
+ "300|favourable|slab|0.1": {
+  "halfrange_ps": 4.459708377889828,
+  "sigma_N2_ps": 44.63270412816722,
+  "sigma_free_lam_ps": 154.39815133959354,
+  "s_star_rel": null,
+  "m_at_s_1pct": 10.187016215526526,
+  "m_at_s_5pct": 13.553207648373283
+ },
+ "500|note16|regularised|0.01": {
+  "halfrange_ps": 40.63771358860689,
+  "sigma_N2_ps": 7.163938048296562,
+  "sigma_free_lam_ps": 20.522341289345693,
+  "s_star_rel": 0.3,
+  "m_at_s_1pct": 0.3592900666381508,
+  "m_at_s_5pct": 0.49397108235321796
+ },
+ "500|note16|regularised|0.1": {
+  "halfrange_ps": 40.63771358860689,
+  "sigma_N2_ps": 59.457462137891596,
+  "sigma_free_lam_ps": 131.8231723365134,
+  "s_star_rel": null,
+  "m_at_s_1pct": 1.5030398498211213,
+  "m_at_s_5pct": 2.083818773527335
+ },
+ "500|note16|slab|0.01": {
+  "halfrange_ps": 10.678675672058187,
+  "sigma_N2_ps": 7.387506223360641,
+  "sigma_free_lam_ps": 19.43307167329335,
+  "s_star_rel": 0.004793012994764451,
+  "m_at_s_1pct": 1.3174955699163684,
+  "m_at_s_5pct": 1.7819828216868718
+ },
+ "500|note16|slab|0.1": {
+  "halfrange_ps": 10.678675672058187,
+  "sigma_N2_ps": 60.522831390671314,
+  "sigma_free_lam_ps": 121.90223935518604,
+  "s_star_rel": null,
+  "m_at_s_1pct": 5.7930966934046095,
+  "m_at_s_5pct": 7.655634689962732
+ },
+ "500|favourable|regularised|0.01": {
+  "halfrange_ps": 40.63771358860689,
+  "sigma_N2_ps": 2.1370512512631263,
+  "sigma_free_lam_ps": 10.270396039931123,
+  "s_star_rel": 0.3,
+  "m_at_s_1pct": 0.20462586499851249,
+  "m_at_s_5pct": 0.2500438923168928
+ },
+ "500|favourable|regularised|0.1": {
+  "halfrange_ps": 40.63771358860689,
+  "sigma_N2_ps": 19.7320088596858,
+  "sigma_free_lam_ps": 89.62607004991396,
+  "s_star_rel": 0.027163446868076386,
+  "m_at_s_1pct": 0.5801785881666274,
+  "m_at_s_5pct": 1.3724558528158972
+ },
+ "500|favourable|slab|0.01": {
+  "halfrange_ps": 10.678675672058187,
+  "sigma_N2_ps": 2.1881079099541854,
+  "sigma_free_lam_ps": 9.281145137829744,
+  "s_star_rel": 0.3,
+  "m_at_s_1pct": 0.7137491556186767,
+  "m_at_s_5pct": 0.8605914403135029
+ },
+ "500|favourable|slab|0.1": {
+  "halfrange_ps": 10.678675672058187,
+  "sigma_N2_ps": 20.020042524433226,
+  "sigma_free_lam_ps": 79.73057744236586,
+  "s_star_rel": null,
+  "m_at_s_1pct": 2.1793889279721115,
+  "m_at_s_5pct": 4.808419314737331
+ }
+}

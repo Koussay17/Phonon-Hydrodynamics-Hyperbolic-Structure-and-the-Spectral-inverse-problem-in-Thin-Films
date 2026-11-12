@@ -50,3 +50,16 @@ R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kern
   < 0.5 %). Static-data range of δ = τ_R − τ_ℓ is 12–27× wider than that of τ_mem at 300–500 nm (inner bounds, 9×9×6), and
   would be resolvable at 0.01° (1D, local convention). "The Cattaneo comparison is conservative": CONTRADICTED under the
   kinetic closure (supported only under the grey closure). Audit and counterexample attack pending.
+
+## Audit of R-A6 (12 November) — `branches/R-A-kinetic-audit.md`
+- τ_ℓ = |e|²(u·Ĉ⁻¹u)/K² as the twin's τ_ℓ: RELIABLE (independent derivation; energy projection required and sufficient).
+  Grey limit 4τ_c/5 (9/5 unprojected): exact. Caveat: τ_ℓ depends on the energy treatment of the regulator on the even
+  sector (+38/+12/+4/+2.5 % at 30/100/300/500 nm with wall-temperature relaxation).
+- RTA τ_ℓ values: CONVERGED. Full-operator ratios: UNDER-RESOLVED (+13 %/+22 % from 7×7×5 to 9×9×6); ≈ 9 ± 1 at 500 nm.
+- δ range 12–27×: arithmetic exact, UNDER-RESOLVED, ratio of inner bounds (mesh trend 9.7× / 19.9×).
+- "Resolvable at 0.01°": NOT RELIABLE. First-order k² truncation fails above ~20 MHz at 300–500 nm (non-Fourier part off by
+  28–67 % at 50–200 MHz); an exact RTA slab with diffuse walls gives a visible δ ≈ 0.32× the regularised value; in the slab,
+  resolution would need λ_z known to ≤ 0.5 % or R ≈ 2e-9. Status: UNRESOLVED.
+- SURVIVES in every model tested: the first-order FDTR-visible time of a 300–500 nm film is negative and several times |τ_mem|;
+  the Cattaneo projection is not a conservative stand-in and τ_ℓ = 0 is not justified.
+- Open item that decides it: slab solution with the full collision operator and realistic interface transmission.

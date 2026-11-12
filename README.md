@@ -60,12 +60,14 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   tied to the cross-plane one. Four independent routes (analytic, asymptotic, computer algebra, counterexample search).
   ([fdtr_gauge](theory/aln/fdtr_gauge/proofs/B-analytic.md))
 - **FDTR and the film memory time** *(numerically demonstrated in the twin, model-conditional; independent numerical audit;
-  latest revision under audit)*. In the Cattaneo projection, the static-data range of the film memory time (half-width
+  latest revision audited)*. In the Cattaneo projection, the static-data range of the film memory time (half-width
   2.7–7.6 % at 30–500 nm, inner bounds) is not resolvable at 0.1° phase noise for any declared nuisance set, over interface
   resistances 2–20·10⁻⁹ m²K/W, boundary-term normalisations ½–2, λ_z ± 20 % and Au 20–100 nm (margin ≥ 7×). However, the
   first-order FDTR-visible time is τ_R − τ_ℓ, and the kinetic nonlocal time of the same operator is τ_ℓ ≈ 6–9 τ_mem at
-  300–500 nm; its static-data range is 12–27× wider and would be resolvable at 0.01° — FDTR may then carry information that
-  static data lack. This last result is new and being audited.
+  300–500 nm (formula audited; values under-resolved on the full operator). Whether FDTR can resolve its static-data range is
+  UNRESOLVED: the first-order expansion fails above ~20 MHz, and an exact diffuse-wall slab gives a visible time about 3×
+  smaller than the heuristic boundary regulator. What holds in every model tested: the FDTR-visible time is negative and
+  several times |τ_mem|, so the Cattaneo projection is not a conservative stand-in.
 
 **Kinetic theory**
 - **Conserving grey closure** *(independent re-derivation of published results: Guo & Wang 2022; Sendra et al. 2022)*: nonlocal coefficient α = 1/3, giving
