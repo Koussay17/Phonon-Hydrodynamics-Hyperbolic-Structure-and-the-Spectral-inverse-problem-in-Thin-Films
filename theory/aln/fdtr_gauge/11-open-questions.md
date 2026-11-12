@@ -20,3 +20,7 @@ university library (ASME Digital Collection) or from the first author. Potential
 interface convention, exact data): Σ = Δ exactly with ranks 4/3/2 (in particular b = b_s regular off Δ); global injectivity
 off Δ with explicit fibres; the interface-resistance case; two-frequency local-but-not-global identifiability. Incremental.
 A positioned as the first Cramér–Rao estimate with instrument, interface and transducer nuisances (within the search).
+**Update (12 November):** Ordóñez-Miranda & Alvarado-Gil (2010) read in full — see `branches/R-L-OrdonezMiranda2010-reading.md`.
+Partial prior art confirmed (equal-lag Fourier equivalence; known-thickness constructive determination in two extreme-
+effusivity limits); the potentially novel items listed above stand. Remaining unread: Tang & Araki 1999/2000, Tzou's monograph
+(low risk).
