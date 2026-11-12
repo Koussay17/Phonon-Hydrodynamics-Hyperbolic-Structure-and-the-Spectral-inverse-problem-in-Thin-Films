@@ -2,7 +2,7 @@
 
 **From kinetic closure to the limits of thermal depth profiling**
 
-> Research in progress — CRTEn internship, September 2026 – January 2027.
+> Research in progress, September 2026 – January 2027, carried out during a research internship in the CRTEn–CNSTN collaboration.
 > No experimental validation and no general novelty claim. Every result below carries an explicit status.
 
 ---
@@ -240,4 +240,4 @@ The boundary between inherited and new results is kept explicit.
 Code in `src/`, `tests/` and `notebooks/` is released under the MIT licence. Notes and figures are not covered by it.
 The converted Rao et al. AlN data retain CC BY 4.0 (see [theory/aln/README.md](theory/aln/README.md)).
 
-**Koussay Mansouri** — internship supervised at CRTEn. Issues and corrections are welcome, including on the derivations.
+**Koussay Mansouri** — CRTEn–CNSTN research internship; INSA Hauts-de-France. Issues and corrections are welcome, including on the derivations.
