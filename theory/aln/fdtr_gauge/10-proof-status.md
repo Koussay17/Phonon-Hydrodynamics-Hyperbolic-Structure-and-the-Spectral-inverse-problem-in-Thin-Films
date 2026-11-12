@@ -38,3 +38,15 @@ Beardo-kinetic: no degeneracy on Δ, only Π ∩ {R = 0}; free c_n: τ_n = c_nC 
 twin observable is T(0), Cattaneo layers convention-free (Proposition O, from the code). B-4: known transducer with unknown
 R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kernel; Theorems T1–T3, T4(i)–(iv) and TW3
 (three-frequency certified twin). CONJECTURED: N = 3 on the hypersurface; entropic T4″.
+
+## Revision R-A (12 November) — `07-experiments.md` R-A1…R-A6
+- Width at 500 nm computed (inner bounds): ≥ 6.13 % on the data meshes, 5.0–5.4 % held out. Regulator normalisation c
+  enters only through L/c (exact).
+- Cattaneo projection (τ_ℓ = 0): not resolvable at 0.1° for every declared nuisance set over the whole sensitivity box
+  (σ/w ≥ 7, ≤ 0.005 bit) — NUMERICALLY DEMONSTRATED, model-conditional. At 0.01°: ≥ 3.3 on the note-16 stack; flips only at
+  500 nm for R₁ ≤ 5e-9 with c ≤ 3/4.
+- Kinetic nonlocal time of the same regularised operator: τ_ℓ = |e|²(u·Ĉ⁻¹u)/K² (DERIVED, audit pending; reduces to 4τ_c/5 for
+  the grey Callaway case); τ_ℓ/τ_mem = 1.8 / 3.0 / 6.3 / 9.2 at 30/100/300/500 nm (NUMERICALLY SUPPORTED, RTA converged
+  < 0.5 %). Static-data range of δ = τ_R − τ_ℓ is 12–27× wider than that of τ_mem at 300–500 nm (inner bounds, 9×9×6), and
+  would be resolvable at 0.01° (1D, local convention). "The Cattaneo comparison is conservative": CONTRADICTED under the
+  kinetic closure (supported only under the grey closure). Audit and counterexample attack pending.

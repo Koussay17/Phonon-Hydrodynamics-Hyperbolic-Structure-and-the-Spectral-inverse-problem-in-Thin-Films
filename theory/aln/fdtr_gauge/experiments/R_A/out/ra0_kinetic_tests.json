@@ -1,0 +1,140 @@
+{
+ "T1_gray_isotropic": [
+  {
+   "tauN_over_tauR": 0.01,
+   "tauR_kin": 0.9999999999999618,
+   "taul_over_tauc": 0.7999999999999993,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.7999999999999992,
+   "delta_over_tauR": 0.9920792079207539,
+   "delta_closure_formula": 0.9920792079207921
+  },
+  {
+   "tauN_over_tauR": 0.1,
+   "tauR_kin": 0.999999999999992,
+   "taul_over_tauc": 0.7999999999999992,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.9272727272727194,
+   "delta_closure_formula": 0.9272727272727272
+  },
+  {
+   "tauN_over_tauR": 0.5,
+   "tauR_kin": 1.0,
+   "taul_over_tauc": 0.7999999999999998,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.7333333333333334,
+   "delta_closure_formula": 0.7333333333333334
+  },
+  {
+   "tauN_over_tauR": 1.0,
+   "tauR_kin": 1.0000000000000007,
+   "taul_over_tauc": 0.8000000000000004,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.6000000000000005,
+   "delta_closure_formula": 0.6
+  },
+  {
+   "tauN_over_tauR": 2.0,
+   "tauR_kin": 1.0000000000000002,
+   "taul_over_tauc": 0.8,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.4666666666666669,
+   "delta_closure_formula": 0.4666666666666667
+  },
+  {
+   "tauN_over_tauR": 10.0,
+   "tauR_kin": 1.0000000000000002,
+   "taul_over_tauc": 0.8000000000000013,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.2727272727272718,
+   "delta_closure_formula": 0.2727272727272727
+  },
+  {
+   "tauN_over_tauR": 100.0,
+   "tauR_kin": 1.0,
+   "taul_over_tauc": 0.8000000000000006,
+   "gamma_g": 0.7999999999999992,
+   "hist_over_tauc": 1.799999999999999,
+   "delta_over_tauR": 0.20792079207920733,
+   "delta_closure_formula": 0.20792079207920788
+  }
+ ],
+ "T1_max_abs_error": 3.8191672047105385e-14,
+ "T2_kernel_expansion": {
+  "gray_x1": {
+   "K_formula": 0.33333333333333365,
+   "K_numeric": 0.33333333333333365,
+   "KL2_formula": 0.044444444444444495,
+   "k2_coef_numeric": 0.04444444551277016,
+   "rel_err_L2": 2.4037327461812197e-08,
+   "taul": 0.3999999999999997,
+   "tauR": 1.0000000000000009,
+   "gamma_g": 0.8000000000000014
+  },
+  "gray_x0.1": {
+   "K_formula": 0.3333333333333346,
+   "K_numeric": 0.3333333333333348,
+   "KL2_formula": 0.008080808080808135,
+   "k2_coef_numeric": 0.008080807597140213,
+   "rel_err_L2": 5.985390527651901e-08,
+   "taul": 0.07272727272727265,
+   "tauR": 1.0000000000000033,
+   "gamma_g": 0.8000000000000014
+  },
+  "nongray_1": {
+   "K_formula": 10.546924474582973,
+   "K_numeric": 10.546924474582976,
+   "KL2_formula": 0.3405486934437634,
+   "k2_coef_numeric": 0.34054868969235486,
+   "rel_err_L2": 1.1015777179324004e-08,
+   "taul": 0.14723314176845864,
+   "tauR": 0.38969064633950934,
+   "gamma_g": 1.3986369273915173
+  },
+  "nongray_2": {
+   "K_formula": 21.58572533266839,
+   "K_numeric": 21.58572533266839,
+   "KL2_formula": 2.443430241049964,
+   "k2_coef_numeric": 2.4434302178614566,
+   "rel_err_L2": 9.490145114199322e-09,
+   "taul": 0.3723497724481884,
+   "tauR": 0.47445561357323957,
+   "gamma_g": 2.202135313155391
+  }
+ },
+ "T3_regularisation_independence": [
+  {
+   "gamma": 0.001,
+   "taul_rel_diff": 1.7763568394002505e-15,
+   "tauR_rel_diff": 1.9984014443252818e-15,
+   "ehat_dot_x": 7.710602989430271e-13,
+   "ehat_dot_y": 1.4386177795908117e-12
+  },
+  {
+   "gamma": 1.0,
+   "taul_rel_diff": 1.5543122344752192e-15,
+   "tauR_rel_diff": 1.7763568394002505e-15,
+   "ehat_dot_x": 8.291978215169138e-16,
+   "ehat_dot_y": 9.519295074422729e-16
+  },
+  {
+   "gamma": 8.781586318830607,
+   "taul_rel_diff": 1.5543122344752192e-15,
+   "tauR_rel_diff": 1.5543122344752192e-15,
+   "ehat_dot_x": 1.214306433183765e-16,
+   "ehat_dot_y": 4.9764879717084654e-17
+  },
+  {
+   "gamma": 1000.0,
+   "taul_rel_diff": 1.3322676295501878e-15,
+   "tauR_rel_diff": 4.440892098500626e-16,
+   "ehat_dot_x": 1.734723475976807e-17,
+   "ehat_dot_y": 1.3010426069826053e-18
+  }
+ ]
+}
