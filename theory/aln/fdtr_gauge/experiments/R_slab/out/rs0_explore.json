@@ -1,0 +1,56 @@
+{
+ "m775": {
+  "Nq": 245,
+  "nb": 12,
+  "parity_map_indices": [
+   15
+  ],
+  "max_abs_dfreq_THz": 4.263256414560601e-14,
+  "max_rel_dfreq": 7.064689216323484e-15,
+  "max_abs_vz_plus_vzP_mps": 2.2595258997171186e-10,
+  "max_abs_dvxy_THzA": 2.0179413695586845e-12,
+  "n_vz_mismatch": 0,
+  "n_vz_mismatch_in_degenerate": 0,
+  "n_valid": 2937,
+  "n_zero_vz": 585,
+  "n_moving": 2352,
+  "min_abs_vz_moving_mps": 26.054058687125686,
+  "max_abs_vz_mps": 10607.417752260782,
+  "quantiles_abs_vz_moving": [
+   26.05405868712889,
+   77.5659444701638,
+   158.10141892667284,
+   1302.822319880317,
+   3956.795947043623
+  ],
+  "max_abs_vz_on_zero_set": 1.9721522630525295e-29,
+  "zero_vz_equals_qz0_plane": true
+ },
+ "m553": {
+  "Nq": 75,
+  "nb": 12,
+  "parity_map_indices": [
+   15
+  ],
+  "max_abs_dfreq_THz": 3.907985046680551e-14,
+  "max_rel_dfreq": 5.280218748222863e-15,
+  "max_abs_vz_plus_vzP_mps": 3.092281986027956e-11,
+  "max_abs_dvxy_THzA": 2.7863822360529866e-13,
+  "n_vz_mismatch": 0,
+  "n_vz_mismatch_in_degenerate": 0,
+  "n_valid": 897,
+  "n_zero_vz": 297,
+  "n_moving": 600,
+  "min_abs_vz_moving_mps": 17.46290023552137,
+  "max_abs_vz_mps": 10070.170157512108,
+  "quantiles_abs_vz_moving": [
+   17.462900235522067,
+   17.46290023552708,
+   203.61722971272872,
+   1526.488413792395,
+   4737.385637621232
+  ],
+  "max_abs_vz_on_zero_set": 1.9721522630525295e-29,
+  "zero_vz_equals_qz0_plane": true
+ }
+}

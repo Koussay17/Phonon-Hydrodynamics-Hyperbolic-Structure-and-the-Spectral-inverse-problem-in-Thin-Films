@@ -76,3 +76,17 @@ R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kern
   1.8e14–1.8e18 s⁻¹). Only ε ≥ 0 is admissible in the 1D model; non-passive for ε ≥ 5.
 - PRACTICAL: in the Au/AlN/sapphire band, three frequencies need ~1e-6 relative accuracy; with 80 frequencies two directions
   are ≤ 8e-5 (essentially τ_ℓ); the entropic lifting of the resonance scales ~linearly in ε (weak for ε ≲ 0.1).
+
+## Full-operator slab R-S (12 November) — `07-experiments.md` R-S, R-S1…R-S6
+- Model: 7×7×5 event operator (orbit-tied, no regulator), cross-plane slab with diffuse black walls, modal solution after
+  parity reduction; 1D FDTR, local convention; 12 witnesses not optimised for δ (ranges are inner bounds).
+- REF visible δ: −31.70 ps (300 nm), −61.00 ps (500 nm) = 0.37–0.40 of the regularised value, 0.71–0.72 of the RTA slab.
+  Interior conductivity 263–269 W/mK; size effect carried by two Knudsen-layer resistances of 4.6–4.8e-10 m²K/W.
+- Static-data range of δ: half-width 5.2 ps (300 nm), 11.1–11.3 ps (500 nm); transfer from the regularised range 0.23–0.27.
+- "δ range resolvable at 0.01° (1D, local)": CONTRADICTED for λ_z free (N2lam 2.34, N3 5.97 at 500 nm; worse at 300 nm).
+  At 0.1°: not resolvable for any nuisance set (margins ≥ 5.6). Only N1 (0.59) and N2 (1.01) at 500 nm, 0.01°, both of which
+  assume the interior conductivity known although the witnesses shift it by −10…+4 %.
+- Every variant tested (gray transmission, partial specular reflection, port convention, band) makes the range less resolvable.
+- Status: NUMERICALLY SUPPORTED, model-conditional (7×7×5 only; transfer falls with mesh refinement; witnesses not
+  δ-optimised; gray walls). Independent numerical audit in progress (`branches/R-S-slab-audit.md`).
+- Open: δ-optimised witnesses using the L/c predictor (c ≈ 2.1–2.2, correlation 0.99); 9×9×6 slab; mode-dependent transmission.

@@ -659,3 +659,255 @@ twin's k = 0 kernel to 1.8e-15 (local) and 1.6e-15 (entropic convention).
 * **Open.** δ-optimised ranges (objective τ_mem − τ_ℓ in robust_mesh.py); τ_ℓ on 12×12×8 (the RTA diagonal is light);
   a film solution with diffuse walls in place of the |v_z|/L regulator; the interface-temperature convention implied
   by the closure (it enters at O(τ_ℓ p)); finite beams for the kinetic GK film.
+
+## R-S — full-operator kinetic slab with diffuse walls: the FDTR-visible δ and its static-data range (12 November)  [R_slab/rs_core.py, rs0_explore.py, rs1_validate.py, rs2_slab.py, rs2b_fits.py, rs2c_interp_check.py, rs3_margins.py, rs4_filmw_static.py, rs5_trend.py, rs6_proxy.py, rs7_band.py; out/]
+
+Open item of the R-A audit (§5.2, §8 of `branches/R-A-kinetic-audit.md`): the first-order FDTR-visible time
+δ = τ_R − τ_ℓ of a 300/500 nm AlN film (300 K) described by the linearised BTE with the full conserving three-phonon
+operator and explicit diffuse walls, in place of the RTA slab (au6/au8) and of the |v_z|/L regulator. Scripts in
+`experiments/R_slab/`, raw outputs (NPZ two-ports, JSON, logs) in `experiments/R_slab/out/`; run order
+`run_rs_chain1.sh`, `run_rs_chain2.sh sub4`, `run_rs_chain3.sh sub4` after `rs1_validate.py`. Research Python, two
+BLAS threads, one heavy process at a time, peak working set below 1 GB (production runs 0.35 GB; a 14 GB optimisation
+ran on the same machine); only the 7×7×5 and 5×5×3 event sets were used. Every number is SYNTHETIC and conditional on
+the event operator, the wall model and the twin's 1D FDTR description.
+
+## R-S1 — model, solver, validation  [rs_core.py, rs0_explore.py, rs1_validate.py; out/rs0_explore.json, out/rs1_validate.json]
+
+* **Model (ASSUMPTIONS).** V f′ = −(p + Ĉ)f on 0 < z < d in symmetrised variables (f = θe at equilibrium, e_i = √c_i,
+  c_i in J/(m³K)); Ĉ = 4π·10¹² C(g), the orbit-tied conserving event operator of fc3-memory, re-derived from the raw
+  event list as in au3 (no regulator). Walls diffuse and black: f_i(0) = T_A e_i for v_z > 0, f_i(d) = T_B e_i for
+  v_z < 0 (T_A, T_B the wall emission temperatures, as in au6/au8). Variants, identical at both faces: partial
+  specular reflection r (f⁺(0) = r P f⁻(0) + (1 − r)T_A e, with P the specular map of a c-plane wall) and gray diffuse
+  transmission t (the reflected fraction 1 − t re-emitted diffusely at the temperature that conserves its energy flux).
+* **Reduction.** The map (q_x, q_y, q_z, j) → (q_x, q_y, −q_z, j) (time reversal ∘ C2z, stored grid map 15) is exact on
+  the data: frequencies symmetric to 7e-15, v_z antisymmetric to 1e-13 (relative), Ĉ invariant to 2e-15, Ĉe = 0 to
+  8e-16 (7×7×5). The plane q_z = 0 carries exactly the 585 v_z = 0 modes (5×5×3: 297), eliminated by a Schur
+  complement; the 2352 moving modes form 1176 pairs (5×5×3: 300). With s, o the even and odd pair combinations, the
+  slab modes s ∝ φe^{−λz} solve A_e φ = λ²Bφ, A_e = p + C_e − 2C_p0(p + C_00)⁻¹C_0p, B = v(p + C_o)⁻¹v. Production:
+  LAPACK geev on v⁻¹A_o v⁻¹A_e with the energy structure A_e e_p = p w_E enforced exactly (symmetric rank-two
+  correction), the diffusive pair polished by Rayleigh-quotient inverse iteration on the pencil, two-port from the wall
+  conditions. Exact for the discrete mode set (no z discretisation); one eigendecomposition per frequency serves all
+  thicknesses and wall models. Output: q(0), q(d) and the wall energy temperatures for (T_A, T_B) = (1, 0), (0, 1).
+* **Validation** (relative differences, maxima over the cases run):
+
+| check | result |
+|---|---|
+| one pair (grey two-stream with energy conservation) against the closed form of au6_test, 1 kHz–10 GHz | modal 2.1e-14; doubling 5.7e-16 |
+| random parity-symmetric conserving operator, not RTA (6 pairs + 3 local), 10 kHz–3 GHz: modal vs unpaired first-order eigensolver / vs adding-doubling / vs Chebyshev collocation (N = 240) | 9.1e-14 / 6.8e-14 / 1.6e-6 (collocation's own change N = 160 → 240: 2.2e-6); energy balance 4e-14 |
+| stiff random operator (40 pairs + 12 local, rates 1e9–1e13 s⁻¹, v_z 30–1e4 m/s): modal vs unpaired / vs doubling | 9.5e-12 / 9.5e-12 (two-port), 2.1e-12 (wall temperatures) |
+| partial walls (r = 0.5, 0.9; t = 0.5, 0.1): modal vs doubling (walls applied as a separate linear system) | 7.9e-14 (moderate operator), 1.7e-11 (stiff) |
+| RTA reduction R − (Re)(Re)ᵀ/(eᵀRe) of the REF diagonal (7×7×5, unbinned) against the audit's RTA slab code au6_slab.slab_twoport, 100 Hz–200 MHz, 300/500 nm | 5.9e-11 (two-port), 5.6e-12 (wall temperatures) |
+| full operator, REF 7×7×5: modal (paired) vs unpaired first-order eigensolver (no parity; eigenvalues λ rather than λ²), 10 kHz–200 MHz | 1.4e-11 (two-port), 4.6e-13 (wall temperatures); frequency-dependent part of Y11 ≤ 3.6e-8; unpaired reciprocity and symmetry ≤ 2e-13 |
+| full operator, REF: modal vs adding-doubling z-march (no eigendecomposition; layer d/2^K, Taylor order m, K doublings of reflection and transmission defect) | 6.6e-12 (two-port), 3.2e-13 (wall temperatures), dynamic part ≤ 3.5e-10; K = 20 / 23 / 26 and m = 4 / 6 / 10 change the result by ≤ 1e-14: converged in the z discretisation |
+| real p: unpolished geev eigenvalues λ vs the well-conditioned route λ = σ(R_e v⁻¹R_oᵀ) (Cholesky factors) | all modes ≤ 5e-10 except the diffusive one (3e-7 / 1e-8 / 6e-10 at p = 6e4 / 6e6 / 1.3e9 s⁻¹), which the polish corrects |
+| bulk limit: diffusive eigenvalue μ_d(p) = (pC/K)(1 + δp + …) against the KKT kinetic coefficients | bulk K to 1.5e-11, δ_bulk −1151.570 ps to 2.7e-7; regularised C + QDQ at 300/500 nm: δ −84.912 / −153.538 ps, equal to au3 (E-QDQ) to 3.8e-8 / 3.1e-7 |
+| large d (black walls): 1/G = d/K + 2R_w | slope gives K = 272.33337 against 272.33338 W/mK (2.2e-8); G d/K = 0.764 / 0.900 / 0.967 / 0.989 / 0.997 at 1 / 3 / 10 / 30 / 100 µm; 2R_w = 1.24e-9 m²K/W |
+| production diagnostics (all tensors, frequencies, walls) | energy balance q(0) − q(d) − p∫U ≤ 8.2e-10; pencil backward error ≤ 5e-11 |
+| AAA rational interpolation of the two-ports from every 4th FDTR frequency (24 support points incl. 100 Hz, 1, 2 kHz), REF, against exact 80-point data | two-port ≤ 5e-9, \|Δ ln H\| ≤ 7e-9, phase ≤ 2e-7 deg, δ_fit ≤ 1e-4 ps (all walls, full and RTA) |
+
+  K in SI units differs from the campaign's κ_z by 1.0e-6 (phonopy constants); all times agree to 1e-15.
+* **Fitting.** Extraction as in au6/au8: synthetic data of the 1D stack Au 80 nm / R1 / slab / R2 / sapphire
+  (au6_slab.Z_stack_slab, port 'wall' = R1, R2 on the wall emission temperatures; 'energy' = on the wall energy
+  temperatures), fitted by the twin's 1D GK film (au5_fisher1d.lnH, local convention) with τ_R fixed at the REF
+  regularised value of the same operator family and τ_ℓ free; δ_fit = τ_R − τ_ℓ,fit; witnesses fitted with the REF
+  base. The τ_ℓ-free fits start from four δ values and are warm-started from the other nuisance set's solution; without
+  the warm start two N2lam fits (300 nm, r = 0.9 and t = 0.1) stop in false minima (Δχ² = 8.1, 3.9, δ = −8.6 ns).
+  With it every fit reaches Δχ² ≤ 0.005 (full operator) and ≤ 0.011 (RTA): the GK film plus nuisances reproduces the
+  slab data to a small fraction of the noise.
+
+## R-S2 — REF on 7×7×5  [rs2_slab.py (all), rs2b_fits.py; out/rs2_m775_film2_{full,rta}_all_REF.npz, out/rs2b_m775_film2_all.json]
+
+| REF, 7×7×5 | 300 nm | 500 nm |
+|---|---|---|
+| regularised full operator C + QDQ: τ_R / τ_ℓ / δ_reg (ps); κ_z (W/mK) | 19.84 / 104.75 / −84.91; 177.9 | 24.58 / 178.12 / −153.54; 201.3 |
+| same with the wall-temperature completion (E-phys): δ | −89.16 | −157.91 |
+| regularised RTA V1: τ_R / τ_ℓ / δ (ps); λ_M | 18.44 / 131.88 / −113.45; 146.7 | 23.41 / 234.94 / −211.53; 165.0 |
+| bulk, no regulator, full / RTA: K (W/mK), δ (ps) | 272.3, −1151.6 / 224.5, −1720.4 | (same) |
+| **full slab** δ_fit, N2lam / N3, 0.01° (0.1°) | **−31.84 / −31.70** (−31.77 / −31.62) | **−62.70 / −61.00** (−62.22 / −60.61) |
+| full slab, energy port; favourable stack (N2lam / N3) | −31.06 / −31.03; −32.96 / −31.34 | −60.49 / −59.83; −62.91 / −51.40 |
+| full slab static: λ_eff = G0 d; R_slab (m²K/W) | 147.3; 2.036e-9 | 174.7; 2.861e-9 |
+| full slab fit: interior λ_z (N2lam); each wall resistance R_fit − R_nominal | 268.7 (0.987 K_bulk); 4.60e-10 | 263.0 (0.966 K_bulk); 4.80e-10 |
+| **RTA slab** δ_fit, N2lam / N3, 0.01° | **−45.09 / −44.83** | **−87.28 / −84.60** |
+| RTA slab: λ_eff; interior λ_z; wall resistance | 123.1; 208.4; 4.98e-10 | 144.4; 209.0; 5.35e-10 |
+| slab / regularised, same operator family (N3): full / RTA | 0.373 / 0.395 | 0.397 / 0.400 |
+| full slab / RTA slab (N3) | 0.707 | 0.721 |
+| full slab data against the GK film with the regularised τ_ℓ: Δχ² N2lam / N3, 0.01° | 2.0 / 0.44 | 11.8 / 1.5 |
+| full slab data against a Fourier film: Δχ² N2lam / N3, 0.01° | 0.73 / 0.22 | 6.0 / 1.0 |
+| Cattaneo film (τ_R free) against the full slab data: Δχ², τ_R (ps) | 0.000, −32.8 | 0.010, −64.9 |
+| τ_R held at ×0.5 / ×2: δ_fit N3 (ps) | −31.86 / −31.38 | −61.06 / −60.93 |
+
+* The au8 RTA-slab REF values on 7×7×5 (binned 24 × 24) are reproduced unbinned to 0.2 % (500 nm: −87.09 / −84.41 there,
+  −87.28 / −84.60 here; 300 nm: −44.93 / −44.67 against −45.09 / −44.83).
+* Reading. In the full-operator slab the interior conducts at 97–99 % of the bulk value and the size effect sits in two
+  symmetric Knudsen-layer resistances of 4.6–4.8e-10 m²K/W. The FDTR-visible first-order time is −32 ps (300 nm) and
+  −61 to −63 ps (500 nm), i.e. 0.37–0.40 of the regularised kinetic δ of the same operator and 0.71–0.72 of the RTA
+  slab; the slab/regularised ratio is the same for the full operator and its RTA reduction to within 6 %. The data fix
+  δ only (Cattaneo with τ_R = δ fits equally; τ_R ×0.5 / ×2 moves δ_fit by ≤ 0.9 ps). Under N3 at 0.01° the slab's δ
+  is only Δχ² = 1.0 (500 nm) and 0.22 (300 nm) from a Fourier film.
+
+## R-S3 — witnesses: δ values and the static-data range on 7×7×5  [rs2_slab.py (sub4), rs2b_fits.py, rs3_margins.py; out/rs2b_m775_film2_sub4.json, out/rs3_margins.json]
+
+δ in ps; wall port, note-16 stack, 0.01°; slabs with black walls; witnesses fitted with the REF base:
+
+| tensor | 300 nm: δ_reg / RTA-reg / RTA slab (N3) / **full slab (N3)** | 500 nm: δ_reg / RTA-reg / RTA slab (N3) / **full slab (N2lam; N3)** | full-slab interior λ_z, 500 nm |
+|---|---|---|---|
+| REF | −84.91 / −113.45 / −44.83 / **−31.70** | −153.54 / −211.53 / −84.60 / **−62.70; −61.00** | 263.0 |
+| orb 0.1, 30 nm max | −70.86 / −101.28 / −41.25 / **−26.37** | −124.93 / −185.22 / −76.20 / **−52.35; −50.78** | 271.3 |
+| orb 0.1, 30 nm min | −100.10 / −124.40 / −48.16 / **−36.69** | −188.73 / −236.18 / −92.21 / **−72.42; −70.54** | 250.0 |
+| orb 0.1, 100 nm max | −77.09 / −105.97 / −43.07 / **−29.53** | −135.32 / −193.91 / −80.25 / **−58.06; −56.48** | 270.8 |
+| orb 0.1, 100 nm min | −94.71 / −119.88 / −46.32 / **−33.90** | −180.20 / −228.09 / −88.22 / **−67.27; −65.38** | 249.7 |
+| orb 0.1, 300 nm max | −89.78 / −116.96 / −46.90 / **−33.90** | −159.81 / −214.17 / −89.36 / **−67.75; −66.16** | 266.1 |
+| orb 0.1, 300 nm min | −79.50 / −107.90 / −42.35 / **−28.81** | −150.46 / −206.10 / −78.48 / **−56.06; −54.24** | 254.9 |
+| cal1nz max | −72.12 / −105.67 / −42.62 / **−27.38** | −125.17 / −193.67 / −79.55 / **−54.36; −52.84** | 273.0 |
+| cal1nz min | −104.51 / −117.68 / −45.52 / **−35.62** | −209.72 / −223.83 / −86.50 / **−71.29; −69.18** | 236.8 |
+| cal3wnz max | −72.47 / −105.84 / −42.91 / **−27.76** | −125.87 / −193.77 / −79.94 / **−54.79; −53.26** | 272.8 |
+| cal3wnz min | −103.44 / −119.22 / −45.65 / **−35.85** | −202.97 / −227.21 / −87.27 / **−71.71; −69.69** | 242.0 |
+| cal3w max | −70.84 / −105.77 / −43.00 / **−27.03** | −121.64 / −193.22 / −80.15 / **−53.86; −52.38** | 273.9 |
+| cal3w min | −109.59 / −119.91 / −45.66 / **−36.81** | −217.25 / −228.61 / −87.67 / **−74.99; −72.95** | 237.9 |
+
+Static-data ranges (campaign rule: ends = largest excursion of each sign, half-range = (up − low)/2; 7×7×5 only;
+INNER BOUNDS, no witness was optimised for δ):
+
+| reading | 300 nm: range of δ (ps); half-range | 500 nm: range of δ (ps); half-range | end-setting witnesses (500 nm) |
+|---|---|---|---|
+| regularised full operator (QDQ) | [−109.59, −70.84]; 19.37 | [−217.25, −121.64]; 47.81 | cal3w min / cal3w max |
+| same, E-phys completion | 19.83 | 48.49 | same |
+| regularised RTA V1 | 11.56 | 25.48 | |
+| RTA slab, N2lam / N3 | 3.47 / 3.46 | 7.97 / 8.01 ([−92.21, −76.20], N3) | orb 30 min / orb 30 max |
+| **full slab, N2lam / N3** | **5.25 / 5.22** ([−36.81, −26.37], N3) | **11.32 / 11.08** ([−72.95, −50.78], N3) | cal3w min / orb 30 max |
+| full slab, energy port, N2lam / N3 | 4.71 / 4.70 | 10.72 / 10.67 | |
+| full slab at 0.1° (N2lam / N3) | 5.25 / 5.22 | 11.29 / 11.07 | |
+
+* **Transfer of the range** (same mesh, witnesses and operator family): full slab / regularised full operator = 0.271 /
+  0.269 (300 nm, N2lam / N3) and 0.237 / 0.232 (500 nm); RTA slab / regularised RTA = 0.300 / 0.299 and 0.313 / 0.314
+  (au8: 0.301 / 0.300 and 0.314 / 0.315). The full slab's visible range is 1.42–1.52 times the RTA slab's.
+* **The range is compressed and symmetrised.** The regularised full-operator range is asymmetric (−63.7 / +31.9 ps at
+  500 nm, carried by the calibrated 100 nm optima, about 3× their RTA-diagonal excursions); in the full slab the
+  witness excursions are −12.0 … +10.2 ps. Excursion by excursion, Δδ_fit = (0.222–0.228) Δδ_reg at 500 nm and
+  (0.274–0.276) Δδ_reg at 300 nm, correlation 0.95–0.98 (for the RTA slab the audit found T_W between 0.12 and 0.60).
+* **The visible δ co-varies with the interior conductivity.** The fitted interior λ_z of the witness slabs spans
+  −10.0 … +4.2 % (500 nm) and −11.6 … +5.1 % (300 nm) around REF; correlation with Δδ_fit 0.86–0.90 (more negative δ ↔
+  lower λ_z). With λ_z held at the REF value (N2fix) or λ_z, R1, R2 held (N1fix), the fitted "δ" spreads over 119 / 176 ps
+  (500 nm): those fits convert the conductivity difference into δ, so a δ range is not defined under N1/N2.
+
+## R-S4 — FDTR resolvability of the static-data range (1D, local convention, note-16 stack)  [rs3_margins.py; out/rs3_margins.json]
+
+σ(δ) = marginal standard deviation along τ_R at fixed τ_ℓ of the first-order GK film (au5_fisher1d.jac, sigma_dir) at
+the REF base point of each reading: REG — (τ_R, τ_ℓ, κ_z)_reg with nominal R1, R2; slab readings — the REF slab fit
+(τ_R,base, τ_R,base − δ_fit, λ_z,fit, C, R1,fit, R2,fit); margin m = σ / half-range of the same reading (N1/N2 margins of
+the slab readings use the N2lam range); m ≤ 1: resolvable at 1σ.
+
+| L, σ_φ | REG: N1 / N2 / N2lam / N3 | RTA slab: N1 / N2 / N2lam / N3 | **full slab: N1 / N2 / N2lam / N3** | full slab, σ (ps) |
+|---|---|---|---|---|
+| 500 nm, 0.01° | 0.10 / 0.16 / 0.44 / 1.39 | 0.69 / 1.15 / 2.87 / 7.98 | **0.59 / 1.01 / 2.34 / 5.97** | 6.7 / 11.4 / 26.5 / 66.5 |
+| 500 nm, 0.03° | 0.31 / 0.47 / 1.23 / 3.92 | 2.05 / 3.37 / 8.03 / 22.4 | **1.78 / 2.95 / 6.53 / 16.7** | 20.1 / 33.4 / 73.9 / 186 |
+| 500 nm, 0.1° | 0.99 / 1.33 / 2.78 / 10.2 | 6.54 / 9.26 / 17.7 / 56.8 | **5.65 / 8.03 / 14.2 / 41.9** | 64 / 91 / 161 / 467 |
+| 300 nm, 0.01° | 0.43 / 0.60 / 1.28 / 3.10 | 2.98 / 4.44 / 8.83 / 18.6 | **2.54 / 3.76 / 7.22 / 14.1** | 13.3 / 19.7 / 38.0 / 73.4 |
+| 300 nm, 0.1° | 4.01 / 4.91 / 8.50 / 22.3 | 28.0 / 35.7 / 57.3 / 127 | **23.8 / 30.1 / 46.8 / 93.6** | 125 / 158 / 246 / 489 |
+
+* **Direct nonlinear test** (each witness slab's data against the GK film at the REF-fitted point, τ_ℓ fixed, the set's
+  nuisances refitted; m_direct = 1/√max Δχ²): full slab, 500 nm: N2lam 1.94 (0.01°) / 12.5 (0.1°), N3 5.15 / 37.9, set
+  by cal3w min; 300 nm: N2lam 6.45 / 42.6, N3 13.0 / 89.0. RTA slab, 500 nm: N2lam 2.58, N3 6.30 (orb 30 max). Under
+  N1/N2 the witnesses are distinguishable (m_direct 0.02 / 0.06 at 500 nm, 0.05 / 0.10 at 300 nm), but through their
+  interior conductivity (R-S3), not through δ.
+* **Required knowledge of λ_z** (au9 method: N2 + Gaussian prior on ln λ_z, full-slab reading): no prior width gives
+  m ≤ 1 at 500 nm and 0.01° (m = 1.008 with λ_z exact, 1.52 at 1 %, 2.25 at 5 %); 300 nm: ≥ 3.76; 0.1°: ≥ 8.0.
+* **Sensitivity.** σ at the audit's convention for the slab base (λ_z = κ_reg, nominal R1, R2) lowers the full-slab
+  margins by ×0.69–0.87 (500 nm, 0.01°: 0.44 / 0.70 / 1.78 / 5.21). Favourable stack (R1 = R2 = 2e-9; σ on that stack,
+  visible range from the note-16 fits): 500 nm, 0.01°: 0.23 / 0.27 / 0.90 / 7.55; 0.1°: 2.08 / 2.41 / 7.80 / 50.8.
+  Projection onto the campaign's 9×9×6 half-range (40.64 / 15.88 ps) with the 7×7×5 transfer (labelled projection):
+  visible half-range 9.6 / 4.3 ps; full-slab margins N2lam / N3 2.75 / 7.03 (500 nm, 0.01°) and 8.8 / 17.2 (300 nm);
+  with the audit's geometric mesh continuation 4.2 / 10.7 and 12.9 / 25.2.
+* Reading. In the full-operator slab the static-data range of the visible δ is not resolvable at 0.01° once λ_z is
+  free (N2lam 2.34 at 500 nm, 7.2 at 300 nm; N3 6.0 and 14) and is not resolvable for any set at 0.1° (≥ 5.7 at 500 nm,
+  ≥ 24 at 300 nm). The only sub-unity margin, N1 at 500 nm and 0.01° (0.59; N2 1.01), assumes a known interior
+  conductivity although the witnesses that set the range change it by −10 … +4 %. The regularised first-order reading
+  on the same mesh and witnesses gives margins 4–6× smaller; the RTA slab gives margins 1.14–1.36× larger than the
+  full slab.
+
+## R-S5 — model dependence: walls, port, band  [rs2b_fits.py, rs3_margins.py, rs7_band.py; out/rs3_margins.json, out/rs7_band.json]
+
+* **Wall model** (full operator, all 13 tensors, wall port, note-16, 0.01°; REF δ_fit; half-range; margin N2lam / N3):
+
+| wall | 300 nm: REF δ (N3); half-range; m N2lam / N3 | 500 nm: REF δ (N2lam / N3); half-range (N2lam / N3); m N2lam / N3 (0.01°); m N2lam (0.1°) |
+|---|---|---|
+| black (audit convention) | −31.70; 5.22; 7.22 / 14.05 | −62.70 / −61.00; 11.32 / 11.08; 2.34 / 5.97; 14.2 |
+| gray diffuse transmission t = 0.5 | −31.68; 5.22; 7.91 / 14.97 | −62.69 / −61.03; 11.34 / 11.11; 2.55 / 6.31; 15.3 |
+| t = 0.1 | −31.61; 5.24; 15.35 / 24.68 | −62.74 / −61.36; 11.44 / 11.31; 4.76 / 9.61; 26.0 |
+| partial specular r = 0.5 | −30.05; 3.96; 8.89 / 17.42 | −53.57 / −51.70; 7.51 / 7.13; 3.45 / 9.16; 20.8 |
+| r = 0.9 | −28.69; 3.17; 19.3 / 32.5 | −46.25 / −44.91; 5.47 / 5.37; 8.11 / 17.65; 44.8 |
+
+  Diffuse partial transmission leaves δ and its range unchanged (it adds a frequency-independent resistance, which
+  raises σ); specular reflection lowers |δ| (−15 / −26 % at 500 nm for r = 0.5 / 0.9) and the range (×0.66 / ×0.48)
+  and lowers the interior λ_z (229 / 207 W/mK). Every variant makes the range less resolvable than the black wall.
+* **Port.** R1, R2 on the wall energy temperatures instead of the emission temperatures: REF δ_fit −60.5 / −59.8 ps
+  (500 nm, N2lam / N3), half-range 10.7 ps (−5 %).
+* **Band.** Fitting sub-bands of the exact REF data (out-of-band points weighted 0): full slab, 500 nm, N3, 0.01°:
+  −61.0 (10 kHz–200 MHz), −63.7 (10 kHz–50 MHz), −67.0 (1–200 MHz), −72.8 ps (10–200 MHz); 300 nm: −31.7 / −32.4 /
+  −31.5 / −30.8; RTA slab, 500 nm: −84.6 / −88.5 / −93.6 / −96.9. The visible δ is a band-effective first-order parameter
+  (Δχ² ≤ 0.003 in every band): at 300 nm within 3 % for N3 (N2lam up to 13 % in the top decade); at 500 nm within 5 %
+  for low-band-dominated fits and up to 20 % when only the top decade is used.
+
+## R-S6 — mesh trend 5×5×3 → 7×7×5 and a cheap predictor of the visible δ  [rs4_filmw_static.py, rs2_slab.py (filmw, black walls), rs2b_fits.py, rs5_trend.py, rs6_proxy.py; out/rs4_filmw_static.json, out/rs2b_{m553,m775}_filmw_sub4.json, out/rs5_trend.json, out/rs6_proxy.json]
+
+The 12 campaign witnesses have no amplitudes on 5×5×3. The trend uses REF and the ten film witnesses of fc3-memory
+E31/E32 (`filmw_pp`, single-mesh 5×5×3 film optima): admissible on 5×5×3, but on 7×7×5 they violate the static data
+(E32: κ by 2–21 %, lifetimes by 9–739 % beyond tolerance), so there they serve only as a same-tensor probe and do not
+enter any static-data range. On 7×7×5 the two δ-extreme film witnesses (regularised full operator, both thicknesses:
+cal1 fL100 min, orb 0.1 1 µm max) were run.
+
+| | 5×5×3 | 7×7×5 |
+|---|---|---|
+| modes / pairs / local | 897 / 300 / 297 | 2937 / 1176 / 585 |
+| bulk full operator: K (W/mK), δ_bulk (ps); RTA: K, δ | 202.0, −139.8; 141.1, −243.6 | 272.3, −1151.6; 224.5, −1720.4 |
+| REF 300 nm: δ_reg / full slab (N3) / ratio; RTA-reg / RTA slab / ratio | −45.35 / −28.42 / 0.627; −65.34 / −36.12 / 0.553 | −84.91 / −31.70 / 0.373; −113.45 / −44.83 / 0.395 |
+| REF 500 nm: δ_reg / full slab (N2lam; N3) / ratio; RTA-reg / RTA slab (N3) / ratio | −62.46 / −40.60; −37.63 / 0.65; 0.60; −96.96 / −52.09 / 0.537 | −153.54 / −62.70; −61.00 / 0.41; 0.40; −211.53 / −84.60 / 0.400 |
+| the same two film tensors: half-range full slab / regularised / transfer, 500 nm (N3) | 34.1 / 58.3 / 0.585 | 10.9 / 45.5 / 0.240 |
+| same, 300 nm (N3) | 18.9 / 34.7 / 0.545 | 3.95 / 18.8 / 0.210 |
+| all ten film witnesses (admissible on 5×5×3 only), 500 nm N3: half-range full slab / regularised / transfer; slope, corr | 39.9 / 66.9 / 0.597; 0.578, 0.994 | — |
+
+* Reading. From 5×5×3 to 7×7×5 the bulk nonlocal time grows ×8 (long-MFP carriers appear), the REF visible δ grows
+  from −37.6 to −61.0 ps (500 nm) and the slab/regularised ratio falls from 0.60–0.65 to 0.40–0.41; for the same tensors
+  the range transfer falls from 0.55–0.60 to 0.21–0.24 (RTA: 0.36 → 0.30–0.31). The RTA analogue continues to 0.32 for
+  the REF ratio on the converged 64×64×35 mesh (au6) and the witness transfer to 0.26 on 9×9×6 (au8). The full-operator
+  7×7×5 values are therefore not mesh-converged; the trend in both operator families is a falling transfer. No
+  full-operator slab exists on 9×9×6.
+* **Predictor** (rs6). The regularised first-order δ at the effective length L/c, c calibrated on REF, predicts the
+  witnesses' slab excursions: full operator c = 2.14 (300 nm) and 2.12–2.17 (500 nm), correlation 0.997 / 0.990, slope
+  1.11 / 0.90, maximum error 1.0 / 3.0 ps against rms excursions 4.0 / 8.1 ps; RTA c = 1.98–2.09, correlation 0.98–0.99,
+  slope 0.92–0.97. A Matthiessen rate ≈ 2.1|v_z|/L (two walls) reproduces the black-wall slab's visible δ; c = 2 is the
+  upper end of the R-A4 normalisation box, where the margins are largest. It makes δ-optimised witnesses affordable
+  (one KKT solve per evaluation instead of a slab).
+
+## R-S synthesis (answers to the open item of the R-A audit; supersedes the slab readings D/E of the audit's §6 for the full operator)
+
+* **δ values** (7×7×5; wall port, note-16, 0.01°, N3 unless stated). REF: full-operator slab −31.70 ps (300 nm) and
+  −61.00 ps (500 nm) (N2lam −31.84 / −62.70); RTA slab on the same modes −44.83 / −84.60; regularised kinetic closure of
+  the full operator −84.91 / −153.54 (E-phys completion −89.16 / −157.91), of its RTA diagonal −113.45 / −211.53. The
+  full slab shows 0.37–0.40 of the regularised value and 0.71–0.72 of the RTA slab. Witnesses (12 campaign optima): full
+  slab [−36.81, −26.37] ps at 300 nm and [−72.95, −50.78] ps at 500 nm; per-witness values in R-S3.
+* **Static-data range** (inner bounds, 12 non-δ-optimised witnesses, 7×7×5): visible half-range 5.2 ps (300 nm) and
+  11.1–11.3 ps (500 nm) in the full slab, against 3.5 / 8.0 ps in the RTA slab and 19.4 / 47.8 ps in the regularised
+  closure: transfer 0.27 / 0.23–0.24 (full) and 0.30 / 0.31 (RTA). Projected onto the campaign's 9×9×6 normalisation:
+  4.3 / 9.4–9.6 ps (6.2–6.3 ps at 500 nm with the audit's mesh continuation).
+* **Resolvability (1D, local convention, note-16 stack), full-operator slab, margins σ/half-range:** 500 nm, 0.01°:
+  N1 0.59, N2 1.01, N2lam 2.34, N3 5.97 (direct test: N2lam 1.94, N3 5.15); 0.1°: 5.65 / 8.03 / 14.2 / 41.9. 300 nm,
+  0.01°: 2.54 / 3.76 / 7.22 / 14.1; 0.1°: 23.8 / 30.1 / 46.8 / 93.6. Regularised reading on the same mesh and witnesses
+  (500 nm, 0.01°): 0.10 / 0.16 / 0.44 / 1.39; RTA slab: 0.69 / 1.15 / 2.87 / 7.98. Not resolvable at 0.1° for any set or
+  thickness; at 0.01° not resolvable with λ_z free (N2lam, N3) at either thickness. The only sub-unity margin (N1,
+  500 nm, 0.01°) presupposes a known interior conductivity, which the same witnesses change by −10 … +4 %; with λ_z
+  pinned at the REF value the fitted "δ" spreads over 119–176 ps, and even with λ_z known exactly m = 1.01 (N2).
+  Status of R-A6 "the δ range would be resolvable at 0.01° (1D, local)": CONTRADICTED within the full-operator kinetic
+  slab with diffuse walls for λ_z free (300–500 nm) and at 0.1° for every set; NUMERICALLY DEMONSTRATED for the model
+  (solver validated to ≤ 6e-11, z-exact; fits Δχ² ≤ 0.005), 7×7×5 only, inner-bound ranges.
+* **Model dependence.** Full operator vs RTA in the slab: range ×1.42–1.52, margins ×0.73–0.88 — the factor-3 model
+  dependence of the audit was between the regulator and the walls, not between the collision operators. Walls: gray
+  diffuse transmission 0.5 / 0.1 leaves δ and its range unchanged and raises σ (500 nm N2lam 2.55 / 4.76); partial
+  specularity 0.5 / 0.9 lowers |δ| by 15 / 26 % and the range by ×0.66 / ×0.48 (N2lam 3.45 / 8.11). Port: −5 %. Band:
+  ±5 % (up to 20 % using only 10–200 MHz at 500 nm). Mesh: transfer falling with refinement (R-S6). Every variant tested
+  makes the range less resolvable than the black-wall, 7×7×5 baseline.
+* **What would reverse the verdict at 0.01° (500 nm, N2lam):** a visible half-range ≥ 26.5 ps (×2.3 the inner bound),
+  i.e. δ-optimised witnesses whose regularised δ range reaches ≈ 110 ps, or interface resistances ≈ 2e-9 m²K/W
+  (favourable stack: N2lam 0.90 against the note-16 visible range). At 0.1° a ×14 wider range would be needed.
+* **Open.** δ-optimised witnesses with the R-S6 predictor as objective, checked in the slab; a 9×9×6 full-operator slab
+  (REF and range-setting witnesses); mode-dependent interface transmission instead of gray walls; finite beams.

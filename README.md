@@ -64,9 +64,10 @@ Status vocabulary: **proved** (audited proof, not machine-checked), **derived un
   2.7–7.6 % at 30–500 nm, inner bounds) is not resolvable at 0.1° phase noise for any declared nuisance set, over interface
   resistances 2–20·10⁻⁹ m²K/W, boundary-term normalisations ½–2, λ_z ± 20 % and Au 20–100 nm (margin ≥ 7×). However, the
   first-order FDTR-visible time is τ_R − τ_ℓ, and the kinetic nonlocal time of the same operator is τ_ℓ ≈ 6–9 τ_mem at
-  300–500 nm (formula audited; values under-resolved on the full operator). Whether FDTR can resolve its static-data range is
-  UNRESOLVED: the first-order expansion fails above ~20 MHz, and an exact diffuse-wall slab gives a visible time about 3×
-  smaller than the heuristic boundary regulator. What holds in every model tested: the FDTR-visible time is negative and
+  300–500 nm (formula audited; values under-resolved on the full operator). In an exact full-operator slab with diffuse walls (7×7×5
+  mesh), the visible time is −32/−61 ps at 300/500 nm and its static-data range (half-width 5–11 ps, inner bounds) is not
+  resolvable once the cross-plane conductivity is fitted (margin ≥ 2.3× at 0.01°, ≥ 5.6× at 0.1°) *(numerically supported,
+  model-conditional; audit in progress)*. What holds in every model tested: the FDTR-visible time is negative and
   several times |τ_mem|, so the Cattaneo projection is not a conservative stand-in.
 
 **Kinetic theory**
