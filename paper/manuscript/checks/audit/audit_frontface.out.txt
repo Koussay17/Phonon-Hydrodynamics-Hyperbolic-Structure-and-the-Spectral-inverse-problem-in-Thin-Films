@@ -1,0 +1,8 @@
+PASS  Eq. (35)-(36): Z from the direct two-layer BVP equals the quotient form (5 complex p, Re p > 0)   [max rel. diff 2.82e-41]
+PASS  branch independence: sigma -> -sigma leaves Z unchanged   [0.0]
+PASS  Prop. 6(ii): Z invariant under the depth-scaling gauge G_mu (mu = 3.7), direct BVP   [2.82e-41]
+PASS  Cor. 2: ell_{beta=1/3}/ell_{beta=2} = 3/2 at fixed tau_l
+PASS  Eq. (40): thick-film phase = -pi/4 + [arctan(w tau_R) - arctan(w tau_l)]/2 (direct half-space solution, decaying branch)
+PASS  entropy production = (q^2 + L^2 q_z^2)/(lambda T0^2) + third-order terms   [(2*T_0 + theta(z, t))*q(z, t)*theta(z, t)*Derivative(theta(z, t), z)/(T_0**2*(T_0 + theta(z, t))**2)]
+
+6 of 6 checks passed

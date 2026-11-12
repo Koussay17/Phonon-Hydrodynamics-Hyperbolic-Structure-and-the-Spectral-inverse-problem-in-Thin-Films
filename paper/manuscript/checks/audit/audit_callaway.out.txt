@@ -1,0 +1,17 @@
+ N     n    offdiag(U^TU)  |jx-v^2Px|  |Cj-j/tR|  |Ce|     |jx|^2/|e|^2   n*max dev  dev>=0  |Cz-z/tc|  max|1/r-tc|/tc  #zeros(jx)
+  5    124    1.67e-17     1.35e-16    1.76e-15   9.0e-16   0.333333333333    20.6745   True    8.96e-17   4.547e-02   24
+  9    728    1.59e-17     1.58e-16    4.28e-15   1.1e-15   0.333333333333    22.1265   True    1.58e-16   7.992e-03   80
+ 13   2196    1.15e-16     2.73e-16    6.41e-15   6.4e-15   0.333333333333    22.4892   True    1.15e-16   2.679e-03   168
+ 17   4912    3.38e-17     2.03e-16    4.78e-15   2.1e-15   0.333333333333    22.6311   True    1.23e-16   1.203e-03   288
+ 25  15624    5.89e-17     1.81e-16    2.44e-15   5.5e-15   0.333333333333    22.7399   True    1.10e-16   3.798e-04   624
+ 33  35936    1.63e-17     2.74e-16    9.19e-15   9.7e-15   0.333333333333    22.7801   True    1.13e-16   1.654e-04   1088
+PASS  e, P_x, P_y, P_z mutually orthogonal on O_h-symmetric meshes
+PASS  j_x = v^2 P_x (linear isotropic dispersion)
+PASS  C j = j / tau_R and C e = 0
+PASS  |j_x|^2 = v^2 |e|^2 / 3 (gives lambda = rho c v^2 tau_R / 3)
+PASS  on span{e,P}^perp, C = 1/tau_c (so C|_H has rates 1/tau_R (x3) and 1/tau_c; ker C = span{e})
+PASS  diag C = 1/tau_N + 1/tau_R - dev with 0 <= dev and n*max(dev) bounded under refinement
+PASS  lifetimes 1/r_nu -> tau_c (relative deviation decreasing to 0)
+PASS  physical current j_x vanishes on the plane k_x = 0 (it does NOT have full support)   [zero entries: 24, 80, 168, 288, 624, 1088]
+
+8 of 8 checks passed

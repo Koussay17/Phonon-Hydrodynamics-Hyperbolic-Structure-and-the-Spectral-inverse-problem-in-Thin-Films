@@ -1,0 +1,14 @@
+PASS  C <= varsigma_max diag C exactly on 48 admissible random networks (3-phonon, repeated daughters, 2<->2)
+PASS  variational inequality K0 >= 2 j^T y - y^T C y at y = R^-1 j / varsigma_max
+PASS  K0 >= K_RTA / varsigma_max (exact rationals)   [min K0*varsigma/K_RTA = 2.605687]
+PASS  s=2 exact example (repeated-daughter chain, non-Bose weights, unequal rates): admissible, C y = 2 R y, K0/K_RTA = 1/2   [1/2]
+PASS  s=3 exact example (p -> a + b): 8 modes, 7 events, energy-conserving, admissible, C y = 3 R y, K0/K_RTA = 1/3   [1/3]
+      energies: [6, 6, 6, 3, 3, 3, 3, 3]
+      events (stoichiometry): [[-1, 0, 0, 1, 1, 0, 0, 0], [-1, 0, 0, 1, 0, 1, 0, 0], [-1, 0, 0, 1, 0, 0, 1, 0], [-1, 0, 0, 1, 0, 0, 0, 1], [-1, 0, 0, 0, 1, 1, 0, 0], [0, -1, 0, 1, 1, 0, 0, 0], [0, 0, -1, 1, 1, 0, 0, 0]]
+PASS  s=4 exact example (p -> a + b + c (1 <-> 3 four-phonon events)): 9 modes, 8 events, energy-conserving, admissible, C y = 4 R y, K0/K_RTA = 1/4   [1/4]
+      energies: [6, 6, 6, 2, 2, 2, 2, 2, 2]
+      events (stoichiometry): [[-1, 0, 0, 1, 1, 1, 0, 0, 0], [-1, 0, 0, 1, 1, 0, 1, 0, 0], [-1, 0, 0, 1, 1, 0, 0, 1, 0], [-1, 0, 0, 1, 1, 0, 0, 0, 1], [-1, 0, 0, 1, 0, 1, 1, 0, 0], [-1, 0, 0, 0, 1, 1, 1, 0, 0], [0, -1, 0, 1, 1, 1, 0, 0, 0], [0, 0, -1, 1, 1, 1, 0, 0, 0]]
+PASS  mixed 3-phonon + 2<->2 network (varsigma_max = 4): lambda_max(R^-1/2 C R^-1/2) < 4 for delta > 0, -> 4 as delta -> 0   [delta=0.1: min K0*4/K_RTA = 1.219829; delta=0.01: min K0*4/K_RTA = 1.023409; delta=0.001: min K0*4/K_RTA = 1.002356; delta=1e-05: min K0*4/K_RTA = 1.000024]
+PASS  pure 2<->2 network is not admissible (s^T 1 = 0: phonon number conserved, rank < n-1)
+
+8 of 8 checks passed

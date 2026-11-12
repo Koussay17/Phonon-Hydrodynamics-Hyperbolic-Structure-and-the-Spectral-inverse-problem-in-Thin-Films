@@ -1,0 +1,13 @@
+PASS  g_ref admissible (with zero reference rates on some events)
+PASS  Gamma_min(C_ref) enclosed to 1e-30 by exact root isolation   [0.991538897402658]
+PASS  Prop. 5: every g >= g_ref/F is admissible (30 cases, F in {1/3,1/2,1,3,10})
+PASS  Prop. 5: tau(g) <= F / Gamma_min(C_ref), certified (F < 1 included)
+PASS  Prop. 5 converse: tau(g) <= 1/(rho Gamma_min(C_ref)) with rho = min over supp(g_ref) of g/g_ref   [12 admissible cases with rho = 0 (converse trivially true)]
+PASS  definitional gap: g_ref has zero entries, so min over all events of g/g_ref is undefined
+PASS  drive setup: C symmetric PSD, C e = 0, P C P = C, j = V_x e in H
+PASS  Eq. (6): -q/(grad T) -> j^T (p + C)^{-1} j as k -> 0, error O(k^2) (time reversal kills the O(k) term)   [errors 2.48e-06, 2.48e-08, 2.48e-10; orders 2.000, 1.999]
+PASS  Eq. (6): the e-projection is the energy balance p rho c theta + i k q = external source
+PASS  Eq. (6) remark: external source needed (s_ext != 0 at k -> 0 and p != 0)   [|s_ext| = 8.905e-01]
+PASS  Eq. (7): q(t) = -G int_0^t Phi(s) ds for a step gradient (sign and kernel)
+
+11 of 11 checks passed

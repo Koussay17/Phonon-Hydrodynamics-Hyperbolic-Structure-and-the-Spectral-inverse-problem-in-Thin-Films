@@ -202,3 +202,11 @@ Audit and review checks: `review/` (not modified here); replacement witnesses
 `review/cx_runs/nofor_*`, certification `review/cx_certify_new.json`, all runs
 `review/cx_summary.json`. No file in the thesis repository was edited (one bytecode cache
 regeneration, see 09-10).
+
+---
+
+**Erratum (12 November 2026).** The statement that physical currents have full support (used in the discussion of sharpness
+under lifetime constraints, and in `review/proof-audit.md` §3.4) is false: the current j^(i) vanishes wherever v_{ν,i} = 0
+(mirror planes, the k_i = 0 plane of a uniform mesh, Γ optical modes). The conclusion drawn from it survives for a different
+reason: by time reversal, supp j is a union of pairs of equal-energy modes, so j is never parallel to a three-phonon event
+vector. Found in the audit of the paper-1 manuscript (`paper/manuscript/checks/proof_audit_sections_II_IV.md`).

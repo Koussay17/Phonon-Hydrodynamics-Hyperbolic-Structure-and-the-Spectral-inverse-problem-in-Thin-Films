@@ -1,0 +1,24 @@
+PASS  matrix determinant lemma det(A + y z^T) = det A + z^T adj(A) y for a general (possibly singular) 3x3 A
+PASS  events conserve energy (zeta in e-perp)
+PASS  Z spans H (9 events, rank 5 = n_H = 5)
+PASS  psi~_I lies in H for every subset (psi~^T e = det[zeta_I, e, e] = 0)
+PASS  g admissible despite zero rates: rank C(g) = n-1
+PASS  Eq. (24): det_H(A) C^+ = sum over ALL (n_H-1)-subsets g_I psi_I psi_I^T (exact)   [126 subsets, 7 dependent (psi=0), 39 independent with psi^T j_spec = 0]
+PASS  statement gap: for j_spec some independent subsets are not bases but have psi_I != 0 and enter adj(A)
+PASS  [generic j] basis iff psi_I^T j != 0, and then psi_I/(psi_I^T j) = y_I (solved directly from Eq. 21)
+PASS  [generic j] Eq. (22): x/K0 = sum_I varpi_I y_I exactly
+PASS  [generic j] Eq. (23): |x|^2 <= M^2 K0^2 and tau <= M^2 K0   [tau = 0.152766, M^2 K0 = 737.051]
+PASS  [j in span of two events] basis iff psi_I^T j != 0, and then psi_I/(psi_I^T j) = y_I (solved directly from Eq. 21)
+PASS  [j in span of two events] Eq. (22): x/K0 = sum_I varpi_I y_I exactly
+PASS  [j in span of two events] Eq. (23): |x|^2 <= M^2 K0^2 and tau <= M^2 K0   [tau = 0.309859, M^2 K0 = 4.19699]
+PASS  non-admissible g: rank C(g) = 3 < n-1 = 5, j in range C(g)
+PASS  H = range C(g) (+) (ker C(g) cap H): PiR + PiQ = Pi_H, PiQ idempotent, Cna PiQ = 0
+PASS  extension: w_theta -> C(g)^+ j, u_theta -> -(Pi_Q E Pi_Q)^{-1} Pi_Q E w, K0(g_theta) -> K0(g), errors O(theta)   [theta=0.01: |dw|=3.2e-01, |du|=1.3e-01, dK=-4.0e-01; theta=0.0001: |dw|=3.4e-03, |du|=1.4e-03, dK=-4.3e-03; theta=1e-06: |dw|=3.4e-05, |du|=1.4e-05, dK=-4.3e-05]
+PASS  extension: w orthogonal to u_inf, and |w|^2 <= |w + u_inf|^2 <= M^2 K0(g)^2
+PASS  Prop. 3: det A/eps and K0*eps converge to positive constants; tau/(M^2 K0) -> 1   [eps=0.01: detA/eps=113.86, K0*eps=0.0482759, tau/(M^2K0)=0.000302; eps=1e-06: detA/eps=106.118, K0*eps=0.000103289, tau/(M^2K0)=0.905283; eps=1e-10: detA/eps=106.117, K0*eps=9.82409e-05, tau/(M^2K0)=0.999990; eps=1e-14: detA/eps=106.117, K0*eps=9.82404e-05, tau/(M^2K0)=1.000000; eps=1e-18: detA/eps=106.117, K0*eps=9.82404e-05, tau/(M^2K0)=1.000000]
+PASS  Prop. 3 proof: some I* U {gamma} (gamma not in I*) is a basis of H, so det A >= eps det(Z_S)^2 > 0
+PASS  Rem. 5: j = zeta_beta; no subset containing beta is a basis; g supported on J* U {beta} gives x/K0 = y_J*, tau = M^2 K0   [M^2 = 6.19602]
+PASS  Prop. 4: ker S_I^T = span(eps, phi_I) and y_I = Pi_H W phi_I / (j^T W phi_I) on all 119 bases
+PASS  LMI (27): [[C, j],[j^T, K*]] PSD iff K0(g) <= K* (admissible g), and PSD at K* = K0(g) for the non-admissible g
+
+22 of 22 checks passed

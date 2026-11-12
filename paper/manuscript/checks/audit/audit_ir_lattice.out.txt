@@ -1,0 +1,36 @@
+(a) alpha = 0.6: continuum M1 = 0.1283275278, M2 = 0.0807353863, tau = 0.6291353667
+    N =   101: M1 = 0.1280143588  M2 = 0.0773725317  tau = 0.6044051034  |tau - tau_inf|/tau_inf = 3.931e-02
+    N =   201: M1 = 0.1282078119  M2 = 0.0787961848  tau = 0.6145973762  |tau - tau_inf|/tau_inf = 2.311e-02
+    N =   401: M1 = 0.1282819401  M2 = 0.0796190801  tau = 0.6206569684  |tau - tau_inf|/tau_inf = 1.348e-02
+    N =   801: M1 = 0.1283102058  M2 = 0.0800934681  tau = 0.6242174393  |tau - tau_inf|/tau_inf = 7.817e-03
+    N =  1601: M1 = 0.1283209538  M2 = 0.0803664743  tau = 0.6262926819  |tau - tau_inf|/tau_inf = 4.518e-03
+    N =  3201: M1 = 0.1283250345  M2 = 0.0805234360  tau = 0.6274959233  |tau - tau_inf|/tau_inf = 2.606e-03
+PASS  (a) 2alpha < d: tau_RTA(N) -> M2/M1 (relative error monotonically decreasing, < 1e-2 at N = 3201)
+    observed error exponent between N = 801 and 3201: 0.792 (expected about d - 2 alpha = 0.80)
+(b) alpha = 1.0: predicted d tau/d ln N = (2pi)^-2 A_2 / M1 = 0.38853884  (M1 = 0.13155855, A_2 = 2.01796324)
+    N =   201: tau = 1.74944425, M1(N) = 0.13055227, local slope = 0.37900130, slope/pred = 0.975453
+    N =   401: tau = 2.01348499, M1(N) = 0.13105465, local slope = 0.38230398, slope/pred = 0.983953
+    N =   801: tau = 2.27964931, M1(N) = 0.13130641, local slope = 0.38468637, slope/pred = 0.990085
+    N =  1601: tau = 2.54713175, M1(N) = 0.13143243, local slope = 0.38624354, slope/pred = 0.994092
+    N =  3201: tau = 2.81540156, M1(N) = 0.13149548, local slope = 0.38720601, slope/pred = 0.996570
+PASS  (b) 2alpha = d: tau_RTA(N) grows like ln N with the predicted constant (|slope/pred - 1| decreasing, < 5e-3)
+(c) alpha = 1.5: predicted tau/N^(2alpha-d) -> (2pi)^(-2alpha) S_2 / M1 = 0.07665063  (S_2 = 3.48512991, M1 = 0.18330050)
+    N =   101: M1(N) = 0.15983787, tau/N^(2alpha-d) = 0.08839344, ratio/pred = 1.153199
+    N =   201: M1(N) = 0.16671031, tau/N^(2alpha-d) = 0.08512570, ratio/pred = 1.110568
+    N =   401: M1(N) = 0.17156967, tau/N^(2alpha-d) = 0.08260723, ratio/pred = 1.077711
+    N =   801: M1(N) = 0.17500564, tau/N^(2alpha-d) = 0.08078517, ratio/pred = 1.053940
+    N =  1601: M1(N) = 0.17743518, tau/N^(2alpha-d) = 0.07950633, ratio/pred = 1.037256
+    N =  3201: M1(N) = 0.17915311, tau/N^(2alpha-d) = 0.07862154, ratio/pred = 1.025713
+    M2(N)/N^(2alpha-d)/[(2pi)^(-2alpha) S_2] - 1 = 2.50e-03 at N = 3201; M1(N) error exponent = 0.500 (expected d - alpha = 0.5); Richardson limit of (tau/N^(2alpha-d))/pred = 0.99785
+PASS  (c) d/2 < alpha < d: M2(N) ~ (2pi)^(-2alpha) S_2 N^(2alpha-d) (within 1e-2), M1(N) -> M1 at rate N^-(d-alpha), so tau/N^(2alpha-d) -> (2pi)^(-2alpha) S_2/M1 (extrapolated within 5e-3)
+(d) alpha = 2.0: predicted dM1/dlnN = 0.06291152, M2/N^d -> 0.00163638, tau ln N/N^d -> 0.02601090
+    N =   201: M1 slope/pred = 1.013616, (M2/N^d)/pred = 1.021140, (tau lnN/N^d)/pred = 1.1120
+    N =   401: M1 slope/pred = 1.006875, (M2/N^d)/pred = 1.011567, (tau lnN/N^d)/pred = 1.0894
+    N =   801: M1 slope/pred = 1.003455, (M2/N^d)/pred = 1.006073, (tau lnN/N^d)/pred = 1.0746
+    N =  1601: M1 slope/pred = 1.001732, (M2/N^d)/pred = 1.003118, (tau lnN/N^d)/pred = 1.0644
+    N =  3201: M1 slope/pred = 1.000867, (M2/N^d)/pred = 1.001582, (tau lnN/N^d)/pred = 1.0572
+PASS  (d) alpha = d: M1(N) ~ (2pi)^-d A_1 ln N, M2(N) ~ N^d (2pi)^-2d S_2, hence tau ~ N^d/ln N (constants within 1e-2)
+    note: (tau ln N / N^d)/pred = 1.0572 at N = 3201 -> 1 only like 1 + O(1/ln N)
+    elapsed 104.1 s
+
+4 of 4 checks passed

@@ -1,0 +1,31 @@
+PASS  Ex.1 C_A: unit diagonal, Ce=0, rank 3, graph Laplacian (zero row sums, nonpositive off-diagonal)
+PASS  Ex.1 K_A(p) from eigen-decomposition equals Eq. (17)   [6/(3*p + 4)]
+PASS  Ex.1 K_A(0) = 3/2 and tau_mem = 3/4
+PASS  Ex.1 C_B: unit diagonal, Ce=0, rank 3, graph Laplacian (zero row sums, nonpositive off-diagonal)
+PASS  Ex.1 K_B(p) from eigen-decomposition equals Eq. (17)   [(2*p + 3)/((p + 1)*(p + 2))]
+PASS  Ex.1 K_B(0) = 3/2 and tau_mem = 5/6
+PASS  H0 H0^T = 8 I and H0 symmetric
+PASS  (i) char. polynomial of C_eta = lam (lam^2-(2+eta^2)lam+eta^2)(lam-2+eta^2)(lam-1)^2((lam-1)^2-eta^2)
+PASS  (i) C_eta e = 0; the zero eigenvalue is simple (nonzero roots have product eta^2(2-eta^2)(1-eta^2) > 0 on (0,1))
+PASS  (i) every nonzero root positive on (0,1): sum 2+eta^2>0, product eta^2>0, 2-eta^2>0, 1-eta>0
+PASS  (ii) diag C_eta = 1 identically in eta
+PASS  (iii) K_eta(p) from the full 8x8 resolvent = (p+eta^2)/D(p)   [(eta**2 + p)/(eta**2*p + eta**2 + p**2 + 2*p)]
+PASS  (iii) via the regularized solve: K0 = 1, N = 1 + eta^-2, tau = N/K0 = 1 + eta^-2
+PASS  (iv) i -> i XOR 3 is an involution without fixed points
+PASS  (iv) P C_eta = C_eta P, P e = e, P j = -j
+PASS  (iv) proof step: P h_k = (-1)^popcount(3&k) h_k for k = 0..7
+PASS  (iv) j_{i xor 3} = -j_i for all i (current odd, energy even)
+PASS  (v) K(p)(p+2) - 1 = eta^2/D(p)
+PASS  (v) |K(i w)(i w+2)-1| <= eta^2/(2 w) on 81 x 4 points (max ratio LHS/RHS < 1)   [max ratio 0.999950]
+PASS  Rem.1 D has two real negative roots for 0<eta<1
+PASS  Rem.1 slow root = -eta^2/2 + eta^4/8 + O(eta^6)   [eta**4/8 - eta**2/2]
+PASS  Rem.1 residue of slow pole = eta^2/4 + O(eta^4)   [eta**4/16 + eta**2/4]
+PASS  Rem.1 residues sum to |j|^2 = 1
+PASS  Rem.1 slow pole carries K0 fraction -> 1/2 and N = eta^-2 + O(1) (all of the divergence)   [N_slow - eta^-2 -> 3/4]
+PASS  Rem.1 60-digit eigen-decomposition: slowest rate and its current weight equal -slow root and its residue (eta=0.2,0.05,0.01)
+PASS  Lemma 1 time-domain form at eta=0.3: int t Phi / int Phi = 1 + eta^-2 (quadrature, 60 digits)   [12.111111111111111111]
+PASS  consequence: tau_mem(eta(tau)) = tau and eta(tau) in (0,1) for tau > 2
+PASS  Rem.3 h_1^T C h_2 = eta, h_1^T C h_1 = eta^2
+PASS  Rem.3 |u^T C j| <= R u^T C u on 200 random rational cones
+
+29 of 29 checks passed
