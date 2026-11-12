@@ -1,0 +1,32 @@
+=== 1. counting bound and shell constant C1 = (6/rho0)^d
+    square 2pi I          : rho0 = 6.283185; max count/(3R/rho0)^d = 0.4375; max shell sum/(C1 2^(l(d-s))) over s in (0, d/2, d, 3d/2) = 0.2742
+    hexagonal             : rho0 = 7.255197; max count/(3R/rho0)^d = 0.5883; max shell sum/(C1 2^(l(d-s))) over s in (0, d/2, d, 3d/2) = 0.5483
+    skew 2D               : rho0 = 0.908735; max count/(3R/rho0)^d = 0.4582; max shell sum/(C1 2^(l(d-s))) over s in (0, d/2, d, 3d/2) = 0.2753
+    bcc (fcc reciprocal)  : rho0 = 10.882796; max count/(3R/rho0)^d = 0.3032; max shell sum/(C1 2^(l(d-s))) over s in (0, d/2, d, 3d/2) = 0.1777
+PASS  counting bound (3R/rho0)^d and shell bound C1 2^{l(d-s)}, C1 = (6/rho0)^d, hold on square, hexagonal, skew 2D and bcc 3D lattices (all ratios <= 1)   [worst count ratio 0.588, worst shell ratio 0.548]
+    A(Phi_jump) = 5.759586531581 (closed form 5.759586531581); A(Phi_arc) = 0.02
+=== 2. shell Riemann sums a_l / 2^{l(d-s)} -> c* (hexagonal lattice, Phi with jumps)
+    s = 1.0: c* = 0.1263462052; relative deviation by l = 4..11: -9.45e-03, -1.60e-02, +2.28e-03, -5.29e-03, +1.71e-03, -1.06e-03, -2.15e-05, -2.68e-05
+    s = 2.0: c* = 0.0875765159; relative deviation by l = 4..11: -4.34e-02, -2.25e-02, +6.20e-04, -5.80e-03, +1.89e-03, -1.20e-03, +6.78e-05, -8.45e-06
+    s = 3.0: c* = 0.0631731026; relative deviation by l = 4..11: -8.25e-02, -2.99e-02, -7.77e-04, -6.73e-03, +2.24e-03, -1.43e-03, +1.71e-04, +1.35e-05
+PASS  (S6): a_l/2^{l(d-s)} -> c* for s = 1, 2, 3 on the hexagonal lattice with an angular function discontinuous on four directions (deviation < 2e-3 at l = 11 and decreasing)
+=== 3. part (a), s = 1 < d = 2 (hexagonal and skew lattices)
+    hexagonal: max ratio in uniform bound = 0.1007 (C = 1.3678); N^(s-d) sum phi / target - 1 = -1.03e-02, -2.73e-03, -6.92e-04; error-term sum -> 0.033333 (integral prediction 0.033333, bound (S4) 0.050000)
+    skew 2D: max ratio in uniform bound = 0.0868 (C = 87.1882); N^(s-d) sum phi / target - 1 = -5.85e-03, -9.66e-04, -1.56e-04; error-term sum -> 0.229298 (integral prediction 0.229307, bound (S4) 0.343961)
+PASS  part (a): uniform small-ball bound with C = C1/(1-2^{s-d}); N^{s-d} sum phi -> A k0^{d-s}/((d-s)|det B|); error terms within the bound of (S4)
+=== 4. part (b), s = d = 2 (hexagonal lattice; Phi with jumps; error theta(t) = 0.5/(1+|log t|))
+    local slope / (|det B|^-1 A) by doubling: 1.00062, 0.99420, 1.00189, 0.99880, 1.00007, 0.99999, 0.99998, 0.99999
+    S_N - |det B|^-1 A log N: -0.19064, -0.19059, -0.19109, -0.19093, -0.19103, -0.19103, -0.19103, -0.19103, -0.19103
+    error-term sum / log N: 0.02155, 0.02094, 0.02011, 0.01931, 0.01850, 0.01775, 0.01704, 0.01638, 0.01576   (sum itself: 0.0896, 0.1016, 0.1115, 0.1205, 0.1283, 0.1353, 0.1417, 0.1476, 0.1530)
+PASS  part (b): slope of S_N in log N -> |det B|^-1 A (within 5e-3 at the last doubling); error-term sum grows but its ratio to log N decreases
+=== 5. part (c), s = 4 > d = 2 (square lattice; Phi supported on the arc 0.10 < theta < 0.12)
+    S_N: 9.542294629949e-08, 1.240454441869e-07, 1.255074900787e-07, 1.256002296519e-07; term n = (9,1): 9.542295e-08
+    error-term sums: 1.8210e-03, 1.2070e-03, 7.9670e-04, 5.2565e-04
+PASS  part (c): S_N converges to S_Phi > 0 for Phi supported on a small arc (positivity through a lattice direction in the arc); error terms -> 0
+=== 5b. d = 3, bcc reciprocal lattice: part (b) slope and part (c) limit with a jump function
+    s = d = 3: local slope / (|det B|^-1 A): 0.94456, 1.00088, 0.99701, 1.00020
+    s = 6: S_N = 3.9709734473e-06, 4.0020459861e-06, 4.0063186567e-06, 4.0068439846e-06
+PASS  d = 3 (bcc, jump on a plane of directions): log slope -> |det B|^-1 A (within 2e-2); s > d sums converge
+    elapsed 20.1 s
+
+6 of 6 checks passed

@@ -1,0 +1,38 @@
+=== Table S1 networks
+PASS  S1 net varsigma=2: n=5, 4 events all of size 2, energy-conserving, ker S^T = span(eps) (rank n-1), s*psi constant on supports, event-wise identity for symbolic weights
+PASS  S1 net varsigma=2: 4 random rational weight/rate sets: K0/K_RTA = 1/2 (bordered system), det(2R - C) = 0 and 2R - C PSD (so lambda_max(G) = 2 exactly)
+PASS  S1 net varsigma=2: Bose weights at T = 0.7, 3, 20 (energy units), unequal rates: |K0/K_RTA - 1/2| < 1e-40   [max deviation 1.34e-51]
+PASS  S1 net varsigma=3: n=8, 7 events all of size 3, energy-conserving, ker S^T = span(eps) (rank n-1), s*psi constant on supports, event-wise identity for symbolic weights
+PASS  S1 net varsigma=3: 4 random rational weight/rate sets: K0/K_RTA = 1/3 (bordered system), det(3R - C) = 0 and 3R - C PSD (so lambda_max(G) = 3 exactly)
+PASS  S1 net varsigma=3: Bose weights at T = 0.7, 3, 20 (energy units), unequal rates: |K0/K_RTA - 1/3| < 1e-40   [max deviation 6.68e-52]
+PASS  S1 net varsigma=4: n=9, 8 events all of size 4, energy-conserving, ker S^T = span(eps) (rank n-1), s*psi constant on supports, event-wise identity for symbolic weights
+PASS  S1 net varsigma=4: 4 random rational weight/rate sets: K0/K_RTA = 1/4 (bordered system), det(4R - C) = 0 and 4R - C PSD (so lambda_max(G) = 4 exactly)
+PASS  S1 net varsigma=4: Bose weights at T = 0.7, 3, 20 (energy units), unequal rates: |K0/K_RTA - 1/4| < 1e-40   [max deviation 6.68e-52]
+=== equality criterion vs det(sR - C) on random uniform networks
+PASS  equality criterion: 'exists y with constant zeta*y on all supports' <=> det(sR - C) = 0, on 99 random admissible uniform networks (50 with equality)
+=== mixed family (energies 1..6; 2+5->3+4 rate 1; six three-phonon events rate delta)
+PASS  mixed: all events conserve energy; ker S^T = span(eps) (rank 5); the three-phonon events alone already have rank 5
+PASS  mixed: for y = W psi, psi = (0,1,-1,-1,1,0), y^T C y = 16 + 10 delta and y^T R y = 4 + 12 delta for ALL weights (the bound (S2) is weight independent)
+    diag(C) = [4*delta, 3*delta + 1, 3*delta + 1, 3*delta + 1, 3*delta + 1, 2*delta]
+    det(4R - C) = 16*delta**3*(25519*delta**3 + 36634*delta**2 + 17285*delta + 2678)
+PASS  mixed: 4R - C positive definite for every delta > 0 (all leading principal minors are polynomials in delta with nonnegative coefficients), hence lambda_max(G) < 4 and min 4K0/K_RTA > 1 strictly
+    det(lam R - C) = delta**2*lam*(648*delta**4*lam**5 - 3888*delta**4*lam**4 + 8901*delta**4*lam**3 - 9666*delta**4*lam**2 + 4949*delta**4*lam - 952*delta**4 + 864*delta**3*lam**5 - 5184*delta**3*lam**4 + 12378*delta**3*lam**3 - 14790*delta**3*lam**2 + 8868*delta**3*lam - 2120*delta**3 + 432*delta**2*lam**5 - 2592*delta**2*lam**4 + 5924*delta**2*lam**3 - 6250*delta**2*lam**2 + 2905*delta**2*lam - 432*delta**2 + 96*delta*lam**5 - 576*delta*lam**4 + 1142*delta*lam**3 - 882*delta*lam**2 + 222*delta*lam + 8*lam**5 - 48*lam**4 + 71*lam**3 - 28*lam**2)
+    delta = 0.1: 4/lambda_max in [1.219829059465041177342, 1.219829059465041177342]; bound 1.22352941176; stated 1.2198
+    delta = 0.01: 4/lambda_max in [1.023409053581387434049, 1.023409053581387434049]; bound 1.02360248447; stated 1.0234
+    delta = 0.001: 4/lambda_max in [1.002355739396504799271, 1.002355739396504799271]; bound 1.00237351655; stated 1.00236
+    delta = 1e-05: 4/lambda_max in [1.000023573778097912731, 1.000023573778097912731]; bound 1.00002374985; stated 1.000024
+PASS  mixed: certified enclosures of min 4K0/K_RTA = 4/lambda_max(G) (exact root isolation of det(lam R - C)) agree with the stated 1.2198, 1.0234, 1.00236, 1.000024, lie in (1, (16+48d)/(16+10d)] and decrease
+    det(lam R - C) = delta^2 Q(lam, delta); Q(4,0) = 0, Q_lam(4,0) = 4544; d lam_max/d delta (0) = -1339/142; 4/lam_max = 1 + 1339/568 delta + O(delta^2)
+PASS  mixed: lambda_max(0+) = 4 is a simple root of the reduced determinant; 4/lambda_max = 1 + c delta + O(delta^2) with c below the slope 38/16 of the bound (S2)   [c = 1339/568 = 2.35739436620]
+=== min over j in H of K0/K_RTA equals 1/lambda_max(G)
+    delta = 0.1: 1/lambda_max = 0.30495726486626, K0/K_RTA at j* = 0.30495726486626, min over 300 random j = 0.369960298760568
+    delta = 0.001: 1/lambda_max = 0.250588934849126, K0/K_RTA at j* = 0.250588934849126, min over 300 random j = 0.770999530255257
+PASS  min_j K0/K_RTA = 1/lambda_max(G): attained at j* = C y* (y* top generalized eigenvector), never undercut by random j in H
+=== self-energy linewidth with half weight on the repeated daughter (chain 1,2,4,8,16)
+    trial 0: K0/(K_RTA/2) = 1, K0/(K~_RTA/2) = 0.721789365530
+    trial 1: K0/(K_RTA/2) = 1, K0/(K~_RTA/2) = 0.686492344644
+    trial 2: K0/(K_RTA/2) = 1, K0/(K~_RTA/2) = 0.687631528423
+PASS  self-energy: with the self-coupling of the repeated daughter at half weight, K0 < K~_RTA/varsigma_max at the equality current of the chain (the inequality fails, as the main text states)
+PASS  any linewidth r~ <= diag C with r~ < diag C on a current-carrying mode breaks K0 >= K~_RTA/varsigma at an equality current (varsigma = 3 net, one rate reduced by 1%)   [K0/(K~_RTA/3) = 0.997241875525]
+
+18 of 18 checks passed

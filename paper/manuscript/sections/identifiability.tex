@@ -143,7 +143,7 @@ end is approached in a given event geometry is a numerical question \PENDING{cro
 $\tmem/\tstat$ found in the Debye and AlN event geometries, Sec.~\ref{sec:aln}}.
 
 The static data are not independent of each other. For an event operator, the dc response is bounded
-below by the RTA response built from the same diagonal.
+below by the RTA response built from the same diagonal, up to the factor $1/\varsigma_{\max}$.
 
 \begin{lemma}[Consistency of lifetimes and dc response; \status{proved}]\label{lem:rta}
 Let $g$ be admissible, $\mathbf r=\mathrm{diag}\,\Cop(g)$ and $K_{\rm RTA}=\sum_\nu j_\nu^2/r_\nu$, and let
@@ -457,7 +457,7 @@ $N_1\to\infty$, with no condition on $K_0$; for $2\alpha>d$, $\tmem\gtrsim N_1^{
 $2\alpha=d$, $\tmem\gtrsim(\log N_1)^{1/2}$. These are lower bounds; two-sided mesh exponents for the
 event operator do not follow.
 \item[(iii)] \emph{Cone constant} (\status{derived under assumptions}, namely (H4) and the uniform form
-of (H1)). Under the hypotheses of (ii), $M_{N_1}^2K_{0,N_1}\to\infty$, where $M_{N_1}$ is the constant of
+of (H1)). Under the hypotheses of (ii) and $2\alpha\ge d$, $M_{N_1}^2K_{0,N_1}\to\infty$, where $M_{N_1}$ is the constant of
 Theorem~\ref{thm:cone} for the event family on the mesh; if, in addition, $K_{0,N_1}$ stays bounded,
 $M_{N_1}\to\infty$.
 \end{enumerate}

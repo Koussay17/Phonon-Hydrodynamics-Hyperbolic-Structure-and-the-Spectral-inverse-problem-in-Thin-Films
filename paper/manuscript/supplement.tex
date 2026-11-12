@@ -35,7 +35,7 @@
 \date{\today}
 \maketitle
 
-\PENDING{content of Secs.~S1, S3 and S5--S11, and of the self-energy part of Sec.~S2}
+\PENDING{content of Secs.~S1, S3 and S5--S11}
 
 Numbers of equations, statements and hypotheses without the prefix S refer to the main text.
 
@@ -61,7 +61,7 @@ $K_0=\yy\tr\Cop\yy=\varsigma_{\max}\,\yy\tr\mathrm{diag}(\mathbf r)\,\yy$ and
 $K_{\rm RTA}=\varsigma_{\max}^2\,\yy\tr\mathrm{diag}(\mathbf r)\,\yy$, so that $K_0/K_{\rm RTA}=1/\varsigma_{\max}$
 exactly.
 
-For event vectors $\bm\zeta_\gamma=\mathsf W^{-1}\mathbf s_\gamma$ [Eq.~(15)] and $\yy=\mathsf W\bm\psi$, one
+For event vectors $\bm\zeta_\gamma=\mathsf W^{-1}\mathbf s_\gamma$ [Eq.~(15), derived there for three-phonon events; the same linearization gives $\bm\zeta_\gamma=\mathsf W^{-1}\mathbf s_\gamma$ for $1\leftrightarrow3$ and $2\leftrightarrow2$ events] and $\yy=\mathsf W\bm\psi$, one
 has $\zeta_{\gamma\nu}y_\nu=s_{\gamma\nu}\psi_\nu$, so the conditions involve the stoichiometry only. If
 every event of a network touches $\varsigma_{\max}$ modes and $s_{\gamma\nu}\psi_\nu$ takes a single value on
 $\mathrm{supp}\,\mathbf s_\gamma$ for every $\gamma$, then Eq.~\eqref{eq:Seq} holds for all positive weights
@@ -106,7 +106,7 @@ $K_0=\jj\tr(\Cop+\ee\ee\tr/|\ee|^2)^{-1}\jj$ computed without using Eq.~\eqref{e
 By Lemma~2 the inequality is strict when an active event touches fewer than $\varsigma_{\max}$ modes; the
 constant can nevertheless not be improved. Writing $\jj=\mathrm{diag}(\mathbf r)^{1/2}\mathbf u$, where
 $\mathbf u$ lies in the range of $G=\mathrm{diag}(\mathbf r)^{-1/2}\,\Cop\,\mathrm{diag}(\mathbf r)^{-1/2}$
-exactly when $\jj\in\Hsp$, gives $K_0=\mathbf u\tr G^+\mathbf u$ and $K_{\rm RTA}=|\mathbf u|^2$. Hence
+exactly when $\jj\in\Hsp$, gives $K_0=\mathbf u\tr G^+\mathbf u$ (if $G\mathbf z=\mathbf u$, then $\Cop\,\mathrm{diag}(\mathbf r)^{-1/2}\mathbf z=\jj$) and $K_{\rm RTA}=|\mathbf u|^2$. Hence
 $\min_{\jj\in\Hsp\setminus\{0\}}K_0/K_{\rm RTA}=1/\lambda_{\max}(G)$, and $\lambda_{\max}(G)$ is at least
 $\yy\tr\Cop\yy/\yy\tr\mathrm{diag}(\mathbf r)\,\yy$ for every $\yy\ne0$. Take six modes with energies
 $(1,2,3,4,5,6)$ and unit weights, the $2\leftrightarrow2$ event $2+5\to3+4$ with rate $1$, and the six
@@ -123,8 +123,12 @@ The minima $4/\lambda_{\max}(G)$ are $1.2198$, $1.0234$, $1.00236$ and $1.000024
 $10^{-2}$, $10^{-3}$ and $10^{-5}$ (script \texttt{checks/\allowbreak audit/\allowbreak audit\_lemma2.py}).
 
 \paragraph*{Self-energy linewidths.}
-\PENDING{exact counterexample for a linewidth that counts the self-coupling of a repeated daughter with
-half weight (chain with energies $1,2,4,8,16$)}
+Let $\tilde{\mathbf r}\le\mathbf r$ be a linewidth that is strictly smaller than $\mathbf r$ on at least one
+mode carrying current, such as one that counts the self-coupling of a repeated daughter with half weight. At an
+equality current $\jj=\Cop\yy$ of Lemma~2, $K_0=K_{\rm RTA}/\varsigma<\tilde K_{\rm RTA}/\varsigma$, so the
+inequality fails for $\tilde{\mathbf r}$. For the chain with energies $1,2,4,8,16$ ($\varsigma=2$) and the
+half-weight self-coupling, $K_0/(\tilde K_{\rm RTA}/2)=0.722$, $0.686$ and $0.688$ for three random sets of
+weights and rates, in exact arithmetic (\texttt{checks/\allowbreak audit\_supp/\allowbreak audit\_s2\_networks.py}).
 
 \section{Lifetime-constrained sharpness of the cone bound: an exact seven-mode example}
 
@@ -231,7 +235,7 @@ $\mathsf B\mathbf n/|\mathsf B\mathbf n|\in U$, and then $\varphi(\mathbf n)>0$.
 \end{proof}
 
 \paragraph*{Regularity is necessary.}
-If $\Phi=0$ on the countable set of directions $\mathsf B\mathbf n/|\mathsf B\mathbf n|$ and $\Phi=1$
+Let $d\ge2$. If $\Phi=0$ on the countable set of directions $\mathsf B\mathbf n/|\mathsf B\mathbf n|$ and $\Phi=1$
 elsewhere, then $A=|S^{d-1}|>0$ but $\varphi\equiv0$, and $S_N$ consists of the error terms alone. Taking
 $J=J_0(\hat{\mathbf k})$ with such a $J_0^2$ and $r=k^\alpha$ near $\Gamma$ satisfies (H1)--(H3), but every
 mesh point near $\Gamma$ then has $J=0$ and the mesh laws fail. Likewise, setting $J=0$ at the mesh points
@@ -254,7 +258,7 @@ Lemma~\ref{lem:lattice} and $|\det\mathsf B|\,V_{\rm cell}=(2\pi)^d$ give:
 \item $m\alpha>d$: $\mathcal M_m(N_1)=N_1^{m\alpha-d}S_m/V_{\rm cell}\,[1+o(1)]$, with $S_m=S_{\Phi_m}\in(0,\infty)$;
 \item $m\alpha=d$: $\mathcal M_m(N_1)=(2\pi)^{-d}A_m\log N_1+o(\log N_1)$;
 \item $m\alpha<d$: for $0<\delta<k_0$ the part $k<\delta$ of $\mathcal M_m(N_1)$ is at most
-$C'\delta^{d-m\alpha}$ for all $N_1$, by Lemma~\ref{lem:lattice}(a), and so is the part $k<\delta$ of
+$C'\delta^{d-m\alpha}$ for all $N_1$, by Lemma~\ref{lem:lattice}(a) for the acoustic branches and by the same lemma with $m=0$ for the optical branches (at most $C''\delta^d$), and so is the part $k<\delta$ of
 $\mathcal M_m$. On $k\ge\delta$ the integrands are bounded, by (H1) and (H3), and Riemann integrable, by
 (H5), so the remaining mesh sums converge to the remaining part of $\mathcal M_m$. Hence
 $\limsup_{N_1\to\infty}|\mathcal M_m(N_1)-\mathcal M_m|\le2C'\delta^{d-m\alpha}$ for every $\delta$, that is,
@@ -287,19 +291,19 @@ Theorem~3(ii).
 
 \paragraph*{Numerical check.}
 The script \texttt{checks/\allowbreak audit/\allowbreak audit\_ir\_lattice.py} of the manuscript sources
-compares the constants with exact lattice sums (double precision; continuum moments and $A_m$ by adaptive
+compares the constants with direct lattice sums (double precision; continuum moments and $A_m$ by adaptive
 quadrature; $S_2$ by a lattice sum over $|\mathbf n|\le1500$ with a continuum tail).
 The test uses $d=2$, $\mathsf B=2\pi I$ ($V_{\rm cell}=1$), odd $N_1$ from $101$ to $3201$,
 $J^2=(\hat k_x^2+0.3k)\,e^{-k^2/8}$ and $r=(1+2.4\hat k_x^2\hat k_y^2)\,k^\alpha(1+0.5k^2)$. Here
 $J_0^2=\hat k_x^2$ vanishes on the line $\hat k_x=0$, so the correction to $J^2$ is additive.
 Table~\ref{tab:ir} gives the results at $N_1=3201$. The laws are approached slowly. Through
-$\mathcal M_1(N_1)$, which converges like $N_1^{-(d-\alpha)}$ for $\alpha<d$, the ratio of
+$\mathcal M_1(N_1)$, which in this test converges like $N_1^{-(d-\alpha)}$, the ratio of
 $\tmem^{\rm RTA}$ to $N_1^{2\alpha-d}S_2/(V_{\rm cell}\mathcal M_1)$ is still $1.026$ at $N_1=3201$ for
 $\alpha=1.5$, and at $\alpha=d$ the relative correction decays like $1/\log N_1$. Exponents fitted on
 coarse meshes are therefore biased.
 
 \begin{table}[htbp]
-\caption{Mesh laws of Theorem~3(i) against exact lattice sums ($d=2$; model in the text).}
+\caption{Mesh laws of Theorem~3(i) against direct lattice sums ($d=2$; model in the text).}
 \label{tab:ir}
 \begin{ruledtabular}
 \begin{tabular}{l p{0.36\textwidth} p{0.40\textwidth}}
@@ -310,8 +314,8 @@ $1$ ($2\alpha=d$) & slope $(2\pi)^{-2}A_2/\mathcal M_1=0.3885388$ of $\tmem^{\rm
 & local slope $0.99657$ times the prediction, increasing with $N_1$\\
 $1.5$ ($d/2<\alpha<d$) & $\mathcal M_2(N_1)/N_1^{2\alpha-d}\to S_2$
 & relative deviation $2.5\times10^{-3}$; $\mathcal M_1(N_1)\to\mathcal M_1$ like $N_1^{-0.500}$
-(\mbox{$d-\alpha=0.5$}); $\tmem^{\rm RTA}/[N_1^{2\alpha-d}S_2/\mathcal M_1]$ extrapolated in $N_1$:
-$0.99785$\\
+(\mbox{$d-\alpha=0.5$}); $\tmem^{\rm RTA}/[N_1^{2\alpha-d}S_2/\mathcal M_1]$: $0.99785$ after removing the $N_1^{-1/2}$ correction of
+$\mathcal M_1$ only, $0.9990$ from a three-term fit (proved limit $1$)\\
 $2$ ($\alpha=d$) & slope $(2\pi)^{-2}A_1$ of $\mathcal M_1(N_1)$ against $\log N_1$, and
 $\mathcal M_2(N_1)/N_1^d\to S_2$
 & ratios $1.00087$ and $1.00158$; $\tmem^{\rm RTA}\log N_1/N_1^d$ is still $1.057$ times its limit\\

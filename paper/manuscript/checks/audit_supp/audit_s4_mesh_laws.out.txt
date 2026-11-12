@@ -1,0 +1,33 @@
+A: A_1 = 2.483647066449 (closed form) vs 2.483647066449 (quad); A_2 = 2.017963241490 vs 2.017963241490
+PASS  A: closed forms A_1 = pi/sqrt(1.6), A_2 = 1.3 pi/1.6^1.5 agree with quadrature
+A: alpha = 1.5: sum_n Phi_2 |n|^-3 by smoothed cutoff R = 40, 80, 160: 3.4851299139990, 3.4851299132962, 3.4851299132961
+PASS  A: smoothed-cutoff lattice sum for alpha = 1.5 is converged in R (change < 1e-10 between R = 80 and 160)
+A: alpha = 2.0: sum_n Phi_2 |n|^-4 by smoothed cutoff R = 40, 80, 160: 2.5503801579123, 2.5503801578804, 2.5503801578804
+PASS  A: smoothed-cutoff lattice sum for alpha = 2.0 is converged in R (change < 1e-10 between R = 80 and 160)
+    for comparison, the sharp-cutoff value of the earlier script (alpha = 1.5): 3.48512991
+PASS  A: S_2(alpha = 1.5) agrees with the sharp-cutoff value 3.48512991 used for Table S2 (to 1e-7)   [3.4851299133]
+A: continuum moments (QUADPACK, algebraic weight): M_1(alpha=0.6) = 0.1283275278, M_2(alpha=0.6) = 0.0807353863, M_1(alpha=1.0) = 0.1315585480, M_1(alpha=1.5) = 0.1833005002
+A: M_2/M_1 (alpha = 0.6) = 0.6291353667 (Table S2: 0.6291354); (2pi)^-2 A_2/M_1 (alpha = 1) = 0.3885388430 (Table S2: 0.3885388)
+PASS  A: Table S2 predictions 0.6291354 and 0.3885388 reproduced by an independent quadrature
+A: alpha = 0.6: |tau(N) - M2/M1|/(M2/M1) = 3.931e-02, 2.311e-02, 1.348e-02, 7.817e-03, 4.518e-03, 2.606e-03; exponent (801 -> 3201) = 0.792
+PASS  A: alpha = 0.6 row of Table S2: relative error 2.6e-3 at N1 = 3201, decreasing like N1^-0.79
+A: alpha = 1: local slope / prediction = 0.975453, 0.983953, 0.990085, 0.994092, 0.996570
+PASS  A: alpha = 1 row: local slope 0.99657 x prediction at N1 = 3201, increasing
+A: alpha = 1.5: M2(N)/(N S2) - 1 = +5.589e-03, +1.005e-02, +8.740e-03, +6.246e-03, +4.066e-03, +2.505e-03; M1 error exponent = 0.5000; tau/[N S2/M1] = 1.15320, 1.11057, 1.07771, 1.05394, 1.03726, 1.02571; Richardson (exponent 1/2) = 0.99785
+    three-term fit 1 + a N^-1/2 + b N^-1 log N on N = 801, 1601, 3201: limit = 0.99901
+PASS  A: alpha = 1.5 row: M2 deviation 2.5e-3, M1 exponent 0.500, tau ratio 1.026 at 3201, Richardson value 0.99785
+A: alpha = 2: M1 slope/pred = 1.013616, 1.006875, 1.003455, 1.001732, 1.000867; (M2/N^2)/S2 = 1.035619, 1.021140, 1.011567, 1.006073, 1.003118, 1.001582; tau log N/N^2 / limit = 1.1455, 1.1120, 1.0894, 1.0746, 1.0644, 1.0572
+PASS  A: alpha = 2 row: ratios 1.00087 and 1.00158, tau log N1/N1^d = 1.057 x limit at 3201
+B: hexagonal lattice, angular functions with jumps on lattice directions
+    V_cell = 0.8660254038; A_1 = 3.590391604103, A_2 = 3.162964032186 (closed form = quadrature: True)
+    alpha = 0.6: |M1(N) - M1|/M1 = 4.57e-04, 1.00e-03, 7.95e-04, 5.09e-04, 2.97e-04, 1.64e-04; |M2(N) - M2|/M2 = 4.88e-02, 2.58e-02, 1.38e-02, 7.36e-03, 3.95e-03, 2.14e-03
+PASS  B: m alpha < d with jumps on lattice directions: M_1(N1) -> M_1 and M_2(N1) -> M_2 (alpha = 0.6, errors decreasing, < 1e-2 at 3201)
+    alpha = 1: slope of M2(N) in log N / ((2pi)^-2 A_2) = 1.02082, 1.01041, 1.00510, 1.00247, 1.00119
+PASS  B: m alpha = d with jumps: slope of M_2(N1) in log N1 -> (2pi)^-2 A_2 (within 5e-3 at 3201)
+    alpha = 1.5: S_2 = 0.0149897900 (R = 1500; R = 750: 0.0149897602); with the other one-sided values of r_0 on theta = 0, pi: S_2 = 0.0140997302 (relative change -0.0594)
+    alpha = 1.5: M2(N) V_cell/(N S_2) = 0.97846, 0.99602, 1.00154, 1.00256, 1.00218, 1.00154
+PASS  B: m alpha > d with jumps: M_2(N1)/N1^{2alpha-d} -> S_2/V_cell, where S_2 uses the values of Phi_2 on the lattice directions inside the jump set (deviation < 3e-3 at 3201 and decreasing over N1 = 801, 1601, 3201, after a pre-asymptotic crossing of 1)
+PASS  B: the constant S_2 changes by a finite amount (> 5%) if Phi_2 is changed only on the null set of jump directions (theta = 0, pi)
+    elapsed 12.8 s
+
+13 of 13 checks passed
