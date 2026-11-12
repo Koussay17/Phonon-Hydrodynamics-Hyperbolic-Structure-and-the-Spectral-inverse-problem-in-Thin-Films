@@ -1260,3 +1260,10 @@ Conclusion: where the Gamma-trick path converges its results are correct (the 10
 cells it does not converge. The cause in QE 6.7 is not identified (FFT grids are identical to PBE). Fallback changed to the complex
 k path at default mixing, then complex path at beta 0.3 (`runscf`). The complex-path perfect cell is used as disp-00000.
 Cost of a complex-path cell about 44 min (Gamma 13.5 min); 10 known failures add about 7 h. Relaunched 11 November, 20:13 UTC.
+
+### E39 restart (12 November): all four first attempts failed for lack of memory
+Between 11 November 17:53 and 12 November 00:33 the four multistart runs ended with numpy allocation failures (0.26 GB in
+the operator assembly, 4.94 GB when loading a linearisation block) while other computations on the machine held 10–14 GB.
+No result was produced, so none is lost. Logs kept as `film_opt/*rs*.failed0.out`. Relaunched with `queue/e39_guarded.sh`:
+each run starts only with ≥ 16 GB free and is retried (up to 4 attempts) if it ends without its JSON; validation and the
+end marker as before. The restart recipe now starts the guarded queue.
