@@ -1,0 +1,391 @@
+{
+ "prec_bits": 256,
+ "cases": [
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[-0.01631478658 +/- 3.19e-12]",
+   "certified_nonzero": true,
+   "label": "T/entropic Delta (t=0.4), N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[-0.04126180136 +/- 1.15e-12]",
+   "certified_nonzero": true,
+   "label": "T/entropic Delta b=bs, N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[-0.04437648625 +/- 1.08e-12]",
+   "certified_nonzero": true,
+   "label": "T/entropic Fourier corner b=2, N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[0.07100549308 +/- 4.11e-13]",
+   "certified_nonzero": true,
+   "label": "T/entropic tR=0, N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[-0.5360198897 +/- 1.10e-11]",
+   "certified_nonzero": true,
+   "label": "T/entropic tl=0, N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "det": "[0.0002913639828 +/- 3.84e-14]",
+   "certified_nonzero": true,
+   "label": "T/kinetic eps=0.084 Delta, N=2"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "det": "[0.0004913334720 +/- 2.14e-14]",
+   "certified_nonzero": true,
+   "label": "T/entropic +R: Delta R=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "det": "[0.0001380816224 +/- 4.23e-14]",
+   "certified_nonzero": true,
+   "label": "T/entropic +R: Delta R=0.3, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    5
+   ],
+   "det": "[-0.0003112483020 +/- 3.56e-15]",
+   "certified_nonzero": true,
+   "label": "T/entropic +R: corner R=0.3, N=3"
+  },
+  {
+   "rows": [
+    0,
+    2,
+    3,
+    4
+   ],
+   "det": "[-0.05352132948 +/- 4.62e-12]",
+   "certified_nonzero": true,
+   "label": "T/entropic +R: corner R=0 b=2.5 (rank 4: 4x4 minor of 5 cols)"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[1.584589472e-6 +/- 2.75e-16]",
+   "certified_nonzero": true,
+   "label": "B4/local generic tR>tl, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-3.442703507e-8 +/- 1.16e-18]",
+   "certified_nonzero": true,
+   "label": "B4/local generic tR<tl, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-3.492895708e-6 +/- 4.73e-16]",
+   "certified_nonzero": true,
+   "label": "B4/local b=bs, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-2.614337015e-6 +/- 5.12e-17]",
+   "certified_nonzero": true,
+   "label": "B4/local Cattaneo tl=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-4.087010542e-9 +/- 3.08e-19]",
+   "certified_nonzero": true,
+   "label": "B4/local tR=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[3.754267920e-5 +/- 1.97e-15]",
+   "certified_nonzero": true,
+   "label": "B4/local R1=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-3.792198679e-6 +/- 2.23e-16]",
+   "certified_nonzero": true,
+   "label": "B4/local R2=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-4.527330815e-7 +/- 1.83e-17]",
+   "certified_nonzero": true,
+   "label": "B4/local AlN-like (b=2.07, tR=0.03, tl=0), N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[2.471375815e-5 +/- 2.61e-17]",
+   "certified_nonzero": true,
+   "label": "B4/entropic generic, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[2.284102903e-7 +/- 4.10e-17]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Delta R2>0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[4.323603453e-7 +/- 1.52e-17]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Delta R2=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[3.477819722e-7 +/- 5.91e-19]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Delta R2=0 b=bs, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[-2.086057355e-8 +/- 2.34e-18]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Fourier corner R2>0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "det": "[3.488467866e-5 +/- 4.41e-15]",
+   "certified_nonzero": true,
+   "label": "B4/entropic corner R2=0 b=2 (rank 5: cols xi,b,tR,tl,R1)"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[1.095572371e-5 +/- 1.22e-15]",
+   "certified_nonzero": true,
+   "label": "B4/entropic b=bs, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[7.477258272e-5 +/- 3.67e-15]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Cattaneo tl=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[3.415068237e-8 +/- 1.39e-18]",
+   "certified_nonzero": true,
+   "label": "B4/entropic tR=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[0.0007027884977 +/- 1.91e-14]",
+   "certified_nonzero": true,
+   "label": "B4/entropic R1=0, N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[1.182980286e-5 +/- 3.53e-15]",
+   "certified_nonzero": true,
+   "label": "B4/entropic R2=0 (off Delta), N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[5.071334408e-10 +/- 1.29e-21]",
+   "certified_nonzero": true,
+   "label": "B4/local Au/AlN/sapphire Cattaneo (tl=0), N=3"
+  },
+  {
+   "rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "det": "[5.769660682e-10 +/- 3.13e-20]",
+   "certified_nonzero": true,
+   "label": "B4/entropic Au/AlN/sapphire GK (tl=10 ps), N=3"
+  }
+ ],
+ "all_certified": true
+}

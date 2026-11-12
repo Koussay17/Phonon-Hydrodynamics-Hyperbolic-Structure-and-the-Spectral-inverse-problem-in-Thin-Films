@@ -31,3 +31,10 @@ b = b_s); N2 step 3 (t_K values, index-set enumeration, nonzero leading coeffici
 c₀…c₆. Not formalised: the analytic steps (Lemmas 0–3, termwise differentiation of Laurent coefficients, meromorphic parts
 of the kernel argument, Lemmas T/LW, Theorems 1′/2′, NR, TW, G). Status of Theorems 1, 2, N2: PROVED (audited), finite
 core FORMALLY VERIFIED. Remark for the write-up: step 4 uses g(0) = 1 with p = 0 outside D; harmless for rational functions.
+
+## Revision R-B (12 November) — `proofs/B-revision.md` (not yet audited)
+DERIVED (audit pending): interface-convention classification (local κ = 0: Σ = Δ; any tied ε ≠ 0 incl. entropic and
+Beardo-kinetic: no degeneracy on Δ, only Π ∩ {R = 0}; free c_n: τ_n = c_nC identifiable, resonance degeneracy returns);
+twin observable is T(0), Cattaneo layers convention-free (Proposition O, from the code). B-4: known transducer with unknown
+R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kernel; Theorems T1–T3, T4(i)–(iv) and TW3
+(three-frequency certified twin). CONJECTURED: N = 3 on the hypersurface; entropic T4″.

@@ -1,0 +1,57 @@
+[
+ {
+  "label": "corner, b = bs",
+  "predicted_rank": 4,
+  "svals": [
+   "1.0",
+   "0.834",
+   "0.322",
+   "0.0522",
+   "8.0e-30",
+   "6.24e-31",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   "1.53e-35",
+   "3.88e-30",
+   "2.06e-30"
+  ],
+  "consistent": true
+ },
+ {
+  "label": "corner, b = 2",
+  "predicted_rank": 5,
+  "svals": [
+   "1.0",
+   "0.94",
+   "0.422",
+   "0.0449",
+   "0.0199",
+   "4.53e-30",
+   "1.38e-34"
+  ],
+  "kernel_residuals": [
+   "2.69e-30",
+   "2.13e-34"
+  ],
+  "consistent": true
+ },
+ {
+  "label": "Delta t=0.4, b = bs, tn = 0, R2 = 0",
+  "predicted_rank": 5,
+  "svals": [
+   "1.0",
+   "0.752",
+   "0.472",
+   "0.0928",
+   "0.0509",
+   "2.53e-33",
+   "0.0"
+  ],
+  "kernel_residuals": [
+   "1.73e-35",
+   "1.0e-33"
+  ],
+  "consistent": true
+ }
+]
