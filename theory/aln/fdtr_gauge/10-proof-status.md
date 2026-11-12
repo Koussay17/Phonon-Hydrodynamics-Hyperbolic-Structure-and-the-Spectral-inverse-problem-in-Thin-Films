@@ -22,3 +22,12 @@ are free (N ⊇ N2), by ≥ 4.2× (0.01°) and ≥ 34× (0.1°) against the half
   identifiability methods); full text of the 2010 paper still unread.
 - Workstream A headline restricted pending revision R-A1: computed widths only (30–300 nm), 0.1° verdict as the robust claim,
   sensitivity box over interface resistances and regulator normalisation; δ = τ_R − τ_ℓ range open (R-A2).
+
+## Formal verification (12 November) — `proofs/B-formal.md`, Lean sources `proofs/B-formal/`
+FORMALLY VERIFIED (Lean 4.34.1, Mathlib v4.34.1, 68 statements, axioms propext/Classical.choice/Quot.sound only, no sorry):
+Theorem 1 step 5 (rational identity, fibre form) and the algebraic part of step 4; the 2×3 two-load kernel lemma (pointwise);
+Theorem 2 Proof A endgame (kernel {0} off Δ, line on Δ∖D₂, D₂ case); the moment minors G₀₁₂₃ ≡ 0, G₀₁₂₄, G₀₂₃₄ (general b and
+b = b_s); N2 step 3 (t_K values, index-set enumeration, nonzero leading coefficient); Riccati hierarchy uniquely determining
+c₀…c₆. Not formalised: the analytic steps (Lemmas 0–3, termwise differentiation of Laurent coefficients, meromorphic parts
+of the kernel argument, Lemmas T/LW, Theorems 1′/2′, NR, TW, G). Status of Theorems 1, 2, N2: PROVED (audited), finite
+core FORMALLY VERIFIED. Remark for the write-up: step 4 uses g(0) = 1 with p = 0 outside D; harmless for rational functions.
