@@ -1,0 +1,116 @@
+{
+ "500nm N0 0.01deg (w=0.08)": {
+  "sigma_over_w": 1.925,
+  "post_var_over_prior": 0.9173546250224212,
+  "MI_bits": 0.06213115041230788,
+  "P(2sigma test separates ends)": 0.16826628918921444
+ },
+ "500nm N0 0.01deg (w=0.055)": {
+  "sigma_over_w": 2.8,
+  "post_var_over_prior": 0.9592019080473367,
+  "MI_bits": 0.030035339270386263,
+  "P(2sigma test separates ends)": 0.09927139684333103
+ },
+ "500nm N0 0.01deg c-optimal design (w=0.08)": {
+  "sigma_over_w": 0.6975,
+  "post_var_over_prior": 0.5854152488685186,
+  "MI_bits": 0.37493465598331954,
+  "P(2sigma test separates ends)": 0.8071340437446417
+ },
+ "500nm N1 0.01deg (w=0.08)": {
+  "sigma_over_w": 2.5625,
+  "post_var_over_prior": 0.9516643098810093,
+  "MI_bits": 0.035718714120290596,
+  "P(2sigma test separates ends)": 0.11132492503925334
+ },
+ "500nm N2 0.01deg (w=0.08)": {
+  "sigma_over_w": 4.25,
+  "post_var_over_prior": 0.9818785766149095,
+  "MI_bits": 0.013190717544055985,
+  "P(2sigma test separates ends)": 0.06308119887124095
+ },
+ "500nm N2 0.01deg c-optimal (w=0.08)": {
+  "sigma_over_w": 2.4375,
+  "post_var_over_prior": 0.9468444052990758,
+  "MI_bits": 0.03937522692659012,
+  "P(2sigma test separates ends)": 0.119102119399635
+ },
+ "500nm N2 0.01deg all favourable (w=0.08)": {
+  "sigma_over_w": 1.1624999999999999,
+  "post_var_over_prior": 0.8008264034509832,
+  "MI_bits": 0.15896110513538364,
+  "P(2sigma test separates ends)": 0.38990375432812796
+ },
+ "500nm N2 0.1deg (w=0.08)": {
+  "sigma_over_w": 34.125,
+  "post_var_over_prior": 0.9997138398611563,
+  "MI_bits": 0.00020645044302725069,
+  "P(2sigma test separates ends)": 0.026105377511717768
+ },
+ "500nm N2 0.1deg all favourable (w=0.08)": {
+  "sigma_over_w": 1.9875,
+  "post_var_over_prior": 0.9220839139229948,
+  "MI_bits": 0.05843682311671339,
+  "P(2sigma test separates ends)": 0.16018186798003892
+ },
+ "500nm N3 0.01deg (w=0.08)": {
+  "sigma_over_w": 28.125,
+  "post_var_over_prior": 0.999578778306879,
+  "MI_bits": 0.0003039112219491713,
+  "P(2sigma test separates ends)": 0.026872328750538164
+ },
+ "300nm N0 0.01deg": {
+  "sigma_over_w": 4.730769230769231,
+  "post_var_over_prior": 0.9853237099592276,
+  "MI_bits": 0.010664619222919391,
+  "P(2sigma test separates ends)": 0.05737064236626592
+ },
+ "300nm N2 0.01deg": {
+  "sigma_over_w": 12.730769230769232,
+  "post_var_over_prior": 0.9979475263147686,
+  "MI_bits": 0.0014820667832742274,
+  "P(2sigma test separates ends)": 0.03267178409502783
+ },
+ "300nm N2 0.1deg": {
+  "sigma_over_w": 103.0769230769231,
+  "post_var_over_prior": 0.9999686282655069,
+  "MI_bits": 2.2630470461137975e-05,
+  "P(2sigma test separates ends)": 0.023818241986345925
+ },
+ "100nm N2 0.01deg (w=0.037)": {
+  "sigma_over_w": 153.51351351351352,
+  "post_var_over_prior": 0.9999858543392137,
+  "MI_bits": 1.0202978975470955e-05,
+  "P(2sigma test separates ends)": 0.023462759268231992
+ },
+ "100nm N2 0.01deg (w=0.08 calibrated)": {
+  "sigma_over_w": 71.0,
+  "post_var_over_prior": 0.9999338800209872,
+  "MI_bits": 4.769712832342066e-05,
+  "P(2sigma test separates ends)": 0.024314451910779387
+ },
+ "30nm N2 0.01deg": {
+  "sigma_over_w": 6714.285714285714,
+  "post_var_over_prior": 0.9999702210909354,
+  "MI_bits": 5.337252417803029e-09,
+  "P(2sigma test separates ends)": 0.022766219154956586
+ },
+ "reference r=1": {
+  "sigma_over_w": 1.0,
+  "post_var_over_prior": 0.747554577926057,
+  "MI_bits": 0.20733132910468344,
+  "P(2sigma test separates ends)": 0.5
+ },
+ "reference r=0.5": {
+  "sigma_over_w": 0.5,
+  "post_var_over_prior": 0.4134073953416533,
+  "MI_bits": 0.6040479604343048,
+  "P(2sigma test separates ends)": 0.9772498680518208
+ },
+ "reference r=0.25": {
+  "sigma_over_w": 0.25,
+  "post_var_over_prior": 0.1451626287282543,
+  "MI_bits": 1.2786639756991165,
+  "P(2sigma test separates ends)": 0.9999999990134123
+ }
+}
