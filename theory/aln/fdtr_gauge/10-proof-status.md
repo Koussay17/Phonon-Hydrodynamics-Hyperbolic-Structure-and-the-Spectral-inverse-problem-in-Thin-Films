@@ -90,3 +90,16 @@ R₁, R₂ — rank 6 / 5 / 4 (local) as the referee found; R₁ never in a kern
 - Status: NUMERICALLY SUPPORTED, model-conditional (7×7×5 only; transfer falls with mesh refinement; witnesses not
   δ-optimised; gray walls). Independent numerical audit in progress (`branches/R-S-slab-audit.md`).
 - Open: δ-optimised witnesses using the L/c predictor (c ≈ 2.1–2.2, correlation 0.99); 9×9×6 slab; mode-dependent transmission.
+
+## Audit of R-S (13 November) — `branches/R-S-slab-audit.md`, `experiments/R_slab_audit/`
+- Verdict: RELIABLE WITH CAVEATS. Independent solver (no parity reduction, no Schur complement, no eigendecomposition;
+  fourth-order exact z-march + GMRES) reproduces the 7×7×5 two-ports to ≤ 1.7e-9 (observed order 3.97–3.98); fits and
+  Fisher margins reproduced to the printed digits (500 nm, 0.01°: N1 0.594, N2 1.008, N2lam 2.341, N3 5.974).
+- N2 = 1.01 on 7×7×5: INCONCLUSIVE (on the threshold).
+- q-mesh: REF δ UNDER-RESOLVED (N3, 500 nm: −37.6 → −61.0 → −67.4 ps on 5×5×3 → 7×7×5 → 9×9×6; rough limit ≈ −70 ps).
+  The verdict flips between 5×5×3 (N2lam 0.55) and 7×7×5 (2.34); a new 9×9×6 slab (REF + two end-setting witnesses, 500 nm)
+  strengthens it: half-range 8.6–8.7 ps, margins N1 0.70, N2 1.17, N2lam 2.81, N3 7.50 (0.1°: ≥ 6.6).
+- "δ range not resolvable once λ_z is free (300–500 nm, 0.01°–0.1°)": NUMERICALLY SUPPORTED, audited, model-conditional
+  (gray diffuse walls, 1D, local convention). Open risk: witnesses not optimised for δ; a flip would need a visible range
+  ×2.8 (N2lam) or ×7.5 (N3) wider on 9×9×6.
+- Not independently re-derived: wall variants, energy port, 300 nm on 9×9×6.
